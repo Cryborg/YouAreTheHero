@@ -4,7 +4,7 @@
         <title>@yield('title')</title>
     </head>
     <body>
-        @yield('body')
+        @yield('content')
     </body>
     <footer>
         <a href="{{ url('/') }}">Home</a>

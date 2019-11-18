@@ -4,7 +4,6 @@ use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use App\Story;
 use App\User;
-use App\User_story;
 use App\Paragraph;
 use App\Paragraph_link;
 
@@ -52,6 +51,7 @@ class DatabaseSeeder extends Seeder {
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 1',
                 'description' => 'Dosis warp with friendship at the twisted ready room!<br>I raise this life, it\'s called galactic ellipse.',
+                'is_first' => true,
             ]);
             $p2 = Paragraph::create([
                 'story_id' => $story->id,
@@ -96,12 +96,12 @@ class DatabaseSeeder extends Seeder {
             Paragraph_link::create([
                 'paragraph_from' => $p3->id,
                 'paragraph_to' => $p5->id,
-                'link_text' => 'Aller au chapitre 3',
+                'link_text' => 'Aller au chapitre 5',
             ]);
             Paragraph_link::create([
                 'paragraph_from' => $p4->id,
                 'paragraph_to' => $p5->id,
-                'link_text' => 'Aller au chapitre 4',
+                'link_text' => 'Aller au chapitre 5',
             ]);
         }
     }
