@@ -90,7 +90,9 @@ class DatabaseSeeder extends Seeder {
             $p5 = Paragraph::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 5',
-                'description' => 'The lieutenant commander is more particle now than planet. interstellar and wildly intelligent!<br>Fly without powerdrain, and we won’t love an astronaut.',
+                'description' => 'The lieutenant commander is more particle now than planet. interstellar and wildly intelligent!'
+                    . '<br>Fly without powerdrain, and we won’t love an astronaut.'
+                    . '<br><br><br>Congratulations you WON!!',
                 'is_last' => true,
             ]);
             Paragraph_link::create([

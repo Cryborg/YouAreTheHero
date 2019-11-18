@@ -51,7 +51,11 @@ class StoryController extends Controller
             }
 
             if ($lastParagraph) {
-                $this->getChoicesFromParagraph($lastParagraph);
+                if ($lastParagraph->is_last) {
+                    $lastParagraph->choices = 'gameover';
+                } else {
+                    $this->getChoicesFromParagraph($lastParagraph);
+                }
 
                 $this->createSavegame($story, $lastParagraph);
 
