@@ -8,4 +8,8 @@ class Paragraph extends Model
 {
     public $incrementing = false;
 
+    public function create()
+    {
+
+    }
 }

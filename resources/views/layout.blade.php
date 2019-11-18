@@ -7,6 +7,7 @@
         @yield('body')
     </body>
     <footer>
+        <a href="{{ url('/') }}">Home</a>
         <a href="{{ url('/stories') }}">Stories</a>
     </footer>
 </html>

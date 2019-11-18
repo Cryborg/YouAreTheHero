@@ -7,7 +7,7 @@
     @foreach ($stories as $story)
         <fieldset>
             <legend>{{ $story->title }}</legend>
-            <p><i>By {{ $story->user_id  }}</i></p>
+            <p><i>By {{ $story->getUser()->first_name }} {{ $story->getUser()->last_name  }}</i></p>
             {{ $story->description }}
         </fieldset>
     @endforeach
