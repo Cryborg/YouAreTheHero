@@ -15,7 +15,7 @@ class CreateParagraphsTable extends Migration
     {
         Schema::create('paragraphs', function (Blueprint $table) {
             $table->string('id', 32)->unique();
-            $table->integer('story_id');
+            $table->bigInteger('story_id')->unsigned();
             $table->foreign('story_id')->references('id')->on('stories');
             $table->boolean('is_first')->default(false);
             $table->boolean('is_last')->default(false);
