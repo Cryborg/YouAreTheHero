@@ -7,7 +7,7 @@
         @yield('content')
     </body>
     <footer>
-        <a href="{{ url('/') }}">Home</a>
-        <a href="{{ url('/stories') }}">Stories</a>
+        <a href="{{ url('/') }}">@lang('common.footer_link_home')</a>
+        <a href="{{ url('/stories') }}">@lang('common.footer_link_stories')</a>
     </footer>
 </html>
