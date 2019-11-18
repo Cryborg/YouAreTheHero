@@ -30,6 +30,18 @@ class DatabaseSeeder extends Seeder {
             'created_at'    => now(),
         ]);
 
-        factory(App\Story::class, 10)->create();
+        // Stories
+        $storyMarty = Story::create([
+            'title'         => 'Ma guitare et moi',
+            'description'   => 'Comment je suis devenu un dieu de la guitare.',
+            'user_id'       => $marty->id,
+            'created_at'    => now(),
+        ]);
+        $storyFred = Story::create([
+            'title'         => 'Les claquettes de nos jours',
+            'description'   => 'Mais pourquoi en suis-je venu à faire des claquettes ?<br>Récit d\'une vie.',
+            'user_id'       => $fred->id,
+            'created_at'    => now(),
+        ]);
     }
 }
