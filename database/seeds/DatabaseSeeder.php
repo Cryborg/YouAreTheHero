@@ -1,11 +1,10 @@
 <?php
 
+use App\Models\Story;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
-use App\Story;
 use App\User;
-use App\Paragraph;
-use App\Paragraph_link;
+use App\Models\Paragraph;
+use App\Models\Paragraph_link;
 
 class DatabaseSeeder extends Seeder {
 
