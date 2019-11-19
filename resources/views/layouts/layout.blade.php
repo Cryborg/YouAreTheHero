@@ -15,7 +15,7 @@
             @yield('content')
         </div>
         <div class="row">
-            <div class="col bloc">
+            <div class="col">
                 @include('layouts.partials.nav')
             </div>
         </div>
