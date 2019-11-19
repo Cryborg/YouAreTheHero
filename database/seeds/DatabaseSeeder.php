@@ -55,7 +55,8 @@ class DatabaseSeeder extends Seeder {
             $p2 = Paragraph::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 2',
-                'description' => 'Ca se corse !! Trois choix, dis-donc que c\'est dur...',
+                'description' => 'Ca se corse !! Trois choix, dis-donc que c\'est dur...<br>En plus l\'inventaire à gauche s\'est barré...',
+                'layout' => 'play2',
             ]);
             Paragraph_link::create([
                 'paragraph_from' => $p1->id,
@@ -97,15 +98,13 @@ class DatabaseSeeder extends Seeder {
             $p6 = Paragraph::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 5',
-                'description' => 'The lieutenant commander is more particle now than planet. interstellar and wildly intelligent!'
-                    . '<br>Fly without powerdrain, and we won’t love an astronaut.'
-                    . '<br><br><br>Congratulations you WON!!',
+                'description' => 'Tous les chemins mènent ici, aucun mérite !',
                 'is_last' => true,
             ]);
             Paragraph_link::create([
                 'paragraph_from' => $p3->id,
                 'paragraph_to' => $p6->id,
-                'link_text' => 'Je continue d\'avancer !',
+                'link_text' => 'Tout droit !',
             ]);
             Paragraph_link::create([
                 'paragraph_from' => $p5->id,
@@ -123,17 +122,17 @@ class DatabaseSeeder extends Seeder {
             $p8 = $this->addParagraph($story, $p4, [
                 'title' => 'Paragraphe 6',
                 'description' => 'Tu as bien choisi, tu es arrivé bien loin !',
-                'link_text' => 'C\'est parti mon kiki !',
+                'link_text' => 'Irai-je à gauche ?',
             ]);
             $p9 = $this->addParagraph($story, $p4, [
                 'title' => 'Paragraphe 7',
                 'description' => 'Tu as bien choisi, tu es arrivé bien loin !',
-                'link_text' => 'C\'est parti mon kiki !',
+                'link_text' => 'Ou au milieu ?',
             ]);
             $p10 = $this->addParagraph($story, $p4, [
                 'title' => 'Paragraphe 8',
                 'description' => 'Tu as bien choisi, tu es arrivé bien loin !',
-                'link_text' => 'C\'est parti mon kiki !',
+                'link_text' => 'Ou bien à droite ?',
             ]);
         }
     }
@@ -143,7 +142,7 @@ class DatabaseSeeder extends Seeder {
             'story_id' => $story->id,
             'title' => $data['title'],
             'description' => $data['description'],
-            'is_last' => $data['is_last'] ? true : false,
+            'is_last' => $data['is_last'] ?? false,
         ]);
         Paragraph_link::create([
             'paragraph_from' => $after->id,

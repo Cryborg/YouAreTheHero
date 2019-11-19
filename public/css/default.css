@@ -1,0 +1,32 @@
+html, body {
+    height: 100%;
+}
+
+.story-title {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.bloc {
+    border: 1px solid rgba(0, 0, 0, 0.22);
+    margin: 3px;
+}
+
+footer {
+    position: absolute !important;
+    bottom: 0;
+    height: 15%;
+}
+
+.fill {
+    min-height: 84%;
+    height: 84%;
+}
+
+.img-bloc {
+    width: 300px;
+}
+
+.img-bloc img {
+    width: 100%;
+}

@@ -1,10 +1,8 @@
-@extends('layout')
+@extends('layouts.' . $layout)
 
 @section('title', $title)
 
 @section('content')
-    <h1>{{ $paragraph->title }}</h1>
-
     <p>{!! $paragraph->description !!}</p>
 
     @if ($paragraph->choices != 'gameover')

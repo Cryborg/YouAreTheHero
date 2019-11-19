@@ -40,6 +40,7 @@ class StoryController extends Controller
                     'story' => $story,
                     'paragraph' => $paragraph,
                     'title' => $story->title,
+                    'layout' => $lastParagraph->layout ?? $story->layout,
                 ]);
             }
         } else { // The character exists, let's go back to the previous save point
@@ -63,6 +64,7 @@ class StoryController extends Controller
                     'story' => $story,
                     'paragraph' => $lastParagraph,
                     'title' => $story->title,
+                    'layout' => $lastParagraph->layout ?? $story->layout,
                 ]);
             }
         }
