@@ -3,7 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Story;
+use App\Models\Page;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
@@ -23,12 +23,15 @@ class PagesController extends Controller
 
             $content->header(__('common.title_pages'));
 
-            $content->body(Admin::show(Story::findOrFail(1), function (Show $show) {
+            $content->body(Admin::show(Page::findOrFail(1), function (Show $show) {
 
                 $show->id('ID');
-                $show->content();
                 $show->story_id();
-                $show->prerequisites();
+                $show->is_first();
+                $show->is_last();
+                $show->title();
+                $show->description();
+                $show->layout();
 
             }));
         });
