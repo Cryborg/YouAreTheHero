@@ -5,7 +5,7 @@ namespace App\Models;
 use Faker\Provider\Uuid;
 use Illuminate\Database\Eloquent\Model;
 
-class Paragraph extends Model
+class Page extends Model
 {
     public $incrementing = false;
 

@@ -3,8 +3,8 @@
 use App\Models\Story;
 use Illuminate\Database\Seeder;
 use App\Models\User;
-use App\Models\Paragraph;
-use App\Models\Paragraph_link;
+use App\Models\Page;
+use App\Models\Page_link;
 
 class DatabaseSeeder extends Seeder {
 
@@ -45,69 +45,69 @@ class DatabaseSeeder extends Seeder {
         ]);
 
         foreach ([$storyMarty, $storyFred] as $story) {
-            $p1 = Paragraph::create([
+            $p1 = Page::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 1',
                 'description' => 'Premier paragraphe avec une seule option, pas difficile de choisir ;)',
                 'is_first' => true,
             ]);
-            $p2 = Paragraph::create([
+            $p2 = Page::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 2',
                 'description' => 'Ca se corse !! Trois choix, dis-donc que c\'est dur...<br>En plus l\'inventaire à gauche s\'est barré...',
                 'layout' => 'play2',
             ]);
-            Paragraph_link::create([
-                'paragraph_from' => $p1->id,
-                'paragraph_to' => $p2->id,
+            Page_link::create([
+                'page_from' => $p1->id,
+                'page_to' => $p2->id,
                 'link_text' => 'Pas le choix, je clique ici !',
             ]);
 
-            $p3 = Paragraph::create([
+            $p3 = Page::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 3',
                 'description' => 'Je suis allé à gauche et c\'est beau !',
             ]);
-            $p4 = Paragraph::create([
+            $p4 = Page::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 4',
                 'description' => 'Je suis allé tout droit, pas mal !',
             ]);
-            $p5 = Paragraph::create([
+            $p5 = Page::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 5',
                 'description' => 'Je suis allé à droite, c\'est magnifique !',
             ]);
-            Paragraph_link::create([
-                'paragraph_from' => $p2->id,
-                'paragraph_to' => $p3->id,
+            Page_link::create([
+                'page_from' => $p2->id,
+                'page_to' => $p3->id,
                 'link_text' => 'Aller à gauche',
             ]);
-            Paragraph_link::create([
-                'paragraph_from' => $p2->id,
-                'paragraph_to' => $p4->id,
+            Page_link::create([
+                'page_from' => $p2->id,
+                'page_to' => $p4->id,
                 'link_text' => 'Aller tout droit',
             ]);
-            Paragraph_link::create([
-                'paragraph_from' => $p2->id,
-                'paragraph_to' => $p5->id,
+            Page_link::create([
+                'page_from' => $p2->id,
+                'page_to' => $p5->id,
                 'link_text' => 'Aller à droite',
             ]);
 
-            $p6 = Paragraph::create([
+            $p6 = Page::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 5',
                 'description' => 'Tous les chemins mènent ici, aucun mérite !',
                 'is_last' => true,
             ]);
-            Paragraph_link::create([
-                'paragraph_from' => $p3->id,
-                'paragraph_to' => $p6->id,
+            Page_link::create([
+                'page_from' => $p3->id,
+                'page_to' => $p6->id,
                 'link_text' => 'Tout droit !',
             ]);
-            Paragraph_link::create([
-                'paragraph_from' => $p5->id,
-                'paragraph_to' => $p6->id,
+            Page_link::create([
+                'page_from' => $p5->id,
+                'page_to' => $p6->id,
                 'link_text' => 'C\'est parti mon kiki !',
             ]);
 
@@ -136,16 +136,16 @@ class DatabaseSeeder extends Seeder {
         }
     }
 
-    private function addParagraph(Story $story, Paragraph $after, $data) {
-        $new = Paragraph::create([
+    private function addParagraph(Story $story, Page $after, $data) {
+        $new = Page::create([
             'story_id' => $story->id,
             'title' => $data['title'],
             'description' => $data['description'],
             'is_last' => $data['is_last'] ?? false,
         ]);
-        Paragraph_link::create([
-            'paragraph_from' => $after->id,
-            'paragraph_to' => $new->id,
+        Page_link::create([
+            'page_from' => $after->id,
+            'page_to' => $new->id,
             'link_text' => $data['link_text'],
         ]);
 

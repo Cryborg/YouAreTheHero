@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateParagraphLinkTable extends Migration
+class CreatePageLinkTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateParagraphLinkTable extends Migration
      */
     public function up()
     {
-        Schema::create('paragraph_link', function (Blueprint $table) {
+        Schema::create('page_link', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('paragraph_from', 32)->nullable();
-            $table->foreign('paragraph_from')->references('id')->on('paragraphs');
-            $table->string('paragraph_to', 32)->nullable();
-            $table->foreign('paragraph_to')->references('id')->on('paragraphs');
+            $table->string('page_from', 32)->nullable();
+            $table->foreign('page_from')->references('id')->on('pages');
+            $table->string('page_to', 32)->nullable();
+            $table->foreign('page_to')->references('id')->on('pages');
             $table->string('link_text');
         });
     }
@@ -30,6 +30,6 @@ class CreateParagraphLinkTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paragraph_link');
+        Schema::dropIfExists('page_link');
     }
 }

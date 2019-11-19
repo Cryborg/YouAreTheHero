@@ -17,4 +17,4 @@ Route::get('/', function () {
 
 Route::get('/stories', 'StoriesController@list');
 
-Route::get('/story/{id}/{paragraph_id?}', 'StoryController@play');
+Route::get('/story/{id}/{page_id?}', 'StoryController@play');

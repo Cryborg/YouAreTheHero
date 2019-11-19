@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateParagraphsTable extends Migration
+class CreatePagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateParagraphsTable extends Migration
      */
     public function up()
     {
-        Schema::create('paragraphs', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->bigInteger('story_id')->unsigned();
             $table->foreign('story_id')->references('id')->on('stories');
@@ -33,6 +33,6 @@ class CreateParagraphsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paragraphs');
+        Schema::dropIfExists('pages');
     }
 }

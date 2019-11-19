@@ -1,1 +1,1 @@
-<div class="story-title">{{ $paragraph->title }}</div>
+<div class="story-title">{{ $page->title }}</div>

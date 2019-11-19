@@ -5,15 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Models\Story;
 use \App\Models\Character;
-use \App\Models\Paragraph;
-use \App\Models\Paragraph_link;
+use \App\Models\Page;
+use \App\Models\Page_link;
 use \App\Models\Savegame;
 
 class StoryController extends Controller
 {
     private $_currentUserId = null;       //TODO: remove this once we can login !!!!!!
 
-    public function play(int $id, string $paragraph_id = null)
+    public function play(int $id, string $page_id = null)
     {
         $story = Story::where('id', $id)->first();
         $this->_currentUserId = $story->user_id;       //TODO: remove this once we can login !!!!!!
@@ -23,53 +23,53 @@ class StoryController extends Controller
 
         // If the character does not exist, it is a new game
         if (!$character) {
-            // Get the first paragraph of the story
-            $paragraph = Paragraph::where([
+            // Get the first page of the story
+            $page = Page::where([
                 'story_id' => $id,
                 'is_first' => true,
             ])->first();
 
-            if ($paragraph) {
-                $this->getChoicesFromParagraph($paragraph);
+            if ($page) {
+                $this->getChoicesFromPage($page);
 
                 // Create the character and the savegame
                 $this->createCharacter($story);
-                $this->createSavegame($story, $paragraph);
+                $this->createSavegame($story, $page);
 
                 return view('story.play', [
                     'story' => $story,
-                    'paragraph' => $paragraph,
+                    'page' => $page,
                     'title' => $story->title,
-                    'layout' => $lastParagraph->layout ?? $story->layout,
+                    'layout' => $lastPage->layout ?? $story->layout,
                 ]);
             }
         } else { // The character exists, let's go back to the previous save point
-            // Get the last visited paragraph
-            if (is_null($paragraph_id)) {
-                $lastParagraph = $this->getLastParagraphFromSavegame($story);
+            // Get the last visited page
+            if (is_null($page_id)) {
+                $lastPage = $this->getLastPageFromSavegame($story);
             } else {
-                $lastParagraph = Paragraph::where('id', $paragraph_id)->first();
+                $lastPage = Page::where('id', $page_id)->first();
             }
 
-            if ($lastParagraph) {
-                if ($lastParagraph->is_last) {
-                    $lastParagraph->choices = 'gameover';
+            if ($lastPage) {
+                if ($lastPage->is_last) {
+                    $lastPage->choices = 'gameover';
                 } else {
-                    $this->getChoicesFromParagraph($lastParagraph);
+                    $this->getChoicesFromPage($lastPage);
                 }
 
-                $this->createSavegame($story, $lastParagraph);
+                $this->createSavegame($story, $lastPage);
 
                 return view('story.play', [
                     'story' => $story,
-                    'paragraph' => $lastParagraph,
+                    'page' => $lastPage,
                     'title' => $story->title,
-                    'layout' => $lastParagraph->layout ?? $story->layout,
+                    'layout' => $lastPage->layout ?? $story->layout,
                 ]);
             }
         }
 
-        return view('errors.paragraph_not_found');
+        return view('errors.404');
     }
 
     private function createCharacter($story) {
@@ -84,14 +84,14 @@ class StoryController extends Controller
      * Automatically save the character progression
      *
      * @param $story
-     * @param $paragraph
+     * @param $page
      */
-    private function createSavegame($story, $paragraph) {
+    private function createSavegame($story, $page) {
         Savegame::updateOrCreate([
             'user_id' => $this->_currentUserId,
             'story_id' => $story->id
         ], [
-            'paragraph_id' => $paragraph->id,
+            'page_id' => $page->id,
         ]);
     }
 
@@ -99,17 +99,17 @@ class StoryController extends Controller
      * @param $story
      * @return |null
      */
-    private function getLastParagraphFromSavegame($story) {
+    private function getLastPageFromSavegame($story) {
         $savegame = Savegame::where([
             'user_id' => $this->_currentUserId,
             'story_id' => $story->id,
         ])->first();
 
         if ($savegame) {
-            $lastParagraph = Paragraph::where('id', $savegame->paragraph_id)->first();
+            $lastPage = Page::where('id', $savegame->page_id)->first();
 
-            if ($lastParagraph) {
-                return $lastParagraph;
+            if ($lastPage) {
+                return $lastPage;
             }
         }
 
@@ -117,14 +117,14 @@ class StoryController extends Controller
     }
 
     /**
-     * Get all the choices (links to the next paragraph(s)
+     * Get all the choices (links to the next page(s)
      *
-     * @param $paragraph
+     * @param $page
      * @return mixed
      */
-    private function getChoicesFromParagraph(&$paragraph) {
-        // Get all the choices (links to the next paragraph(s)
-        $choices = Paragraph_link::where('paragraph_from', $paragraph->id)->get();
-        $paragraph->choices = $choices;
+    private function getChoicesFromPage(&$page) {
+        // Get all the choices (links to the next page(s)
+        $choices = Page_link::where('page_from', $page->id)->get();
+        $page->choices = $choices;
     }
 }

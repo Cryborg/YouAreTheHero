@@ -18,8 +18,8 @@ class CreateSavegamesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('story_id', 32);
             $table->foreign('story_id')->references('id')->on('stories');
-            $table->string('paragraph_id', 32);
-            $table->foreign('paragraph_id')->references('id')->on('paragraphs');
+            $table->string('page_id', 32);
+            $table->foreign('page_id')->references('id')->on('pages');
 
             $table->primary(['user_id', 'story_id']);
             $table->unique(['user_id', 'story_id']);
