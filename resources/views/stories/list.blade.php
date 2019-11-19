@@ -3,13 +3,46 @@
 @section('title', 'Stories list')
 
 @section('content')
-    Here are all the stories I got:
-    @foreach ($stories as $story)
-        <fieldset>
-            <legend>{{ $story->title }}</legend>
-            <p><i>By {{ $story->getUser()->first_name }} {{ $story->getUser()->last_name  }}</i></p>
-            <p>{{ $story->description }}</p>
-            <p><a href="{{ url('story/' . $story->id) }}">Let's play!</a></p>
-        </fieldset>
-    @endforeach
+    <table id="stories-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>{{ __('admin.title') }}</th>
+                <th>{{ __('common.description') }}</th>
+                <th>{{ __('common.language') }}</th>
+                <th>{{ __('common.author') }}</th>
+                <th>{{ __('common.created_at') }}</th>
+            </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <th></th>
+            <th>{{ __('admin.title') }}</th>
+            <th>{{ __('common.description') }}</th>
+            <th>{{ __('common.language') }}</th>
+            <th>{{ __('common.author') }}</th>
+            <th>{{ __('common.created_at') }}</th>
+        </tr>
+        </tfoot>
+    </table>
 @endsection
+
+@push('footer-scripts')
+    <script type="text/javascript">
+        $(function() {
+            $('#stories-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{{ url('/stories/ajax_list') }}',
+                columns: [
+                    {data: 'id'},
+                    {data: 'title'},
+                    {data: 'description'},
+                    {data: 'locale'},
+                    {data: 'user_id'},
+                    {data: 'created_at'}
+                ]
+            });
+        });
+    </script>
+@endpush
