@@ -46,48 +46,55 @@ class DatabaseSeeder extends Seeder {
         ]);
 
         foreach ([$storyMarty, $storyFred] as $story) {
-            // First chapters
             $p1 = Paragraph::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 1',
-                'description' => 'Dosis warp with friendship at the twisted ready room!<br>I raise this life, it\'s called galactic ellipse.',
+                'description' => 'Premier paragraphe avec une seule option, pas difficile de choisir ;)',
                 'is_first' => true,
             ]);
             $p2 = Paragraph::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 2',
-                'description' => 'Cum bulla unda, omnes abaculuses experientia noster, gratis musaes!<br>Rusticus, grandis tuss patienter imperium de superbus, fortis gemna.',
+                'description' => 'Ca se corse !! Trois choix, dis-donc que c\'est dur...',
             ]);
             Paragraph_link::create([
                 'paragraph_from' => $p1->id,
                 'paragraph_to' => $p2->id,
-                'link_text' => 'Aller au chapitre 2',
+                'link_text' => 'Pas le choix, je clique ici !',
             ]);
 
-            // Choices
             $p3 = Paragraph::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 3',
-                'description' => 'Moons, explosion of the blessings, and strange individuals will always protect them!<br>To some, a thing is a peace for illuminating.',
+                'description' => 'Je suis allé à gauche et c\'est beau !',
             ]);
             $p4 = Paragraph::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 4',
-                'description' => 'The wind sails with courage, desire the captain\'s quarters before it hobbles!<br>Weird, warm anchors cruelly lead a gutless, salty whale.',
+                'description' => 'Je suis allé tout droit, pas mal !',
+            ]);
+            $p5 = Paragraph::create([
+                'story_id' => $story->id,
+                'title' => 'Paragraphe 5',
+                'description' => 'Je suis allé à droite, c\'est magnifique !',
             ]);
             Paragraph_link::create([
                 'paragraph_from' => $p2->id,
                 'paragraph_to' => $p3->id,
-                'link_text' => 'Aller au chapitre 3',
+                'link_text' => 'Aller à gauche',
             ]);
             Paragraph_link::create([
                 'paragraph_from' => $p2->id,
                 'paragraph_to' => $p4->id,
-                'link_text' => 'Aller au chapitre 4',
+                'link_text' => 'Aller tout droit',
+            ]);
+            Paragraph_link::create([
+                'paragraph_from' => $p2->id,
+                'paragraph_to' => $p5->id,
+                'link_text' => 'Aller à droite',
             ]);
 
-            // Final chapter
-            $p5 = Paragraph::create([
+            $p6 = Paragraph::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 5',
                 'description' => 'The lieutenant commander is more particle now than planet. interstellar and wildly intelligent!'
@@ -97,15 +104,54 @@ class DatabaseSeeder extends Seeder {
             ]);
             Paragraph_link::create([
                 'paragraph_from' => $p3->id,
-                'paragraph_to' => $p5->id,
-                'link_text' => 'Aller au chapitre 5',
+                'paragraph_to' => $p6->id,
+                'link_text' => 'Je continue d\'avancer !',
             ]);
             Paragraph_link::create([
-                'paragraph_from' => $p4->id,
-                'paragraph_to' => $p5->id,
-                'link_text' => 'Aller au chapitre 5',
+                'paragraph_from' => $p5->id,
+                'paragraph_to' => $p6->id,
+                'link_text' => 'C\'est parti mon kiki !',
+            ]);
+
+            $p6 = $this->addParagraph($story, $p4, [
+                'title' => 'Paragraphe 5',
+                'description' => 'The lieutenant commander is more particle now than planet. interstellar and wildly intelligent!'
+                    . '<br>Fly without powerdrain, and we won’t love an astronaut.'
+                    . '<br><br><br>Congratulations you WON!!',
+                'link_text' => 'Je continue d\'avancer !',
+            ]);
+            $p8 = $this->addParagraph($story, $p4, [
+                'title' => 'Paragraphe 6',
+                'description' => 'Tu as bien choisi, tu es arrivé bien loin !',
+                'link_text' => 'C\'est parti mon kiki !',
+            ]);
+            $p9 = $this->addParagraph($story, $p4, [
+                'title' => 'Paragraphe 7',
+                'description' => 'Tu as bien choisi, tu es arrivé bien loin !',
+                'link_text' => 'C\'est parti mon kiki !',
+            ]);
+            $p10 = $this->addParagraph($story, $p4, [
+                'title' => 'Paragraphe 8',
+                'description' => 'Tu as bien choisi, tu es arrivé bien loin !',
+                'link_text' => 'C\'est parti mon kiki !',
             ]);
         }
+    }
+
+    private function addParagraph(Story $story, Paragraph $after, $data) {
+        $new = Paragraph::create([
+            'story_id' => $story->id,
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'is_last' => $data['is_last'] ? true : false,
+        ]);
+        Paragraph_link::create([
+            'paragraph_from' => $after->id,
+            'paragraph_to' => $new->id,
+            'link_text' => $data['link_text'],
+        ]);
+
+        return $new;
     }
 }
 
