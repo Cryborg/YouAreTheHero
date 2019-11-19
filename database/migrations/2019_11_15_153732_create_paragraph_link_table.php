@@ -15,7 +15,7 @@ class CreateParagraphLinkTable extends Migration
     {
         Schema::create('paragraph_link', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('paragraph_from', 32);
+            $table->string('paragraph_from', 255);
             $table->foreign('paragraph_from')->references('id')->on('paragraphs');
             $table->string('paragraph_to', 32);
             $table->foreign('paragraph_to')->references('id')->on('paragraphs');

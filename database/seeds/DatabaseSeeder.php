@@ -1,10 +1,8 @@
 <?php
 
+use App\Models\Story;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
-use App\Story;
 use App\User;
-use App\User_story;
 
 class DatabaseSeeder extends Seeder {
 

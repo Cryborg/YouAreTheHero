@@ -14,7 +14,7 @@ class CreateParagraphsTable extends Migration
     public function up()
     {
         Schema::create('paragraphs', function (Blueprint $table) {
-            $table->string('id', 32)->unique();
+            $table->uuid('id')->primary();
             $table->bigInteger('story_id')->unsigned();
             $table->foreign('story_id')->references('id')->on('stories');
             $table->boolean('is_first')->default(false);
