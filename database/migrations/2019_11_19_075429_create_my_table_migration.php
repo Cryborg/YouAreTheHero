@@ -12,7 +12,7 @@ class CreateMyTableMigration extends Migration
      */
     public function up()
     {
-        \DB::unprepared( file_get_contents( "./dump/youarethehero.sql" ) );
+        //\DB::unprepared( file_get_contents( "./dump/youarethehero.sql" ) );
     }
 
     /**

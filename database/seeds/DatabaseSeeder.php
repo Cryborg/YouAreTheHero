@@ -2,7 +2,7 @@
 
 use App\Models\Story;
 use Illuminate\Database\Seeder;
-use App\User;
+use App\Models\User;
 use App\Models\Paragraph;
 use App\Models\Paragraph_link;
 
