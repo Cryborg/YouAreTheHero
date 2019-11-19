@@ -21,8 +21,8 @@ class StoriesController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('Post');
-            $content->description('Detail');
+            $content->header(__('common.title_stories'));
+            $content->description(__('admin.detail'));
 
             $content->body(Admin::show(Story::findOrFail(1), function (Show $show) {
 
@@ -30,6 +30,8 @@ class StoriesController extends Controller
                 $show->user_id();
                 $show->title();
                 $show->description();
+                $show->locale();
+                $show->layout();
                 $show->created_at();
                 $show->updated_at();
 

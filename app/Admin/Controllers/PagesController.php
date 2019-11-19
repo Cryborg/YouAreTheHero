@@ -21,7 +21,7 @@ class PagesController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('Pages');
+            $content->header(__('common.title_pages'));
 
             $content->body(Admin::show(Story::findOrFail(1), function (Show $show) {
 
