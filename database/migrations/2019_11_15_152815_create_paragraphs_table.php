@@ -21,6 +21,7 @@ class CreateParagraphsTable extends Migration
             $table->boolean('is_last')->default(false);
             $table->string('title')->nullable();
             $table->text('description');
+            $table->string('layout')->nullable();
             $table->timestamps();
         });
     }

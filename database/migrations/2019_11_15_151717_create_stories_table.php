@@ -19,6 +19,8 @@ class CreateStoriesTable extends Migration
             $table->text('description');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->string('locale')->default('fr_FR');
+            $table->string('layout')->default('play1');
             $table->timestamps();
         });
     }

@@ -1,7 +1,7 @@
-@extends('layout')
+@extends('layouts.layout')
 
 @section('title', 'Welcome !')
 
-@section('body')
+@section('content')
     This is my body
 @endsection
