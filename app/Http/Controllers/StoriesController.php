@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Story;
+use App\Models\Story;
 
 class StoriesController extends Controller
 {

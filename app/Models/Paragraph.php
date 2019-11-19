@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Faker\Provider\Uuid;
 use Illuminate\Database\Eloquent\Model;

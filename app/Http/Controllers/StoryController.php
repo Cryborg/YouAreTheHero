@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Story;
-use \App\Character;
-use \App\Paragraph;
-use \App\Paragraph_link;
-use \App\Savegame;
+use \App\Models\Story;
+use \App\Models\Character;
+use \App\Models\Paragraph;
+use \App\Models\Paragraph_link;
+use \App\Models\Savegame;
 
 class StoryController extends Controller
 {
