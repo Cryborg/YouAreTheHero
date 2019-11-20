@@ -23,7 +23,6 @@ class StoriesController extends Controller
     {
         $stories = Story::select(['id','title','description','user_id','locale','created_at']);
 
-        // TODO: Find how to get Models instead of user_ids directly, without querying again
         $stories = $stories->get()->map(function ($value, $key) {
             $user = User::where('id', $value['user_id'])->first();
             $name = $user->first_name . ' ' . $user->last_name;

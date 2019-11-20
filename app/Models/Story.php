@@ -11,4 +11,9 @@ class Story extends Model
     {
         return User::where('id', $this->user_id)->first();
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

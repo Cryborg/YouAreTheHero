@@ -35,7 +35,9 @@
                 serverSide: true,
                 ajax: '{{ url('/stories/ajax_list') }}',
                 columns: [
-                    {data: 'id'},
+                    {data: 'id', render: function ( data, type, row ) {
+                            return '<a href="{{ url('/story/') }}/' + data + '">' + data + '</a>'
+                    }},
                     {data: 'title'},
                     {data: 'description'},
                     {data: 'locale'},
