@@ -17,6 +17,11 @@
                             @yield('content')
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            @yield('choices')
+                        </div>
+                    </div>
                     @include('layouts.partials.footer-scripts')
                 </div>
                 <div class="col-lg-3 col-xs-12 bloc">

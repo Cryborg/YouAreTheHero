@@ -14,7 +14,7 @@ class CreateSavegamesTable extends Migration
     public function up()
     {
         Schema::create('savegames', function (Blueprint $table) {
-            $table->bigInteger('user_id');
+            $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('story_id', 32);
             $table->foreign('story_id')->references('id')->on('stories');

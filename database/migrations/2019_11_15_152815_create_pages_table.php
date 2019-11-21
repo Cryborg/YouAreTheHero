@@ -15,12 +15,13 @@ class CreatePagesTable extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->bigInteger('story_id')->unsigned();
+            $table->unsignedInteger('story_id')->unsigned();
             $table->foreign('story_id')->references('id')->on('stories');
             $table->boolean('is_first')->default(false);
             $table->boolean('is_last')->default(false);
             $table->string('title')->nullable();
             $table->text('description');
+            $table->json('items')->nullable();
             $table->string('layout')->nullable();
             $table->timestamps();
         });

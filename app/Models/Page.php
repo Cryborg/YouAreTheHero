@@ -7,7 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model
 {
+    // Don't increment as we use UUIDs
     public $incrementing = false;
+
+    // Cannot update these fields
+    public $guarded = ['id'];
+
+    // Casts JSON as array
+    protected $casts = [
+        'items' => 'array',
+    ];
 
     public static function boot()
     {

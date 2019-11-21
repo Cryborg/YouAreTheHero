@@ -4,7 +4,9 @@
 
 @section('content')
     <p>{!! $page->description !!}</p>
+@endsection
 
+@section('choices')
     @if ($page->choices != 'gameover')
         <fieldset>
             <legend>@lang('play.choices')@lang('common.:')</legend>
@@ -15,4 +17,26 @@
             </ul>
         </fieldset>
     @endif
+@endsection
+
+@section('items')
+    @if ($page->items)
+        @foreach ($page->items as $item)
+            <span class="pick-item" data-verb="{{ $item['verb'] }}" data-amount="{{ $item['amount'] }}">
+                {{ $item['item'] }}
+            </span>
+        @endforeach
+    @endif
+@endsection
+
+@section('footer-scripts')
+    <script type="text/javascript">
+        $('.pick-item').on('click', function() {
+            var $this = $(this);
+            var verb = $this.data('verb');
+            var amount = $this.data('amount');
+
+            alert(verb + ' ' + amount + '?');
+        });
+    </script>
 @endsection

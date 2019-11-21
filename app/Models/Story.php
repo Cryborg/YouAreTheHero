@@ -7,11 +7,6 @@ use \App\Models\User;
 
 class Story extends Model
 {
-    public function getUser()
-    {
-        return User::where('id', $this->user_id)->first();
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class);

@@ -3,6 +3,12 @@
     <head>
         @include('layouts.partials.head')
         @stack('head')
+        <style>
+            .pick-item {
+                display: block;
+                margin: 0 0 .4em 2em;
+            }
+        </style>
     </head>
     <body>
         <div class="container-fluid fill">
@@ -19,6 +25,16 @@
                     <div class="row">
                         <div class="col">
                             @yield('content')
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            @yield('items')
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            @yield('choices')
                         </div>
                     </div>
                     @include('layouts.partials.footer-scripts')

@@ -5,6 +5,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Page;
 use App\Models\Page_link;
+use App\Models\Item;
 
 class DatabaseSeeder extends Seeder {
 
@@ -111,32 +112,57 @@ class DatabaseSeeder extends Seeder {
                 'link_text' => 'C\'est parti mon kiki !',
             ]);
 
-            $p6 = $this->addParagraph($story, $p4, [
+            $p7 = $this->addPage($story, $p4, [
                 'title' => 'Paragraphe 5',
                 'description' => 'The lieutenant commander is more particle now than planet. interstellar and wildly intelligent!'
                     . '<br>Fly without powerdrain, and we won’t love an astronaut.'
                     . '<br><br><br>Congratulations you WON!!',
                 'link_text' => 'Je continue d\'avancer !',
             ]);
-            $p8 = $this->addParagraph($story, $p4, [
+            $p8 = $this->addPage($story, $p4, [
                 'title' => 'Paragraphe 6',
                 'description' => 'Tu as bien choisi, tu es arrivé bien loin !',
                 'link_text' => 'Irai-je à gauche ?',
             ]);
-            $p9 = $this->addParagraph($story, $p4, [
+            $p9 = $this->addPage($story, $p4, [
                 'title' => 'Paragraphe 7',
                 'description' => 'Tu as bien choisi, tu es arrivé bien loin !',
                 'link_text' => 'Ou au milieu ?',
             ]);
-            $p10 = $this->addParagraph($story, $p4, [
+            $p10 = $this->addPage($story, $p4, [
                 'title' => 'Paragraphe 8',
                 'description' => 'Tu as bien choisi, tu es arrivé bien loin !',
                 'link_text' => 'Ou bien à droite ?',
             ]);
+
+            // Create some items
+            $items = [
+                'Epée rouillée', 'Bouclier du pauvre', 'Jambières de fillette', 'Gants délicats',
+                'Cotte de mouille', 'Epoulettes', 'Casque efféminé', 'Pantoufles de verre',
+                'Vif d\'or (plaqué)', 'Pain de campagne magique'
+            ];
+            foreach ($items as $item) {
+                $newItem = Item::create([
+                    'name' => $item,
+                    'default_price' => round(rand(1, 5)),
+                    'story_id' => $story->id,
+                ]);
+
+                // Put some random items to buy in one of the pages
+                if (rand(1, 3) < 2) {
+                    $page = Page::where('id', $p6->id)->first();
+                    $pageItems = $page->items ?? [];
+                    $page->update(['items' => array_merge($pageItems, [[
+                        'item' => $newItem->id,
+                        'verb' => 'buy',
+                        'amount' => $newItem->default_price
+                    ]])]);
+                }
+            }
         }
     }
 
-    private function addParagraph(Story $story, Page $after, $data) {
+    private function addPage(Story $story, Page $after, $data) {
         $new = Page::create([
             'story_id' => $story->id,
             'title' => $data['title'],

@@ -16,10 +16,11 @@ class CreateCharactersTable extends Migration
         Schema::create('characters', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->bigInteger('user_id')->unsigned();
+            $table->unsignedInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->bigInteger('story_id')->unsigned();
+            $table->unsignedInteger('story_id')->unsigned();
             $table->foreign('story_id')->references('id')->on('stories');
+            $table->unsignedInteger('money')->default(0);
             $table->timestamps();
         });
     }
