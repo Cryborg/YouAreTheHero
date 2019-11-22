@@ -19,9 +19,11 @@ class PagesController extends Controller
      */
     public function index()
     {
+
         return Admin::content(function (Content $content) {
 
             $content->header(__('common.title_pages'));
+            $content->description(__('admin.detail'));
 
             $content->body(Admin::show(Page::findOrFail(1), function (Show $show) {
 

@@ -12,5 +12,5 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('admin.home');
     $router->get('/stories', 'StoriesController@index')->name('admin.stories');
-    $router->get('/pages', 'PagesController@index')->name('admin.pages');
+    $router->get('/list-pages', 'PagesController@index')->name('admin.pages');
 });

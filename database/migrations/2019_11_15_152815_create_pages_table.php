@@ -14,9 +14,9 @@ class CreatePagesTable extends Migration
     public function up()
     {
         Schema::create('pages', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->unsignedInteger('story_id')->unsigned();
-            $table->foreign('story_id')->references('id')->on('stories');
+            $table->bigInteger('id')->primary();
+            $table->uuid('page_uuid');
+         //   $table->foreign('story_id')->references('id')->on('stories');
             $table->boolean('is_first')->default(false);
             $table->boolean('is_last')->default(false);
             $table->string('title')->nullable();

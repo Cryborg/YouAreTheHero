@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder {
             'user_id'       => $fred->id,
             'created_at'    => now(),
         ]);
-
+/*
         foreach ([$storyMarty, $storyFred] as $story) {
             $p1 = Page::create([
                 'story_id' => $story->id,
@@ -159,7 +159,7 @@ class DatabaseSeeder extends Seeder {
                     ]])]);
                 }
             }
-        }
+        } */
     }
 
     private function addPage(Story $story, Page $after, $data) {
