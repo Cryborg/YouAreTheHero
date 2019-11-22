@@ -14,19 +14,7 @@ class HomeController extends Controller
     {
         return Admin::content(static function (Content $content) {
 
-            $content->header('Post');
-            $content->description('Detail');
 
-            $content->body(Admin::show(Story::findOrFail(1), function (Show $show) {
-
-                $show->id('ID');
-                $show->user_id();
-                $show->title();
-                $show->description();
-                $show->created_at();
-                $show->updated_at();
-
-            }));
         });
     }
 }
