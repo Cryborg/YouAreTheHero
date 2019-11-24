@@ -19,6 +19,7 @@
                 <div class="col col-xs-12 bloc">
                     <div class="row">
                         <div class="col">
+                            <div id="loadingDiv"></div>
                             @include('layouts.partials.header')
                         </div>
                     </div>

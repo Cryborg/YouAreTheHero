@@ -22,7 +22,7 @@
 @section('items')
     @if ($page->items)
         @foreach ($page->items as $item)
-            <span class="pick-item" data-verb="{{ $item['verb'] }}" data-item="{{ $item['item']['id'] }}">
+            <span class="pick-item" data-verb="{{ $item['verb'] }}" data-item="{{ $item['item']['id'] }}" data-price="{{ $item['item']['default_price']  }}">
                 {{ $item['item']['name'] }} ({{ __('common.price', ['price' => $item['item']['default_price']]) }})
             </span>
         @endforeach
@@ -32,26 +32,40 @@
 @push('footer-scripts')
     <script type="text/javascript">
         $(function() {
-            $('.inventory-block').load('{{ url('story/inventory/' . $character->id) }}');
+            loadInventory();
+        });
 
-            $('.pick-item').on('click', function() {
-                var $this = $(this);
-                var verb = $this.data('verb');
-                var item = $this.data('item');
+        function loadInventory() {
+            $('.inventory-block').load('{{ url('story/inventory/' . $character->id) }}', function () {
+                $('.pick-item').each(function () {
+                    var $this = $(this);
 
-                $.ajax({
-                    'method': 'POST',
-                    'url': '{{ url('story/ajax_action') }}',
-                    'data': {'item': item, 'verb': verb},
-                })
-                .done(function(rst) {
-                    if (rst.result === true) {
-                        $('#character_money').html(rst.money);
+                    // Reset the links
+                    $this.unbind('click');
+                    $this.removeClass('has-money');
 
-                        $('.inventory-block').load('{{ url('story/inventory/' . $character->id) }}');
+                    if ($('#character_money').html() >= $(this).data('price')) {
+                        $this.addClass('has-money');
+
+                        $this.on('click', function() {
+                            var $this = $(this);
+                            var verb = $this.data('verb');
+                            var item = $this.data('item');
+
+                            $.ajax({
+                                'method': 'POST',
+                                'url': '{{ url('story/ajax_action') }}',
+                                'data': {'item': item, 'verb': verb},
+                            })
+                            .done(function(rst) {
+                                if (rst.result === true) {
+                                    loadInventory();
+                                }
+                            });
+                        });
                     }
                 });
             });
-        });
+        }
     </script>
 @endpush
