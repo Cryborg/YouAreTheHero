@@ -23,6 +23,7 @@
                         </div>
                     </div>
                     @include('layouts.partials.footer-scripts')
+                    @stack('footer-scripts')
                 </div>
                 <div class="col-lg-3 col-xs-12 bloc">
                     <div class="row bloc">

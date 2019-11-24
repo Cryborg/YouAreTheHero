@@ -30,3 +30,7 @@ footer {
 .img-bloc img {
     width: 100%;
 }
+
+.pick-item {
+    cursor: pointer;
+}

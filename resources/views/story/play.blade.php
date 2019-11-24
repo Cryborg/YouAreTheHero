@@ -22,21 +22,36 @@
 @section('items')
     @if ($page->items)
         @foreach ($page->items as $item)
-            <span class="pick-item" data-verb="{{ $item['verb'] }}" data-amount="{{ $item['amount'] }}">
-                {{ $item['item'] }}
+            <span class="pick-item" data-verb="{{ $item['verb'] }}" data-item="{{ $item['item']['id'] }}">
+                {{ $item['item']['name'] }} ({{ __('common.price', ['price' => $item['item']['default_price']]) }})
             </span>
         @endforeach
     @endif
 @endsection
 
-@section('footer-scripts')
+@push('footer-scripts')
     <script type="text/javascript">
-        $('.pick-item').on('click', function() {
-            var $this = $(this);
-            var verb = $this.data('verb');
-            var amount = $this.data('amount');
+        $(function() {
+            $('.inventory-block').load('{{ url('story/inventory/' . $character->id) }}');
 
-            alert(verb + ' ' + amount + '?');
+            $('.pick-item').on('click', function() {
+                var $this = $(this);
+                var verb = $this.data('verb');
+                var item = $this.data('item');
+
+                $.ajax({
+                    'method': 'POST',
+                    'url': '{{ url('story/ajax_action') }}',
+                    'data': {'item': item, 'verb': verb},
+                })
+                .done(function(rst) {
+                    if (rst.result === true) {
+                        $('#character_money').html(rst.money);
+
+                        $('.inventory-block').load('{{ url('story/inventory/' . $character->id) }}');
+                    }
+                });
+            });
         });
     </script>
-@endsection
+@endpush

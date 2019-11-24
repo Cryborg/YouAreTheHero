@@ -22,10 +22,27 @@ class Page extends Model
     {
         parent::boot();
 
-        static::creating(function($table)
+        static::creating(static function($page)
         {
             // String ID so that we prevent cheating
-            $table->id = (string) substr(Uuid::uuid(), 0, 32);
+            $page->id = (string) substr(Uuid::uuid(), 0, 32);
+        });
+
+        static::retrieved(static function ($page)
+        {
+            $items = [];
+
+            if ($page->items) {
+                foreach ($page->items as $pageItem) {
+                    $item = Item::where('id', $pageItem['item'])->first();
+                    $items[] = [
+                        'item'   => $item,
+                        'verb'   => $pageItem['verb'],
+                        'amount' => $pageItem['amount'],
+                    ];
+                }
+                $page->items = $items;
+            }
         });
     }
 }

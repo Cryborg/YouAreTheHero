@@ -20,7 +20,7 @@ class CreateCharactersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('story_id');
             $table->foreign('story_id')->references('id')->on('stories');
-            $table->unsignedInteger('money')->default(0);
+            $table->unsignedInteger('money')->default(10);
             $table->timestamps();
         });
     }

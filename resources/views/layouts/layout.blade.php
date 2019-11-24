@@ -19,6 +19,7 @@
                 @include('layouts.partials.nav')
             </div>
         </div>
+        @include('layouts.partials.footer-scripts')
         @stack('footer-scripts')
     </body>
     <footer>
