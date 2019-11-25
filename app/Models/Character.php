@@ -30,4 +30,22 @@ class Character extends Model
 
         return $items;
     }
+
+    public function addMoney($amount)
+    {
+        $this->money += $amount;
+        $this->save();
+    }
+
+    public function spendMoney($amount)
+    {
+        if ($this->money - $amount >= 0) {
+            $this->money -= $amount;
+            $this->save();
+
+            return true;
+        }
+
+        return false;
+    }
 }

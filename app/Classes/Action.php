@@ -14,16 +14,9 @@ class Action
      */
     public static function buy(Character $character, Item $item): bool
     {
-        // Remove the item price from the character money
-        $newMoney = $character->money - $item->default_price;
-
-        if ($newMoney < 0) {
+        if (!$character->spendMoney($item->default_price)) {
             return false;
         }
-
-        $character->update([
-            'money' => $newMoney,
-       ]);
 
         // Add the item to the character inventory
         $inventory = Inventory::firstOrNew([
