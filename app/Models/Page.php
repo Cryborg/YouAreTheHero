@@ -18,6 +18,8 @@ class Page extends Model
         'items' => 'array',
     ];
 
+    private $description;
+
     public static function boot()
     {
         parent::boot();

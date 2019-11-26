@@ -32,20 +32,26 @@ class StoryEditController extends AdminController
      */
     public function edit($id, Content $content)
     {
-        $form = new Form(new Story());
-        $form->setAction(route('admin.story.update', ['id' => $id]));
+        return Admin::content(static function (Content $content) use ($id) {
+            $form = new Form(new Story());
+            $form->tools(function (Form\Tools $tools) {
+                $tools->disableList();
+                $tools->disableDelete();
+                $tools->disableView();
+            });
 
-        $form->display('id', 'ID');
+            $form->footer(function ($footer) {
+                $footer->disableReset();
+                $footer->disableViewCheck();
+                $footer->disableEditingCheck();
+                $footer->disableCreatingCheck();
+            });
 
-        $form->text('title', 'Story title')->rules('required|min:3');
+            $form->setAction(route('admin.story.update', ['id' => $id]));
+            $form->display('id', 'ID');
+            $form->text('title', 'Story title')->rules('required|min:3');
 
-        $form->submitted(function (Form $form) {
-
+            $content->row($form->edit($id))->view('admin.story.story',['story_id' => $id]);
         });
-
-        return $content
-            ->title($this->title())
-            ->description($this->description['edit'] ?? trans('admin.edit'))
-            ->body($form->edit($id));
     }
 }

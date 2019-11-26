@@ -14,15 +14,6 @@ use Illuminate\Http\Request;
 class StoryUpdateController extends Controller
 {
     /**
-     * Set description for following 4 action pages.
-     *
-     * @var array
-     */
-    protected $description = [
-        'edit' => 'Edit',
-    ];
-
-    /**
      * @param $id
      * @param Request $request
      * @return void
