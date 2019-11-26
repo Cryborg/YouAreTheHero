@@ -141,22 +141,19 @@ class StoryController extends Controller
     {
         $isOk = false;
 
-        $this->validate($request, [
-            'item' => ['required'],
-            'verb' => [
-                'required',
-                Rule::in(['buy']),
-            ],
-        ]);
+        $json = $request->get('json');
+        $action = json_decode($json, true);
 
-        $action = $request->all();
-
-        $character = CHaracter::where('id', 1)->first();
+        /** @var \App\Models\Character $character */
+        $character = Character::where('id', 1)->first();
         $item = Item::where('id', $action['item'])->first();
 
         switch ($action['verb']) {
             case 'buy':
                 $isOk = Action::buy($character, $item);
+                break;
+            case 'earn':
+                $isOk = $character->addMoney($action['price']);
                 break;
         }
 

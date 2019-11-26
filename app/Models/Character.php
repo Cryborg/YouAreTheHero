@@ -14,7 +14,10 @@ class Character extends Model
 
     }
 
-    public function inventory()
+    /**
+     * @return array
+     */
+    public function inventory(): array
     {
         $inventory = Inventory::where([
             'character_id' => $this->id,
@@ -31,19 +34,27 @@ class Character extends Model
         return $items;
     }
 
-    public function addMoney($amount)
+    /**
+     * @param $amount
+     *
+     * @return bool
+     */
+    public function addMoney($amount): bool
     {
         $this->money += $amount;
-        $this->save();
+        return $this->save();
     }
 
-    public function spendMoney($amount)
+    /**
+     * @param $amount
+     *
+     * @return bool
+     */
+    public function spendMoney($amount): bool
     {
         if ($this->money - $amount >= 0) {
             $this->money -= $amount;
-            $this->save();
-
-            return true;
+            return $this->save();
         }
 
         return false;

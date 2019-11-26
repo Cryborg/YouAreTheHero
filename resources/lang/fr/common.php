@@ -11,5 +11,6 @@ return [
     'author' => 'Auteur',
     'created_at' => 'Date de création',
     'money' => 'Bourse',
-    'price' => 'Prix: :price',
+    'price' => 'Prix : :price',
+    'quantity' => 'Quantité : :quantity',
 ];

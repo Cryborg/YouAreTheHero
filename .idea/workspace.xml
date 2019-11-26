@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d202f32e-bbc8-4673-9150-4f195e73b7de" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Hero.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Hero.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Classes/Action.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Classes/Action.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Character.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Character.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/fr/common.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fr/common.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/story/play.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/story/play.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +170,7 @@
       <workItem from="1574421445135" duration="37492000" />
       <workItem from="1574662460060" duration="605000" />
       <workItem from="1574678151251" duration="1565000" />
-      <workItem from="1574685850053" duration="368000" />
+      <workItem from="1574685850053" duration="7044000" />
     </task>
     <servers />
   </component>

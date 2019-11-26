@@ -18,6 +18,8 @@ class Page extends Model
         'items' => 'array',
     ];
 
+    protected $rawItems;
+
     public static function boot()
     {
         parent::boot();
@@ -34,15 +36,33 @@ class Page extends Model
 
             if ($page->items) {
                 foreach ($page->items as $pageItem) {
-                    $item = Item::where('id', $pageItem['item'])->first();
-                    $items[] = [
-                        'item'   => $item,
-                        'verb'   => $pageItem['verb'],
-                        'amount' => $pageItem['amount'],
-                    ];
+                    // If this is an Item
+                    if (isset($pageItem['item'])) {
+                        $item    = Item::where('id', $pageItem['item'])->first();
+                        $items[] = [
+                            'item'   => $item,
+                            'verb'   => $pageItem['verb'],
+                            'amount' => $pageItem['amount'],
+                        ];
+                    } else {
+                        $items[] = $pageItem;
+                    }
+
+                    $page->rawItems[] = $pageItem;
                 }
                 $page->items = $items;
             }
         });
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return bool
+     */
+    public function addItem(array $data): bool
+    {
+        $this->items = array_merge($this->rawItems ?? [], [$data]);
+        return $this->save();
     }
 }

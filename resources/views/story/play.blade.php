@@ -22,9 +22,14 @@
 @section('items')
     @if ($page->items)
         @foreach ($page->items as $item)
-            <span class="pick-item" data-verb="{{ $item['verb'] }}" data-item="{{ $item['item']['id'] }}" data-price="{{ $item['item']['default_price']  }}">
-                {{ $item['item']['name'] }} ({{ __('common.price', ['price' => $item['item']['default_price']]) }})
-            </span>
+            @switch($item['verb'])
+                @case ('buy')
+                @case ('earn')
+                    <span class="pick-item" data-verb="{{ $item['verb'] }}" data-item="{{ $item['item']['id'] }}" data-price="{{ $item['item']['default_price']  }}">{{
+                        $item['item']['name'] }} ({{ __('common.price', ['price' => $item['item']['default_price']])
+                    }})</span>
+                    @break
+            @endswitch
         @endforeach
     @endif
 @endsection
@@ -44,18 +49,18 @@
                     $this.unbind('click');
                     $this.removeClass('has-money');
 
-                    if ($('#character_money').html() >= $(this).data('price')) {
+                    // If the character has enough money
+                    // OR if the action will credit money
+                    console.log($this.data('verb'));
+                    console.log($.inArray($this.data('verb'), ['earn']));
+                    if ($('#character_money').html() >= $(this).data('price') || $.inArray($this.data('verb'), ['earn']) > -1) {
                         $this.addClass('has-money');
 
                         $this.on('click', function() {
-                            var $this = $(this);
-                            var verb = $this.data('verb');
-                            var item = $this.data('item');
-
                             $.ajax({
                                 'method': 'POST',
                                 'url': '{{ url('story/ajax_action') }}',
-                                'data': {'item': item, 'verb': verb},
+                                'data': {'json': JSON.stringify($this.data())},
                             })
                             .done(function(rst) {
                                 if (rst.result === true) {
