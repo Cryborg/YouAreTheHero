@@ -8,6 +8,12 @@ use Yajra\DataTables\DataTables;
 
 class StoriesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function list()
     {
         return view('stories.list');

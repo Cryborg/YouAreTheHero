@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/stories', 'StoriesController@list');
 
@@ -22,3 +20,5 @@ Route::post('/story/ajax_action', 'StoryController@ajax_action');
 
 Route::get('/story/inventory/{character}', 'StoryController@inventory');
 Route::get('/story/{id}/{page_id?}', 'StoryController@play');
+
+Auth::routes();

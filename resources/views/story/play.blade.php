@@ -25,7 +25,7 @@
             @switch($item['verb'])
                 @case ('buy')
                 @case ('earn')
-                    <span class="pick-item" data-verb="{{ $item['verb'] }}" data-item="{{ $item['item']['id'] }}" data-price="{{ $item['item']['default_price']  }}">{{
+                    <span class="pick-item" data-verb="{{ $item['verb'] }}" data-item="{{ $item['item']['id'] }}" data-price="{{ $item['item']['default_price']  }}" data-singleuse="{{ $item['item']['single_use'] }}">{{
                         $item['item']['name'] }} ({{ __('common.price', ['price' => $item['item']['default_price']])
                     }})</span>
                     @break
@@ -51,12 +51,15 @@
 
                     // If the character has enough money
                     // OR if the action will credit money
-                    console.log($this.data('verb'));
-                    console.log($.inArray($this.data('verb'), ['earn']));
                     if ($('#character_money').html() >= $(this).data('price') || $.inArray($this.data('verb'), ['earn']) > -1) {
                         $this.addClass('has-money');
 
-                        $this.on('click', function() {
+                        $this.on('click', function()
+                        {
+                            if ($this.data('singleuse')) {
+                                $this.remove();
+                            }
+
                             $.ajax({
                                 'method': 'POST',
                                 'url': '{{ url('story/ajax_action') }}',

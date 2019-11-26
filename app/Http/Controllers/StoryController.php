@@ -5,26 +5,34 @@ namespace App\Http\Controllers;
 use App\Classes\Action;
 use App\Models\Inventory;
 use App\Models\Item;
+use App\Models\Unique_items_used;
 use Illuminate\Http\Request;
 use \App\Models\Story;
 use \App\Models\Character;
 use \App\Models\Page;
 use \App\Models\Page_link;
-use \App\Models\Savegame;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class StoryController extends Controller
 {
-    private $_currentUserId = null;       //TODO: remove this once we can login !!!!!!
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function play(int $id, string $page_id = null)
     {
         $story = Story::where('id', $id)->first();
 
-        $this->_currentUserId = $story->user_id;       //TODO: remove this once we can login !!!!!!
-
         // Check if the user has an already existing character for this story
-        $character = Character::where(['user_id' => $this->_currentUserId, 'story_id' => $id])->first();
+        $character = Character::where(['user_id' => Auth::id(), 'story_id' => $id])->first();
+
+        session([
+            'story_id' => $story->id,
+        ]);
+
 
         // Params that are always returned to the view
         $commonParams = [
@@ -43,9 +51,12 @@ class StoryController extends Controller
             if ($page) {
                 $this->getChoicesFromPage($page);
 
-                // Create the character and the savegame
-                $character = $this->createCharacter($story);
-                $this->createSavegame($character, $page);
+                // Create the character
+                $character = $this->createCharacter($story, $page);
+
+                session([
+                    'character_id' => $character->id,
+                ]);
 
                 return view('story.play', $commonParams + [
                     'page' => $page,
@@ -56,7 +67,7 @@ class StoryController extends Controller
         } else { // The character exists, let's go back to the previous save point
             // Get the last visited page
             if ($page_id === null) {
-                $lastPage = $this->getLastPageFromSavegame($character);
+                $lastPage = Page::where('id', $character->page_id)->first();
             } else {
                 $lastPage = Page::where('id', $page_id)->first();
             }
@@ -68,7 +79,7 @@ class StoryController extends Controller
                     $this->getChoicesFromPage($lastPage);
                 }
 
-                $this->createSavegame($character, $lastPage);
+                $character->update(['page_id' => $lastPage->id]);
 
                 return view('story.play', $commonParams + [
                     'page' => $lastPage,
@@ -81,48 +92,13 @@ class StoryController extends Controller
         return view('errors.404');
     }
 
-    private function createCharacter($story) {
+    private function createCharacter($story, $page) {
         return Character::create([
             'name' => 'Quasimodo',
-            'user_id' => $this->_currentUserId,
+            'user_id' => Auth::id(),
             'story_id' => $story->id,
-        ]);
-    }
-
-    /**
-     * Automatically save the character progression
-     *
-     * @param \App\Models\Character $character
-     * @param \App\Models\Page      $page
-     */
-    private function createSavegame(Character $character, Page $page) {
-        Savegame::updateOrCreate([
-            'character_id' => $character->id,
-        ], [
             'page_id' => $page->id,
         ]);
-    }
-
-    /**
-     * @param \App\Models\Character $character
-     *
-     * @return \App\Models\Page|null
-     */
-    private function getLastPageFromSavegame(Character $character): ?Page
-    {
-        $savegame = Savegame::where([
-            'character_id' => $character->id,
-        ])->first();
-
-        if ($savegame) {
-            $lastPage = Page::where('id', $savegame->page_id)->first();
-
-            if ($lastPage) {
-                return $lastPage;
-            }
-        }
-
-        return null;
     }
 
     /**
@@ -134,9 +110,15 @@ class StoryController extends Controller
     private function getChoicesFromPage(&$page) {
         // Get all the choices (links to the next page(s)
         $choices = Page_link::where('page_from', $page->id)->get();
+
         $page->choices = $choices;
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function ajax_action(Request $request)
     {
         $isOk = false;
@@ -145,9 +127,13 @@ class StoryController extends Controller
         $action = json_decode($json, true);
 
         /** @var \App\Models\Character $character */
-        $character = Character::where('id', 1)->first();
+        $character = Character::where([
+            'user_id' => Auth::id(),
+            'story_id' => session('story_id'),
+        ])->first();
         $item = Item::where('id', $action['item'])->first();
 
+        // Perform the action
         switch ($action['verb']) {
             case 'buy':
                 $isOk = Action::buy($character, $item);
@@ -157,15 +143,30 @@ class StoryController extends Controller
                 break;
         }
 
+        // Check if the item used has the single_use flag,
+        // and in this case it must not be shown again
+        if ($item->single_use) {
+            Unique_items_used::create([
+                'character_id' => $character->id,
+                'item_id' => $item->id,
+            ]);
+        }
+
         return response()->json([
             'result' => $isOk,
             'money' => $character->money,
         ], 200);
     }
 
+    /**
+     * Get a character's inventory
+     *
+     * @param \App\Models\Character $character
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function inventory(Character $character)
     {
-        // Check if the user has an already existing character for this story
         $inventory = Inventory::where('character_id', $character->id)->get();
 
         if (!empty($inventory)) {

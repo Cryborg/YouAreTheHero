@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemsTable extends Migration
+class CreateMapsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('maps', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 40);
-            $table->unsignedInteger('default_price')->default(0);
-            $table->unsignedInteger('story_id');
-            $table->json('effects')->nullable();
-            $table->boolean('single_use')->default(false);
+            $table->unsignedBigInteger('character_id');
+            $table->foreign('character_id')->references('id')->on('characters');
+            $table->string('page_id', 32);
+            $table->foreign('page_id')->references('id')->on('pages');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('maps');
     }
 }
