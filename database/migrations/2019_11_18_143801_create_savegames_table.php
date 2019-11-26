@@ -14,15 +14,12 @@ class CreateSavegamesTable extends Migration
     public function up()
     {
         Schema::create('savegames', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('story_id');
-            $table->foreign('story_id')->references('id')->on('stories');
+            $table->unsignedBigInteger('character_id')->primary()->unique();
+            $table->foreign('character_id')->references('id')->on('characters');
             $table->string('page_id', 32);
             $table->foreign('page_id')->references('id')->on('pages');
 
-            $table->primary(['user_id', 'story_id']);
-            $table->unique(['user_id', 'story_id']);
+            $table->unique(['character_id', 'page_id']);
 
             $table->timestamps();
         });

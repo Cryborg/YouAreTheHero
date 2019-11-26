@@ -45,7 +45,7 @@ class StoryController extends Controller
 
                 // Create the character and the savegame
                 $character = $this->createCharacter($story);
-                $this->createSavegame($story, $page);
+                $this->createSavegame($character, $page);
 
                 return view('story.play', $commonParams + [
                     'page' => $page,
@@ -56,7 +56,7 @@ class StoryController extends Controller
         } else { // The character exists, let's go back to the previous save point
             // Get the last visited page
             if ($page_id === null) {
-                $lastPage = $this->getLastPageFromSavegame($story);
+                $lastPage = $this->getLastPageFromSavegame($character);
             } else {
                 $lastPage = Page::where('id', $page_id)->first();
             }
@@ -68,7 +68,7 @@ class StoryController extends Controller
                     $this->getChoicesFromPage($lastPage);
                 }
 
-                $this->createSavegame($story, $lastPage);
+                $this->createSavegame($character, $lastPage);
 
                 return view('story.play', $commonParams + [
                     'page' => $lastPage,
@@ -92,26 +92,26 @@ class StoryController extends Controller
     /**
      * Automatically save the character progression
      *
-     * @param $story
-     * @param $page
+     * @param \App\Models\Character $character
+     * @param \App\Models\Page      $page
      */
-    private function createSavegame($story, $page) {
+    private function createSavegame(Character $character, Page $page) {
         Savegame::updateOrCreate([
-            'user_id' => $this->_currentUserId,
-            'story_id' => $story->id
+            'character_id' => $character->id,
         ], [
             'page_id' => $page->id,
         ]);
     }
 
     /**
-     * @param $story
-     * @return |null
+     * @param \App\Models\Character $character
+     *
+     * @return \App\Models\Page|null
      */
-    private function getLastPageFromSavegame($story) {
+    private function getLastPageFromSavegame(Character $character): ?Page
+    {
         $savegame = Savegame::where([
-            'user_id' => $this->_currentUserId,
-            'story_id' => $story->id,
+            'character_id' => $character->id,
         ])->first();
 
         if ($savegame) {
