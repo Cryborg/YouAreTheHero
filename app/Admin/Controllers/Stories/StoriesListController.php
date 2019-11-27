@@ -28,16 +28,18 @@ class StoriesListController extends AdminController
             $content->header('List Stories');
 
             $content->body(Admin::grid(Story::class, function (Grid $grid) {
+                $grid->disableRowSelector();
+
                 $grid->model()->where('user_id', '=', Auth::id());
 
-                $grid->id('id');
-                $grid->column('title', 'Title');
-                $grid->column('description', 'Description');
-                $grid->column('description', 'Description');
+                $grid->id('id')->setAttributes(['width' => '5%']);
+                $grid->column('title', __('admin.title'))   ;
+                $grid->column('locale', __('admin.language'))->setAttributes(['width' => '10%']);
+                $grid->column('layout', __('admin.layout'))->setAttributes(['width' => '10%']);
 
                 $grid->is_published(__('admin.is_published'))->display(function ($released) {
                     return $released ? 'Yes' : '-';
-                });
+                })->setAttributes(['width' => '10%']);
             }));
         });
     }
