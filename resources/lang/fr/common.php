@@ -13,4 +13,6 @@ return [
     'money' => 'Bourse',
     'price' => 'Prix : :price',
     'quantity' => 'Quantité : :quantity',
+    'stories_list' => 'Liste des histoires',
+    'oui' => 'Oui',
 ];

@@ -18,6 +18,9 @@
  *
  */
 
-use Encore\Admin\Facades\Admin;
+
 
 Encore\Admin\Form::forget(['map', 'editor']);
+
+// TODO: Ne fonctionne pas !! :(
+\Encore\Admin\Admin::css('css/admin_custom.css');

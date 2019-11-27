@@ -2,10 +2,6 @@
 
 @section('title', $title)
 
-@section('content')
-    <p>{!! $page->description !!}</p>
-@endsection
-
 @section('choices')
     @if ($page->choices != 'gameover')
         <fieldset>
@@ -25,9 +21,9 @@
             @switch($item['verb'])
                 @case ('buy')
                 @case ('earn')
-                    <span class="pick-item" data-verb="{{ $item['verb'] }}" data-item="{{ $item['item']['id'] }}" data-price="{{ $item['item']['default_price']  }}" data-singleuse="{{ $item['item']['single_use'] }}">{{
+                    <div class="pick-item" data-verb="{{ $item['verb'] }}" data-item="{{ $item['item']['id'] }}" data-price="{{ $item['item']['default_price']  }}" data-singleuse="{{ $item['item']['single_use'] }}">{{
                         $item['item']['name'] }} ({{ __('common.price', ['price' => $item['item']['default_price']])
-                    }})</span>
+                    }})</div>
                     @break
             @endswitch
         @endforeach

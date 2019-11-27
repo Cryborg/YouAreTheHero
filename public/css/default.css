@@ -1,5 +1,6 @@
 html, body {
     height: 100%;
+    font-size: 12px;
 }
 
 .story-title {
@@ -54,4 +55,12 @@ footer {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+td.details-control {
+    background: url('/img/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('/img/details_close.png') no-repeat center center;
 }

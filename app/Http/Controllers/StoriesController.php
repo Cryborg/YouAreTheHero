@@ -27,7 +27,7 @@ class StoriesController extends Controller
      */
     public function ajax_list()
     {
-        $stories = Story::select(['id','title','description','user_id','locale','created_at']);
+        $stories = Story::select(['id','title','description','user_id','locale','created_at'])->where('is_published', true);
 
         $stories = $stories->get()->map(function ($value, $key) {
             $user = User::where('id', $value['user_id'])->first();
