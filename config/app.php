@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         \App\Providers\BootstrapServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Orangehill\Iseed\IseedServiceProvider::class,
 
         /*
          * Package Service Providers...

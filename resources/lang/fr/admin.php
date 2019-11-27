@@ -99,4 +99,7 @@ return [
         'filter_placeholder' => 'Filtre',
     ],
     'menu_titles'           => [],
+
+    'is_first_page'         => 'Première page',
+    'is_last_page'          => 'Dernière page',
 ];
