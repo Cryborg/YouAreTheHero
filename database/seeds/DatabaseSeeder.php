@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder {
             'user_id'       => $fred->id,
             'created_at'    => now(),
         ]);
-/*
+
         foreach ([$storyMarty, $storyFred] as $story) {
             $p1 = Page::create([
                 'story_id' => $story->id,
@@ -148,18 +148,32 @@ class DatabaseSeeder extends Seeder {
                     'story_id' => $story->id,
                 ]);
 
-                // Put some random items to buy in one of the pages
-                if (rand(1, 3) < 2) {
-                    $page = Page::where('id', $p6->id)->first();
-                    $pageItems = $page->items ?? [];
-                    $page->update(['items' => array_merge($pageItems, [[
-                        'item' => $newItem->id,
-                        'verb' => 'buy',
-                        'amount' => $newItem->default_price
-                    ]])]);
-                }
+                // Put some items to pick in one of the pages
+                /** @var \App\Models\Page $page */
+                $page = Page::where('id', $p6->id)->first();
+                $page->addItem([
+                   'item' => $newItem->id,
+                   'verb' => 'buy',
+                   'amount' => $newItem->default_price
+                ]);
             }
-        } */
+
+            // Put a purse with money in it
+            $newItem = Item::create([
+                'name' => 'Porte-monnaie perdu',
+                'default_price' => 8,
+                'story_id' => $story->id,
+            ]);
+
+            // Put some items to pick in one of the pages
+            /** @var \App\Models\Page $page */
+            $page = Page::where('id', $p6->id)->first();
+            $page->addItem([
+               'item' => $newItem->id,
+               'verb' => 'earn',
+               'amount' => $newItem->default_price
+           ]);
+        }
     }
 
     private function addPage(Story $story, Page $after, $data) {

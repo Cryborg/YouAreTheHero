@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Savegame extends Model
 {
-    protected $fillable = ['user_id', 'story_id', 'page_id'];
-    protected $primaryKey = 'user_id';
+    protected $fillable = ['character_id', 'page_id'];
+    protected $primaryKey = 'character_id';
 }

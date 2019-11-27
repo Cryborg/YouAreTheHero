@@ -10,18 +10,19 @@ use Illuminate\Http\Request;
  * Class PageCreateController
  * @package App\Admin\Controllers\Pages
  */
-class PageCreateController extends Controller
+class PageStoreController extends Controller
 {
     /**
      * @param Request $request
      * @return void
      */
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $page = new Page();
 
         $page->description = $request->description;
-        $page->description = $request->description;
+        $page->story_id = $request->story_id;
+
         $page->save();
 
         return back()->with('ok', __ ('Le profil a bien été mis à jour'));

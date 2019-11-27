@@ -10,4 +10,7 @@ return [
     'language' => 'Langue',
     'author' => 'Auteur',
     'created_at' => 'Date de création',
+    'money' => 'Bourse',
+    'price' => 'Prix : :price',
+    'quantity' => 'Quantité : :quantity',
 ];

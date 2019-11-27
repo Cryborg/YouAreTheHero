@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSavegamesTable extends Migration
+class CreateInventoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateSavegamesTable extends Migration
      */
     public function up()
     {
-        Schema::create('savegames', function (Blueprint $table) {
-            $table->unsignedBigInteger('character_id')->primary()->unique();
+        Schema::create('inventories', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('character_id');
             $table->foreign('character_id')->references('id')->on('characters');
-            $table->string('page_id', 32);
-            $table->foreign('page_id')->references('id')->on('pages');
-
-            $table->unique(['character_id', 'page_id']);
-
+            $table->unsignedBigInteger('item_id');
+            $table->foreign('item_id')->references('id')->on('items');
+            $table->integer('quantity')->default(0);
+            $table->boolean('used')->default(false);
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateSavegamesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('savegames');
+        Schema::dropIfExists('inventories');
     }
 }

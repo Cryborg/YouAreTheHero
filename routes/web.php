@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Route::get('/stories', 'StoriesController@list');
 
-Route::get('/story/{id}/{page_id?}', 'StoryController@play');
-
 Route::get('/stories/ajax_list', 'StoriesController@ajax_list');
+Route::post('/story/ajax_action', 'StoryController@ajax_action');
+
+Route::get('/story/inventory/{character}', 'StoryController@inventory');
+Route::get('/story/{id}/{page_id?}', 'StoryController@play');

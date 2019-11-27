@@ -22,21 +22,55 @@
 @section('items')
     @if ($page->items)
         @foreach ($page->items as $item)
-            <span class="pick-item" data-verb="{{ $item['verb'] }}" data-amount="{{ $item['amount'] }}">
-                {{ $item['item'] }}
-            </span>
+            @switch($item['verb'])
+                @case ('buy')
+                @case ('earn')
+                    <span class="pick-item" data-verb="{{ $item['verb'] }}" data-item="{{ $item['item']['id'] }}" data-price="{{ $item['item']['default_price']  }}">{{
+                        $item['item']['name'] }} ({{ __('common.price', ['price' => $item['item']['default_price']])
+                    }})</span>
+                    @break
+            @endswitch
         @endforeach
     @endif
 @endsection
 
-@section('footer-scripts')
+@push('footer-scripts')
     <script type="text/javascript">
-        $('.pick-item').on('click', function() {
-            var $this = $(this);
-            var verb = $this.data('verb');
-            var amount = $this.data('amount');
-
-            alert(verb + ' ' + amount + '?');
+        $(function() {
+            loadInventory();
         });
+
+        function loadInventory() {
+            $('.inventory-block').load('{{ url('story/inventory/' . $character->id) }}', function () {
+                $('.pick-item').each(function () {
+                    var $this = $(this);
+
+                    // Reset the links
+                    $this.unbind('click');
+                    $this.removeClass('has-money');
+
+                    // If the character has enough money
+                    // OR if the action will credit money
+                    console.log($this.data('verb'));
+                    console.log($.inArray($this.data('verb'), ['earn']));
+                    if ($('#character_money').html() >= $(this).data('price') || $.inArray($this.data('verb'), ['earn']) > -1) {
+                        $this.addClass('has-money');
+
+                        $this.on('click', function() {
+                            $.ajax({
+                                'method': 'POST',
+                                'url': '{{ url('story/ajax_action') }}',
+                                'data': {'json': JSON.stringify($this.data())},
+                            })
+                            .done(function(rst) {
+                                if (rst.result === true) {
+                                    loadInventory();
+                                }
+                            });
+                        });
+                    }
+                });
+            });
+        }
     </script>
-@endsection
+@endpush

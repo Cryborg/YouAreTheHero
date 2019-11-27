@@ -13,12 +13,13 @@
     <body>
         <div class="container-fluid fill">
             <div class="row h-100">
-                <div class="col-lg-2 col-xs-12 bloc">
-                    {{-- Inventory --}}
+                <div class="col-lg-2 col-xs-12 bloc inventory-block">
+                    @yield('inventory')
                 </div>
                 <div class="col col-xs-12 bloc">
                     <div class="row">
                         <div class="col">
+                            <div id="loadingDiv"></div>
                             @include('layouts.partials.header')
                         </div>
                     </div>
@@ -37,8 +38,6 @@
                             @yield('choices')
                         </div>
                     </div>
-                    @include('layouts.partials.footer-scripts')
-                    @stack('footer-scripts')
                 </div>
                 <div class="col-lg-3 col-xs-12 bloc">
                     <div class="row bloc">
@@ -59,5 +58,7 @@
                 </div>
             </div>
         </div>
+        @include('layouts.partials.footer-scripts')
+        @stack('footer-scripts')
     </body>
 </html>

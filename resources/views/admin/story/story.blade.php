@@ -10,14 +10,17 @@
         $('#create-first-page').on('click', function(){
             $.ajax({
                 url: '{{ route('page.form') }}',
-                data: '{story_id: {{ $story_id }} }'
             }).done(function(data) {
                 $('#pages').html(data);
                 $("#pages form button[type='submit']").on('click', function(){
                     let content = $('#description').val();
                     $.ajax({
-                        url: '{{ route('admin.page.create') }}',
-                        data: '{story_id: {{ $story_id }}, content: '+content+' }'
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: '{{ route('admin.page.store') }}',
+                        data: {story_id: "{{ $story_id }}", description: content },
+                        method: 'POST'
                     });
 
                     return false;
