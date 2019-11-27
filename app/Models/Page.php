@@ -40,14 +40,24 @@ class Page extends Model
                 foreach ($page->items as $pageItem) {
                     // If this is an Item
                     if (isset($pageItem['item'])) {
-                        $item    = Item::where('id', $pageItem['item'])->first();
-                        $items[] = [
-                            'item'   => $item,
-                            'verb'   => $pageItem['verb'],
-                            'amount' => $pageItem['amount'],
-                        ];
-                    } else {
-                        $items[] = $pageItem;
+                        // Check if the item has already been used/picked-up, whatever
+                        $usedItem = Unique_items_used::where([
+                            'character_id' => session('character_id'),
+                            'item_id' => $pageItem['item'],
+                        ])->first();
+
+                        // If not, we can display it
+                        if ($usedItem === null) {
+                            $item = Item::where('id', $pageItem['item'])->first();
+
+                            if ($item) {
+                                $items[] = [
+                                    'item'   => $item,
+                                    'verb'   => $pageItem['verb'],
+                                    'amount' => $pageItem['amount'],
+                                ];
+                            }
+                        }
                     }
 
                     $page->rawItems[] = $pageItem;

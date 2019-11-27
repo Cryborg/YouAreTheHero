@@ -20,14 +20,18 @@ class DatabaseSeeder extends Seeder {
         $marty = User::create([
             'first_name'    => 'Marty',
             'last_name'     => 'FRIEDMAN',
-            'password'      => sha1('a'),
+            'username'      => 'Cryborg',
+            'email'         => 'cryborg@live.fr',
+            'password'      => '$2y$10$DbdP2HjT0HRyRw5smftYzewPGiuZD9uvhG1TcnD3fd6auYnIdPLk2',
             'created_at'    => now(),
         ]);
 
         $fred = User::create([
             'first_name'    => 'Fred',
             'last_name'     => 'ASTAIR',
-            'password'      => sha1('a'),
+            'username'      => 'Fred',
+            'email'         => 'fred@live.fr',
+            'password'      => '$2y$10$DbdP2HjT0HRyRw5smftYzewPGiuZD9uvhG1TcnD3fd6auYnIdPLk2',
             'created_at'    => now(),
         ]);
 
@@ -163,6 +167,7 @@ class DatabaseSeeder extends Seeder {
                 'name' => 'Porte-monnaie perdu',
                 'default_price' => 8,
                 'story_id' => $story->id,
+                'single_use' => true,
             ]);
 
             // Put some items to pick in one of the pages
