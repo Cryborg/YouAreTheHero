@@ -20,11 +20,13 @@ class PageStoreController extends Controller
     {
         $page = new Page();
 
-        $page->description = $request->description;
-        $page->story_id = $request->story_id;
+        $page->content = $request->get('content');
+        $page->story_id = $request->get('story_id');
+        $page->is_first = $request->has('is_first') ?? false;
+        $page->is_last = $request->has('is_last') ?? false;
 
         $page->save();
 
-        return back()->with('ok', __ ('Le profil a bien été mis à jour'));
+        return back()->with('Ok');
     }
 }

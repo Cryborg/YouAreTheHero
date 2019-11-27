@@ -20,4 +20,5 @@ Route::group([
     $router->put('/stories/{id}/update', 'Stories\StoryUpdateController@update')->name('admin.story.update');
     $router->get('/page/get-form', 'Pages\PageFormController@form')->name('page.form');
     $router->post('/page/store', 'Pages\PageStoreController@store')->name('admin.page.store');
+    $router->get('/story/{id}/pages/json', 'Pages\PagesJsonController@json')->name('admin.story.pages.json');
 });

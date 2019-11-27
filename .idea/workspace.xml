@@ -2,25 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d202f32e-bbc8-4673-9150-4f195e73b7de" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PagesController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/Admin/AdminMenuTableSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/Admin/AdminPermissionsTableSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/Admin/AdminRoleMenuTableSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/Admin/AdminRolePermissionsTableSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/Admin/AdminRoleUsersTableSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/Admin/AdminRolesTableSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/Admin/AdminUserPermissionsTableSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/Admin/AdminUsersTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PagesListController.php" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PagesJsonController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageFormController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageStoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageStoreController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Stories/StoryEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Stories/StoryEditController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Admin/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/AdminTablesSeeder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_15_151717_create_stories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_15_151717_create_stories_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_15_151747_create_pages_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_15_151747_create_pages_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_15_151757_create_characters_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_15_151757_create_characters_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_15_153732_create_page_link_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_15_153732_create_page_link_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/fr/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fr/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/story/story.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/story/story.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +138,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/.env" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Admin/Controllers/Stories" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Admin/Controllers/Pages" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -153,12 +148,13 @@
     <property name="settings.editor.selected.configurable" value="Ignore Files Support" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/Admin/Controllers/Stories" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/Models" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Admin/Controllers/Pages" />
+      <recent name="$PROJECT_DIR$/app/Admin/Controllers/Stories" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -202,6 +198,8 @@
       <workItem from="1574685850053" duration="8067000" />
       <workItem from="1574842897427" duration="442000" />
       <workItem from="1574852638880" duration="652000" />
+      <workItem from="1574876945100" duration="2543000" />
+      <workItem from="1574885141196" duration="2932000" />
     </task>
     <servers />
   </component>

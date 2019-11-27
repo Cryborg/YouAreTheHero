@@ -7,21 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model
 {
-    // Don't increment as we use UUIDs
-    public $incrementing = false;
-
-    // Cannot update these fields
-    public $guarded = ['id'];
-
-    // Casts JSON as array
-    protected $casts = [
-        'items' => 'array',
-    ];
 
     protected $rawItems;
 
-    private $description;
     private $id;
+    private $content;
+
+    public function getIncrementing()
+    {
+        return false;
+    }
+
+    public function getKeyType()
+    {
+        return 'string';
+    }
+
 
     public static function boot()
     {
@@ -37,7 +38,7 @@ class Page extends Model
         {
             $items = [];
 
-            if ($page->items) {
+            if (null !== $page->items) {
                 foreach ($page->items as $pageItem) {
                     // If this is an Item
                     if (isset($pageItem['item'])) {

@@ -51,7 +51,7 @@ class StoryEditController extends AdminController
             $form->display('id', 'ID');
             $form->text('title', 'Story title')->rules('required|min:3');
 
-            $content->row($form->edit($id))->view('admin.story.story',['story_id' => $id]);
+            $content->row($form->edit($id))->view('admin.story.story', ['story_id' => $id]);
         });
     }
 }

@@ -22,7 +22,7 @@ class CreateCharactersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
 
             // Story in which the character plays
-            $table->unsignedBigInteger('story_id');
+            $table->unsignedInteger('story_id');
             $table->foreign('story_id')->references('id')->on('stories');
 
             // Last page visited in the sotry

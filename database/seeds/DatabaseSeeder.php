@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Story;
+use Faker\Provider\Uuid;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Page;
@@ -60,15 +61,19 @@ class DatabaseSeeder extends Seeder {
 
         foreach ([$storyMarty, $storyFred] as $story) {
             $p1 = Page::create([
+                'id' => (string) substr(Uuid::uuid(), 0, 32),
+                'number' => 1,
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 1',
-                'description' => 'Premier paragraphe avec une seule option, pas difficile de choisir ;)',
+                'content' => 'Premier paragraphe avec une seule option, pas difficile de choisir ;)',
                 'is_first' => true,
             ]);
             $p2 = Page::create([
+                'id' => (string) substr(Uuid::uuid(), 0, 32),
+                'number' => 1,
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 2',
-                'description' => 'Ca se corse !! Trois choix, dis-donc que c\'est dur...<br>En plus l\'inventaire à gauche s\'est barré...',
+                'content' => 'Ca se corse !! Trois choix, dis-donc que c\'est dur...<br>En plus l\'inventaire à gauche s\'est barré...',
                 'layout' => 'play2',
             ]);
             Page_link::create([
@@ -78,19 +83,25 @@ class DatabaseSeeder extends Seeder {
             ]);
 
             $p3 = Page::create([
+                'id' => (string) substr(Uuid::uuid(), 0, 32),
+                'number' => 1,
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 3',
-                'description' => 'Je suis allé à gauche et c\'est beau !',
+                'content' => 'Je suis allé à gauche et c\'est beau !',
             ]);
             $p4 = Page::create([
+                'id' => (string) substr(Uuid::uuid(), 0, 32),
+                'number' => 1,
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 4',
-                'description' => 'Je suis allé tout droit, pas mal !',
+                'content' => 'Je suis allé tout droit, pas mal !',
             ]);
             $p5 = Page::create([
+                'id' => (string) substr(Uuid::uuid(), 0, 32),
+                'number' => 1,
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 5',
-                'description' => 'Je suis allé à droite, c\'est magnifique !',
+                'content' => 'Je suis allé à droite, c\'est magnifique !',
             ]);
             Page_link::create([
                 'page_from' => $p2->id,
@@ -109,9 +120,11 @@ class DatabaseSeeder extends Seeder {
             ]);
 
             $p6 = Page::create([
+                'id' => (string) substr(Uuid::uuid(), 0, 32),
+                'number' => 1,
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 5',
-                'description' => 'Tous les chemins mènent ici, aucun mérite !',
+                'content' => 'Tous les chemins mènent ici, aucun mérite !',
                 'is_last' => true,
             ]);
             Page_link::create([
@@ -193,9 +206,11 @@ class DatabaseSeeder extends Seeder {
 
     private function addPage(Story $story, Page $after, $data) {
         $new = Page::create([
+            'id' => (string) substr(Uuid::uuid(), 0, 32),
+            'number' => 1,
             'story_id' => $story->id,
             'title' => $data['title'],
-            'description' => $data['description'],
+            'content' => $data['description'],
             'is_last' => $data['is_last'] ?? false,
         ]);
         Page_link::create([

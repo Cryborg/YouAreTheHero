@@ -34,8 +34,9 @@ class PageFormController extends Controller
             $footer->disableCreatingCheck();
         });
 
-        $form->text('description', 'Contenu')->rules('required|min:3');
-        $form->hidden('id');
+        $form->textarea('content', 'Contenu')->rules('required|min:3');
+        $form->hidden('is_first');
+        $form->hidden('is_last');
         $form->hidden('csrf-token')->value(csrf_token());
 
         return $form->render();
