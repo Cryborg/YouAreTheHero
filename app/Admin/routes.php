@@ -11,7 +11,7 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index')->name('admin.home');
-    $router->get('/stories', 'Stories\StoriesListController@list')->name('admin.stories.list');
+    $router->get('/stories', 'Stories\StoriesController@list')->name('admin.stories.list');
     $router->get('/stories/create', 'Stories\StoryCreateController@create')->name('admin.story.create');
     $router->post('/story/store', 'Stories\StoryCreateController@store')->name('admin.story.store');
     $router->get('/stories/{story}/pages', 'Pages\PagesController@list')->name('admin.pages.list');
