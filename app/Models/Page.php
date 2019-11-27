@@ -21,6 +21,7 @@ class Page extends Model
     protected $rawItems;
 
     private $description;
+    private $id;
 
     public static function boot()
     {

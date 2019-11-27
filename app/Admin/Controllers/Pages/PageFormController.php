@@ -35,6 +35,7 @@ class PageFormController extends Controller
         });
 
         $form->text('description', 'Contenu')->rules('required|min:3');
+        $form->hidden('id');
         $form->hidden('csrf-token')->value(csrf_token());
 
         return $form->render();
