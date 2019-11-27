@@ -20,6 +20,8 @@ class Page extends Model
 
     protected $rawItems;
 
+    private $description;
+
     public static function boot()
     {
         parent::boot();
