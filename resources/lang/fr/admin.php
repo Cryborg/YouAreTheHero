@@ -105,5 +105,4 @@ return [
     'language'              => 'Langue',
     'layout'                => 'Layout',
     'is_published'          => 'Publié',
-    'genres'                => 'Genres',
 ];

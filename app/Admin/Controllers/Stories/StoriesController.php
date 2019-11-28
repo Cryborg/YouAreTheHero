@@ -38,7 +38,7 @@ class StoriesController extends AdminController
                 $grid->id('id')->setAttributes(['width' => '5%']);
                 $grid->column('title', __('admin.title'));
 
-                $grid->column('genre', __('common.genre'))->display(function () {
+                $grid->column('genre', __('common.genres'))->display(function () {
                     $story = Story::where('id', $this->id)->first();
                     $genres = $story->genres();
 
