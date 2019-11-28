@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Story_genres extends Model
+class PageLink extends Model
 {
-    protected $guarded = ['id'];
-
+    public $table = "page_link";
     public $timestamps = false;
 }

@@ -18,9 +18,6 @@ class Page extends Model
         'items' => 'array',
     ];
 
-    private $id;
-    private $content;
-
     public static function boot()
     {
         parent::boot();
@@ -29,6 +26,8 @@ class Page extends Model
         {
             // String ID so that we prevent cheating
             $page->id = (string) substr(Uuid::uuid(), 0, 32);
+            $page->number = $page::where('story_id', '=', $page->story_id)->count() + 1;
+            $page->is_first = $page->number === 1;
         });
 
         static::retrieved(static function ($page)
@@ -40,7 +39,7 @@ class Page extends Model
                     // If this is an Item
                     if (isset($pageItem['item'])) {
                         // Check if the item has already been used/picked-up, whatever
-                        $usedItem = Unique_items_used::where([
+                        $usedItem = UniqueItemsUsed::where([
                             'character_id' => session('character_id'),
                             'item_id' => $pageItem['item'],
                         ])->first();

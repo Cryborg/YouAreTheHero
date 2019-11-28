@@ -34,9 +34,9 @@ class PageFormController extends Controller
             $footer->disableCreatingCheck();
         });
 
-        $form->textarea('content', 'Contenu')->rules('required|min:3');
-        $form->hidden('is_first');
-        $form->hidden('is_last');
+        $page = Page::where('story_id', $request->story_id)->where('number', $request->page_number)->first();
+        $form->textarea('content', 'Contenu')->rules('required|min:3')->value($page->content);
+
         $form->hidden('csrf-token')->value(csrf_token());
 
         return $form->render();

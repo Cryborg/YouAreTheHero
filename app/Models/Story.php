@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use \App\Models\User;
 
 class Story extends Model
 {
@@ -14,16 +13,13 @@ class Story extends Model
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @return mixed
+     */
     public function genres()
     {
-        $storyGenre = Story_genres::where('story_id', $this->id)->first();
-        $genres = Genre::where('id', $storyGenre->genre_id)->get();
-
-        $aGenres = [];
-
-        foreach ($genres as $genre) {
-            $aGenres[] = __($genre->label);
-        }
+        $idsStoryGenre = StoryGenre::where('story_id', $this->id)->pluck('id');
+        $aGenres = Genre::whereIn('id', $idsStoryGenre)->pluck('label', 'id')->toArray();
 
         return $aGenres;
     }

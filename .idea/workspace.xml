@@ -2,12 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d202f32e-bbc8-4673-9150-4f195e73b7de" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Hero.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Hero.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageFormController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageStoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageStoreController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PagesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PagesJsonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PagesJsonController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Stories/StoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Stories/StoriesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Stories/StoryCreateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Stories/StoryCreateController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Page_link.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PageLink.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Story.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Story.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Story_genres.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/StoryGenre.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Unique_items_used.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UniqueItemsUsed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User_story.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserStory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_27_182435_create_story_genres_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_27_182435_create_story_genres_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/story/story.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/story/story.blade.php" afterDir="false" />
     </list>
@@ -17,7 +31,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable />
@@ -125,31 +139,21 @@
       <path value="$PROJECT_DIR$/vendor/orangehill/iseed" />
       <path value="$PROJECT_DIR$/vendor/matthiasmullie/path-converter" />
       <path value="$PROJECT_DIR$/vendor/matthiasmullie/minify" />
+      <path value="$PROJECT_DIR$/vendor/tightenco/ziggy" />
+      <path value="$PROJECT_DIR$/vendor/moontoast/math" />
+      <path value="$PROJECT_DIR$/vendor/laravel/telescope" />
     </include_path>
   </component>
-  <component name="ProjectId" id="1TvwkpP585iKoaaa5x8FcF6MTzS" />
+  <component name="ProjectId" id="1UFI6MLmrDqEBVAhRpTSHz1Vykl" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="add_unversioned_files" value="$PROJECT_DIR$/.env" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Admin/Controllers/Pages" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Ignore Files Support" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/Models" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/Admin/Controllers/Pages" />
-      <recent name="$PROJECT_DIR$/app/Admin/Controllers/Stories" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -169,57 +173,29 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="SshConsoleOptionsProvider">
-    <option name="myEncoding" value="UTF-8" />
-    <option name="myConnectionType" value="CURRENT_VAGRANT" />
-    <option name="myConnectionId" value="vagrant:/home/franck/.homestead" />
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="d202f32e-bbc8-4673-9150-4f195e73b7de" name="Default Changelist" comment="" />
-      <created>1574354022772</created>
+      <created>1574945739850</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1574354022772</updated>
-      <workItem from="1574354023893" duration="3298000" />
-      <workItem from="1574411554331" duration="2030000" />
-      <workItem from="1574421445135" duration="37492000" />
-      <workItem from="1574662460060" duration="605000" />
-      <workItem from="1574678151251" duration="1565000" />
-      <workItem from="1574685850053" duration="8067000" />
-      <workItem from="1574842897427" duration="442000" />
-      <workItem from="1574852638880" duration="652000" />
-      <workItem from="1574876945100" duration="2543000" />
-      <workItem from="1574885141196" duration="7356000" />
-      <workItem from="1574929370488" duration="85000" />
-      <workItem from="1574929486262" duration="7724000" />
+      <updated>1574945739850</updated>
+      <workItem from="1574945740951" duration="10899000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
-      <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
-      </list>
-    </option>
-  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>

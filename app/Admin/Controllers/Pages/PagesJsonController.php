@@ -4,7 +4,7 @@ namespace App\Admin\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\Page;
-use App\Models\Page_link;
+use App\Models\PageLink;
 use Encore\Admin\Layout\Content;
 
 /**
@@ -31,7 +31,7 @@ class PagesJsonController extends Controller
                 $tree[$numTree]['uuid'] = $page->id;
                 $tree[$numTree]['id'] = $page->number;
                 $tree[$numTree]['text'] = $page->number;
-                $pagesLink = Page_link::where('page_from', $page->id)->get();
+                $pagesLink = PageLink::where('page_from', $page->id)->get();
                 foreach ($pagesLink as $c => $pageLink) {
                     $pageChildren = Page::where('id', $pageLink->page_to)->first();
                     $tree[$numTree]['children'][$c]['id'] = $pageChildren->number;

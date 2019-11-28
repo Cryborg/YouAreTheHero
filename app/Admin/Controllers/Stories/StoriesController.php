@@ -2,14 +2,11 @@
 
 namespace App\Admin\Controllers\Stories;
 
-use App\Models\Genre;
 use App\Models\Story;
-use App\Models\Story_genres;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * Class StoriesController

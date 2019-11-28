@@ -5,7 +5,7 @@ use Faker\Provider\Uuid;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Page;
-use App\Models\Page_link;
+use App\Models\PageLink;
 use App\Models\Item;
 
 class DatabaseSeeder extends Seeder {
@@ -63,78 +63,66 @@ class DatabaseSeeder extends Seeder {
 
         foreach ([$storyMarty, $storyFred] as $story) {
             $p1 = Page::create([
-
-                'number' => 1,
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 1',
                 'content' => 'Premier paragraphe avec une seule option, pas difficile de choisir ;)',
                 'is_first' => true,
             ]);
             $p2 = Page::create([
-
-                'number' => 1,
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 2',
                 'content' => 'Ca se corse !! Trois choix, dis-donc que c\'est dur...<br>En plus l\'inventaire à gauche s\'est barré...',
                 'layout' => 'play2',
             ]);
-            Page_link::create([
+            PageLink::create([
                 'page_from' => $p1->id,
                 'page_to' => $p2->id,
                 'link_text' => 'Pas le choix, je clique ici !',
             ]);
 
             $p3 = Page::create([
-
-                'number' => 1,
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 3',
                 'content' => 'Je suis allé à gauche et c\'est beau !',
             ]);
             $p4 = Page::create([
-
-                'number' => 1,
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 4',
                 'content' => 'Je suis allé tout droit, pas mal !',
             ]);
             $p5 = Page::create([
-
-                'number' => 1,
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 5',
                 'content' => 'Je suis allé à droite, c\'est magnifique !',
             ]);
-            Page_link::create([
+            PageLink::create([
                 'page_from' => $p2->id,
                 'page_to' => $p3->id,
                 'link_text' => 'Aller à gauche',
             ]);
-            Page_link::create([
+            PageLink::create([
                 'page_from' => $p2->id,
                 'page_to' => $p4->id,
                 'link_text' => 'Aller tout droit',
             ]);
-            Page_link::create([
+            PageLink::create([
                 'page_from' => $p2->id,
                 'page_to' => $p5->id,
                 'link_text' => 'Aller à droite',
             ]);
 
             $p6 = Page::create([
-
-                'number' => 1,
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 5',
                 'content' => 'Tous les chemins mènent ici, aucun mérite !',
                 'is_last' => true,
             ]);
-            Page_link::create([
+            PageLink::create([
                 'page_from' => $p3->id,
                 'page_to' => $p6->id,
                 'link_text' => 'Tout droit !',
             ]);
-            Page_link::create([
+            PageLink::create([
                 'page_from' => $p5->id,
                 'page_to' => $p6->id,
                 'link_text' => 'C\'est parti mon kiki !',
@@ -185,7 +173,7 @@ class DatabaseSeeder extends Seeder {
                    'amount' => $newItem->default_price
                 ]);
                 $this->call(AdminRolesTableSeeder::class);
-    }
+            }
 
             // Put a purse with money in it
             $newItem = Item::create([
@@ -214,7 +202,7 @@ class DatabaseSeeder extends Seeder {
                 ]);
             }
 
-            \App\Models\Story_genres::create([
+            \App\Models\StoryGenre::create([
                 'story_id' => $story->id,
                 'genre_id' => $aGenres[count($aGenres) - 1]->id,
              ]);
@@ -223,14 +211,12 @@ class DatabaseSeeder extends Seeder {
 
     private function addPage(Story $story, Page $after, $data) {
         $new = Page::create([
-
-            'number' => 1,
             'story_id' => $story->id,
             'title' => $data['title'],
             'content' => $data['description'],
             'is_last' => $data['is_last'] ?? false,
         ]);
-        Page_link::create([
+        PageLink::create([
             'page_from' => $after->id,
             'page_to' => $new->id,
             'link_text' => $data['link_text'],

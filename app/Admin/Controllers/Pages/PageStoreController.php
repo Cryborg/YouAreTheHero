@@ -22,8 +22,6 @@ class PageStoreController extends Controller
             [
                 'content' => $request->get('content'),
                 'story_id' => $request->get('story_id'),
-                'is_first' => $request->get('is_first'),
-                'is_last' => $request->get('is_last'),
             ]
         );
 

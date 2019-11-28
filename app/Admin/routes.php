@@ -18,7 +18,7 @@ Route::group([
     $router->get('/stories/{story}/pages/create', 'Pages\PagesController@create')->name('admin.pages.create');
     $router->get('/stories/{id}/edit', 'Stories\StoryEditController@edit')->name('admin.story.edit');
     $router->put('/stories/{id}/update', 'Stories\StoryUpdateController@update')->name('admin.story.update');
-    $router->get('/page/get-form', 'Pages\PageFormController@form')->name('page.form');
+    $router->get('/page/get-form/{page_number}', 'Pages\PageFormController@form')->name('page.form');
     $router->post('/page/store', 'Pages\PageStoreController@store')->name('admin.page.store');
     $router->get('/story/{id}/pages/json', 'Pages\PagesJsonController@json')->name('admin.story.pages.json');
 });

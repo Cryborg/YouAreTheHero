@@ -164,6 +164,7 @@ return [
         \App\Providers\BootstrapServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         Orangehill\Iseed\IseedServiceProvider::class,
+        Tightenco\Ziggy\ZiggyServiceProvider::class,
 
         /*
          * Package Service Providers...
