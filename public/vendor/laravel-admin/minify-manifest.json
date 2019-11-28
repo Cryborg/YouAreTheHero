@@ -1,8 +1,9 @@
 {
     "css": [
-        "vendor/laravel-admin/laravel-admin.min.css?id=7c5ce5eac166153b612c461a5718b430"
+        "vendor/laravel-admin/laravel-admin.min.css?id=d13ec36f6e94872c19b0c4bcff028e70",
+        "admin_custom.css"
     ],
     "js": [
-        "vendor/laravel-admin/laravel-admin.min.js?id=b364e70b1b220c23b2c1940041a92458"
+        "vendor/laravel-admin/laravel-admin.min.js?id=0fb7363b302902c35045b95fa1fa9705"
     ]
 }
