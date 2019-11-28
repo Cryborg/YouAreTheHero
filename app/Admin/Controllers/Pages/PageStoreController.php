@@ -18,14 +18,14 @@ class PageStoreController extends Controller
      */
     public function store(Request $request)
     {
-        $page = new Page();
-
-        $page->content = $request->get('content');
-        $page->story_id = $request->get('story_id');
-        $page->is_first = $request->has('is_first') ?? false;
-        $page->is_last = $request->has('is_last') ?? false;
-
-        $page->save();
+        $page = Page::create(
+            [
+                'content' => $request->get('content'),
+                'story_id' => $request->get('story_id'),
+                'is_first' => $request->get('is_first'),
+                'is_last' => $request->get('is_last'),
+            ]
+        );
 
         return back()->with('Ok');
     }

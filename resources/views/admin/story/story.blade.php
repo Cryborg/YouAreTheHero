@@ -10,18 +10,18 @@
 <br>
 
 
-<div id="container"></div>
+<div id="container">
+</div>
 <script>
     $(function() {
         $('#container').jstree({
             'core' : {
-                'data' : [
-                    { "text" : "Root node", "children" : [
-                            { "text" : "Child node 1", 'children': [{ "text" : "Child node 1_1" }] },
-                            { "text" : "Child node 2" }
-                        ]
+                'data' : {
+                    "url": "{{ route('admin.story.pages.json', ['id' => $story_id]) }}",
+                    "data": function (node) {
+                        return {"id": node.id};
                     }
-                ]
+                }
             }
         });
     });
@@ -31,7 +31,6 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-
         $('#container').on("changed.jstree", function (e, data) {
             console.log("The selected nodes are:");
             console.log(data.node.parent);

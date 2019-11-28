@@ -31,7 +31,7 @@ class StoriesController extends AdminController
                 $grid->disableRowSelector();
                 $grid->disableExport();
 
-                $grid->model()->where('user_id', '=', Auth::id());
+                //$grid->model()->where('user_id', '=', Auth::id());
 
                 $grid->id('id')->setAttributes(['width' => '5%']);
                 $grid->column('title', __('admin.title'))   ;

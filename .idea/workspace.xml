@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d202f32e-bbc8-4673-9150-4f195e73b7de" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PagesJsonController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageFormController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageStoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageStoreController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Stories/StoryEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Stories/StoryEditController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PagesJsonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PagesJsonController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Stories/StoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Stories/StoriesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_15_151717_create_stories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_15_151717_create_stories_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_15_151747_create_pages_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_15_151747_create_pages_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_15_151757_create_characters_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_15_151757_create_characters_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_15_153732_create_page_link_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_15_153732_create_page_link_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/story/story.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/story/story.blade.php" afterDir="false" />
     </list>
@@ -199,7 +193,9 @@
       <workItem from="1574842897427" duration="442000" />
       <workItem from="1574852638880" duration="652000" />
       <workItem from="1574876945100" duration="2543000" />
-      <workItem from="1574885141196" duration="2932000" />
+      <workItem from="1574885141196" duration="7356000" />
+      <workItem from="1574929370488" duration="85000" />
+      <workItem from="1574929486262" duration="7724000" />
     </task>
     <servers />
   </component>

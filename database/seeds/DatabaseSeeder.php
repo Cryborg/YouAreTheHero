@@ -63,7 +63,7 @@ class DatabaseSeeder extends Seeder {
 
         foreach ([$storyMarty, $storyFred] as $story) {
             $p1 = Page::create([
-                'id' => (string) substr(Uuid::uuid(), 0, 32),
+
                 'number' => 1,
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 1',
@@ -71,7 +71,7 @@ class DatabaseSeeder extends Seeder {
                 'is_first' => true,
             ]);
             $p2 = Page::create([
-                'id' => (string) substr(Uuid::uuid(), 0, 32),
+
                 'number' => 1,
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 2',
@@ -85,21 +85,21 @@ class DatabaseSeeder extends Seeder {
             ]);
 
             $p3 = Page::create([
-                'id' => (string) substr(Uuid::uuid(), 0, 32),
+
                 'number' => 1,
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 3',
                 'content' => 'Je suis allé à gauche et c\'est beau !',
             ]);
             $p4 = Page::create([
-                'id' => (string) substr(Uuid::uuid(), 0, 32),
+
                 'number' => 1,
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 4',
                 'content' => 'Je suis allé tout droit, pas mal !',
             ]);
             $p5 = Page::create([
-                'id' => (string) substr(Uuid::uuid(), 0, 32),
+
                 'number' => 1,
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 5',
@@ -122,7 +122,7 @@ class DatabaseSeeder extends Seeder {
             ]);
 
             $p6 = Page::create([
-                'id' => (string) substr(Uuid::uuid(), 0, 32),
+
                 'number' => 1,
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 5',
@@ -208,7 +208,7 @@ class DatabaseSeeder extends Seeder {
 
     private function addPage(Story $story, Page $after, $data) {
         $new = Page::create([
-            'id' => (string) substr(Uuid::uuid(), 0, 32),
+
             'number' => 1,
             'story_id' => $story->id,
             'title' => $data['title'],

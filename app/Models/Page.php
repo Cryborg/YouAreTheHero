@@ -7,22 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model
 {
+    public $incrementing = false;
 
     protected $rawItems;
 
+    protected $guarded = ['id'];
+
+    // Casts JSON as array
+    protected $casts = [
+        'items' => 'array',
+    ];
+
     private $id;
     private $content;
-
-    public function getIncrementing()
-    {
-        return false;
-    }
-
-    public function getKeyType()
-    {
-        return 'string';
-    }
-
 
     public static function boot()
     {
@@ -39,7 +36,7 @@ class Page extends Model
             $items = [];
 
             if (null !== $page->items) {
-                foreach ($page->items as $pageItem) {
+                foreach ($items as $pageItem) {
                     // If this is an Item
                     if (isset($pageItem['item'])) {
                         // Check if the item has already been used/picked-up, whatever
@@ -77,6 +74,7 @@ class Page extends Model
     public function addItem(array $data): bool
     {
         $this->items = array_merge($this->rawItems ?? [], [$data]);
+
         return $this->save();
     }
 }
