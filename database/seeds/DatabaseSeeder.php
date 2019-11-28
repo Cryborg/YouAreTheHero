@@ -203,6 +203,21 @@ class DatabaseSeeder extends Seeder {
                'verb' => 'earn',
                'amount' => $newItem->default_price
            ]);
+
+            // Genres
+            $genres = ['science-fiction', 'romance', 'policier', 'thriller', 'epouvante', 'comedie', 'drame',
+                'biographie'];
+            $aGenres = [];
+            foreach ($genres as $genre) {
+                $aGenres[] = \App\Models\Genre::create([
+                    'label' => $genre,
+                ]);
+            }
+
+            \App\Models\Story_genres::create([
+                'story_id' => $story->id,
+                'genre_id' => $aGenres[count($aGenres) - 1]->id,
+             ]);
         }
     }
 

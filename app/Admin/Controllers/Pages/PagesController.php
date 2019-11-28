@@ -2,8 +2,10 @@
 
 namespace App\Admin\Controllers\Pages;
 
+use App\Models\Genre;
 use App\Models\Page;
 use App\Models\Story;
+use App\Models\Story_genres;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;

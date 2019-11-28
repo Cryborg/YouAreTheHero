@@ -2,7 +2,9 @@
 
 namespace App\Admin\Controllers\Stories;
 
+use App\Models\Genre;
 use App\Models\Story;
+use App\Models\Story_genres;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Grid;
@@ -34,7 +36,15 @@ class StoriesController extends AdminController
                 //$grid->model()->where('user_id', '=', Auth::id());
 
                 $grid->id('id')->setAttributes(['width' => '5%']);
-                $grid->column('title', __('admin.title'))   ;
+                $grid->column('title', __('admin.title'));
+
+                $grid->column('genre', __('common.genres'))->display(function () {
+                    $story = Story::where('id', $this->id)->first();
+                    $genres = $story->genres();
+
+                    return implode(', ', $genres);
+                });
+
                 $grid->column('locale', __('admin.language'))->setAttributes(['width' => '10%']);
                 $grid->column('layout', __('admin.layout'))->setAttributes(['width' => '10%']);
 

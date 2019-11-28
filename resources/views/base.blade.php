@@ -58,9 +58,10 @@
                                 </li>
                             @endif
                         @else
+                            bouh:{{ \Illuminate\Support\Facades\Route::currentRouteName() }}:
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->username }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -86,11 +87,9 @@
                 @yield('content')
             </div>
         </main>
-        <footer>
-            <div class="container">
-                @include('layouts.partials.nav')
-            </div>
-        </footer>
+        <div class="footer container">
+            @include('layouts.partials.nav')
+        </div>
     </div>
 
     @include('layouts.partials.footer-scripts')

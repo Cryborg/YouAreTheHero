@@ -9,6 +9,7 @@
                 <th></th>   <!-- Child rows button -->
                 <th></th>   <!-- Story ID -->
                 <th>{{ __('admin.title') }}</th>
+                <th>{{ __('common.genres') }}</th>
                 <th>{{ __('common.language') }}</th>
                 <th>{{ __('common.author') }}</th>
                 <th>{{ __('common.created_at') }}</th>
@@ -19,6 +20,7 @@
             <th></th>
             <th></th>
             <th>{{ __('admin.title') }}</th>
+            <th>{{ __('common.genres') }}</th>
             <th>{{ __('common.language') }}</th>
             <th>{{ __('common.author') }}</th>
             <th>{{ __('common.created_at') }}</th>
@@ -52,8 +54,9 @@
                     },
                     {data: 'id', render: function ( data, type, row ) {
                             return '<a href="{{ url('/story/') }}/' + data + '">' + data + '</a>'
-                    }, "width": '5%'},
+                    }, 'width': '5%'},
                     {data: 'title'},
+                    {data: 'genres', 'width': '15%'},
                     {data: 'locale', 'width': '10%'},
                     {data: 'user_id', 'width': '20%'},
                     {data: 'created_at', 'width': '20%'}
@@ -72,7 +75,7 @@
                 }
                 else {
                     // Open this row
-                    row.child( format(row.data()) ).show();
+                    row.child( format(row.data()), tr.hasClass('odd') ? 'odd' : '' ).show();
                     tr.addClass('shown');
                 }
             } );
