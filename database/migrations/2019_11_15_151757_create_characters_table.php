@@ -32,6 +32,8 @@ class CreateCharactersTable extends Migration
             // Amount of money owned by the character
             $table->unsignedInteger('money')->default(10);
 
+            $table->json('sheet')->nullable();
+
             $table->timestamps();
         });
     }

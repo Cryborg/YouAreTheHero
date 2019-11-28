@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Classes\Action;
 use App\Models\Inventory;
 use App\Models\Item;
-use App\Models\Unique_items_used;
+use App\Models\UniqueItemsUsed;
 use Illuminate\Http\Request;
 use \App\Models\Story;
 use \App\Models\Character;
 use \App\Models\Page;
-use \App\Models\Page_link;
+use \App\Models\PageLink;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
@@ -32,7 +32,6 @@ class StoryController extends Controller
         session([
             'story_id' => $story->id,
         ]);
-
 
         // Params that are always returned to the view
         $commonParams = [
@@ -109,7 +108,7 @@ class StoryController extends Controller
      */
     private function getChoicesFromPage(&$page) {
         // Get all the choices (links to the next page(s)
-        $choices = Page_link::where('page_from', $page->id)->get();
+        $choices = PageLink::where('page_from', $page->id)->get();
 
         $page->choices = $choices;
     }
@@ -146,7 +145,7 @@ class StoryController extends Controller
         // Check if the item used has the single_use flag,
         // and in this case it must not be shown again
         if ($item->single_use) {
-            Unique_items_used::create([
+            UniqueItemsUsed::create([
                 'character_id' => $character->id,
                 'item_id' => $item->id,
             ]);
@@ -185,5 +184,17 @@ class StoryController extends Controller
             ]);
         }
 
+    }
+
+    /**
+     * @param \App\Models\Character $character
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function sheet(Character $character)
+    {
+        return view('story.sheet', [
+            'sheet' => $character->sheet,
+        ]);
     }
 }

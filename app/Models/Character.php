@@ -59,4 +59,24 @@ class Character extends Model
 
         return false;
     }
+
+    /**
+     * @return array
+     */
+    public function sheet(): array
+    {
+        $inventory = Sheet::where([
+          'character_id' => $this->id,
+        ])->get();
+        $items = [];
+
+        foreach ($inventory as $item) {
+            $items[] = [
+                'item' => Item::where('id', $item->item_id)->first(),
+                'quantity' => $item['quantity'],
+            ];
+        }
+
+        return $items;
+    }
 }

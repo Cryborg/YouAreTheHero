@@ -23,9 +23,4 @@
             @stack('footer-scripts')
         </div>
     </div>
-    <div class="row">
-        <div class="col bloc">
-            @include('layouts.partials.nav')
-        </div>
-    </div>
 @endsection

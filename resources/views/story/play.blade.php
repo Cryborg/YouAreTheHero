@@ -3,7 +3,7 @@
 @section('title', $title)
 
 @section('choices')
-    @if ($page->choices != 'gameover')
+    @if ($page->choices !== 'gameover')
         <fieldset>
             <legend>@lang('play.choices')@lang('common.:')</legend>
             <ul>
@@ -34,6 +34,7 @@
     <script type="text/javascript">
         $(function() {
             loadInventory();
+            loadSheet();
         });
 
         function loadInventory() {
@@ -69,6 +70,12 @@
                         });
                     }
                 });
+            });
+        }
+
+        function loadSheet() {
+            $('.sheet-block').load('{{ url('story/sheet/' . $character->id) }}', function () {
+
             });
         }
     </script>

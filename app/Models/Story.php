@@ -9,6 +9,10 @@ class Story extends Model
 {
     protected $fillable = ['title'];
 
+    protected $casts = [
+        'sheet_config' => 'array',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -16,7 +20,7 @@ class Story extends Model
 
     public function genres()
     {
-        $storyGenre = Story_genres::where('story_id', $this->id)->first();
+        $storyGenre = StoryGenres::where('story_id', $this->id)->first();
         $genres = Genre::where('id', $storyGenre->genre_id)->get();
 
         $aGenres = [];

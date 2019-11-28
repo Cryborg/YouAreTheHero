@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User_story extends Model
+class UserStory extends Model
 {
     //
 }

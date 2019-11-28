@@ -35,15 +35,10 @@
                 </div>
             </div>
             <div class="row bloc">
-                <div class="col">
-                    Autre
+                <div class="col sheet-block">
+                    @yield('sheet', 'No available sheet')
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col bloc">
-            @include('layouts.partials.nav')
         </div>
     </div>
 @endsection

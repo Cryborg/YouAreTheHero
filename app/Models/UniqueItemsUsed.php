@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Unique_items_used extends Model
+class UniqueItemsUsed extends Model
 {
     protected $table = 'unique_items_used';
 

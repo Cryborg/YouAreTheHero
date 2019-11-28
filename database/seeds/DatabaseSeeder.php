@@ -4,7 +4,7 @@ use App\Models\Story;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Page;
-use App\Models\Page_link;
+use App\Models\PageLink;
 use App\Models\Item;
 
 class DatabaseSeeder extends Seeder {
@@ -45,12 +45,27 @@ class DatabaseSeeder extends Seeder {
         ]);
 
         // Stories
+        $sheet = [
+            'experience' => [
+                'value' => 0,
+                'order' => 0,
+            ],
+            'level' => [
+                'value' => 1,
+                'order' => 1,
+            ],
+            'force' => [
+                'value' => 0,
+                'order' => 2,
+            ],
+        ];
         $storyMarty = Story::create([
             'title'         => 'Ma guitare et moi',
             'description'   => 'Comment je suis devenu un dieu de la guitare.',
             'user_id'       => $marty->id,
             'created_at'    => now(),
             'is_published'  => true,
+            'sheet_config'  => $sheet,
         ]);
         $storyFred = Story::create([
             'title'         => 'Les claquettes de nos jours',
@@ -58,6 +73,7 @@ class DatabaseSeeder extends Seeder {
             'user_id'       => $fred->id,
             'created_at'    => now(),
             'is_published'  => true,
+            'sheet_config'  => $sheet,
         ]);
 
         foreach ([$storyMarty, $storyFred] as $story) {
@@ -73,7 +89,7 @@ class DatabaseSeeder extends Seeder {
                 'description' => 'Ca se corse !! Trois choix, dis-donc que c\'est dur...<br>En plus l\'inventaire à gauche s\'est barré...',
                 'layout' => 'play2',
             ]);
-            Page_link::create([
+            PageLink::create([
                 'page_from' => $p1->id,
                 'page_to' => $p2->id,
                 'link_text' => 'Pas le choix, je clique ici !',
@@ -94,17 +110,17 @@ class DatabaseSeeder extends Seeder {
                 'title' => 'Paragraphe 5',
                 'description' => 'Je suis allé à droite, c\'est magnifique !',
             ]);
-            Page_link::create([
+            PageLink::create([
                 'page_from' => $p2->id,
                 'page_to' => $p3->id,
                 'link_text' => 'Aller à gauche',
             ]);
-            Page_link::create([
+            PageLink::create([
                 'page_from' => $p2->id,
                 'page_to' => $p4->id,
                 'link_text' => 'Aller tout droit',
             ]);
-            Page_link::create([
+            PageLink::create([
                 'page_from' => $p2->id,
                 'page_to' => $p5->id,
                 'link_text' => 'Aller à droite',
@@ -116,12 +132,12 @@ class DatabaseSeeder extends Seeder {
                 'description' => 'Tous les chemins mènent ici, aucun mérite !',
                 'is_last' => true,
             ]);
-            Page_link::create([
+            PageLink::create([
                 'page_from' => $p3->id,
                 'page_to' => $p6->id,
                 'link_text' => 'Tout droit !',
             ]);
-            Page_link::create([
+            PageLink::create([
                 'page_from' => $p5->id,
                 'page_to' => $p6->id,
                 'link_text' => 'C\'est parti mon kiki !',
@@ -201,7 +217,7 @@ class DatabaseSeeder extends Seeder {
                 ]);
             }
 
-            \App\Models\Story_genres::create([
+            \App\Models\StoryGenres::create([
                 'story_id' => $story->id,
                 'genre_id' => $aGenres[count($aGenres) - 1]->id,
              ]);
@@ -215,7 +231,7 @@ class DatabaseSeeder extends Seeder {
             'description' => $data['description'],
             'is_last' => $data['is_last'] ?? false,
         ]);
-        Page_link::create([
+        PageLink::create([
             'page_from' => $after->id,
             'page_to' => $new->id,
             'link_text' => $data['link_text'],
