@@ -20,7 +20,7 @@ class Story extends Model
 
     public function genres()
     {
-        $storyGenre = StoryGenres::where('story_id', $this->id)->first();
+        $storyGenre = StoryGenre::where('story_id', $this->id)->first();
         $genres = Genre::where('id', $storyGenre->genre_id)->get();
 
         $aGenres = [];

@@ -29,4 +29,36 @@ class Action
 
         return true;
     }
+
+    public static function effects(Character $character, Item $item)
+    {
+        $effects = $item->effects;
+        $caracs  = $character->sheet;
+
+        foreach ($caracs as $name => $carac) {
+            if (array_key_exists($name, $effects)) {
+                switch ($effects[$name]['operator']) {
+                    case '+':
+                        $caracs[$name] += $effects[$name]['quantity'];
+                        break;
+                    case '-':
+                        $caracs[$name] -= $effects[$name]['quantity'];
+                        break;
+                    case '*':
+                        $caracs[$name] *= $effects[$name]['quantity'];
+                        break;
+                    case '/':
+                        $caracs[$name] /= $effects[$name]['quantity'];
+                        break;
+                }
+
+                $caracs[$name] = ceil($caracs[$name]);
+                if ($caracs[$name] <= 0) $caracs[$name] = 0;
+            }
+        }
+
+        $character->sheet = $caracs;
+
+        $character->save();
+    }
 }

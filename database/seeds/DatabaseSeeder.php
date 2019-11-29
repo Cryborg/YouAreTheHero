@@ -46,18 +46,9 @@ class DatabaseSeeder extends Seeder {
 
         // Stories
         $sheet = [
-            'experience' => [
-                'value' => 0,
-                'order' => 0,
-            ],
-            'level' => [
-                'value' => 1,
-                'order' => 1,
-            ],
-            'force' => [
-                'value' => 0,
-                'order' => 2,
-            ],
+            'experience'    => 0,
+            'level'         => 1,
+            'force'         => 1,
         ];
         $storyMarty = Story::create([
             'title'         => 'Ma guitare et moi',
@@ -173,11 +164,45 @@ class DatabaseSeeder extends Seeder {
                 'Vif d\'or (plaqué)', 'Pain de campagne magique'
             ];
             foreach ($items as $item) {
-                $newItem = Item::create([
+                $price = round(rand(1, 5));
+                $itemStuff = [
                     'name' => $item,
-                    'default_price' => round(rand(1, 5)),
+                    'default_price' => $price,
                     'story_id' => $story->id,
-                ]);
+                ];
+
+                switch ($price) {
+                    case 1:
+                        $itemStuff['effects'] = [
+                            'experience' => ['operator' => '-', 'quantity' => 2],
+                        ];
+                        break;
+                    case 2:
+                        $itemStuff['effects'] = [
+                             'force' => ['operator' => '-', 'quantity' => 1],
+                        ];
+                        break;
+                    case 3:
+                        $itemStuff['effects'] = [
+                            'level' => ['operator' => '*', 'quantity' => 2],
+                        ];
+                        break;
+                    case 4:
+                        $itemStuff['effects'] = [
+                            'level' => ['operator' => '+', 'quantity' => 2],
+                            'exp' => ['operator' => '/', 'quantity' => 2],
+                        ];
+                        break;
+                    case 5:
+                        $itemStuff['effects'] = [
+                            'experience' => ['operator' => '+', 'quantity' => 10],
+                            'force' => ['operator' => '+', 'quantity' => 1],
+                            'level' => ['operator' => '+', 'quantity' => 1],
+                        ];
+                        break;
+                }
+
+                $newItem = Item::create($itemStuff);
 
                 // Put some items to pick in one of the pages
                 /** @var \App\Models\Page $page */
@@ -192,10 +217,11 @@ class DatabaseSeeder extends Seeder {
 
             // Put a purse with money in it
             $newItem = Item::create([
-                'name' => 'Porte-monnaie perdu',
+                'name' => 'Porte-monnaie perdu (exp +10)',
                 'default_price' => 8,
                 'story_id' => $story->id,
                 'single_use' => true,
+                'effects' => ['experience' => ['operator' => '+', 'quantity' => 10]]
             ]);
 
             // Put some items to pick in one of the pages
@@ -217,7 +243,7 @@ class DatabaseSeeder extends Seeder {
                 ]);
             }
 
-            \App\Models\StoryGenres::create([
+            \App\Models\StoryGenre::create([
                 'story_id' => $story->id,
                 'genre_id' => $aGenres[count($aGenres) - 1]->id,
              ]);

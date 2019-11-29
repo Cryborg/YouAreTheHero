@@ -2,16 +2,21 @@
 
 namespace App\Models;
 
+use App\Classes\Sheet;
 use Illuminate\Database\Eloquent\Model;
 
 class Character extends Model
 {
     protected $guarded = ['id'];
 
+    protected $casts = [
+        'sheet' => 'array',
+    ];
+
+
     public static function boot()
     {
         parent::boot();
-
     }
 
     /**
@@ -58,25 +63,5 @@ class Character extends Model
         }
 
         return false;
-    }
-
-    /**
-     * @return array
-     */
-    public function sheet(): array
-    {
-        $inventory = Sheet::where([
-          'character_id' => $this->id,
-        ])->get();
-        $items = [];
-
-        foreach ($inventory as $item) {
-            $items[] = [
-                'item' => Item::where('id', $item->item_id)->first(),
-                'quantity' => $item['quantity'],
-            ];
-        }
-
-        return $items;
     }
 }

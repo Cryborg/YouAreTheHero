@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\Sheet;
 use App\Classes\Action;
 use App\Models\Inventory;
 use App\Models\Item;
@@ -22,12 +23,10 @@ class StoryController extends Controller
         $this->middleware('auth');
     }
 
-    public function play(int $id, string $page_id = null)
+    public function play(Story $story, string $page_id = null)
     {
-        $story = Story::where('id', $id)->first();
-
         // Check if the user has an already existing character for this story
-        $character = Character::where(['user_id' => Auth::id(), 'story_id' => $id])->first();
+        $character = Character::where(['user_id' => Auth::id(), 'story_id' => $story->id])->first();
 
         session([
             'story_id' => $story->id,
@@ -43,7 +42,7 @@ class StoryController extends Controller
         if (!$character) {
             // Get the first page of the story
             $page = Page::where([
-                'story_id' => $id,
+                'story_id' => $story->id,
                 'is_first' => true,
             ])->first();
 
@@ -92,12 +91,20 @@ class StoryController extends Controller
     }
 
     private function createCharacter($story, $page) {
-        return Character::create([
+
+        $sheet = new Sheet($story);
+
+        $character = Character::create([
             'name' => 'Quasimodo',
             'user_id' => Auth::id(),
             'story_id' => $story->id,
             'page_id' => $page->id,
+            'sheet' => $sheet->getArray()
         ]);
+
+        $character->sheet = $sheet;
+
+        return $character;
     }
 
     /**
@@ -142,6 +149,8 @@ class StoryController extends Controller
                 break;
         }
 
+        Action::effects($character, $item);
+
         // Check if the item used has the single_use flag,
         // and in this case it must not be shown again
         if ($item->single_use) {
@@ -160,12 +169,17 @@ class StoryController extends Controller
     /**
      * Get a character's inventory
      *
-     * @param \App\Models\Character $character
+     * @param \App\Models\Story $story
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function inventory(Character $character)
+    public function inventory(Story $story)
     {
+        $character = Character::where([
+            'user_id' => Auth::id(),
+            'story_id' => $story->id,
+        ])->first();
+
         $inventory = Inventory::where('character_id', $character->id)->get();
 
         if (!empty($inventory)) {
@@ -187,14 +201,19 @@ class StoryController extends Controller
     }
 
     /**
-     * @param \App\Models\Character $character
+     * @param \App\Models\Story $story
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function sheet(Character $character)
+    public function sheet(Story $story)
     {
-        return view('story.sheet', [
-            'sheet' => $character->sheet,
+        $character = Character::where([
+            'user_id' => Auth::id(),
+            'story_id' => $story->id,
+        ])->first();
+
+        return view('story.partials.sheet', [
+            'caracteristics' => $character->sheet,
         ]);
     }
 }

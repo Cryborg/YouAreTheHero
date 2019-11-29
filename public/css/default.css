@@ -34,6 +34,7 @@ footer {
 
 .pick-item {
     color: #dc000d;
+    padding: .2em 0;
 }
 
 .has-money {
@@ -63,4 +64,43 @@ td.details-control {
 }
 tr.shown td.details-control {
     background: url('/img/details_close.png') no-repeat center center;
+}
+
+.action-label-container {
+    outline: 1px solid black;
+    margin: 0 .3em;
+}
+
+.action-label {
+    padding: 1px 5px;
+}
+
+.effect-name {
+    background-color: darkgrey;
+    color: white;
+    font-weight: bold;
+}
+.effect-value-add {
+    background-color: #09d500;
+    color: white;
+    margin-left: -3px;
+}
+.effect-value-sub {
+    background-color: #de0500;
+    color: white;
+    margin-left: -3px;
+}
+.effect-value-sub:before {
+    content: '-';
+}
+.effect-value-add:before {
+    content: '+';
+}
+.money-symbol {
+    background-color: #f1f100;
+    color: black;
+}
+.item-name {
+    display: inline-block;
+    width: 17em;
 }

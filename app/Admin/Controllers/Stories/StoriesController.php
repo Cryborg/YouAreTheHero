@@ -4,7 +4,7 @@ namespace App\Admin\Controllers\Stories;
 
 use App\Models\Genre;
 use App\Models\Story;
-use App\Models\StoryGenres;
+use App\Models\StoryGenre;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Grid;

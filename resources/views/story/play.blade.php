@@ -21,9 +21,20 @@
             @switch($item['verb'])
                 @case ('buy')
                 @case ('earn')
-                    <div class="pick-item" data-verb="{{ $item['verb'] }}" data-item="{{ $item['item']['id'] }}" data-price="{{ $item['item']['default_price']  }}" data-singleuse="{{ $item['item']['single_use'] }}">{{
-                        $item['item']['name'] }} ({{ __('common.price', ['price' => $item['item']['default_price']])
-                    }})</div>
+                    <div class="pick-item" data-verb="{{ $item['verb'] }}" data-item="{{ $item['item']['id'] }}" data-price="{{ $item['item']['default_price']  }}" data-singleuse="{{ $item['item']['single_use'] }}">
+                        @include('story.partials.money', [
+                            'value' => $item['item']['default_price'],
+                            'operator' => 'sub'
+                        ])
+                        <span class="item-name">{{ $item['item']['name'] }}</span>
+                        @foreach ($item['item']['effects'] as $effect => $value)
+                            @include('story.partials.effects', [
+                                'name' => $effect,
+                                'value' => $value['quantity'],
+                                'operator' => $value['operator'] === '+' ? 'add' : 'sub'
+                            ])
+                        @endforeach
+                    </div>
                     @break
             @endswitch
         @endforeach
@@ -38,7 +49,7 @@
         });
 
         function loadInventory() {
-            $('.inventory-block').load('{{ url('story/inventory/' . $character->id) }}', function () {
+            $('.inventory-block').load('{{ url('story/' . $story->id . '/inventory') }}', function () {
                 $('.pick-item').each(function () {
                     var $this = $(this);
 
@@ -65,6 +76,7 @@
                             .done(function(rst) {
                                 if (rst.result === true) {
                                     loadInventory();
+                                    loadSheet();
                                 }
                             });
                         });
@@ -74,7 +86,7 @@
         }
 
         function loadSheet() {
-            $('.sheet-block').load('{{ url('story/sheet/' . $character->id) }}', function () {
+            $('.sheet-block').load('{{ url('story/' . $story->id . '/sheet') }}', function () {
 
             });
         }
