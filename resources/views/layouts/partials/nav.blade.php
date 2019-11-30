@@ -1,11 +1,10 @@
-<div class="row">
-    <div class="col">
-        <a href="{{ url('/') }}" class="navbar-brand">@lang('common.footer_link_home')</a>
-    </div>
-    <div class="col">
-        <a href="{{ url('/stories') }}" class="navbar-brand">@lang('common.footer_link_stories')</a>
-    </div>
-    <div class="col">
-        <a href="{{ url('/admin') }}" class="navbar-brand">@lang('common.footer_link_admin')</a>
-    </div>
-</div>
+<li>
+    <a class="navbar-brand" href="{{ url('/stories') }}">
+        @lang('common.link_stories')
+    </a>
+</li>
+<li>
+    <a class="navbar-brand" href="{{ url('/admin') }}">
+        @lang('common.link_admin')
+    </a>
+</li>

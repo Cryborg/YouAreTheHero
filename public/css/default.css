@@ -104,3 +104,7 @@ tr.shown td.details-control {
     display: inline-block;
     width: 17em;
 }
+
+p.indent {
+    text-indent: 2em;
+}
