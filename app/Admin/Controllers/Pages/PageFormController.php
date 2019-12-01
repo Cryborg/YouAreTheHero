@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 class PageFormController extends Controller
 {
     /**
+     * @param Request $request
      * @return void
      */
     public function form(Request $request)
@@ -25,6 +26,11 @@ class PageFormController extends Controller
             $tools->disableList();
             $tools->disableDelete();
             $tools->disableView();
+
+            $tools->add('<a class="btn btn-sm btn-twitter" id="create_new_page"><i class="fa fa-plus"></i>&nbsp;&nbsp;Créer une nouvelle page</a>');
+            $tools->add('<a class="btn btn-sm btn-success" id="create_new_children_page"><i class="fa fa-plus"></i>&nbsp;&nbsp;Créer une nouvelle page fille</a>');
+            $tools->add('<a class="btn btn-sm btn-danger" id="delete_page"><i class="fa fa-trash"></i>&nbsp;&nbsp;Supprimer</a>');
+
         });
 
         $form->footer(function (Form\Footer $footer) {
@@ -34,10 +40,12 @@ class PageFormController extends Controller
             $footer->disableCreatingCheck();
         });
 
-        $page = Page::where('story_id', $request->story_id)->where('number', $request->page_number)->first();
-        $form->textarea('content', 'Contenu')->rules('required|min:3')->value($page->content);
+        $page = Page::where('story_id', $request->story_id)->where('id', $request->page_id)->first();
+        $form->textarea('content', 'Contenu')->rules('required|min:3')
+            ->value($page->content ?? '');
 
         $form->hidden('csrf-token')->value(csrf_token());
+        $form->hidden('page_id')->value($page->id ?? '');
 
         return $form->render();
     }

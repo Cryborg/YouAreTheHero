@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Models\PageLink;
 use Encore\Admin\Layout\Content;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class PagesController
@@ -19,6 +20,7 @@ class PagesJsonController extends Controller
      */
     public function json($id)
     {
+        /** @var Collection $pages */
         $pages = Page::where('story_id', $id)
             ->orderBy('number', 'asc')
             ->get();
@@ -27,18 +29,13 @@ class PagesJsonController extends Controller
         $clears = [];
         $numTree = 0;
         foreach ($pages as $k => $page) {
-            if (!in_array($page->id, $clears, true)) {
+            if (!in_array($page->id, $clears)) {
                 $tree[$numTree]['uuid'] = $page->id;
-                $tree[$numTree]['id'] = $page->number;
-                $tree[$numTree]['text'] = $page->number;
-                $pagesLink = PageLink::where('page_from', $page->id)->get();
-                foreach ($pagesLink as $c => $pageLink) {
-                    $pageChildren = Page::where('id', $pageLink->page_to)->first();
-                    $tree[$numTree]['children'][$c]['id'] = $pageChildren->number;
-                    $tree[$numTree]['children'][$c]['text'] = $pageChildren->number;
-                    $tree[$numTree]['children'][$c]['page_from'] = $pageLink->page_from;
-                    $clears[] = $pageChildren->id;
-                }
+                $tree[$numTree]['id'] = $page->id;
+                $tree[$numTree]['text'] = 'Page : '.$page->number;
+
+                $tree[$numTree]['children'] = $this->addtree($page->pageLinks, $clears);
+                $clears[] = $page->id;
                 $numTree++;
             }
         }
@@ -49,5 +46,18 @@ class PagesJsonController extends Controller
         }
 
         return response()->json($tree);
+    }
+
+    private function addtree ($pageLinks, &$clears) {
+        $childrens = [];
+        foreach ($pageLinks as $c => $pageChildren) {
+            $childrens[$c]['id'] = $pageChildren->pageTo->id;
+            $childrens[$c]['text'] = 'Page : '.$pageChildren->pageTo->number;
+            $childrens[$c]['page_from'] = $pageChildren->pageFrom->id;
+            $childrens[$c]['children'] = $this->addtree($pageChildren->pageTo->pageLinks, $clears);
+            $clears[] =  $pageChildren->pageTo->id;
+        }
+
+        return $childrens;
     }
 }

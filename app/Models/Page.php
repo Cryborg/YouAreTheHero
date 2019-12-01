@@ -18,6 +18,14 @@ class Page extends Model
         'items' => 'array',
     ];
 
+    /**
+     * Get the pageLinks.
+     */
+    public function pageLinks()
+    {
+        return $this->hasMany(PageLink::class, 'page_from');
+    }
+
     public static function boot()
     {
         parent::boot();

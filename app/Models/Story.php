@@ -8,19 +8,24 @@ class Story extends Model
 {
     protected $fillable = ['title'];
 
-    public function user()
+    /**
+     * Get the pages.
+     */
+    public function pages()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Page::class);
     }
 
     /**
-     * @return mixed
+     * Get the genres.
      */
     public function genres()
     {
-        $idsStoryGenre = StoryGenre::where('story_id', $this->id)->pluck('id');
-        $aGenres = Genre::whereIn('id', $idsStoryGenre)->pluck('label', 'id')->toArray();
+        return $this->hasMany(Genre::class);
+    }
 
-        return $aGenres;
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

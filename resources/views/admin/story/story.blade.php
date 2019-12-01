@@ -12,14 +12,18 @@
 
 <div id="container">
 </div>
+
+<div class="flash-message"></div>
 <script>
+    // Init tree
     $(function () {
         $('#container').jstree({
             'core': {
                 'data': {
                     "url": "{{ route('admin.story.pages.json', ['id' => $story_id]) }}",
-                    "data": function (node) {
-                        return {"id": node.id};
+                    "data": function (data) {
+
+                        return {"id": data.id};
                     }
                 }
             }
@@ -31,29 +35,53 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#container').on("changed.jstree", function (e, data) {
-            let story_id = "{{ $story_id }}";
-            $.ajax({
-                url: route('page.form', {page_number : data.node.id, story_id: story_id }),
-            }).done(function (data) {
-                $('#pages').html(data);
-                // Soumettre la page
-                $("#pages form button[type='submit']").on('click', function () {
-                    let content = $("textarea[name='content']").val();
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        url: '{{ route('admin.page.store') }}',
-                        data: {story_id: "{{ $story_id }}", content: content},
-                        method: 'POST'
-                    }).done(function (data) {
-                        console.log(data);
-                    });
 
-                    return false;
-                });
-            });
+        // Click on element tree
+        $('#container').on("changed.jstree", function (e, data) {
+            let node_id = data.node !== undefined ? data.node.id : 0;
+
+            createPage(e, node_id, 0);
         });
     });
+
+    function createPage(e, node_id, page_parent) {
+        let story_id = "{{ $story_id }}";
+
+        $.ajax({
+            url: route('page.form', {page_id : node_id, story_id: story_id }),
+        }).done(function (data) {
+            $('#pages').html(data);
+
+            // Soumettre la page
+            $("#pages form button[type='submit']").on('click', function () {
+                let content = $("textarea[name='content']").val();
+                let page_id = $("input[name='page_id']").val();
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data) {
+                        $('div.flash-message').html(data);
+                        $('#container').jstree("refresh");
+                    },
+                    url: '{{ route('admin.page.store') }}',
+                    data: {story_id: "{{ $story_id }}", content: content, page_parent: page_parent, page_id: page_id},
+                    method: 'POST'
+                });
+
+                return false;
+            });
+
+            $('#create_new_children_page').on("click", function (e) {
+
+                createPage(e,  0, $("input[name='page_id']").val());
+            });
+
+            $('#create_new_page').on("click", function (e) {
+
+                createPage(e, 0);
+            });
+        });
+    }
 </script>
