@@ -2,16 +2,21 @@
 
 namespace App\Models;
 
+use App\Classes\Sheet;
 use Illuminate\Database\Eloquent\Model;
 
 class Character extends Model
 {
     protected $guarded = ['id'];
 
+    protected $casts = [
+        'sheet' => 'array',
+    ];
+
+
     public static function boot()
     {
         parent::boot();
-
     }
 
     /**

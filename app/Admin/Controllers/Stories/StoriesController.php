@@ -3,10 +3,12 @@
 namespace App\Admin\Controllers\Stories;
 
 use App\Models\Story;
+use App\Models\StoryGenre;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class StoriesController

@@ -19,6 +19,9 @@ class Page extends Model
     // Casts JSON as array
     protected $casts = [
         'items' => 'array',
+        'prerequisites' => 'array',
+        'is_first' => 'boolean',
+        'is_last' => 'boolean',
     ];
 
     /**

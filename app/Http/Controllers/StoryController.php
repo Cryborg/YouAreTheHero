@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\Sheet;
 use App\Classes\Action;
 use App\Models\Inventory;
 use App\Models\Item;
@@ -22,17 +23,14 @@ class StoryController extends Controller
         $this->middleware('auth');
     }
 
-    public function play(int $id, string $page_id = null)
+    public function play(Story $story, string $page_id = null)
     {
-        $story = Story::where('id', $id)->first();
-
         // Check if the user has an already existing character for this story
-        $character = Character::where(['user_id' => Auth::id(), 'story_id' => $id])->first();
+        $character = Character::where(['user_id' => Auth::id(), 'story_id' => $story->id])->first();
 
         session([
             'story_id' => $story->id,
         ]);
-
 
         // Params that are always returned to the view
         $commonParams = [
@@ -44,15 +42,15 @@ class StoryController extends Controller
         if (!$character) {
             // Get the first page of the story
             $page = Page::where([
-                'story_id' => $id,
+                'story_id' => $story->id,
                 'is_first' => true,
             ])->first();
 
             if ($page) {
-                $this->getChoicesFromPage($page);
-
                 // Create the character
                 $character = $this->createCharacter($story, $page);
+
+                $this->getChoicesFromPage($page, $character);
 
                 session([
                     'character_id' => $character->id,
@@ -76,7 +74,7 @@ class StoryController extends Controller
                 if ($lastPage->is_last) {
                     $lastPage->choices = 'gameover';
                 } else {
-                    $this->getChoicesFromPage($lastPage);
+                    $this->getChoicesFromPage($lastPage, $character);
                 }
 
                 $character->update(['page_id' => $lastPage->id]);
@@ -93,25 +91,61 @@ class StoryController extends Controller
     }
 
     private function createCharacter($story, $page) {
-        return Character::create([
+
+        $sheet = new Sheet($story);
+
+        $character = Character::create([
             'name' => 'Quasimodo',
             'user_id' => Auth::id(),
             'story_id' => $story->id,
             'page_id' => $page->id,
+            'sheet' => $sheet->getArray()
         ]);
+
+        $character->sheet = $sheet;
+
+        return $character;
     }
 
     /**
      * Get all the choices (links to the next page(s)
      *
-     * @param $page
+     * @param \App\Models\Page      $currentPage
+     * @param \App\Models\Character $character
+     *
      * @return mixed
      */
-    private function getChoicesFromPage(&$page) {
+    private function getChoicesFromPage(Page &$currentPage, Character $character) {
         // Get all the choices (links to the next page(s)
-        $choices = PageLink::where('page_from', $page->id)->get();
+        $allChoices = PageLink::where('page_from', $currentPage->id)->get();
+        $finalChcoices = [];
 
-        $page->choices = $choices;
+        // Check if there are prerequisites, and that they are fulfilled
+        foreach ($allChoices as $choice) {
+            $fulfilled = false;
+            $pageTo = Page::where('id', $choice->page_to)->first();
+
+            if (!empty($pageTo->prerequisites)) {
+                foreach ($pageTo->prerequisites as $type => $prerequisite) {
+                    switch ($type) {
+                        case 'sheet':
+                            $fulfilled = $this->checkSheetPrerequisites($prerequisite, $character);
+                            break;
+                        case 'items':
+                            $fulfilled = $this->checkItemPrerequisites($prerequisite, $character);
+                            break;
+                    }
+                }
+            } else {
+                $fulfilled = true;
+            }
+
+            if ($fulfilled) {
+                $finalChcoices[] = $choice;
+            }
+        }
+
+        $currentPage->choices = $finalChcoices;
     }
 
     /**
@@ -143,6 +177,8 @@ class StoryController extends Controller
                 break;
         }
 
+        Action::effects($character, $item);
+
         // Check if the item used has the single_use flag,
         // and in this case it must not be shown again
         if ($item->single_use) {
@@ -161,12 +197,17 @@ class StoryController extends Controller
     /**
      * Get a character's inventory
      *
-     * @param \App\Models\Character $character
+     * @param \App\Models\Story $story
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function inventory(Character $character)
+    public function inventory(Story $story)
     {
+        $character = Character::where([
+            'user_id' => Auth::id(),
+            'story_id' => $story->id,
+        ])->first();
+
         $inventory = Inventory::where('character_id', $character->id)->get();
 
         if (!empty($inventory)) {
@@ -185,5 +226,69 @@ class StoryController extends Controller
             ]);
         }
 
+    }
+
+    /**
+     * @param \App\Models\Story $story
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function sheet(Story $story)
+    {
+        $character = Character::where([
+            'user_id' => Auth::id(),
+            'story_id' => $story->id,
+        ])->first();
+
+        return view('story.partials.sheet', [
+            'caracteristics' => $character->sheet,
+        ]);
+    }
+
+    public function choices(Story $story, Page $page)
+    {
+        $character = Character::where([
+            'user_id' => Auth::id(),
+            'story_id' => $story->id
+        ])->first();
+
+        $this->getChoicesFromPage($page, $character);
+
+        return view('story.partials.choices', [
+            'story' => $story,
+            'page' => $page,
+        ]);
+    }
+
+    /**
+     * @param array                 $prerequisites
+     * @param \App\Models\Character $character
+     *
+     * @return bool
+     */
+    private function checkSheetPrerequisites(array $prerequisites, Character $character)
+    {
+        $sheet = $character->sheet;
+
+        foreach ($prerequisites as $name => $value) {
+            return array_key_exists($name, $sheet) && $sheet[$name] >= $value;
+        }
+
+        return false;
+    }
+
+    private function checkItemPrerequisites($prerequisites, Character $character)
+    {
+        $itemsInInventory = $character->inventory();
+
+        foreach ($prerequisites as $requiredItemId) {
+            foreach ($itemsInInventory as $item) {
+                if ($item['item']['id'] == $requiredItemId) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

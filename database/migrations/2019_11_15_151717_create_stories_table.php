@@ -21,6 +21,7 @@ class CreateStoriesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('locale')->default('fr_FR');
             $table->string('layout')->default('play1');
+            $table->json('sheet_config')->nullable();
             $table->boolean('is_published')->default(false);
             $table->timestamps();
         });

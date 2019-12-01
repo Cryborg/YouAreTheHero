@@ -2,8 +2,9 @@
 
 return [
     ':' => ' :',
-    'footer_link_home'      => 'Accueil',
-    'footer_link_stories'   => 'Liste des histoires',
+    'link_home'             => 'Accueil',
+    'link_stories'          => 'Liste des histoires',
+    'link_admin'            => 'Admin',
     'title_pages'           => 'Pages',
     'title_stories'         => 'Histoires',
     'description'           => 'Description',
