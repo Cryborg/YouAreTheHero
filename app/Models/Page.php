@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Faker\Provider\Uuid;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Page extends Model
 {
+    use SoftDeletes;
+
     public $incrementing = false;
 
     protected $rawItems;

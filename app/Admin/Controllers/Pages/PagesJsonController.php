@@ -21,7 +21,8 @@ class PagesJsonController extends Controller
     public function json($id)
     {
         /** @var Collection $pages */
-        $pages = Page::where('story_id', $id)
+        $pages = Page::withoutTrashed()
+            ->where('story_id', $id)
             ->orderBy('number', 'asc')
             ->get();
 

@@ -3,13 +3,27 @@
         swal({
             title:'Success!',
             text:"{{Session::get('success')}}",
-            timer:1000,
+            timer:1500,
             type:'success'
         }).then((value) => {
             //location.reload();
         }).catch(swal.noop);
     </script>
 @endif
+
+@if(Session::has('delete_page'))
+    <script type="text/javascript">
+        swal({
+            title:'Success!',
+            text:"{{Session::get('delete_page')}}",
+            timer:1500,
+            type:'success'
+        }).then((value) => {
+            //location.reload();
+        }).catch(swal.noop);
+    </script>
+@endif
+
 
 @if( Session::has("error") )
     <div class="alert alert-danger alert-block" role="alert">

@@ -21,4 +21,5 @@ Route::group([
     $router->get('/page/get-form/{story_id}/{page_id}', 'Pages\PageFormController@form')->name('page.form');
     $router->post('/page/store', 'Pages\PageStoreController@store')->name('admin.page.store');
     $router->get('/story/{id}/pages/json', 'Pages\PagesJsonController@json')->name('admin.story.pages.json');
+    $router->delete('/page/{id}/delete', 'Pages\PageDeleteController@delete')->name('admin.page.delete');
 });

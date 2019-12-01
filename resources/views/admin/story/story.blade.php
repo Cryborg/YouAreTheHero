@@ -2,7 +2,7 @@
 @routes
 {!! $_content_ !!}
 
-<div id="pages">
+<div id="page">
 
 </div>
 
@@ -25,7 +25,7 @@
 
                         return {"id": data.id};
                     }
-                }
+                },
             }
         });
     });
@@ -50,10 +50,10 @@
         $.ajax({
             url: route('page.form', {page_id : node_id, story_id: story_id }),
         }).done(function (data) {
-            $('#pages').html(data);
+            $('#page').html(data);
 
             // Soumettre la page
-            $("#pages form button[type='submit']").on('click', function () {
+            $("#page form button[type='submit']").on('click', function () {
                 let content = $("textarea[name='content']").val();
                 let page_id = $("input[name='page_id']").val();
 
@@ -81,6 +81,21 @@
             $('#create_new_page').on("click", function (e) {
 
                 createPage(e, 0);
+            });
+
+            $('#delete_page').on("click", function (e) {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data) {
+                        $('div.flash-message').html(data);
+                        $('#container').jstree("refresh");
+                    },
+                    url: '{{ route('admin.page.delete', ['id' => 0]) }}',
+                    data: {id: $("input[name='page_id']").val() },
+                    method: 'DELETE'
+                });
             });
         });
     }

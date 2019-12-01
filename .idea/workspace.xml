@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d202f32e-bbc8-4673-9150-4f195e73b7de" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/partials/flash-messages.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageDeleteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageFormController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageStoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageStoreController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PagesJsonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PagesJsonController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Admin/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/routes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/PageLink.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PageLink.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Story.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Story.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/story/story.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/story/story.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partials/flash-messages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/flash-messages.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -136,12 +134,18 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Admin/Controllers/Pages" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Admin/Controllers/Pages" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -174,7 +178,7 @@
       <workItem from="1574945740951" duration="11192000" />
       <workItem from="1575014374449" duration="29000" />
       <workItem from="1575021150471" duration="13352000" />
-      <workItem from="1575184864792" duration="7569000" />
+      <workItem from="1575184864792" duration="10412000" />
     </task>
     <servers />
   </component>
