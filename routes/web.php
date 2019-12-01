@@ -20,6 +20,7 @@ Route::get('/stories/ajax_list', 'StoriesController@ajax_list');
 // Story
 Route::get('/story/{story}/inventory', 'StoryController@inventory');
 Route::get('/story/{story}/sheet', 'StoryController@sheet');
+Route::get('/story/{story}/{page}/choices', 'StoryController@choices');
 Route::get('/story/{story}/{page_id?}', 'StoryController@play');
 Route::post('/story/ajax_action', 'StoryController@ajax_action');
 

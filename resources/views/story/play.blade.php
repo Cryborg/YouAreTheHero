@@ -3,16 +3,7 @@
 @section('title', $title)
 
 @section('choices')
-    @if ($page->choices !== 'gameover')
-        <fieldset>
-            <legend>@lang('play.choices')@lang('common.:')</legend>
-            <ul>
-                @foreach ($page->choices as $choice)
-                    <li><a href="{{ url('story/' . $story->id . '/' . $choice->page_to) }}">{!! $choice->link_text !!}</a></li>
-                @endforeach
-            </ul>
-        </fieldset>
-    @endif
+    @include('story.partials.choices', ['page' => $page, 'story' => $story])
 @endsection
 
 @section('items')
@@ -46,6 +37,7 @@
         $(function() {
             loadInventory();
             loadSheet();
+            loadChoices();
         });
 
         function loadInventory() {
@@ -77,6 +69,7 @@
                                 if (rst.result === true) {
                                     loadInventory();
                                     loadSheet();
+                                    loadChoices();
                                 }
                             });
                         });
@@ -86,9 +79,11 @@
         }
 
         function loadSheet() {
-            $('.sheet-block').load('{{ url('story/' . $story->id . '/sheet') }}', function () {
+            $('.sheet-block').load('{{ url('story/' . $story->id . '/sheet') }}');
+        }
 
-            });
+        function loadChoices() {
+            $('.choices-block').load('{{ url('story/' . $story->id . '/' . $page->id . '/choices') }}');
         }
     </script>
 @endpush

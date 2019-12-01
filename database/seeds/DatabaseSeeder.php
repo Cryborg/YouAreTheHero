@@ -71,7 +71,8 @@ class DatabaseSeeder extends Seeder {
             $p1 = Page::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 1',
-                'description' => 'Premier paragraphe avec une seule option, pas difficile de choisir ;)',
+                'description' => '<p>Premier paragraphe avec une seule option, pas difficile de choisir ;)</p>' .
+                    '<p>Mais.... ce marteau pourrait peut-être m\'aider ?</p>',
                 'is_first' => true,
             ]);
             $p2 = Page::create([
@@ -81,9 +82,41 @@ class DatabaseSeeder extends Seeder {
                 'layout' => 'play2',
             ]);
             PageLink::create([
+                 'page_from' => $p1->id,
+                 'page_to' => $p2->id,
+                 'link_text' => 'Pas le choix, je clique ici !',
+            ]);
+
+            $marteau = Item::create([
+                'name' => 'Marteau',
+                'default_price' => 1,
+                'story_id' => $story->id,
+                'effects' => [
+                    'force' => ['operator' => '+', 'quantity' => 1],
+                ]
+            ]);
+            $p1->addItem([
+                'item' => $marteau->id,
+                'verb' => 'buy',
+                'amount' => $marteau->default_price
+            ]);
+            $p2_1 = Page::create([
+                'story_id' => $story->id,
+                'title' => 'Paragraphe 2.1',
+                'description' => 'Bien joué ! C\'est un paragraphe difficile à atteindre :)',
+                'prerequisites' => [
+                    'sheet' => [
+                        'force' => 2
+                    ],
+                    'items' => [
+                        $marteau->id,
+                    ]
+                ]
+            ]);
+            PageLink::create([
                 'page_from' => $p1->id,
-                'page_to' => $p2->id,
-                'link_text' => 'Pas le choix, je clique ici !',
+                'page_to' => $p2_1->id,
+                'link_text' => 'Casser un mur avec le marteau',
             ]);
 
             $p3 = Page::create([
@@ -115,6 +148,11 @@ class DatabaseSeeder extends Seeder {
                 'page_from' => $p2->id,
                 'page_to' => $p5->id,
                 'link_text' => 'Aller à droite',
+            ]);
+            PageLink::create([
+                'page_from' => $p2_1->id,
+                'page_to' => $p5->id,
+                'link_text' => 'On continue !',
             ]);
 
             $p6 = Page::create([

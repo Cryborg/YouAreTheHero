@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col">
+                <div class="col choices-block">
                     @yield('choices')
                 </div>
             </div>

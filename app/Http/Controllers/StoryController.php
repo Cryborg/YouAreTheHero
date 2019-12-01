@@ -47,10 +47,10 @@ class StoryController extends Controller
             ])->first();
 
             if ($page) {
-                $this->getChoicesFromPage($page);
-
                 // Create the character
                 $character = $this->createCharacter($story, $page);
+
+                $this->getChoicesFromPage($page, $character);
 
                 session([
                     'character_id' => $character->id,
@@ -74,7 +74,7 @@ class StoryController extends Controller
                 if ($lastPage->is_last) {
                     $lastPage->choices = 'gameover';
                 } else {
-                    $this->getChoicesFromPage($lastPage);
+                    $this->getChoicesFromPage($lastPage, $character);
                 }
 
                 $character->update(['page_id' => $lastPage->id]);
@@ -110,14 +110,42 @@ class StoryController extends Controller
     /**
      * Get all the choices (links to the next page(s)
      *
-     * @param $page
+     * @param \App\Models\Page      $currentPage
+     * @param \App\Models\Character $character
+     *
      * @return mixed
      */
-    private function getChoicesFromPage(&$page) {
+    private function getChoicesFromPage(Page &$currentPage, Character $character) {
         // Get all the choices (links to the next page(s)
-        $choices = PageLink::where('page_from', $page->id)->get();
+        $allChoices = PageLink::where('page_from', $currentPage->id)->get();
+        $finalChcoices = [];
 
-        $page->choices = $choices;
+        // Check if there are prerequisites, and that they are fulfilled
+        foreach ($allChoices as $choice) {
+            $fulfilled = false;
+            $pageTo = Page::where('id', $choice->page_to)->first();
+
+            if (!empty($pageTo->prerequisites)) {
+                foreach ($pageTo->prerequisites as $type => $prerequisite) {
+                    switch ($type) {
+                        case 'sheet':
+                            $fulfilled = $this->checkSheetPrerequisites($prerequisite, $character);
+                            break;
+                        case 'items':
+                            $fulfilled = $this->checkItemPrerequisites($prerequisite, $character);
+                            break;
+                    }
+                }
+            } else {
+                $fulfilled = true;
+            }
+
+            if ($fulfilled) {
+                $finalChcoices[] = $choice;
+            }
+        }
+
+        $currentPage->choices = $finalChcoices;
     }
 
     /**
@@ -215,5 +243,52 @@ class StoryController extends Controller
         return view('story.partials.sheet', [
             'caracteristics' => $character->sheet,
         ]);
+    }
+
+    public function choices(Story $story, Page $page)
+    {
+        $character = Character::where([
+            'user_id' => Auth::id(),
+            'story_id' => $story->id
+        ])->first();
+
+        $this->getChoicesFromPage($page, $character);
+
+        return view('story.partials.choices', [
+            'story' => $story,
+            'page' => $page,
+        ]);
+    }
+
+    /**
+     * @param array                 $prerequisites
+     * @param \App\Models\Character $character
+     *
+     * @return bool
+     */
+    private function checkSheetPrerequisites(array $prerequisites, Character $character)
+    {
+        $sheet = $character->sheet;
+
+        foreach ($prerequisites as $name => $value) {
+            return array_key_exists($name, $sheet) && $sheet[$name] >= $value;
+        }
+
+        return false;
+    }
+
+    private function checkItemPrerequisites($prerequisites, Character $character)
+    {
+        $itemsInInventory = $character->inventory();
+
+        foreach ($prerequisites as $requiredItemId) {
+            foreach ($itemsInInventory as $item) {
+                if ($item['item']['id'] == $requiredItemId) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
