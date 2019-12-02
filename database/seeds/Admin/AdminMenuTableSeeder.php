@@ -12,12 +12,12 @@ class AdminMenuTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('admin_menu')->delete();
-        
+
         \DB::table('admin_menu')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'parent_id' => 0,
@@ -29,7 +29,7 @@ class AdminMenuTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'parent_id' => 0,
@@ -41,7 +41,7 @@ class AdminMenuTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'parent_id' => 2,
@@ -53,7 +53,7 @@ class AdminMenuTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'parent_id' => 2,
@@ -65,7 +65,7 @@ class AdminMenuTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'parent_id' => 2,
@@ -77,7 +77,7 @@ class AdminMenuTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'parent_id' => 2,
@@ -89,7 +89,7 @@ class AdminMenuTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'parent_id' => 2,
@@ -101,11 +101,11 @@ class AdminMenuTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'parent_id' => 0,
-                'order' => 0,
+                'order' => 1,
                 'title' => 'Histoires',
                 'icon' => 'fa-book',
                 'uri' => '/stories',
@@ -113,11 +113,11 @@ class AdminMenuTableSeeder extends Seeder
                 'created_at' => '2019-11-27 08:57:10',
                 'updated_at' => '2019-11-27 09:04:19',
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'parent_id' => 8,
-                'order' => 0,
+                'order' => 1,
                 'title' => 'Nouvelle histoire',
                 'icon' => 'fa-plus',
                 'uri' => '/stories/create',
@@ -125,7 +125,7 @@ class AdminMenuTableSeeder extends Seeder
                 'created_at' => '2019-11-27 09:02:50',
                 'updated_at' => '2019-11-27 09:03:07',
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
                 'parent_id' => 8,
@@ -137,7 +137,7 @@ class AdminMenuTableSeeder extends Seeder
                 'created_at' => '2019-11-27 09:05:39',
                 'updated_at' => '2019-11-27 09:07:00',
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
                 'parent_id' => 0,
@@ -150,7 +150,7 @@ class AdminMenuTableSeeder extends Seeder
                 'updated_at' => '2019-11-27 10:44:48',
             ),
         ));
-        
-        
+
+
     }
 }

@@ -19,6 +19,7 @@ class Page extends Model
         'prerequisites' => 'array',
         'is_first' => 'boolean',
         'is_last' => 'boolean',
+        'is_checkpoint' => 'boolean',
     ];
 
     protected $rawItems;
