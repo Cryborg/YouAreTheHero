@@ -32,6 +32,12 @@
     @endif
 @endsection
 
+@section('map')
+    @foreach ($visitedPlaces as $key => $place)
+        <a href="{{ url('story/' . $story->id . '/' . $place->page_id) }}">{{ $place->page_title }}</a><br>
+    @endforeach
+@endsection
+
 @push('footer-scripts')
     <script type="text/javascript">
         $(function() {

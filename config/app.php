@@ -234,4 +234,10 @@ return [
 
     ],
 
+    /**
+     * Constants
+     */
+    'story' => [
+        'cache_ttl' => 1440,
+    ]
 ];

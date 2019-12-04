@@ -4,12 +4,13 @@ namespace App\Repositories;
 
 use App\Models\Page;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Config;
 
-class PageRepository
+class CharacterRepository
 {
     public function find($id)
     {
-        return Cache::rememberForever('page_' . $id, function () use ($id) {
+        return Cache::rememberForever('character_' . $id, function () use ($id) {
             return Page::findOrFail($id);
         });
     }
@@ -18,7 +19,7 @@ class PageRepository
     {
         $query = Page::where($data);
 
-        return Cache::remember(md5($query->toSql()), 1440, function () use ($query) {
+        return Cache::remember(md5($query->toSql()), Config::get('app.story.cache_ttl'), function () use ($query) {
             return $query->get();
         });
     }
@@ -27,7 +28,7 @@ class PageRepository
     {
         $query = Page::where($data);
 
-        return Cache::remember(md5($query->toSql()), 1440, function () use ($query) {
+        return Cache::remember(md5($query->toSql()), Config::get('app.story.cache_ttl'), function () use ($query) {
             return $query->first();
         });
     }

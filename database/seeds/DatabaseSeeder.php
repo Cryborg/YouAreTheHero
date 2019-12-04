@@ -93,7 +93,8 @@ class DatabaseSeeder extends Seeder {
                 'story_id' => $story->id,
                 'effects' => [
                     'force' => ['operator' => '+', 'quantity' => 1],
-                ]
+                ],
+                'single_use' => true,
             ]);
             $p1->addItem([
                 'item' => $marteau->id,
@@ -123,16 +124,19 @@ class DatabaseSeeder extends Seeder {
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 3',
                 'description' => 'Je suis allé à gauche et c\'est beau !',
+                'is_checkpoint' => true,
             ]);
             $p4 = Page::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 4',
                 'description' => 'Je suis allé tout droit, pas mal !',
+                'is_checkpoint' => true,
             ]);
             $p5 = Page::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 5',
                 'description' => 'Je suis allé à droite, c\'est magnifique !',
+                'is_checkpoint' => true,
             ]);
             PageLink::create([
                 'page_from' => $p2->id,
@@ -286,6 +290,8 @@ class DatabaseSeeder extends Seeder {
                 'genre_id' => $aGenres[count($aGenres) - 1]->id,
              ]);
         }
+
+        \Illuminate\Support\Facades\Artisan::call('cache:clear');
     }
 
     private function addPage(Story $story, Page $after, $data) {
