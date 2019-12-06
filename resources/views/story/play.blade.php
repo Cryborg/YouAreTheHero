@@ -34,7 +34,7 @@
 
 @section('map')
     @foreach ($visitedPlaces as $key => $place)
-        <a href="{{ url('story/' . $story->id . '/' . $place->page_id) }}">{{ $place->page_title }}</a><br>
+        <a href="{{ route('story.play', ['story' => $story->id, 'page' => $place->page_id]) }}">{{ $place->page_title }}</a><br>
     @endforeach
 @endsection
 
@@ -47,7 +47,7 @@
         });
 
         function loadInventory() {
-            $('.inventory-block').load('{{ url('story/' . $story->id . '/inventory') }}', function () {
+            $('.inventory-block').load('{{ route('story.inventory', ['story' => $story->id]) }}', function () {
                 $('.pick-item').each(function () {
                     var $this = $(this);
 
@@ -68,7 +68,7 @@
 
                             $.ajax({
                                 'method': 'POST',
-                                'url': '{{ url('story/ajax_action') }}',
+                                'url': '{{ route('story.ajax_action') }}',
                                 'data': {'json': JSON.stringify($this.data())},
                             })
                             .done(function(rst) {
@@ -85,11 +85,11 @@
         }
 
         function loadSheet() {
-            $('.sheet-block').load('{{ url('story/' . $story->id . '/sheet') }}');
+            $('.sheet-block').load('{{ route('story.sheet', ['story' => $story->id]) }}');
         }
 
         function loadChoices() {
-            $('.choices-block').load('{{ url('story/' . $story->id . '/' . $page->id . '/choices') }}');
+            $('.choices-block').load('{{ route('story.choices', ['story' => $story->id, 'page' => $page->id]) }}');
         }
     </script>
 @endpush

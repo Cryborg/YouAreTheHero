@@ -35,19 +35,16 @@ class StoryController extends Controller
 
     public function play(Story $story, Page $page = null)
     {
+        // Check if the user has an already existing character for this story
+        $character = $this->getCurrentCharacter($story);
+
         // If there is an ID, save it in the session so that we show a nice URL without the page ID
         if ($page !== null) {
-            //TODO: Check that the page has a is_checkpoint flag, and is in the character history
-
-
             $this->setSession('page_id', $page->id);
-            redirect('/story/' . $story->id);
+            redirect(route('story.play', ['story' => $story->id]));//'/story/' . $story->id);
         } else {
             $page = $this->getSession('page_id');
         }
-
-        // Check if the user has an already existing character for this story
-        $character = $this->getCurrentCharacter($story);
 
         $this->setSession('story_id', $story->id);
 
