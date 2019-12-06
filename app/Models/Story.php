@@ -13,20 +13,38 @@ class Story extends Model
         'sheet_config' => 'array',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function genres()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function pages()
     {
-        $storyGenre = StoryGenre::where('story_id', $this->id)->first();
-        $genres = Genre::where('id', $storyGenre->genre_id)->get();
+        return $this->hasMany(Page::class);
+    }
 
+    /**
+     * @return array
+     */
+    public function genres(): array
+    {
         $aGenres = [];
 
-        foreach ($genres as $genre) {
-            $aGenres[] = __($genre->label);
+        $storyGenre = StoryGenre::where('story_id', $this->id)->first();
+
+        if ($storyGenre) {
+            $genres = Genre::where('id', $storyGenre->genre_id)
+                           ->get();
+
+            foreach ($genres as $genre) {
+                $aGenres[] = __($genre->label);
+            }
         }
 
         return $aGenres;

@@ -81,4 +81,9 @@ class Page extends Model
         $this->items = array_merge($this->rawItems ?? [], [$data]);
         return $this->save();
     }
+
+    public function story()
+    {
+        return $this->belongsTo(Story::class);
+    }
 }

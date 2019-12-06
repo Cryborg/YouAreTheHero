@@ -89,7 +89,7 @@ class StoryController extends Controller
 
         $this->saveCheckpoint($character, $page);
 
-        $visitedPlaces = Checkpoint::where('character_id', $character->id)->get();
+        $visitedPlaces = $character->checkpoints;
 
         $visitedPlaces = $visitedPlaces->map(function ($value, $key) {
             $page = Page::where('id', $value['page_id'])->first();

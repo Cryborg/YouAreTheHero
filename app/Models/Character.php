@@ -64,4 +64,12 @@ class Character extends Model
 
         return false;
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function checkpoints(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Checkpoint::class);
+    }
 }
