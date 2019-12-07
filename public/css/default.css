@@ -109,3 +109,7 @@ tr.shown td.details-control {
 p.indent {
     text-indent: 2em;
 }
+
+.font-small {
+    font-size: .5em;
+}

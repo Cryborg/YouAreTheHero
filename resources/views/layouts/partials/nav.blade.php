@@ -8,3 +8,8 @@
         @lang('common.link_admin')
     </a>
 </li>
+<li>
+    <a class="navbar-brand" href="{{ route('story.create') }}">
+        @lang('common.link_story_create')
+    </a>
+</li>

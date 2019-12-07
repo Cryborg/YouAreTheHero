@@ -4,14 +4,32 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use \App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Laracasts\Flash\Flash;
 
 class Story extends Model
 {
-    protected $fillable = ['title'];
+    protected $guarded = ['id'];
 
     protected $casts = [
         'sheet_config' => 'array',
+        'is_published' => 'boolean',
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(static function ($story) {
+            $story['user_id'] = Auth::id();
+        });
+
+        static::created(static function($page)
+        {
+            Cache::forget('stories.list');
+        });
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

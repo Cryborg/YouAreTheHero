@@ -17,9 +17,12 @@ use \App\Models\PageLink;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 use App\Repositories\PageRepository;
+use Illuminate\Support\Facades\View;
+use Laracasts\Flash\Flash;
 
 class StoryController extends Controller
 {
@@ -33,7 +36,7 @@ class StoryController extends Controller
         $this->middleware('auth');
     }
 
-    public function play(Story $story, Page $page = null)
+    public function getPlay(Story $story, Page $page = null)
     {
         // Check if the user has an already existing character for this story
         $character = $this->getCurrentCharacter($story);
@@ -410,5 +413,41 @@ class StoryController extends Controller
         return Cache::remember('item_' . $itemId, Config::get('app.story.cache_ttl'), function () use ($itemId) {
             return Item::where('id', $itemId)->first();
         });
+    }
+
+    public function getCreate()
+    {
+        $data = [
+            'title' => trans('story.create_title'),
+            'locales' => [
+                'fr_FR' => 'Français',
+                'en_US' => 'Anglais',
+                'es_ES' => 'Espagnol',
+            ],
+            'layouts' => [
+                'play1' => 'Premier layout',
+            ]
+        ];
+
+        $view = View::make('story.create', $data);
+
+        return $view;
+    }
+
+    public function postCreate(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required|unique:stories',
+            'description' => 'required',
+            'is_published' => 'boolean',
+        ]);
+
+        $story = Story::create($validated);
+
+        if ($story) {
+            \flash(trans('model.save_successful'));
+        }
+
+        return Redirect::to(route('story.create'));
     }
 }
