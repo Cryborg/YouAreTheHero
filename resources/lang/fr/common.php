@@ -6,6 +6,8 @@ return [
     'link_stories'          => 'Liste des histoires',
     'link_admin'            => 'Admin',
     'link_story_create'     => 'Créer histoire',
+    'link_stories_draft'    => 'Brouillons',
+
     'title_pages'           => 'Pages',
     'title_stories'         => 'Histoires',
     'description'           => 'Description',

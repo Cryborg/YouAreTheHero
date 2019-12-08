@@ -32,6 +32,8 @@
 @push('footer-scripts')
     <script type="text/javascript">
         $(function() {
+            var draft = {{ $draft ?? false == true ? 'true' : 'false' }};
+
             function format ( d ) {
                 var parser = new DOMParser;
                 var dom = parser.parseFromString(d.description, 'text/html');
@@ -43,7 +45,7 @@
             var table = $('#stories-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route('stories.list.ajax') }}',
+                ajax: '{{ route('stories.list.ajax', ['draft' => $draft ?? false]) }}',
                 columns: [
                     {
                         "className":      'details-control',
@@ -53,7 +55,11 @@
                         "width":          '5%'
                     },
                     {data: 'id', render: function ( data, type, row ) {
-                            return '<a href="{{ url('/story/') }}/' + data + '">' + data + '</a>'
+                        if ( draft) {
+                            return data;
+                        } else {
+                            return '<a href="{{ url('/story/') }}/' + data + '">' + data + '</a>';
+                        }
                     }, 'width': '5%'},
                     {data: 'title'},
                     {data: 'genres', 'width': '15%'},

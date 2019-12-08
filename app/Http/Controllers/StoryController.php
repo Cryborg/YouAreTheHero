@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Session;
 use App\Repositories\PageRepository;
 use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
+use Spatie\Menu\Laravel\Facades\Menu;
+use Spatie\Menu\Laravel\Link;
 
 class StoryController extends Controller
 {
@@ -176,7 +178,7 @@ class StoryController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function ajax_action(Request $request): JsonResponse
+    public function ajaxAction(Request $request): JsonResponse
     {
         $isOk = false;
 

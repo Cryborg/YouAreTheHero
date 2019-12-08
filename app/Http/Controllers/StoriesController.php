@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Story;
 use App\Models\User;
-use Illuminate\Support\Facades\Cache;use Illuminate\Support\Facades\Session;use Yajra\DataTables\DataTables;
+use http\Client\Request;use Illuminate\Support\Facades\Cache;use Illuminate\Support\Facades\Session;use Yajra\DataTables\DataTables;
 
 class StoriesController extends Controller
 {
@@ -22,18 +22,38 @@ class StoriesController extends Controller
         return view('stories.list');
     }
 
+    public function listDraft()
+    {
+        // Delete old story session
+        Session::remove('story');
+
+        return view('stories.list', ['draft' => true]);
+    }
+
     /**
      * Fill the Datatables with stories
+     *
+     * @param bool $draft
      *
      * @return mixed
      * @throws \Exception
      */
-    public function ajax_list()
+    public function ajaxList(\Illuminate\Http\Request $request)
     {
-        $stories = Cache::remember('stories.list', 60, function () {
-            return  Story::select(['id','title','description','user_id','locale','created_at'])
-                         ->where('is_published', true)
-                         ->get();
+        $query = Story::select(['id','title','description','user_id','locale','created_at']);
+
+        $draft = $request->get('draft') == '1';
+        $cacheKey = 'stories.list';
+
+        if ($draft) {
+            $query->where('is_published', false);
+            $cacheKey = 'stories.list.draft';
+        } else {
+            $query->where('is_published', true);
+        }
+
+        $stories = Cache::remember($cacheKey, 60, function () use ($query) {
+            return $query->get();
         });
 
         $stories = $stories->map(function ($value, $key) {

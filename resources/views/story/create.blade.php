@@ -12,7 +12,7 @@
 
         <div class="form-group">
             {!! Form::label('description', trans('model.description'), ['class' => 'control-label']) !!}
-            {!! Form::textarea('description', old('description'), ['class' => 'form-control']) !!}
+            {!! Form::textarea('description', old('description'), ['class' => 'form-control', 'rows' => 5]) !!}
         </div>
 
         <div class="form-group">
