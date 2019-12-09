@@ -10,19 +10,20 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('locale', trans('model.locale'), ['class' => 'control-label']) !!}
-        {!! Form::select('locale', $locales , old('locale') , ['class' => 'form-control']) !!}
-    </div>
-
-    <div class="form-group">
         {!! Form::label('layout', trans('model.layout'), ['class' => 'control-label']) !!}
         {!! Form::select('layout', $layouts , old('layout') , ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group form-check">
         <label>
-            {!! Form::checkbox('is_published', old('is_published') ?? '0', null,  ['id' => 'is_published']) !!}
-            @lang('model.is_published')
+            {!! Form::checkbox('is_first', old('is_first') ?? '0', null,  ['id' => 'is_first']) !!}
+            @lang('model.is_first')
+        </label>
+    </div>
+    <div class="form-group form-check">
+        <label>
+            {!! Form::checkbox('is_last', old('is_last') ?? '0', null,  ['id' => 'is_last']) !!}
+            @lang('model.is_last')
         </label>
     </div>
 

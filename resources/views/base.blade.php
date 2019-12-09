@@ -64,7 +64,7 @@
                             Story mode
                             Shows the menu for the character
                             --}}
-                            @if (\Request::is('story/*') && !\Request::is('story/create'))
+                            @if (\Request::is('story.play'))
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ $character->name }}
@@ -108,7 +108,7 @@
         </main>
     </div>
 
-
+    @routes
     @include('layouts.partials.footer-scripts')
     @stack('footer-scripts')
 </body>

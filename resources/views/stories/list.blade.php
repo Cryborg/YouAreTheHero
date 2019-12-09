@@ -56,7 +56,7 @@
                     },
                     {data: 'id', render: function ( data, type, row ) {
                         if ( draft) {
-                            return data;
+                            return '<a href="' + route('story.edit', data) + '">' + data + '</a>';
                         } else {
                             return '<a href="{{ url('/story/') }}/' + data + '">' + data + '</a>';
                         }

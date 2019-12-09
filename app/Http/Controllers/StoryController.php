@@ -417,8 +417,22 @@ class StoryController extends Controller
         });
     }
 
-    public function getCreate()
+    /**
+     * @param null $story
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function getCreate($story = null)
     {
+        $postRoute = route('story.create.post');
+        $param = null;
+
+        if ($story) {
+            $postRoute = 'story.edit.post';
+
+            $param = $story->id;
+        }
+
         $data = [
             'title' => trans('story.create_title'),
             'locales' => [
@@ -428,7 +442,10 @@ class StoryController extends Controller
             ],
             'layouts' => [
                 'play1' => 'Premier layout',
-            ]
+            ],
+            'story' => $story,
+            'route' => $postRoute,
+            'param' => $param,
         ];
 
         $view = View::make('story.create', $data);
@@ -447,9 +464,48 @@ class StoryController extends Controller
         $story = Story::create($validated);
 
         if ($story) {
+            // Create the first page, with dummy data
+            $page = factory(Page::class)->make();
+            $page->story_id = $story->id;
+            $page->is_first = true;
+            $page->save();
+
             \flash(trans('model.save_successful'));
+
+            return Redirect::to(route('page.edit', ['page' => $page->id]));
         }
 
+        \flash(trans('model.save_error'));
+
         return Redirect::to(route('story.create'));
+    }
+
+    /**
+     * @param \App\Models\Story $story
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function getEdit(Story $story)
+    {
+        return $this->getCreate($story);
+    }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Story        $story
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postEdit(Request $request, Story $story)
+    {
+        $validated = $request->validate([
+            'title' => 'required|unique:stories',
+            'description' => 'required',
+            'is_published' => 'boolean',
+        ]);
+
+        $story->update($validated);
+
+        return Redirect::to(route('story.edit', $story->id));
     }
 }
