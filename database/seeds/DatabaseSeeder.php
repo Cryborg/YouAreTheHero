@@ -103,7 +103,7 @@ class DatabaseSeeder extends Seeder {
             $p2_1 = Page::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 2.1',
-                'description' => 'Bien joué ! C\'est un paragraphe difficile à atteindre :)',
+                'content' => 'Bien joué ! C\'est un paragraphe difficile à atteindre :)',
                 'prerequisites' => [
                     'sheet' => [
                         'force' => 2
@@ -174,24 +174,24 @@ class DatabaseSeeder extends Seeder {
 
             $p7 = $this->addPage($story, $p4, [
                 'title' => 'Paragraphe 5',
-                'description' => 'The lieutenant commander is more particle now than planet. interstellar and wildly intelligent!'
+                'content' => 'The lieutenant commander is more particle now than planet. interstellar and wildly intelligent!'
                     . '<br>Fly without powerdrain, and we won’t love an astronaut.'
                     . '<br><br><br>Congratulations you WON!!',
                 'link_text' => 'Je continue d\'avancer !',
             ]);
             $p8 = $this->addPage($story, $p4, [
                 'title' => 'Paragraphe 6',
-                'description' => 'Tu as bien choisi, tu es arrivé bien loin !',
+                'content' => 'Tu as bien choisi, tu es arrivé bien loin !',
                 'link_text' => 'Irai-je à gauche ?',
             ]);
             $p9 = $this->addPage($story, $p4, [
                 'title' => 'Paragraphe 7',
-                'description' => 'Tu as bien choisi, tu es arrivé bien loin !',
+                'content' => 'Tu as bien choisi, tu es arrivé bien loin !',
                 'link_text' => 'Ou au milieu ?',
             ]);
             $p10 = $this->addPage($story, $p4, [
                 'title' => 'Paragraphe 8',
-                'description' => 'Tu as bien choisi, tu es arrivé bien loin !',
+                'content' => 'Tu as bien choisi, tu es arrivé bien loin !',
                 'link_text' => 'Ou bien à droite ?',
             ]);
 
@@ -244,6 +244,7 @@ class DatabaseSeeder extends Seeder {
 
                 // Put some items to pick in one of the pages
                 /** @var \App\Models\Page $page */
+                echo $p6->id;
                 $page = Page::where('id', $p6->id)->first();
                 $page->addItem([
                    'item' => $newItem->id,
@@ -280,11 +281,6 @@ class DatabaseSeeder extends Seeder {
                     'label' => $genre,
                 ]);
             }
-
-            \App\Models\StoryGenre::create([
-                'story_id' => $story->id,
-                'genre_id' => $aGenres[count($aGenres) - 1]->id,
-             ]);
         }
     }
 
@@ -292,7 +288,7 @@ class DatabaseSeeder extends Seeder {
         $new = Page::create([
             'story_id' => $story->id,
             'title' => $data['title'],
-            'content' => $data['description'],
+            'content' => $data['content'],
             'is_last' => $data['is_last'] ?? false,
         ]);
         PageLink::create([

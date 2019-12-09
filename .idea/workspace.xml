@@ -2,38 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d202f32e-bbc8-4673-9150-4f195e73b7de" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Classes/Sheet.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Observers/CharacterObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Providers/ObserverServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/fr/home.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/story/partials/choices.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/story/partials/effects.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/story/partials/money.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/story/partials/sheet.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PagesJsonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PagesJsonController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Stories/StoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Stories/StoriesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Classes/Action.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Classes/Action.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Character.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Character.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Item.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Item.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Stories/StoryEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Stories/StoryEditController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Genre.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Genre.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/PageLink.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PageLink.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Story.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Story.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_15_151717_create_stories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_15_151717_create_stories_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_15_151747_create_pages_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_15_151747_create_pages_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_15_151757_create_characters_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_15_151757_create_characters_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_28_055416_create_sheets_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_27_182145_create_genres_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_27_182145_create_genres_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_27_182435_create_story_genres_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_27_182435_create_story_genre_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/default.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/default.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/fr/common.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fr/common.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/fr/play.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fr/play.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/base.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/base.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/partials/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/partials/nav.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/play1.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/play1.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/play2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/play2.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/story/inventory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/story/inventory.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/story/play.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/story/play.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -203,7 +182,10 @@
       <workItem from="1575014374449" duration="29000" />
       <workItem from="1575021150471" duration="13352000" />
       <workItem from="1575184864792" duration="10412000" />
-      <workItem from="1575209305298" duration="695000" />
+      <workItem from="1575209305298" duration="9915000" />
+      <workItem from="1575274474054" duration="10000" />
+      <workItem from="1575302660576" duration="8501000" />
+      <workItem from="1575360638899" duration="606000" />
     </task>
     <servers />
   </component>

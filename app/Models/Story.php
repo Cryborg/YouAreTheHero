@@ -19,31 +19,34 @@ class Story extends Model
     /**
      * Get the genres.
      */
-    public function genres()
+ /*   public function genres()
     {
-        return $this->hasMany(Genre::class);
-    }
+        return $this->hasManyThrough(
+            Genre::class,
+            StoryGenre::class,
+            'story_id',
+            'id',
+            'id',
+            'genre_id'
+        );
+    }*/
 
     protected $casts = [
         'sheet_config' => 'array',
     ];
 
+    public function genres()
+    {
+        return $this->hasMany(Genre::class, 'id');
+    }
+
+   /* public function genres()
+    {
+        return $this->BelongsToMany(Genre::class, 'story_genre');
+    }*/
+
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function genres()
-    {
-        $storyGenre = Story_genres::where('story_id', $this->id)->first();
-        $genres = Genre::where('id', $storyGenre->genre_id)->get();
-
-        $aGenres = [];
-
-        foreach ($genres as $genre) {
-            $aGenres[] = __($genre->label);
-        }
-
-        return $aGenres;
     }
 }

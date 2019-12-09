@@ -4,7 +4,6 @@ namespace App\Admin\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\Page;
-use App\Models\PageLink;
 use Encore\Admin\Layout\Content;
 use Illuminate\Database\Eloquent\Collection;
 
