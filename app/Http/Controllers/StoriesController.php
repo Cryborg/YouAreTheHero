@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Story;
 use App\Models\User;
-use http\Client\Request;use Illuminate\Support\Facades\Cache;use Illuminate\Support\Facades\Session;use Yajra\DataTables\DataTables;
+use Illuminate\Http\Request;use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Session;
+use Yajra\DataTables\DataTables;
 
 class StoriesController extends Controller
 {
@@ -27,18 +29,22 @@ class StoriesController extends Controller
         // Delete old story session
         Session::remove('story');
 
-        return view('stories.list', ['draft' => true]);
+        $data = [
+            'draft' => true,
+            'title' => trans('stories.drafts_list_title')
+        ];
+        return view('stories.list', $data);
     }
 
     /**
      * Fill the Datatables with stories
      *
-     * @param bool $draft
+     * @param \Illuminate\Http\Request $request
      *
      * @return mixed
      * @throws \Exception
      */
-    public function ajaxList(\Illuminate\Http\Request $request)
+    public function ajaxList(Request $request)
     {
         $query = Story::select(['id','title','description','user_id','locale','created_at']);
 
@@ -60,9 +66,12 @@ class StoriesController extends Controller
             $user = Cache::rememberForever('user.' . $value['user_id'], function() use ($value) {
                 return User::where('id', $value['user_id'])->first();
             });
-            $name = $user->first_name . ' ' . $user->last_name;
-            $value['user_id'] = $name;
-            $value['genres'] = implode(', ', $value->genres());
+
+            $name                       = $user->first_name . ' ' . $user->last_name;
+            $value['user_id']           = $name;
+            $value['genres']            = implode(', ', $value->genres());
+            $value['last_created_page'] = $value->getLastCreatedPage();
+
             return $value;
         });
 

@@ -424,7 +424,7 @@ class StoryController extends Controller
      */
     public function getCreate($story = null)
     {
-        $postRoute = route('story.create.post');
+        $postRoute = 'story.create.post';
         $param = null;
 
         if ($story) {
@@ -456,15 +456,17 @@ class StoryController extends Controller
     public function postCreate(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required|unique:stories',
+            'title' => 'required',
             'description' => 'required',
+            'locale' => 'required',
+            'layout' => 'required',
             'is_published' => 'boolean',
         ]);
 
         $story = Story::create($validated);
 
         if ($story) {
-            // Create the first page, with dummy data
+            // Create the first page with dummy data
             $page = factory(Page::class)->make();
             $page->story_id = $story->id;
             $page->is_first = true;
@@ -496,11 +498,13 @@ class StoryController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postEdit(Request $request, Story $story)
+    public function postEdit(Request $request, Story $story): \Illuminate\Http\RedirectResponse
     {
         $validated = $request->validate([
-            'title' => 'required|unique:stories',
+            'title' => 'required',
             'description' => 'required',
+            'locale' => 'required',
+            'layout' => 'required',
             'is_published' => 'boolean',
         ]);
 

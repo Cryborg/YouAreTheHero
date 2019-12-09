@@ -5,4 +5,5 @@ return [
     'create_submit'         => 'Enregistrer',
     'create_page'           => 'Nouvelle page',
     'edit_title'            => 'Modification de l\'histoire',
+    'resume_editing'        => 'Ecrire',
 ];

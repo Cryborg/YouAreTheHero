@@ -60,7 +60,12 @@ class PageController extends Controller
         $validated = $request->validate([
             'title' => 'required|unique:stories',
             'description' => 'required',
+            'layout' => 'required',
         ]);
+
+        $validated['is_first']      = $request->has('is_first');
+        $validated['is_last']       = $request->has('is_last');
+        $validated['is_checkpoint'] = $request->has('is_checkpoint');
 
         if ($page->update($validated)) {
             \flash(trans('model.save_successful'));

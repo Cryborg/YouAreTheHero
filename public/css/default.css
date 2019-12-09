@@ -113,3 +113,7 @@ p.indent {
 .font-small {
     font-size: .5em;
 }
+.help-block {
+    font-size: .8em;
+    font-style: italic;
+}

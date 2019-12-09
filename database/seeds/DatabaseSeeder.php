@@ -16,15 +16,6 @@ class DatabaseSeeder extends Seeder {
      */
     public function run()
     {
-        // Admin tables
-        $this->call(AdminUsersTableSeeder::class);
-        $this->call(AdminMenuTableSeeder::class);
-        $this->call(AdminPermissionsTableSeeder::class);
-        $this->call(AdminRoleMenuTableSeeder::class);
-        $this->call(AdminRolePermissionsTableSeeder::class);
-        $this->call(AdminRoleUsersTableSeeder::class);
-        $this->call(AdminUserPermissionsTableSeeder::class);
-
         // Users
         $marty = User::create([
             'first_name'    => 'Marty',
@@ -50,6 +41,7 @@ class DatabaseSeeder extends Seeder {
             'level'         => 1,
             'force'         => 1,
         ];
+
         $storyMarty = Story::create([
             'title'         => 'Ma guitare et moi',
             'description'   => 'Comment je suis devenu un dieu de la guitare.',
@@ -254,8 +246,7 @@ class DatabaseSeeder extends Seeder {
                    'verb' => 'buy',
                    'amount' => $newItem->default_price
                 ]);
-                $this->call(AdminRolesTableSeeder::class);
-    }
+            }
 
             // Put a purse with money in it
             $newItem = Item::create([
@@ -290,6 +281,16 @@ class DatabaseSeeder extends Seeder {
                 'genre_id' => $aGenres[count($aGenres) - 1]->id,
              ]);
         }
+
+        // Admin tables
+        $this->call(AdminUsersTableSeeder::class);
+        $this->call(AdminMenuTableSeeder::class);
+        $this->call(AdminPermissionsTableSeeder::class);
+        $this->call(AdminRoleMenuTableSeeder::class);
+        $this->call(AdminRolePermissionsTableSeeder::class);
+        $this->call(AdminRoleUsersTableSeeder::class);
+        $this->call(AdminUserPermissionsTableSeeder::class);
+        $this->call(AdminRolesTableSeeder::class);
 
         \Illuminate\Support\Facades\Artisan::call('cache:clear');
     }

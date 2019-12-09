@@ -4,37 +4,39 @@
 
 @section('content')
 
-    {!! Form::model($page, [
-        'route' => ['page.edit.post', $page->id]
-    ]) !!}
-    <div class="form-group">
-        {!! Form::label('title', trans('model.title'), ['class' => 'control-label']) !!}
-        {!! Form::text('title', old('title'), ['class' => 'form-control']) !!}
+    {{-- Parent page(s) --}}
+
+    {{-- Current page --}}
+    <div>
+        @include('page.partials.create')
     </div>
 
-    <div class="form-group">
-        {!! Form::label('description', trans('model.description'), ['class' => 'control-label']) !!}
-        {!! Form::textarea('description', old('description'), ['class' => 'form-control', 'rows' => 5]) !!}
-    </div>
+    <hr>
 
-    <div class="form-group">
-        {!! Form::label('locale', trans('model.locale'), ['class' => 'control-label']) !!}
-        {!! Form::select('locale', $locales , old('locale') , ['class' => 'form-control']) !!}
+    {{-- Choice(s) --}}
+    <div>
+        <nav class="nav nav-pills" id="choicesList">
+{{--            <a class="nav-item nav-link active" href="#p1" data-toggle="tab">Onglet 1</a>--}}
+            <a class="nav-item nav-link" href="" id="addNewPage" data-toggle="tab">+</a>
+        </nav>
+        <div class="tab-content" id="choicesForm">
+{{--            <div class="tab-pane active" id="p1">--}}
+{{--                @include('page.partials.create')--}}
+{{--            </div>--}}
+        </div>
     </div>
-
-    <div class="form-group">
-        {!! Form::label('layout', trans('model.layout'), ['class' => 'control-label']) !!}
-        {!! Form::select('layout', $layouts , old('layout') , ['class' => 'form-control']) !!}
-    </div>
-
-    <div class="form-group form-check">
-        <label>
-            {!! Form::checkbox('is_published', old('is_published') ?? 1, false, ['id' => 'is_published']) !!}
-            @lang('model.is_published')
-        </label>
-    </div>
-
-    {!! Form::submit(trans('story.create_submit'), ['class' => 'form-control btn btn-primary']) !!}
-    {!! Form::close() !!}
 
 @endsection
+
+@push('footer-scripts')
+    <script type="text/javascript">
+        $('#addNewPage').on('click', function() {
+            var newNumber = $('a.nav-item.nav-link').length;
+            $('a.nav-item.nav-link').removeClass('active');
+            $('div.tab-pane.active').removeClass('active');
+
+            $('#addNewPage').parent('nav').prepend('<a class="nav-item nav-link active" href="#p' + newNumber + '" data-toggle="tab">Choix ' + newNumber + '</a>');
+            $('#choicesForm').append('<div class="tab-pane active" id="p' + newNumber + '">Texte ' + newNumber + '</div>');
+        });
+    </script>
+@endpush

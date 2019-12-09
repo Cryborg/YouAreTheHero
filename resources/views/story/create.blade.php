@@ -9,7 +9,7 @@
     {!! Form::model(\App\Models\Story::class, array('route' => array($route, $param))) !!}
         <div class="form-group">
             {!! Form::label('title', trans('model.title'), ['class' => 'control-label']) !!}
-            <p class="help-block">{{ trans('model.title_help') }}</p>
+            <p class="help-block">{{ trans('model.story_title_help') }}</p>
             {!! Form::text('title', $story ? $story->title : old('title'), ['class' => 'form-control']) !!}
         </div>
 
