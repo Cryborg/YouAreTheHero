@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "barryvdh/laravel-ide-helper": "^2.6",
         "doctrine/dbal": "^2.10",
         "encore/laravel-admin": "^1.7",
         "fideloper/proxy": "^4.0",
@@ -24,6 +25,7 @@
     },
     "require-dev": {
         "facade/ignition": "^1.4",
+        "fruitcake/laravel-telescope-toolbar": "^1.1",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",

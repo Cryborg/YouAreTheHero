@@ -43,7 +43,7 @@
             var table = $('#stories-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ url('/stories/ajax_list') }}',
+                ajax: '{{ route('stories.list.ajax') }}',
                 columns: [
                     {
                         "className":      'details-control',

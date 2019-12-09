@@ -26,6 +26,7 @@ class CreatePagesTable extends Migration
             $table->json('items')->nullable();
             $table->json('prerequisites')->nullable();
             $table->string('layout')->nullable();
+            $table->boolean('is_checkpoint')->default(false);
             $table->timestamps();
         });
     }

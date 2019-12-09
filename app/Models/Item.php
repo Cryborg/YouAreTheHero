@@ -8,6 +8,7 @@ class Item extends Model
 {
     protected $casts = [
         'effects' => 'array',
+        'single_use' => 'boolean',
     ];
 
     /**

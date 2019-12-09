@@ -25,6 +25,9 @@ class Story extends Model
         return $this->belongsToMany(Genre::class, 'story_genre');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(User::class);

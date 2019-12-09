@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Story;
 use App\Models\User;
-use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Session;use Yajra\DataTables\DataTables;
 
 class StoriesController extends Controller
 {
@@ -16,6 +16,9 @@ class StoriesController extends Controller
 
     public function list()
     {
+        // Delete old story session
+        Session::remove('story');
+
         return view('stories.list');
     }
 

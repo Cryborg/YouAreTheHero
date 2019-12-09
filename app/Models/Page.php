@@ -22,6 +22,7 @@ class Page extends Model
         'prerequisites' => 'array',
         'is_first' => 'boolean',
         'is_last' => 'boolean',
+        'is_checkpoint' => 'boolean',
     ];
 
     /**
@@ -77,5 +78,21 @@ class Page extends Model
                 $page->items = $items;
             }
         });
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return bool
+     */
+    public function addItem(array $data): bool
+    {
+        $this->items = array_merge($this->rawItems ?? [], [$data]);
+        return $this->save();
+    }
+
+    public function story()
+    {
+        return $this->belongsTo(Story::class);
     }
 }

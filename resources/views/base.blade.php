@@ -32,7 +32,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}" title="@lang('common.link_home')">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -70,7 +70,7 @@
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('stories_list') }}">
+                                        <a class="dropdown-item" href="{{ route('stories.list') }}">
                                             {{ __('play.exit_story') }}
                                         </a>
                                     </div>
@@ -101,7 +101,7 @@
         </nav>
 
         <main class="py-4">
-            <div class="container">
+            <div class="container-fluid">
                 @yield('content')
             </div>
         </main>

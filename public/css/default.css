@@ -1,11 +1,12 @@
 html, body {
     height: 100%;
-    font-size: 12px;
+    font-size: 16px !important;
 }
 
-.story-title {
+.title {
     padding: 5px;
     margin-bottom: 10px;
+    background-color: #e5e5e5;
 }
 
 .bloc {
@@ -24,11 +25,11 @@ footer {
     height: 84%;
 }
 
-.img-bloc {
+.map-bloc {
     width: 300px;
 }
 
-.img-bloc img {
+.map-bloc img {
     width: 100%;
 }
 
