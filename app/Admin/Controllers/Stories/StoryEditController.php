@@ -33,8 +33,8 @@ class StoryEditController extends AdminController
     public function edit($id, Content $content)
     {
         return Admin::content(static function (Content $content) use ($id) {
+
             $form = new Form(new Story());
-            $form->ignore('genres');
             $form->tools(function (Form\Tools $tools) {
                 $tools->disableList();
                 $tools->disableDelete();
@@ -52,8 +52,8 @@ class StoryEditController extends AdminController
             $form->display('id', 'ID');
             $form->text('title', 'Story title')->rules('required|min:3');
 
-
-            $form->multipleSelect('genres', __('common.genres'))->options(Genre::all()->pluck('label', 'id'));
+            $form->multipleSelect('genres', __('common.genres'))
+                ->options(Genre::all()->pluck('label', 'id'));
 
             $content->row($form->edit($id))->view('admin.story.story', ['story_id' => $id]);
         });

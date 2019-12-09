@@ -52,10 +52,17 @@
         }).done(function (data) {
             $('#page').html(data);
 
+            $('#page').find('select').select2();
+
+
             // Soumettre la page
             $("#page form button[type='submit']").on('click', function () {
                 let content = $("textarea[name='content']").val();
                 let page_id = $("input[name='page_id']").val();
+                let items = $('#page').find('select').val();
+
+                console.log($('#page').find('select').val());
+
 
                 $.ajax({
                     headers: {
@@ -66,11 +73,10 @@
                         $('#container').jstree("refresh");
                     },
                     url: '{{ route('admin.page.store') }}',
-                    data: {story_id: "{{ $story_id }}", content: content, page_parent: page_parent, page_id: page_id},
+                    data: {story_id: "{{ $story_id }}", content: content, page_parent: page_parent, page_id: page_id, items: items},
                     method: 'POST'
                 });
 
-                return false;
             });
 
             $('#create_new_children_page').on("click", function (e) {

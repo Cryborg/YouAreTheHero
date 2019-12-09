@@ -9,4 +9,12 @@ class Item extends Model
     protected $casts = [
         'effects' => 'array',
     ];
+
+    /**
+     * Get the pageLinks.
+     */
+    public function pages()
+    {
+        return $this->belongsToMany(Page::class);
+    }
 }

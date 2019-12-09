@@ -21,10 +21,11 @@ class PageStoreController extends Controller
      */
     public function store(Request $request)
     {
-        Page::destroy('ffbabdcb-277e-313e-b6a7-91dc7c70');
+
         if (null !== $request->page_id) {
             Page::find($request->page_id)->update([
                 'content' => $request->get('content'),
+                'items' => $request->all('items')
             ]);
         } else {
             $page = Page::create(
@@ -32,6 +33,7 @@ class PageStoreController extends Controller
                     'id' => $request->page_id,
                     'content' => $request->get('content'),
                     'story_id' => $request->story_id,
+                    'items' => $request->all('items')
                 ]
             );
 

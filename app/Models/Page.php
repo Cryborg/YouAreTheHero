@@ -78,16 +78,4 @@ class Page extends Model
             }
         });
     }
-
-    /**
-     * @param array $data
-     *
-     * @return bool
-     */
-    public function addItem(array $data): bool
-    {
-        $this->items = array_merge($this->rawItems ?? [], [$data]);
-
-        return $this->save();
-    }
 }
