@@ -18,7 +18,10 @@ use Illuminate\Support\Str;
 
 $factory->define(Page::class, function (Faker $faker) {
     return [
-        'title' => $faker->title,
+        'title' => $faker->words(5, true),
         'description' => $faker->text,
+        'is_first' => false,
+        'is_last' => false,
+        'is_checkpoint' => $faker->boolean,
     ];
 });

@@ -117,3 +117,11 @@ p.indent {
     font-size: .8em;
     font-style: italic;
 }
+.alert .glyphicon {
+    margin-right: 8px;
+    align-self: center;
+    font-size: 1.5em;
+}
+#addNewPage {
+    font-size: 1.5em;
+}

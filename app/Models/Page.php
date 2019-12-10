@@ -86,4 +86,11 @@ class Page extends Model
     {
         return $this->belongsTo(Story::class);
     }
+
+    public function pages()
+    {
+        //TODO: récupérer le pagelink::title
+
+        return $this->hasManyThrough(Page::class, PageLink::class, 'page_from', 'id', 'id', 'page_to');
+    }
 }

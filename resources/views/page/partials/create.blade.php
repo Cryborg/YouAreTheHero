@@ -1,6 +1,11 @@
 {!! Form::model($page, [
-    'route' => ['page.edit.post', $page->id]
+    'route' => ['page.edit.post', $page->id],
+    'id' => 'form-' . $page->id,
+    'data-internalid' => $internalId
 ]) !!}
+<div class="form-errors alert alert-danger hidden">
+
+</div>
 <div class="form-group">
     {!! Form::label('title', trans('model.title'), ['class' => 'control-label']) !!}
     <p class="help-block">{{ trans('model.page_title_help') }}</p>
@@ -41,5 +46,5 @@
     </label>
 </div>
 
-{!! Form::submit(trans('story.create_submit'), ['class' => 'form-control btn btn-primary']) !!}
+{!! Form::submit(trans('story.create_submit'), ['class' => 'form-control btn btn-primary submit-btn']) !!}
 {!! Form::close() !!}

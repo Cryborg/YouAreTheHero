@@ -29,7 +29,7 @@ Route::post('/story/{story}/edit', 'StoryController@postEdit')->name('story.edit
 
 Route::get('/story/{story}/inventory', 'StoryController@inventory')->name('story.inventory');
 Route::get('/story/{story}/sheet', 'StoryController@sheet')->name('story.sheet');
-//Route::get('/story/{story}/page/create', 'PageController@getCreate')->name('page.create');
+Route::get('/story/{story}/page/create', 'PageController@getCreate')->name('page.create');
 Route::get('/story/{story}/{page}/choices', 'StoryController@choices')->name('story.choices');
 Route::get('/story/{story}/{page?}', 'StoryController@getPlay')->name('story.play');
 Route::post('/story/ajax_action', 'StoryController@ajaxAction')->name('story.ajax_action');
