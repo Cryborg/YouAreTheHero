@@ -3,10 +3,15 @@
 @section('title', $title)
 
 @section('content')
-
     {{-- Parent page(s) --}}
     @if (!$page->is_first)
         @info({!! trans('page.parent_pages_help') !!})
+    @else
+        @foreach($page->parents() as $key => $parent)
+            <div class="tab-pane active" id="p{{ $key }}">
+                @include('page.partials.create', ['page' => $parent])
+            </div>
+        @endforeach
     @endif
 
     {{-- Current page --}}
@@ -24,8 +29,8 @@
 
     <div>
         <nav class="nav nav-pills" id="choicesList">
-            @if($choices)
-                @foreach($choices as $key => $choice)
+            @if($page->choices)
+                @foreach($page->choices as $key => $choice)
                     <a class="nav-item nav-link active" href="#p{{ $key }}" data-toggle="tab">
                         <span class="choice_title_{{ $key }}">
                             <input type="text" class="form-control" placeholder="{{ trans('page.link_text') }}" id="linktext-{{ $key }}" value="{{ $choice->link_title }}">
@@ -36,7 +41,13 @@
             <a class="nav-item nav-link" href="" id="addNewPage">+</a>
         </nav>
         <div class="tab-content" id="choicesForm">
-            @include('page.partials.create', ['page' => $choice])
+            @if($page->choices)
+                @foreach($page->choices as $key => $choice)
+                    <div class="tab-pane active" id="p{{ $key }}">
+                        @include('page.partials.create', ['page' => $choice])
+                    </div>
+                @endforeach
+            @endif
         </div>
     </div>
 

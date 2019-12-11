@@ -30,7 +30,6 @@ class PageController extends Controller
                 'play1' => 'Premier layout',
             ],
             'internalId' => $request->get('internalId') ?? 0,
-            'choices' => $page->pages
         ]);
 
         return $view;
@@ -55,7 +54,6 @@ class PageController extends Controller
                 'es_ES' => 'Espagnol',
             ],
             'internalId' => 0,
-            'choices' => $page->pages
         ]);
 
         return $view;
