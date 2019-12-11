@@ -53,4 +53,27 @@ class Page extends Model
     {
         return $this->belongsToMany(Item::class, 'items_pages');
     }
+
+    public function choices()
+    {
+        //TODO: récupérer le pagelink::title
+
+        return $this->hasManyThrough(
+            Page::class,
+            PageLink::class,
+            'page_from',
+            'id',
+            'id',
+            'page_to'
+        );
+    }
+
+    public function parents()
+    {
+        //TODO: récupérer le pagelink::title
+
+        return PageLink::where('page_to', $this->id)
+            ->join('pages', 'pages.id', '=', 'page_link.page_to')
+            ->get();
+    }
 }

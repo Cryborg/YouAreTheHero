@@ -3,13 +3,15 @@
 @section('title', 'Stories list')
 
 @section('content')
+    <h1>{{ $draft ?? false == true ? trans('stories.drafts_list_title') : trans('stories.list_title') }}</h1>
+
     <table id="stories-table" class="stripe">
         <thead>
             <tr>
-                <th></th>   <!-- Child rows button -->
-                <th></th>   <!-- Story ID -->
+                <th></th>   {{-- Child rows button --}}
+                <th></th>   {{-- Story ID --}}
+                <th></th>   {{-- Link to last page edit --}}
                 <th>{{ __('admin.title') }}</th>
-                <th>{{ __('common.genres') }}</th>
                 <th>{{ __('common.language') }}</th>
                 <th>{{ __('common.author') }}</th>
                 <th>{{ __('common.created_at') }}</th>
@@ -19,8 +21,8 @@
         <tr>
             <th></th>
             <th></th>
+            <th></th>
             <th>{{ __('admin.title') }}</th>
-            <th>{{ __('common.genres') }}</th>
             <th>{{ __('common.language') }}</th>
             <th>{{ __('common.author') }}</th>
             <th>{{ __('common.created_at') }}</th>
@@ -32,6 +34,8 @@
 @push('footer-scripts')
     <script type="text/javascript">
         $(function() {
+            var draft = {{ $draft ?? false == true ? 'true' : 'false' }};
+
             function format ( d ) {
                 var parser = new DOMParser;
                 var dom = parser.parseFromString(d.description, 'text/html');
@@ -43,7 +47,7 @@
             var table = $('#stories-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route('stories.list.ajax') }}',
+                ajax: '{{ route('stories.list.ajax', ['draft' => $draft ?? false]) }}',
                 columns: [
                     {
                         "className":      'details-control',
@@ -53,10 +57,17 @@
                         "width":          '5%'
                     },
                     {data: 'id', render: function ( data, type, row ) {
-                            return '<a href="{{ url('/story/') }}/' + data + '">' + data + '</a>'
+                        if ( draft) {
+                            return '<a href="' + route('story.edit', data) + '">' + data + '</a>';
+                        } else {
+                            return '<a href="{{ url('/story/') }}/' + data + '">' + data + '</a>';
+                        }
                     }, 'width': '5%'},
+                    {data: 'last_created_page', render: function ( data, type, row ) {
+                        console.log(data);
+                            return '<a href="' + route('page.edit', data.id) + '">{{ trans('story.resume_editing') }}</a>';
+                        }, 'width': '5%'},
                     {data: 'title'},
-                    {data: 'genres', 'width': '15%'},
                     {data: 'locale', 'width': '10%'},
                     {data: 'user_id', 'width': '20%'},
                     {data: 'created_at', 'width': '20%'}

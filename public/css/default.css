@@ -109,3 +109,19 @@ tr.shown td.details-control {
 p.indent {
     text-indent: 2em;
 }
+
+.font-small {
+    font-size: .5em;
+}
+.help-block {
+    font-size: .8em;
+    font-style: italic;
+}
+.alert .glyphicon {
+    margin-right: 8px;
+    align-self: center;
+    font-size: 1.5em;
+}
+#addNewPage {
+    font-size: 1.5em;
+}

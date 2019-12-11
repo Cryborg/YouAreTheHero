@@ -17,9 +17,14 @@ use \App\Models\PageLink;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 use App\Repositories\PageRepository;
+use Illuminate\Support\Facades\View;
+use Laracasts\Flash\Flash;
+use Spatie\Menu\Laravel\Facades\Menu;
+use Spatie\Menu\Laravel\Link;
 
 class StoryController extends Controller
 {
@@ -33,7 +38,7 @@ class StoryController extends Controller
         $this->middleware('auth');
     }
 
-    public function play(Story $story, Page $page = null)
+    public function getPlay(Story $story, Page $page = null)
     {
         // Check if the user has an already existing character for this story
         $character = $this->getCurrentCharacter($story);
@@ -173,7 +178,7 @@ class StoryController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function ajax_action(Request $request): JsonResponse
+    public function ajaxAction(Request $request): JsonResponse
     {
         $isOk = false;
 
@@ -410,5 +415,101 @@ class StoryController extends Controller
         return Cache::remember('item_' . $itemId, Config::get('app.story.cache_ttl'), function () use ($itemId) {
             return Item::where('id', $itemId)->first();
         });
+    }
+
+    /**
+     * @param null $story
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function getCreate($story = null)
+    {
+        $postRoute = 'story.create.post';
+        $param = null;
+
+        if ($story) {
+            $postRoute = 'story.edit.post';
+
+            $param = $story->id;
+        }
+
+        $data = [
+            'title' => trans('story.create_title'),
+            'locales' => [
+                'fr_FR' => 'Français',
+                'en_US' => 'Anglais',
+                'es_ES' => 'Espagnol',
+            ],
+            'layouts' => [
+                'play1' => 'Premier layout',
+            ],
+            'story' => $story,
+            'route' => $postRoute,
+            'param' => $param,
+        ];
+
+        $view = View::make('story.create', $data);
+
+        return $view;
+    }
+
+    public function postCreate(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'locale' => 'required',
+            'layout' => 'required',
+            'is_published' => 'boolean',
+        ]);
+
+        $story = Story::create($validated);
+
+        if ($story) {
+            // Create the first page with dummy data
+            $page = factory(Page::class)->make();
+            $page->story_id = $story->id;
+            $page->is_first = true;
+            $page->save();
+
+            \flash(trans('model.save_successful'));
+
+            return Redirect::to(route('page.edit', ['page' => $page->id]));
+        }
+
+        \flash(trans('model.save_error'));
+
+        return Redirect::to(route('story.create'));
+    }
+
+    /**
+     * @param \App\Models\Story $story
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function getEdit(Story $story)
+    {
+        return $this->getCreate($story);
+    }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Story        $story
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postEdit(Request $request, Story $story): \Illuminate\Http\RedirectResponse
+    {
+        $validated = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'locale' => 'required',
+            'layout' => 'required',
+            'is_published' => 'boolean',
+        ]);
+
+        $story->update($validated);
+
+        return Redirect::to(route('story.edit', $story->id));
     }
 }

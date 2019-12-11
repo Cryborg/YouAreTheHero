@@ -9,6 +9,7 @@ class PageLink extends Model
     protected $fillable = ['page_from'];
 
     public $table = "page_link";
+    public $guarded = ['id'];
     public $timestamps = false;
 
     /**

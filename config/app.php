@@ -161,21 +161,22 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        \App\Providers\BootstrapServiceProvider::class,
-        Yajra\DataTables\DataTablesServiceProvider::class,
-        Orangehill\Iseed\IseedServiceProvider::class,
-        Tightenco\Ziggy\ZiggyServiceProvider::class,
+
+
 
         /*
          * Package Service Providers...
          */
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        Orangehill\Iseed\IseedServiceProvider::class,
+        Tightenco\Ziggy\ZiggyServiceProvider::class,
 
         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BootstrapServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
