@@ -20,4 +20,12 @@
         .ajaxStop(function () {
             $loading.hide();
         });
+
+    $('input, select, textarea').on('keypress', function () {
+        var $this = $(this);
+        if ($this.hasClass('input-invalid')) {
+            $this.next().hide();
+            $this.removeClass('input-invalid');
+        }
+    });
 </script>

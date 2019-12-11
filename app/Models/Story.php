@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Cache;
 
 class Story extends Model
 {
-    protected $fillable = ['title', 'genres'];
+    protected $guarded = ['id'];
 
     /**
      * Get the pages.

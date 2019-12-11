@@ -70,9 +70,9 @@ class PageController extends Controller
         if ($request->ajax()) {
             $validated = $request->validate([
                 'title'       => 'required|unique:stories',
-                'description' => 'required',
+                'content'     => 'required',
                 'layout'      => 'required',
-                'linktitle'   => 'required',
+                'linktitle'   => 'sometimes|required',
                 'page_from'   => 'required',
             ]);
 
@@ -80,11 +80,14 @@ class PageController extends Controller
             $validated['is_last']       = $request->has('is_last');
             $validated['is_checkpoint'] = $request->has('is_checkpoint');
 
-            PageLink::create([
-                'link_text' => $validated['linktitle'],
-                'page_from' => $validated['page_from'],
-                'page_to' => $page->id,
-            ]);
+            if (isset($validated['linktitle'])) {
+                $data = [
+                    'link_text' => $validated['linktitle'],
+                    'page_from' => $validated['page_from'],
+                    'page_to'   => $page->id,
+                ];
+                PageLink::create($data);
+            }
 
             unset($validated['linktitle']);
             unset($validated['page_from']);

@@ -10,12 +10,14 @@
     {!! Form::label('title', trans('model.title'), ['class' => 'control-label']) !!}
     <p class="help-block">{{ trans('model.page_title_help') }}</p>
     {!! Form::text('title', old('title'), ['class' => 'form-control']) !!}
+    <div class="alert alert-error hidden"></div>
 </div>
 
 <div class="form-group">
-    {!! Form::label('description', trans('model.description'), ['class' => 'control-label']) !!}
-    <p class="help-block">{{ trans('model.page_description_help') }}</p>
-    {!! Form::textarea('description', old('description'), ['class' => 'form-control', 'rows' => 5]) !!}
+    {!! Form::label('content', trans('model.content'), ['class' => 'control-label']) !!}
+    <p class="help-block">{{ trans('model.page_content_help') }}</p>
+    {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => 5]) !!}
+    <div class="alert alert-error hidden"></div>
 </div>
 
 <div class="form-group">
