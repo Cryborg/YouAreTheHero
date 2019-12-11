@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Genre;
 use App\Models\Story;
+use App\Models\StoryGenre;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Page;
@@ -250,20 +252,17 @@ class DatabaseSeeder extends Seeder {
                 'effects' => ['experience' => ['operator' => '+', 'quantity' => 10]]
             ]);
 
-            // Put some items to pick in one of the pages
-            /** @var \App\Models\Page $page */
-
             // Genres
             $genres = ['science-fiction', 'romance', 'policier', 'thriller', 'epouvante', 'comedie', 'drame',
                 'biographie'];
             $aGenres = [];
             foreach ($genres as $genre) {
-                $aGenres[] = \App\Models\Genre::create([
+                $aGenres[] = Genre::create([
                     'label' => $genre,
                 ]);
             }
 
-            \App\Models\StoryGenre::create([
+            StoryGenre::create([
                 'story_id' => $story->id,
                 'genre_id' => $aGenres[count($aGenres) - 1]->id,
              ]);
@@ -282,6 +281,13 @@ class DatabaseSeeder extends Seeder {
         \Illuminate\Support\Facades\Artisan::call('cache:clear');
     }
 
+    /**
+     * @param \App\Models\Story $story
+     * @param \App\Models\Page  $after
+     * @param                   $data
+     *
+     * @return \App\Models\Page|\Illuminate\Database\Eloquent\Model
+     */
     private function addPage(Story $story, Page $after, $data) {
         $new = Page::create([
             'story_id' => $story->id,

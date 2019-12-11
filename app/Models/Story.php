@@ -44,7 +44,7 @@ class Story extends Model
 
     public function genres()
     {
-        return $this->belongsToMany(Genre::class, 'story_genres');
+        return $this->belongsToMany(Genre::class, 'story_genre');
     }
 
     /**

@@ -63,7 +63,7 @@
                             data.forEach (function (genre) {
                                 genres.push(genre.label);
                             });
-                            console.log(genres);
+
                             return genres.join(', ');
                         }, 'width': '5%'},
                     {data: 'locale', 'width': '10%'},
