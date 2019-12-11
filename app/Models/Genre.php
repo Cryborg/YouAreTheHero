@@ -12,6 +12,6 @@ class Genre extends Model
 
     public function stories()
     {
-        return $this->belongsToMany(Story::class, 'story_genre');
+        return $this->belongsToMany(Story::class, 'story_genres');
     }
 }
