@@ -23,7 +23,6 @@ class CreatePagesTable extends Migration
             $table->string('title')->nullable();
             $table->text('content');
             $table->softDeletes();
-            $table->json('items')->nullable();
             $table->json('prerequisites')->nullable();
             $table->string('layout')->nullable();
             $table->boolean('is_checkpoint')->default(false);

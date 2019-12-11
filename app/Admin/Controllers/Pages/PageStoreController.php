@@ -23,17 +23,23 @@ class PageStoreController extends Controller
     {
 
         if (null !== $request->page_id) {
-            Page::find($request->page_id)->update([
+            $page = Page::find($request->page_id);
+            if (null === $page) {
+                Session::flash('error', 'Cette page n\'existe pas.');
+                return View::make('partials/flash-messages');
+            }
+
+            $page->update([
                 'content' => $request->get('content'),
-                'items' => $request->all('items')
             ]);
+            $page->items()->sync($request->get('items'));
+
         } else {
             $page = Page::create(
                 [
                     'id' => $request->page_id,
                     'content' => $request->get('content'),
                     'story_id' => $request->story_id,
-                    'items' => $request->all('items')
                 ]
             );
 

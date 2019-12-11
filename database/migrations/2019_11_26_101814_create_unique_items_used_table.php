@@ -17,7 +17,7 @@ class CreateUniqueItemsUsedTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('character_id');
             $table->foreign('character_id')->references('id')->on('characters');
-            $table->unsignedBigInteger('item_id');
+            $table->unsignedInteger('item_id');
             $table->foreign('item_id')->references('id')->on('items');
             $table->timestamps();
         });

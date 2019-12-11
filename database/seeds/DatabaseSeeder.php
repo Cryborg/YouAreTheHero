@@ -96,11 +96,7 @@ class DatabaseSeeder extends Seeder {
                 ],
                 'single_use' => true,
             ]);
-            $p1->addItem([
-                'item' => $marteau->id,
-                'verb' => 'buy',
-                'amount' => $marteau->default_price
-            ]);
+
             $p2_1 = Page::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 2.1',
@@ -249,12 +245,7 @@ class DatabaseSeeder extends Seeder {
                 // Put some items to pick in one of the pages
                 /** @var \App\Models\Page $page */
                 echo $p6->id;
-                $page = Page::where('id', $p6->id)->first();
-                $page->addItem([
-                   'item' => $newItem->id,
-                   'verb' => 'buy',
-                   'amount' => $newItem->default_price
-                ]);
+
                 $this->call(AdminRolesTableSeeder::class);
             }
 
@@ -269,12 +260,6 @@ class DatabaseSeeder extends Seeder {
 
             // Put some items to pick in one of the pages
             /** @var \App\Models\Page $page */
-            $page = Page::where('id', $p6->id)->first();
-            $page->addItem([
-               'item' => $newItem->id,
-               'verb' => 'earn',
-               'amount' => $newItem->default_price
-           ]);
 
             // Genres
             $genres = ['science-fiction', 'romance', 'policier', 'thriller', 'epouvante', 'comedie', 'drame',

@@ -12,13 +12,10 @@ class Page extends Model
 
     public $incrementing = false;
 
-    protected $rawItems;
-
     protected $guarded = ['id'];
 
     // Casts JSON as array
     protected $casts = [
-        'items' => 'array',
         'prerequisites' => 'array',
         'is_first' => 'boolean',
         'is_last' => 'boolean',
@@ -45,54 +42,15 @@ class Page extends Model
             $page->is_first = $page->number === 1;
         });
 
-        static::retrieved(static function ($page)
-        {
-            $items = [];
-
-            if (null !== $page->items) {
-                foreach ($items as $pageItem) {
-                    // If this is an Item
-                    if (isset($pageItem['item'])) {
-                        // Check if the item has already been used/picked-up, whatever
-                        $usedItem = UniqueItemsUsed::where([
-                            'character_id' => session('character_id'),
-                            'item_id' => $pageItem['item'],
-                        ])->first();
-
-                        // If not, we can display it
-                        if ($usedItem === null) {
-                            $item = Item::where('id', $pageItem['item'])->first();
-
-                            if ($item) {
-                                $items[] = [
-                                    'item'   => $item,
-                                    'verb'   => $pageItem['verb'],
-                                    'amount' => $pageItem['amount'],
-                                ];
-                            }
-                        }
-                    }
-
-                    $page->rawItems[] = $pageItem;
-                }
-                $page->items = $items;
-            }
-        });
-    }
-
-    /**
-     * @param array $data
-     *
-     * @return bool
-     */
-    public function addItem(array $data): bool
-    {
-        $this->items = array_merge($this->rawItems ?? [], [$data]);
-        return $this->save();
     }
 
     public function story()
     {
         return $this->belongsTo(Story::class);
+    }
+
+    public function items()
+    {
+        return $this->belongsToMany(Item::class, 'items_pages');
     }
 }

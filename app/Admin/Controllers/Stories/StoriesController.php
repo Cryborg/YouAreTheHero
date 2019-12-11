@@ -7,7 +7,6 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
-use Illuminate\Support\Facades\DB;
 
 /**
  * Class StoriesController
@@ -30,7 +29,6 @@ class StoriesController extends AdminController
             $content->body(Admin::grid(Story::class, function (Grid $grid) {
                 $grid->disableRowSelector();
                 $grid->disableExport();
-
 
                 $grid->id('id')->setAttributes(['width' => '5%']);
                 $grid->column('title', __('admin.title'));

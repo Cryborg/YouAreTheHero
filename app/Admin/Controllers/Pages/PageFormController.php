@@ -3,10 +3,12 @@
 namespace App\Admin\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
-use App\Models\Genre;
 use App\Models\Item;
 use App\Models\Page;
+use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
+use Encore\Admin\Grid;
+use Encore\Admin\Layout\Content;
 use Illuminate\Http\Request;
 
 /**
@@ -17,11 +19,12 @@ class PageFormController extends Controller
 {
     /**
      * @param Request $request
-     * @return void
+     * @return Content
      */
     public function form(Request $request)
     {
         $form = new Form(new Page());
+
         $form->setAction('#');
 
         $form->tools(function (Form\Tools $tools) {
@@ -41,21 +44,14 @@ class PageFormController extends Controller
             $footer->disableCreatingCheck();
         });
 
-        $page = Page::where('story_id', $request->story_id)->where('id', $request->page_id)->first();
-        $form->textarea('content', 'Contenu')->rules('required|min:3')
-            ->value($page->content ?? '');
+        $form->textarea('content', 'Contenu')->rules('required|min:3');
 
-        $form->multipleSelect('items', __('admin.items'))
-            ->options( Item::all()->mapWithKeys(function($item){
-                $affect = array_keys($item->effects)[0];
-                $operator = $item->effects[$affect]['operator'] === '*' ? 'x' : $item->effects[$affect]['operator'];
-                $price = $item->default_price;
-
-                return [ $item->id => $item->name.' - effects : '. "{$affect} : {$operator}{$item->effects[$affect]['quantity']} | price : $price"];
-            }));
-
+        $form->multipleSelect('items', __('admin.items'))->options(Item::all()->pluck('name', 'id'));
+        $form->edit($request->page_id);
         $form->hidden('csrf-token')->value(csrf_token());
-        $form->hidden('page_id')->value($page->id ?? '');
+        $form->hidden('page_id')->value($request->page_id ?? '');
+        $form->hidden('story_id')->value($request->story_id ?? '');
+
 
         return $form->render();
     }

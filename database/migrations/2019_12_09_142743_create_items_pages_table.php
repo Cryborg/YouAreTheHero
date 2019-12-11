@@ -13,11 +13,11 @@ class CreateItemsPagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('items_page', function (Blueprint $table) {
+        Schema::create('items_pages', function (Blueprint $table) {
             $table->unsignedInteger('item_id');
             $table->foreign('item_id')->references('id')->on('items');
-            $table->unsignedInteger('story_id');
-            $table->foreign('story_id')->references('id')->on('stories');
+            $table->uuid('page_id');
+            $table->foreign('page_id')->references('id')->on('pages');
         });
     }
 
@@ -28,6 +28,6 @@ class CreateItemsPagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items_page');
+        Schema::dropIfExists('items_pages');
     }
 }
