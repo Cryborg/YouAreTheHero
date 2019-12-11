@@ -10,4 +10,12 @@ class Item extends Model
         'effects' => 'array',
         'single_use' => 'boolean',
     ];
+
+    /**
+     * Get the pageLinks.
+     */
+    public function pages()
+    {
+        return $this->belongsToMany(Page::class, 'items_pages');
+    }
 }

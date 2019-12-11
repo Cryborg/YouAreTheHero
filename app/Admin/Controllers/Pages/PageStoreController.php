@@ -4,7 +4,10 @@ namespace App\Admin\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\Page;
+use App\Models\PageLink;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\View;
 
 /**
  * Class PageCreateController
@@ -18,13 +21,38 @@ class PageStoreController extends Controller
      */
     public function store(Request $request)
     {
-        $page = new Page();
 
-        $page->description = $request->description;
-        $page->story_id = $request->story_id;
+        if (null !== $request->page_id) {
+            $page = Page::find($request->page_id);
+            if (null === $page) {
+                Session::flash('error', 'Cette page n\'existe pas.');
+                return View::make('partials/flash-messages');
+            }
 
-        $page->save();
+            $page->update([
+                'content' => $request->get('content'),
+            ]);
+            $page->items()->sync($request->get('items'));
 
-        return back()->with('ok', __ ('Le profil a bien été mis à jour'));
+        } else {
+            $page = Page::create(
+                [
+                    'id' => $request->page_id,
+                    'content' => $request->get('content'),
+                    'story_id' => $request->story_id,
+                ]
+            );
+
+            if ($request->has('page_parent')) {
+                $pageLink = new PageLink();
+                $pageLink->page_from = $request->page_parent;
+                $pageLink->page_to = $page->id;
+                $pageLink->link_text = 'toto';
+                $pageLink->save();
+            }
+        }
+
+        Session::flash('success', 'File has been uploaded successfully!');
+        return View::make('partials/flash-messages');
     }
 }

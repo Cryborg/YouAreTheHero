@@ -4,14 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Genre extends Model
+class ItemsPage extends Model
 {
     protected $guarded = ['id'];
 
     public $timestamps = false;
 
-    public function stories()
-    {
-        return $this->belongsToMany(Story::class, 'story_genre');
-    }
+    protected $table = 'items_pages';
 }

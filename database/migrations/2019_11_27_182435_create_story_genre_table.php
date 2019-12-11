@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStoryGenresTable extends Migration
+class CreateStoryGenreTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateStoryGenresTable extends Migration
      */
     public function up()
     {
-        Schema::create('story_genres', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('story_id');
+        Schema::create('story_genre', function (Blueprint $table) {
+            $table->unsignedInteger('story_id');
             $table->foreign('story_id')->references('id')->on('stories');
             $table->unsignedInteger('genre_id');
             $table->foreign('genre_id')->references('id')->on('genres');
@@ -29,6 +28,6 @@ class CreateStoryGenresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('story_genres');
+        Schema::dropIfExists('story_genre');
     }
 }

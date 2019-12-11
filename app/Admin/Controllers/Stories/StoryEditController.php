@@ -2,12 +2,12 @@
 
 namespace App\Admin\Controllers\Stories;
 
-use App\Models\Page;
+use App\Models\Genre;
 use App\Models\Story;
+use Doctrine\DBAL\Schema\View;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
-use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 
 /**
@@ -33,6 +33,7 @@ class StoryEditController extends AdminController
     public function edit($id, Content $content)
     {
         return Admin::content(static function (Content $content) use ($id) {
+
             $form = new Form(new Story());
             $form->tools(function (Form\Tools $tools) {
                 $tools->disableList();
@@ -51,7 +52,10 @@ class StoryEditController extends AdminController
             $form->display('id', 'ID');
             $form->text('title', 'Story title')->rules('required|min:3');
 
-            $content->row($form->edit($id))->view('admin.story.story',['story_id' => $id]);
+            $form->multipleSelect('genres', __('common.genres'))
+                ->options(Genre::all()->pluck('label', 'id'));
+
+            $content->row($form->edit($id))->view('admin.story.story', ['story_id' => $id]);
         });
     }
 }

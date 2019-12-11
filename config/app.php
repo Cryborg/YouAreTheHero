@@ -178,6 +178,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\BootstrapServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
     ],

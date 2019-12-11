@@ -2,10 +2,13 @@
 
 namespace App\Admin\Controllers\Stories;
 
+use App\Models\Genre;
 use App\Models\Story;
+use App\Models\StoryGenre;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
 use Encore\Admin\Layout\Content;
+use Hamcrest\Core\AllOf;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Routing\Redirector;
@@ -52,6 +55,9 @@ class StoryCreateController extends Controller
 
         $form->text('title', 'Story title')->rules('required|min:3');
         $form->text('description', 'Description')->rules('required|min:3');
+
+        $form->multipleSelect('genres')->options(Genre::all()->pluck('label', 'id'));
+
         $form->hidden('user_id')->value($user->getAuthIdentifier());
         $this->form = $form;
 
@@ -71,8 +77,22 @@ class StoryCreateController extends Controller
         $story->title = $request->title;
         $story->description = $request->description;
         $story->user_id = $request->user_id;
+        $genres = $request->genres;
+        array_pop($genres);
+
+        $storyGenres['story_id'] = array_values($genres);
+        $storyGenres = [];
+        foreach ($genres as $k => $genre) {
+            $storyGenres[$k]['story_id'] = 1;
+            $storyGenres[$k]['genre_id'] = $genre;
+        }
 
         $story->save();
+
+        foreach ($storyGenres as $storyGenre) {
+            StoryGenre::firstOrCreate($storyGenre);
+        }
+
 
         return redirect()->route('admin.stories.list');
     }

@@ -6,11 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 use \App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
-use Laracasts\Flash\Flash;
 
 class Story extends Model
 {
-    protected $guarded = ['id'];
+    protected $fillable = ['title', 'genres'];
+
+    /**
+     * Get the pages.
+     */
+    public function pages()
+    {
+        return $this->hasMany(Page::class);
+    }
 
     protected $casts = [
         'sheet_config' => 'array',
@@ -35,6 +42,11 @@ class Story extends Model
         });
     }
 
+    public function genres()
+    {
+        return $this->belongsToMany(Genre::class, 'story_genre');
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -42,36 +54,6 @@ class Story extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function pages()
-    {
-        return $this->hasMany(Page::class);
-    }
-
-    /**
-     * @return array
-     */
-    public function genres(): array
-    {
-        $aGenres = [];
-
-        $storyGenre = StoryGenre::where('story_id', $this->id)->first();
-
-        if ($storyGenre) {
-            $genres = Genre::where('id', $storyGenre->genre_id)
-                           ->get();
-
-            foreach ($genres as $genre) {
-                $aGenres[] = __($genre->label);
-            }
-        }
-
-        return $aGenres;
-    }
-
 
     /**
      * Get the last created page of a given story

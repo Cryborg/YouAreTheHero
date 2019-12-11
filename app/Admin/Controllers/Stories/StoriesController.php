@@ -2,14 +2,11 @@
 
 namespace App\Admin\Controllers\Stories;
 
-use App\Models\Genre;
 use App\Models\Story;
-use App\Models\StoryGenre;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * Class StoriesController
@@ -33,16 +30,16 @@ class StoriesController extends AdminController
                 $grid->disableRowSelector();
                 $grid->disableExport();
 
-                $grid->model()->where('user_id', '=', Auth::id());
-
                 $grid->id('id')->setAttributes(['width' => '5%']);
                 $grid->column('title', __('admin.title'));
 
-                $grid->column('genre', __('common.genres'))->display(function () {
-                    $story = Story::where('id', $this->id)->first();
-                    $genres = $story->genres();
+                $grid->column('genres', __('common.genres'))->display(function($items){
+                    $labels = [];
+                    foreach ($items as $item) {
+                        $labels[] = $item['label'];
+                    }
 
-                    return implode(', ', $genres);
+                    return implode(', ', $labels);
                 });
 
                 $grid->column('locale', __('admin.language'))->setAttributes(['width' => '10%']);

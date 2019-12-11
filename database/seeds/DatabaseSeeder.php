@@ -63,14 +63,14 @@ class DatabaseSeeder extends Seeder {
             $p1 = Page::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 1',
-                'description' => '<p>Premier paragraphe avec une seule option, pas difficile de choisir ;)</p>' .
+                'content' => '<p>Premier paragraphe avec une seule option, pas difficile de choisir ;)</p>' .
                     '<p>Mais.... ce marteau pourrait peut-être m\'aider ?</p>',
                 'is_first' => true,
             ]);
             $p2 = Page::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 2',
-                'description' => 'Ca se corse !! Trois choix, dis-donc que c\'est dur...<br>En plus l\'inventaire à gauche s\'est barré...',
+                'content' => 'Ca se corse !! Trois choix, dis-donc que c\'est dur...<br>En plus l\'inventaire à gauche s\'est barré...',
                 'layout' => 'play2',
             ]);
             PageLink::create([
@@ -88,15 +88,11 @@ class DatabaseSeeder extends Seeder {
                 ],
                 'single_use' => true,
             ]);
-            $p1->addItem([
-                'item' => $marteau->id,
-                'verb' => 'buy',
-                'amount' => $marteau->default_price
-            ]);
+
             $p2_1 = Page::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 2.1',
-                'description' => 'Bien joué ! C\'est un paragraphe difficile à atteindre :)',
+                'content' => 'Bien joué ! C\'est un paragraphe difficile à atteindre :)',
                 'prerequisites' => [
                     'sheet' => [
                         'force' => 2
@@ -115,19 +111,19 @@ class DatabaseSeeder extends Seeder {
             $p3 = Page::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 3',
-                'description' => 'Je suis allé à gauche et c\'est beau !',
+                'content' => 'Je suis allé à gauche et c\'est beau !',
                 'is_checkpoint' => true,
             ]);
             $p4 = Page::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 4',
-                'description' => 'Je suis allé tout droit, pas mal !',
+                'content' => 'Je suis allé tout droit, pas mal !',
                 'is_checkpoint' => true,
             ]);
             $p5 = Page::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 5',
-                'description' => 'Je suis allé à droite, c\'est magnifique !',
+                'content' => 'Je suis allé à droite, c\'est magnifique !',
                 'is_checkpoint' => true,
             ]);
             PageLink::create([
@@ -154,7 +150,7 @@ class DatabaseSeeder extends Seeder {
             $p6 = Page::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 5',
-                'description' => 'Tous les chemins mènent ici, aucun mérite !',
+                'content' => 'Tous les chemins mènent ici, aucun mérite !',
                 'is_last' => true,
             ]);
             PageLink::create([
@@ -170,24 +166,24 @@ class DatabaseSeeder extends Seeder {
 
             $p7 = $this->addPage($story, $p4, [
                 'title' => 'Paragraphe 5',
-                'description' => 'The lieutenant commander is more particle now than planet. interstellar and wildly intelligent!'
+                'content' => 'The lieutenant commander is more particle now than planet. interstellar and wildly intelligent!'
                     . '<br>Fly without powerdrain, and we won’t love an astronaut.'
                     . '<br><br><br>Congratulations you WON!!',
                 'link_text' => 'Je continue d\'avancer !',
             ]);
             $p8 = $this->addPage($story, $p4, [
                 'title' => 'Paragraphe 6',
-                'description' => 'Tu as bien choisi, tu es arrivé bien loin !',
+                'content' => 'Tu as bien choisi, tu es arrivé bien loin !',
                 'link_text' => 'Irai-je à gauche ?',
             ]);
             $p9 = $this->addPage($story, $p4, [
                 'title' => 'Paragraphe 7',
-                'description' => 'Tu as bien choisi, tu es arrivé bien loin !',
+                'content' => 'Tu as bien choisi, tu es arrivé bien loin !',
                 'link_text' => 'Ou au milieu ?',
             ]);
             $p10 = $this->addPage($story, $p4, [
                 'title' => 'Paragraphe 8',
-                'description' => 'Tu as bien choisi, tu es arrivé bien loin !',
+                'content' => 'Tu as bien choisi, tu es arrivé bien loin !',
                 'link_text' => 'Ou bien à droite ?',
             ]);
 
@@ -240,12 +236,9 @@ class DatabaseSeeder extends Seeder {
 
                 // Put some items to pick in one of the pages
                 /** @var \App\Models\Page $page */
-                $page = Page::where('id', $p6->id)->first();
-                $page->addItem([
-                   'item' => $newItem->id,
-                   'verb' => 'buy',
-                   'amount' => $newItem->default_price
-                ]);
+                echo $p6->id;
+
+                $this->call(AdminRolesTableSeeder::class);
             }
 
             // Put a purse with money in it
@@ -259,12 +252,6 @@ class DatabaseSeeder extends Seeder {
 
             // Put some items to pick in one of the pages
             /** @var \App\Models\Page $page */
-            $page = Page::where('id', $p6->id)->first();
-            $page->addItem([
-               'item' => $newItem->id,
-               'verb' => 'earn',
-               'amount' => $newItem->default_price
-           ]);
 
             // Genres
             $genres = ['science-fiction', 'romance', 'policier', 'thriller', 'epouvante', 'comedie', 'drame',
@@ -299,7 +286,7 @@ class DatabaseSeeder extends Seeder {
         $new = Page::create([
             'story_id' => $story->id,
             'title' => $data['title'],
-            'description' => $data['description'],
+            'content' => $data['content'],
             'is_last' => $data['is_last'] ?? false,
         ]);
         PageLink::create([
