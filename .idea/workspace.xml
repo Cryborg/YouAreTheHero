@@ -3,20 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d202f32e-bbc8-4673-9150-4f195e73b7de" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageFormController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageStoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Pages/PageStoreController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/Stories/StoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/Stories/StoriesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Item.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Item.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/items_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/itemsPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_15_151747_create_pages_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_15_151747_create_pages_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_20_132702_create_items_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_20_132702_create_items_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_23_200627_create_inventories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_23_200627_create_inventories_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_26_101814_create_unique_items_used_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_26_101814_create_unique_items_used_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_27_182145_create_genres_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_27_182145_create_genres_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_09_142743_create_items_pages_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_09_142743_create_items_pages_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/story/story.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/story/story.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/itemsPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ItemsPage.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -192,7 +179,7 @@
       <workItem from="1575360638899" duration="606000" />
       <workItem from="1575875337466" duration="29232000" />
       <workItem from="1575964958577" duration="6579000" />
-      <workItem from="1576052685460" duration="4625000" />
+      <workItem from="1576052685460" duration="5643000" />
     </task>
     <servers />
   </component>
