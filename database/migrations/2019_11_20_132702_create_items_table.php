@@ -20,7 +20,9 @@ class CreateItemsTable extends Migration
             $table->unsignedInteger('story_id');
             $table->json('effects')->nullable();
             $table->boolean('single_use')->default(false);
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

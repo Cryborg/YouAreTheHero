@@ -29,22 +29,32 @@
 
     <div>
         <nav class="nav nav-pills" id="choicesList">
-            @if($page->choices)
-                @foreach($page->choices as $key => $choice)
-                    <a class="nav-item nav-link active" href="#p{{ $key }}" data-toggle="tab">
+            @if($page->choices())
+                @foreach($page->choices() as $key => $choice)
+                    <a class="nav-item nav-link @if ($key === 0) active @endif" href="#p{{ $key }}" data-toggle="tab">
                         <span class="choice_title_{{ $key }}">
-                            <input type="text" class="form-control" placeholder="{{ trans('page.link_text') }}" id="linktext-{{ $key }}" value="{{ $choice->link_title }}">
+                            <input type="text" class="form-control" placeholder="{{ trans('page.link_text') }}" id="linktext-{{ $key + 1 }}" value="{{ $choice->link_text }}">
                         </span>
                     </a>
                 @endforeach
             @endif
             <a class="nav-item nav-link" href="" id="addNewPage">+</a>
+            <a class="nav-item nav-link" href="">
+                <select class="form-control mr-sm-2" id="childrenSelect">
+                    <option value="0" selected>{{ trans('page.existing_page') }}</option>
+                    @foreach ($page->getPotentialChildren() as $existingPage)
+                        @if ($existingPage->id !== $page->id)
+                            <option value="{{ $existingPage->id }}">{{ $existingPage->title }}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </a>
         </nav>
         <div class="tab-content" id="choicesForm">
-            @if($page->choices)
-                @foreach($page->choices as $key => $choice)
-                    <div class="tab-pane active" id="p{{ $key }}">
-                        @include('page.partials.create', ['page' => $choice])
+            @if($page->choices())
+                @foreach($page->choices() as $key => $choice)
+                    <div class="tab-pane @if ($key === 0) active @endif" id="p{{ $key }}">
+                        @include('page.partials.create', ['page' => $choice, 'internalId' => $key + 1])
                     </div>
                 @endforeach
             @endif
@@ -55,61 +65,40 @@
 
 @push('footer-scripts')
     <script type="text/javascript">
-        $(document).ready(function () {
-            // Create a new tab
-            $('#addNewPage').on('click', function(event) {
-                var $this = $(this);
+        function newPage($this, route)
+        {
+            var newNumber = $('a.nav-item.nav-link').length;
+            $('a.nav-item.nav-link, div.tab-pane').removeClass('active');
 
-                event.preventDefault();
-
-                $this.prop('disabled', true);
-
-                var newNumber = $('a.nav-item.nav-link').length;
-                $('a.nav-item.nav-link, div.tab-pane').removeClass('active');
-
-                $('#addNewPage').before(
-                    '<a class="nav-item nav-link active" href="#p' + newNumber + '" data-toggle="tab">' +
-                        '<span class="choice_title_' + newNumber + '">' +
-                            '<input type="text" class="form-control" placeholder="{{ trans('page.link_text') }}" id="linktext-' + newNumber + '">' +
-                            '<div class="alert alert-error hidden"></div>' +
-                        '</span></span>' +
-                    '</a>');
-                $.ajax({
-                    'url': route('page.create', {{ $page->story_id }}),
-                    'data': {'internalId': newNumber}
-                })
+            $('#addNewPage').before(
+                '<a class="nav-item nav-link active" href="#p' + newNumber + '" data-toggle="tab">' +
+                '<span class="choice_title_' + newNumber + '">' +
+                '<input type="text" class="form-control" placeholder="{{ trans('page.link_text') }}" id="linktext-' + newNumber + '">' +
+                '<div class="alert alert-error hidden"></div>' +
+                '</span></span>' +
+                '</a>');
+            $.ajax({
+                'url': route,
+                'data': {'internalId': newNumber}
+            })
                 .done(function (data) {
                     $('#choicesForm').append('<div class="tab-pane active" id="p' + newNumber + '">' + data + '</div>');
                 })
                 .always(function () {
                     $this.prop('disabled', false);
                 });
+        }
+
+        $(document).ready(function () {
+            // Create a new tab
+            $('#addNewPage').on('click', function(event) {
+                event.preventDefault();
+
+                var $this = $(this);
+                $this.prop('disabled', true);
+
+                newPage($this, route('page.create', {{ $page->story_id }}));
             });
-
-            function checkForm($form)
-            {
-                var internalId = $form.data('internalid');
-                var pageLinkTitle = $('#linktext-' + internalId).val();
-                var hasErrors = false;
-                var errors = [];
-
-                if (internalId !== 0 && pageLinkTitle.trim() === '') {
-                    hasErrors = true;
-                    errors.push('link_title');
-                }
-
-                if (errors.length === 0) {
-                    $('.form-errors').addClass('hidden');
-                } else {
-                    $.each(errors,  function (key, error) {
-                        $('.form-errors').append('<div class="error">' + error + '</div>');
-                    });
-
-                    $('.form-errors').removeClass('hidden');
-                }
-
-                return hasErrors === false;
-            }
 
             $(document).on('click', '.submit-btn', function (e) {
                 let $this = $(this).parent('form');
@@ -119,10 +108,6 @@
                 // Otherwise it is > 0
                 var internalId = $this.data('internalid');
                 var pageLinkTitle = $('#linktext-' + internalId).val();
-
-                // if (checkForm($this) === false) {
-                //     return false;
-                // }
 
                 var data = $this.serialize();
                 if (internalId > 0) data += '&linktitle=' + encodeURIComponent(pageLinkTitle);
@@ -148,6 +133,20 @@
                         }
                     });
             });
+        });
+
+        $('.nav-item.nav-link select').on('click', function(e) {
+            e.preventDefault();
+
+            var $this = $(this);
+
+            if ($this.val() == 0) return false;
+
+            $this.prop('disabled', true);
+
+            newPage($this, route('page.create', [{{ $page->story_id }}, $this.val()]));
+
+            $("#childrenSelect option:selected").remove();
         });
     </script>
 @endpush

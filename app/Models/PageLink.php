@@ -8,6 +8,9 @@ class PageLink extends Model
 {
     protected $table = "page_link";
     protected $guarded = ['id'];
+
+    protected $keyType = 'string';
+
     public $timestamps = false;
 
     /**

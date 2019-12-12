@@ -23,7 +23,9 @@ class CreateUsersTable extends Migration
             $table->string('locale')->default('fr_FR');
             $table->dateTime('email_verified_at')->nullable();
             $table->string('remember_token')->nullable();
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

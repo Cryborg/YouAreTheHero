@@ -22,11 +22,12 @@ class CreatePagesTable extends Migration
             $table->boolean('is_last')->default(false);
             $table->string('title')->nullable();
             $table->text('content');
-            $table->softDeletes();
             $table->json('prerequisites')->nullable();
             $table->string('layout')->nullable();
             $table->boolean('is_checkpoint')->default(false);
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

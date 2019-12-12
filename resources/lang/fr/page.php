@@ -9,4 +9,5 @@ return [
                                    "Clique sur l'onglet marqué d'un + pour ajouter un nouveau choix.",
     'parent_pages_help'         => "Toutes les pages menant à celle en cours d'édition sont répertoriées ici.<br>" .
                                    "Tu ne peux pas les modifier directement, il faut passer par le lien prévu à cet effet pour ça.",
+    'existing_page'             => 'Choisis une page existante',
 ];

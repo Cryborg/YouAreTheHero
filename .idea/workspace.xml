@@ -3,12 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="d202f32e-bbc8-4673-9150-4f195e73b7de" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Genre.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Genre.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/PageLink.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PageLink.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Story.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Story.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/StoryGenre.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/StoryGenre.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_27_182435_create_story_genres_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_27_182435_create_story_genre_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/stories/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stories/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_15_151227_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_15_151227_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_15_151747_create_pages_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_15_151747_create_pages_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_15_151757_create_characters_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_15_151757_create_characters_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_19_075429_create_my_table_migration.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_20_132702_create_items_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_20_132702_create_items_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/fr/page.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fr/page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/fr/story.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fr/story.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/page/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/page/partials/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/partials/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/story/partials/choices.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/story/partials/choices.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +223,7 @@
       <workItem from="1575875337466" duration="29232000" />
       <workItem from="1575964958577" duration="6579000" />
       <workItem from="1576052685460" duration="5998000" />
-      <workItem from="1576069639463" duration="6664000" />
+      <workItem from="1576069639463" duration="24770000" />
     </task>
     <servers />
   </component>
@@ -265,6 +274,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="2852" y="347" width="686" height="713" key="RollbackChangesDialog" timestamp="1576147069166">
+      <screen x="1920" y="0" width="2560" height="1440" />
+    </state>
+    <state x="2852" y="347" width="686" height="713" key="RollbackChangesDialog/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576147069166" />
     <state x="2020" y="100" width="2360" height="1208" key="VCS.FileHistoryDialog" timestamp="1576075792977">
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
@@ -273,13 +286,13 @@
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
     <state x="2020" y="100" width="2360" height="1208" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576072345580" />
-    <state x="2261" y="175" width="1932" height="880" key="find.popup" timestamp="1576076215970">
+    <state x="2261" y="175" width="1932" height="880" key="find.popup" timestamp="1576157480497">
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
-    <state x="2261" y="175" width="1932" height="880" key="find.popup/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576076215970" />
-    <state x="2775" y="314" width="848" height="1034" key="search.everywhere.popup" timestamp="1576074776939">
+    <state x="2261" y="175" width="1932" height="880" key="find.popup/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576157480497" />
+    <state x="2775" y="314" width="848" height="1034" key="search.everywhere.popup" timestamp="1576164203608">
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
-    <state x="2775" y="314" width="848" height="1034" key="search.everywhere.popup/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576074776939" />
+    <state x="2775" y="314" width="848" height="1034" key="search.everywhere.popup/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576164203608" />
   </component>
 </project>

@@ -8,28 +8,34 @@ use App\Models\Story;
 use Faker\Provider\Uuid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 
 class PageController extends Controller
 {
     /**
-     * @param \App\Models\Story $story
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Story        $story
+     * @param \App\Models\Page|null    $page
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function getCreate(Request $request, Story $story): \Illuminate\Contracts\View\View
+    public function getCreate(Request $request, Story $story, Page $page = null): \Illuminate\Contracts\View\View
     {
-        $page = factory(Page::class)->make();
-        $page->story_id = $story->id;
-        $page->id = (string) substr(Uuid::uuid(), 0, 32);
-        $page->save();
+        if ($page === null) {
+            $page           = factory(Page::class)->make();
+            $page->story_id = $story->id;
+            $page->id       = (string) substr(Uuid::uuid(), 0, 32);
+            $page->save();
+        }
 
         $view = View::make('page.partials.create', [
+            'story' => $story,
             'page' => $page,
             'layouts' => [
                 'play1' => 'Premier layout',
             ],
-            'internalId' => $request->get('internalId') ?? 0,
+            'internalId' => $request->get('internalId') ?? 1,
         ]);
 
         return $view;
@@ -44,6 +50,7 @@ class PageController extends Controller
     {
         $view = View::make('page.create', [
             'title' => trans('model.title'),
+            'story' => $page->story,
             'page' => $page,
             'layouts' => [
                 'play1' => 'Premier layout',
@@ -81,16 +88,15 @@ class PageController extends Controller
             $validated['is_checkpoint'] = $request->has('is_checkpoint');
 
             if (isset($validated['linktitle'])) {
-                $data = [
-                    'link_text' => $validated['linktitle'],
+                PageLink::updateOrCreate([
                     'page_from' => $validated['page_from'],
                     'page_to'   => $page->id,
-                ];
-                PageLink::create($data);
+                ], [
+                    'link_text' => $validated['linktitle'],
+                ]);
             }
 
-            unset($validated['linktitle']);
-            unset($validated['page_from']);
+            unset($validated['linktitle'], $validated['page_from']);
 
             if ($page->update($validated)) {
                 \flash(trans('model.save_successful'));

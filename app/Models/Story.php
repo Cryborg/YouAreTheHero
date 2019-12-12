@@ -11,14 +11,6 @@ class Story extends Model
 {
     protected $guarded = ['id'];
 
-    /**
-     * Get the pages.
-     */
-    public function pages()
-    {
-        return $this->hasMany(Page::class);
-    }
-
     protected $casts = [
         'sheet_config' => 'array',
         'is_published' => 'boolean',
@@ -71,5 +63,13 @@ class Story extends Model
             ->first();
 
         return $page;
+    }
+
+    /**
+     * Get the pages.
+     */
+    public function pages()
+    {
+        return $this->hasMany(Page::class);
     }
 }

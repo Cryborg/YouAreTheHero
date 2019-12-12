@@ -35,6 +35,7 @@ class CreateCharactersTable extends Migration
             $table->json('sheet')->nullable();
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
