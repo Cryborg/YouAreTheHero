@@ -128,3 +128,26 @@ p.indent {
 .form-control.input-invalid {
     border: 1px solid red;
 }
+.vertical-text {
+    transform: rotate(90deg);
+    transform-origin: left top 0;
+}
+.col-border {
+    border-left: 15px solid;
+    border-right: 15px solid;
+}
+.col-parents {
+    border-color: #ffc107;
+}
+.col-current {
+    border-color: #007bff;
+}
+.col-choices {
+    border-color: #28a745;
+}
+.false-input {
+    background-color: white;
+    padding: 5px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}

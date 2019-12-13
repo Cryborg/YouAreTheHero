@@ -16,6 +16,7 @@ class Story extends Model
         'is_published' => 'boolean',
     ];
 
+
     public static function boot()
     {
         parent::boot();
@@ -34,6 +35,9 @@ class Story extends Model
         });
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function genres()
     {
         return $this->belongsToMany(Genre::class, 'story_genre');
@@ -48,7 +52,8 @@ class Story extends Model
     }
 
     /**
-     * Get the last created page of a given story
+     * Get the last created page of a given story.
+     * Used in StoriesController/ajaxList to display the last created page for the selected story.
      *
      * @param \App\Models\Story $story
      *

@@ -7,7 +7,7 @@
 {{--  Errors --}}
 <div class="form-errors alert alert-danger hidden"></div>
 
-<div class="form-group">
+<div class="form-group mt-4">
     {!! Form::label('title', trans('model.title'), ['class' => 'control-label']) !!}
     <p class="help-block">{{ trans('model.page_title_help') }}</p>
     {!! Form::text('title', old('title'), ['class' => 'form-control']) !!}
@@ -50,10 +50,11 @@
 </div>
 
 <button class="btn btn-success submit-btn m-1 w-50" type="submit">{{ trans('story.create_submit') }}</button>
+
 {!! Form::close() !!}
 
 @if ($internalId > 0)
-    <a class="btn btn-primary ml-1 w-25" href="{{ route('page.edit', $page->id) }}">{{ trans('story.add_choices') }}</a>
+    <a class="btn btn-primary ml-1 w-25" href="{{ route('page.edit', $page->id) }}#current_page">{{ trans('story.add_choices') }}</a>
 @endif
-<button class="btn btn-danger mr-1 w-25" disabled><span class="fa fa-trash mr-1"></span>Supprimer</button>
 
+<button class="btn btn-danger mr-1 w-25" disabled><span class="fa fa-trash mr-1"></span>Supprimer</button>

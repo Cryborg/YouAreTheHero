@@ -88,6 +88,9 @@ class Page extends Model
             ->get();
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Query\Builder[]|\Illuminate\Support\Collection
+     */
     public function getPotentialChildren()
     {
         // Exclude:
