@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d202f32e-bbc8-4673-9150-4f195e73b7de" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/js/js.cookie.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/page/js/create-js.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/partials/footer-scripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/partials/footer-scripts.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/page/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/page/partials/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/partials/create.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,6 +170,9 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/page/js" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/page/partials" />
       <recent name="$PROJECT_DIR$/resources/views/stories" />
@@ -216,7 +219,7 @@
       <workItem from="1575964958577" duration="6579000" />
       <workItem from="1576052685460" duration="5998000" />
       <workItem from="1576069639463" duration="28030000" />
-      <workItem from="1576250115891" duration="18091000" />
+      <workItem from="1576250115891" duration="19012000" />
     </task>
     <servers />
   </component>
@@ -307,10 +310,10 @@
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
     <state x="2020" y="100" width="2360" height="1208" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576072345580" />
-    <state x="2261" y="175" width="1932" height="880" key="find.popup" timestamp="1576328492742">
+    <state x="2261" y="175" width="1932" height="880" key="find.popup" timestamp="1576331357003">
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
-    <state x="2261" y="175" width="1932" height="880" key="find.popup/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576328492742" />
+    <state x="2261" y="175" width="1932" height="880" key="find.popup/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576331357003" />
     <state x="2775" y="314" width="848" height="1034" key="search.everywhere.popup" timestamp="1576328002935">
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
