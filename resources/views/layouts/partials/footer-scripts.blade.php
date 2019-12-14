@@ -6,6 +6,7 @@
 <script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/datatables.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('js/js.cookie.min.js') }}"></script>
 <script type="text/javascript">
     $.ajaxSetup({
         headers: {

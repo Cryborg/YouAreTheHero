@@ -150,6 +150,25 @@
         }
 
         $(document).ready(function () {
+            // help-block state check from cookie
+            var openToggle = Cookies.get("hero.help-block.show") || false;
+
+            if ( openToggle === 'true') {
+                $("p.help-block").show();
+            } else {
+                $("p.help-block").hide();
+            }
+
+            $('.toggle-help').on('click', function() {
+                var $pBlocks = $('p.help-block');
+
+                // Toggle display
+                $pBlocks.toggle();
+
+                // Update or create the cookie to save state
+                Cookies.set('hero.help-block.show', $pBlocks.eq(0).is(':visible'), {expires: 365});
+            });
+
             // Create a new tab
             $('#addNewPage').on('click', function(event) {
                 event.preventDefault();
@@ -193,10 +212,6 @@
                         }
                     });
             });
-        });
-
-        $('.toggle-help').on('click', function() {
-            $('p.help-block').slideToggle();
         });
 
         $('.nav-item.nav-link select').on('click', function(e) {

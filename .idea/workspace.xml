@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d202f32e-bbc8-4673-9150-4f195e73b7de" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/lang/fr/actions.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/page/partials/actions.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/js.cookie.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Story.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Story.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/default.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/default.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/fr/page.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fr/page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/partials/footer-scripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/partials/footer-scripts.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/page/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page/create.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +34,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -217,7 +216,7 @@
       <workItem from="1575964958577" duration="6579000" />
       <workItem from="1576052685460" duration="5998000" />
       <workItem from="1576069639463" duration="28030000" />
-      <workItem from="1576250115891" duration="13701000" />
+      <workItem from="1576250115891" duration="18091000" />
     </task>
     <servers />
   </component>
@@ -268,14 +267,38 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="2625" y="225" width="1140" height="958" key="CommitChangelistDialog2" timestamp="1576326873708">
+      <screen x="1920" y="0" width="2560" height="1440" />
+    </state>
+    <state x="2625" y="225" width="1140" height="958" key="CommitChangelistDialog2/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576326873708" />
+    <state x="2020" y="100" width="2360" height="1208" key="DiffContextDialog" timestamp="1576328112866">
+      <screen x="1920" y="0" width="2560" height="1440" />
+    </state>
+    <state x="2020" y="100" width="2360" height="1208" key="DiffContextDialog/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576328112866" />
     <state x="2930" y="405" width="530" height="598" key="FileChooserDialogImpl" timestamp="1576251188473">
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
     <state x="2930" y="405" width="530" height="598" key="FileChooserDialogImpl/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576251188473" />
-    <state x="2852" y="347" width="686" height="713" key="RollbackChangesDialog" timestamp="1576147069166">
+    <state width="1874" height="367" key="GridCell.Tab.0.bottom" timestamp="1576328704039">
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
-    <state x="2852" y="347" width="686" height="713" key="RollbackChangesDialog/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576147069166" />
+    <state width="1874" height="367" key="GridCell.Tab.0.bottom/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576328704039" />
+    <state width="1874" height="367" key="GridCell.Tab.0.center" timestamp="1576328704039">
+      <screen x="1920" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1874" height="367" key="GridCell.Tab.0.center/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576328704039" />
+    <state width="1874" height="367" key="GridCell.Tab.0.left" timestamp="1576328704038">
+      <screen x="1920" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1874" height="367" key="GridCell.Tab.0.left/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576328704038" />
+    <state width="1874" height="367" key="GridCell.Tab.0.right" timestamp="1576328704039">
+      <screen x="1920" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1874" height="367" key="GridCell.Tab.0.right/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576328704039" />
+    <state x="2852" y="347" width="686" height="713" key="RollbackChangesDialog" timestamp="1576328546316">
+      <screen x="1920" y="0" width="2560" height="1440" />
+    </state>
+    <state x="2852" y="347" width="686" height="713" key="RollbackChangesDialog/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576328546316" />
     <state x="2020" y="100" width="2360" height="1208" key="VCS.FileHistoryDialog" timestamp="1576075792977">
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
@@ -284,13 +307,13 @@
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
     <state x="2020" y="100" width="2360" height="1208" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576072345580" />
-    <state x="2261" y="175" width="1932" height="880" key="find.popup" timestamp="1576318328028">
+    <state x="2261" y="175" width="1932" height="880" key="find.popup" timestamp="1576328492742">
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
-    <state x="2261" y="175" width="1932" height="880" key="find.popup/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576318328028" />
-    <state x="2775" y="314" width="848" height="1034" key="search.everywhere.popup" timestamp="1576317536088">
+    <state x="2261" y="175" width="1932" height="880" key="find.popup/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576328492742" />
+    <state x="2775" y="314" width="848" height="1034" key="search.everywhere.popup" timestamp="1576328002935">
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
-    <state x="2775" y="314" width="848" height="1034" key="search.everywhere.popup/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576317536088" />
+    <state x="2775" y="314" width="848" height="1034" key="search.everywhere.popup/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1576328002935" />
   </component>
 </project>
