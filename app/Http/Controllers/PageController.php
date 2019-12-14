@@ -53,7 +53,8 @@ class PageController extends Controller
             'story' => $page->story,
             'page' => $page,
             'layouts' => [
-                'play1' => 'Premier layout',
+                'play1' => 'Premier layout (ok)',
+                'play2' => 'Deuxième layout (pour test)',
             ],
             'locales' => [
                 'fr_FR' => 'Français',
@@ -61,6 +62,12 @@ class PageController extends Controller
                 'es_ES' => 'Espagnol',
             ],
             'internalId' => 0,
+            'actions' => [
+                'earn' => trans('actions.earn'),
+                'buy' => trans('actions.buy'),
+                'sell' => trans('actions.sell'),
+                'give' => trans('actions.give'),
+            ]
         ]);
 
         return $view;

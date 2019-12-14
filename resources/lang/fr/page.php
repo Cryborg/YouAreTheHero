@@ -10,4 +10,11 @@ return [
     'parent_pages_help'         => "Toutes les pages menant à celle en cours d'édition sont répertoriées ici.<br>" .
                                    "Tu ne peux pas les modifier directement, il faut passer par le lien prévu à cet effet pour ça.",
     'existing_page'             => 'Choisis une page existante',
+
+    'actions_modal_title'       => 'Nouvelle action',
+    'current_page_actions_help' => "Choisis les actions que tu veux ajouter à cette page.",
+    'items_list'                => 'Liste des objets',
+    'concerned_item'            => 'Objet concerné',
+    'concerned_item_help'       => "Choisis d'abord l'objet concerné par l'action que tu veux ajouter.",
+    'edit_pages_title'          => "Création de nouvelles pages",
 ];

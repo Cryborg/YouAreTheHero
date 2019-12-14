@@ -3,10 +3,13 @@
 @section('title', $title)
 
 @section('content')
+    <span class="pull-right toggle-help close glyphicon glyphicon-question-sign"></span>
+    <h2>{{ trans('page.edit_pages_title') }}</h2>
+
     {{-- Parent page(s) --}}
     @if (!$page->is_first)
         <div class="row">
-            <div class="col col-border col-parents">
+            <div class="col col-border-left col-border-right col-parents">
                 @info({!! trans('page.parent_pages_help') !!})
 
                 <div>
@@ -40,10 +43,18 @@
     {{-- Current page --}}
     {!! Form::hidden('page_from', $page->id, ['id' => 'page_from']) !!}
     <div class="row" id="current_page">
-        <div class="col col-border col-current">
+        <div class="col-lg-8 col-xs-12 col-border-left col-current">
             @info({!! trans('page.current_page_help') !!})
 
             @include('page.partials.create', ['readonly' => false])
+        </div>
+        <div class="col-lg-4 col-xs-12 col-border-right col-current">
+            @info({!! trans('page.current_page_actions_help') !!})
+
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                <span class="glyphicon glyphicon-plus-sign"></span>
+                {{ trans('actions.add_new_action') }}
+            </button>
         </div>
     </div>
 
@@ -51,7 +62,7 @@
 
     {{-- Choice(s) --}}
     <div class="row">
-        <div class="col col-border col-choices">
+        <div class="col col-border-left col-border-right col-choices">
             @info({!! trans('page.current_page_choices_help') !!})
 
             <nav class="nav nav-pills" id="choicesList">
@@ -88,6 +99,28 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">{{ trans('page.actions_modal_title') }}</h5>
+                    <span class="close toggle-help glyphicon glyphicon-question-sign">
+                    </span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @include('page.partials.actions', ['page' => $page])
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">{{ trans('actions.add_action') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('footer-scripts')
@@ -160,6 +193,10 @@
                         }
                     });
             });
+        });
+
+        $('.toggle-help').on('click', function() {
+            $('p.help-block').slideToggle();
         });
 
         $('.nav-item.nav-link select').on('click', function(e) {

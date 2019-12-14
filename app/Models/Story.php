@@ -77,4 +77,9 @@ class Story extends Model
     {
         return $this->hasMany(Page::class);
     }
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
 }
