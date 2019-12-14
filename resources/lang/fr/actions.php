@@ -7,6 +7,8 @@ return [
     'quantity_help'             => "Enfin, définit combien de ces objets seront concernés par l'action.",
     'add_new_action'            => "Ajouter une action",
     'add_action'                => "Ajouter l'action",
+    'price'                     => "Prix",
+    'price_help'                => "Si tu entres un prix ici, il prévaudra sur celui de l'objet.",
 
     // Verbs
     'earn'      => 'Gagner',

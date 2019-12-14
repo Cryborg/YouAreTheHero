@@ -33,6 +33,7 @@ Route::get('/story/{story}/page/create/{page?}', 'PageController@getCreate')->na
 Route::get('/story/{story}/{page}/choices', 'StoryController@choices')->name('story.choices');
 Route::get('/story/{story}/{page?}', 'StoryController@getPlay')->name('story.play');
 Route::post('/story/ajax_action', 'StoryController@ajaxAction')->name('story.ajax_action');
+Route::post('/story/ajax_get_item', 'StoryController@getItemAjax')->name('story.ajax_getitem');
 
 // Page
 Route::get('/page/{page}/edit', 'PageController@getEdit')->name('page.edit');

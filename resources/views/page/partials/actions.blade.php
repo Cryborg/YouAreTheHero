@@ -3,13 +3,13 @@
         <div class="form-group mb-4">
             {!! Form::label('items', '1. ' . trans('page.concerned_item'), ['class' => 'control-label']) !!}
             <p class="help-block">{{ trans('page.concerned_item_help') }}</p>
-            {!! Form::select('items', $page->story->items->pluck('name', 'id'), null, ['class' => 'form-control']) !!}
+            {!! Form::select('items', ['' => ''] + $page->story->items->sortBy('name')->pluck('name', 'id')->toArray(), null, ['class' => 'form-control custom-select', 'size' => 6]) !!}
         </div>
 
         <div class="form-group mb-4">
-            {!! Form::label('action', '2. ' . trans('actions.action'), ['class' => 'control-label']) !!}
+            {!! Form::label('verb', '2. ' . trans('actions.action'), ['class' => 'control-label']) !!}
             <p class="help-block">{{ trans('actions.action_help') }}</p>
-            {!! Form::select('action', $actions, null , ['class' => 'form-control']) !!}
+            {!! Form::select('verb', $actions, null , ['class' => 'form-control']) !!}
         </div>
 
         <div class="form-group mb-4">
@@ -17,8 +17,14 @@
             <p class="help-block">{{ trans('actions.quantity_help') }}</p>
             {!! Form::number('quantity', 1, ['class' => 'form-control']) !!}
         </div>
+
+        <div class="form-group mb-4">
+            {!! Form::label('price', '4. ' . trans('actions.price'), ['class' => 'control-label']) !!}
+            <p class="help-block">{{ trans('actions.price_help') }}</p>
+            {!! Form::number('price', 1, ['class' => 'form-control']) !!}
+        </div>
     </div>
-    <div class="col-6">
+    <div class="col-6" id="item_description">
 
     </div>
 </div>

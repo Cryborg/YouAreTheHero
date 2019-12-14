@@ -101,7 +101,7 @@
 
     <!-- Modal -->
     <div class="modal" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">{{ trans('page.actions_modal_title') }}</h5>
@@ -116,7 +116,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">{{ trans('actions.add_action') }}</button>
+                    <button type="button" class="btn btn-primary" id="add_action">{{ trans('actions.add_action') }}</button>
                 </div>
             </div>
         </div>

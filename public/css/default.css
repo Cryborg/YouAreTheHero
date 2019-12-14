@@ -178,3 +178,6 @@ input[type="number"] {
     right: 2.5em;
     top: 16px;
 }
+.table-reset {
+    background-color: white;
+}

@@ -92,6 +92,23 @@
         });
     });
 
+    // When the author chooses an item from the list
+    $('#items').on('change', function () {
+        var $this = $(this);
+
+        if ($this.val() == '') return false;
+
+        $.ajax({
+            url: route('story.ajax_getitem'),
+            method: 'POST',
+            data: {'itemId': $this.val()}
+        })
+        .done(function (data) {
+            $('#item_description').html(data);
+        });
+    });
+
+    // When the author creates a child page
     $('.nav-item.nav-link select').on('click', function(e) {
         e.preventDefault();
 
@@ -104,5 +121,17 @@
         newPage($this, route('page.create', [{{ $page->story_id }}, $this.val()]));
 
         $("#childrenSelect option:selected").remove();
+    });
+
+    // When the author validates the new action on the modal
+    $('#add_action').on('click', function () {
+        $.ajax({
+            url: route(''),
+            'data': {},
+            'method': 'POST',
+        })
+        .done(function () {
+
+        });
     });
 </script>

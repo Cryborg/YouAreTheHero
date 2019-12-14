@@ -512,4 +512,28 @@ class StoryController extends Controller
 
         return Redirect::to(route('story.edit', $story->id));
     }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return mixed
+     */
+    public function getItemAjax(Request $request)
+    {
+        if ($request->ajax()) {
+            $validated = $request->validate([
+                'itemId' => 'integer',
+            ]);
+
+            $item = $this->getItem($validated['itemId']);
+
+            $view = view('page.partials.item', [
+                'item' => $item,
+            ]);
+
+            return $view ?? view('errors.404');
+        }
+
+        abort(404);
+    }
 }

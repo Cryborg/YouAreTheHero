@@ -63,9 +63,9 @@ class PageController extends Controller
             ],
             'internalId' => 0,
             'actions' => [
-                'earn' => trans('actions.earn'),
                 'buy' => trans('actions.buy'),
                 'sell' => trans('actions.sell'),
+                'earn' => trans('actions.earn'),
                 'give' => trans('actions.give'),
             ]
         ]);
@@ -114,6 +114,20 @@ class PageController extends Controller
             \flash(trans('model.save_error'));
 
             return response()->json(['success' => false]);
+        }
+
+        abort(404);
+    }
+
+    public function addActionAjax(Request $request)
+    {
+        if ($request->ajax())
+        {
+            $validated = $request->validate([
+                'items'         => 'required',
+                'verb'          => 'required',
+                'quantity'      => 'required',
+            ]);
         }
 
         abort(404);
