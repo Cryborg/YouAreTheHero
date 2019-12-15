@@ -16,6 +16,11 @@ class Item extends Model
      */
     public function pages()
     {
-        return $this->belongsToMany(Page::class, 'items_pages');
+        return $this->belongsToMany(Page::class, 'action_page');
+    }
+
+    public function actionPages()
+    {
+        return $this->belongsToMany(ActionPage::class);
     }
 }

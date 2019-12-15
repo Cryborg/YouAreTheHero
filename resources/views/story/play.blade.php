@@ -6,30 +6,28 @@
     @include('story.partials.choices', ['page' => $page, 'story' => $story])
 @endsection
 
-@section('items')
-    @if ($page->items)
-        @foreach ($page->items as $item)
-            @switch($item['verb'])
-                @case ('buy')
-                @case ('earn')
-                    <div class="pick-item" data-verb="{{ $item['verb'] }}" data-item="{{ $item['item']['id'] }}" data-price="{{ $item['item']['default_price']  }}" data-singleuse="{{ $item['item']['single_use'] }}">
-                        @include('story.partials.money', [
-                            'value' => $item['item']['default_price'],
-                            'operator' => 'sub'
+@section('actions')
+    @foreach ($actions as $action)
+        @switch($action['verb'])
+            @case ('buy')
+            @case ('earn')
+                <div class="pick-item" data-verb="{{ $action['verb'] }}" data-item="{{ $action['item']->id }}" data-price="{{ $action['item']->default_price  }}" data-singleuse="{{ $action['item']->single_use }}">
+                    @include('story.partials.money', [
+                        'value' => $action['item']->default_price,
+                        'operator' => 'sub'
+                    ])
+                    <span class="item-name">{{ $action['item']['name'] }}</span>
+                    @foreach ($action['item']->effects as $effect => $value)
+                        @include('story.partials.effects', [
+                            'name' => $effect,
+                            'value' => $value['quantity'],
+                            'operator' => $value['operator'] === '+' ? 'add' : 'sub'
                         ])
-                        <span class="item-name">{{ $item['item']['name'] }}</span>
-                        @foreach ($item['item']['effects'] as $effect => $value)
-                            @include('story.partials.effects', [
-                                'name' => $effect,
-                                'value' => $value['quantity'],
-                                'operator' => $value['operator'] === '+' ? 'add' : 'sub'
-                            ])
-                        @endforeach
-                    </div>
-                    @break
-            @endswitch
-        @endforeach
-    @endif
+                    @endforeach
+                </div>
+                @break
+        @endswitch
+    @endforeach
 @endsection
 
 @section('map')

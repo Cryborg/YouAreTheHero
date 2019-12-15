@@ -30,7 +30,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    @yield('items')
+                    @yield('actions')
                 </div>
             </div>
             <div class="row">

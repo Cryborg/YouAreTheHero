@@ -6,6 +6,7 @@ use Faker\Provider\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Validator;
 
 class Page extends Model
 {
@@ -52,9 +53,9 @@ class Page extends Model
         return $this->belongsTo(Story::class);
     }
 
-    public function items()
+    public function actions()
     {
-        return $this->belongsToMany(Item::class, 'items_pages');
+        return $this->hasMany(ActionPage::class);
     }
 
     /**
@@ -102,5 +103,24 @@ class Page extends Model
                               ->get();
 
         return $potentialPages;
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return \App\Models\ActionPage
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function addAction(array $data)
+    {
+        $validated = Validator::validate($data, [
+            'item_id'   => 'required',
+            'verb'      => 'required',
+            'quantity'  => 'required',
+        ]);
+
+        $validated['page_id'] = $this->id;
+
+        return ActionPage::create($validated);
     }
 }

@@ -91,6 +91,12 @@ class DatabaseSeeder extends Seeder {
                 'single_use' => true,
             ]);
 
+            $p1->addAction([
+                'item_id' => $marteau->id,
+                'verb' => 'buy',
+                'quantity' => $marteau->default_price
+            ]);
+
             $p2_1 = Page::create([
                 'story_id' => $story->id,
                 'title' => 'Paragraphe 2.1',
@@ -239,6 +245,12 @@ class DatabaseSeeder extends Seeder {
                 // Put some items to pick in one of the pages
                 /** @var \App\Models\Page $page */
                 echo $p6->id;
+                $page = Page::where('id', $p6->id)->first();
+                $page->addAction([
+                    'item_id' => $newItem->id,
+                    'verb' => 'buy',
+                    'quantity' => $newItem->default_price
+                ]);
 
                 $this->call(AdminRolesTableSeeder::class);
             }
@@ -250,6 +262,12 @@ class DatabaseSeeder extends Seeder {
                 'story_id' => $story->id,
                 'single_use' => true,
                 'effects' => ['experience' => ['operator' => '+', 'quantity' => 10]]
+            ]);
+            $page = Page::where('id', $p6->id)->first();
+            $page->addAction([
+                'item_id' => $newItem->id,
+                'verb' => 'earn',
+                'quantity' => $newItem->default_price
             ]);
 
             // Genres

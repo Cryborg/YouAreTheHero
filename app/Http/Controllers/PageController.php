@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ItemsPage;
 use App\Models\Page;
 use App\Models\PageLink;
 use App\Models\Story;
@@ -25,7 +26,7 @@ class PageController extends Controller
         if ($page === null) {
             $page           = factory(Page::class)->make();
             $page->story_id = $story->id;
-            $page->id       = (string) substr(Uuid::uuid(), 0, 32);
+            $page->id       = Uuid::uuid();
             $page->save();
         }
 
@@ -127,7 +128,10 @@ class PageController extends Controller
                 'items'         => 'required',
                 'verb'          => 'required',
                 'quantity'      => 'required',
+                'price'         => '',
             ]);
+
+            ItemsPage::create($validated);
         }
 
         abort(404);

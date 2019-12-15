@@ -2,6 +2,7 @@
 
 return [
     'title'             => 'Titre',
+    'description'       => 'Description',
     'story_title_help'  => "Le titre est la première chose qui apparaîtra sur la page de recherche, fais en sorte qu'il soit accrocheur !",
     'content'           => 'Contenu',
     'content_help'      => "Une fois appâtés par ton titre, ce contenu doit conforter le lecteur dans sa volonté de lire ton histoire. N'en dis pas trop, mais suffisamment pour leur donner envie de cliquer sur le lien et commencer l'aventure :)",
