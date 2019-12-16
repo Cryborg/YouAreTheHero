@@ -181,3 +181,8 @@ input[type="number"] {
 .table-reset {
     background-color: white;
 }
+img.money_icon {
+    width: 16px;
+    height: 16px;
+    margin-top: -5px;
+}

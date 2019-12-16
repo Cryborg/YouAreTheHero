@@ -13,7 +13,7 @@
             @case ('earn')
                 <div class="pick-item" data-verb="{{ $action['verb'] }}" data-item="{{ $action['item']->id }}" data-price="{{ $action['item']->default_price  }}" data-singleuse="{{ $action['item']->single_use }}">
                     @include('story.partials.money', [
-                        'value' => $action['item']->default_price,
+                        'value' => $action['item']->present()->price,
                         'operator' => 'sub'
                     ])
                     <span class="item-name">{{ $action['item']['name'] }}</span>

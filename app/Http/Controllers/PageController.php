@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ItemsPage;
+use App\Models\ActionPage;
 use App\Models\Page;
 use App\Models\PageLink;
 use App\Models\Story;
@@ -58,9 +58,9 @@ class PageController extends Controller
                 'play2' => 'Deuxième layout (pour test)',
             ],
             'locales' => [
-                'fr_FR' => 'Français',
-                'en_US' => 'Anglais',
-                'es_ES' => 'Espagnol',
+                'fr_FR' => trans('common.fr_FR'),
+                'en_US' => trans('common.en_US'),
+                'es_ES' => trans('common.es_ES'),
             ],
             'internalId' => 0,
             'actions' => [
@@ -131,7 +131,7 @@ class PageController extends Controller
                 'price'         => '',
             ]);
 
-            ItemsPage::create($validated);
+            ActionPage::create($validated);
         }
 
         abort(404);

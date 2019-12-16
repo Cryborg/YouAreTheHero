@@ -3,9 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
 
 class Item extends Model
 {
+    use PresentableTrait;
+
+    protected $presenter = 'App\\Presenters\\ItemPresenter';
+
     protected $casts = [
         'effects' => 'array',
         'single_use' => 'boolean',

@@ -439,9 +439,9 @@ class StoryController extends Controller
         $data = [
             'title' => trans('story.create_title'),
             'locales' => [
-                'fr_FR' => 'Français',
-                'en_US' => 'Anglais',
-                'es_ES' => 'Espagnol',
+                'fr_FR' => trans('common.fr_FR'),
+                'en_US' => trans('common.en_US'),
+                'es_ES' => trans('common.es_ES'),
             ],
             'layouts' => [
                 'play1' => 'Premier layout',

@@ -6,9 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use \App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Laracasts\Presenter\PresentableTrait;
 
 class Story extends Model
 {
+    use PresentableTrait;
+
+    protected $presenter = 'StoryPresenter';
+
     protected $guarded = ['id'];
 
     protected $casts = [

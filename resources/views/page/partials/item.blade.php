@@ -5,7 +5,7 @@
         <tbody>
             <tr>
                 <th scope="row" class="w-50">{{ trans('item.price') }}</th>
-                <td>{{ $item->default_price }}</td>
+                <td>{!! $item->present()->price !!}</td>
             </tr>
             <tr>
                 <th scope="row">{{ trans('item.single_use') }}</th>
