@@ -1,21 +1,24 @@
+
 {!! Form::model($page, [
     'route' => ['page.edit.post', $page->id],
     'id' => 'form-' . $page->id,
     'data-internalid' => $internalId
 ]) !!}
-<div class="form-errors alert alert-danger hidden">
+{{--  Errors --}}
+<div class="form-errors alert alert-danger hidden"></div>
 
-</div>
-<div class="form-group">
+<div class="form-group mt-4">
     {!! Form::label('title', trans('model.title'), ['class' => 'control-label']) !!}
     <p class="help-block">{{ trans('model.page_title_help') }}</p>
     {!! Form::text('title', old('title'), ['class' => 'form-control']) !!}
+    <div class="alert alert-error hidden"></div>
 </div>
 
 <div class="form-group">
-    {!! Form::label('description', trans('model.description'), ['class' => 'control-label']) !!}
-    <p class="help-block">{{ trans('model.page_description_help') }}</p>
-    {!! Form::textarea('description', old('description'), ['class' => 'form-control', 'rows' => 5]) !!}
+    {!! Form::label('content', trans('model.content'), ['class' => 'control-label']) !!}
+    <p class="help-block">{{ trans('model.page_content_help') }}</p>
+    {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => 5]) !!}
+    <div class="alert alert-error hidden"></div>
 </div>
 
 <div class="form-group">
@@ -46,5 +49,12 @@
     </label>
 </div>
 
-{!! Form::submit(trans('story.create_submit'), ['class' => 'form-control btn btn-primary submit-btn']) !!}
+<button class="btn btn-success submit-btn mb-1 w-50" type="submit">{{ trans('story.create_submit') }}</button>
+
 {!! Form::close() !!}
+
+@if ($internalId > 0)
+    <a class="btn btn-primary w-25" href="{{ route('page.edit', $page->id) }}#current_page">{{ trans('story.add_choices') }}</a>
+@endif
+
+<button class="btn btn-danger mr-1 w-25" disabled><span class="fa fa-trash mr-1"></span>Supprimer</button>

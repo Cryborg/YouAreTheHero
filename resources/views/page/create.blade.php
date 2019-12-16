@@ -3,137 +3,126 @@
 @section('title', $title)
 
 @section('content')
+    <span class="pull-right toggle-help close glyphicon glyphicon-question-sign"></span>
+    <h2>{{ trans('page.edit_pages_title') }}</h2>
+
     {{-- Parent page(s) --}}
     @if (!$page->is_first)
-        @info({!! trans('page.parent_pages_help') !!})
-    @else
-        @foreach($page->parents() as $key => $parent)
-            <div class="tab-pane active" id="p{{ $key }}">
-                @include('page.partials.create', ['page' => $parent])
+        <div class="row">
+            <div class="col col-border-left col-border-right col-parents">
+                @info({!! trans('page.parent_pages_help') !!})
+
+                <div>
+                    <div class="tab-content">
+                        @if($page->parents())
+                            @foreach($page->parents() as $key => $parent)
+                                <div class="tab-pane active" id="pp{{ $key }}">
+                                    @include('page.partials.create_readonly', ['page' => $parent])
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
+                    <nav class="nav nav-pills" id="choicesList">
+                        @if($page->parents())
+                            @foreach($page->parents() as $key => $choice)
+                                <a class="nav-item nav-link @if ($key === 0) active @endif" href="#pp{{ $key }}" data-toggle="tab">
+                                <span class="choice_title_{{ $key }}">
+                                    <input type="text" class="form-control" placeholder="{{ trans('page.link_text') }}" value="{{ $choice->link_text }}">
+                                </span>
+                                </a>
+                            @endforeach
+                        @endif
+                    </nav>
+                </div>
             </div>
-        @endforeach
+        </div>
     @endif
 
-    {{-- Current page --}}
-    @info({!! trans('page.current_page_help') !!})
+    <hr>
 
+    {{-- Current page --}}
     {!! Form::hidden('page_from', $page->id, ['id' => 'page_from']) !!}
-    <div>
-        @include('page.partials.create')
+    <div class="row" id="current_page">
+        <div class="col-lg-8 col-xs-12 col-border-left col-current">
+            @info({!! trans('page.current_page_help') !!})
+
+            @include('page.partials.create', ['readonly' => false])
+        </div>
+        <div class="col-lg-4 col-xs-12 col-border-right col-current">
+            @info({!! trans('page.current_page_actions_help') !!})
+
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                <span class="glyphicon glyphicon-plus-sign"></span>
+                {{ trans('actions.add_new_action') }}
+            </button>
+        </div>
     </div>
 
     <hr>
 
     {{-- Choice(s) --}}
-    @info({!! trans('page.current_page_choices_help') !!})
+    <div class="row">
+        <div class="col col-border-left col-border-right col-choices">
+            @info({!! trans('page.current_page_choices_help') !!})
 
-    <div>
-        <nav class="nav nav-pills" id="choicesList">
-            @if($page->choices)
-                @foreach($page->choices as $key => $choice)
-                    <a class="nav-item nav-link active" href="#p{{ $key }}" data-toggle="tab">
-                        <span class="choice_title_{{ $key }}">
-                            <input type="text" class="form-control" placeholder="{{ trans('page.link_text') }}" id="linktext-{{ $key }}" value="{{ $choice->link_title }}">
-                        </span>
-                    </a>
-                @endforeach
-            @endif
-            <a class="nav-item nav-link" href="" id="addNewPage">+</a>
-        </nav>
-        <div class="tab-content" id="choicesForm">
-            @if($page->choices)
-                @foreach($page->choices as $key => $choice)
-                    <div class="tab-pane active" id="p{{ $key }}">
-                        @include('page.partials.create', ['page' => $choice])
-                    </div>
-                @endforeach
-            @endif
+            <nav class="nav nav-pills" id="choicesList">
+                @if($page->choices())
+                    @foreach($page->choices() as $key => $choice)
+                        <a class="nav-item nav-link @if ($key === 0) active @endif" href="#p{{ $key }}" data-toggle="tab">
+                            <span class="choice_title_{{ $key }}">
+                                <input type="text" class="form-control" placeholder="{{ trans('page.link_text') }}" id="linktext-{{ $key + 1 }}" value="{{ $choice->link_text }}">
+                            </span>
+                        </a>
+                    @endforeach
+                @endif
+                <a class="nav-item nav-link" href="" id="addNewPage">+</a>
+                <a class="nav-item nav-link" href="">
+                    <select class="form-control mr-sm-2" id="childrenSelect">
+                        <option value="0" selected>{{ trans('page.existing_page') }}</option>
+                        @foreach ($page->getPotentialChildren() as $existingPage)
+                            @if ($existingPage->id !== $page->id)
+                                <option value="{{ $existingPage->id }}">{{ $existingPage->title }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </a>
+            </nav>
+            <div class="tab-content" id="choicesForm">
+                @if($page->choices())
+                    @foreach($page->choices() as $key => $choice)
+                        <div class="tab-pane @if ($key === 0) active @endif" id="p{{ $key }}">
+                            @include('page.partials.create', ['page' => $choice, 'internalId' => $key + 1, 'readonly' => false])
+                        </div>
+                    @endforeach
+                @endif
+            </div>
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">{{ trans('page.actions_modal_title') }}</h5>
+                    <span class="close toggle-help glyphicon glyphicon-question-sign">
+                    </span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @include('page.partials.actions', ['page' => $page])
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="add_action">{{ trans('actions.add_action') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('footer-scripts')
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // Create a new tab
-            $('#addNewPage').on('click', function(event) {
-                var $this = $(this);
-
-                event.preventDefault();
-
-                $this.prop('disabled', true);
-
-                var newNumber = $('a.nav-item.nav-link').length;
-                $('a.nav-item.nav-link, div.tab-pane').removeClass('active');
-
-                $('#addNewPage').before(
-                    '<a class="nav-item nav-link active" href="#p' + newNumber + '" data-toggle="tab">' +
-                        '<span class="choice_title_' + newNumber + '">' +
-                            '<input type="text" class="form-control" placeholder="{{ trans('page.link_text') }}" id="linktext-' + newNumber + '">' +
-                        '</span></span>' +
-                    '</a>');
-                $.ajax({
-                    'url': route('page.create', {{ $page->story_id }}),
-                    'data': {'internalId': newNumber}
-                })
-                .done(function (data) {
-                    $('#choicesForm').append('<div class="tab-pane active" id="p' + newNumber + '">' + data + '</div>');
-                })
-                .always(function () {
-                    $this.prop('disabled', false);
-                });
-            });
-
-            function checkForm($form)
-            {
-                var internalId = $form.data('internalid');
-                var pageLinkTitle = $('#linktext-' + internalId).val();
-                var hasErrors = false;
-                var errors = [];
-
-                if (pageLinkTitle.trim() === '') {
-                    hasErrors = true;
-                    errors.push('link_title');
-                }
-
-                if (errors.length === 0) {
-                    $('.form-errors').addClass('hidden');
-                } else {
-                    $.each(errors,  function (key, error) {
-                        $('.form-errors').append('<div class="error">' + error + '</div>');
-                    });
-
-                    $('.form-errors').removeClass('hidden');
-                }
-
-                return hasErrors === false;
-            }
-
-            $(document).on('click', '.submit-btn', function (e) {
-                let $this = $(this).parent('form');
-                e.preventDefault();
-
-                var internalId = $this.data('internalid');
-                var pageLinkTitle = $('#linktext-' + internalId).val();
-
-                if (checkForm($this) === false) {
-                    return false;
-                }
-
-                $.ajax({
-                    method: $($this).attr('method'),
-                    url: $($this).attr('action'),
-                    data: $($this).serialize() +
-                        '&linktitle=' + encodeURIComponent(pageLinkTitle) +
-                        '&page_from=' + $('#page_from').val()
-                })
-                    .done(function (data) {
-                    })
-                    .fail(function (data) {
-
-                    });
-            });
-        });
-    </script>
+    @include('page.js.create-js')
 @endpush

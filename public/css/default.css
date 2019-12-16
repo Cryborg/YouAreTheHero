@@ -1,8 +1,22 @@
+@media screen and (max-width: 767px) {
+    .modal select, .modal input {
+        font-size: .8em;
+    }
+}
+
 html, body {
     height: 100%;
     font-size: 16px !important;
 }
 
+#app > nav.navbar:first-child {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+}
+main.py-4 {
+    padding-top: 5.5em !important;
+}
 .title {
     padding: 5px;
     margin-bottom: 10px;
@@ -124,4 +138,46 @@ p.indent {
 }
 #addNewPage {
     font-size: 1.5em;
+}
+.form-control.input-invalid {
+    border: 1px solid red;
+}
+.vertical-text {
+    transform: rotate(90deg);
+    transform-origin: left top 0;
+}
+.col-border-left {
+    border-left: 15px solid;
+}
+.col-border-right {
+    border-right: 15px solid;
+}
+.col-parents {
+    border-color: #ffc107;
+}
+.col-current {
+    border-color: #007bff;
+}
+.col-choices {
+    border-color: #28a745;
+}
+.false-input {
+    background-color: white;
+    padding: 5px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+input[type="number"] {
+    width: 7em;
+}
+.modal-header {
+    background-color: #bbe3ff;
+}
+.modal .close.toggle-help {
+    position: absolute;
+    right: 2.5em;
+    top: 16px;
+}
+.table-reset {
+    background-color: white;
 }

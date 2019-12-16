@@ -29,11 +29,7 @@ class StoriesController extends Controller
         // Delete old story session
         Session::remove('story');
 
-        $data = [
-            'draft' => true,
-            'title' => trans('stories.drafts_list_title')
-        ];
-        return view('stories.list', $data);
+        return view('stories.list_drafts');
     }
 
     /**
@@ -69,7 +65,7 @@ class StoriesController extends Controller
 
             $name                       = $user->first_name . ' ' . $user->last_name;
             $value['user_id']           = $name;
-            $value['genres']            = implode(', ', $value->genres());
+            $value['genres']            = $value->genres;
             $value['last_created_page'] = $value->getLastCreatedPage();
 
             return $value;

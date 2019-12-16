@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class PageLink extends Model
 {
-    protected $fillable = ['page_from'];
+    protected $table = "page_link";
+    protected $guarded = ['id'];
 
-    public $table = "page_link";
-    public $guarded = ['id'];
+    protected $keyType = 'string';
+
     public $timestamps = false;
 
     /**

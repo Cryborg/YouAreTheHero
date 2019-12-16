@@ -9,20 +9,13 @@ use Illuminate\Support\Facades\Cache;
 
 class Story extends Model
 {
-    protected $fillable = ['title', 'genres'];
-
-    /**
-     * Get the pages.
-     */
-    public function pages()
-    {
-        return $this->hasMany(Page::class);
-    }
+    protected $guarded = ['id'];
 
     protected $casts = [
         'sheet_config' => 'array',
         'is_published' => 'boolean',
     ];
+
 
     public static function boot()
     {
@@ -42,9 +35,12 @@ class Story extends Model
         });
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function genres()
     {
-        return $this->belongsToMany(Genre::class, 'story_genres');
+        return $this->belongsToMany(Genre::class, 'story_genre');
     }
 
     /**
@@ -56,7 +52,8 @@ class Story extends Model
     }
 
     /**
-     * Get the last created page of a given story
+     * Get the last created page of a given story.
+     * Used in StoriesController/ajaxList to display the last created page for the selected story.
      *
      * @param \App\Models\Story $story
      *
@@ -71,5 +68,18 @@ class Story extends Model
             ->first();
 
         return $page;
+    }
+
+    /**
+     * Get the pages.
+     */
+    public function pages()
+    {
+        return $this->hasMany(Page::class);
+    }
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
     }
 }

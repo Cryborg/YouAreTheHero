@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Genre;
 use App\Models\Story;
+use App\Models\StoryGenre;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Page;
@@ -87,6 +89,12 @@ class DatabaseSeeder extends Seeder {
                     'force' => ['operator' => '+', 'quantity' => 1],
                 ],
                 'single_use' => true,
+            ]);
+
+            $p1->addAction([
+                'item_id' => $marteau->id,
+                'verb' => 'buy',
+                'quantity' => $marteau->default_price
             ]);
 
             $p2_1 = Page::create([
@@ -237,6 +245,12 @@ class DatabaseSeeder extends Seeder {
                 // Put some items to pick in one of the pages
                 /** @var \App\Models\Page $page */
                 echo $p6->id;
+                $page = Page::where('id', $p6->id)->first();
+                $page->addAction([
+                    'item_id' => $newItem->id,
+                    'verb' => 'buy',
+                    'quantity' => $newItem->default_price
+                ]);
 
                 $this->call(AdminRolesTableSeeder::class);
             }
@@ -249,21 +263,24 @@ class DatabaseSeeder extends Seeder {
                 'single_use' => true,
                 'effects' => ['experience' => ['operator' => '+', 'quantity' => 10]]
             ]);
-
-            // Put some items to pick in one of the pages
-            /** @var \App\Models\Page $page */
+            $page = Page::where('id', $p6->id)->first();
+            $page->addAction([
+                'item_id' => $newItem->id,
+                'verb' => 'earn',
+                'quantity' => $newItem->default_price
+            ]);
 
             // Genres
             $genres = ['science-fiction', 'romance', 'policier', 'thriller', 'epouvante', 'comedie', 'drame',
                 'biographie'];
             $aGenres = [];
             foreach ($genres as $genre) {
-                $aGenres[] = \App\Models\Genre::create([
+                $aGenres[] = Genre::create([
                     'label' => $genre,
                 ]);
             }
 
-            \App\Models\StoryGenre::create([
+            StoryGenre::create([
                 'story_id' => $story->id,
                 'genre_id' => $aGenres[count($aGenres) - 1]->id,
              ]);
@@ -282,6 +299,13 @@ class DatabaseSeeder extends Seeder {
         \Illuminate\Support\Facades\Artisan::call('cache:clear');
     }
 
+    /**
+     * @param \App\Models\Story $story
+     * @param \App\Models\Page  $after
+     * @param                   $data
+     *
+     * @return \App\Models\Page|\Illuminate\Database\Eloquent\Model
+     */
     private function addPage(Story $story, Page $after, $data) {
         $new = Page::create([
             'story_id' => $story->id,

@@ -99,8 +99,11 @@ class StoryController extends Controller
             return $value;
         });
 
+        $actions = $this->filterActions($character, $page);
+
         $view = view('story.play', $commonParams + [
             'page' => $page,
+            'actions' => $actions,
             'layout' => $page->layout ?? $story->layout,
             'character' => $character,
             'visitedPlaces' => $visitedPlaces,
@@ -133,17 +136,17 @@ class StoryController extends Controller
     }
 
     /**
-     * Get all the choices (links to the next page(s)
+     * Get all the choices (links to the next page) based on page prerequisites.
      *
      * @param \App\Models\Page      $currentPage
      * @param \App\Models\Character $character
      *
      * @return mixed
      */
-    private function getChoicesFromPage(Page &$currentPage, Character $character) {
+    private function getChoicesFromPage(Page $currentPage, Character $character) {
         // Get all the choices (links to the next page(s)
         $allChoices = $this->getAllChoicesForPage($currentPage);
-        $finalChcoices = [];
+        $finalChoices = [];
 
         // Check if there are prerequisites, and that they are fulfilled
         foreach ($allChoices as $choice) {
@@ -166,11 +169,11 @@ class StoryController extends Controller
             }
 
             if ($fulfilled) {
-                $finalChcoices[] = $choice;
+                $finalChoices[] = $choice;
             }
         }
 
-        $currentPage->choices = $finalChcoices;
+        $currentPage->filtered_choices = $finalChoices;
     }
 
     /**
@@ -315,10 +318,10 @@ class StoryController extends Controller
     }
 
     /**
-     * @param $character
-     * @param $page
+     * @param Character $character
+     * @param Page      $page
      */
-    private function saveCheckpoint($character, $page): void
+    private function saveCheckpoint(Character $character, $page): void
     {
         if ($page->is_checkpoint) {
             Checkpoint::firstOrCreate([
@@ -511,5 +514,57 @@ class StoryController extends Controller
         $story->update($validated);
 
         return Redirect::to(route('story.edit', $story->id));
+    }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return mixed
+     */
+    public function getItemAjax(Request $request)
+    {
+        if ($request->ajax()) {
+            $validated = $request->validate([
+                'itemId' => 'integer',
+            ]);
+
+            $item = $this->getItem($validated['itemId']);
+
+            $view = view('page.partials.item', [
+                'item' => $item,
+            ]);
+
+            return $view ?? view('errors.404');
+        }
+
+        abort(404);
+    }
+
+    /**
+     * @param \App\Models\Character $character
+     * @param \App\Models\Page      $page
+     *
+     * @return array
+     */
+    private function filterActions(Character $character, Page $page)
+    {
+        $actions = [];
+
+        foreach ($page->actions->toArray() as $action) {
+            $isFound = false;
+
+            foreach ($character->inventory() as $items) {
+                if ($items['item']->id == $action['item_id'] && $items['item']->single_use) {
+                    $isFound = true;
+                }
+            }
+
+            if (!$isFound) {
+                $action['item'] = Item::where('id', $action['item_id'])->first();
+                $actions[] = $action;
+            }
+        }
+
+        return $actions;
     }
 }

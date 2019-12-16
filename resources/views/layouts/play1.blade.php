@@ -25,12 +25,12 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <p>{!! $page->description !!}</p>
+                    <p>{!! $page->content !!}</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    @yield('items')
+                    @yield('actions')
                 </div>
             </div>
             <div class="row">
