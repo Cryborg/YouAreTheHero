@@ -321,7 +321,7 @@ class StoryController extends Controller
      * @param Character $character
      * @param Page      $page
      */
-    private function saveCheckpoint(Character $character, Page $page): void
+    private function saveCheckpoint(Character $character, $page): void
     {
         if ($page->is_checkpoint) {
             Checkpoint::firstOrCreate([
