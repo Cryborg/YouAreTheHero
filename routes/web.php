@@ -39,5 +39,10 @@ Route::post('/story/ajax_get_item', 'StoryController@getItemAjax')->name('story.
 Route::get('/page/{page}/edit', 'PageController@getEdit')->name('page.edit');
 Route::post('/page/{page}/edit', 'PageController@postEdit')->name('page.edit.post');
 
+// Actions
+Route::get('/actions/{page}/list', 'ActionController@list')->name('actions.list');
+Route::post('/actions/create/{page}', 'ActionController@store')->name('actions.store');
+Route::delete('/actions/{action}/delete', 'ActionController@delete')->name('actions.delete');
+
 // Authentication
 Auth::routes();

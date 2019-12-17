@@ -52,6 +52,7 @@ class PageController extends Controller
      * @param \App\Models\Page $page
      *
      * @return \Illuminate\Contracts\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function getEdit(Page $page): \Illuminate\Contracts\View\View
     {

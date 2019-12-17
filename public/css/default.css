@@ -189,3 +189,7 @@ img.money_icon {
     height: 16px;
     margin-top: -5px;
 }
+.glyphicon-trash {
+    color: red;
+    cursor: pointer;
+}

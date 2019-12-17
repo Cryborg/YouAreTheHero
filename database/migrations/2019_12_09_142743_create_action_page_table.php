@@ -14,10 +14,12 @@ class CreateActionPageTable extends Migration
     public function up()
     {
         Schema::create('action_page', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->unsignedInteger('item_id');
             $table->foreign('item_id')->references('id')->on('items');
             $table->string('verb');
             $table->integer('quantity')->default(1);
+            $table->integer('price')->nullable();
             $table->uuid('page_id');
             $table->foreign('page_id')->references('id')->on('pages');
         });

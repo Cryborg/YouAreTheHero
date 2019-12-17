@@ -495,6 +495,7 @@ class StoryController extends Controller
      * @param \App\Models\Story $story
      *
      * @return \Illuminate\Contracts\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function getEdit(Story $story)
     {

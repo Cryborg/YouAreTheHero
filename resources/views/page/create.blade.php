@@ -68,6 +68,8 @@
                         <span class="glyphicon glyphicon-plus-sign"></span>
                         {{ trans('actions.add_new_action') }}
                     </button>
+
+                    @include('page.partials.actions_list', ['page' => $page])
                 </div>
             </div>
         </div>
@@ -127,7 +129,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    @include('page.partials.actions', ['page' => $page])
+                    @include('page.partials.modal_actions', ['page' => $page])
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -150,11 +152,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    @include('page.partials.prerequisites', ['page' => $page])
+                    @include('page.partials.modal_prerequisites', ['page' => $page])
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success" id="add_action">{{ trans('actions.add_action') }}</button>
+                    <button type="button" class="btn btn-success" id="add_prerequisite">{{ trans('actions.add_action') }}</button>
                 </div>
             </div>
         </div>

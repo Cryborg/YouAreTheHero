@@ -20,6 +20,7 @@ return [
     'stories_list'          => 'Liste des histoires',
     'oui'                   => 'Oui',
     'genres'                => 'Genres',
+    'actions'               => 'Actions',
 
     'fr_FR'                 => 'Français (FR)',
     'en_US'                 => 'Anglais (US)',

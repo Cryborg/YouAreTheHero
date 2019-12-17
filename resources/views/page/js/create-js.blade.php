@@ -92,6 +92,19 @@
         });
     });
 
+    var actionsListDatatable = $('#actions_list').DataTable({
+        dom: 'rt<p><"clear">',
+        pagingType: 'simple',
+        createdRow: function (row, data, index, cells) {
+            // Adds a class to the Actions cell
+            $(cells[4], row).addClass('text-center');
+        },
+        drawCallback: function(settings) {
+            var pagination = $(this).closest('.dataTables_wrapper').find('.dataTables_paginate');
+            pagination.toggle(this.api().page.info().pages > 1);
+        }
+    });
+
     // When the author chooses an item from the list
     $('#items').on('change', function () {
         var $this = $(this);
@@ -125,13 +138,69 @@
 
     // When the author validates the new action on the modal
     $('#add_action').on('click', function () {
+        var serialized = $('#action_create').serialize();
         $.ajax({
-            url: route(''),
-            'data': {},
+            url: '{{ route('actions.store', $page->id) }}',
+            'data': serialized,
             'method': 'POST',
         })
-        .done(function () {
+        .done(function (data) {
+            var result = JSON.parse(data);
 
+            if (result.success) {
+                // Show the notification
+                showToast('success', {
+                    heading: '{{ trans('admin.save_succeeded') }}',
+                    text: "{{ trans('actions.new_action_successfully_added') }}",
+                });
+
+                // Adds the new action to the table
+                actionsListDatatable.row.add([
+                    result.action.item.name,
+                    result.action.verb,
+                    result.action.quantity,
+                    result.action.price,
+                    '<span class="glyphicon glyphicon-trash" data-action_id="' + result.action.item.id + '"></span>'
+                ]).draw();
+
+                // Closes the modal
+                $('#modalCreateAction').modal('hide');
+            }
+        })
+        .fail(function (data) {
+            if(data.status == 422) {
+                $.each(data.responseJSON.errors, function (i, error) {
+                    $('#modalCreateAction')
+                        .find('[name="' + i + '"]')
+                        .addClass('input-invalid')
+                        .next()
+                        .append(error[0])
+                        .removeClass('hidden');
+                });
+            }
+            showToast('error', {
+                heading: '{{ trans('admin.error_title') }}',
+                text: "{{ trans('actions.new_action_not_added') }}",
+            });
         });
     });
+
+    $('.glyphicon-trash').on('click', function () {
+        var $this = $(this);
+        var actionId = $this.data('action_id');
+
+        $.ajax({
+            url: route('actions.delete', actionId),
+            method: 'DELETE'
+        })
+        .done(function () {
+            actionsListDatatable
+                .row( $this.parents('tr') )
+                .remove()
+                .draw();
+        })
+        .fail(function () {
+            console.log('fail');
+        })
+    })
 </script>

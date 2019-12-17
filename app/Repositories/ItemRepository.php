@@ -10,7 +10,7 @@ class ItemRepository
 {
     public function find($id)
     {
-        return Cache::rememberForever('item_' . $id, function () use ($id) {
+        return Cache::remember('item_' . $id, Config::get('app.story.cache_ttl'), function () use ($id) {
             return Page::findOrFail($id);
         });
     }

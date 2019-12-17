@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.dataTables.min.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/laravel-admin/laravel-admin.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.toast.min.css') }}"/>
 
     {{-- Scripts --}}
 {{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}
