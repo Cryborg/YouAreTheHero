@@ -9,6 +9,7 @@ return [
     'add_action'                => "Ajouter l'action",
     'price'                     => "Prix",
     'price_help'                => "Si tu entres un prix ici, il prévaudra sur celui de l'objet.",
+    'add_new_prerequisite'      => "Ajouter un prérequis",
 
     // Verbs
     'earn'      => 'Gagner',

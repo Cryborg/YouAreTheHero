@@ -6,6 +6,7 @@ use App\Models\ActionPage;
 use App\Models\Page;
 use App\Models\PageLink;
 use App\Models\Story;
+use App\Repositories\PageRepository;
 use Faker\Provider\Uuid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -14,6 +15,11 @@ use Illuminate\Support\Facades\View;
 
 class PageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Story        $story
@@ -49,6 +55,8 @@ class PageController extends Controller
      */
     public function getEdit(Page $page): \Illuminate\Contracts\View\View
     {
+        $this->authorize('view', $page);
+
         $view = View::make('page.create', [
             'title' => trans('model.title'),
             'story' => $page->story,

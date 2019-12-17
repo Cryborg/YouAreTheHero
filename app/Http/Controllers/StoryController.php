@@ -33,11 +33,17 @@ class StoryController extends Controller
 
     public function __construct(PageRepository $page)
     {
-        $this->page = $page;
-
         $this->middleware('auth');
+
+        $this->page = $page;
     }
 
+    /**
+     * @param \App\Models\Story     $story
+     * @param \App\Models\Page|null $page
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getPlay(Story $story, Page $page = null)
     {
         // Check if the user has an already existing character for this story
@@ -492,6 +498,8 @@ class StoryController extends Controller
      */
     public function getEdit(Story $story)
     {
+        $this->authorize('view', $story);
+
         return $this->getCreate($story);
     }
 

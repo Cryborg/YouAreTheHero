@@ -49,12 +49,27 @@
             @include('page.partials.create', ['readonly' => false])
         </div>
         <div class="col-lg-4 col-xs-12 col-border-right col-current">
-            @info({!! trans('page.current_page_actions_help') !!})
+            <div class="row">
+                <div class="col">
+                    @info({!! trans('page.current_page_prerequisites_help') !!})
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-                <span class="glyphicon glyphicon-plus-sign"></span>
-                {{ trans('actions.add_new_action') }}
-            </button>
+                    <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalCreatePrerequisite">
+                        <span class="glyphicon glyphicon-plus-sign"></span>
+                        {{ trans('actions.add_new_prerequisite') }}
+                    </button>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    @info({!! trans('page.current_page_actions_help') !!})
+
+                    <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalCreateAction">
+                        <span class="glyphicon glyphicon-plus-sign"></span>
+                        {{ trans('actions.add_new_action') }}
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -99,12 +114,12 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <!-- Modal new Action -->
+    <div class="modal" id="modalCreateAction" tabindex="-1" role="dialog" aria-labelledby="modalCreateActionTitle" aria-hidden="true">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">{{ trans('page.actions_modal_title') }}</h5>
+                    <h5 class="modal-title" id="modalCreateActionTitle">{{ trans('page.actions_modal_title') }}</h5>
                     <span class="close toggle-help glyphicon glyphicon-question-sign">
                     </span>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -116,7 +131,30 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="add_action">{{ trans('actions.add_action') }}</button>
+                    <button type="button" class="btn btn-success" id="add_action">{{ trans('actions.add_action') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal new Prerequisite -->
+    <div class="modal" id="modalCreatePrerequisite" tabindex="-1" role="dialog" aria-labelledby="modalCreatePrerequisiteTitle" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCreatePrerequisiteTitle">{{ trans('page.prerequisite_modal_title') }}</h5>
+                    <span class="close toggle-help glyphicon glyphicon-question-sign">
+                    </span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @include('page.partials.prerequisites', ['page' => $page])
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="add_action">{{ trans('actions.add_action') }}</button>
                 </div>
             </div>
         </div>

@@ -131,6 +131,9 @@ p.indent {
     font-size: .8em;
     font-style: italic;
 }
+.alert {
+    font-size: .8em;
+}
 .alert .glyphicon {
     margin-right: 8px;
     align-self: center;
