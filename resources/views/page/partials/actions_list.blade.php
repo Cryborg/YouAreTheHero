@@ -1,5 +1,5 @@
-<table class="table table-striped" id="actions_list">
-    <thead>
+<table class="table" id="actions_list">
+    <thead class="thead-light">
         <th scope="col">{{ trans('item.name') }}</th>
         <th scope="col">{{ trans('item.verb') }}</th>
         <th scope="col">{{ trans('item.quantity') }}</th>
@@ -9,11 +9,11 @@
     @foreach ($page->actions as $action)
         <tr>
             <td>{{ $action->item->name }}</td>
-            <td>{{ trans('actions.' . $action->verb) }}</td>
+            <td>{{ $action->present()->verb }}</td>
             <td>{{ $action->quantity }}</td>
             <td>{{ $action->price }}</td>
             <td class="text-center">
-                <span class="glyphicon glyphicon-trash" data-action_id="{{ $action->id }}"></span>
+                <span class="glyphicon glyphicon-trash" data-action_id="{{ $action->id }}" title="{{ trans('admin.delete') }}"></span>
             </td>
         </tr>
     @endforeach

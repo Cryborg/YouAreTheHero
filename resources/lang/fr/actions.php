@@ -11,7 +11,6 @@ return [
     'price_help'                => "Si tu entres un prix ici, il prévaudra sur celui de l'objet.",
     'add_new_prerequisite'      => "Ajouter un prérequis",
     'new_action_successfully_added' => "L'action a bien été ajoutée à la page.",
-    'new_action_not_added'      => "L'action n'a pas pu être ajoutée à la page.",
 
     // Verbs
     'earn'      => 'Gagner',

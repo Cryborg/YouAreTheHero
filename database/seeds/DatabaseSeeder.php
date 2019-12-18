@@ -257,7 +257,7 @@ class DatabaseSeeder extends Seeder {
 
             // Put a purse with money in it
             $newItem = Item::create([
-                'name' => 'Porte-monnaie perdu (exp +10)',
+                'name' => 'Porte-monnaie perdu',
                 'default_price' => 8,
                 'story_id' => $story->id,
                 'single_use' => true,

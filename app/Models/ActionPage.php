@@ -5,9 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
+use Laracasts\Presenter\PresentableTrait;
 
 class ActionPage extends Model
 {
+    use PresentableTrait;
+
+    protected $presenter = 'App\\Presenters\\ActionPresenter';
+
     protected $guarded = ['id'];
 
     public $timestamps = false;

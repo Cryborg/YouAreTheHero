@@ -106,7 +106,7 @@
     });
 
     // When the author chooses an item from the list
-    $('#items').on('change', function () {
+    $('#item_id').on('change', function () {
         var $this = $(this);
 
         if ($this.val() == '') return false;
@@ -139,6 +139,15 @@
     // When the author validates the new action on the modal
     $('#add_action').on('click', function () {
         var serialized = $('#action_create').serialize();
+        var $this = $(this);
+        var loadingText = '<i class="fa fa-circle-o-notch fa-spin"></i> ' + $this.data('original-text');
+
+        if ($this.html() !== loadingText) {
+            $this.data('original-text', $(this).html());
+            $this.html(loadingText);
+            $this.prop('disabled', true);
+        }
+
         $.ajax({
             url: '{{ route('actions.store', $page->id) }}',
             'data': serialized,
@@ -180,14 +189,24 @@
             }
             showToast('error', {
                 heading: '{{ trans('admin.error_title') }}',
-                text: "{{ trans('actions.new_action_not_added') }}",
+                text: "{{ trans('notification.new_action_not_added') }}",
             });
+        })
+        .always(function () {
+            $this.html($this.data('original-text'));
+            $this.prop('disabled', false);
         });
     });
 
     $('.glyphicon-trash').on('click', function () {
         var $this = $(this);
         var actionId = $this.data('action_id');
+        var loadingClass = 'fa fa-circle-o-notch fa-spin';
+        var defaultClass = 'glyphicon glyphicon-trash';
+
+        if (!$this.hasClass('fa-spin')) {
+            $this.attr('class', loadingClass);
+        }
 
         $.ajax({
             url: route('actions.delete', actionId),
@@ -198,9 +217,19 @@
                 .row( $this.parents('tr') )
                 .remove()
                 .draw();
+            showToast('success', {
+                heading: '{{ trans('notification.deletion_success_title') }}',
+                text: "{{ trans('notification.deletion_success_text') }}",
+            });
         })
         .fail(function () {
-            console.log('fail');
+            showToast('error', {
+                heading: '{{ trans('notification.deletion_failed_title') }}',
+                text: "{{ trans('notification.deletion_failed_text') }}",
+            });
         })
+        .always(function () {
+            $this.attr('class', defaultClass);
+        });
     })
 </script>

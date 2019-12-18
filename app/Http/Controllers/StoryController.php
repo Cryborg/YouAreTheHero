@@ -539,7 +539,7 @@ class StoryController extends Controller
 
             $item = $this->getItem($validated['itemId']);
 
-            $view = view('page.partials.item', [
+            $view = view('page.partials.modal_item', [
                 'item' => $item,
             ]);
 

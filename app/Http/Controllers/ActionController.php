@@ -23,7 +23,11 @@ class ActionController extends Controller
 
             $newAction = ActionPage::create($validated);
 
+            // Item object
             $newAction['item'] = $newAction->item;
+
+            // Translate the verb, as we cannot do this in JS without plugin
+            $newAction['verb'] = trans('actions.' . $newAction['verb']);
 
             return json_encode([
                 'action' => $newAction,
