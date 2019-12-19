@@ -12,17 +12,19 @@ class Page extends Model
 {
     use SoftDeletes;
 
-    protected $primaryKey = 'id';
-    protected $keyType = 'string';
-    public $incrementing = false;
+    protected $primaryKey   = 'id';
 
-    protected $guarded = ['id'];
+    protected $keyType      = 'string';
+
+    public    $incrementing = false;
+
+    protected $guarded      = ['id'];
 
     // Casts JSON as array
     protected $casts = [
         'prerequisites' => 'array',
-        'is_first' => 'boolean',
-        'is_last' => 'boolean',
+        'is_first'      => 'boolean',
+        'is_last'       => 'boolean',
         'is_checkpoint' => 'boolean',
     ];
 
@@ -38,13 +40,14 @@ class Page extends Model
     {
         parent::boot();
 
-        static::creating(static function($page)
-        {
+        static::creating(static function ($page) {
             // String ID so that we prevent cheating
-            $page->id = Uuid::uuid();
-            $page->number = $page::where('story_id', '=', $page->story_id)->count() + 1;
+            $page->id       = Uuid::uuid();
+            $page->number   = $page::where('story_id', '=', $page->story_id)
+                                   ->count() + 1;
             $page->is_first = $page->number === 1;
-        });
+        }
+        );
 
     }
 
@@ -65,12 +68,17 @@ class Page extends Model
      */
     public function choices()
     {
-        $pagelink = Cache::remember('choices_' . $this->id, 1, function() {
+        $pagelink = Cache::remember('choices_' . $this->id, 1, function () {
             return PageLink::where('page_from', $this->id)
-                           ->select(['page_link.link_text', 'pages.*'])
+                           ->select([
+                                   'page_link.link_text',
+                                   'pages.*',
+                               ]
+                           )
                            ->join('pages', 'pages.id', '=', 'page_link.page_to')
                            ->get();
-        });
+        }
+        );
 
         return $pagelink;
     }
@@ -84,9 +92,13 @@ class Page extends Model
     {
         //TODO: use cache ?
         return PageLink::where('page_to', $this->id)
-            ->select(['page_link.link_text', 'pages.*'])
-            ->join('pages', 'pages.id', '=', 'page_link.page_from')
-            ->get();
+                       ->select([
+                               'page_link.link_text',
+                               'pages.*',
+                           ]
+                       )
+                       ->join('pages', 'pages.id', '=', 'page_link.page_from')
+                       ->get();
     }
 
     /**
@@ -98,7 +110,10 @@ class Page extends Model
         // - the current page
         // - the already bound children
         $potentialPages = Page::where('story_id', $this->story_id)
-                              ->whereNotIn('id', $this->choices()->pluck('id')->toArray())
+                              ->whereNotIn('id', $this->choices()
+                                                      ->pluck('id')
+                                                      ->toArray()
+                              )
                               ->whereNotIn('id', [$this->id])
                               ->get();
 
@@ -114,10 +129,11 @@ class Page extends Model
     public function addAction(array $data)
     {
         $validated = Validator::validate($data, [
-            'item_id'   => 'required',
-            'verb'      => 'required',
-            'quantity'  => 'required',
-        ]);
+                'item_id'  => 'required',
+                'verb'     => 'required',
+                'quantity' => 'required',
+            ]
+        );
 
         $validated['page_id'] = $this->id;
 

@@ -1,6 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+
 use App\Models\Page;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -16,12 +17,15 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(Page::class, function (Faker $faker) {
+$factory->define(Page::class, function (Faker $faker, $data) {
     return [
-        'title' => $faker->words(5, true),
-        'content' => $faker->text,
-        'is_first' => false,
-        'is_last' => false,
+        'title'         => ucfirst($faker->words(5, true)),
+        'content'       => $faker->text,
+        'is_first'      => false,
+        'is_last'       => false,
         'is_checkpoint' => $faker->boolean,
+        'story_id'      => $data['story_id'],
+        'prerequisites' => $data['prerequisites'] ?? null,
     ];
-});
+}
+);

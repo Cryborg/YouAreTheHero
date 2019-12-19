@@ -11,8 +11,10 @@ class Item extends Model
 
     protected $presenter = 'App\\Presenters\\ItemPresenter';
 
-    protected $casts = [
-        'effects' => 'array',
+    protected $guarded   = ['id'];
+
+    protected $casts     = [
+        'effects'    => 'array',
         'single_use' => 'boolean',
     ];
 
