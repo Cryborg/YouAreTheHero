@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Laracasts\Presenter\PresentableTrait;
 
-class ActionPage extends Model
+class Action extends Model
 {
     use PresentableTrait;
 
@@ -16,8 +16,6 @@ class ActionPage extends Model
     protected $guarded = ['id'];
 
     public $timestamps = false;
-
-    public $table = 'action_page';
 
     public function item()
     {

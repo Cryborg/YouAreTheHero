@@ -110,19 +110,19 @@ namespace App\Models{
 /**
  * App\Models\Item
  *
- * @property int $id
- * @property string $name
- * @property int $default_price
- * @property int $story_id
- * @property array|null $effects
- * @property bool $single_use
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ActionPage[] $actionPages
- * @property-read int|null $action_pages_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[] $pages
- * @property-read int|null $pages_count
+ * @property int                                                                $id
+ * @property string                                                             $name
+ * @property int                                                                $default_price
+ * @property int                                                                $story_id
+ * @property array|null                                                         $effects
+ * @property bool                                                               $single_use
+ * @property \Illuminate\Support\Carbon|null                                    $created_at
+ * @property \Illuminate\Support\Carbon|null                                    $updated_at
+ * @property string|null                                                        $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Action[] $actionPages
+ * @property-read int|null                                                      $action_pages_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[]   $pages
+ * @property-read int|null                                                      $pages_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Item newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Item newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Item query()
@@ -246,13 +246,13 @@ namespace App\Models{
  * @property int $quantity
  * @property string $page_id
  * @property-read \App\Models\Item $item
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ActionPage newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ActionPage newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ActionPage query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ActionPage whereItemId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ActionPage wherePageId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ActionPage whereQuantity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ActionPage whereVerb($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Action newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Action newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Action query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Action whereItemId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Action wherePageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Action whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Action whereVerb($value)
  */
 	class ActionPage extends \Eloquent {}
 }
@@ -264,21 +264,21 @@ namespace App\Models{
  * @property string $id
  * @property int $story_id
  * @property int $number
- * @property bool $is_first
- * @property bool $is_last
- * @property string|null $title
- * @property string $content
- * @property array|null $prerequisites
- * @property string|null $layout
- * @property bool $is_checkpoint
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ActionPage[] $actions
- * @property-read int|null $actions_count
+ * @property bool                                                                 $is_first
+ * @property bool                                                                 $is_last
+ * @property string|null                                                          $title
+ * @property string                                                               $content
+ * @property array|null                                                           $prerequisites
+ * @property string|null                                                          $layout
+ * @property bool                                                                 $is_checkpoint
+ * @property \Illuminate\Support\Carbon|null                                      $created_at
+ * @property \Illuminate\Support\Carbon|null                                      $updated_at
+ * @property \Illuminate\Support\Carbon|null                                      $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Action[]   $actions
+ * @property-read int|null                                                        $actions_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\PageLink[] $pageLinks
- * @property-read int|null $page_links_count
- * @property-read \App\Models\Story $story
+ * @property-read int|null                                                        $page_links_count
+ * @property-read \App\Models\Story                                               $story
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page newQuery()

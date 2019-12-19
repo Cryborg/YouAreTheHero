@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ActionPage;
+use App\Models\Action;
 use App\Models\Page;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -21,7 +21,7 @@ class ActionController extends Controller
 
             $validated['page_id'] = $page->id;
 
-            $newAction = ActionPage::create($validated);
+            $newAction = Action::create($validated);
 
             // Item object
             $newAction['item'] = $newAction->item;
@@ -40,12 +40,12 @@ class ActionController extends Controller
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\ActionPage   $action
+     * @param \App\Models\Action   $action
      *
      * @return false|string
      * @throws \Exception
      */
-    public function delete(Request $request, ActionPage $action)
+    public function delete(Request $request, Action $action)
     {
         if ($request->ajax()) {
             $deleted = $action->delete();

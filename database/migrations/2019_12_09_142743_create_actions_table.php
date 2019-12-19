@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateActionPageTable extends Migration
+class CreateActionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateActionPageTable extends Migration
      */
     public function up()
     {
-        Schema::create('action_page', function (Blueprint $table) {
+        Schema::create('actions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('item_id');
             $table->foreign('item_id')->references('id')->on('items');
@@ -32,6 +32,6 @@ class CreateActionPageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('action_page');
+        Schema::dropIfExists('actions');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ActionPage;
+use App\Models\Action;
 use App\Models\Page;
 use App\Models\PageLink;
 use App\Models\Story;
@@ -140,7 +140,7 @@ class PageController extends Controller
                 'price'         => '',
             ]);
 
-            ActionPage::create($validated);
+            Action::create($validated);
         }
 
         abort(JsonResponse::HTTP_NOT_FOUND);

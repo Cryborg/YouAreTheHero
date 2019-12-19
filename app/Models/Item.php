@@ -23,11 +23,11 @@ class Item extends Model
      */
     public function pages()
     {
-        return $this->belongsToMany(Page::class, 'action_page');
+        return $this->belongsToMany(Page::class, 'actions');
     }
 
     public function actionPages()
     {
-        return $this->belongsToMany(ActionPage::class);
+        return $this->belongsToMany(Action::class);
     }
 }

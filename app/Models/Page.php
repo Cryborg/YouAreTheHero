@@ -58,7 +58,7 @@ class Page extends Model
 
     public function actions()
     {
-        return $this->hasMany(ActionPage::class);
+        return $this->hasMany(Action::class);
     }
 
     /**
@@ -123,7 +123,7 @@ class Page extends Model
     /**
      * @param array $data
      *
-     * @return \App\Models\ActionPage
+     * @return \App\Models\Action
      * @throws \Illuminate\Validation\ValidationException
      */
     public function addAction(array $data)
@@ -137,6 +137,6 @@ class Page extends Model
 
         $validated['page_id'] = $this->id;
 
-        return ActionPage::create($validated);
+        return Action::create($validated);
     }
 }

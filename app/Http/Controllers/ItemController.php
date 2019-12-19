@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ActionPage;
+use App\Models\Action;
 use App\Models\Item;
 use Illuminate\Http\Request;
 
