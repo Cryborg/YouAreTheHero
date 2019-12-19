@@ -26,7 +26,7 @@ class Item extends Model
         return $this->belongsToMany(Page::class, 'actions');
     }
 
-    public function actionPages()
+    public function actions()
     {
         return $this->belongsToMany(Action::class);
     }
