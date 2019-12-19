@@ -1,6 +1,5 @@
 <script type="text/javascript">
-    function newPage($this, route)
-    {
+    function newPage($this, route) {
         var newNumber = $('a.nav-item.nav-link').length;
         $('a.nav-item.nav-link, div.tab-pane').removeClass('active');
 
@@ -27,13 +26,13 @@
         // help-block state check from cookie
         var openToggle = Cookies.get("hero.help-block.show") || false;
 
-        if ( openToggle === 'true') {
+        if (openToggle === 'true') {
             $("p.help-block").show();
         } else {
             $("p.help-block").hide();
         }
 
-        $('.toggle-help').on('click', function() {
+        $('.toggle-help').on('click', function () {
             var $pBlocks = $('p.help-block');
             var done = false;
 
@@ -48,7 +47,7 @@
         });
 
         // Create a new tab
-        $('#addNewPage').on('click', function(event) {
+        $('#addNewPage').on('click', function (event) {
             event.preventDefault();
 
             var $this = $(this);
@@ -64,11 +63,16 @@
             // internalId is 0 if the form being submitted is the main page.
             // Otherwise it is > 0
             var internalId = $this.data('internalid');
-            var pageLinkTitle = $('#linktext-' + internalId).val();
 
-            var data = $this.serialize();
-            if (internalId > 0) data += '&linktitle=' + encodeURIComponent(pageLinkTitle);
-            data += '&page_from=' + $('#page_from').val();
+            var data = {
+                'title': $('#title-' + internalId).val(),
+                'content': $('#content-' + internalId).val(),
+                'layout': $('#layout-' + internalId).val(),
+            };
+            if (internalId > 0) {
+                data.linktitle = $('#linktext-' + internalId).val();
+                data.page_from = $('#page_from').val();
+            }
 
             $.ajax({
                 method: $this.attr('method'),
@@ -76,9 +80,13 @@
                 data: data
             })
                 .done(function (data) {
+                    showToast('success', {
+                        heading: '{{ trans('notification.save_success_title') }}',
+                        text: "{{ trans('notification.save_success_text') }}",
+                    });
                 })
                 .fail(function (data) {
-                    if(data.status == 422) {
+                    if (data.status == 422) {
                         $.each(data.responseJSON.errors, function (i, error) {
                             $this
                                 .find('[name="' + i + '"]')
@@ -88,6 +96,12 @@
                                 .removeClass('hidden');
                         });
                     }
+
+                    showToast('error', {
+                        heading: '{{ trans('notification.save_failed_title') }}',
+                        text: "{{ trans('admin.save_failed_text') }}",
+                    });
+
                 });
         });
     });
@@ -99,7 +113,7 @@
             // Adds a class to the Actions cell
             $(cells[4], row).addClass('text-center');
         },
-        drawCallback: function(settings) {
+        drawCallback: function (settings) {
             var pagination = $(this).closest('.dataTables_wrapper').find('.dataTables_paginate');
             pagination.toggle(this.api().page.info().pages > 1);
         }
@@ -116,18 +130,18 @@
             method: 'POST',
             data: {'itemId': $this.val()}
         })
-        .done(function (data) {
-            if ($this.attr('id') == 'prerequisite_item_id') {
-                $('#prerequisite_item_description').html(data);
-            } else {
-                $('#item_description').html(data);
-            }
+            .done(function (data) {
+                if ($this.attr('id') == 'prerequisite_item_id') {
+                    $('#prerequisite_item_description').html(data);
+                } else {
+                    $('#item_description').html(data);
+                }
 
-        });
+            });
     });
 
     // When the author creates a child page
-    $('.nav-item.nav-link select').on('click', function(e) {
+    $('.nav-item.nav-link select').on('click', function (e) {
         e.preventDefault();
 
         var $this = $(this);
@@ -158,49 +172,49 @@
             'data': serialized,
             'method': 'POST',
         })
-        .done(function (data) {
-            var result = JSON.parse(data);
+            .done(function (data) {
+                var result = JSON.parse(data);
 
-            if (result.success) {
-                // Show the notification
-                showToast('success', {
-                    heading: '{{ trans('admin.save_succeeded') }}',
-                    text: "{{ trans('actions.new_action_successfully_added') }}",
+                if (result.success) {
+                    // Show the notification
+                    showToast('success', {
+                        heading: '{{ trans('admin.save_succeeded') }}',
+                        text: "{{ trans('actions.new_action_successfully_added') }}",
+                    });
+
+                    // Adds the new action to the table
+                    actionsListDatatable.row.add([
+                        result.action.item.name,
+                        result.action.verb,
+                        result.action.quantity,
+                        result.action.price,
+                        '<span class="glyphicon glyphicon-trash" data-action_id="' + result.action.item.id + '"></span>'
+                    ]).draw();
+
+                    // Closes the modal
+                    $('#modalCreateAction').modal('hide');
+                }
+            })
+            .fail(function (data) {
+                if (data.status == 422) {
+                    $.each(data.responseJSON.errors, function (i, error) {
+                        $('#modalCreateAction')
+                            .find('[name="' + i + '"]')
+                            .addClass('input-invalid')
+                            .next()
+                            .append(error[0])
+                            .removeClass('hidden');
+                    });
+                }
+                showToast('error', {
+                    heading: '{{ trans('admin.error_title') }}',
+                    text: "{{ trans('notification.new_action_not_added') }}",
                 });
-
-                // Adds the new action to the table
-                actionsListDatatable.row.add([
-                    result.action.item.name,
-                    result.action.verb,
-                    result.action.quantity,
-                    result.action.price,
-                    '<span class="glyphicon glyphicon-trash" data-action_id="' + result.action.item.id + '"></span>'
-                ]).draw();
-
-                // Closes the modal
-                $('#modalCreateAction').modal('hide');
-            }
-        })
-        .fail(function (data) {
-            if(data.status == 422) {
-                $.each(data.responseJSON.errors, function (i, error) {
-                    $('#modalCreateAction')
-                        .find('[name="' + i + '"]')
-                        .addClass('input-invalid')
-                        .next()
-                        .append(error[0])
-                        .removeClass('hidden');
-                });
-            }
-            showToast('error', {
-                heading: '{{ trans('admin.error_title') }}',
-                text: "{{ trans('notification.new_action_not_added') }}",
+            })
+            .always(function () {
+                $this.html($this.data('original-text'));
+                $this.prop('disabled', false);
             });
-        })
-        .always(function () {
-            $this.html($this.data('original-text'));
-            $this.prop('disabled', false);
-        });
     });
 
     $('.glyphicon-trash').on('click', function () {
@@ -217,24 +231,24 @@
             url: route('actions.delete', actionId),
             method: 'DELETE'
         })
-        .done(function () {
-            actionsListDatatable
-                .row( $this.parents('tr') )
-                .remove()
-                .draw();
-            showToast('success', {
-                heading: '{{ trans('notification.deletion_success_title') }}',
-                text: "{{ trans('notification.deletion_success_text') }}",
+            .done(function () {
+                actionsListDatatable
+                    .row($this.parents('tr'))
+                    .remove()
+                    .draw();
+                showToast('success', {
+                    heading: '{{ trans('notification.deletion_success_title') }}',
+                    text: "{{ trans('notification.deletion_success_text') }}",
+                });
+            })
+            .fail(function () {
+                showToast('error', {
+                    heading: '{{ trans('notification.deletion_failed_title') }}',
+                    text: "{{ trans('notification.deletion_failed_text') }}",
+                });
+            })
+            .always(function () {
+                $this.attr('class', defaultClass);
             });
-        })
-        .fail(function () {
-            showToast('error', {
-                heading: '{{ trans('notification.deletion_failed_title') }}',
-                text: "{{ trans('notification.deletion_failed_text') }}",
-            });
-        })
-        .always(function () {
-            $this.attr('class', defaultClass);
-        });
     })
 </script>

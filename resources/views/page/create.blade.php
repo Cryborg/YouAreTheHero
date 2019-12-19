@@ -16,7 +16,7 @@
                     <div class="tab-content">
                         @if($page->parents())
                             @foreach($page->parents() as $key => $parent)
-                                <div class="tab-pane active" id="pp{{ $key }}">
+                                <div class="tab-pane @if ($key === 0) active @endif" id="pp{{ $key }}">
                                     @include('page.partials.create_readonly', ['page' => $parent])
                                 </div>
                             @endforeach
@@ -46,7 +46,7 @@
         <div class="col-lg-8 col-xs-12 col-border-left col-current">
             @info({!! trans('page.current_page_help') !!})
 
-            @include('page.partials.create', ['readonly' => false])
+            @include('page.partials.create')
         </div>
         <div class="col-lg-4 col-xs-12 col-border-right col-current">
             <div class="row">
@@ -108,7 +108,7 @@
                 @if($page->choices())
                     @foreach($page->choices() as $key => $choice)
                         <div class="tab-pane @if ($key === 0) active @endif" id="p{{ $key }}">
-                            @include('page.partials.create', ['page' => $choice, 'internalId' => $key + 1, 'readonly' => false])
+                            @include('page.partials.create', ['page' => $choice, 'internalId' => $key + 1])
                         </div>
                     @endforeach
                 @endif

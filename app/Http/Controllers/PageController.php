@@ -30,10 +30,9 @@ class PageController extends Controller
     public function getCreate(Request $request, Story $story, Page $page = null): \Illuminate\Contracts\View\View
     {
         if ($page === null) {
-            $page           = factory(Page::class)->make();
-            $page->story_id = $story->id;
-            $page->id       = Uuid::uuid();
-            $page->save();
+            $page = factory(Page::class)->create([
+                'story_id' => $story->id
+            ]);
         }
 
         $view = View::make('page.partials.create', [
@@ -97,7 +96,7 @@ class PageController extends Controller
                 'content'     => 'required',
                 'layout'      => 'required',
                 'linktitle'   => 'sometimes|required',
-                'page_from'   => 'required',
+                'page_from'   => 'sometimes|required',
             ]);
 
             $validated['is_first']      = $request->has('is_first');

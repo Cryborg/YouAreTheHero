@@ -21,7 +21,7 @@ $factory->define(Page::class, function (Faker $faker, $data) {
     return [
         'title'         => ucfirst($faker->words(5, true)),
         'content'       => $faker->text,
-        'is_first'      => false,
+        'is_first'      => $data['is_first'] ?? false,
         'is_last'       => false,
         'is_checkpoint' => $faker->boolean,
         'story_id'      => $data['story_id'],

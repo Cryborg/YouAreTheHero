@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col">
                     <div id="loadingDiv"></div>
-                    @include('layouts.partials.header')
+                    <div class="title">{{ $page->title }}</div>
                 </div>
             </div>
             <div class="row">

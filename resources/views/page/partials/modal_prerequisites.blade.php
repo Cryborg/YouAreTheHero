@@ -24,7 +24,7 @@
                 <div class="form-group mb-4">
                     {!! Form::label('sheet', trans('page.required_characteristic'), ['class' => 'sr-only']) !!}
                     <p class="help-block">{!! trans('page.required_characteristic_help') !!}</p>
-                    {!! Form::select('sheet', ['' => ''] + array_keys($page->story->sheet_config), null, ['class' => 'form-control custom-select', 'size' => 6]) !!}
+                    {!! Form::select('sheet', ['' => ''] + array_keys($page->story->sheet_config ?? []), null, ['class' => 'form-control custom-select', 'size' => 6]) !!}
                 </div>
 
                 <div class="form-group mb-4">

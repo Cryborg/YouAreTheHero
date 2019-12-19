@@ -13,9 +13,10 @@ class Sheet
     {
 
         if (get_class($mixed) === Story::class) {
-
-            foreach ($mixed->sheet_config as $name => $value) {
-                $this->caracteristics[$name] = $value;
+            if ($mixed->sheet_config) {
+                foreach ($mixed->sheet_config as $name => $value) {
+                    $this->caracteristics[$name] = $value;
+                }
             }
         }
 

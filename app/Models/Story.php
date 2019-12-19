@@ -60,8 +60,6 @@ class Story extends Model
      * Get the last created page of a given story.
      * Used in StoriesController/ajaxList to display the last created page for the selected story.
      *
-     * @param \App\Models\Story $story
-     *
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object|null
      */
     public function getLastCreatedPage()

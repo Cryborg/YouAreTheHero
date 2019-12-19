@@ -15,22 +15,24 @@
                     </label>
                 </td>
             </tr>
-            <tr>
-                <th scope="row">{{ trans('item.effects') }}</th>
-                <td class="p-0">
-                    @foreach ($item->effects as $carac => $effect)
-                        <div class="row">
-                            <div class="col p-2">
-                                @include('story.partials.effects', [
-                                    'name' => $carac,
-                                    'value' => $effect['quantity'],
-                                    'operator' => $effect['operator'] === '+' ? 'add' : 'sub'
-                                ])
+            @if($item->effects)
+                <tr>
+                    <th scope="row">{{ trans('item.effects') }}</th>
+                    <td class="p-0">
+                        @foreach ($item->effects as $carac => $effect)
+                            <div class="row">
+                                <div class="col p-2">
+                                    @include('story.partials.effects', [
+                                        'name' => $carac,
+                                        'value' => $effect['quantity'],
+                                        'operator' => $effect['operator'] === '+' ? 'add' : 'sub'
+                                    ])
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
-                </td>
-            </tr>
+                        @endforeach
+                    </td>
+                </tr>
+            @endif
         </tbody>
     </table>
 </fieldset>

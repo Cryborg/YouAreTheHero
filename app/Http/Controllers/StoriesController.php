@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Story;
 use App\Models\User;
-use Illuminate\Http\Request;use Illuminate\Support\Facades\Cache;
+use Illuminate\Http\Request;use Illuminate\Support\Facades\Auth;use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
 use Yajra\DataTables\DataTables;
 
@@ -51,7 +51,8 @@ class StoriesController extends Controller
             $query->where('is_published', false);
             $cacheKey = 'stories.list.draft';
         } else {
-            $query->where('is_published', true);
+            $query->where('is_published', true)
+                  ->orWhere('user_id', Auth::id());
         }
 
         $stories = Cache::remember($cacheKey, 60, function () use ($query) {

@@ -34,7 +34,7 @@
     @include('flash::message')
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container-fluid">
+            <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}" title="@lang('common.link_home')">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -103,7 +103,7 @@
         </nav>
 
         <main class="py-4">
-            <div class="container-fluid">
+            <div class="container">
                 @yield('content')
             </div>
         </main>

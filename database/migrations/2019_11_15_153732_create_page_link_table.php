@@ -19,7 +19,7 @@ class CreatePageLinkTable extends Migration
             $table->foreign('page_from')->references('id')->on('pages');
             $table->string('page_to', 36)->nullable();
             $table->foreign('page_to')->references('id')->on('pages');
-            $table->string('link_text');
+            $table->text('link_text');
 
             $table->index(['page_from']);
         });

@@ -17,13 +17,15 @@
                         'operator' => 'sub'
                     ])
                     <span class="item-name">{{ $action['item']['name'] }}</span>
-                    @foreach ($action['item']->effects as $effect => $value)
-                        @include('story.partials.effects', [
-                            'name' => $effect,
-                            'value' => $value['quantity'],
-                            'operator' => $value['operator'] === '+' ? 'add' : 'sub'
-                        ])
-                    @endforeach
+                    @if ($action['item']->effects)
+                        @foreach ($action['item']->effects as $effect => $value)
+                            @include('story.partials.effects', [
+                                'name' => $effect,
+                                'value' => $value['quantity'],
+                                'operator' => $value['operator'] === '+' ? 'add' : 'sub'
+                            ])
+                        @endforeach
+                    @endif
                 </div>
                 @break
         @endswitch

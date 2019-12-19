@@ -1,12 +1,12 @@
 <a class="btn btn-primary ml-1 w-25 mb-4" href="{{ route('page.edit', $page->id) }}">{{ trans('story.edit') }}</a>
 
 <div class="form-group">
-    {!! Form::label('title', trans('model.title'), ['class' => 'control-label']) !!}
+    {!! Form::label('title-' . $page->id, trans('model.title'), ['class' => 'control-label']) !!}
     <p class="false-input">{{ $page->title }}</p>
 </div>
 
 <div class="form-group">
-    {!! Form::label('content', trans('model.content'), ['class' => 'control-label']) !!}
+    {!! Form::label('content-' . $page->id, trans('model.content'), ['class' => 'control-label']) !!}
     <p class="false-input">{{ $page->content }}</p>
 </div>
 

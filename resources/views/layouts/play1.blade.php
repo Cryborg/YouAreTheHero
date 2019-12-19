@@ -18,13 +18,13 @@
         </div>
         <div class="col col-xs-12 bloc">
             <div class="row">
-                <div class="col">
+                <div class="col text-center">
                     <div id="loadingDiv"></div>
-                    @include('layouts.partials.header')
+                    <div class="title">{{ $page->title }}</div>
                 </div>
             </div>
             <div class="row">
-                <div class="col">
+                <div class="col text-justify">
                     <p>{!! $page->content !!}</p>
                 </div>
             </div>

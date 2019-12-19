@@ -33,6 +33,10 @@ class DatabaseSeeder extends Seeder
 
         //TODO: remove this once in prod ;)
         \Illuminate\Support\Facades\Artisan::call('dev:generate');
+        $this->call(StoriesTableSeeder::class);
+        $this->call(PagesTableSeeder::class);
+        $this->call(PageLinkTableSeeder::class);
+        $this->call(ItemsTableSeeder::class);
     }
 }
 

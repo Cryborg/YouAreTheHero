@@ -476,10 +476,10 @@ class StoryController extends Controller
 
         if ($story) {
             // Create the first page with dummy data
-            $page = factory(Page::class)->make();
-            $page->story_id = $story->id;
-            $page->is_first = true;
-            $page->save();
+            $page = factory(Page::class)->create([
+                'story_id' => $story->id,
+                'is_first' => true,
+            ]);
 
             \flash(trans('model.save_successful'));
 
