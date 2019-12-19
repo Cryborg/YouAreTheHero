@@ -546,7 +546,7 @@ class StoryController extends Controller
             return $view ?? view('errors.404');
         }
 
-        abort(404);
+        abort(JsonResponse::HTTP_NOT_FOUND);
     }
 
     /**

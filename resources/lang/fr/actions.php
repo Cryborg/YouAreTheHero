@@ -10,6 +10,7 @@ return [
     'price'                     => "Prix",
     'price_help'                => "Si tu entres un prix ici, il prévaudra sur celui de l'objet.",
     'add_new_prerequisite'      => "Ajouter un prérequis",
+    'add_prerequisite'          => "Ajouter le prérequis",
     'new_action_successfully_added' => "L'action a bien été ajoutée à la page.",
 
     // Verbs

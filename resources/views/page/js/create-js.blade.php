@@ -106,7 +106,7 @@
     });
 
     // When the author chooses an item from the list
-    $('#item_id').on('change', function () {
+    $('#item_id, #prerequisite_item_id').on('change', function () {
         var $this = $(this);
 
         if ($this.val() == '') return false;
@@ -117,7 +117,12 @@
             data: {'itemId': $this.val()}
         })
         .done(function (data) {
-            $('#item_description').html(data);
+            if ($this.attr('id') == 'prerequisite_item_id') {
+                $('#prerequisite_item_description').html(data);
+            } else {
+                $('#item_description').html(data);
+            }
+
         });
     });
 

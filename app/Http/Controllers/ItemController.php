@@ -23,6 +23,6 @@ class ItemController extends Controller
             return json_encode(['success' => $deleted]);
         }
 
-        abort(404);
+        abort(JsonResponse::HTTP_NOT_FOUND);
     }
 }

@@ -173,6 +173,7 @@ p.indent {
 input[type="number"] {
     width: 7em;
 }
+
 .modal-header {
     background-color: #bbe3ff;
 }
@@ -181,6 +182,7 @@ input[type="number"] {
     right: 2.5em;
     top: 16px;
 }
+
 .table-reset {
     background-color: white;
 }
@@ -192,4 +194,7 @@ img.money_icon {
 .glyphicon-trash {
     color: red;
     cursor: pointer;
+}
+.minh-50 {
+    min-height: 50%;
 }

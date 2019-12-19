@@ -35,7 +35,7 @@ class ActionController extends Controller
             ]);
         }
 
-        abort(404);
+        abort(JsonResponse::HTTP_NOT_FOUND);
     }
 
     /**
@@ -53,7 +53,7 @@ class ActionController extends Controller
             return json_encode(['success' => $deleted]);
         }
 
-        abort(404);
+        abort(JsonResponse::HTTP_NOT_FOUND);
     }
 
     /**

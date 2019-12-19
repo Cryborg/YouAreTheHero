@@ -126,7 +126,7 @@ class PageController extends Controller
             return response()->json(['success' => false]);
         }
 
-        abort(404);
+        abort(JsonResponse::HTTP_NOT_FOUND);
     }
 
     public function addActionAjax(Request $request)
@@ -143,6 +143,6 @@ class PageController extends Controller
             ActionPage::create($validated);
         }
 
-        abort(404);
+        abort(JsonResponse::HTTP_NOT_FOUND);
     }
 }
