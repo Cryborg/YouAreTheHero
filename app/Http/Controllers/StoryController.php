@@ -329,7 +329,7 @@ class StoryController extends Controller
      */
     private function saveCheckpoint(Character $character, $page): void
     {
-        if ($page->is_checkpoint) {
+        if ($page && $page->is_checkpoint) {
             Checkpoint::firstOrCreate([
                 'character_id' => $character->id,
                 'page_id'      => $page->id,
@@ -575,5 +575,44 @@ class StoryController extends Controller
         }
 
         return $actions;
+    }
+
+    /**
+     * @param \App\Models\Story $story
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function getTree(Story $story)
+    {
+
+        //FIXME: does not work for now
+
+
+        $tree = [];
+        $pages = $story->pages->where('is_first', true);
+        $page = $pages->first();
+
+        $view = View::make('story.tree', [
+            'pages' => [$page],
+        ]);
+
+        return $view;
+    }
+
+    public function postChildrenPagesAjax(Request $request)
+    {
+        if ($request->ajax()) {
+            $pageId = $request->get('page');
+            $page = Cache::remember('page_' . $pageId, Config::get('app.story.cache_ttl'), function () use ($pageId) {
+                return Page::where('id', $pageId)
+                           ->first();
+            });
+
+            $view = View::make('story.partials.treecard', ['pages' => $page->choices()]);
+
+            return $view;
+        }
+
+        abort(JsonResponse::HTTP_NOT_FOUND);
     }
 }

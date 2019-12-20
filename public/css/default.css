@@ -198,3 +198,6 @@ img.money_icon {
 .minh-50 {
     min-height: 50%;
 }
+.x-small {
+    font-size: 50%;
+}

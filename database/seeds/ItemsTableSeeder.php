@@ -26,7 +26,7 @@ class ItemsTableSeeder extends Seeder
             'item_id'    => $seduction->id,
             'verb'       => 'buy',
             'quantity'   => 1,
-            'single_ise' => true,
+            'single_use' => true,
             'price'      => 1,
         ]
         );
@@ -43,7 +43,7 @@ class ItemsTableSeeder extends Seeder
             'item_id'    => $guerre->id,
             'verb'       => 'buy',
             'quantity'   => 1,
-            'single_ise' => true,
+            'single_use' => true,
             'price'      => 1,
         ]
         );
@@ -51,7 +51,7 @@ class ItemsTableSeeder extends Seeder
             'item_id'    => $seduction->id,
             'verb'       => 'buy',
             'quantity'   => 1,
-            'single_ise' => true,
+            'single_use' => true,
             'price'      => 1,
         ]
         );

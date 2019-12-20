@@ -58,7 +58,7 @@
                             return '<a href="' + route('story.edit', data) + '">' + data + '</a>';
                         }, 'width': '5%'},
                     {data: 'last_created_page', render: function ( data, type, row ) {
-                            return '<a href="' + route('page.edit', data.id) + '">{{ trans('story.resume_editing') }}</a>';
+                            return '<a href="' + route('page.edit', data.id) + '#current_page">{{ trans('story.resume_editing') }}</a>';
                         }, 'width': '5%'},
                     {data: 'title'},
                     {data: 'locale', 'width': '10%'},

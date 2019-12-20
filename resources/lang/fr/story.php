@@ -8,4 +8,6 @@ return [
     'resume_editing'        => 'Continuer',
     'edit'                  => 'Modifier',
     'add_choices'           => 'Ajouter des choix',
+
+    'tree'                  => 'Arborescence des pages'
 ];

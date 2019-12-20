@@ -7,6 +7,7 @@
 <script type="text/javascript" src="{{ asset('js/datatables.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.toast.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery.connections.js') }}"></script>
 <script src="{{ asset('js/js.cookie.min.js') }}"></script>
 <script type="text/javascript">
     // Global ajax options

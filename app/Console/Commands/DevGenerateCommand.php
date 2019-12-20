@@ -66,7 +66,7 @@ class DevGenerateCommand extends Command
                 'password'   => '$2y$10$DbdP2HjT0HRyRw5smftYzewPGiuZD9uvhG1TcnD3fd6auYnIdPLk2',
             ]
         );
-
+return true;
         // Stories
         $sheet = [
             'experience' => 0,
