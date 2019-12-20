@@ -23,6 +23,8 @@
     }
 
     $(document).ready(function () {
+        $('textarea').summernote();
+
         // help-block state check from cookie
         var openToggle = Cookies.get("hero.help-block.show") || false;
 
