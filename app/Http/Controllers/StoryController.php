@@ -74,7 +74,7 @@ class StoryController extends Controller
                 // Create the character
                 $character = $this->createCharacter($story, $page);
 
-                $this->getChoicesFromPage($page, $character);
+                $this->getFilteredChoicesFromPage($page, $character);
             }
         } else { // The character exists, let's go back to the previous save point
             // Get the last visited page
@@ -86,7 +86,7 @@ class StoryController extends Controller
                 if ($page->is_last) {
                     $page->choices = 'gameover';
                 } else {
-                    $this->getChoicesFromPage($page, $character);
+                    $this->getFilteredChoicesFromPage($page, $character);
                 }
 
                 $character->update(['page_id' => $page->id]);
@@ -149,7 +149,7 @@ class StoryController extends Controller
      *
      * @return mixed
      */
-    private function getChoicesFromPage(Page $currentPage, Character $character) {
+    private function getFilteredChoicesFromPage(Page $currentPage, Character $character) {
         // Get all the choices (links to the next page(s)
         $allChoices = $this->getAllChoicesForPage($currentPage);
         $finalChoices = [];
@@ -281,7 +281,7 @@ class StoryController extends Controller
     {
         $character = $this->getCurrentCharacter($story);
 
-        $this->getChoicesFromPage($page, $character);
+        $this->getFilteredChoicesFromPage($page, $character);
 
         return view('story.partials.choices', [
             'story' => $story,

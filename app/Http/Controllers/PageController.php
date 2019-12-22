@@ -115,8 +115,6 @@ class PageController extends Controller
             unset($validated['linktitle'], $validated['page_from']);
 
             if ($page->update($validated)) {
-                \flash(trans('model.save_successful'));
-
                 return response()->json(['success' => true]);
             }
 

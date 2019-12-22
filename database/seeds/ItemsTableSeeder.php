@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Item;
-use App\Models\Page;
 
 class ItemsTableSeeder extends Seeder
 {
@@ -14,46 +12,37 @@ class ItemsTableSeeder extends Seeder
      */
     public function run()
     {
-        $seduction = Item::create([
-            'name'     => 'Phéromone de séduction',
-            'story_id' => 5,
-        ]
-        );
+        
 
-        $page = Page::whereId('8e32b39a-0886-37f3-93fd-f606a88950a9')
-                    ->first();
-        $page->addAction([
-            'item_id'    => $seduction->id,
-            'verb'       => 'buy',
-            'quantity'   => 1,
-            'single_use' => true,
-            'price'      => 1,
-        ]
-        );
-
-        $guerre = Item::create([
-            'name'     => 'Phéromone de guerre',
-            'story_id' => 5,
-        ]
-        );
-
-        $page = Page::whereId('3442f8a3-3a40-3251-b4c8-445ff8c24595')
-                    ->first();
-        $page->addAction([
-            'item_id'    => $guerre->id,
-            'verb'       => 'buy',
-            'quantity'   => 1,
-            'single_use' => true,
-            'price'      => 1,
-        ]
-        );
-        $page->addAction([
-            'item_id'    => $seduction->id,
-            'verb'       => 'buy',
-            'quantity'   => 1,
-            'single_use' => true,
-            'price'      => 1,
-        ]
-        );
+        \DB::table('items')->delete();
+        
+        \DB::table('items')->insert(array (
+            0 => 
+            array (
+                'id' => 1,
+                'name' => 'Phéromone de séduction',
+                'default_price' => 0,
+                'story_id' => 5,
+                'effects' => NULL,
+                'single_use' => 1,
+                'created_at' => '2019-12-20 15:47:37',
+                'updated_at' => '2019-12-20 15:47:37',
+                'deleted_at' => NULL,
+            ),
+            1 => 
+            array (
+                'id' => 2,
+                'name' => 'Phéromone de guerre',
+                'default_price' => 0,
+                'story_id' => 5,
+                'effects' => NULL,
+                'single_use' => 1,
+                'created_at' => '2019-12-20 15:47:37',
+                'updated_at' => '2019-12-20 15:47:37',
+                'deleted_at' => NULL,
+            ),
+        ));
+        
+        
     }
 }

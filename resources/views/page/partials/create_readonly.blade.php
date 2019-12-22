@@ -2,12 +2,12 @@
 
 <div class="form-group">
     {!! Form::label('title-' . $page->id, trans('model.title'), ['class' => 'control-label']) !!}
-    <p class="false-input">{{ $page->title }}</p>
+    <div class="false-input">{{ $page->title }}</div>
 </div>
 
 <div class="form-group">
     {!! Form::label('content-' . $page->id, trans('model.content'), ['class' => 'control-label']) !!}
-    <p class="false-input">{{ $page->content }}</p>
+    <div class="false-input">{!! $page->content !!}</div>
 </div>
 
 <div class="form-group form-check">

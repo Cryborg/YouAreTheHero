@@ -11,6 +11,7 @@
 <script type="text/javascript" src="{{ asset('js/jquery.connections.js') }}"></script>
 <script src="{{ asset('js/js.cookie.min.js') }}"></script>
 <script src="{{ asset('js/summernote.min.js') }}"></script>
+<script src="{{ asset('js/summernote-fr-FR.js') }}"></script>
 <script type="text/javascript">
     // Global ajax options
     $.ajaxSetup({

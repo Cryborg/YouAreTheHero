@@ -23,7 +23,21 @@
     }
 
     $(document).ready(function () {
-        $('textarea').summernote();
+        $('textarea').summernote({
+            lang: 'fr-FR',
+            maximumImageFileSize: 524288, // 512k
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture']],
+                ['view', ['fullscreen', 'codeview']],
+            ],
+            spellcheck: false
+        });
 
         // help-block state check from cookie
         var openToggle = Cookies.get("hero.help-block.show") || false;
@@ -60,11 +74,20 @@
 
         $(document).on('click', '.submit-btn', function (e) {
             let $this = $(this).parent('form');
+            let $thisBtn = $(this);
             e.preventDefault();
 
             // internalId is 0 if the form being submitted is the main page.
             // Otherwise it is > 0
             var internalId = $this.data('internalid');
+
+            var loadingText = '<i class="fa fa-circle-o-notch fa-spin"></i> ' + $thisBtn.data('original-text');
+
+            if ($thisBtn.html() !== loadingText) {
+                $thisBtn.data('original-text', $thisBtn.html());
+                $thisBtn.html(loadingText);
+                $thisBtn.prop('disabled', true);
+            }
 
             var data = {
                 'title': $('#title-' + internalId).val(),
@@ -104,6 +127,10 @@
                         text: "{{ trans('admin.save_failed_text') }}",
                     });
 
+                })
+                .always(function () {
+                    $thisBtn.html($thisBtn.data('original-text'));
+                    $thisBtn.prop('disabled', false);
                 });
         });
     });

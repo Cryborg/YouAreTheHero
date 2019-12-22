@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PagesTableSeeder::class);
         $this->call(PageLinkTableSeeder::class);
         $this->call(ItemsTableSeeder::class);
+        $this->call(ActionsTableSeeder::class);
     }
 }
 
