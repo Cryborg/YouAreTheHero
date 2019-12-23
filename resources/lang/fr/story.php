@@ -8,6 +8,9 @@ return [
     'resume_editing'        => 'Continuer',
     'edit'                  => 'Modifier',
     'start_playing'         => "Commencer l'histoire",
+    'reset'                 => "Réinitialiser l'aventure",
+    'reset_successful_text' => "L'aventure a été réinitialisée avec succès !",
+    'reset_failed_text'     => "Impossible de réinitialiser l'aventure :(",
     'add_choices'           => 'Ajouter des choix',
 
     'tree'                  => 'Arborescence des pages',

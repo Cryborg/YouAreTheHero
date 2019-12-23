@@ -43,9 +43,12 @@
                 var replacements = {
                     "%TEXT%":decodedString,
                     "%PLAY_URL%": route('story.play', {'story': d.id}),
-                    "%EDIT_URL%": d.can_edit == 1
+                    "%EDIT_URL%": d.can_edit == true
                         ? '<a href="' + route('story.edit', {'story': d.id}) + '" class="btn btn-success card-link">{{ trans('story.edit') }}</a>'
-                        : ' '
+                        : ' ',
+                    "%RESET_STORY%": d.can_reset == true
+                        ? '<a href="' + route('story.reset', {'story': d.id}) + '" class="btn btn-danger card-link">{{ trans('story.reset') }}</a>'
+                        : ' ',
                 };
 
                 return template.replace(/%\w+%/g, function(all) {

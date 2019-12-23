@@ -6,5 +6,6 @@
     <div class="card-footer text-muted">
         <a href="%PLAY_URL%" class="btn btn-primary card-link">{{ trans('story.start_playing') }}</a>
         %EDIT_URL%
+        %RESET_STORY%
     </div>
 </div>

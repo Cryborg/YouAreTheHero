@@ -68,6 +68,7 @@ class StoriesController extends Controller
             $story['genres']            = $story->genres;
             $story['last_created_page'] = $story->getLastCreatedPage();
             $story['can_edit']          = Auth::id() == $story->user_id;
+            $story['can_reset']         = Auth::user()->hasBeganStory($story);
             $story['locale']            = $story->present()->language;
 
             return $story;

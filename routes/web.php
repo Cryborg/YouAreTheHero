@@ -21,6 +21,8 @@ Route::get('/stories', 'StoriesController@list')->name('stories.list');
 Route::get('/stories/ajax_list', 'StoriesController@ajaxList')->name('stories.list.ajax');
 
 // Story
+Route::get('/story/{story}/reset', 'StoryController@getReset')->name('story.reset');
+
 Route::get('/story/create', 'StoryController@getCreate')->name('story.create');
 Route::post('/story/create', 'StoryController@postCreate')->name('story.create.post');
 

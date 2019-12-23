@@ -571,4 +571,20 @@ class StoryController extends Controller
 
         abort(JsonResponse::HTTP_NOT_FOUND);
     }
+
+    public function getReset(Request $request, Story $story)
+    {
+        $deleted = Character::where([
+            'user_id'   => Auth::id(),
+            'story_id'  => $story->id,
+        ])->delete();
+
+        if ($deleted == true) {
+            Flash::success(trans('story.reset_successful_text'));
+        } else {
+            Flash::error(trans('story.reset_failed_text'));
+        }
+
+        return Redirect::route('stories.list');
+    }
 }

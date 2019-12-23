@@ -56,4 +56,13 @@ class User extends Authenticatable
 
         return $story->user_id == $this->id;
     }
+
+    public function hasBeganStory(Story $story)
+    {
+        return Character::where([
+            'user_id' => $this->id,
+            'story_id' => $story->id,
+        ])
+        ->count() > 0;
+    }
 }
