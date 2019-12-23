@@ -59,17 +59,18 @@ class StoriesController extends Controller
             return $query->get();
         });
 
-        $stories = $stories->map(function ($value, $key) {
-            $user = Cache::rememberForever('user.' . $value['user_id'], function() use ($value) {
-                return User::where('id', $value['user_id'])->first();
+        $stories = $stories->map(function (Story $story, $key) {
+            $user                       = Cache::rememberForever('user.' . $story->user_id, function() use ($story) {
+                return User::where('id', $story->user_id)->first();
             });
-
             $name                       = $user->first_name . ' ' . $user->last_name;
-            $value['user_id']           = $name;
-            $value['genres']            = $value->genres;
-            $value['last_created_page'] = $value->getLastCreatedPage();
+            $story['user']              = $name;
+            $story['genres']            = $story->genres;
+            $story['last_created_page'] = $story->getLastCreatedPage();
+            $story['can_edit']          = Auth::id() == $story->user_id;
+            $story['locale']            = $story->present()->language;
 
-            return $value;
+            return $story;
         });
 
         return DataTables::of($stories)->make();

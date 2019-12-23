@@ -92,16 +92,15 @@ class PageController extends Controller
     {
         if ($request->ajax()) {
             $validated = $request->validate([
-                'title'       => 'required|unique:stories',
-                'content'     => 'required',
-                'layout'      => 'required',
-                'linktitle'   => 'sometimes|required',
-                'page_from'   => 'sometimes|required',
+                'title'         => 'required|unique:stories',
+                'content'       => 'required',
+                'layout'        => 'required',
+                'is_first'      => 'required',
+                'is_last'       => 'required',
+                'is_checkpoint' => 'required',
+                'linktitle'     => 'sometimes|required',
+                'page_from'     => 'sometimes|required',
             ]);
-
-            $validated['is_first']      = $request->has('is_first');
-            $validated['is_last']       = $request->has('is_last');
-            $validated['is_checkpoint'] = $request->has('is_checkpoint');
 
             if (isset($validated['linktitle'])) {
                 PageLink::updateOrCreate([

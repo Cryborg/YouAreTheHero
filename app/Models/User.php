@@ -37,9 +37,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function stories()
     {
         return $this->hasMany(Story::class);
+    }
+
+    /**
+     * @param $storyId
+     *
+     * @return bool
+     */
+    public function owns($storyId)
+    {
+        $story = Story::firstOrFail($storyId)->first();
+
+        return $story->user_id == $this->id;
     }
 }

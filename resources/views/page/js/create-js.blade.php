@@ -23,22 +23,6 @@
     }
 
     $(document).ready(function () {
-        $('textarea').summernote({
-            lang: 'fr-FR',
-            maximumImageFileSize: 524288, // 512k
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'underline', 'clear']],
-                ['fontname', ['fontname']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture']],
-                ['view', ['fullscreen', 'codeview']],
-            ],
-            spellcheck: false
-        });
-
         // help-block state check from cookie
         var openToggle = Cookies.get("hero.help-block.show") || false;
 
@@ -93,6 +77,9 @@
                 'title': $('#title-' + internalId).val(),
                 'content': $('#content-' + internalId).val(),
                 'layout': $('#layout-' + internalId).val(),
+                'is_first': $('#is_first-' + internalId).is(":checked") ? 1 : 0,
+                'is_last': $('#is_last-' + internalId).is(":checked") ? 1 : 0,
+                'is_checkpoint': $('#is_checkpoint-' + internalId).is(":checked") ? 1 : 0,
             };
             if (internalId > 0) {
                 data.linktitle = $('#linktext-' + internalId).val();

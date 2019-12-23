@@ -12,7 +12,7 @@ class Story extends Model
 {
     use PresentableTrait;
 
-    protected $presenter = 'StoryPresenter';
+    protected $presenter = 'App\\Presenters\\StoryPresenter';
 
     protected $guarded = ['id'];
 
@@ -84,5 +84,21 @@ class Story extends Model
     public function items()
     {
         return $this->hasMany(Item::class);
+    }
+
+    /**
+     * @param string|null $page_id
+     *
+     * @return \App\Models\Page|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object|null
+     */
+    public function getCurrentPage(string $page_id = null)
+    {
+        if ($page_id !== null) {
+            return Page::whereId($page_id)->first();
+        }
+
+        return Page::where('story_id', $this->id)
+            ->where('is_first', true)
+            ->first();
     }
 }

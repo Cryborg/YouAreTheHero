@@ -42,7 +42,7 @@ class StoryController extends Controller
      * @param \App\Models\Story     $story
      * @param \App\Models\Page|null $page
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function getPlay(Story $story, Page $page = null)
     {
@@ -52,7 +52,7 @@ class StoryController extends Controller
         // If there is an ID, save it in the session so that we show a nice URL without the page ID
         if ($page !== null) {
             $this->setSession('page_id', $page->id);
-            redirect(route('story.play', ['story' => $story->id]));//'/story/' . $story->id);
+            return Redirect::route('story.play', ['story' => $story->id]);//'/story/' . $story->id);
         } else {
             $page = $this->getSession('page_id');
         }
@@ -67,19 +67,13 @@ class StoryController extends Controller
 
         // If the character does not exist, it is a new game
         if (!$character) {
-            // Get the first page of the story
-            $page = $this->getCurrentPage($story);
-
-            if ($page) {
-                // Create the character
-                $character = $this->createCharacter($story, $page);
-
-                $this->getFilteredChoicesFromPage($page, $character);
-            }
+            return Redirect::route('character.create', [
+                'story' => $story->id,
+            ]);
         } else { // The character exists, let's go back to the previous save point
             // Get the last visited page
             if ($page === null) {
-                $page = $this->getCurrentPage(null, $character->page_id);
+                $page = $story->getCurrentPage($character->page_id);
             }
 
             if ($page) {
@@ -116,29 +110,6 @@ class StoryController extends Controller
         ]);
 
         return $view ?? view('errors.404');
-    }
-
-    /**
-     * @param $story
-     * @param $page
-     *
-     * @return mixed
-     */
-    private function createCharacter($story, $page) {
-
-        $sheet = new Sheet($story);
-
-        $character = Character::create([
-            'name' => 'Quasimodo',
-            'user_id' => Auth::id(),
-            'story_id' => $story->id,
-            'page_id' => $page->id,
-            'sheet' => $sheet->getArray()
-        ]);
-
-        $character->sheet = $sheet;
-
-        return $character;
     }
 
     /**
@@ -400,25 +371,10 @@ class StoryController extends Controller
     }
 
     /**
-     * @param \App\Models\Story|null $story
-     * @param string|null            $page_id
+     * @param $itemId
      *
-     * @return \App\Models\Page
+     * @return mixed
      */
-    private function getCurrentPage(Story $story = null, string $page_id = null): ?Page
-    {
-        if ($story !== null) {
-            return $this->page->findOneWith([
-                'story_id' => $story->id,
-                'is_first' => true,
-            ]);
-        }
-
-        if ($page_id !== null) {
-            return $this->page->find($page_id);
-        }
-    }
-
     private function getItem($itemId)
     {
         return Cache::remember('item_' . $itemId, Config::get('app.story.cache_ttl'), function () use ($itemId) {

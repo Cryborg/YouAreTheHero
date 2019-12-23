@@ -7,7 +7,8 @@ return [
     'edit_title'            => 'Modification de l\'histoire',
     'resume_editing'        => 'Continuer',
     'edit'                  => 'Modifier',
+    'start_playing'         => "Commencer l'histoire",
     'add_choices'           => 'Ajouter des choix',
 
-    'tree'                  => 'Arborescence des pages'
+    'tree'                  => 'Arborescence des pages',
 ];

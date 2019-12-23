@@ -49,3 +49,7 @@ Route::delete('/actions/{action}/delete', 'ActionController@delete')->name('acti
 
 // Authentication
 Auth::routes();
+
+// Character
+Route::get('/character/create/{story}', 'CharacterController@getCreate')->name('character.create');
+Route::post('/character/create/{story}', 'CharacterController@postCreate')->name('character.create.post');

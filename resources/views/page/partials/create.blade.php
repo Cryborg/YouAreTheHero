@@ -31,21 +31,21 @@
     <div class="form-group form-check">
         <p class="help-block">{{ trans('model.page_is_first_help') }}</p>
         <label>
-            {!! Form::checkbox('is_first-' . $internalId, 1, $page->is_first) !!}
+            {!! Form::checkbox('is_first-' . $internalId, 1, $page->is_first or false, ['id' => 'is_first-' . $internalId]) !!}
             @lang('model.is_first')
         </label>
     </div>
     <div class="form-group form-check">
         <p class="help-block">{{ trans('model.page_is_last_help') }}</p>
         <label>
-            {!! Form::checkbox('is_last-' . $internalId, 1, $page->is_last) !!}
+            {!! Form::checkbox('is_last-' . $internalId, 1, $page->is_last or false, ['id' => 'is_last-' . $internalId]) !!}
             @lang('model.is_last')
         </label>
     </div>
     <div class="form-group form-check">
         <p class="help-block">{{ trans('model.page_is_checkpoint_help') }}</p>
         <label>
-            {!! Form::checkbox('is_checkpoint-' . $internalId, 1, $page->is_checkpoint) !!}
+            {!! Form::checkbox('is_checkpoint-' . $internalId, 1, $page->is_checkpoint or false, ['id' => 'is_checkpoint-' . $internalId]) !!}
             @lang('model.is_checkpoint')
         </label>
     </div>

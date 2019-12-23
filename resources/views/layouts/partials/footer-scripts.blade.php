@@ -71,4 +71,20 @@
             bgColor: bgColor
         }));
     }
+
+    $('textarea').summernote({
+        lang: 'fr-FR',
+        maximumImageFileSize: 524288, // 512k
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['fontname', ['fontname']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture']],
+            ['view', ['fullscreen', 'codeview']],
+        ],
+        spellcheck: false
+    });
 </script>

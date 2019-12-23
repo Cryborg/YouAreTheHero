@@ -9,7 +9,7 @@
         <thead>
             <tr>
                 <th></th>   {{-- Child rows button --}}
-                <th></th>   {{-- Story ID --}}
+                <th></th>   {{-- hidden stories IDs --}}
                 <th>{{ __('admin.title') }}</th>
                 <th>{{ __('common.genres') }}</th>
                 <th>{{ __('common.language') }}</th>
@@ -38,8 +38,19 @@
                 var parser = new DOMParser;
                 var dom = parser.parseFromString(d.description, 'text/html');
                 var decodedString = dom.body.textContent;
+                var template = `{!! includeAsJsString('stories.partials.story_details') !!}`;
+                console.log(d);
+                var replacements = {
+                    "%TEXT%":decodedString,
+                    "%PLAY_URL%": route('story.play', {'story': d.id}),
+                    "%EDIT_URL%": d.can_edit == 1
+                        ? '<a href="' + route('story.edit', {'story': d.id}) + '" class="btn btn-success card-link">{{ trans('story.edit') }}</a>'
+                        : ' '
+                };
 
-                return '<div class="card-body">' + decodedString + '</div>';
+                return template.replace(/%\w+%/g, function(all) {
+                    return replacements[all] || all;
+                });
             }
 
             var table = $('#stories-table').DataTable({
@@ -54,9 +65,7 @@
                         "defaultContent": '',
                         "width":          '5%'
                     },
-                    {data: 'id', render: function ( data, type, row ) {
-                            return '<a href="{{ url('/story/') }}/' + data + '">' + data + '</a>';
-                        }, 'width': '5%'},
+                    {data: 'id'},
                     {data: 'title'},
                     {data: 'genres', render: function ( data, type, row ) {
                             var genres = [];
@@ -65,10 +74,17 @@
                             });
 
                             return genres.join(', ');
-                        }, 'width': '5%'},
+                        }, 'width': '15%'},
                     {data: 'locale', 'width': '10%'},
-                    {data: 'user_id', 'width': '20%'},
+                    {data: 'user', 'width': '20%'},
                     {data: 'created_at', 'width': '20%'}
+                ],
+                "columnDefs": [
+                    {
+                        "targets": [ 1 ],
+                        "visible": false,
+                        "searchable": false
+                    }
                 ]
             });
 
