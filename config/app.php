@@ -242,5 +242,10 @@ return [
      */
     'story' => [
         'cache_ttl' => 1440,
-    ]
+    ],
+    'languages' => [
+        'fr_FR',
+        'en_US',
+        'es_ES',
+    ],
 ];

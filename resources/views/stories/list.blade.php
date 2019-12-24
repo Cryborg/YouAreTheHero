@@ -5,6 +5,20 @@
 @section('content')
     <h1>{{ trans('stories.list_title') }}</h1>
 
+    <fieldset class="ml-2">
+        <legend>{{ trans('common.filters') }}</legend>
+
+        <div class="form-group row ml-2">
+            {!! Form::label('languages', trans('common.language'), ['class' => 'control-label col-2']) !!}
+            {!! Form::select('languages', $languages , null , ['class' => 'form-control col-4', 'id' => 'languages', 'style' => 'width: 15%']) !!}
+        </div>
+
+        <div class="form-group row ml-2">
+            {!! Form::label('languages', trans('common.global_search'), ['class' => 'control-label col-2']) !!}
+            {!! Form::text('globalSearch', null, ['class' => 'form-control col-4', 'id' => 'globalSearch']) !!}
+        </div>
+    </fieldset>
+
     <table id="stories-table" class="stripe">
         <thead>
             <tr>
@@ -33,13 +47,23 @@
 
 @push('footer-scripts')
     <script type="text/javascript">
+        function filterLanguage (table) {
+            table.column( 4 ).search(
+                $('#languages option:selected').text(),
+                false,
+                true
+            ).draw();
+        }
+
         $(function() {
             function format ( d ) {
                 var parser = new DOMParser;
                 var dom = parser.parseFromString(d.description, 'text/html');
                 var decodedString = dom.body.textContent;
+
+                // Backticks are mandatory here !
                 var template = `{!! includeAsJsString('stories.partials.story_details') !!}`;
-                console.log(d);
+
                 var replacements = {
                     "%TEXT%":decodedString,
                     "%PLAY_URL%": route('story.play', {'story': d.id}),
@@ -57,6 +81,7 @@
             }
 
             var table = $('#stories-table').DataTable({
+                dom: 'rt<p><"clear">',
                 processing: true,
                 serverSide: true,
                 ajax: '{{ route('stories.list.ajax', ['draft' => false]) }}',
@@ -89,6 +114,14 @@
                         "searchable": false
                     }
                 ]
+            });
+
+            $('#languages').on('change', function () {
+                filterLanguage(table);
+            });
+
+            $('#globalSearch').keyup(function(){
+                table.search($(this).val()).draw() ;
             });
 
             // Add event listener for opening and closing details

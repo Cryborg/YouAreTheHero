@@ -28,5 +28,17 @@ class StoriesTableSeeder extends Seeder
             'created_at' => '2019-12-19 16:29:44',
             'updated_at' => '2019-12-19 16:29:44',
         ));
+        Story::create(array (
+            'id' => 6,
+            'title' => 'Un nouveau départ',
+            'description' => "Description de l'histoire",
+            'user_id' => 1,
+            'locale' => 'fr_FR',
+            'layout' => 'play1',
+            'sheet_config' => NULL,
+            'is_published' => 0,
+            'created_at' => '2019-12-19 16:29:44',
+            'updated_at' => '2019-12-19 16:29:44',
+        ));
     }
 }

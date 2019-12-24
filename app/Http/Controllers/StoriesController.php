@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Story;
 use App\Models\User;
-use Illuminate\Http\Request;use Illuminate\Support\Facades\Auth;use Illuminate\Support\Facades\Cache;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 use Yajra\DataTables\DataTables;
 
@@ -21,7 +24,11 @@ class StoriesController extends Controller
         // Delete old story session
         Session::remove('story');
 
-        return view('stories.list');
+        $data = [
+            'languages' => getLanguages(),
+        ];
+
+        return view('stories.list', $data);
     }
 
     public function listDraft()

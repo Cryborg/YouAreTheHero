@@ -9,6 +9,7 @@ use App\Models\Story;
 use App\Repositories\PageRepository;
 use Faker\Provider\Uuid;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
@@ -65,11 +66,7 @@ class PageController extends Controller
                 'play1' => 'Premier layout (ok)',
                 'play2' => 'Deuxième layout (pour test)',
             ],
-            'locales' => [
-                'fr_FR' => trans('common.fr_FR'),
-                'en_US' => trans('common.en_US'),
-                'es_ES' => trans('common.es_ES'),
-            ],
+            'locales' => getLanguages(),
             'internalId' => 0,
             'actions' => [
                 'buy' => trans('actions.buy'),

@@ -25,4 +25,7 @@ return [
     'fr_FR'                 => 'Français (FR)',
     'en_US'                 => 'Anglais (US)',
     'es_ES'                 => 'Espagnol (ES)',
+
+    'filters'               => 'Filtres',
+    'global_search'         => 'Recherche globale',
 ];
