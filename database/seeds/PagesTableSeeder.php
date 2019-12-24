@@ -12,15 +12,15 @@ class PagesTableSeeder extends Seeder
      */
     public function run()
     {
-
+        
 
         \DB::table('pages')->delete();
-
+        
         \DB::table('pages')->insert(array (
-            0 =>
+            0 => 
             array (
                 'id' => '03ed78ef-5f97-3f68-81ee-2fda15e2aeeb',
-                'story_id' => 6,
+                'story_id' => 2,
                 'number' => 6,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -33,15 +33,15 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 21:18:08',
                 'deleted_at' => NULL,
             ),
-            1 =>
+            1 => 
             array (
                 'id' => '0528b4c3-3586-3fb6-90d1-f47338b04d8c',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 33,
                 'is_first' => 0,
                 'is_last' => 0,
                 'title' => '76',
-                'content' => 'C\'est un groupe contenant l\'une des deux guerrières de l\'expédition qui se dirige vers les hautes herbes.
+                'content' => '<p>    C\'est un groupe contenant l\'une des deux guerrières de l\'expédition qui se dirige vers les hautes herbes.
 La présence de la soldate ne sera pas de trop face aux dangers que peut représenter cette jungle. Celle-ci
 semble d\'ailleurs gagner du terrain sur le minéral qui recouvrait jusqu\'ici intégralement le sol.
 En formation losange, le groupe s\'aventure dans les hautes herbes, qui empêchent de voir à plus de
@@ -51,35 +51,28 @@ autre que celle de minuscules insectes trop peu nutritifs pour qu\'on en fasse l
 Par ailleurs, la multitude d\'odeurs que perçoivent les fourmis les déroute : certaines senteurs leur sont
 totalement inconnues. On croise ainsi un certain nombre de végétaux que la mémoire collective ne
 reconnaît pas.
-Une fourmi découvre une tige métallique, supportant une plaque faite de la même matière. La planche
-est tâchée par une substance synthétique à moitié érodée.
-[img: panneau avec écrit dessus «Parc de la T… d\'Or» et cage derrière]
-On tombe ensuite sur des rangées de tiges métalliques, entre lesquelles les fourmis passent aisément.
+</p><p>    Une fourmi découvre une tige métallique, supportant une plaque faite de la même matière. La planche
+est tâchée par une substance synthétique à moitié érodée. </p><p>    On tombe ensuite sur des rangées de tiges métalliques, entre lesquelles les fourmis passent aisément.
 Elles découvrent alors, à moitié enterrés ou reposant sur de larges rochers, des squelettes de
 mammifères, qui devaient être assez imposants. Les os sont parfaitement nettoyés : leur mort doit être
 ancienne. Le groupe ne s\'attarde pas davantage, traverse à nouveau une ligne de barres en métal, et
 continue de se frayer un chemin dans les hautes herbes. La vue depuis le sol ne leur étant d\'aucune
 utilité dans cet environnement, les fourmis s\'en remettent à leur flair : elles sentent une humidité
 provenant de la direction du soleil couchant, tandis qu\'ailleurs, l\'environnement présente la même
-atmosphère sèche que précédemment.
-Si votre fourmi est une sexuée ou qu\'elle est accompagnée par un mâle, elle (ou ce dernier) peut prendre
-son envol pour avoir une vision aérienne des environs : allez alors au 56.
-Sinon, lancez un dé. Si le résultat est compris entre 1 et 4, le groupe s\'orientera naturellement en
-direction de l\'atmosphère humide : rendez-vous au 72. Sinon, les fourmis ne prêteront pas attention à
-l\'eau contenue dans l\'air et continueront leur route dans des territoires plus secs. Allez alors au 107. Si
+atmosphère sèche que précédemment.</p><p>    Si
 votre protégée dispose de phéromones de séduction, elle peut néanmoins convaincre le groupe de se
-rendre où elle le désire (ignorez alors le lancer de dé et choisissez la direction à prendre).',
+rendre où elle le désire (ignorez alors le lancer de dé et choisissez la direction à prendre).</p>',
                 'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:37:05',
-                'updated_at' => '2019-12-19 22:37:33',
+                'updated_at' => '2019-12-24 14:40:21',
                 'deleted_at' => NULL,
             ),
-            2 =>
+            2 => 
             array (
                 'id' => '0602edde-89e0-37e3-8b20-9ecc0102b9da',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 23,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -122,10 +115,10 @@ une nouvelle attaque, puis finit par rejoindre le chemin, qui se termine bientô
                 'updated_at' => '2019-12-19 22:25:32',
                 'deleted_at' => NULL,
             ),
-            3 =>
+            3 => 
             array (
                 'id' => '0b47389c-5aff-3d62-a749-8b16543f9d02',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 16,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -156,10 +149,10 @@ rendez-vous au 34.',
                 'updated_at' => '2019-12-19 16:12:33',
                 'deleted_at' => NULL,
             ),
-            4 =>
+            4 => 
             array (
                 'id' => '11f72382-189b-3f06-9fd2-5f1adcd5b026',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 20,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -172,10 +165,10 @@ rendez-vous au 34.',
                 'updated_at' => '2019-12-19 22:12:41',
                 'deleted_at' => NULL,
             ),
-            5 =>
+            5 => 
             array (
                 'id' => '13e04d7a-1813-3646-a1e9-3cdde2843e6a',
-                'story_id' => 6,
+                'story_id' => 2,
                 'number' => 3,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -188,10 +181,10 @@ rendez-vous au 34.',
                 'updated_at' => '2019-12-21 16:42:35',
                 'deleted_at' => NULL,
             ),
-            6 =>
+            6 => 
             array (
                 'id' => '160363a5-c6b6-38b0-bbe5-1984fd1e9ed1',
-                'story_id' => 6,
+                'story_id' => 2,
                 'number' => 4,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -204,30 +197,30 @@ rendez-vous au 34.',
                 'updated_at' => '2019-12-21 21:11:54',
                 'deleted_at' => NULL,
             ),
-            7 =>
+            7 => 
             array (
                 'id' => '1e3302dd-a97a-3e80-a254-92ea7675859e',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 30,
                 'is_first' => 0,
                 'is_last' => 0,
                 'title' => '44',
-                'content' => 'Après le premier temps dédié au repérage des environs, le groupe se reforme au point de rendez-vous.
+                'content' => '<p>&nbsp;&nbsp;&nbsp;&nbsp;Après le premier temps dédié au repérage des environs, le groupe se reforme au point de rendez-vous.
 Les antennes s\'agitent, émettent de multiples phéromones, donnant la direction et la distance des
-emplacements ayant des chances de contenir de la nourriture. On se repose un court moment, et on en
-profite pour lécher ses blessures (votre fourmi regagne un état de Vitalité et Carapace). Puis diverses
-équipes s\'organisent, pour explorer chacun de ces lieux. Les exploratrices en ont trouvé six.',
+emplacements ayant des chances de contenir de la nourriture. </p><p>&nbsp;&nbsp;&nbsp;&nbsp;On se repose un court moment, et on en
+profite pour lécher ses blessures (votre fourmi regagne un état de Vitalité et Carapace). </p><p>&nbsp;&nbsp;&nbsp;&nbsp;Puis diverses
+équipes s\'organisent, pour explorer chacun de ces lieux. Les exploratrices en ont trouvé six.</p>',
                 'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:32:38',
-                'updated_at' => '2019-12-19 22:34:14',
+                'updated_at' => '2019-12-24 13:48:32',
                 'deleted_at' => NULL,
             ),
-            8 =>
+            8 => 
             array (
                 'id' => '1fe7b9fc-94dc-3319-84b5-c2860e7d5e4b',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 35,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -249,10 +242,10 @@ l\'accompagne) ouvrent le passage : allez au 9.',
                 'updated_at' => '2019-12-19 22:38:42',
                 'deleted_at' => NULL,
             ),
-            9 =>
+            9 => 
             array (
                 'id' => '23453cb7-feb9-3247-b859-1aaf7e36e0b9',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 15,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -275,10 +268,10 @@ Sinon, allez au 74.',
                 'updated_at' => '2019-12-19 16:11:40',
                 'deleted_at' => NULL,
             ),
-            10 =>
+            10 => 
             array (
                 'id' => '25ecb762-0083-37dc-a19c-cb4c20cda06c',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 18,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -291,10 +284,10 @@ Sinon, allez au 74.',
                 'updated_at' => '2019-12-19 22:08:16',
                 'deleted_at' => NULL,
             ),
-            11 =>
+            11 => 
             array (
                 'id' => '2907cda3-05c7-3f39-acb8-98a468540ab4',
-                'story_id' => 6,
+                'story_id' => 2,
                 'number' => 7,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -307,10 +300,10 @@ Sinon, allez au 74.',
                 'updated_at' => '2019-12-21 21:24:39',
                 'deleted_at' => NULL,
             ),
-            12 =>
+            12 => 
             array (
                 'id' => '3442f8a3-3a40-3251-b4c8-445ff8c24595',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 6,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -346,10 +339,10 @@ S\'il ne reste pas assez de temps, ou si l\'acquisition de phéromones ne vous i
                 'updated_at' => '2019-12-19 15:53:00',
                 'deleted_at' => NULL,
             ),
-            13 =>
+            13 => 
             array (
                 'id' => '37d9a87e-bef5-3d1c-8778-690f03df33ea',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 17,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -362,10 +355,10 @@ S\'il ne reste pas assez de temps, ou si l\'acquisition de phéromones ne vous i
                 'updated_at' => '2019-12-19 17:46:27',
                 'deleted_at' => NULL,
             ),
-            14 =>
+            14 => 
             array (
                 'id' => '47b85733-87e8-3091-811e-96d3e0b34d4a',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 41,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -385,10 +378,10 @@ Il est temps de faire un autre choix d\'action : rendez-vous au 12.',
                 'updated_at' => '2019-12-20 17:31:48',
                 'deleted_at' => NULL,
             ),
-            15 =>
+            15 => 
             array (
                 'id' => '497467f5-1596-3bc1-ab31-61efa3c684f6',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 9,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -414,12 +407,40 @@ territoires du Nid…',
                 'updated_at' => '2019-12-19 15:57:07',
                 'deleted_at' => NULL,
             ),
-            16 =>
+            16 => 
+            array (
+                'id' => '4ba20a76-1743-3fac-ac5c-9e113127785c',
+                'story_id' => 1,
+                'number' => 45,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => '107',
+                'content' => '<p>    Tandis que le groupe poursuit sa route à travers les hautes herbes, une ouvrière tombe sur quelques
+graines de la taille d\'une patte. Elle saisit l\'une d\'entre elle entre ses mandibules, bloque ses mâchoires,
+puis les resserre, et force, jusqu\'à ce que le tégument cède. La coque coupée en deux laisse alors
+échapper une poudre blanchâtre. La fourmi humecte sa mâchoire, puis goûte la substance. Elle semble
+comestible, et assez calorifique. Après l\'émission de quelques phéromones, tout le groupe s\'active pour
+trouver des graines tombées sur le sol. Sous le coup de l\'excitation, certaines fourmis escaladent des
+tiges et découvrent à leur sommet des grappes de graines. Elles en découpent la base, et des sacs de
+grain tombent par terre.
+Finalement, la récolte est bonne, même si ces graines ne sont pas le meilleur apport en énergie qu\'on
+puisse trouver.
+Le groupe récupère deux unités de nourriture. Eventuellement, il peut consommer l\'une d\'elle (dans ce
+cas, le niveau de Faim de votre insecte remonte d\'un niveau).
+</p><p>    Rendez-vous au 66.</p>',
+                'prerequisites' => NULL,
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2019-12-24 14:05:41',
+                'updated_at' => '2019-12-24 14:08:02',
+                'deleted_at' => NULL,
+            ),
+            17 => 
             array (
                 'id' => '4eb18d09-3b29-346c-a58e-22bab8a6e9a3',
-                'story_id' => 6,
+                'story_id' => 2,
                 'number' => 1,
-                'is_first' => 0,
+                'is_first' => 1,
                 'is_last' => 0,
                 'title' => 'Prologue',
                 'content' => '<span id="docs-internal-guid-89896fdd-7fff-6e63-c3cd-42d5bc036c5b"><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;Je n\'ai jamais été très grand fan de science-fiction. La science est déjà elle-même tellement mystérieuse que je n\'ai jamais eu le besoin d\'aller chercher ailleurs une autre source d\'émerveillement.</p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;Gamin déjà, je m\'imaginais traversant l\'espace à bord d\'un vaisseau que j\'aurais moi-même construit. J\'avais commencé dans mon jardin, mais je me suis vite rendu compte que cet assemblage de bouts de bois n\'allait pas aller bien loin...</p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;Comme beaucoup de personnes, j\'ai souvent cherché à savoir ce que le futur nous apporterait. C\'est probablement ce qui m\'a fait m\'intéresser aux sciences dans un premier temps. Et la carrière militaire me permettait de travailler sur des projets que j\'imaginais passionnants.</p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;Mais ce temps est révolu. La science, le futur, les innovations, j\'ai tout devant moi.&nbsp; De mes yeux je contemple la vraie version de ce que sera le futur de l\'humanité.</p><div style="text-align: justify;"><br></div></span>',
@@ -430,10 +451,10 @@ territoires du Nid…',
                 'updated_at' => '2019-12-21 16:34:01',
                 'deleted_at' => NULL,
             ),
-            17 =>
+            18 => 
             array (
                 'id' => '6448d2e1-6a4b-388e-b597-c3485643e135',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 8,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -446,10 +467,10 @@ territoires du Nid…',
                 'updated_at' => '2019-12-21 16:13:07',
                 'deleted_at' => NULL,
             ),
-            18 =>
+            19 => 
             array (
                 'id' => '646b1a31-3ada-306d-a779-14e5e1da5e8c',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 7,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -475,10 +496,10 @@ Il est temps de faire un autre choix d\'action.</p>',
                 'updated_at' => '2019-12-20 17:59:23',
                 'deleted_at' => NULL,
             ),
-            19 =>
+            20 => 
             array (
                 'id' => '64a8170e-4529-3a18-9d40-1fedaad83767',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 36,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -507,44 +528,44 @@ alors du paragraphe où vous souhaitez vous rendre.',
                 'updated_at' => '2019-12-19 22:39:41',
                 'deleted_at' => NULL,
             ),
-            20 =>
+            21 => 
             array (
                 'id' => '66eb9e9c-4401-3191-9967-eaf9d4a8e47d',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 29,
                 'is_first' => 0,
                 'is_last' => 0,
                 'title' => '40',
-                'content' => 'Créant une piste parfumée toute neuve pour les prochaines expéditions, il ne reste guère de chemin à
+                'content' => '<p>&nbsp;&nbsp;&nbsp;&nbsp;Créant une piste parfumée toute neuve pour les prochaines expéditions, il ne reste guère de chemin à
 parcourir au groupe avant d\'arriver à la lisière de la forêt. Et bientôt, il fait face à un spectacle qui génère
 quelques phéromones d\'inquiétude : un horizon gris et irrégulier, découpé par des barres sombres
 plantées dans la terre.
-Le groupe avance un peu, et passe devant une petite colline au parfum étrange : l\'émergence terreuse a
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Le groupe avance un peu, et passe devant une petite colline au parfum étrange : l\'émergence terreuse a
 des relents de métal.
-La marche se poursuit. Pas à pas, les fourmis avancent sur ce territoire inconnu. Le sol s\'avère noir et plat
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;La marche se poursuit. Pas à pas, les fourmis avancent sur ce territoire inconnu. Le sol s\'avère noir et plat
 en de nombreux endroits. Puis on croise les premières constructions, faites d\'une sorte de roche
 inconnue et semblant avoir subi une puissante concussion. Toutes sont vides de vie et de nourriture.
 Le groupe remarque cependant avec intérêt que sur cette étendue désertique jonchée de gravats, de
 petites pousses commencent à sortir du sol aplati, fissurant la matière minérale étrange dont il est
 recouvert.
-Semant derrière elles des phéromones délimitant la nouvelle piste, les fourmis agitent leurs antennes,
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Semant derrière elles des phéromones délimitant la nouvelle piste, les fourmis agitent leurs antennes,
 cherchant à détecter quelque senteur indiquant la présence de nourriture. Mais l\'air ne recèle qu\'une
 forte odeur minérale et d\'infimes effluves végétaux. On continue à avancer, en accélérant le pas, tandis
 que les mystérieuses constructions se font de plus en plus nombreuses et hautes.
-D\'un commun accord, les fourmis décident de s\'arrêter, car de nouvelles effluves difficilement
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;D\'un commun accord, les fourmis décident de s\'arrêter, car de nouvelles effluves difficilement
 identifiables se font sentir. Puis chacune part dans une direction, en faisant de petits arcs de cercle pour
-couvrir le plus possible le terrain à explorer.',
+couvrir le plus possible le terrain à explorer.</p>',
                 'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:31:44',
-                'updated_at' => '2019-12-19 22:33:10',
+                'updated_at' => '2019-12-24 13:47:24',
                 'deleted_at' => NULL,
             ),
-            21 =>
+            22 => 
             array (
                 'id' => '68612b63-fbaf-3fe4-ab1a-180125bd80e3',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 40,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -563,10 +584,85 @@ envoyer quelques phéromones d\'invitation, une artilleuse à l\'abdomen effilé
                 'updated_at' => '2019-12-20 17:32:34',
                 'deleted_at' => NULL,
             ),
-            22 =>
+            23 => 
+            array (
+                'id' => '7537a837-6597-3475-b6ae-457f73a94f85',
+                'story_id' => 1,
+                'number' => 49,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => '91',
+                'content' => '<p>&nbsp;&nbsp;&nbsp;&nbsp;Votre fourmi révèle à ses congénères l\'existence du monolithe à la forme étrange qu\'elle a pu apercevoir
+des hauteurs. Quelques phéromones d\'excitation plus tard, six ouvrières et une guerrière se joignent à
+votre protégée. La route est cependant longue jusqu\'à la demi-sphère géante posée sur son cylindre, et
+si le groupe ne rencontre nulle créature qui vive, la faim se fait tout de même ressentir (votre fourmi
+perd un niveau de Faim).
+Arrivées au pied de la construction inconnue juchée sur une petite colline étrangement régulière, les
+fourmis se demandent comment explorer l\'édifice. Il possède une ouverture rectangulaire à son pied,
+d\'où s\'échappe un air humide porteur d\'odeurs de moisissures ; cette entrée facile d\'accès est tentante.
+Mais on pourrait également escalader la construction et conserver la vision sur un terrain découvert.
+Même si la pente est supérieure à 90 degrés le long de la demi-sphère, les fourmis ont des griffes qui
+leur permettraient de s\'accrocher à la surface granuleuse de la structure sans peine, car elle possède de
+nombreuses aspérités.
+Le choix tient à peu de choses, et l\'avis de votre insecte suffira à faire basculer la décision dans un sens
+ou l\'autre.
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Si vous désirez que les fourmis pénètrent la structure par le bas, rendez-vous au 82.
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Si vous préférez une escalade jusqu\'à son plat sommet, allez au 96.</p>',
+                'prerequisites' => NULL,
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2019-12-24 14:45:34',
+                'updated_at' => '2019-12-24 14:46:46',
+                'deleted_at' => NULL,
+            ),
+            24 => 
+            array (
+                'id' => '7a9ee846-a0b0-3d5b-8385-7ab1e03b836e',
+                'story_id' => 1,
+                'number' => 46,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => '66',
+                'content' => '<p>&nbsp;&nbsp;&nbsp;&nbsp;Le niveau de Faim de votre fourmi descend d\'un niveau, en raison des efforts qu\'elle a fourni pour sa
+précédente exploration. En revanche, toute artilleuse présente regagne une goutte d\'acide, son stock se
+reformant peu à peu.
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Si votre insecte a déjà exploré trois lieux, rendez-vous immédiatement au 16.&nbsp;Sinon, poursuivez la lecture.
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;La fourmi peut choisir d\'explorer :</p>',
+                'prerequisites' => NULL,
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2019-12-24 14:08:30',
+                'updated_at' => '2019-12-24 14:46:51',
+                'deleted_at' => NULL,
+            ),
+            25 => 
+            array (
+                'id' => '7e2d5a4f-b308-3954-a7de-71183a7243a1',
+                'story_id' => 1,
+                'number' => 44,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => '72',
+                'content' => '<p>    Au fur et à mesure que l\'air devient davantage humide, des effluves attrayants parviennent aux antennes
+des fourmis. Soudain, le champ de hautes herbes s\'éclaircit pour laisser place à une petite clairière, et le
+groupe fait face à quelques plantes de faible hauteur, dotées de feuilles éparses, mais surtout de
+plusieurs espèces de cavité, d\'où semble provenir cette odeur attrayante. Timidement, les fourmis
+s\'approchent de ces réservoirs qui semblent regorger de nectar. Elles titillent le bord des creux de leurs
+antennes, vérifient que l\'odeur sucrée qu\'elles ont perçu provient bien des cavités végétales, plus 
+chacune se précipite dans les différentes poches de la plante la plus proche.
+</p><p>    Si vous désirez empêcher votre protégée de se précipiter pour aller se régaler du doux nectar,
+rendez-vous au 119. </p><p>    Sinon, laissez-la saisir sa chance en vous rendant au 58.</p>',
+                'prerequisites' => NULL,
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2019-12-24 14:04:09',
+                'updated_at' => '2019-12-24 14:07:39',
+                'deleted_at' => NULL,
+            ),
+            26 => 
             array (
                 'id' => '7efa51ac-4650-3968-927f-910f95fc6b64',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 28,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -584,10 +680,10 @@ allez alors au 77. Sinon, elle se contentera d\'une feuille, comme les autres, e
                 'updated_at' => '2019-12-19 22:30:51',
                 'deleted_at' => NULL,
             ),
-            23 =>
+            27 => 
             array (
                 'id' => '80595d7e-b35b-3afb-b288-c747da6c7600',
-                'story_id' => 6,
+                'story_id' => 2,
                 'number' => 10,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -600,40 +696,56 @@ allez alors au 77. Sinon, elle se contentera d\'une feuille, comme les autres, e
                 'updated_at' => '2019-12-21 21:31:26',
                 'deleted_at' => NULL,
             ),
-            24 =>
+            28 => 
             array (
                 'id' => '81527581-7106-342e-af47-a1151abf81f3',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 39,
                 'is_first' => 0,
                 'is_last' => 0,
                 'title' => '21',
-                'content' => 'Le groupe, composé d\'ouvrières mais aussi de soldates, suit la piste menant à la mystérieuse cuve
+                'content' => '<p>&nbsp;&nbsp;&nbsp;&nbsp;Le groupe, composé d\'ouvrières mais aussi de soldates, suit la piste menant à la mystérieuse cuve
 chlorée. Arrivées à l\'entrée du bâtiment, les fourmis perçoivent de rapides vibrations dans le sol, de plus
 en plus fortes. On recule et on se met en position de combat, les guerrières en première ligne. C\'est alors
 qu\'au beau milieu du passage apparaît soudainement un gros mammifère qui, les crocs apparents, émet
 de puissantes ondes sonores. Sa queue dressée derrière lui et son poil hérissé montrent qu\'il cherche à
 dissuader les visiteurs de pénétrer dans son antre. L\'exploratrice qui a trouvé ce lieu a eu de la chance de
 ne pas tomber seule sur cette énorme créature…
-Si vous désirez que votre fourmi envoie des phéromones excitantes pour pousser ses congénères au
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Si vous désirez que votre fourmi envoie des phéromones excitantes pour pousser ses congénères au
 combat, rendez-vous au 3.
-Si votre protégée est une sexuée, elle peut s\'envoler et chercher à pénétrer dans l\'édifice par le haut,
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Si votre protégée est une sexuée, elle peut s\'envoler et chercher à pénétrer dans l\'édifice par le haut,
 hors de portée de la bête. Allez alors au 42.
-Sinon, votre insecte peut faire marche arrière, suivi par le groupe, naturellement guidé par la prudence.
-Rendez-vous dans ce cas au 66.',
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Sinon, votre insecte peut faire marche arrière, suivi par le groupe, naturellement guidé par la prudence.
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Rendez-vous dans ce cas au 66.</p>',
                 'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:41:38',
-                'updated_at' => '2019-12-19 22:41:58',
+                'updated_at' => '2019-12-24 14:45:03',
                 'deleted_at' => NULL,
             ),
-            25 =>
+            29 => 
+            array (
+                'id' => '89599be9-683c-34c0-89f4-dbd18ff07ff4',
+                'story_id' => 1,
+                'number' => 47,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Explicabo qui at molestiae eos',
+                'content' => 'Illo dolorem laboriosam qui dolor. Facilis temporibus iste vel facilis saepe. Blanditiis aut nobis nihil ut reprehenderit ex.',
+                'prerequisites' => NULL,
+                'layout' => NULL,
+                'is_checkpoint' => 1,
+                'created_at' => '2019-12-24 14:35:39',
+                'updated_at' => '2019-12-24 14:35:39',
+                'deleted_at' => NULL,
+            ),
+            30 => 
             array (
                 'id' => '8e32b39a-0886-37f3-93fd-f606a88950a9',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 1,
-                'is_first' => 0,
+                'is_first' => 1,
                 'is_last' => 0,
                 'title' => '1',
                 'content' => '<p>    Les quatre pattes arrière plantées dans une paroi à l\'aide de robustes paires de griffes, le bout de
@@ -655,15 +767,15 @@ laisse à votre protégée un peu de temps pour s\'y préparer.</p><p>    El
                 'updated_at' => '2019-12-20 17:58:14',
                 'deleted_at' => NULL,
             ),
-            26 =>
+            31 => 
             array (
                 'id' => '8f35f3c5-8bf4-327d-99ee-e6ab05ecdb06',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 37,
                 'is_first' => 0,
                 'is_last' => 0,
                 'title' => '114',
-                'content' => 'Une guerrière se joint au groupe, en raison de la présence probable d\'animaux à sang chaud dans ces
+                'content' => '<p>&nbsp;&nbsp;&nbsp;&nbsp;Une guerrière se joint au groupe, en raison de la présence probable d\'animaux à sang chaud dans ces
 souterrains. Puis les fourmis suivent la piste de phéromones jusqu\'à un gouffre menant sous terre…
 Elles descendent lentement des paliers comme taillés dans la pierre. Certaines trébuchent : des pattes
 craquent ou dérapent, des carapaces résonnent contre les parois de pierre. Mais plus de phéromones de
@@ -678,23 +790,23 @@ d\'encore un cran quand la possibilité est donnée de continuer à suivre la vo
 transversal plus réduit, sans barres de métal et moins pierreux. Dans la direction de la route principale,
 nul son ne vient troubler les capteurs antennaires. En revanche, le passage perpendiculaire au chemin
 principal émet des bruits caractéristiques d\'un animal de petite taille (car aigus).
-Pour déterminer la direction que va prendre votre insecte, lancez un dé : si vous obtenez de 1 à 4, votre
-fourmi s\'aventure dans le couloir transversal : rendez-vous au 93. Sinon, allez au 89 pour qu\'elle
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Pour déterminer la direction que va prendre votre insecte, lancez un dé : si vous obtenez de 1 à 4, votre
+fourmi s\'aventure dans le couloir transversal : rendez-vous au 93. </p><p>&nbsp;&nbsp;&nbsp;&nbsp;Sinon, allez au 89 pour qu\'elle
 poursuivre son chemin droit devant et laisse l\'ouvrière tenter sa chance dans le passage.
-Si votre fourmi possède des phéromones de séduction, choisissez la direction qui vous convient, l\'ouvrière
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Si votre fourmi possède des phéromones de séduction, choisissez la direction qui vous convient, l\'ouvrière
 se laissera convaincre. Par ailleurs, si vous le souhaitez, votre insecte peut même persuader sa compagne
-de ne pas céder à son instinct d\'exploratrice et de l\'accompagner.',
+de ne pas céder à son instinct d\'exploratrice et de l\'accompagner.</p>',
                 'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:40:09',
-                'updated_at' => '2019-12-19 22:40:33',
+                'updated_at' => '2019-12-24 14:44:13',
                 'deleted_at' => NULL,
             ),
-            27 =>
+            32 => 
             array (
                 'id' => '943a46a7-3a3c-36f6-b8ca-efaa09395320',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 2,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -718,10 +830,10 @@ N\'oubliez pas de retrancher 2 unités de temps au total encore disponible.
                 'updated_at' => '2019-12-20 17:27:35',
                 'deleted_at' => NULL,
             ),
-            28 =>
+            33 => 
             array (
                 'id' => '9b55d164-5507-3c9e-a50e-1176f0edf292',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 31,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -754,10 +866,10 @@ une telle hauteur ne la fasse pas trop virevolter (rendez-vous alors au 31).',
                 'updated_at' => '2019-12-19 22:33:36',
                 'deleted_at' => NULL,
             ),
-            29 =>
+            34 => 
             array (
                 'id' => '9dba62ca-2438-34cf-8d14-0228dad4bc5a',
-                'story_id' => 6,
+                'story_id' => 2,
                 'number' => 9,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -770,10 +882,10 @@ une telle hauteur ne la fasse pas trop virevolter (rendez-vous alors au 31).',
                 'updated_at' => '2019-12-21 21:29:03',
                 'deleted_at' => NULL,
             ),
-            30 =>
+            35 => 
             array (
                 'id' => 'a2f78c75-ddf0-35de-8d04-59f003b91faf',
-                'story_id' => 6,
+                'story_id' => 2,
                 'number' => 5,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -786,10 +898,10 @@ une telle hauteur ne la fasse pas trop virevolter (rendez-vous alors au 31).',
                 'updated_at' => '2019-12-21 16:45:34',
                 'deleted_at' => NULL,
             ),
-            31 =>
+            36 => 
             array (
                 'id' => 'a3972bc8-8441-3fd2-bf8d-d3d7f7df4122',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 19,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -802,10 +914,10 @@ une telle hauteur ne la fasse pas trop virevolter (rendez-vous alors au 31).',
                 'updated_at' => '2019-12-19 22:09:37',
                 'deleted_at' => NULL,
             ),
-            32 =>
+            37 => 
             array (
                 'id' => 'a6a67782-1453-3ef1-bf30-dd36693e0562',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 27,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -822,10 +934,10 @@ Rendez-vous au 40.',
                 'updated_at' => '2019-12-19 22:29:41',
                 'deleted_at' => NULL,
             ),
-            33 =>
+            38 => 
             array (
                 'id' => 'a8e00d08-e879-3bbd-8bde-b52b50c7900f',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 14,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -853,10 +965,10 @@ leurs anciennes compagnes ne sont en effet guère réjouissantes.',
                 'updated_at' => '2019-12-19 16:12:41',
                 'deleted_at' => NULL,
             ),
-            34 =>
+            39 => 
             array (
                 'id' => 'a95acae1-9b00-3e23-8271-d8351c5df841',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 42,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -876,10 +988,39 @@ Il est temps de faire un autre choix d\'action.</p>',
                 'updated_at' => '2019-12-20 17:33:19',
                 'deleted_at' => NULL,
             ),
-            35 =>
+            40 => 
+            array (
+                'id' => 'abc19abe-3811-3296-bc72-90ed62c56bde',
+                'story_id' => 1,
+                'number' => 48,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => '16',
+                'content' => '<p>&nbsp;&nbsp;&nbsp;&nbsp;Il est venu le temps de faire le décompte des unités de nourriture récoltées. En plus de celles récupérées
+par les groupes dont votre fourmi a fait partie, rajoutez au total obtenu les chiffres suivants pour les lieux
+non visités :
+</p><ul><li>&nbsp; &nbsp; petite forêt : 0</li><li>&nbsp; &nbsp; édifice étendu avec cylindres métalliques : 2
+</li><li>&nbsp; &nbsp; salle souterraine : 2
+</li><li>&nbsp; &nbsp; édifice contenant du bois transformé : 0
+</li><li>&nbsp; &nbsp; grand réseau de galeries : 2
+</li><li>&nbsp; &nbsp; réservoir tapissé de chlore : 0
+</li></ul><p>&nbsp;&nbsp;&nbsp;&nbsp;A présent que vous connaissez le total d\'unités de nourriture récupérées, vous devez le comparer au
+nombre 12. Si vous avez obtenu un total supérieur ou égal à 12, le bilan de l\'expédition est satisfaisant,
+et le groupe peut reprendre la direction de la fourmilière : rendez-vous au 18.</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Si le score est inférieur à 12 strictement (c\'est-à-dire 11, ou moins), la mission doit se poursuivre pour
+que les fourmis rapportent au Nid des ressources suffisantes : allez au 27.</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Toutefois, si votre fourmi est une sexuée et qu\'un mâle fait également partie du groupe d\'exploration,
+négligez les deux consignes précédentes. Elles ne concernent en effet plus que le reste des exploratrices ;
+votre fourmi ailée et son compagnon ont mieux à faire… Rendez-vous au 69.</p>',
+                'prerequisites' => NULL,
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2019-12-24 14:37:12',
+                'updated_at' => '2019-12-24 14:39:45',
+                'deleted_at' => NULL,
+            ),
+            41 => 
             array (
                 'id' => 'ac2f5ec7-fe90-39ca-a153-72678983e953',
-                'story_id' => 6,
+                'story_id' => 2,
                 'number' => 11,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -892,10 +1033,10 @@ Il est temps de faire un autre choix d\'action.</p>',
                 'updated_at' => '2019-12-21 21:36:35',
                 'deleted_at' => NULL,
             ),
-            36 =>
+            42 => 
             array (
                 'id' => 'b9ef1b4e-7cf6-37a0-9951-2f05d2fc24b1',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 38,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -908,10 +1049,10 @@ Il est temps de faire un autre choix d\'action.</p>',
                 'updated_at' => '2019-12-19 22:41:16',
                 'deleted_at' => NULL,
             ),
-            37 =>
+            43 => 
             array (
                 'id' => 'ba8b5412-c56b-36a9-bb3d-c0e851ee2fe3',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 21,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -936,10 +1077,10 @@ le vide. Le temps que le groupe atteigne le bout de la clairière, il ne restera
                 'updated_at' => '2019-12-19 22:25:10',
                 'deleted_at' => NULL,
             ),
-            38 =>
+            44 => 
             array (
                 'id' => 'c0de6d4a-c282-3653-8f9d-74bff50755a8',
-                'story_id' => 6,
+                'story_id' => 2,
                 'number' => 8,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -952,10 +1093,10 @@ le vide. Le temps que le groupe atteigne le bout de la clairière, il ne restera
                 'updated_at' => '2019-12-21 21:27:20',
                 'deleted_at' => NULL,
             ),
-            39 =>
+            45 => 
             array (
                 'id' => 'c100e47c-db04-3b45-8287-d55e4ceb5a41',
-                'story_id' => 6,
+                'story_id' => 2,
                 'number' => 2,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -968,10 +1109,10 @@ le vide. Le temps que le groupe atteigne le bout de la clairière, il ne restera
                 'updated_at' => '2019-12-21 16:39:49',
                 'deleted_at' => NULL,
             ),
-            40 =>
+            46 => 
             array (
                 'id' => 'cf066c88-314f-3df0-be2a-4eacad2dfe32',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 4,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -990,10 +1131,10 @@ N\'oubliez pas de retrancher 2 unités de temps au total encore disponible.</p>'
                 'updated_at' => '2019-12-20 17:25:51',
                 'deleted_at' => NULL,
             ),
-            41 =>
+            47 => 
             array (
                 'id' => 'd2b94bb0-cb20-32d2-b35d-545b69980e77',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 13,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -1018,10 +1159,10 @@ Lancez un dé. Si le résultat est pair, rendez-vous au 79. Dans le cas contrair
                 'updated_at' => '2019-12-19 16:09:40',
                 'deleted_at' => NULL,
             ),
-            42 =>
+            48 => 
             array (
                 'id' => 'd38a2175-baaf-3c40-b16d-0d7685fb3943',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 22,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -1040,10 +1181,10 @@ termine bientôt sur un obstacle redoutable.',
                 'updated_at' => '2019-12-19 22:24:40',
                 'deleted_at' => NULL,
             ),
-            43 =>
+            49 => 
             array (
                 'id' => 'd62fbb3b-5fe6-3d99-a698-57c6cae4e72f',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 12,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -1062,10 +1203,10 @@ Si vous pensez que ce lieu conviendra, dirigez-vous au 92.',
                 'updated_at' => '2019-12-19 16:08:56',
                 'deleted_at' => NULL,
             ),
-            44 =>
+            50 => 
             array (
                 'id' => 'dc6f77ab-c3f3-36ad-ace6-862e1025c052',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 11,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -1102,10 +1243,10 @@ Sinon, avec son consensus habituel, le groupe décide de tenter un raccourci. Al
                 'updated_at' => '2019-12-19 16:08:25',
                 'deleted_at' => NULL,
             ),
-            45 =>
+            51 => 
             array (
                 'id' => 'e4807008-33b4-33a4-a19e-790cabf8be61',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 24,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -1148,10 +1289,10 @@ Celle-ci se termine devant un nouveau défi.',
                 'updated_at' => '2019-12-19 22:26:10',
                 'deleted_at' => NULL,
             ),
-            46 =>
+            52 => 
             array (
                 'id' => 'e4a14291-b11e-3381-b271-48367f154db6',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 26,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -1167,10 +1308,10 @@ Néanmoins, les exploratrices parviennent à rejoindre l\'autre rive, sans perte
                 'updated_at' => '2019-12-19 22:31:36',
                 'deleted_at' => NULL,
             ),
-            47 =>
+            53 => 
             array (
                 'id' => 'e91c3382-b4fd-33a1-bf97-98cd1c88c57a',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 10,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -1207,10 +1348,10 @@ moment son avancée, allez au 115.',
                 'updated_at' => '2019-12-19 15:57:43',
                 'deleted_at' => NULL,
             ),
-            48 =>
+            54 => 
             array (
                 'id' => 'eb3c68b8-1daf-3034-a68c-6d4f3b79e687',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 34,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -1239,10 +1380,10 @@ Sinon, il ne reste plus au groupe qu\'à explorer le reste des environs : rendez
                 'updated_at' => '2019-12-19 22:38:06',
                 'deleted_at' => NULL,
             ),
-            49 =>
+            55 => 
             array (
                 'id' => 'efb2f3a3-9c3e-3c2e-be54-b72dd10c2f81',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 25,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -1269,36 +1410,62 @@ votre fourmi d’un niveau.',
                 'updated_at' => '2019-12-19 22:29:55',
                 'deleted_at' => NULL,
             ),
-            50 =>
+            56 => 
+            array (
+                'id' => 'f1e0c655-f42e-34a0-be2f-9464f11e3e21',
+                'story_id' => 1,
+                'number' => 43,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => '56',
+                'content' => '<p>&nbsp;&nbsp;&nbsp;&nbsp;La fourmi bat des ailes et s\'élève dans les airs. Ses ocelles perçoivent beaucoup mieux l\'environnement
+que les fourmis issues des autres castes, dotées d\'une vision inférieure. Dans la zone où l\'humidité est
+supérieure, l\'insecte volant aperçoit des plantes étranges qui sont parvenues à s\'aménager un espace
+entre les hautes herbes, bien qu\'elles soient plus basses que ces dernières. En s\'approchant, la fourmi
+perça une odeur sucrée et attirante. Elle doit se retenir pour ne point filer se régaler du nectar qui
+semble abonder dans les cavités de ces attrayants végétaux.
+La fourmi volante change ensuite de cap et survole le champ de hautes herbes qui occupe les territoires
+plus secs. Elle découvre un secteur parsemés de graminées : si les fourmis coupaient le haut des tiges de
+ces plantes pour en récupérer les sacs de graines, cela pourrait apporter de l\'énergie au nid.
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Si votre fourmi rapporte au groupe la présence des plantes émettant des odeurs correspondant à du
+doux nectar, rendez-vous au 72. </p><p>&nbsp;&nbsp;&nbsp;&nbsp;Si elle préfère signaler le champ de graminées, allez alors au 107.&nbsp;</p>',
+                'prerequisites' => NULL,
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2019-12-24 14:01:07',
+                'updated_at' => '2019-12-24 14:02:37',
+                'deleted_at' => NULL,
+            ),
+            57 => 
             array (
                 'id' => 'fb772269-a27c-3f16-bebc-d6b04ed690da',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 32,
                 'is_first' => 0,
                 'is_last' => 0,
                 'title' => '80',
-                'content' => 'La fourmi peut choisir d\'explorer :
+                'content' => '<p>&nbsp;&nbsp;&nbsp;&nbsp;La fourmi peut choisir d\'explorer :
 L\'objectif du groupe est de rassembler 10 unités de nourriture. Les sous-groupes qui ont été formés ne
 sont pas assez nombreux pour visiter tous les lieux : il y aura 3 séries d\'explorations. A la fin de chaque
 exploration, le niveau de Faim de votre insecte baissera d\'un niveau, en raison des efforts qu\'il aura
 produit (cela sera précisé dans le texte).
-Avant de choisir une destination, si votre fourmi transporte une nymphe, rendez-vous au immédiatement
-au 37. De même, si elle a amené avec elle des œufs, allez au 109.
-Si vous avez notez les mots Lieu inconnu sur la Feuille d\'aventure, votre fourmi l\'ajoute à la liste des
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Avant de choisir une destination, si votre fourmi transporte une nymphe, rendez-vous au immédiatement
+au 37. </p><p>&nbsp;&nbsp;&nbsp;&nbsp;De même, si elle a amené avec elle des œufs, allez au 109.
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Si vous avez notez les mots Lieu inconnu sur la Feuille d\'aventure, votre fourmi l\'ajoute à la liste des
 propositions d\'exploration : pour s\'y rendre, vous irez au 91.
-Avec le temps, la réserve d\'acide des éventuelles artilleuses présentes dans le groupe (votre fourmi et/ou
-un compagnon spécial) a pu se reconstituer quelque peu : ajoutez 2 gouttes à chaque réserve d\'acide.',
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Avec le temps, la réserve d\'acide des éventuelles artilleuses présentes dans le groupe (votre fourmi et/ou
+un compagnon spécial) a pu se reconstituer quelque peu : ajoutez 2 gouttes à chaque réserve d\'acide.</p>',
                 'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:34:23',
-                'updated_at' => '2019-12-19 22:41:09',
+                'updated_at' => '2019-12-24 13:52:44',
                 'deleted_at' => NULL,
             ),
-            51 =>
+            58 => 
             array (
                 'id' => 'fbab9c67-beab-3f27-91fe-959efe6583f3',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 5,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -1316,10 +1483,10 @@ ou dotées de puissantes mandibules (allez au 97).</p>',
                 'updated_at' => '2019-12-20 17:29:01',
                 'deleted_at' => NULL,
             ),
-            52 =>
+            59 => 
             array (
                 'id' => 'fe835b07-0a51-33bd-99cc-af62093052af',
-                'story_id' => 5,
+                'story_id' => 1,
                 'number' => 3,
                 'is_first' => 0,
                 'is_last' => 0,
@@ -1339,7 +1506,7 @@ quel autre avantage.</p><p>    Néanmoins, l\'usure menace ses mandibules af
                 'deleted_at' => NULL,
             ),
         ));
-
-
+        
+        
     }
 }

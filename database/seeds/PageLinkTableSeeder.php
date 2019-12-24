@@ -465,6 +465,97 @@ class PageLinkTableSeeder extends Seeder
                 'page_to' => 'ac2f5ec7-fe90-39ca-a153-72678983e953',
                 'link_text' => 'Souvenir de la conversation avec le responsable de la sécurité du Centre',
             ),
+            64 => 
+            array (
+                'id' => 97,
+                'page_from' => '0528b4c3-3586-3fb6-90d1-f47338b04d8c',
+                'page_to' => 'f1e0c655-f42e-34a0-be2f-9464f11e3e21',
+            'link_text' => 'Si votre fourmi est une sexuée ou qu\'elle est accompagnée par un mâle, elle (ou ce dernier) peut prendre son envol pour avoir une vision aérienne des environs : allez alors au 56.',
+            ),
+            65 => 
+            array (
+                'id' => 98,
+                'page_from' => '0528b4c3-3586-3fb6-90d1-f47338b04d8c',
+                'page_to' => '7e2d5a4f-b308-3954-a7de-71183a7243a1',
+                'link_text' => 'Sinon, lancez un dé. Si le résultat est compris entre 1 et 4, le groupe s\'orientera naturellement en direction de l\'atmosphère humide : rendez-vous au 72.',
+            ),
+            66 => 
+            array (
+                'id' => 99,
+                'page_from' => '0528b4c3-3586-3fb6-90d1-f47338b04d8c',
+                'page_to' => '4ba20a76-1743-3fac-ac5c-9e113127785c',
+                'link_text' => 'Sinon, les fourmis ne prêteront pas attention à l\'eau contenue dans l\'air et continueront leur route dans des territoires plus secs. Allez alors au 107.',
+            ),
+            67 => 
+            array (
+                'id' => 100,
+                'page_from' => 'f1e0c655-f42e-34a0-be2f-9464f11e3e21',
+                'page_to' => '7e2d5a4f-b308-3954-a7de-71183a7243a1',
+                'link_text' => 'Si votre fourmi rapporte au groupe la présence des plantes émettant des odeurs correspondant à du doux nectar, rendez-vous au 72.',
+            ),
+            68 => 
+            array (
+                'id' => 101,
+                'page_from' => 'f1e0c655-f42e-34a0-be2f-9464f11e3e21',
+                'page_to' => '4ba20a76-1743-3fac-ac5c-9e113127785c',
+                'link_text' => 'Si elle préfère signaler le champ de graminées, allez alors au 107.',
+            ),
+            69 => 
+            array (
+                'id' => 102,
+                'page_from' => '4ba20a76-1743-3fac-ac5c-9e113127785c',
+                'page_to' => '7a9ee846-a0b0-3d5b-8385-7ab1e03b836e',
+                'link_text' => 'Rendez-vous au 66.',
+            ),
+            70 => 
+            array (
+                'id' => 103,
+                'page_from' => '7a9ee846-a0b0-3d5b-8385-7ab1e03b836e',
+                'page_to' => 'abc19abe-3811-3296-bc72-90ed62c56bde',
+                'link_text' => 'Si votre insecte a déjà exploré trois lieux, rendez-vous immédiatement au 16.',
+            ),
+            71 => 
+            array (
+                'id' => 104,
+                'page_from' => '7a9ee846-a0b0-3d5b-8385-7ab1e03b836e',
+                'page_to' => '0528b4c3-3586-3fb6-90d1-f47338b04d8c',
+            'link_text' => '- Une petite forêt dont les végétaux ne sont pas les mêmes que ceux qu\'on trouve les territoires fourmis. Exotiques, ils composent une jungle naissante qui s\'étend à certaines constructions branlantes. La fourmi qui a découvert ce lieu n\'a pas osé s\'aventurer dans les hautes herbes et ne sait quel genre de créature peut s\'y trouver. (Si vous désirez que votre fourmi s\'y rende, il faudra aller au 76).',
+            ),
+            72 => 
+            array (
+                'id' => 105,
+                'page_from' => '7a9ee846-a0b0-3d5b-8385-7ab1e03b836e',
+                'page_to' => 'eb3c68b8-1daf-3034-a68c-6d4f3b79e687',
+            'link_text' => '- Un édifice très étendu, à deux étages. Dans cette grande surface se trouvent de courts cylindres métalliques intacts. Ceux qui ont été déjà ouverts ou percés laissent échapper des relents d\'une nourriture pourrie, mais les autres contiennent peut-être encore des aliments consommables. (Si vous désirez que votre insecte y aille, il faudra que vous vous rendiez au 65).',
+            ),
+            73 => 
+            array (
+                'id' => 106,
+                'page_from' => '7a9ee846-a0b0-3d5b-8385-7ab1e03b836e',
+                'page_to' => '1fe7b9fc-94dc-3319-84b5-c2860e7d5e4b',
+            'link_text' => '- Dans une des nombreuses constructions endommagées, une fourmi a trouvé un passage menant sous terre. Bloqué par un panneau de bois vermoulu, l\'exploratrice n\'a pas continué plus avant mais son odorat a détecté dans ce sous-sol la présence de champignons, qui pourraient bien être comestibles. (Si vous voulez que votre protégée s\'y rende, il faudra aller au 94).',
+            ),
+            74 => 
+            array (
+                'id' => 107,
+                'page_from' => '7a9ee846-a0b0-3d5b-8385-7ab1e03b836e',
+                'page_to' => '8f35f3c5-8bf4-327d-99ee-e6ab05ecdb06',
+            'link_text' => '- Une exploratrice est tombée sur un large passage menant sous terre. Il semblerait qu\'il mène à un immense réseau de galeries, au sol pierreux et où reposent de longues barres de métal. Cette espèce de fourmilière géante semble cependant contenir quelques occupants : les faibles mais nombreuses ondes sonores qu\'a perçues l\'ouvrière qui a découvert cet endroit, ainsi que l\'odeur typique des mammifères qui s\'en dégage, laissent à penser que l\'endroit est habité. (Si vous voulez que votre insecte s\'y rende, il faudra aller au 114).',
+            ),
+            75 => 
+            array (
+                'id' => 108,
+                'page_from' => '7a9ee846-a0b0-3d5b-8385-7ab1e03b836e',
+                'page_to' => '81527581-7106-342e-af47-a1151abf81f3',
+            'link_text' => '- Un lieu des plus mystérieux a attiré les ocelles d\'une petite fourmi : dans un bâtiment à un seul étage mais étendu, se trouve une espèce d\'immense réservoir dont le fond est tapissé de chlore. Le réservoir est percé de conduits non explorés. (Si vous désirez que votre fourmi s\'y déplace, il faudra aller au 21).',
+            ),
+            76 => 
+            array (
+                'id' => 109,
+                'page_from' => '7a9ee846-a0b0-3d5b-8385-7ab1e03b836e',
+                'page_to' => '7537a837-6597-3475-b6ae-457f73a94f85',
+                'link_text' => 'Si vous avez notez les mots Lieu inconnu sur la Feuille d\'aventure, allez au 91 si vous désirez que votre fourmi s\'y rende.',
+            ),
         ));
         
         

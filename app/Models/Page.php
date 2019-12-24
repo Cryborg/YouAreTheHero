@@ -111,10 +111,11 @@ class Page extends Model
         // - the already bound children
         $potentialPages = Page::where('story_id', $this->story_id)
                               ->whereNotIn('id', $this->choices()
-                                                      ->pluck('id')
-                                                      ->toArray()
+                                  ->pluck('id')
+                                  ->toArray()
                               )
                               ->whereNotIn('id', [$this->id])
+                              ->orderBy('title', 'asc')
                               ->get();
 
         return $potentialPages;

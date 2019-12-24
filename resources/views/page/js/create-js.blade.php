@@ -16,6 +16,7 @@
         })
             .done(function (data) {
                 $('#choicesForm').append('<div class="tab-pane active" id="p' + newNumber + '">' + data + '</div>');
+                $('#choicesForm textarea').summernote(summernoteOptions);
             })
             .always(function () {
                 $this.prop('disabled', false);

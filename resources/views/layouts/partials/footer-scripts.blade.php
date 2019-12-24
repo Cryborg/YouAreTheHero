@@ -72,7 +72,7 @@
         }));
     }
 
-    $('textarea').summernote({
+    var summernoteOptions = {
         lang: 'fr-FR',
         maximumImageFileSize: 524288, // 512k
         toolbar: [
@@ -86,7 +86,9 @@
             ['view', ['fullscreen', 'codeview']],
         ],
         spellcheck: false
-    });
+    };
+
+    $('textarea').summernote(summernoteOptions);
 
     $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
 </script>
