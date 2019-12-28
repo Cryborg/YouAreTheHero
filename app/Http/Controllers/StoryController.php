@@ -51,13 +51,13 @@ class StoryController extends Controller
 
         // If there is an ID, save it in the session so that we show a nice URL without the page ID
         if ($page !== null) {
-            $this->setSession('page_id', $page->id);
+            setSession('page_id', $page->id);
             return Redirect::route('story.play', ['story' => $story->id]);//'/story/' . $story->id);
         } else {
-            $page = $this->getSession('page_id');
+            $page = getSession('page_id');
         }
 
-        $this->setSession('story_id', $story->id);
+        setSession('story_id', $story->id);
 
         // Params that are always returned to the view
         $commonParams = [
@@ -87,7 +87,7 @@ class StoryController extends Controller
             }
         }
 
-        $this->setSession('character_id', $character->id);
+        setSession('character_id', $character->id);
 
         $this->saveCheckpoint($character, $page);
 
@@ -166,7 +166,7 @@ class StoryController extends Controller
         $action = json_decode($json, true);
 
         /** @var \App\Models\Character $character */
-        $character = $this->getCurrentCharacter($this->getSession('story_id'));
+        $character = $this->getCurrentCharacter(getSession('story_id'));
 
         $item = $this->getItem($action['item']);
 
@@ -310,43 +310,6 @@ class StoryController extends Controller
                 'page_id'      => $page->id,
             ]);
         }
-    }
-
-    /**
-     * @param string $key
-     * @param        $value
-     */
-    private function setSession(string $key, $value): void
-    {
-        $actualStorySession = collect(Session::get('story'));
-
-        $newValue = collect([
-            $key => $value,
-        ]);
-
-        Session::put([
-            'story' => $actualStorySession->merge($newValue),
-        ]);
-    }
-
-    /**
-     * @param string $key
-     *
-     * @return array|string
-     */
-    private function getSession(string $key = null)
-    {
-        $actualStorySession = Session::get('story');
-
-        if ($key === null) {
-            return $actualStorySession;
-        }
-
-        if ($actualStorySession) {
-            return $actualStorySession[$key] ?? null;
-        }
-
-        return [];
     }
 
     /**

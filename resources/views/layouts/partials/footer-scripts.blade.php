@@ -1,7 +1,3 @@
-<!-- Bootstrap core JavaScript
-================================================= -->
-<!-- Placed at the end of the document so the pages load faster -->
-
 <script type="text/javascript" src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -30,6 +26,21 @@
         .ajaxStop(function () {
             $loading.hide();
         });
+
+    // Put a spinner on buttons, but only if they have the 'original-text' data attribute.
+    $(document).on('click', function(element) {
+        var $this = $(element.target);
+
+        if (typeof $this.data('original-text') != 'undefined') {
+            var loadingText = '<i class="fa fa-circle-o-notch fa-spin"></i> ' + $this.data('original-text');
+
+            if ($this.html() !== loadingText) {
+                $this.data('original-text', $this.html());
+                $this.html(loadingText);
+                $this.prop('disabled', true);
+            }
+        }
+    });
 
     $('input, select, textarea').on('keypress', function () {
         var $this = $(this);
@@ -61,12 +72,21 @@
             case 'error':
                 icon = 'error';
                 bgColor = '#e3342f';
+                toastOptions.hideAfter = 10000;
                 break;
         }
 
+        var text = data.text + '<ul>';
+
+        $.each(data.errors, function (key, value) {
+            text += '<li>' + value + '</li>';
+        });
+
+        text += '</ul>';
+
         $.toast(Object.assign(toastOptions, {
             heading: '<b>' + data.heading + '</b>',
-            text: data.text,
+            text: text,
             icon: icon,
             bgColor: bgColor
         }));

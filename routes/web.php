@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 // Home
 Route::get('/', 'HomeController@index')->name('home');
 
+// Items
+Route::post('/item/create', 'ItemController@postCreate')->name('item.create.post');
+
 // Stories
 Route::get('/stories/draft', 'StoriesController@listDraft')->name('stories.list.draft');
 Route::get('/stories', 'StoriesController@list')->name('stories.list');
@@ -43,6 +46,7 @@ Route::post('/story/ajax_post_children_pages', 'StoryController@postChildrenPage
 // Page
 Route::get('/page/{page}/edit', 'PageController@getEdit')->name('page.edit');
 Route::post('/page/{page}/edit', 'PageController@postEdit')->name('page.edit.post');
+Route::post('/page/{page}/prerequisite', 'PageController@postAddPrerequisite')->name('page.prerequisite.add');
 
 // Actions
 Route::get('/actions/{page}/list', 'ActionController@list')->name('actions.list');

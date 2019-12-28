@@ -10,6 +10,7 @@ use App\Repositories\PageRepository;
 use Faker\Provider\Uuid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
@@ -137,5 +138,34 @@ class PageController extends Controller
         }
 
         abort(JsonResponse::HTTP_NOT_FOUND);
+    }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Page         $page
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function postAddPrerequisite(Request $request, Page $page)
+    {
+        if ($request->ajax()) {
+            $items = $request->get('items') ?? $page->prerequisites['items'];
+            $sheet = $request->get('sheet') ?? $page->prerequisites['sheet'];
+            $prerequisites = [];
+
+            if ($items) {
+                $prerequisites['items'] = $items;
+            }
+            if ($sheet) {
+                $prerequisites['sheet'] = $sheet;
+            }
+
+            $page->prerequisites = $prerequisites;
+            $page->save();
+
+            return response()->json(['success' => true]);
+        }
+
+        return response()->json(['success' => false]);
     }
 }

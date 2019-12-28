@@ -1,8 +1,10 @@
-{!! Form::model($page, [
-    'route' => ['page.edit.post', $page->id],
-    'id' => 'form-' . $page->id,
-    'data-internalid' => $internalId
-]) !!}
+<div class="divAsForm" data-internalid="{{ $internalId }}"
+     data-route="{{ route('page.edit.post', $page->id) }}">
+{{--{!! Form::model($page, [--}}
+{{--    'route' => ['page.edit.post', $page->id],--}}
+{{--    'id' => 'form-' . $page->id,--}}
+{{--    'data-internalid' => $internalId--}}
+{{--]) !!}--}}
     {{--  Errors --}}
     <div class="form-errors alert alert-danger hidden"></div>
     {!! Form::hidden('internalid', $internalId, ['name' => 'internalid']) !!}
@@ -50,9 +52,8 @@
         </label>
     </div>
 
-    <button class="btn btn-success submit-btn mb-1 w-50" type="submit" data-original-text="{{ trans('story.create_submit') }}">{{ trans('story.create_submit') }}</button>
-
-{!! Form::close() !!}
+    <button class="btn btn-success submit-btn mb-1 w-50" data-original-text="{{ trans('story.create_submit') }}">{{ trans('story.create_submit') }}</button>
+</div>
 
 @if ($internalId > 0)
     <a class="btn btn-primary w-25" href="{{ route('page.edit', $page->id) }}#current_page">{{ trans('story.add_choices') }}</a>

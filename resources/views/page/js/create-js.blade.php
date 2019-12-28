@@ -58,21 +58,12 @@
         });
 
         $(document).on('click', '.submit-btn', function (e) {
-            let $this = $(this).parent('form');
+            let $form = $(this).parent('div.divAsForm');
             let $thisBtn = $(this);
-            e.preventDefault();
 
             // internalId is 0 if the form being submitted is the main page.
             // Otherwise it is > 0
-            var internalId = $this.data('internalid');
-
-            var loadingText = '<i class="fa fa-circle-o-notch fa-spin"></i> ' + $thisBtn.data('original-text');
-
-            if ($thisBtn.html() !== loadingText) {
-                $thisBtn.data('original-text', $thisBtn.html());
-                $thisBtn.html(loadingText);
-                $thisBtn.prop('disabled', true);
-            }
+            var internalId = $form.data('internalid');
 
             var data = {
                 'title': $('#title-' + internalId).val(),
@@ -87,9 +78,8 @@
                 data.page_from = $('#page_from').val();
             }
 
-            $.ajax({
-                method: $this.attr('method'),
-                url: $this.attr('action'),
+            $.post({
+                url: $form.data('route'),
                 data: data
             })
                 .done(function (data) {
@@ -101,7 +91,7 @@
                 .fail(function (data) {
                     if (data.status == 422) {
                         $.each(data.responseJSON.errors, function (i, error) {
-                            $this
+                            $form
                                 .find('[name="' + i + '"]')
                                 .addClass('input-invalid')
                                 .next()
@@ -113,6 +103,7 @@
                     showToast('error', {
                         heading: '{{ trans('notification.save_failed_title') }}',
                         text: "{{ trans('admin.save_failed_text') }}",
+                        errors: data.responseJSON.errors
                     });
 
                 })
@@ -121,6 +112,88 @@
                     $thisBtn.prop('disabled', false);
                 });
         });
+
+        $('#add_prerequisite').on('click', function () {
+            var $this = $(this);
+            var data = {};
+
+            if ($('#tr1').hasClass('active')) {
+                data = {
+                    'items': $('#prerequisite_item_id').val()
+                };
+            }
+
+            if ($('#tr2').hasClass('active')) {
+                if ($('#sheet option:selected').val() !== '') {
+                    var key = $('#sheet option:selected').text();
+                    var value = $('#level').val();
+
+                    data['sheet'] = {};
+                    data['sheet'][key] = value;
+                }
+            }
+console.log(data);
+            if (Object.entries(data).length > 0 && data.constructor === Object) {
+                $.post({
+                    url: route('page.prerequisite.add', '{{ $page->id }}'),
+                    data: data
+                })
+                    .done(function () {
+                        showToast('success', {
+                            heading: '{{ trans('notification.save_success_title') }}',
+                            text: "{{ trans('notification.save_success_text') }}",
+                        });
+
+                        $('#modalCreatePrerequisite').modal('hide');
+                    })
+                    .fail(function (data) {
+                        showToast('error', {
+                            heading: '{{ trans('notification.save_failed_title') }}',
+                            text: "{{ trans('notification.save_failed_text') }}",
+                            errors: data.responseJSON.errors
+                        });
+                    })
+                    .always(function () {
+                        $this.html($this.data('original-text'));
+                        $this.prop('disabled', false);
+                    });
+            }
+        });
+
+        $('#create_item').on('click', function () {
+            var $this = $(this);
+
+            $.post({
+                url: route('item.create.post'),
+                data: {
+                    'name': $('#item_name').val(),
+                    'default_price': $('#item_price').val(),
+                    'single_use': $('#single_use').is(':checked') ? 1 : 0,
+                    'story_id': {{ $story->id }}
+                }
+            })
+            .done(function (data) {
+                showToast('success', {
+                    heading: '{{ trans('notification.save_success_title') }}',
+                    text: "{{ trans('notification.save_success_text') }}",
+                });
+
+                $('#prerequisite_item_id').append(
+                    '<option value="' + data.item.id + '">' + data.item.name + '</option>'
+                );
+            })
+            .fail(function (data) {
+                showToast('error', {
+                    heading: '{{ trans('notification.save_failed_title') }}',
+                    text: "{{ trans('notification.save_failed_text') }}",
+                    errors: data.responseJSON.errors
+                });
+            })
+                .always(function () {
+                    $this.html($this.data('original-text'));
+                    $this.prop('disabled', false);
+                });
+        })
     });
 
     var actionsListDatatable = $('#actions_list').DataTable({
@@ -131,29 +204,24 @@
             $(cells[4], row).addClass('text-center');
         },
         drawCallback: function (settings) {
+            // Hides pagination when there is only one page
             var pagination = $(this).closest('.dataTables_wrapper').find('.dataTables_paginate');
             pagination.toggle(this.api().page.info().pages > 1);
         }
     });
 
     // When the author chooses an item from the list
-    $('#item_id, #prerequisite_item_id').on('change', function () {
+    $('#item_id').on('change', function () {
         var $this = $(this);
 
         if ($this.val() == '') return false;
 
-        $.ajax({
+        $.post({
             url: route('story.ajax_getitem'),
-            method: 'POST',
             data: {'itemId': $this.val()}
         })
             .done(function (data) {
-                if ($this.attr('id') == 'prerequisite_item_id') {
-                    $('#prerequisite_item_description').html(data);
-                } else {
-                    $('#item_description').html(data);
-                }
-
+                $('#item_description').html(data);
             });
     });
 
@@ -176,18 +244,10 @@
     $('#add_action').on('click', function () {
         var serialized = $('#action_create').serialize();
         var $this = $(this);
-        var loadingText = '<i class="fa fa-circle-o-notch fa-spin"></i> ' + $this.data('original-text');
 
-        if ($this.html() !== loadingText) {
-            $this.data('original-text', $(this).html());
-            $this.html(loadingText);
-            $this.prop('disabled', true);
-        }
-
-        $.ajax({
+        $.post({
             url: '{{ route('actions.store', $page->id) }}',
             'data': serialized,
-            'method': 'POST',
         })
             .done(function (data) {
                 var result = JSON.parse(data);
@@ -226,6 +286,7 @@
                 showToast('error', {
                     heading: '{{ trans('admin.error_title') }}',
                     text: "{{ trans('notification.new_action_not_added') }}",
+                    errors: data.responseJSON.errors
                 });
             })
             .always(function () {
@@ -258,10 +319,11 @@
                     text: "{{ trans('notification.deletion_success_text') }}",
                 });
             })
-            .fail(function () {
+            .fail(function (data) {
                 showToast('error', {
                     heading: '{{ trans('notification.deletion_failed_title') }}',
                     text: "{{ trans('notification.deletion_failed_text') }}",
+                    errors: data.responseJSON.errors
                 });
             })
             .always(function () {

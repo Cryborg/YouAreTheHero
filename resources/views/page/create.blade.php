@@ -142,7 +142,7 @@
 
     <!-- Modal new Prerequisite -->
     <div class="modal" id="modalCreatePrerequisite" tabindex="-1" role="dialog" aria-labelledby="modalCreatePrerequisiteTitle" aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalCreatePrerequisiteTitle">{{ trans('page.prerequisite_modal_title') }}</h5>
@@ -157,7 +157,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success" id="add_prerequisite">{{ trans('actions.add_prerequisite') }}</button>
+                    <button type="button" class="btn btn-success" id="add_prerequisite" data-original-text="{{ trans('actions.add_prerequisite') }}">{{ trans('actions.add_prerequisite') }}</button>
                 </div>
             </div>
         </div>

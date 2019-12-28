@@ -16,3 +16,41 @@ function getLanguages()
         return $languages;
     });
 }
+
+
+/**
+ * @param string $key
+ * @param        $value
+ */
+function setSession(string $key, $value): void
+{
+    $actualStorySession = collect(Session::get('story'));
+
+    $newValue = collect([
+        $key => $value,
+    ]);
+
+    Session::put([
+        'story' => $actualStorySession->merge($newValue),
+    ]);
+}
+
+/**
+ * @param string $key
+ *
+ * @return array|string
+ */
+function getSession(string $key = null)
+{
+    $actualStorySession = Session::get('story');
+
+    if ($key === null) {
+        return $actualStorySession;
+    }
+
+    if ($actualStorySession) {
+        return $actualStorySession[$key] ?? null;
+    }
+
+    return [];
+}
