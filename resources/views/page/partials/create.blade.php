@@ -1,10 +1,6 @@
 <div class="divAsForm" data-internalid="{{ $internalId }}"
      data-route="{{ route('page.edit.post', $page->id) }}">
-{{--{!! Form::model($page, [--}}
-{{--    'route' => ['page.edit.post', $page->id],--}}
-{{--    'id' => 'form-' . $page->id,--}}
-{{--    'data-internalid' => $internalId--}}
-{{--]) !!}--}}
+
     {{--  Errors --}}
     <div class="form-errors alert alert-danger hidden"></div>
     {!! Form::hidden('internalid', $internalId, ['name' => 'internalid']) !!}

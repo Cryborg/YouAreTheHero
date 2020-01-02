@@ -3,10 +3,10 @@
 return [
     ':' => ' :',
     'link_home'             => 'Accueil',
-    'link_stories'          => 'Liste des histoires',
-    'link_admin'            => 'Admin',
-    'link_story_create'     => 'Créer histoire',
-    'link_stories_draft'    => 'Brouillons',
+    'link_stories'          => 'Lecteur',
+    'link_admin'            => 'Auteur',
+    'link_story_create'     => 'Créer une histoire',
+    'link_stories_draft'    => 'Mes brouillons',
 
     'title_pages'           => 'Pages',
     'title_stories'         => 'Histoires',

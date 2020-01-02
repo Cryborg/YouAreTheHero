@@ -9,20 +9,20 @@
             @lang('common.link_admin')
         </a>
         <ul class="dropdown-menu">
-            <li>
-                <a href="{{ url('/admin') }}">
-                    @lang('common.link_admin')
-                </a>
-            </li>
-            <li role="separator" class="divider"></li>
+{{--            <li>--}}
+{{--                <a href="{{ url('/admin') }}">--}}
+{{--                    @lang('common.link_admin')--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--            <li role="separator" class="divider"></li>--}}
             <li>
                 <a href="{{ route('story.create') }}">
-                    @lang('common.link_story_create')
+                    {{ trans('common.link_story_create') }}
                 </a>
             </li>
             <li>
                 <a href="{{ route('stories.list.draft') }}">
-                    @lang('common.link_stories_draft')
+                    {{ trans('common.link_stories_draft') }}
                 </a>
             </li>
         </ul>

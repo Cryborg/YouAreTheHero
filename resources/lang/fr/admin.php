@@ -9,6 +9,7 @@ return [
     'username'              => 'Nom d\'utilisateur',
     'password'              => 'Mot de passe',
     'password_confirmation' => 'Confirmez votre mot de passe',
+    'forgot_password'       => 'Mot de passe oublié ?',
     'remember_me'           => 'Rester connecté',
     'user_setting'          => 'Paramètres',
     'avatar'                => 'Avatar',

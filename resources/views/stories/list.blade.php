@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', 'Stories list')
+@section('title', trans('common.stories_list'))
 
 @section('content')
     <h1>{{ trans('stories.list_title') }}</h1>
@@ -23,7 +23,7 @@
         <thead>
             <tr>
                 <th></th>   {{-- Child rows button --}}
-                <th></th>   {{-- hidden stories IDs --}}
+                <th></th>   {{-- hidden stories IDs (used by Datatables & JS --}}
                 <th>{{ __('admin.title') }}</th>
                 <th>{{ __('common.genres') }}</th>
                 <th>{{ __('common.language') }}</th>

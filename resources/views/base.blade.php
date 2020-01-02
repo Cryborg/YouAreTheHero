@@ -37,7 +37,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="@if($fluid ?? true) container-fluid @else container @endif">
                 <a class="navbar-brand" href="{{ url('/') }}" title="@lang('common.link_home')">
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="{{ asset('img/minibot.jpg') }}" width="64" height="64" style="margin-top: -12px">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

@@ -19,4 +19,8 @@ return [
     'page_is_first_help'=> "Coche cette case s'il s'agit de la première page de ton histoire.",
     'page_is_last_help' => "Si tu coches cette case cela signifie que cette page est la dernière de ton histoire. Soit parce que le joueur est arrivé au bout, soit parce qu'il est tombé dans une impasse ou a perdu un combat crucial. Quelque soit son sort, l'histoire se termine ici pour son personnage !",
     'page_is_checkpoint_help' => "En cochant cette case tu permets aux joueurs de revenir sur cette page quand ils le veulent. Le titre devient alors obligatoire.",
+
+    'email' => 'Email',
+    'username' => "Nom d'utilisateur",
+    'password' => "Mot de passe",
 ];

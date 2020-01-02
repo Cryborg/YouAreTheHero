@@ -15,13 +15,13 @@
                 <p class="help-block">{!! trans('page.required_item_help') !!}</p>
                 <select multiple="" class="form-control custom-select" size="6" id="prerequisite_item_id" name="prerequisite_item_id">
                     <option value=""></option>
-                    @foreach ($page->story->items->sortBy('name')->pluck('name', 'id')->toArray() as $itemId => $itemName)
-                        @foreach($page->prerequisites['items'] as $prerequisite)
+                    @foreach ($page->story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
+                        @foreach($page->prerequisites['items'] ?? [] as $prerequisite)
                             <option value="{{ $itemId }}" @if ($prerequisite == $itemId)selected
                                 @endif
-                                @endforeach
-                            >{{ $itemName }}</option>
                         @endforeach
+                        >{{ $itemName }}</option>
+                    @endforeach
                 </select>
                 <fieldset class="mt-4">
                     <legend>{{ trans('item.new_item_title') }}</legend>
@@ -63,14 +63,18 @@
                     <p class="help-block">{!! trans('page.required_characteristic_help') !!}</p>
                     <select class="form-control custom-select" size="6" id="sheet" name="sheet">
                         <option value=""></option>
-                        {{ $characValue = 1 }}
+                        @php
+                            $characValue = 1;
+                        @endphp
                         @foreach(array_keys($page->story->sheet_config ?? []) as $charac)
-                            @foreach($page->prerequisites['sheet'] as $prerequisite => $value)
+                            @foreach($page->prerequisites['sheet'] ?? [] as $prerequisite => $value)
                                 <option value="{{ $charac }}"
-                                @if ($prerequisite == $charac)
-                                    selected
-                                    {{ $characValue = $value }}
-                                @endif
+                                    @if ($prerequisite == $charac)
+                                        selected
+                                        @php
+                                            $characValue = $value;
+                                        @endphp
+                                    @endif
                                 >{{ $charac }}</option>
                             @endforeach
                         @endforeach
@@ -85,8 +89,8 @@
             <div class="tab-pane" id="tr3">
                 {!! Form::label('sheet', trans('page.required_money'), ['class' => 'sr-only']) !!}
                 <p class="help-block">{!! trans('page.required_money_help') !!}</p>
-                {{-- TODO --}}
-                Not done yet ;)
+
+                {!! Form::number('money', 1, ['class' => 'form-control']) !!}
             </div>
         </div>
     </div>
