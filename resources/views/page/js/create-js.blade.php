@@ -132,7 +132,7 @@
                     data['sheet'][key] = value;
                 }
             }
-console.log(data);
+
             if (Object.entries(data).length > 0 && data.constructor === Object) {
                 $.post({
                     url: route('page.prerequisite.add', '{{ $page->id }}'),

@@ -6,6 +6,7 @@ use Faker\Provider\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
 
 class Page extends Model
@@ -68,7 +69,7 @@ class Page extends Model
      */
     public function choices()
     {
-        $pagelink = Cache::remember('choices_' . $this->id, 1, function () {
+        $pagelink = Cache::remember('choices_' . $this->id, Config::get('app.story.cache_ttl'), function () {
             return PageLink::where('page_from', $this->id)
                            ->select([
                                    'page_link.link_text',

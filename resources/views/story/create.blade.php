@@ -29,14 +29,14 @@
             {!! Form::select('layout', $layouts , $story ? $story->layout : old('layout') , ['class' => 'form-control']) !!}
         </div>
 
-        {{-- TODO: if in editing mode --}}
-        <div class="form-group form-check">
-            <label>
-                {!! Form::checkbox('is_published', $story ? $story->is_published : old('is_published') ?? 1, false, ['id' => 'is_published']) !!}
-                @lang('model.is_published')
-            </label>
-        </div>
-        {{-- end if editing mode --}}
+        @if (Route::current()->getName() === 'story.edit')
+            <div class="form-group form-check">
+                <label>
+                    {!! Form::checkbox('is_published', $story ? $story->is_published : old('is_published') ?? 1, false, ['id' => 'is_published']) !!}
+                    @lang('model.is_published')
+                </label>
+            </div>
+        @endif
 
         {!! Form::submit(trans('story.create_submit'), ['class' => 'form-control btn btn-primary']) !!}
     {!! Form::close() !!}
