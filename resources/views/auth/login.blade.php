@@ -72,6 +72,10 @@
                         </div>
                     </form>
                 </div>
+
+                <div class="card-footer text-center text-muted">
+                    {!! trans('auth.users_count', ['count' => \App\Models\User::count()]) !!}
+                </div>
             </div>
         </div>
     </div>

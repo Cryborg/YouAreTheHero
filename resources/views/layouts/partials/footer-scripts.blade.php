@@ -42,6 +42,12 @@
         }
     });
 
+    function resetLoader($button)
+    {
+        $button.html($button.data('original-text'));
+        $button.prop('disabled', false);
+    }
+
     $('input, select, textarea').on('keypress', function () {
         var $this = $(this);
         if ($this.hasClass('input-invalid')) {

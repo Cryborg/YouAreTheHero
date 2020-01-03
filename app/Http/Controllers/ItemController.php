@@ -34,7 +34,7 @@ class ItemController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function postCreate(Request $request)
+    public function store(Request $request)
     {
         $validated = Validator::validate($request->all(), [
             'name'          => 'required|min:2|unique:items',

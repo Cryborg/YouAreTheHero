@@ -7,6 +7,7 @@ use App\Models\Character;
 use App\Models\Story;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 
 class CharacterController extends Controller
@@ -23,7 +24,7 @@ class CharacterController extends Controller
         return $view;
     }
 
-    public function postCreate(Request $request, Story $story)
+    public function store(Request $request, Story $story)
     {
         $page = $story->getCurrentPage();
 
@@ -39,6 +40,8 @@ class CharacterController extends Controller
 
         $character->sheet = $sheet;
 
-        dd($character);
+        $character->save();
+
+        return Redirect::to('story.play', ['story' => $story->id]);
     }
 }

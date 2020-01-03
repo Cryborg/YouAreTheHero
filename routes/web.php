@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home');
 
 // Items
-Route::post('/item/create', 'ItemController@postCreate')->name('item.create.post');
+Route::post('/item/create', 'ItemController@store')->name('item.create.post');
 
 // Stories
 Route::get('/stories/draft', 'StoriesController@listDraft')->name('stories.list.draft');
@@ -27,7 +27,7 @@ Route::get('/stories/ajax_list', 'StoriesController@ajaxList')->name('stories.li
 Route::get('/story/{story}/reset', 'StoryController@getReset')->name('story.reset');
 
 Route::get('/story/create', 'StoryController@getCreate')->name('story.create');
-Route::post('/story/create', 'StoryController@postCreate')->name('story.create.post');
+Route::post('/story/create', 'StoryController@store')->name('story.create.post');
 
 Route::get('/story/{story}/edit', 'StoryController@getEdit')->name('story.edit');
 Route::post('/story/{story}/edit', 'StoryController@postEdit')->name('story.edit.post');
@@ -58,4 +58,4 @@ Auth::routes();
 
 // Character
 Route::get('/character/create/{story}', 'CharacterController@getCreate')->name('character.create');
-Route::post('/character/create/{story}', 'CharacterController@postCreate')->name('character.create.post');
+Route::post('/character/create/{story}', 'CharacterController@store')->name('character.create.post');

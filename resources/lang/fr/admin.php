@@ -17,7 +17,7 @@ return [
     'new'                   => 'Nouveau',
     'create'                => 'Créer',
     'delete'                => 'Supprimer',
-    'remove'                => 'Enlèver',
+    'remove'                => 'Enlever',
     'edit'                  => 'Editer',
     'view'                  => 'Voir',
     'continue_editing'      => 'Continuer l\'édition',

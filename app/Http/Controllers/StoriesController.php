@@ -55,7 +55,8 @@ class StoriesController extends Controller
         $cacheKey = 'stories.list';
 
         if ($draft) {
-            $query->where('is_published', false);
+            $query->where('is_published', false)
+                ->where('user_id', Auth::id());
             $cacheKey = 'stories.list.draft';
         } else {
             $query->where('is_published', true)

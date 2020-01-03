@@ -55,6 +55,10 @@ class StoryController extends Controller
             return Redirect::route('story.play', ['story' => $story->id]);//'/story/' . $story->id);
         } else {
             $page = getSession('page_id');
+            if (!empty($page)) {
+                $page = Page::where('id', $page)
+                            ->first();
+            }
         }
 
         setSession('story_id', $story->id);
@@ -72,7 +76,7 @@ class StoryController extends Controller
             ]);
         } else { // The character exists, let's go back to the previous save point
             // Get the last visited page
-            if ($page === null) {
+            if ($page === null || empty($page)) {
                 $page = $story->getCurrentPage($character->page_id);
             }
 
@@ -88,7 +92,6 @@ class StoryController extends Controller
         }
 
         setSession('character_id', $character->id);
-
         $this->saveCheckpoint($character, $page);
 
         $visitedPlaces = $character->checkpoints;
@@ -377,7 +380,7 @@ class StoryController extends Controller
         return $view;
     }
 
-    public function postCreate(Request $request)
+    public function store(Request $request)
     {
         $validated = $request->validate([
             'title' => 'required',

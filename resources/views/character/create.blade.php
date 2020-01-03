@@ -17,5 +17,5 @@
 @endsection
 
 @push('footer-scripts')
-{{--    @include('character.js.create-js')--}}
+    @include('character.js.create-js')
 @endpush
