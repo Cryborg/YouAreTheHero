@@ -25,6 +25,7 @@
                 "%RESET_STORY%": d.can_reset == true
                     ? '<a href="' + route('story.reset', {'story': d.id}) + '" class="btn btn-danger card-link">{{ trans('story.reset') }}</a>'
                     : ' ',
+                "%AUTHOR%": d.user
             };
 
             return template.replace(/%\w+%/g, function(all) {
@@ -36,6 +37,9 @@
             dom: 'rt<p><"clear">',
             processing: true,
             serverSide: true,
+            responsive: {
+                details: false
+            },
             ajax: '{{ route('stories.list.ajax', ['draft' => false]) }}',
             columns: [
                 {
@@ -57,13 +61,18 @@
                     }, 'width': '15%'},
                 {data: 'locale', 'width': '10%'},
                 {data: 'user', 'width': '20%'},
-                {data: 'created_at', 'width': '20%'}
+                {data: 'created_at', 'width': '20%'},
+                {data: 'description'},
             ],
             "columnDefs": [
                 {
                     "targets": [ 1 ],
                     "visible": false,
                     "searchable": false
+                },
+                {
+                    "targets": [ 7 ],
+                    "visible": false
                 }
             ]
         });

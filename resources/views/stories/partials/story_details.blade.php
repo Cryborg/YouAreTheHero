@@ -8,4 +8,7 @@
         %EDIT_URL%
         %RESET_STORY%
     </div>
+    <div class="card-footer text-right text-muted">
+        {{ trans('story.author_is', ['author' => '%AUTHOR%']) }}
+    </div>
 </div>

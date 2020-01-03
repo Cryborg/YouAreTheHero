@@ -6,7 +6,7 @@
 @if ($level === 'error')
 # @lang('Whoops!')
 @else
-# @lang('Hello!')
+# @lang('notification.hello')
 @endif
 @endif
 
@@ -43,7 +43,7 @@
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-@lang('Regards'),<br>
+@lang('notification.regards'),<br>
 {{ config('app.name') }}
 @endif
 
@@ -51,8 +51,7 @@
 @isset($actionText)
 @slot('subcopy')
 @lang(
-    "If you’re having trouble clicking the \":actionText\" button, copy and paste the URL below\n".
-    'into your web browser: [:actionURL](:actionURL)',
+    'notification.show_in_browser_text',
     [
         'actionText' => $actionText,
         'actionURL' => $actionUrl,

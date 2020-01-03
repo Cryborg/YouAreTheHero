@@ -14,4 +14,5 @@ return [
     'add_choices'           => 'Ajouter des choix',
 
     'tree'                  => 'Arborescence des pages',
+    'author_is'             => 'Auteur : :author',
 ];

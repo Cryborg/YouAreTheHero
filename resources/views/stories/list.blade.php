@@ -9,13 +9,13 @@
         <legend>{{ trans('common.filters') }}</legend>
 
         <div class="form-group row ml-2">
-            {!! Form::label('languages', trans('common.language'), ['class' => 'control-label col-2']) !!}
-            {!! Form::select('languages', $languages , null , ['class' => 'form-control col-4', 'id' => 'languages', 'style' => 'width: 15%']) !!}
+            {!! Form::label('languages', trans('common.language'), ['class' => 'control-label col-xs-12 col-lg-2']) !!}
+            {!! Form::select('languages', $languages , null , ['class' => 'form-control col-xs-12 col-4', 'id' => 'languages']) !!}
         </div>
 
         <div class="form-group row ml-2">
-            {!! Form::label('languages', trans('common.global_search'), ['class' => 'control-label col-2']) !!}
-            <input class="form-control col-4" id="globalSearch" type="text" data-type="search" name="search">
+            {!! Form::label('languages', trans('common.global_search'), ['class' => 'control-label col-xs-12 col-lg-2']) !!}
+            <input class="form-control col-xs-12 col-4" id="globalSearch" type="text" data-type="search" name="search">
         </div>
     </fieldset>
 
@@ -29,6 +29,7 @@
                 <th>{{ __('common.language') }}</th>
                 <th>{{ __('common.author') }}</th>
                 <th>{{ __('common.created_at') }}</th>
+                <th></th>   {{-- Hidden description field for global search --}}
             </tr>
         </thead>
         <tfoot>
@@ -40,6 +41,7 @@
             <th>{{ __('common.language') }}</th>
             <th>{{ __('common.author') }}</th>
             <th>{{ __('common.created_at') }}</th>
+            <th></th>
         </tr>
         </tfoot>
     </table>

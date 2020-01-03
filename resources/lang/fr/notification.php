@@ -14,4 +14,9 @@ return [
 
     'save_failed_title'         => 'Enregistrement échoué',
     'save_failed_text'          => "L'enregistrement a échoué ! :(",
+
+    'hello'                     => 'Bonjour !',
+    'regards'                   => 'A bientôt !',
+    'show_in_browser_text'      => "Si tu ne peux pas cliquer sur le bouton \":actionText\", copie-colle l'adresse suivante\n".
+                                   'dans ton navigateur : [:actionURL](:actionURL)',
 ];

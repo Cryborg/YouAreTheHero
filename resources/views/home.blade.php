@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    @lang('home.text')
+                    {!! trans('home.text')  !!}
                 </div>
             </div>
         </div>
