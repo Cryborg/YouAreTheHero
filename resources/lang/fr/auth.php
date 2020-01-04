@@ -9,5 +9,5 @@ return [
     'reset_password_line_3'    => "Si tu n'as pas demandé la réinitialisation, ignore ce mail.",
     'send_password_reset_link' => "Envoyer le mail",
     'users_count'              => "Il y a actuellement <b>:count</b> joueurs inscrits.",
-    'auth.logout'              => 'Déconnexion',
+    'logout'                   => 'Déconnexion',
 ];

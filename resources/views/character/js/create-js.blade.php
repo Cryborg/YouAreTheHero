@@ -13,7 +13,7 @@
             data: {'name': characterName}
         })
         .done(function () {
-
+            window.location.href = '{{ route('story.play', ['story' => $story->id]) }}';
         })
         .fail(function () {
 

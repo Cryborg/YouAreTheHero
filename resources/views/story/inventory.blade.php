@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col">
-        {{ __('common.money') }}{{ __(':') }} <span id="character_money">{{ $character->money }}</span>
+        {{ __('common.money') }}{{ __(':') }} <span id="character_money">{!! $character->money !!}</span>
     </div>
 </div>
 <div class="row">

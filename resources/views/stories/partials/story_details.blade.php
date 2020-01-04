@@ -4,9 +4,20 @@
         <p class="card-text">%TEXT%</p>
     </div>
     <div class="card-footer text-muted">
-        <a href="%PLAY_URL%" class="btn btn-primary card-link">{{ trans('story.start_playing') }}</a>
-        %EDIT_URL%
-        %RESET_STORY%
+        <div class="row">
+            <div class="col-sm-12 col-lg-3">
+                <a href="%PLAY_URL%" class="btn btn-primary card-link w-100 mb-1">{{ trans('story.start_playing') }}</a>
+            </div>
+            <div class="col-sm-12 col-lg-3">
+                %EDIT_URL%
+            </div>
+            <div class="col-sm-12 col-lg-3">
+                %RESET_STORY%
+            </div>
+        </div>
+
+
+
     </div>
     <div class="card-footer text-right text-muted">
         {{ trans('story.author_is', ['author' => '%AUTHOR%']) }}

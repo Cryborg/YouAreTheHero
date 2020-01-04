@@ -2,13 +2,17 @@
 
 namespace App\Models;
 
-use App\Classes\Sheet;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laracasts\Presenter\PresentableTrait;
+use App\Presenters\CharacterPresenter;
 
 class Character extends Model
 {
     use SoftDeletes;
+    use PresentableTrait;
+
+    protected $presenter = CharacterPresenter::class;
 
     protected $guarded = ['id'];
 
