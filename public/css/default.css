@@ -214,3 +214,6 @@ div.alert.alert-banner {
 table#stories-table.dataTable {
     border-collapse: collapse;
 }
+div.jq-toast-wrap {
+    width: 500px;
+}

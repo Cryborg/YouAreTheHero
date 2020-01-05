@@ -1,4 +1,4 @@
-<fieldset>
+<fieldset class="w-75">
     <legend>{{ $item->name }}</legend>
 
     <table class="table w-100 table-striped">

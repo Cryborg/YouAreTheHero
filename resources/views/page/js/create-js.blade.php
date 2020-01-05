@@ -160,40 +160,58 @@
             }
         });
 
-        $('#create_item').on('click', function () {
-            var $this = $(this);
+        function ajaxCreatePost($this, data)
+        {
+            var commonData = {
+                'story_id': {{ $story->id }}
+            };
 
             $.post({
                 url: route('item.create.post'),
-                data: {
-                    'name': $('#item_name').val(),
-                    'default_price': $('#item_price').val(),
-                    'single_use': $('#single_use').is(':checked') ? 1 : 0,
-                    'story_id': {{ $story->id }}
-                }
+                data: {...data, ...commonData}
             })
-            .done(function (data) {
-                showToast('success', {
-                    heading: '{{ trans('notification.save_success_title') }}',
-                    text: "{{ trans('notification.save_success_text') }}",
-                });
+                .done(function (data) {
+                    showToast('success', {
+                        heading: '{{ trans('notification.save_success_title') }}',
+                        text: "{{ trans('notification.save_success_text') }}",
+                    });
 
-                $('#prerequisite_item_id').append(
-                    '<option value="' + data.item.id + '">' + data.item.name + '</option>'
-                );
-            })
-            .fail(function (data) {
-                showToast('error', {
-                    heading: '{{ trans('notification.save_failed_title') }}',
-                    text: "{{ trans('notification.save_failed_text') }}",
-                    errors: data.responseJSON.errors
-                });
-            })
+                    $('#prerequisite_item_id').append(
+                        '<option value="' + data.item.id + '">' + data.item.name + '</option>'
+                    );
+                })
+                .fail(function (data) {
+                    showToast('error', {
+                        heading: '{{ trans('notification.save_failed_title') }}',
+                        text: "{{ trans('notification.save_failed_text') }}",
+                        errors: data.responseJSON.errors
+                    });
+                })
                 .always(function () {
                     $this.html($this.data('original-text'));
                     $this.prop('disabled', false);
                 });
-        })
+        }
+
+        $('#create_item_action').on('click', function () {
+            var $this = $(this);
+
+            ajaxCreatePost($this, {
+                'name': $('#item_name_action').val(),
+                'default_price': $('#item_price_action').val(),
+                'single_use': $('#single_use_action').is(':checked') ? 1 : 0,
+            })
+        });
+
+        $('#create_item_prerequisites').on('click', function () {
+            var $this = $(this);
+
+            ajaxCreatePost($this, {
+                'name': $('#item_name_prerequisites').val(),
+                'default_price': $('#item_price_prerequisites').val(),
+                'single_use': $('#single_use_prerequisites').is(':checked') ? 1 : 0,
+            })
+        });
     });
 
     var actionsListDatatable = $('#actions_list').DataTable({
