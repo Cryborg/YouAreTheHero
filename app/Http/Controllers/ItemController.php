@@ -44,7 +44,11 @@ class ItemController extends Controller
         ]
         );
 
+        // Create the new item
         $item = Item::create($validated);
+
+        // Reload the items in the story, so that we have the new one in the collection
+        $item->story->load('items');
 
         return response()->json([
             'success'   => $item instanceof Item,

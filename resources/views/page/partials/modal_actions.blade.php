@@ -45,7 +45,7 @@
             </div>
 
             <hr>
-            
+
             <div class="row">
                 @include('page.partials.modal_partials_new_item', ['context' => 'action'])
             </div>

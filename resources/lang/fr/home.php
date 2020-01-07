@@ -19,6 +19,6 @@ return [
               "<li>Forum</li>" .
               "<li>Mini-jeux</li>" .
               "<li>Support de multiples règles d'histoires interactives</li>" .
-              "</ul>" .
-              "<p class='indent'>Tu n'es pas sûr(e) d'accrocher ? Teste notre <a href='/story/1'>histoire-démo</a> et laisse-toi happer par les possibilités offertes :)</p>",
+              "</ul>"
+              //"<p class='indent'>Tu n'es pas sûr(e) d'accrocher ? Teste notre <a href='/story/1'>histoire-démo</a> et laisse-toi happer par les possibilités offertes :)</p>",
 ];

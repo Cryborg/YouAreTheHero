@@ -57,6 +57,8 @@
                         <span class="glyphicon glyphicon-plus-sign"></span>
                         {{ trans('actions.add_new_prerequisite') }}
                     </button>
+
+                    @include('page.partials.prerequisites_list', ['page' => $page])
                 </div>
             </div>
             <hr>

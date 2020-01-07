@@ -16,9 +16,10 @@
                 <select multiple="" class="form-control custom-select" size="6" id="prerequisite_item_id" name="prerequisite_item_id">
                     <option value=""></option>
                     @foreach ($page->story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
-                        @foreach($page->prerequisites['items'] ?? [] as $prerequisite)
-                            <option value="{{ $itemId }}" @if ($prerequisite == $itemId)selected
-                                @endif
+                            <option value="{{ $itemId }}"
+                            @foreach($page->prerequisites['items'] ?? [] as $prerequisite)
+                                @if ($prerequisite == $itemId)selected
+                            @endif
                         @endforeach
                         >{{ $itemName }}</option>
                     @endforeach

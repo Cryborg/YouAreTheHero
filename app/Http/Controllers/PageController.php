@@ -8,6 +8,7 @@ use App\Models\PageLink;
 use App\Models\Story;
 use App\Repositories\PageRepository;
 use Faker\Provider\Uuid;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
@@ -123,23 +124,6 @@ class PageController extends Controller
         abort(JsonResponse::HTTP_NOT_FOUND);
     }
 
-    public function addActionAjax(Request $request)
-    {
-        if ($request->ajax())
-        {
-            $validated = $request->validate([
-                'items'         => 'required',
-                'verb'          => 'required',
-                'quantity'      => 'required',
-                'price'         => '',
-            ]);
-
-            Action::create($validated);
-        }
-
-        abort(JsonResponse::HTTP_NOT_FOUND);
-    }
-
     /**
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Page         $page
@@ -149,19 +133,23 @@ class PageController extends Controller
     public function postAddPrerequisite(Request $request, Page $page)
     {
         if ($request->ajax()) {
-            $items = $request->get('items') ?? $page->prerequisites['items'];
-            $sheet = $request->get('sheet') ?? $page->prerequisites['sheet'];
-            $prerequisites = [];
-
-            if ($items) {
-                $prerequisites['items'] = $items;
-            }
-            if ($sheet) {
-                $prerequisites['sheet'] = $sheet;
+            if ($request->get('items')) {
+                foreach ($request->get('items') as $characteristic) {
+                    $page->prerequisites()->create([
+                        'prerequisite_type' => 'item',
+                        'prerequisite_id' => $characteristic,
+                    ]);
+                }
             }
 
-            $page->prerequisites = $prerequisites;
-            $page->save();
+            if ($request->get('sheet')) {
+                foreach ($request->get('sheet') as $characteristic => $value) {
+                    $page->prerequisites()->create([
+                        'prerequisite_type' => 'sheet',
+                        'prerequisite_id' => $characteristic,
+                    ]);
+                }
+            }
 
             return response()->json(['success' => true]);
         }

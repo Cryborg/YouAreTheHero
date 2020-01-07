@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home');
 
 // Items
-Route::post('/item/create', 'ItemController@store')->name('item.create.post');
+Route::post('/item/create', 'ItemController@store')->name('item.store');
 
 // Stories
 Route::get('/stories/draft', 'StoriesController@listDraft')->name('stories.list.draft');
@@ -52,6 +52,9 @@ Route::post('/page/{page}/prerequisite', 'PageController@postAddPrerequisite')->
 Route::get('/actions/{page}/list', 'ActionController@list')->name('actions.list');
 Route::post('/actions/create/{page}', 'ActionController@store')->name('actions.store');
 Route::delete('/actions/{action}/delete', 'ActionController@delete')->name('actions.delete');
+
+// Prerequisites
+Route::post('/prerequisite/store/{page}', 'PrerequisiteController@store')->name('prerequisite.store');
 
 // Authentication
 Auth::routes();

@@ -160,14 +160,14 @@
             }
         });
 
-        function ajaxCreatePost($this, data)
+        function ajaxCreatePost(route, $this, data)
         {
             var commonData = {
                 'story_id': {{ $story->id }}
             };
 
             $.post({
-                url: route('item.create.post'),
+                url: route,
                 data: {...data, ...commonData}
             })
                 .done(function (data) {
@@ -176,7 +176,7 @@
                         text: "{{ trans('notification.save_success_text') }}",
                     });
 
-                    $('#prerequisite_item_id').append(
+                    $('#prerequisite_item_id, #item_id').append(
                         '<option value="' + data.item.id + '">' + data.item.name + '</option>'
                     );
                 })
@@ -195,8 +195,9 @@
 
         $('#create_item_action').on('click', function () {
             var $this = $(this);
+            var route = route('item.store');
 
-            ajaxCreatePost($this, {
+            ajaxCreatePost(route,  $this, {
                 'name': $('#item_name_action').val(),
                 'default_price': $('#item_price_action').val(),
                 'single_use': $('#single_use_action').is(':checked') ? 1 : 0,
@@ -205,8 +206,9 @@
 
         $('#create_item_prerequisites').on('click', function () {
             var $this = $(this);
+            var route = route('prerequisite.store');
 
-            ajaxCreatePost($this, {
+            ajaxCreatePost(route, $this, {
                 'name': $('#item_name_prerequisites').val(),
                 'default_price': $('#item_price_prerequisites').val(),
                 'single_use': $('#single_use_prerequisites').is(':checked') ? 1 : 0,

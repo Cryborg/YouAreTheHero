@@ -4,33 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\Action;
 use App\Models\Page;
+use App\Models\Prerequisite;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class ActionController extends Controller
+class PrerequisiteController extends Controller
 {
     public function store(Request $request, Page $page)
     {
         if ($request->ajax()) {
             $validated = $request->validate([
-                'item_id'  => 'required',
-                'verb'     => 'required',
-                'quantity' => 'required',
-                'price'    => '',
+                'prerequisite_type' => 'required',
+                'prerequisite_id'   => 'required',
             ]);
 
             $validated['page_id'] = $page->id;
 
-            $newAction = Action::create($validated);
-
-            // Item object
-            $newAction['item'] = $newAction->item;
-
-            // Translate the verb, as we cannot do this in JS without plugin
-            $newAction['verb'] = trans('actions.' . $newAction['verb']);
+            $newPrerequisite = Prerequisite::create($validated);
 
             return response()->json([
-                'action' => $newAction,
+                'action' => $newPrerequisite,
                 'success' => true,
             ]);
         }

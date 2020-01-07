@@ -12,12 +12,12 @@ class PagesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('pages')->delete();
-        
+
         \DB::table('pages')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => '03ed78ef-5f97-3f68-81ee-2fda15e2aeeb',
                 'story_id' => 2,
@@ -26,14 +26,13 @@ class PagesTableSeeder extends Seeder
                 'is_last' => 0,
                 'title' => 'Priorité orange',
                 'content' => '<div>&nbsp;&nbsp;&nbsp;&nbsp;- Pouvez-vous m\'en dire plus sur cette carte de priorité Orange ?</div><div>&nbsp;&nbsp;&nbsp;&nbsp;- Bien sûr ! Il faut être né avec une tétine en or dans la bouche pour bénéficier de cette carte !</div><div>&nbsp;&nbsp;&nbsp;&nbsp;Tiens, chez moi on aurait plutôt dit une cuillère...</div><div>&nbsp;&nbsp;&nbsp;&nbsp;- ... ou bien que vous ayez fait fortune, ce qui est encore plus rare. Sur les quarante milliards d\'habitants que compte Trévise, une infime partie est concernée : riches héritiers, petits génies de la finance, personnalités de tous les milieux artistiques ou politiques,...&nbsp;Ils ont besoin d\'être en urgence quelque part ? Orange ! Aucun spatioport n\'est libre ? Un se libère ! Les détenteurs de ces cartes ont priorité sur l\'écrasante majorité des mortels de cette planète !</div><div><br></div>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-21 21:14:48',
                 'updated_at' => '2019-12-21 21:18:08',
                 'deleted_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => '0528b4c3-3586-3fb6-90d1-f47338b04d8c',
                 'story_id' => 1,
@@ -62,14 +61,13 @@ provenant de la direction du soleil couchant, tandis qu\'ailleurs, l\'environnem
 atmosphère sèche que précédemment.</p><p>    Si
 votre protégée dispose de phéromones de séduction, elle peut néanmoins convaincre le groupe de se
 rendre où elle le désire (ignorez alors le lancer de dé et choisissez la direction à prendre).</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:37:05',
                 'updated_at' => '2019-12-24 14:40:21',
                 'deleted_at' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => '0602edde-89e0-37e3-8b20-9ecc0102b9da',
                 'story_id' => 1,
@@ -108,14 +106,13 @@ renforts arrivent, il préfère abandonner immédiatement le combat.
 Si votre insecte survit, votre fourmi peut récupérer une plume qu\'a perdu le volatile dans ce combat
 épique. Inscrivez plume sur le Feuille d\'aventure. Le groupe atteint ensuite le couvert des arbres avant
 une nouvelle attaque, puis finit par rejoindre le chemin, qui se termine bientôt.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:22:06',
                 'updated_at' => '2019-12-19 22:25:32',
                 'deleted_at' => NULL,
             ),
-            3 => 
+            3 =>
             array (
                 'id' => '0b47389c-5aff-3d62-a749-8b16543f9d02',
                 'story_id' => 1,
@@ -142,14 +139,13 @@ Si c\'est une sexuée et qu\'elle veut profiter de ses ailes pour fuir plus ais�
 Sinon, elle peut profiter du vol bas de l\'animal pour sauter sur ses serres puis fourrager dans ses plumes,
 dans l\'espoir de lui infliger quelque blessure susceptible de lui faire abandonner la poursuite,
 rendez-vous au 34.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 16:12:04',
                 'updated_at' => '2019-12-19 16:12:33',
                 'deleted_at' => NULL,
             ),
-            4 => 
+            4 =>
             array (
                 'id' => '11f72382-189b-3f06-9fd2-5f1adcd5b026',
                 'story_id' => 1,
@@ -158,14 +154,13 @@ rendez-vous au 34.',
                 'is_last' => 0,
                 'title' => '60',
                 'content' => 'Sunt dolores repellat error possimus qui sit. Quasi eos ad blanditiis occaecati. Explicabo a accusamus vero nulla unde quidem temporibus aperiam.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:12:22',
                 'updated_at' => '2019-12-19 22:12:41',
                 'deleted_at' => NULL,
             ),
-            5 => 
+            5 =>
             array (
                 'id' => '13e04d7a-1813-3646-a1e9-3cdde2843e6a',
                 'story_id' => 2,
@@ -174,14 +169,13 @@ rendez-vous au 34.',
                 'is_last' => 0,
                 'title' => 'Déboussolé',
                 'content' => '<span id="docs-internal-guid-9de40ccb-7fff-845d-79f2-a21701ca79da"><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">J’aurais dû demander un guide à la sortie du Centre. Comment est-ce que je suis censé m’y retrouver dans une ville que je ne connais pas ? Rectification : dans un monde que je ne connais pas !</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Même les gens me regardent bizarrement. On m’a certifié que j’étais habillé d’une manière tout à fait classique, bien que j’aie beaucoup de mal à le croire. Et pourtant, je n’arrive pas à me fondre dans la foule, les regards semblent systématiquement tournés vers moi.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Bon, du calme mon vieux, vas pas te faire un ulcère pour ça. T’es débrouillard non ? Alors débrouilles-toi !</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Mais pourquoi est-ce que je les ai laissés me donner toute la journée de libre ? D’accord, j’étais pas très frais en me réveillant ce matin. Idées embrouillées, plus de repères, ça n’aide évidemment pas à se remettre au boulot. Mais de là à m’envoyer me perdre dans cette ville tentaculaire...</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Car elle est tout simplement inimaginable : la plate-forme d\'observation sur laquelle je me trouve surplombe de 500 mètres toutes les autres constructions de la ville. Le temps pur sans un nuage permet même de voir la courbure de la planète.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- Vous venez d\'arriver ?</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Pris par surprise, je me retourne pour me trouver face à face avec un homme entre deux âges, tout souriant et avec l\'air de pouvoir attendre ma réponse en tenant cette posture indéfiniment. Ce qu\'il faillit faire, tant je fus interloqué par cette soudaine rencontre. Mais je me repris et tenta une réponse que j\'espérais crédible.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- A vrai dire, oui, tout est nouveau pour moi, je suis monté dans l\'espoir d\'avoir une sorte de déclic quant à ma prochaine destination, mais j\'avoue que je ne m\'attendais pas à ce que je suis en train de contempler.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- Oh, mais c\'est que vous venez probablement de la Périphérie alors ! J\'imagine que l\'absence de route peut désorienter au premier abord. Le bloc compact que vous avez sous les yeux n\'est pas qu\'une ville, elle s\'étend sur l\'intégralité de la planète. Seules les capsules à grande vitesse en émergent, ainsi que les Tours bien entendu.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Bon, il me semble bien sympathique ce bonhomme, et il me semble très enclin à partager son savoir sur cette ville. Ceci dit, j\'ai des personnes à aller voir, il ne faudrait peut-être pas trop que je tarde.</span></p></span>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-21 16:40:48',
                 'updated_at' => '2019-12-21 16:42:35',
                 'deleted_at' => NULL,
             ),
-            6 => 
+            6 =>
             array (
                 'id' => '160363a5-c6b6-38b0-bbe5-1984fd1e9ed1',
                 'story_id' => 2,
@@ -190,14 +184,13 @@ rendez-vous au 34.',
                 'is_last' => 0,
                 'title' => 'Trévise',
                 'content' => '<span id="docs-internal-guid-d2c0133c-7fff-335c-2d4c-25394ce7f53a"><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- Excusez-moi Monsieur, pourriez-vous m\'expliquer comme vous le feriez à un enfant de cinq ans ? Comme vous le disiez très justement, je viens de la Périphérie et je voudrais bien comprendre ce que vous pourriez m’apprendre.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Autant prétendre être ce qu\'il pense que je suis, ça m\'évitera des questions auxquelles je ne pourrais répondre. Mais il faudra quand même que je me renseigne sur cette Périphérie dont je prétends venir.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- Bien sûr, avec plaisir ! Comme vous pouvez le voir, la surface est striée de filaments qui semblent onduler et refléter de façon fugace la lumière : ce sont les tubes de transport à grande vitesse. Dans chacun d\'eux circulent des capsules, la plupart monoplace, avec un confort spartiate, mais d\'autres sont bien plus spacieuses et luxueuses. Elles permettent de rallier n\'importe quel point du globe en un peu plus d\'une heure. Mais elles nécessitent une carte spécifique pour pouvoir être empruntées, et ce n\'est pas donné à tout le monde ! Ces chanceux possèdent une carte de couleur orange qui leur permet de faire ces trajets.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Les personnes n\'ayant pas les moyens d\'en avoir une doivent se contenter d\'un accès Jaune maximum, voire Blanc pour les moins chanceux, et ils circulent dans les tubes inférieurs, sous la surface. Oh, c\'est suffisant pour la plupart d\'entre nous vous savez. Pour aller au travail ou rendre visite à des amis, un accès basique aux transports est tout ce dont nous avons besoin.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Bien sûr, tout le monde n\'est pas aussi bien loti. Certains vivent sans-carte et doivent emprunter les interminables couloirs du sous-sol. Je vous déconseille vivement de vous y promener, vous risqueriez bien plus que votre argent.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">En tant que touriste, vous n\'aurez que peu l\'occasion de voir le ciel, si ce n\'est en utilisant une des Tours, comme celle-ci. Ce sont nos seuls petits moments d\'échappatoire. En dehors de cela, l\'alternance jour/nuit est maintenue artificiellement sur toute la planète. Il y a des décalages horaires aussi, tout pour que notre physiologie n\'ait pas à souffrir d\'une trop longue absence de nuit ou, au contraire, d\'un trop plein de lumière.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- Tout ce que vous me décrivez est tellement étrange ! Je n\'avais encore jamais vu une telle planète. C\'est gentil à vous de me la faire découvrir.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp; &nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- C\'est normal vous savez, j\'ai vécu toute ma vie ici et j\'ai vu défiler pas mal de gens. J\'aime rendre service, et le meilleur moyen que j\'ai trouvé, c\'est de me rendre dans une Tour et distiller mon savoir et mon expérience. C\'est qu\'on s\'y perd très vite quand on n\'a pas l\'habitude !</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- J\'espère ne pas à en faire l\'expérience ! Mais... cela va vous paraître étrange, mais je viens seulement de me rendre compte que je ne connais pas le nom de cette planète ?</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- Vous êtes un drôle de touriste vous dites-donc ! Vous ne savez vraiment pas où vous vous trouvez ?</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- Et bien non en fait. C\'est une longue histoire et je préférerais ne pas en parler. Je ne sais pas non plus combien de temps mes affaires vont me retenir ici, mais j\'aimerais tout de même connaître le nom de l\'endroit que je vais habiter pendant quelques temps.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- Vous êtes bien mystérieux, vous ! Mais soit, vous vous trouvez sur Trévise, la planète-ville, ou la ville-planète, comme il vous plaira. Mis à part dans les parcs, vous ne trouverez pas un brin d\'herbe sur toute la surface. Quarante milliards de personnes y habitent. Oui oui, je vous assure que ce nombre n\'est pas exagéré, c\'est la population telle qu\'elle a été estimée il y a cinq ans. Car bien sûr, pas moyen de faire un recensement plus fréquent avec autant d\'âmes au mètre carré !</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- Je suppose alors que toutes vos cultures sont hors-sols ?</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp; -<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> Bien sûr ! Du moins, pour le peu que nous produisons. Les cultures hydroponiques sont trop peu nombreuses, aussi devons-nous faire appel à de l\'approvisionnement extérieur. En fait, nous avons plusieurs planètes nous fournissant les matières premières et autres denrées nécessaires à notre survie. Ainsi que le recyclage, et tout ce que notre écosystème ne nous permet plus de faire. Nous ne sommes plus autonomes depuis bien longtemps, et sur bien des plans.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Et ils me laissent me balader au milieu de tout ça, alors que je ne connais rien de cet environnement, de cette culture, de ces gens... J\'ai eu de la chance de tomber sur cet homme trop heureux d\'avoir quelqu\'un avec qui discuter... même si je dois lui paraître totalement idiot avec mes questions.</span></p></span>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-21 16:42:42',
                 'updated_at' => '2019-12-21 21:11:54',
                 'deleted_at' => NULL,
             ),
-            7 => 
+            7 =>
             array (
                 'id' => '1e3302dd-a97a-3e80-a254-92ea7675859e',
                 'story_id' => 1,
@@ -210,14 +203,13 @@ Les antennes s\'agitent, émettent de multiples phéromones, donnant la directio
 emplacements ayant des chances de contenir de la nourriture. </p><p>&nbsp;&nbsp;&nbsp;&nbsp;On se repose un court moment, et on en
 profite pour lécher ses blessures (votre fourmi regagne un état de Vitalité et Carapace). </p><p>&nbsp;&nbsp;&nbsp;&nbsp;Puis diverses
 équipes s\'organisent, pour explorer chacun de ces lieux. Les exploratrices en ont trouvé six.</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:32:38',
                 'updated_at' => '2019-12-24 13:48:32',
                 'deleted_at' => NULL,
             ),
-            8 => 
+            8 =>
             array (
                 'id' => '1fe7b9fc-94dc-3319-84b5-c2860e7d5e4b',
                 'story_id' => 1,
@@ -235,14 +227,13 @@ physique la prédispose à cette tâche et cela devient une obligation à moins 
 Grosse fourmi) : rendez-vous au 113.
 Sinon, votre insecte peut patienter le temps que quelques ouvrières (ou la Grosse fourmi, si elle
 l\'accompagne) ouvrent le passage : allez au 9.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:38:19',
                 'updated_at' => '2019-12-19 22:38:42',
                 'deleted_at' => NULL,
             ),
-            9 => 
+            9 =>
             array (
                 'id' => '23453cb7-feb9-3247-b859-1aaf7e36e0b9',
                 'story_id' => 1,
@@ -261,14 +252,13 @@ Si votre fourmi est accompagnée d\'une artilleuse, ou si elle est elle-même ca
 d\'acide et que vous souhaitez utiliser cette capacité (dans ce cas, sachez qu\'elle dépensera 4 gouttes
 d\'acide), allez au 43.
 Sinon, allez au 74.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 16:11:17',
                 'updated_at' => '2019-12-19 16:11:40',
                 'deleted_at' => NULL,
             ),
-            10 => 
+            10 =>
             array (
                 'id' => '25ecb762-0083-37dc-a19c-cb4c20cda06c',
                 'story_id' => 1,
@@ -277,14 +267,13 @@ Sinon, allez au 74.',
                 'is_last' => 0,
                 'title' => '38',
                 'content' => 'Sapiente magnam nostrum et vel magni amet aut. Culpa natus est eum officiis sit aut. Culpa laudantium ea minus aut eveniet animi maiores. Tenetur nihil nisi veniam molestiae quidem.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:07:21',
                 'updated_at' => '2019-12-19 22:08:16',
                 'deleted_at' => NULL,
             ),
-            11 => 
+            11 =>
             array (
                 'id' => '2907cda3-05c7-3f39-acb8-98a468540ab4',
                 'story_id' => 2,
@@ -293,14 +282,13 @@ Sinon, allez au 74.',
                 'is_last' => 0,
                 'title' => 'Priorité blanche',
                 'content' => '<div>&nbsp;&nbsp;&nbsp;&nbsp;- Et la priorité Blanche, à qui est-elle destinée ?</div><div>&nbsp;&nbsp;&nbsp;&nbsp;- Et bien, voyez-vous c\'est un sujet assez sensible. En bref, ces cartes ne donnent qu\'une priorité mineure, tout juste capables de vous faire voyager dans les tubes inférieurs. Leurs détenteurs sont étroitement surveillés. Voyez, sur cette planète, la pauvreté est très mal venue. Aussi, les personnes possédant cette carte sont reconnus en tant que tel, et souvent méprisés. Je n\'en ai jamais vu un seul monter à une Tour, de peur de se faire remarquer je suppose. Pourtant, les Tours sont les seuls endroits qui ne soient pas enterrés et auxquels ces cartes puissent accéder.</div><div>&nbsp;&nbsp;&nbsp;&nbsp;Et bien c\'est mon jour de chance on dirait, heureusement que je n\'ai croisé que peu de gens lors de mon ascension jusqu\'ici. Je vais soigneusement laisser ma carte Blanche cachée au fin fond de ma poche...</div><div>&nbsp;&nbsp;&nbsp;&nbsp;- Comme je vous disais, les Blanches sont surveillées, mais elles servent également de mouchards car elles permettent de géolocaliser précisément son porteur. Bien évidemment peu de gens sont au courant de cette pratique... trop peu éthique.</div><div>&nbsp;&nbsp;&nbsp;&nbsp;- Mais alors, vous, comment êtes-vous au courant de cette pratique ?</div><div>&nbsp;&nbsp;&nbsp;&nbsp;- Parce que j\'y ai travaillé, figurez-vous. Et parce que savoir regarder là où il faut est un don qu\'il faut cultiver pour glaner des informations à côté desquelles le quidam lambda passera sans les voir. Ne faites pas l\'erreur de me prendre pour un fou ou un illuminé, je ne suis rien de tout cela. Je sais ce que j\'avance, je n\'ai pas besoin de plus, je n\'embête personne.</div><div>&nbsp;&nbsp;&nbsp;&nbsp;D\'accord... ça commence à devenir un peu trop n\'importe quoi à mon goût là. Et puis, s\'il a dit vrai... cela veut dire que je risque d\'attirer l\'attention sur lui rien qu\'en étant à côté de lui.</div>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-21 21:15:24',
                 'updated_at' => '2019-12-21 21:24:39',
                 'deleted_at' => NULL,
             ),
-            12 => 
+            12 =>
             array (
                 'id' => '3442f8a3-3a40-3251-b4c8-445ff8c24595',
                 'story_id' => 1,
@@ -332,14 +320,13 @@ supplémentaire. N\'oubliez pas que vous avez déjà dû retrancher 1 unité de 
 reine.
 S\'il ne reste pas assez de temps, ou si l\'acquisition de phéromones ne vous intéresse pas, rendez-vous au
 12.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 15:46:50',
                 'updated_at' => '2019-12-19 15:53:00',
                 'deleted_at' => NULL,
             ),
-            13 => 
+            13 =>
             array (
                 'id' => '37d9a87e-bef5-3d1c-8778-690f03df33ea',
                 'story_id' => 1,
@@ -348,14 +335,13 @@ S\'il ne reste pas assez de temps, ou si l\'acquisition de phéromones ne vous i
                 'is_last' => 0,
                 'title' => '2',
                 'content' => 'Ex quibusdam aut facilis facilis. Ullam est possimus consectetur repudiandae ab. Et eum debitis nostrum et repellendus quidem magni. Ipsum facilis velit eos ducimus.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 17:46:01',
                 'updated_at' => '2019-12-19 17:46:27',
                 'deleted_at' => NULL,
             ),
-            14 => 
+            14 =>
             array (
                 'id' => '47b85733-87e8-3091-811e-96d3e0b34d4a',
                 'story_id' => 1,
@@ -371,14 +357,13 @@ resteront en vie, elles seront d\'un soutien non négligeable, en particulier po
 corps.
 N\'oubliez pas de retrancher 3 unités de temps au total encore disponible.
 Il est temps de faire un autre choix d\'action : rendez-vous au 12.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-20 17:31:31',
                 'updated_at' => '2019-12-20 17:31:48',
                 'deleted_at' => NULL,
             ),
-            15 => 
+            15 =>
             array (
                 'id' => '497467f5-1596-3bc1-ab31-61efa3c684f6',
                 'story_id' => 1,
@@ -400,14 +385,13 @@ nouveau dans la terre. Là, elle emprunte un couloir servant en fait de chemin s
 colonie du nord. Au bout de cette longue piste creusée, elle sort au niveau d’une ouverture proche du
 dôme d\'une petite fourmilière. Et elle retrouve enfin le groupe, paré pour l\'expédition hors des
 territoires du Nid…',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 15:56:45',
                 'updated_at' => '2019-12-19 15:57:07',
                 'deleted_at' => NULL,
             ),
-            16 => 
+            16 =>
             array (
                 'id' => '4ba20a76-1743-3fac-ac5c-9e113127785c',
                 'story_id' => 1,
@@ -428,14 +412,13 @@ puisse trouver.
 Le groupe récupère deux unités de nourriture. Eventuellement, il peut consommer l\'une d\'elle (dans ce
 cas, le niveau de Faim de votre insecte remonte d\'un niveau).
 </p><p>    Rendez-vous au 66.</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-24 14:05:41',
                 'updated_at' => '2019-12-24 14:08:02',
                 'deleted_at' => NULL,
             ),
-            17 => 
+            17 =>
             array (
                 'id' => '4eb18d09-3b29-346c-a58e-22bab8a6e9a3',
                 'story_id' => 2,
@@ -444,14 +427,13 @@ cas, le niveau de Faim de votre insecte remonte d\'un niveau).
                 'is_last' => 0,
                 'title' => 'Prologue',
                 'content' => '<span id="docs-internal-guid-89896fdd-7fff-6e63-c3cd-42d5bc036c5b"><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;Je n\'ai jamais été très grand fan de science-fiction. La science est déjà elle-même tellement mystérieuse que je n\'ai jamais eu le besoin d\'aller chercher ailleurs une autre source d\'émerveillement.</p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;Gamin déjà, je m\'imaginais traversant l\'espace à bord d\'un vaisseau que j\'aurais moi-même construit. J\'avais commencé dans mon jardin, mais je me suis vite rendu compte que cet assemblage de bouts de bois n\'allait pas aller bien loin...</p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;Comme beaucoup de personnes, j\'ai souvent cherché à savoir ce que le futur nous apporterait. C\'est probablement ce qui m\'a fait m\'intéresser aux sciences dans un premier temps. Et la carrière militaire me permettait de travailler sur des projets que j\'imaginais passionnants.</p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">&nbsp;&nbsp;&nbsp;&nbsp;Mais ce temps est révolu. La science, le futur, les innovations, j\'ai tout devant moi.&nbsp; De mes yeux je contemple la vraie version de ce que sera le futur de l\'humanité.</p><div style="text-align: justify;"><br></div></span>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-21 16:28:07',
                 'updated_at' => '2019-12-21 16:34:01',
                 'deleted_at' => NULL,
             ),
-            18 => 
+            18 =>
             array (
                 'id' => '6448d2e1-6a4b-388e-b597-c3485643e135',
                 'story_id' => 1,
@@ -460,14 +442,13 @@ cas, le niveau de Faim de votre insecte remonte d\'un niveau).
                 'is_last' => 0,
                 'title' => '12',
                 'content' => '<p>    Si cela n\'a pas déjà été fait, et s\'il vous reste suffisamment d\'unités de temps, votre fourmi peut :</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 15:50:45',
                 'updated_at' => '2019-12-21 16:13:07',
                 'deleted_at' => NULL,
             ),
-            19 => 
+            19 =>
             array (
                 'id' => '646b1a31-3ada-306d-a779-14e5e1da5e8c',
                 'story_id' => 1,
@@ -489,14 +470,13 @@ espérant que ces renforts temporisés s\'avèrent utiles à ce moment-là.
 </p><p>&nbsp;&nbsp;&nbsp;&nbsp;Ajoutez une Grosse nymphe à votre inventaire ou Deux œufs non identifiés.
 N\'oubliez pas de retrancher 3 unités de temps au total restant quelle que soit votre décision.
 Il est temps de faire un autre choix d\'action.</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 15:47:35',
                 'updated_at' => '2019-12-20 17:59:23',
                 'deleted_at' => NULL,
             ),
-            20 => 
+            20 =>
             array (
                 'id' => '64a8170e-4529-3a18-9d40-1fedaad83767',
                 'story_id' => 1,
@@ -521,14 +501,13 @@ se rendent dans l\'endroit signalé comme étrange. Allez au 22. Sinon, elles vo
 source de nourriture des insectes, quittes à engager le combat. Rendez-vous au 19.
 Si votre fourmi possède une phéromone de séduction, elle peut influencer le choix du groupe : décidez
 alors du paragraphe où vous souhaitez vous rendre.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:38:54',
                 'updated_at' => '2019-12-19 22:39:41',
                 'deleted_at' => NULL,
             ),
-            21 => 
+            21 =>
             array (
                 'id' => '66eb9e9c-4401-3191-9967-eaf9d4a8e47d',
                 'story_id' => 1,
@@ -555,14 +534,13 @@ que les mystérieuses constructions se font de plus en plus nombreuses et hautes
 </p><p>&nbsp;&nbsp;&nbsp;&nbsp;D\'un commun accord, les fourmis décident de s\'arrêter, car de nouvelles effluves difficilement
 identifiables se font sentir. Puis chacune part dans une direction, en faisant de petits arcs de cercle pour
 couvrir le plus possible le terrain à explorer.</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:31:44',
                 'updated_at' => '2019-12-24 13:47:24',
                 'deleted_at' => NULL,
             ),
-            22 => 
+            22 =>
             array (
                 'id' => '68612b63-fbaf-3fe4-ab1a-180125bd80e3',
                 'story_id' => 1,
@@ -577,14 +555,13 @@ dotées d\'imposantes mandibules affutées. Stationnées ici pour contrôler les
 présence à ce poste de garde n\'est pas indispensable car d\'autres contrôles sont faits plus
 judicieusement à l\'entrée de la fourmilière, au niveau du dôme. </p><p>&nbsp;&nbsp;&nbsp;&nbsp;Alors que votre fourmi hésite à leur
 envoyer quelques phéromones d\'invitation, une artilleuse à l\'abdomen effilé croise son chemin.</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-20 17:29:45',
                 'updated_at' => '2019-12-20 17:32:34',
                 'deleted_at' => NULL,
             ),
-            23 => 
+            23 =>
             array (
                 'id' => '7537a837-6597-3475-b6ae-457f73a94f85',
                 'story_id' => 1,
@@ -608,14 +585,13 @@ Le choix tient à peu de choses, et l\'avis de votre insecte suffira à faire ba
 ou l\'autre.
 </p><p>&nbsp;&nbsp;&nbsp;&nbsp;Si vous désirez que les fourmis pénètrent la structure par le bas, rendez-vous au 82.
 </p><p>&nbsp;&nbsp;&nbsp;&nbsp;Si vous préférez une escalade jusqu\'à son plat sommet, allez au 96.</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-24 14:45:34',
                 'updated_at' => '2019-12-24 14:46:46',
                 'deleted_at' => NULL,
             ),
-            24 => 
+            24 =>
             array (
                 'id' => '7a9ee846-a0b0-3d5b-8385-7ab1e03b836e',
                 'story_id' => 1,
@@ -628,14 +604,13 @@ précédente exploration. En revanche, toute artilleuse présente regagne une go
 reformant peu à peu.
 </p><p>&nbsp;&nbsp;&nbsp;&nbsp;Si votre insecte a déjà exploré trois lieux, rendez-vous immédiatement au 16.&nbsp;Sinon, poursuivez la lecture.
 </p><p>&nbsp;&nbsp;&nbsp;&nbsp;La fourmi peut choisir d\'explorer :</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-24 14:08:30',
                 'updated_at' => '2019-12-24 14:46:51',
                 'deleted_at' => NULL,
             ),
-            25 => 
+            25 =>
             array (
                 'id' => '7e2d5a4f-b308-3954-a7de-71183a7243a1',
                 'story_id' => 1,
@@ -648,18 +623,17 @@ des fourmis. Soudain, le champ de hautes herbes s\'éclaircit pour laisser place
 groupe fait face à quelques plantes de faible hauteur, dotées de feuilles éparses, mais surtout de
 plusieurs espèces de cavité, d\'où semble provenir cette odeur attrayante. Timidement, les fourmis
 s\'approchent de ces réservoirs qui semblent regorger de nectar. Elles titillent le bord des creux de leurs
-antennes, vérifient que l\'odeur sucrée qu\'elles ont perçu provient bien des cavités végétales, plus 
+antennes, vérifient que l\'odeur sucrée qu\'elles ont perçu provient bien des cavités végétales, plus
 chacune se précipite dans les différentes poches de la plante la plus proche.
 </p><p>    Si vous désirez empêcher votre protégée de se précipiter pour aller se régaler du doux nectar,
 rendez-vous au 119. </p><p>    Sinon, laissez-la saisir sa chance en vous rendant au 58.</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-24 14:04:09',
                 'updated_at' => '2019-12-24 14:07:39',
                 'deleted_at' => NULL,
             ),
-            26 => 
+            26 =>
             array (
                 'id' => '7efa51ac-4650-3968-927f-910f95fc6b64',
                 'story_id' => 1,
@@ -673,14 +647,13 @@ apprennent rapidement que la loi de la gravité risque de leur faire couler leur
 d\'arriver à destination. Finalement, la plupart des feuilles n\'accueillent qu\'une seule fourmi.
 Si la vôtre possède une plume, elle peut l\'utiliser à la place d\'une feuille, pour profiter de son étanchéité :
 allez alors au 77. Sinon, elle se contentera d\'une feuille, comme les autres, et vous vous rendrez au 95',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:30:07',
                 'updated_at' => '2019-12-19 22:30:51',
                 'deleted_at' => NULL,
             ),
-            27 => 
+            27 =>
             array (
                 'id' => '80595d7e-b35b-3afb-b288-c747da6c7600',
                 'story_id' => 2,
@@ -689,14 +662,13 @@ allez alors au 77. Sinon, elle se contentera d\'une feuille, comme les autres, e
                 'is_last' => 0,
                 'title' => 'A propos du Centre',
                 'content' => '<div>&nbsp;&nbsp;&nbsp;&nbsp;S\'il y a bien quelque chose que l\'on n\'a pas rechigné à me dire, c\'est bien ce à quoi servait le Centre.</div><div>&nbsp;&nbsp;&nbsp;&nbsp;D\'abord siège du gouvernement planétaire, puis de la Fédération née de la fusion de plusieurs systèmes stellaires voisins, ce bâtiment a une histoire bien remplie. Mais si j\'en crois mes sources, des laborantins fiers de leur boulot, c\'est au cours de ces dernières siècle que l\'Histoire a été bouleversée, et que, de simple bâtiment administratif, le Centre est devenu actif, le centre névralgique de la recherche scientifique du coin, la Fédération comme ils l\'appellent, quoi que ce puisse représenter.</div><div>&nbsp;&nbsp;&nbsp;&nbsp;Siège de toutes les connaissances, c\'est aussi dans ses murs que se trouve l\'une des bases de données les mieux documentées de la Galaxie. Il paraît qu\'elle contient chaque once de savoir de l\'Humanité depuis la nuit des temps. J\'irais bien y jeter un oeil, par curiosité.</div><div>&nbsp;&nbsp;&nbsp;&nbsp;Dans un registre plus personnel, c\'est ici que je suis né. Symboliquement, bien sûr. C\'est ici que l\'on m\'a sorti du frigo en fait. D\'ailleurs je ne sais toujours pas pourquoi, ni même comment je m\'y suis retrouvé. Je vais devoir cuisiner des gens si je veux avoir des réponses. Et à mon avis, vu l\'empressement qu\'ils ont montré à me jeter dehors ce matin, ce ne sera pas une mince affaire...</div>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-21 21:30:32',
                 'updated_at' => '2019-12-21 21:31:26',
                 'deleted_at' => NULL,
             ),
-            28 => 
+            28 =>
             array (
                 'id' => '81527581-7106-342e-af47-a1151abf81f3',
                 'story_id' => 1,
@@ -717,14 +689,13 @@ combat, rendez-vous au 3.
 hors de portée de la bête. Allez alors au 42.
 </p><p>&nbsp;&nbsp;&nbsp;&nbsp;Sinon, votre insecte peut faire marche arrière, suivi par le groupe, naturellement guidé par la prudence.
 </p><p>&nbsp;&nbsp;&nbsp;&nbsp;Rendez-vous dans ce cas au 66.</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:41:38',
                 'updated_at' => '2019-12-24 14:45:03',
                 'deleted_at' => NULL,
             ),
-            29 => 
+            29 =>
             array (
                 'id' => '89599be9-683c-34c0-89f4-dbd18ff07ff4',
                 'story_id' => 1,
@@ -733,14 +704,13 @@ hors de portée de la bête. Allez alors au 42.
                 'is_last' => 0,
                 'title' => 'Explicabo qui at molestiae eos',
                 'content' => 'Illo dolorem laboriosam qui dolor. Facilis temporibus iste vel facilis saepe. Blanditiis aut nobis nihil ut reprehenderit ex.',
-                'prerequisites' => NULL,
                 'layout' => NULL,
                 'is_checkpoint' => 1,
                 'created_at' => '2019-12-24 14:35:39',
                 'updated_at' => '2019-12-24 14:35:39',
                 'deleted_at' => NULL,
             ),
-            30 => 
+            30 =>
             array (
                 'id' => '8e32b39a-0886-37f3-93fd-f606a88950a9',
                 'story_id' => 1,
@@ -760,14 +730,13 @@ chasseresse finissent par convaincre la fourmi de l\'importance de la tâche : e
 quelques phéromones apaisantes.
 La soldate va continuer à recruter quelques membres supplémentaires pour l\'expédition à venir, ce qui
 laisse à votre protégée un peu de temps pour s\'y préparer.</p><p>    Elle pourrait :</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 15:40:08',
                 'updated_at' => '2019-12-20 17:58:14',
                 'deleted_at' => NULL,
             ),
-            31 => 
+            31 =>
             array (
                 'id' => '8f35f3c5-8bf4-327d-99ee-e6ab05ecdb06',
                 'story_id' => 1,
@@ -796,14 +765,13 @@ poursuivre son chemin droit devant et laisse l\'ouvrière tenter sa chance dans 
 </p><p>&nbsp;&nbsp;&nbsp;&nbsp;Si votre fourmi possède des phéromones de séduction, choisissez la direction qui vous convient, l\'ouvrière
 se laissera convaincre. Par ailleurs, si vous le souhaitez, votre insecte peut même persuader sa compagne
 de ne pas céder à son instinct d\'exploratrice et de l\'accompagner.</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:40:09',
                 'updated_at' => '2019-12-24 14:44:13',
                 'deleted_at' => NULL,
             ),
-            32 => 
+            32 =>
             array (
                 'id' => '943a46a7-3a3c-36f6-b8ca-efaa09395320',
                 'story_id' => 1,
@@ -823,14 +791,13 @@ plus vulnérables aux prédateurs.
 </p><p>&nbsp;&nbsp;&nbsp;&nbsp;Votre fourmi est passée à l’état Repue.
 N\'oubliez pas de retrancher 2 unités de temps au total encore disponible.
 </p><p>&nbsp;&nbsp;&nbsp;&nbsp;Il est temps de faire un autre choix d\'action : rendez-vous au 12.</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 15:42:26',
                 'updated_at' => '2019-12-20 17:27:35',
                 'deleted_at' => NULL,
             ),
-            33 => 
+            33 =>
             array (
                 'id' => '9b55d164-5507-3c9e-a50e-1176f0edf292',
                 'story_id' => 1,
@@ -859,14 +826,13 @@ Si la fourmi décide de prendre le passage grimpant de manière régulière, ren
 décide de passer entre les deux battants métalliques, allez au 62. Si elle est sexuée, elle peut également
 ressortir et prendre son envol jusqu\'en haut de l\'édifice, en espérant que les courants aériens situés à
 une telle hauteur ne la fasse pas trop virevolter (rendez-vous alors au 31).',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:33:15',
                 'updated_at' => '2019-12-19 22:33:36',
                 'deleted_at' => NULL,
             ),
-            34 => 
+            34 =>
             array (
                 'id' => '9dba62ca-2438-34cf-8d14-0228dad4bc5a',
                 'story_id' => 2,
@@ -875,14 +841,13 @@ une telle hauteur ne la fasse pas trop virevolter (rendez-vous alors au 31).',
                 'is_last' => 0,
                 'title' => 'En bas de la tour',
                 'content' => '<div>&nbsp;&nbsp;&nbsp;&nbsp;Il n\'y a pas plus de monde que tout à l\'heure en bas de la Tour. Je ne sais même pas quelle heure il est, et aucun moyen de me repérer. Cette étoile a une luminosité semblable à celle de mon Soleil, mais il est beaucoup plus gros dans le ciel.</div><div>&nbsp;&nbsp;&nbsp;&nbsp;Tiens ? Je pensais qu\'ils ne se déplaçaient qu\'avec leurs tubes ? J\'ai l\'impression que je distingue une sorte de vaisseau dans le ciel. Trop de luminosité, je n\'arrive pas à voir. Ils n\'ont pas prévu ça au Centre ? De simples lunettes de soleil m\'auraient été bien utiles !</div><div>&nbsp;&nbsp;&nbsp;&nbsp;Je suis complètement paumé dans cette ville, comment est-ce que je vais bien pouvoir découvrir quoi que ce soit en déambulant à l\'aveuglette dans ce dédale ? Le mieux serait que je retourne au Centre et que je leur pose des questions à eux. Après tout, ce sont eux qui m\'ont "recueilli". Ils doivent bien savoir certaines choses...</div>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-21 21:27:52',
                 'updated_at' => '2019-12-21 21:29:03',
                 'deleted_at' => NULL,
             ),
-            35 => 
+            35 =>
             array (
                 'id' => 'a2f78c75-ddf0-35de-8d04-59f003b91faf',
                 'story_id' => 2,
@@ -891,14 +856,13 @@ une telle hauteur ne la fasse pas trop virevolter (rendez-vous alors au 31).',
                 'is_last' => 0,
                 'title' => 'Et reprehenderit quidem aliquam aut',
                 'content' => 'Quo mollitia rerum voluptates officia repudiandae optio eum. Autem vero illum corrupti ut. Debitis nemo aut non accusantium est voluptatem qui. Voluptatum et quia perferendis est ex.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-21 16:45:24',
                 'updated_at' => '2019-12-21 16:45:34',
                 'deleted_at' => NULL,
             ),
-            36 => 
+            36 =>
             array (
                 'id' => 'a3972bc8-8441-3fd2-bf8d-d3d7f7df4122',
                 'story_id' => 1,
@@ -907,14 +871,13 @@ une telle hauteur ne la fasse pas trop virevolter (rendez-vous alors au 31).',
                 'is_last' => 0,
                 'title' => '23',
                 'content' => 'Eius quidem debitis aut sapiente. Et autem libero id corporis aut deserunt accusantium. Sed error ipsum doloribus sed iure ut numquam.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:08:57',
                 'updated_at' => '2019-12-19 22:09:37',
                 'deleted_at' => NULL,
             ),
-            37 => 
+            37 =>
             array (
                 'id' => 'a6a67782-1453-3ef1-bf30-dd36693e0562',
                 'story_id' => 1,
@@ -927,14 +890,13 @@ l\'esprit de groupe et l\'importance de sa mission la soutiennent.
 Finalement, chaque exploratrice arrive à bon port.
 N\'oubliez pas de diminuer la Faim de votre fourmi d\'un niveau.
 Rendez-vous au 40.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:29:24',
                 'updated_at' => '2019-12-19 22:29:41',
                 'deleted_at' => NULL,
             ),
-            38 => 
+            38 =>
             array (
                 'id' => 'a8e00d08-e879-3bbd-8bde-b52b50c7900f',
                 'story_id' => 1,
@@ -958,14 +920,13 @@ chutes de projectiles liquides.
 Au petit matin, alors que la terre a absorbé la majeure partie de l\'acidité, le groupe encore affaibli par le
 froid décide de se remettre en route sans tarder. Les odeurs d\'acides oléiques émises par les cadavres de
 leurs anciennes compagnes ne sont en effet guère réjouissantes.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 16:09:50',
                 'updated_at' => '2019-12-19 16:12:41',
                 'deleted_at' => NULL,
             ),
-            39 => 
+            39 =>
             array (
                 'id' => 'a95acae1-9b00-3e23-8271-d8351c5df841',
                 'story_id' => 1,
@@ -981,14 +942,13 @@ permettra d\'utiliser la capacité de jet d\'acide (elle possède 7 gouttes en r
 aide supplémentaire toujours appréciable.
 </p><p>&nbsp;&nbsp;&nbsp;&nbsp;N\'oubliez pas de retrancher 3 unités de temps au total encore disponible.
 Il est temps de faire un autre choix d\'action.</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-20 17:32:11',
                 'updated_at' => '2019-12-20 17:33:19',
                 'deleted_at' => NULL,
             ),
-            40 => 
+            40 =>
             array (
                 'id' => 'abc19abe-3811-3296-bc72-90ed62c56bde',
                 'story_id' => 1,
@@ -1010,14 +970,13 @@ et le groupe peut reprendre la direction de la fourmilière : rendez-vous au 18.
 que les fourmis rapportent au Nid des ressources suffisantes : allez au 27.</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Toutefois, si votre fourmi est une sexuée et qu\'un mâle fait également partie du groupe d\'exploration,
 négligez les deux consignes précédentes. Elles ne concernent en effet plus que le reste des exploratrices ;
 votre fourmi ailée et son compagnon ont mieux à faire… Rendez-vous au 69.</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-24 14:37:12',
                 'updated_at' => '2019-12-24 14:39:45',
                 'deleted_at' => NULL,
             ),
-            41 => 
+            41 =>
             array (
                 'id' => 'ac2f5ec7-fe90-39ca-a153-72678983e953',
                 'story_id' => 2,
@@ -1026,14 +985,13 @@ votre fourmi ailée et son compagnon ont mieux à faire… Rendez-vous au 69.</p
                 'is_last' => 0,
                 'title' => 'Le responsable de la sécurité du Centre',
                 'content' => '<div>&nbsp;&nbsp;&nbsp;&nbsp;- Je crois avoir été assez patient, je suis en droit d\'avoir des réponses sur les circonstances de mon "arrivée" parmi vous.</div><div>&nbsp;&nbsp;&nbsp;&nbsp;Je sens que ce gars va me donner du fil à retordre. Il semble vouloir me cacher des choses, mais je compte bien lui montrer que je peux être coriace moi aussi.</div><div>&nbsp;&nbsp;&nbsp;&nbsp;- Écoutez Monsieur, je ne vous demande pas quelque chose que vous êtes dans l\'impossibilité de me donner, simplement de me dire comment je me suis retrouvé ici, dans ce Centre, alors que j\'étais en plein essai d\'un prototype de vaisseau spatial. Et qui plus est, après au moins plusieurs siècles si j\'en juge par l\'étendue de ce que vous appelez la Fédération. Alors quoi que vous puissiez me dire, je doute que cela me surprenne plus que ce que j\'ai déjà découvert par moi-même.</div><div>&nbsp;&nbsp;&nbsp;&nbsp;- Je suis tout à fait capable de comprendre que vous puissiez avoir des questions à poser, et croyez-moi, nous en avons aussi. Mais pas forcément du même ordre. Mon but, en tant que responsable de la sécurité du Centre, est de protéger ses intérêts de toute menace potentielle, quelle qu\'elle soit. Et croyez-moi, un spationaute débarquant de nulle part à bord d\'un vaisseau antédiluvien est considéré comme une menace potentielle.</div><div>&nbsp;&nbsp;&nbsp;&nbsp;- Comment ça venant de nulle part ? Je viens de la Terre tout de même, le berceau de l\'humanité ! Vous ne pouvez pas prétendre que ce n\'est rien !</div><div>&nbsp;&nbsp;&nbsp;&nbsp;- De la... Terre vous dites ? Le berceau de l\'humanité ? Je ne suis pas sûr de bien comprendre, Monsieur.... ?</div><div>&nbsp;&nbsp;&nbsp;&nbsp;- Appelez-moi [[character_name]], tout simplement.</div><div>&nbsp;&nbsp;&nbsp;&nbsp;- Bien, [[character_name]]. Laissez-moi vous poser une question : vous dites être parti de la Terre il y a peu de temps, bien que vous ignoriez quand exactement, puisqu\'il semblerait que vous vous soyiez évanoui.</div><div>&nbsp;&nbsp;&nbsp;&nbsp;- Rectification grand chef : je sais exactement quand je suis parti : le 12 janvier 2023, huit heures du matin, tapantes. C\'est la durée de mon évanouissement que je ne connais pas. Quel jour sommes-nous ? Suis-je dans un univers parallèle ? Non parce que si c\'est ça, il faut le dire, ça m\'arrangerais. Ça expliquerait tout d\'un coup et je n\'aurais plus ce début de migraine qui me guette à force de chercher une explication à ma situation.</div><div>&nbsp;&nbsp;&nbsp;&nbsp;- Je crains qu\'il vous faille attendre pour obtenir certaines réponses. Je ne suis pas habilité à vous répondre au-delà d\'une certaine limite, et celle-ci a déjà été atteinte.</div><div>&nbsp;&nbsp;&nbsp;&nbsp;- Dites, elle est un peu juste votre limite, non ? J\'ai à peine commencé à réfléchir aux questions que je pourrais vous poser que vous ne pouvez déjà plus répondre ?</div><div>&nbsp;&nbsp;&nbsp;&nbsp;- Désolé [[character_name]], nous allons devoir vous poser des questions avant que nous puissions répondre à certaines des vôtres.</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;Ben voyons...</div>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-21 21:32:30',
                 'updated_at' => '2019-12-21 21:36:35',
                 'deleted_at' => NULL,
             ),
-            42 => 
+            42 =>
             array (
                 'id' => 'b9ef1b4e-7cf6-37a0-9951-2f05d2fc24b1',
                 'story_id' => 1,
@@ -1042,14 +1000,13 @@ votre fourmi ailée et son compagnon ont mieux à faire… Rendez-vous au 69.</p
                 'is_last' => 0,
                 'title' => 'Qui illum et rerum aut',
                 'content' => 'Omnis molestiae reiciendis quis officiis nisi qui accusamus. Quo et magnam et nobis doloremque asperiores veniam. Et modi odit nihil ut.',
-                'prerequisites' => NULL,
                 'layout' => NULL,
                 'is_checkpoint' => 1,
                 'created_at' => '2019-12-19 22:41:16',
                 'updated_at' => '2019-12-19 22:41:16',
                 'deleted_at' => NULL,
             ),
-            43 => 
+            43 =>
             array (
                 'id' => 'ba8b5412-c56b-36a9-bb3d-c0e851ee2fe3',
                 'story_id' => 1,
@@ -1070,14 +1027,13 @@ serres vient ensuite renverser quelques membres du groupe, puis la créature à 
 plus au ras du sol, donne quelques coups de becs. Certaines fourmis parviennent à les éviter, d\'autres
 sont transpercées. On essaie de contre-attaquer, mais les mandibules claquent systématiquement dans
 le vide. Le temps que le groupe atteigne le bout de la clairière, il ne restera guère de survivantes…',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:14:21',
                 'updated_at' => '2019-12-19 22:25:10',
                 'deleted_at' => NULL,
             ),
-            44 => 
+            44 =>
             array (
                 'id' => 'c0de6d4a-c282-3653-8f9d-74bff50755a8',
                 'story_id' => 2,
@@ -1086,14 +1042,13 @@ le vide. Le temps que le groupe atteigne le bout de la clairière, il ne restera
                 'is_last' => 0,
                 'title' => 'Prendre congé',
                 'content' => '<p>&nbsp;&nbsp;&nbsp;&nbsp;- Merci beaucoup pour toutes ces informations, Monsieur, vous avez été très aimable.<br>&nbsp; &nbsp; - Mais au plaisir ! Peut-être à une prochaine fois sur une autre Tour !</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Mais oui mais oui, peut-être...</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-21 21:24:42',
                 'updated_at' => '2019-12-21 21:27:20',
                 'deleted_at' => NULL,
             ),
-            45 => 
+            45 =>
             array (
                 'id' => 'c100e47c-db04-3b45-8287-d55e4ceb5a41',
                 'story_id' => 2,
@@ -1102,14 +1057,13 @@ le vide. Le temps que le groupe atteigne le bout de la clairière, il ne restera
                 'is_last' => 0,
                 'title' => 'Le départ',
                 'content' => '<span id="docs-internal-guid-86a14505-7fff-c7da-db4d-e1ae5f8ef785"><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- Je ne m’attendais pas à vous trouver ici, Commandeur.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- Vous savez ce que c’est avec ces essais, on n’est jamais trop prudent. Je préfère assurer mes arrières et checker les instruments avant de confier ma vie à cet engin, aussi perfectionné soit-il.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- Je vous comprends Commandeur, mais, sans vouloir vous manquer de respect, j’ai peur que les techniciens ne le prennent mal : ils risquent d’y voir un manque de confiance. Surtout...</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- ...venant d’un militaire vous voulez dire ? Laissez-les penser ce qu’ils veulent, la seule chose qui m’importe est qu’ils aient fait correctement leur boulot. Après, ils peuvent dire ce qu’ils veulent de moi, ce n’est pas ce qui m’empêchera de dormir ce soir.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- Oui Commandeur. Douzième sous-sol, nous y sommes. Bonne journée Monsieur.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- Merci Colonel.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    </p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Mon premier jour. Enfin ! Après toutes ces années de recherche, d’échecs et de frustrations, nous y voici. Le premier essai en vol réel d’un engin spatial qui n’ait pas une taille à faire pâlir la Tour Eiffel.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Finies les fusées, navettes spatiales et autres lanceurs tout juste capables de sortir de notre atmosphère. Terminée cette époque où l’humanité restait clouée au sol de sa vieille Terre parce qu’elle avait toujours eu des sueurs froides à l’idée de réduire le budget militaire au profit de la recherche spatiale.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Je m’emporte un peu, j’avoue. Mais pas tant que ça si cet essai réussi. Car si c’est le cas, nous pourrons alors commencer la véritable conquête spatiale que les écrivains de science-fiction nous ont longtemps décrite, sans que jamais nous ne nous en approchions.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Ce magnifique vaisseau monoplace est en passe de devenir une légende, le premier d’une longue lignée, l’ancêtre de tous les vols interstellaires. Et qui sait ? On ne sera plus là dans un siècle, mais EFB-U5 trônera peut-être au beau milieu d’un musée, se targuant d’être celui par lequel, tant d’années auparavant, tout a commencé.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- Tous les systèmes sont opérationnels, Commandeur. Nous attendons votre check-list.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    </p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Il était hors de question que je ne sois pas le premier à le piloter, pas après les sacrifices qu’il m’a demandé. Je ne me suis pas marié et d’aucuns diraient que je suis passé à côté de ma vie en laissant ainsi ma carrière passer avant tout le reste.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Mais je ne regrette rien. Absolument rien ! Pour une seule raison, celle qui me fait me retrouver ici aujourd’hui, à cet endroit : EFB-U5. Ou plutôt, Phoebe comme j’ai pris l’habitude de l’appeler en m’adressant à elle.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Je sais que les gens en plaisantent, et pas forcément dans les registres les moins graveleux. Mais je serais curieux de savoir si un être humain a déjà été à ce point lié à une IA que nous le sommes tous les deux. J’en doute, mais je n’ai pas envie de vérifier. Pour moi, cette union est indispensable pour la réussite du projet. Et si j’en retire de la satisfaction, quel mal peut-il en résulter ?</span></p><br><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- Phoebe à Contrôle, tous les systèmes sont au vert. Ouvrez la coupole, je sors faire un tour.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- Contrôle à EFB-U5, bien reçu. La coupole est en cours d’ouverture. Compte à rebours initialisé à 60 secondes, confirmez.</span></p><br><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- Bien reçu Contrôle, 60 secondes.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Évidemment que je suis d’accord avec vos comptes à rebours, comme si j’avais le choix.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- La coupole est ouverte, début du compte à rebours.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Et nous y voici. Plus qu’une minute avant de savoir si nos techniciens et ingénieurs, avec leurs airs supérieurs, ont mérité leurs salaires. Si j’y reste à cause d’une boulette, je promets de revenir les hanter jusqu’à la fin de leurs jours.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">50 secondes</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Je m’étais promis de rester calme, zen. Après tout, ce n’est pas comme si j’avais l’avenir de l’humanité entre mes mains gantées. Et puis, voyons le bon côté des choses : si jamais j’y reste, personne ne pourra me le reprocher.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">40 secondes</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Relax, tout va bien se passer. Ce vaisseau a beau être expérimental, c’est tout de même le dernier d’une longue série. Les deux derniers prototypes se sont même plutôt bien comportés. Les seuls incidents notables que nous avons relevé sur ces versions étaient mineurs.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">30 secondes</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Alors il n’y a aucune raison de s’en faire. Au pire, je dérive en orbite en attendant les secours. Ou je n\'arrive pas si haut et je m’éjecte, prêt à être récupéré par les sentinelles qui patrouillent déjà là-haut, sur le qui-vive.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">20 secondes</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Tous les voyants sont encore au vert, je lance les moteurs. Bien. Ça ronronne, c’est un gentil matou ça.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">15 secondes</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Quelle excitation !! Le rêve de toute une vie trouve son apogée ici, là, maintenant.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">10 secondes</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Dernière ligne droite, ça va dépoter moi je vous le dis !</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5 secondes</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">- Contrôle à EFB-U5, tout est OK pour nous.</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Un peu tard dans le cas contraire, non ?</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">...3</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">...2</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">...1</span></p><p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;">    <span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">...</span></p><div><span style="font-size: 11pt; font-family: Arial; background-color: transparent; font-style: italic; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span></div></span>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-21 16:34:31',
                 'updated_at' => '2019-12-21 16:39:49',
                 'deleted_at' => NULL,
             ),
-            46 => 
+            46 =>
             array (
                 'id' => 'cf066c88-314f-3df0-be2a-4eacad2dfe32',
                 'story_id' => 1,
@@ -1124,14 +1078,13 @@ formique en très peu de temps. Elle mâche puis avale quelques morceaux d\'herb
 abdomen effilé, avant de repartir aussitôt.</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Nul besoin de rester immobile pour que la production de jus
 corrosif soit fortement accentuée, et d\'autres tâches l\'appellent.</p><p>&nbsp;&nbsp;&nbsp;&nbsp;Augmentez votre nombre total de gouttes d\'acides au maximum (10).
 N\'oubliez pas de retrancher 2 unités de temps au total encore disponible.</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 15:45:03',
                 'updated_at' => '2019-12-20 17:25:51',
                 'deleted_at' => NULL,
             ),
-            47 => 
+            47 =>
             array (
                 'id' => 'd2b94bb0-cb20-32d2-b35d-545b69980e77',
                 'story_id' => 1,
@@ -1152,14 +1105,13 @@ contre les feuilles. Même si le bouclier végétal tient pour l\'instant bon, l
 meuble qui commence à s\'acidifier, occasionnant des brûlures de plus en plus vives. Votre fourmi perd un
 état de Vitalité et Carapace. Seule la chance permettra au groupe de survivre à ce cataclysme.
 Lancez un dé. Si le résultat est pair, rendez-vous au 79. Dans le cas contraire, allez au 85.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 16:09:18',
                 'updated_at' => '2019-12-19 16:09:40',
                 'deleted_at' => NULL,
             ),
-            48 => 
+            48 =>
             array (
                 'id' => 'd38a2175-baaf-3c40-b16d-0d7685fb3943',
                 'story_id' => 1,
@@ -1174,14 +1126,13 @@ continues de l\'air laissent à penser que l\'oiseau émet des ondes sonores de 
 Le groupe se presse de regagner la protection des branches aux feuilles biscornues. Quelques pertes sont
 à dénombrer, mais cela aurait pu être bien pire. Un moment plus tard, le groupe rejoint la piste, qui se
 termine bientôt sur un obstacle redoutable.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:15:12',
                 'updated_at' => '2019-12-19 22:24:40',
                 'deleted_at' => NULL,
             ),
-            49 => 
+            49 =>
             array (
                 'id' => 'd62fbb3b-5fe6-3d99-a698-57c6cae4e72f',
                 'story_id' => 1,
@@ -1196,14 +1147,13 @@ limite externe. C\'est pourquoi on hésite à poursuivre encore la marche.
 Si vous désirez que votre insecte donne le déclic qui manque pour la poursuite de la marche, rendez-vous
 au 63.
 Si vous pensez que ce lieu conviendra, dirigez-vous au 92.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 16:08:37',
                 'updated_at' => '2019-12-19 16:08:56',
                 'deleted_at' => NULL,
             ),
-            50 => 
+            50 =>
             array (
                 'id' => 'dc6f77ab-c3f3-36ad-ace6-862e1025c052',
                 'story_id' => 1,
@@ -1236,14 +1186,13 @@ Nord, quitte à emprunter un chemin peu sûr car non balisé.
 Si votre fourmi est capable de sécréter des phéromones de séduction et que vous pensez sage de
 continuer à suivre la piste parfumée, rendez-vous au 60.
 Sinon, avec son consensus habituel, le groupe décide de tenter un raccourci. Allez au 86.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 16:07:53',
                 'updated_at' => '2019-12-19 16:08:25',
                 'deleted_at' => NULL,
             ),
-            51 => 
+            51 =>
             array (
                 'id' => 'e4807008-33b4-33a4-a19e-790cabf8be61',
                 'story_id' => 1,
@@ -1282,14 +1231,13 @@ ses niveaux de Faim. Il peut également emporter avec lui une des plumes du vola
 le Feuille d\'aventure.
 Après ce copieux festin, les fourmis reprennent leur route et rejoignent finalement la piste parfumée.
 Celle-ci se termine devant un nouveau défi.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:22:49',
                 'updated_at' => '2019-12-19 22:26:10',
                 'deleted_at' => NULL,
             ),
-            52 => 
+            52 =>
             array (
                 'id' => 'e4a14291-b11e-3381-b271-48367f154db6',
                 'story_id' => 1,
@@ -1301,14 +1249,13 @@ Celle-ci se termine devant un nouveau défi.',
 les antennes trempent dans le mucus glaiseux. Finalement, des brindilles et des branches viennent
 supporter le passage dont la construction épuise le groupe (votre fourmi perd 4 états de Faim).
 Néanmoins, les exploratrices parviennent à rejoindre l\'autre rive, sans perte.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:28:40',
                 'updated_at' => '2019-12-19 22:31:36',
                 'deleted_at' => NULL,
             ),
-            53 => 
+            53 =>
             array (
                 'id' => 'e91c3382-b4fd-33a1-bf97-98cd1c88c57a',
                 'story_id' => 1,
@@ -1341,14 +1288,13 @@ Si vous pensez qu\'il faut dès à présent se rendre dans ce refuge suffisammen
 retarder un peu l\'expédition, rendez-vous au 110.
 Si vous préférez que votre fourmi ne prévienne pas ses congénères et que le groupe continue encore un
 moment son avancée, allez au 115.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 15:57:28',
                 'updated_at' => '2019-12-19 15:57:43',
                 'deleted_at' => NULL,
             ),
-            54 => 
+            54 =>
             array (
                 'id' => 'eb3c68b8-1daf-3034-a68c-6d4f3b79e687',
                 'story_id' => 1,
@@ -1373,14 +1319,13 @@ Si votre fourmi (ou une de ses compagnes) possèdent deux gouttes d\'acide en r�
 30.
 Si votre insecte possède des mandibules aiguisées et qu\'elle souhaite les utiliser sur le métal, allez au 87.
 Sinon, il ne reste plus au groupe qu\'à explorer le reste des environs : rendez-vous au 46.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:37:48',
                 'updated_at' => '2019-12-19 22:38:06',
                 'deleted_at' => NULL,
             ),
-            55 => 
+            55 =>
             array (
                 'id' => 'efb2f3a3-9c3e-3c2e-be54-b72dd10c2f81',
                 'story_id' => 1,
@@ -1403,14 +1348,13 @@ genre d\'embarcation ne manque pas alentour, et si le courant est favorable, on 
 berge opposée sans effort.
 Quel que soit votre choix, sachez que le chemin parcouru dernièrement a baissé le niveau de Faim de
 votre fourmi d’un niveau.',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:23:35',
                 'updated_at' => '2019-12-19 22:29:55',
                 'deleted_at' => NULL,
             ),
-            56 => 
+            56 =>
             array (
                 'id' => 'f1e0c655-f42e-34a0-be2f-9464f11e3e21',
                 'story_id' => 1,
@@ -1429,14 +1373,13 @@ plus secs. Elle découvre un secteur parsemés de graminées : si les fourmis co
 ces plantes pour en récupérer les sacs de graines, cela pourrait apporter de l\'énergie au nid.
 </p><p>&nbsp;&nbsp;&nbsp;&nbsp;Si votre fourmi rapporte au groupe la présence des plantes émettant des odeurs correspondant à du
 doux nectar, rendez-vous au 72. </p><p>&nbsp;&nbsp;&nbsp;&nbsp;Si elle préfère signaler le champ de graminées, allez alors au 107.&nbsp;</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-24 14:01:07',
                 'updated_at' => '2019-12-24 14:02:37',
                 'deleted_at' => NULL,
             ),
-            57 => 
+            57 =>
             array (
                 'id' => 'fb772269-a27c-3f16-bebc-d6b04ed690da',
                 'story_id' => 1,
@@ -1455,14 +1398,13 @@ au 37. </p><p>&nbsp;&nbsp;&nbsp;&nbsp;De même, si elle a amené avec elle des �
 propositions d\'exploration : pour s\'y rendre, vous irez au 91.
 </p><p>&nbsp;&nbsp;&nbsp;&nbsp;Avec le temps, la réserve d\'acide des éventuelles artilleuses présentes dans le groupe (votre fourmi et/ou
 un compagnon spécial) a pu se reconstituer quelque peu : ajoutez 2 gouttes à chaque réserve d\'acide.</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 22:34:23',
                 'updated_at' => '2019-12-24 13:52:44',
                 'deleted_at' => NULL,
             ),
-            58 => 
+            58 =>
             array (
                 'id' => 'fbab9c67-beab-3f27-91fe-959efe6583f3',
                 'story_id' => 1,
@@ -1476,14 +1418,13 @@ toute éventualité. </p><p>&nbsp;&nbsp;&nbsp;&nbsp;Utilisant sa sensibilité au
 l’intérieur du Nid, elle peut choisir d\'aller chercher l\'aide d\'un sexué, afin de bénéficier de sa perception
 supérieure (rendez-vous alors au 2), ou aller demander le renfort de soldates, qu\'elles soient artilleuses
 ou dotées de puissantes mandibules (allez au 97).</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 15:45:59',
                 'updated_at' => '2019-12-20 17:29:01',
                 'deleted_at' => NULL,
             ),
-            59 => 
+            59 =>
             array (
                 'id' => 'fe835b07-0a51-33bd-99cc-af62093052af',
                 'story_id' => 1,
@@ -1498,7 +1439,6 @@ qu’auparavant.
 </p><p>    Votre insecte gagne un bonus de 1 au dé, durant les combats au corps à corps, cumulable avec n\'importe
 quel autre avantage.</p><p>    Néanmoins, l\'usure menace ses mandibules affûtées et certains combats ou
 épreuves particulièrement éprouvants pourront venir à bout de cet avantage.</p><p>    N\'oubliez pas de retrancher 3 unités de temps au total encore disponible.</p>',
-                'prerequisites' => NULL,
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-19 15:44:11',
@@ -1506,7 +1446,7 @@ quel autre avantage.</p><p>    Néanmoins, l\'usure menace ses mandibules af
                 'deleted_at' => NULL,
             ),
         ));
-        
-        
+
+
     }
 }

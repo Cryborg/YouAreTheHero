@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Prerequisite;
 use Faker\Provider\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -23,7 +24,6 @@ class Page extends Model
 
     // Casts JSON as array
     protected $casts = [
-        'prerequisites' => 'array',
         'is_first'      => 'boolean',
         'is_last'       => 'boolean',
         'is_checkpoint' => 'boolean',
@@ -62,6 +62,11 @@ class Page extends Model
         return $this->hasMany(Action::class);
     }
 
+    public function prerequisites()
+    {
+        return $this->hasMany(Prerequisite::class);
+    }
+
     /**
      * Get the available choices for the current page
      *
@@ -91,7 +96,6 @@ class Page extends Model
      */
     public function parents()
     {
-        //TODO: use cache ?
         return PageLink::where('page_to', $this->id)
                        ->select([
                                'page_link.link_text',
