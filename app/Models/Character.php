@@ -79,4 +79,9 @@ class Character extends Model
     {
         return $this->hasMany(Checkpoint::class);
     }
+
+    public function sheet()
+    {
+        return $this->hasMany(Stat::class);
+    }
 }

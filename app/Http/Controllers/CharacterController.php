@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\Sheet;
+use App\Models\Stat;
 use App\Models\Character;
 use App\Models\Story;
 use Illuminate\Http\JsonResponse;
@@ -29,21 +29,26 @@ class CharacterController extends Controller
     {
         if (request()->ajax()) {
             $page = $story->getCurrentPage();
-
-            $sheet = new Sheet($story);
+            $stats = $request->get('stats');
 
             $character = Character::create([
                 'name'     => $request->get('name'),
                 'user_id'  => Auth::id(),
                 'story_id' => $story->id,
                 'page_id'  => $page->id,
-                'sheet'    => $sheet->getArray()
             ]
             );
 
-            $character->sheet = $sheet;
-
-            $character->save();
+            if ($stats) {
+                foreach ($stats as $stat) {
+                    Stat::create([
+                        'user_id'    => Auth::id(),
+                        'stat_name'  => $stat['name'],
+                        'stat_value' => $stat['value'],
+                    ]
+                    );
+                }
+            }
 
             return response()->json(['success' => true]);
         }

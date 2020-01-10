@@ -25,7 +25,6 @@ $factory->define(Page::class, function (Faker $faker, $data) {
         'is_last'       => false,
         'is_checkpoint' => $faker->boolean,
         'story_id'      => $data['story_id'],
-        'prerequisites' => $data['prerequisites'] ?? null,
     ];
 }
 );

@@ -8,8 +8,13 @@ class Prerequisite extends Model
 {
     protected $guarded = ['id'];
 
+    public function stats()
+    {
+        $this->morphMany(Stat::class, 'stat');
+    }
+
     public function items()
     {
-        return $this->morphToMany(Item::class, 'prerequisite', Prerequisite::class, null, 'bouh', 'id');
+        $this->morphMany(Item::class, 'item');
     }
 }

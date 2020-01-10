@@ -134,19 +134,19 @@ class PageController extends Controller
     {
         if ($request->ajax()) {
             if ($request->get('items')) {
-                foreach ($request->get('items') as $characteristic) {
+                foreach ($request->get('items') as $stat) {
                     $page->prerequisites()->create([
                         'prerequisite_type' => 'item',
-                        'prerequisite_id' => $characteristic,
+                        'prerequisite_id' => $stat,
                     ]);
                 }
             }
 
             if ($request->get('sheet')) {
-                foreach ($request->get('sheet') as $characteristic => $value) {
+                foreach ($request->get('sheet') as $stat => $value) {
                     $page->prerequisites()->create([
                         'prerequisite_type' => 'sheet',
-                        'prerequisite_id' => $characteristic,
+                        'prerequisite_id' => $stat,
                     ]);
                 }
             }

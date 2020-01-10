@@ -7,40 +7,37 @@ use App\Models\Story;
 
 class Sheet
 {
-    protected $caracteristics = [];
+    protected $stats = [];
 
     public function __construct($mixed)
     {
-
         if (get_class($mixed) === Story::class) {
             if ($mixed->sheet_config) {
                 foreach ($mixed->sheet_config as $name => $value) {
-                    $this->caracteristics[$name] = $value;
+                    $this->stats[$name] = $value;
                 }
             }
         }
 
         if (get_class($mixed) === Character::class) {
-
             foreach ($mixed->sheet as $name => $value) {
-
-                $this->caracteristics[$name] = $value;
+                $this->stats[$name] = $value;
             }
         }
     }
 
-    public function add(string $caracteristic, int $quantity)
+    public function add(string $stat, int $quantity)
     {
-        $this->caracteristics[$caracteristic] += $quantity;
+        $this->stats[$stat] += $quantity;
     }
 
-    public function get(string $caracteristic)
+    public function get(string $stat)
     {
-        return $this->caracteristics[$caracteristic];
+        return $this->stats[$stat];
     }
 
     public function getArray()
     {
-        return $this->caracteristics;
+        return $this->stats;
     }
 }
