@@ -17,8 +17,8 @@ class CreateStatsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('character_id');
             $table->foreign('character_id')->references('id')->on('characters');
-            $table->string('stat_name');
-            $table->integer('stat_value');
+            $table->string('name');
+            $table->integer('value');
             $table->timestamps();
         });
     }

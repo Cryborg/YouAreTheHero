@@ -20,6 +20,7 @@ return [
 
     'prerequisite_modal_title'          => 'Ajout de prérequis',
     'current_page_prerequisites_help'   => 'Liste des prérequis pour arriver sur cette page.',
+    'required_type_label'               => 'Type',
     'required_item'                     => 'Objet requis',
     'required_item_help'                => "Si le joueur doit posséder un ou plusieurs objets pour accéder à cette page, choisis-le(s) dans cette liste, ou crées-en un nouveau.",
     'required_characteristic'           => 'Caractéristique requise',

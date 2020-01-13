@@ -2,6 +2,7 @@
 
 return [
     'item'          => 'Objet',
+    'stat'          => 'Compétence',
     'name'          => 'Nom',
     'price'         => 'Prix',
     'quantity'      => 'Quantité',

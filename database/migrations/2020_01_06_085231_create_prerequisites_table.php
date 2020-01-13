@@ -18,6 +18,7 @@ class CreatePrerequisitesTable extends Migration
             $table->string('page_id', 36);
             $table->foreign('page_id')->references('id')->on('pages');
             $table->morphs('prerequisiteable');
+            $table->integer('quantity')->default(1);
             $table->timestamps();
         });
     }

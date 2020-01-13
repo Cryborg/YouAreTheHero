@@ -11,22 +11,33 @@
         </nav>
         <div class="tab-content">
             <div class="tab-pane active" id="tr1">
-                {!! Form::label('prerequisite_item_id', trans('page.required_item'), ['class' => 'sr-only']) !!}
-                <p class="help-block">{!! trans('page.required_item_help') !!}</p>
-                <select multiple="" class="form-control custom-select" size="6" id="prerequisite_item_id" name="prerequisite_item_id">
-                    <option value=""></option>
-                    @foreach ($page->story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
-                            <option value="{{ $itemId }}"
-                            @foreach($page->prerequisites() ?? [] as $prerequisite)
-                                @foreach ($prerequisite->items ?? [] as $item)
+                <div class="row">
+                    <div class="col">
+                        {!! Form::label('prerequisite_item_id', trans('page.required_item'), ['class' => 'sr-only']) !!}
+                        <p class="help-block">{!! trans('page.required_item_help') !!}</p>
+                        <select multiple="" class="form-control custom-select" size="6" id="prerequisite_item_id" name="prerequisite_item_id">
+                            <option value=""></option>
+                            @foreach ($page->story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
+                                <option value="{{ $itemId }}"
+                                    @foreach($page->prerequisites() ?? [] as $prerequisite)
+                                    @foreach ($prerequisite->items ?? [] as $item)
                                     @if ($item->id == $itemId) selected @endif
-                                @endforeach
-                        @endforeach
-                        >{{ $itemName }}</option>
-                    @endforeach
-                </select>
+                                    @endforeach
+                                    @endforeach
+                                >{{ $itemName }}</option>
+                            @endforeach
+                        </select>
 
-                @include('page.partials.modal_partials_new_item', ['context' => 'prerequisites'])
+                        <div class="form-group">
+                            {!! Form::label('prerequisite_quantity', trans('item.quantity')) !!}
+                            {!! Form::number('prerequisite_quantity', old('prerequisite_quantity') ?? 1, ['class' => 'form-control']) !!}
+                        </div>
+                    </div>
+                    <div class="col">
+                        @include('page.partials.modal_partials_new_item', ['context' => 'prerequisites'])
+                    </div>
+                </div>
+
             </div>
             <div class="tab-pane" id="tr2">
                 <div class="form-group mb-4">

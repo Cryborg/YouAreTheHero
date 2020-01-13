@@ -117,12 +117,15 @@
             var $this = $(this);
             var data = {};
 
+            // If the "item" tab is selected
             if ($('#tr1').hasClass('active')) {
                 data = {
-                    'items': $('#prerequisite_item_id').val()
+                    'items': $('#prerequisite_item_id').val(),
+                    'quantity': $('#prerequisite_quantity').val()
                 };
             }
 
+            // If the "stats" tab is selected
             if ($('#tr2').hasClass('active')) {
                 if ($('#sheet option:selected').val() !== '') {
                     var key = $('#sheet option:selected').text();
@@ -147,7 +150,8 @@
                                 prerequisitesListDatatable.row.add([
                                     '{{ trans('item.item') }}',
                                     item.name,
-                                    '<span class="glyphicon glyphicon-trash" data-action_id="' + item.id + '"></span>'
+                                    item.quantity,
+                                    '<span class="glyphicon glyphicon-trash delete-prerequisite" data-prerequisite_id="' + item.prerequisite_id + '"></span>'
                                 ]).draw();
                             });
 
@@ -299,7 +303,7 @@
                         data.action.verb,
                         data.action.quantity,
                         data.action.price,
-                        '<span class="glyphicon glyphicon-trash" data-action_id="' + data.action.item.id + '"></span>'
+                        '<span class="glyphicon glyphicon-trash delete-action" data-action_id="' + data.action.item.id + '"></span>'
                     ]).draw();
 
                     // Closes the modal
@@ -329,7 +333,7 @@
             });
     });
 
-    $('.delete-action').on('click', function () {
+    $(document).on('click', '.delete-action', function () {
         var $this = $(this);
         var actionId = $this.data('action_id');
         var loadingClass = 'fa fa-circle-o-notch fa-spin';
@@ -365,7 +369,7 @@
             });
     });
 
-    $('.delete-prerequisite').on('click', function () {
+    $(document).on('click', '.delete-prerequisite', function () {
         var $this = $(this);
         var prerequisiteId = $this.data('prerequisite_id');
         var loadingClass = 'fa fa-circle-o-notch fa-spin';

@@ -43,8 +43,8 @@ class CharacterController extends Controller
                 foreach ($stats as $stat) {
                     Stat::create([
                         'user_id'    => Auth::id(),
-                        'stat_name'  => $stat['name'],
-                        'stat_value' => $stat['value'],
+                        'name'  => $stat['name'],
+                        'value' => $stat['value'],
                     ]
                     );
                 }

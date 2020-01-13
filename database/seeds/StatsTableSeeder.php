@@ -21,8 +21,8 @@ class StatsTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'character_id' => 1,
-                'stat_name' => 'Vitesse',
-                'stat_value' => 2,
+                'name' => 'Vitesse',
+                'value' => 2,
                 'created_at' => '2020-01-10 15:34:18',
                 'updated_at' => NULL,
             ),
