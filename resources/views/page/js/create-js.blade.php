@@ -131,8 +131,8 @@
                     var key = $('#sheet option:selected').text();
                     var value = $('#level').val();
 
-                    data['sheet'] = {};
-                    data['sheet'][key] = value;
+                    data['stats'] = {};
+                    data['stats'][key] = value;
                 }
             }
 

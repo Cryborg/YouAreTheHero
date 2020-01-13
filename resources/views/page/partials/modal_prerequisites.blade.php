@@ -20,9 +20,9 @@
                             @foreach ($page->story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
                                 <option value="{{ $itemId }}"
                                     @foreach($page->prerequisites() ?? [] as $prerequisite)
-                                    @foreach ($prerequisite->items ?? [] as $item)
-                                    @if ($item->id == $itemId) selected @endif
-                                    @endforeach
+                                        @foreach ($prerequisite->items ?? [] as $item)
+                                            @if ($item->id == $itemId) selected @endif
+                                        @endforeach
                                     @endforeach
                                 >{{ $itemName }}</option>
                             @endforeach
@@ -45,19 +45,13 @@
                     <p class="help-block">{!! trans('page.required_characteristic_help') !!}</p>
                     <select class="form-control custom-select" size="6" id="sheet" name="sheet">
                         <option value=""></option>
-                        @php
-                            $characValue = 1;
-                        @endphp
                         @foreach(array_keys($page->story->sheet_config ?? []) as $charac)
-                            @foreach($page->prerequisites['sheet'] ?? [] as $prerequisite => $value)
-                                <option value="{{ $charac }}"
-                                    @if ($prerequisite == $charac)
-                                        selected
-                                        @php
-                                            $characValue = $value;
-                                        @endphp
-                                    @endif
-                                >{{ $charac }}</option>
+                            @foreach($page->prerequisites() ?? [] as $prerequisite)
+                                @if ($prerequisite->prerequisiteable instanceof \App\Models\Stat)
+                                    <option value="{{ $charac }}"
+                                        @if ($prerequisite->prerequisiteable->name == $charac) selected @endif
+                                    >{{ $charac }}</option>
+                                @endif
                             @endforeach
                         @endforeach
                     </select>
@@ -65,7 +59,7 @@
                 <div class="form-group mb-4">
                     {!! Form::label('level', trans('page.level'), ['class' => 'control-label']) !!}
                     <p class="help-block">{!! trans('page.level_help') !!}</p>
-                    {!! Form::number('level', $characValue, ['class' => 'form-control']) !!}
+                    {!! Form::number('level', old('level') ?? 1, ['class' => 'form-control']) !!}
                 </div>
             </div>
             <div class="tab-pane" id="tr3">

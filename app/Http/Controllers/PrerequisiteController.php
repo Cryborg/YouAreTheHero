@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Action;
 use App\Models\Item;use App\Models\Page;
 use App\Models\Prerequisite;
-use Illuminate\Http\JsonResponse;
+use App\Models\Stat;use App\Models\StatStory;use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class PrerequisiteController extends Controller
@@ -19,10 +19,11 @@ class PrerequisiteController extends Controller
                 $quantity = $request->get('quantity');
 
                 foreach ($request->get('items') as $itemId) {
-                    $prerequisite = Prerequisite::create([
+                    $prerequisite = Prerequisite::updateOrCreate([
                         'page_id'   => $page->id,
                         'prerequisiteable_type' => 'item',
                         'prerequisiteable_id' => $itemId,
+                    ], [
                         'quantity' => $quantity
                     ]);
 
@@ -36,12 +37,18 @@ class PrerequisiteController extends Controller
                 }
             }
 
-            if ($request->get('sheet')) {
-                foreach ($request->get('sheet') as $statId => $value) {
-                    $addedPrerequisites['stats'][] = Prerequisite::create([
+            if ($request->get('stats')) {
+                foreach ($request->get('stats') as $stat => $value) {
+                    $foundStat = StatStory::where([
+                        'story_id' => $page->story->id,
+                        'stat_full_name' => $stat
+                    ])->firstOrFail();
+                    $addedPrerequisites['stats'][] = Prerequisite::updateOrCreate([
                         'page_id'   => $page->id,
-                        'prerequisiteable_type' => 'sheet',
-                        'prerequisiteable_id' => $statId,
+                        'prerequisiteable_type' => 'stat',
+                        'prerequisiteable_id' => $foundStat->id,
+                    ], [
+                        'quantity' => $value
                     ]);
                 }
             }
