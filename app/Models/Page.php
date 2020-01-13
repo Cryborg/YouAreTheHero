@@ -62,11 +62,6 @@ class Page extends Model
         return $this->hasMany(Action::class);
     }
 
-    public function prerequisites()
-    {
-        return $this->hasMany(Prerequisite::class);
-    }
-
     /**
      * Get the available choices for the current page
      *
@@ -144,5 +139,10 @@ class Page extends Model
         $validated['page_id'] = $this->id;
 
         return Action::create($validated);
+    }
+
+    public function prerequisites()
+    {
+        return \App\Models\Prerequisite::with('prerequisiteable')->where('page_id', $this->id)->get();
     }
 }

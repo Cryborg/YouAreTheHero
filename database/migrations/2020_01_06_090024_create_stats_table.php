@@ -15,8 +15,8 @@ class CreateStatsTable extends Migration
     {
         Schema::create('stats', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('character_id');
+            $table->foreign('character_id')->references('id')->on('characters');
             $table->string('stat_name');
             $table->integer('stat_value');
             $table->timestamps();

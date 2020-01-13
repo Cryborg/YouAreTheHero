@@ -16,10 +16,6 @@ class Character extends Model
 
     protected $guarded = ['id'];
 
-    protected $casts = [
-        'sheet' => 'array',
-    ];
-
 
     public static function boot()
     {
@@ -80,7 +76,7 @@ class Character extends Model
         return $this->hasMany(Checkpoint::class);
     }
 
-    public function sheet()
+    public function stats()
     {
         return $this->hasMany(Stat::class);
     }

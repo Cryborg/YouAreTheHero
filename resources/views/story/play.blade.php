@@ -33,7 +33,6 @@
 @endsection
 
 @section('map')
-    @dd($page->prerequisites)
     @foreach ($visitedPlaces as $key => $place)
         <a href="{{ route('story.play', ['story' => $story->id, 'page' => $place->page_id]) }}">{{ $place->page_title }}</a><br>
     @endforeach

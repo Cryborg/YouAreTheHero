@@ -135,7 +135,7 @@
 
             if (Object.entries(data).length > 0 && data.constructor === Object) {
                 $.post({
-                    url: route('page.prerequisite.add', '{{ $page->id }}'),
+                    url: route('prerequisite.store', '{{ $page->id }}'),
                     data: data
                 })
                     .done(function () {
@@ -176,6 +176,7 @@
                         text: "{{ trans('notification.save_success_text') }}",
                     });
 
+                    // Add the newly created item to both lists
                     $('#prerequisite_item_id, #item_id').append(
                         '<option value="' + data.item.id + '">' + data.item.name + '</option>'
                     );
@@ -195,7 +196,7 @@
 
         $('#create_item_action').on('click', function () {
             var $this = $(this);
-            var route = route('item.store');
+            var route = '{{ route('item.store') }}';
 
             ajaxCreatePost(route,  $this, {
                 'name': $('#item_name_action').val(),
@@ -206,7 +207,7 @@
 
         $('#create_item_prerequisites').on('click', function () {
             var $this = $(this);
-            var route = route('prerequisite.store');
+            var route = '{{ route('item.store') }}';
 
             ajaxCreatePost(route, $this, {
                 'name': $('#item_name_prerequisites').val(),
@@ -270,9 +271,7 @@
             'data': serialized,
         })
             .done(function (data) {
-                var result = JSON.parse(data);
-
-                if (result.success) {
+                if (data.success) {
                     // Show the notification
                     showToast('success', {
                         heading: '{{ trans('admin.save_succeeded') }}',
@@ -281,11 +280,11 @@
 
                     // Adds the new action to the table
                     actionsListDatatable.row.add([
-                        result.action.item.name,
-                        result.action.verb,
-                        result.action.quantity,
-                        result.action.price,
-                        '<span class="glyphicon glyphicon-trash" data-action_id="' + result.action.item.id + '"></span>'
+                        data.action.item.name,
+                        data.action.verb,
+                        data.action.quantity,
+                        data.action.price,
+                        '<span class="glyphicon glyphicon-trash" data-action_id="' + data.action.item.id + '"></span>'
                     ]).draw();
 
                     // Closes the modal

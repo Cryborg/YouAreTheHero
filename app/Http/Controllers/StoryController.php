@@ -6,6 +6,7 @@ use App\Classes\Action;
 use App\Models\Inventory;
 use App\Models\Item;
 use App\Models\Checkpoint;
+use App\Models\Stat;
 use App\Models\UniqueItemsUsed;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -132,14 +133,14 @@ class StoryController extends Controller
             $fulfilled = false;
             $pageTo = $this->page->find($choice->page_to);
 
-            if (!empty($pageTo->prerequisites)) {
-                foreach ($pageTo->prerequisites as $type => $prerequisite) {
-                    switch ($type) {
-                        case 'sheet':
-                            $fulfilled = $this->isSheetPrerequisitesFulfilled($prerequisite, $character);
+            if (!empty($pageTo->prerequisites())) {
+                foreach ($pageTo->prerequisites() as $prerequisite) {
+                    switch (get_class($prerequisite->prerequisiteable)) {
+                        case Stat::class:
+                            $fulfilled = $this->isStatPrerequisitesFulfilled($prerequisite->prerequisiteable, $character);
                             break;
-                        case 'items':
-                            $fulfilled = $this->isItemPrerequisitesFulfilled($prerequisite, $character);
+                        case Item::class:
+                            $fulfilled = $this->isItemPrerequisitesFulfilled($prerequisite->prerequisiteable, $character);
                             break;
                     }
                 }
@@ -240,7 +241,7 @@ class StoryController extends Controller
         $character = $this->getCurrentCharacter($story);
 
         return view('story.partials.sheet', [
-            'caracteristics' => $character->sheet,
+            'sheet' => $character->stats ?? [],
         ]);
     }
 
@@ -268,7 +269,7 @@ class StoryController extends Controller
      *
      * @return bool
      */
-    private function isSheetPrerequisitesFulfilled(array $prerequisites, Character $character): bool
+    private function isStatPrerequisitesFulfilled(Stat $prerequisites, Character $character): bool
     {
         $sheet = $character->sheet;
 
@@ -281,7 +282,7 @@ class StoryController extends Controller
         return false;
     }
 
-    private function isItemPrerequisitesFulfilled($prerequisites, Character $character): bool
+    private function isItemPrerequisitesFulfilled(Item $prerequisites, Character $character): bool
     {
         $itemsInInventory = $character->inventory();
 
@@ -321,9 +322,9 @@ class StoryController extends Controller
      */
     private function getCurrentCharacter($story)
     {
-        $story_id = is_int($story) ? $story : $story->id;
+        $story_id = $story instanceof Story ? $story->id : $story;
 
-        return Character::where(['user_id' => Auth::id(), 'story_id' => $story_id])->first();
+        return Character::where(['user_id' => Auth::id(), 'story_id' => $story_id])->firstOrFail();
     }
 
     private function getAllChoicesForPage(Page $page)

@@ -13,18 +13,31 @@ class PrerequisiteController extends Controller
     public function store(Request $request, Page $page)
     {
         if ($request->ajax()) {
-            $validated = $request->validate([
-                'prerequisite_type' => 'required',
-                'prerequisite_id'   => 'required',
-            ]);
+            $addedPrerequisites = ['items' => [], 'stats' => []];
 
-            $validated['page_id'] = $page->id;
+            if ($request->get('items')) {
+                foreach ($request->get('items') as $stat) {
+                    $addedPrerequisites['items'][] = Prerequisite::create([
+                        'page_id'   => $page->id,
+                        'prerequisiteable_type' => 'item',
+                        'prerequisiteable_id' => $stat,
+                    ]);
+                }
+            }
 
-            $newPrerequisite = Prerequisite::create($validated);
+            if ($request->get('sheet')) {
+                foreach ($request->get('sheet') as $stat => $value) {
+                    $addedPrerequisites['stats'][] = Prerequisite::create([
+                        'page_id'   => $page->id,
+                        'prerequisiteable_type' => 'sheet',
+                        'prerequisiteable_id' => $stat,
+                    ]);
+                }
+            }
 
             return response()->json([
-                'action' => $newPrerequisite,
                 'success' => true,
+                'prerequisites' => $addedPrerequisites,
             ]);
         }
 

@@ -8,13 +8,8 @@ class Prerequisite extends Model
 {
     protected $guarded = ['id'];
 
-    public function stats()
+    public function prerequisiteable()
     {
-        $this->morphMany(Stat::class, 'stat');
-    }
-
-    public function items()
-    {
-        $this->morphMany(Item::class, 'item');
+        return $this->morphTo();
     }
 }

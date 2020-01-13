@@ -17,7 +17,7 @@ class CreatePrerequisitesTable extends Migration
             $table->bigIncrements('id');
             $table->string('page_id', 36);
             $table->foreign('page_id')->references('id')->on('pages');
-            $table->morphs('prerequisite');
+            $table->morphs('prerequisiteable');
             $table->timestamps();
         });
     }

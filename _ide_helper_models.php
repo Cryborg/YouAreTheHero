@@ -196,8 +196,8 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $page_id
- * @property string $prerequisite_type
- * @property int $prerequisite_id
+ * @property string $prerequisiteable_type
+ * @property int $prerequisiteable_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Prerequisite newModelQuery()

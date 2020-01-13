@@ -43,4 +43,9 @@ class Item extends Model
     {
         return $this->belongsTo(Story::class);
     }
+
+    public function prerequisites()
+    {
+        return $this->morphMany(Prerequisite::class, 'prerequisiteable');
+    }
 }

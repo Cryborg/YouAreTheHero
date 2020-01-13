@@ -6,7 +6,7 @@
         <th scope="col">{{ trans('item.price') }}</th>
         <th scope="col">{{ trans('common.actions') }}</th>
     </thead>
-    @foreach ($page->prerequisites ?? [] as $prerequisite)
+    @foreach ($page->prerequisites() ?? [] as $prerequisite)
         @foreach ($prerequisite->items ?? [] as $item)
             <tr>
                 <td>{{ $item->name }}</td>

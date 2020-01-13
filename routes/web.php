@@ -46,7 +46,6 @@ Route::post('/story/ajax_post_children_pages', 'StoryController@postChildrenPage
 // Page
 Route::get('/page/{page}/edit', 'PageController@getEdit')->name('page.edit');
 Route::post('/page/{page}/edit', 'PageController@postEdit')->name('page.edit.post');
-Route::post('/page/{page}/prerequisite', 'PageController@postAddPrerequisite')->name('page.prerequisite.add');
 
 // Actions
 Route::get('/actions/{page}/list', 'ActionController@list')->name('actions.list');

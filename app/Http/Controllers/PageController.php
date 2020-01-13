@@ -123,37 +123,4 @@ class PageController extends Controller
 
         abort(JsonResponse::HTTP_NOT_FOUND);
     }
-
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Page         $page
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function postAddPrerequisite(Request $request, Page $page)
-    {
-        if ($request->ajax()) {
-            if ($request->get('items')) {
-                foreach ($request->get('items') as $stat) {
-                    $page->prerequisites()->create([
-                        'prerequisite_type' => 'item',
-                        'prerequisite_id' => $stat,
-                    ]);
-                }
-            }
-
-            if ($request->get('sheet')) {
-                foreach ($request->get('sheet') as $stat => $value) {
-                    $page->prerequisites()->create([
-                        'prerequisite_type' => 'sheet',
-                        'prerequisite_id' => $stat,
-                    ]);
-                }
-            }
-
-            return response()->json(['success' => true]);
-        }
-
-        return response()->json(['success' => false]);
-    }
 }

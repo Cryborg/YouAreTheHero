@@ -38,6 +38,10 @@ class DatabaseSeeder extends Seeder
         $this->call(PageLinkTableSeeder::class);
         $this->call(ItemsTableSeeder::class);
         $this->call(ActionsTableSeeder::class);
+        $this->call(CharactersTableSeeder::class);
+        $this->call(StatStoryTableSeeder::class);
+        $this->call(StatsTableSeeder::class);
+        $this->call(PrerequisitesTableSeeder::class);
     }
 }
 

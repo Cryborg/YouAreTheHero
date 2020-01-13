@@ -17,9 +17,10 @@
                     <option value=""></option>
                     @foreach ($page->story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
                             <option value="{{ $itemId }}"
-                            @foreach($page->prerequisites['items'] ?? [] as $prerequisite)
-                                @if ($prerequisite == $itemId)selected
-                            @endif
+                            @foreach($page->prerequisites() ?? [] as $prerequisite)
+                                @foreach ($prerequisite->items ?? [] as $item)
+                                    @if ($item->id == $itemId) selected @endif
+                                @endforeach
                         @endforeach
                         >{{ $itemName }}</option>
                     @endforeach
