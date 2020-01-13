@@ -138,13 +138,26 @@
                     url: route('prerequisite.store', '{{ $page->id }}'),
                     data: data
                 })
-                    .done(function () {
-                        showToast('success', {
-                            heading: '{{ trans('notification.save_success_title') }}',
-                            text: "{{ trans('notification.save_success_text') }}",
-                        });
+                    .done(function (data) {
+                        if (data.success) {
+                            var items = data.prerequisites.items;
 
-                        $('#modalCreatePrerequisite').modal('hide');
+                            items.forEach(function (item) {
+                                // Adds the new action to the table
+                                prerequisitesListDatatable.row.add([
+                                    '{{ trans('item.item') }}',
+                                    item.name,
+                                    '<span class="glyphicon glyphicon-trash" data-action_id="' + item.id + '"></span>'
+                                ]).draw();
+                            });
+
+                            showToast('success', {
+                                heading: '{{ trans('notification.save_success_title') }}',
+                                text: "{{ trans('notification.save_success_text') }}",
+                            });
+
+                            $('#modalCreatePrerequisite').modal('hide');
+                        }
                     })
                     .fail(function (data) {
                         showToast('error', {
@@ -217,7 +230,7 @@
         });
     });
 
-    var actionsListDatatable = $('#actions_list').DataTable({
+    var commonDTOptions = {
         dom: 'rt<p><"clear">',
         pagingType: 'simple',
         createdRow: function (row, data, index, cells) {
@@ -229,7 +242,9 @@
             var pagination = $(this).closest('.dataTables_wrapper').find('.dataTables_paginate');
             pagination.toggle(this.api().page.info().pages > 1);
         }
-    });
+    };
+    var actionsListDatatable = $('#actions_list').DataTable(commonDTOptions);
+    var prerequisitesListDatatable = $('#prerequisites_list').DataTable(commonDTOptions);
 
     // When the author chooses an item from the list
     $('#item_id').on('change', function () {
@@ -314,7 +329,7 @@
             });
     });
 
-    $('.glyphicon-trash').on('click', function () {
+    $('.delete-action').on('click', function () {
         var $this = $(this);
         var actionId = $this.data('action_id');
         var loadingClass = 'fa fa-circle-o-notch fa-spin';
@@ -348,5 +363,41 @@
             .always(function () {
                 $this.attr('class', defaultClass);
             });
-    })
+    });
+
+    $('.delete-prerequisite').on('click', function () {
+        var $this = $(this);
+        var prerequisiteId = $this.data('prerequisite_id');
+        var loadingClass = 'fa fa-circle-o-notch fa-spin';
+        var defaultClass = 'glyphicon glyphicon-trash';
+
+        if (!$this.hasClass('fa-spin')) {
+            $this.attr('class', loadingClass);
+        }
+
+        $.ajax({
+            url: route('prerequisite.delete', prerequisiteId),
+            method: 'DELETE'
+        })
+            .done(function () {
+                prerequisitesListDatatable
+                    .row($this.parents('tr'))
+                    .remove()
+                    .draw();
+                showToast('success', {
+                    heading: '{{ trans('notification.deletion_success_title') }}',
+                    text: "{{ trans('notification.deletion_success_text') }}",
+                });
+            })
+            .fail(function (data) {
+                showToast('error', {
+                    heading: '{{ trans('notification.deletion_failed_title') }}',
+                    text: "{{ trans('notification.deletion_failed_text') }}",
+                    errors: data.responseJSON.errors
+                });
+            })
+            .always(function () {
+                $this.attr('class', defaultClass);
+            });
+    });
 </script>

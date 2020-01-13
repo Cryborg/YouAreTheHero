@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'item'          => 'Objet',
     'name'          => 'Nom',
     'price'         => 'Prix',
     'quantity'      => 'Quantité',

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Action;
-use App\Models\Page;
+use App\Models\Item;use App\Models\Page;
 use App\Models\Prerequisite;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -16,21 +16,23 @@ class PrerequisiteController extends Controller
             $addedPrerequisites = ['items' => [], 'stats' => []];
 
             if ($request->get('items')) {
-                foreach ($request->get('items') as $stat) {
-                    $addedPrerequisites['items'][] = Prerequisite::create([
+                foreach ($request->get('items') as $itemId) {
+                    Prerequisite::create([
                         'page_id'   => $page->id,
                         'prerequisiteable_type' => 'item',
-                        'prerequisiteable_id' => $stat,
+                        'prerequisiteable_id' => $itemId,
                     ]);
+
+                    $addedPrerequisites['items'][] = Item::find($itemId);
                 }
             }
 
             if ($request->get('sheet')) {
-                foreach ($request->get('sheet') as $stat => $value) {
+                foreach ($request->get('sheet') as $statId => $value) {
                     $addedPrerequisites['stats'][] = Prerequisite::create([
                         'page_id'   => $page->id,
                         'prerequisiteable_type' => 'sheet',
-                        'prerequisiteable_id' => $stat,
+                        'prerequisiteable_id' => $statId,
                     ]);
                 }
             }
@@ -51,10 +53,10 @@ class PrerequisiteController extends Controller
      * @return false|string
      * @throws \Exception
      */
-    public function delete(Request $request, Action $action)
+    public function delete(Request $request, Prerequisite $prerequisite)
     {
         if ($request->ajax()) {
-            $deleted = $action->delete();
+            $deleted = $prerequisite->delete();
 
             return response()->json(['success' => $deleted]);
         }

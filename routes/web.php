@@ -54,6 +54,7 @@ Route::delete('/actions/{action}/delete', 'ActionController@delete')->name('acti
 
 // Prerequisites
 Route::post('/prerequisite/store/{page}', 'PrerequisiteController@store')->name('prerequisite.store');
+Route::delete('/prerequisite/{prerequisite}/delete', 'PrerequisiteController@delete')->name('prerequisite.delete');
 
 // Authentication
 Auth::routes();
