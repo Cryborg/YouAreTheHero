@@ -1,4 +1,4 @@
-<a class="btn btn-primary ml-1 w-25 mb-4" href="{{ route('page.edit', $page->id) }}">{{ trans('story.edit') }}</a>
+<a class="btn btn-primary ml-1 w-25 mb-4" href="{{ route('page.edit', $page->id) }}">{{ trans('page.edit') }}</a>
 
 <div class="form-group">
     {!! Form::label('title-' . $page->id, trans('model.title'), ['class' => 'control-label']) !!}

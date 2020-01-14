@@ -22,8 +22,6 @@ use Illuminate\Support\Facades\Redirect;
 use App\Repositories\PageRepository;
 use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
-use Spatie\Menu\Laravel\Facades\Menu;
-use Spatie\Menu\Laravel\Link;
 
 class StoryController extends Controller
 {
@@ -323,7 +321,7 @@ class StoryController extends Controller
     {
         $story_id = $story instanceof Story ? $story->id : $story;
 
-        return Character::where(['user_id' => Auth::id(), 'story_id' => $story_id])->firstOrFail();
+        return Character::where(['user_id' => Auth::id(), 'story_id' => $story_id])->first();
     }
 
     private function getAllChoicesForPage(Page $page)

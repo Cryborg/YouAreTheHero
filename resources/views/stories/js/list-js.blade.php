@@ -18,7 +18,7 @@
 
             var replacements = {
                 "%TEXT%":decodedString,
-                "%PLAY_URL%": route('story.play', {'story': d.id}),
+                "%PLAY_URL%": '<a href="' + route('story.play', {'story': d.id}) + '" class="btn btn-primary card-link w-100 mb-1">{{ trans('story.edit') }}</a>',
                 "%EDIT_URL%": d.can_edit == true
                     ? '<a href="' + route('story.edit', {'story': d.id}) + '" class="btn btn-success card-link w-100 mb-1">{{ trans('story.edit') }}</a>'
                     : ' ',
@@ -41,7 +41,7 @@
                 details: false
             },
             language: {
-                "url": "{{ asset('lang/datatables-' . Config::get('app.locale') . '.json') }}"
+                "url": "{{ asset('lang/' . Config::get('app.locale') . '/datatables.json') }}"
             },
             ajax: '{{ route('stories.list.ajax', ['draft' => false]) }}',
             columns: [
@@ -64,7 +64,9 @@
                     }, 'width': '15%'},
                 {data: 'locale', 'width': '10%'},
                 {data: 'user', 'width': '20%'},
-                {data: 'created_at', 'width': '20%'},
+                {data: 'updated_at', "render": function (data, type, row) {
+                        return moment(data).fromNow();
+                    }, 'width': '20%'},
                 {data: 'description'},
             ],
             "columnDefs": [

@@ -28,7 +28,7 @@
                 <th>{{ __('common.genres') }}</th>
                 <th>{{ __('common.language') }}</th>
                 <th>{{ __('common.author') }}</th>
-                <th>{{ __('common.created_at') }}</th>
+                <th>{{ __('common.updated_at') }}</th>
                 <th></th>   {{-- Hidden description field for global search --}}
             </tr>
         </thead>
@@ -40,7 +40,7 @@
             <th>{{ __('common.genres') }}</th>
             <th>{{ __('common.language') }}</th>
             <th>{{ __('common.author') }}</th>
-            <th>{{ __('common.created_at') }}</th>
+            <th>{{ __('common.updated_at') }}</th>
             <th></th>
         </tr>
         </tfoot>

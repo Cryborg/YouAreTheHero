@@ -10,22 +10,20 @@
             <tr>
                 <th></th>   {{-- Child rows button --}}
                 <th></th>   {{-- Story ID --}}
-                <th></th>   {{-- Link to last page edit --}}
                 <th>{{ __('admin.title') }}</th>
                 <th>{{ __('common.language') }}</th>
                 <th>{{ __('common.author') }}</th>
-                <th>{{ __('common.created_at') }}</th>
+                <th>{{ __('common.updated_at') }}</th>
             </tr>
         </thead>
         <tfoot>
         <tr>
             <th></th>
             <th></th>
-            <th></th>
             <th>{{ __('admin.title') }}</th>
             <th>{{ __('common.language') }}</th>
             <th>{{ __('common.author') }}</th>
-            <th>{{ __('common.created_at') }}</th>
+            <th>{{ __('common.updated_at') }}</th>
         </tr>
         </tfoot>
     </table>
@@ -39,13 +37,32 @@
                 var dom = parser.parseFromString(d.description, 'text/html');
                 var decodedString = dom.body.textContent;
 
-                return '<div class="card-body">' + decodedString + '</div>';
+                // Backticks are mandatory here !
+                var template = `{!! includeAsJsString('stories.partials.story_details') !!}`;
+
+                var replacements = {
+                    "%TEXT%":decodedString,
+                    "%PLAY_URL%": '<a href="' + route('page.edit', {'page': d.last_created_page.id}) + '#current_page" class="btn btn-primary card-link w-100 mb-1">{{ trans('story.resume_editing') }}</a>',
+                    "%EDIT_URL%": d.can_edit == true
+                        ? '<a href="' + route('story.edit', {'story': d.id}) + '" class="btn btn-success card-link w-100 mb-1">{{ trans('story.edit') }}</a>'
+                        : ' ',
+                    "%RESET_STORY%": ' ',
+                    "%AUTHOR%": d.user
+                };
+
+                return template.replace(/%\w+%/g, function(all) {
+                    return replacements[all] || all;
+                });
             }
 
             var table = $('#stories-table').DataTable({
+                dom: 'rt<p><"clear">',
                 processing: true,
                 serverSide: true,
                 ajax: '{{ route('stories.list.ajax', ['draft' => true]) }}',
+                language: {
+                    "url": "{{ asset('lang/' . Config::get('app.locale') . '/datatables.json') }}"
+                },
                 columns: [
                     {
                         "className":      'details-control',
@@ -54,16 +71,20 @@
                         "defaultContent": '',
                         "width":          '5%'
                     },
-                    {data: 'id', render: function ( data, type, row ) {
-                            return '<a href="' + route('story.edit', data) + '">' + data + '</a>';
-                        }, 'width': '5%'},
-                    {data: 'last_created_page', render: function ( data, type, row ) {
-                            return '<a href="' + route('page.edit', data.id) + '#current_page">{{ trans('story.resume_editing') }}</a>';
-                        }, 'width': '5%'},
+                    {data: 'id'},
                     {data: 'title'},
                     {data: 'locale', 'width': '10%'},
-                    {data: 'user_id', 'width': '20%'},
-                    {data: 'created_at', 'width': '20%'}
+                    {data: 'user', 'width': '20%'},
+                    {data: 'created_at', "render": function (data, type, row) {
+                            return moment(data).fromNow();
+                        }, 'width': '20%'}
+                ],
+                "columnDefs": [
+                    {
+                        "targets": [ 1 ],
+                        "visible": false,
+                        "searchable": false
+                    }
                 ]
             });
 

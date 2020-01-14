@@ -3,12 +3,17 @@
 <script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/datatables.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/moment.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('lang/' . Config::get('app.locale') . '/moment-lang.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/datatables.moment.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.toast.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.connections.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/js.cookie.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/summernote.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/summernote-fr-FR.js') }}"></script>
+<script type="text/javascript" src="{{ asset('lang/' . Config::get('app.locale') . '/summernote.js') }}"></script>
 <script type="text/javascript">
+    moment.locale('fr');
+
     // Global ajax options
     $.ajaxSetup({
         headers: {

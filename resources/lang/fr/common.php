@@ -14,7 +14,7 @@ return [
     'inventory'             => 'Inventaire',
     'language'              => 'Langue',
     'author'                => 'Auteur',
-    'created_at'            => 'Date de création',
+    'updated_at'            => 'Dernière mise à jour',
     'money'                 => 'Bourse',
     'price'                 => 'Prix : :price',
     'quantity'              => 'Quantité : :quantity',

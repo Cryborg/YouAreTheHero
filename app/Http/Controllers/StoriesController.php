@@ -49,7 +49,7 @@ class StoriesController extends Controller
      */
     public function ajaxList(Request $request)
     {
-        $query = Story::select(['id','title','description','user_id','locale','created_at']);
+        $query = Story::select(['id','title','description','user_id','locale','updated_at']);
 
         $draft = $request->get('draft') == '1';
         $cacheKey = 'stories.list';

@@ -24,7 +24,7 @@
             {!! Form::select('locale', $locales , $story ? $story->locale : old('locale') , ['class' => 'form-control']) !!}
         </div>
 
-        <div class="form-group">
+        <div class="form-group hidden">
             {!! Form::label('layout', trans('model.layout'), ['class' => 'control-label']) !!}
             {!! Form::select('layout', $layouts , $story ? $story->layout : old('layout') , ['class' => 'form-control']) !!}
         </div>
