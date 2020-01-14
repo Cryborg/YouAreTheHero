@@ -1,3 +1,4 @@
+<h3>{{ trans('item.items_title') }}</h3>
 <table class="table" id="actions_list">
     <thead class="thead-light">
         <th scope="col">{{ trans('item.name') }}</th>

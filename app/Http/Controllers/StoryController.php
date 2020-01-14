@@ -56,8 +56,7 @@ class StoryController extends Controller
 
         $page_id = getSession('page_id');
         if (!empty($page_id)) {
-            $page = Page::where('id', $page_id)
-                        ->first();
+            $page = Page::where('id', $page_id)->first();
         }
 
         setSession('story_id', $story->id);
@@ -97,7 +96,7 @@ class StoryController extends Controller
         $visitedPlaces = $character->checkpoints;
 
         $visitedPlaces = $visitedPlaces->map(function ($value, $key) {
-            $page = Page::where('id', $value['page_id'])->first();
+            $page = Page::where('id', $value['page_id'])->firstOrFail();
             $value['page_title'] = $page->title;
             return $value;
         });

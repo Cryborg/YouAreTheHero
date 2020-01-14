@@ -65,23 +65,29 @@ class Page extends Model
     /**
      * Get the available choices for the current page
      *
-     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function choices()
     {
         $pagelink = Cache::remember('choices_' . $this->id, Config::get('app.story.cache_ttl'), function () {
-            return PageLink::where('page_from', $this->id)
+            $pageLink = PageLink::where('page_from', $this->id)->first();
+
+            if ($pageLink) {
+                return Page::where('pages.id', $pageLink->page_to)
                            ->select([
-                                   'page_link.link_text',
-                                   'pages.*',
-                               ]
+                               'page_link.page_to',
+                               'page_link.link_text',
+                               'pages.*'
+                           ]
                            )
-                           ->join('pages', 'pages.id', '=', 'page_link.page_to')
+                           ->join('page_link', 'page_link.page_to', '=', 'pages.id')
                            ->get();
+            }
+
+            return null;
         }
         );
 
-        return $pagelink;
+        return $pagelink ?? collect();
     }
 
     /**
@@ -111,8 +117,8 @@ class Page extends Model
         // - the already bound children
         $potentialPages = Page::where('story_id', $this->story_id)
                               ->whereNotIn('id', $this->choices()
-                                  ->pluck('id')
-                                  ->toArray()
+                                                      ->pluck('id')
+                                                      ->toArray()
                               )
                               ->whereNotIn('id', [$this->id])
                               ->orderBy('title', 'asc')
@@ -143,6 +149,8 @@ class Page extends Model
 
     public function prerequisites()
     {
-        return \App\Models\Prerequisite::with('prerequisiteable')->where('page_id', $this->id)->get();
+        return \App\Models\Prerequisite::with('prerequisiteable')
+                                       ->where('page_id', $this->id)
+                                       ->get();
     }
 }

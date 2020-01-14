@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'items_title'   => 'Objets',
     'item'          => 'Objet',
     'stat'          => 'Compétence',
     'name'          => 'Nom',

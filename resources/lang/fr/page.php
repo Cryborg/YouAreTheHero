@@ -18,6 +18,7 @@ return [
     'concerned_item'                    => 'Objet concerné',
     'concerned_item_help'               => "Choisis d'abord l'objet concerné par l'action que tu veux ajouter.",
 
+    'prerequisite_title'                => 'Prérequis',
     'prerequisite_modal_title'          => 'Ajout de prérequis',
     'current_page_prerequisites_help'   => 'Liste des prérequis pour arriver sur cette page.',
     'required_type_label'               => 'Type',
