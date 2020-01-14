@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\Sheet;
 use App\Classes\Action;
 use App\Models\Inventory;
 use App\Models\Item;
 use App\Models\Checkpoint;
+use App\Models\Stat;
 use App\Models\UniqueItemsUsed;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Session;
 
 use App\Repositories\PageRepository;
 use Illuminate\Support\Facades\View;
@@ -53,12 +52,11 @@ class StoryController extends Controller
         if ($page !== null) {
             setSession('page_id', $page->id);
             return Redirect::route('story.play', ['story' => $story->id]);//'/story/' . $story->id);
-        } else {
-            $page = getSession('page_id');
-            if (!empty($page)) {
-                $page = Page::where('id', $page)
-                            ->first();
-            }
+        }
+
+        $page_id = getSession('page_id');
+        if (!empty($page_id)) {
+            $page = Page::where('id', $page_id)->first();
         }
 
         setSession('story_id', $story->id);
@@ -74,21 +72,22 @@ class StoryController extends Controller
             return Redirect::route('character.create', [
                 'story' => $story->id,
             ]);
-        } else { // The character exists, let's go back to the previous save point
-            // Get the last visited page
-            if ($page === null || empty($page)) {
-                $page = $story->getCurrentPage($character->page_id);
+        }
+
+        // The character exists, let's go back to the previous save point
+        // Get the last visited page
+        if ($page === null || empty($page)) {
+            $page = $story->getCurrentPage($character->page_id);
+        }
+
+        if ($page) {
+            if ($page->is_last) {
+                $page->choices = 'gameover';
+            } else {
+                $this->getFilteredChoicesFromPage($page, $character);
             }
 
-            if ($page) {
-                if ($page->is_last) {
-                    $page->choices = 'gameover';
-                } else {
-                    $this->getFilteredChoicesFromPage($page, $character);
-                }
-
-                $character->update(['page_id' => $page->id]);
-            }
+            $character->update(['page_id' => $page->id]);
         }
 
         setSession('character_id', $character->id);
@@ -97,7 +96,7 @@ class StoryController extends Controller
         $visitedPlaces = $character->checkpoints;
 
         $visitedPlaces = $visitedPlaces->map(function ($value, $key) {
-            $page = Page::where('id', $value['page_id'])->first();
+            $page = Page::where('id', $value['page_id'])->firstOrFail();
             $value['page_title'] = $page->title;
             return $value;
         });
@@ -133,14 +132,14 @@ class StoryController extends Controller
             $fulfilled = false;
             $pageTo = $this->page->find($choice->page_to);
 
-            if (!empty($pageTo->prerequisites)) {
-                foreach ($pageTo->prerequisites as $type => $prerequisite) {
-                    switch ($type) {
-                        case 'sheet':
-                            $fulfilled = $this->isSheetPrerequisitesFulfilled($prerequisite, $character);
+            if (!empty($pageTo->prerequisites())) {
+                foreach ($pageTo->prerequisites() as $prerequisite) {
+                    switch (get_class($prerequisite->prerequisiteable)) {
+                        case Stat::class:
+                            $fulfilled = $this->isStatPrerequisitesFulfilled($prerequisite->prerequisiteable, $character);
                             break;
-                        case 'items':
-                            $fulfilled = $this->isItemPrerequisitesFulfilled($prerequisite, $character);
+                        case Item::class:
+                            $fulfilled = $this->isItemPrerequisitesFulfilled($prerequisite->prerequisiteable, $character);
                             break;
                     }
                 }
@@ -241,7 +240,7 @@ class StoryController extends Controller
         $character = $this->getCurrentCharacter($story);
 
         return view('story.partials.sheet', [
-            'caracteristics' => $character->sheet,
+            'sheet' => $character->stats ?? [],
         ]);
     }
 
@@ -269,7 +268,7 @@ class StoryController extends Controller
      *
      * @return bool
      */
-    private function isSheetPrerequisitesFulfilled(array $prerequisites, Character $character): bool
+    private function isStatPrerequisitesFulfilled(Stat $prerequisites, Character $character): bool
     {
         $sheet = $character->sheet;
 
@@ -282,7 +281,7 @@ class StoryController extends Controller
         return false;
     }
 
-    private function isItemPrerequisitesFulfilled($prerequisites, Character $character): bool
+    private function isItemPrerequisitesFulfilled(Item $prerequisites, Character $character): bool
     {
         $itemsInInventory = $character->inventory();
 
@@ -322,9 +321,9 @@ class StoryController extends Controller
      */
     private function getCurrentCharacter($story)
     {
-        $story_id = is_int($story) ? $story : $story->id;
+        $story_id = $story instanceof Story ? $story->id : $story;
 
-        return Character::where(['user_id' => Auth::id(), 'story_id' => $story_id])->first();
+        return Character::where(['user_id' => Auth::id(), 'story_id' => $story_id])->firstOrFail();
     }
 
     private function getAllChoicesForPage(Page $page)

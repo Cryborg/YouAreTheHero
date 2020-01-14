@@ -125,14 +125,6 @@ return true;
 
             $pages[10] = factory(Page::class)->create([
                     'story_id' => $story->id,
-                    'prerequisites' => [
-                        'sheet' => [
-                            'force' => 2,
-                        ],
-                        'items' => [
-                            $marteau->id,
-                        ],
-                    ],
                 ]
             );
             PageLink::create([

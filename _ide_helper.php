@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.6.0 on 2019-12-17 11:06:27.
+ * Generated for Laravel 6.6.0 on 2020-01-06 09:54:55.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -14933,18 +14933,6 @@ namespace Yajra\DataTables\Facades {
  
 }
 
-namespace App\Helpers { 
-
-    /**
-     * 
-     *
-     */ 
-    class ViewHelper {
-         
-    }
- 
-}
-
 namespace Encore\Admin\Facades { 
 
     /**
@@ -20034,8 +20022,6 @@ namespace  {
     class Validator extends \Illuminate\Support\Facades\Validator {}
 
     class View extends \Illuminate\Support\Facades\View {}
-
-    class ViewHelper extends \App\Helpers\ViewHelper {}
 
     class Admin extends \Encore\Admin\Facades\Admin {}
 

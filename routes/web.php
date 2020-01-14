@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home');
 
 // Items
-Route::post('/item/create', 'ItemController@store')->name('item.create.post');
+Route::post('/item/create', 'ItemController@store')->name('item.store');
 
 // Stories
 Route::get('/stories/draft', 'StoriesController@listDraft')->name('stories.list.draft');
@@ -46,12 +46,15 @@ Route::post('/story/ajax_post_children_pages', 'StoryController@postChildrenPage
 // Page
 Route::get('/page/{page}/edit', 'PageController@getEdit')->name('page.edit');
 Route::post('/page/{page}/edit', 'PageController@postEdit')->name('page.edit.post');
-Route::post('/page/{page}/prerequisite', 'PageController@postAddPrerequisite')->name('page.prerequisite.add');
 
 // Actions
 Route::get('/actions/{page}/list', 'ActionController@list')->name('actions.list');
 Route::post('/actions/create/{page}', 'ActionController@store')->name('actions.store');
 Route::delete('/actions/{action}/delete', 'ActionController@delete')->name('actions.delete');
+
+// Prerequisites
+Route::post('/prerequisite/store/{page}', 'PrerequisiteController@store')->name('prerequisite.store');
+Route::delete('/prerequisite/{prerequisite}/delete', 'PrerequisiteController@delete')->name('prerequisite.delete');
 
 // Authentication
 Auth::routes();

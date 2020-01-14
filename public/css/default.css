@@ -9,6 +9,11 @@ html, body {
     font-size: 16px !important;
 }
 
+h1 {
+    border-bottom: 1px solid #acacac;
+    font-variant:small-caps;
+}
+
 #app > nav.navbar:first-child {
     position: fixed;
     z-index: 10;
@@ -213,4 +218,7 @@ div.alert.alert-banner {
 }
 table#stories-table.dataTable {
     border-collapse: collapse;
+}
+div.jq-toast-wrap {
+    width: 500px;
 }

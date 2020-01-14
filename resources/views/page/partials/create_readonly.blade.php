@@ -16,12 +16,13 @@
         @lang('model.is_first')
     </label>
 </div>
-<div class="form-group form-check">
-    <label>
-        {!! Form::checkbox('is_last', 1, $page->is_last, ['disabled' => true]) !!}
-        @lang('model.is_last')
-    </label>
-</div>
+{{-- Can't be the last one as it is a parent --}}
+{{--<div class="form-group form-check">--}}
+{{--    <label>--}}
+{{--        {!! Form::checkbox('is_last', 1, $page->is_last, ['disabled' => true]) !!}--}}
+{{--        @lang('model.is_last')--}}
+{{--    </label>--}}
+{{--</div>--}}
 <div class="form-group form-check">
     <label>
         {!! Form::checkbox('is_checkpoint', 1, $page->is_checkpoint, ['disabled' => true]) !!}

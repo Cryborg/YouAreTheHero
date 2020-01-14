@@ -11,5 +11,10 @@ const mix = require('laravel-mix');
  |
  */
 
+
+mix.autoload({
+    'resources/assets/js/ziggy.js': ['Ziggy', 'window.Ziggy']
+});
+
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');

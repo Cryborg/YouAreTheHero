@@ -2,19 +2,19 @@
 
 namespace App\Models;
 
-use App\Classes\Sheet;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laracasts\Presenter\PresentableTrait;
+use App\Presenters\CharacterPresenter;
 
 class Character extends Model
 {
     use SoftDeletes;
+    use PresentableTrait;
+
+    protected $presenter = CharacterPresenter::class;
 
     protected $guarded = ['id'];
-
-    protected $casts = [
-        'sheet' => 'array',
-    ];
 
 
     public static function boot()
@@ -74,5 +74,10 @@ class Character extends Model
     public function checkpoints(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Checkpoint::class);
+    }
+
+    public function stats()
+    {
+        return $this->hasMany(Stat::class);
     }
 }

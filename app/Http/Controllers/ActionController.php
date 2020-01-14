@@ -29,7 +29,7 @@ class ActionController extends Controller
             // Translate the verb, as we cannot do this in JS without plugin
             $newAction['verb'] = trans('actions.' . $newAction['verb']);
 
-            return json_encode([
+            return response()->json([
                 'action' => $newAction,
                 'success' => true,
             ]);
@@ -50,7 +50,7 @@ class ActionController extends Controller
         if ($request->ajax()) {
             $deleted = $action->delete();
 
-            return json_encode(['success' => $deleted]);
+            return response()->json(['success' => $deleted]);
         }
 
         abort(JsonResponse::HTTP_NOT_FOUND);
@@ -64,6 +64,6 @@ class ActionController extends Controller
      */
     public function list(Request $request, Page $page)
     {
-        return json_encode($page->actions);
+        return response()->json($page->actions);
     }
 }

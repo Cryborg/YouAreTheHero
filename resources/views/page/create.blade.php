@@ -57,6 +57,8 @@
                         <span class="glyphicon glyphicon-plus-sign"></span>
                         {{ trans('actions.add_new_prerequisite') }}
                     </button>
+
+                    @include('page.partials.prerequisites_list', ['page' => $page])
                 </div>
             </div>
             <hr>
@@ -142,7 +144,7 @@
 
     <!-- Modal new Prerequisite -->
     <div class="modal" id="modalCreatePrerequisite" tabindex="-1" role="dialog" aria-labelledby="modalCreatePrerequisiteTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalCreatePrerequisiteTitle">{{ trans('page.prerequisite_modal_title') }}</h5>

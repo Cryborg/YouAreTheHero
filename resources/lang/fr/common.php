@@ -11,6 +11,7 @@ return [
     'title_pages'           => 'Pages',
     'title_stories'         => 'Histoires',
     'description'           => 'Description',
+    'inventory'             => 'Inventaire',
     'language'              => 'Langue',
     'author'                => 'Auteur',
     'created_at'            => 'Date de création',

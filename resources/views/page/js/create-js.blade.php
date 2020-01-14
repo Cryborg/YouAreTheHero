@@ -117,34 +117,51 @@
             var $this = $(this);
             var data = {};
 
+            // If the "item" tab is selected
             if ($('#tr1').hasClass('active')) {
                 data = {
-                    'items': $('#prerequisite_item_id').val()
+                    'items': $('#prerequisite_item_id').val(),
+                    'quantity': $('#prerequisite_quantity').val()
                 };
             }
 
+            // If the "stats" tab is selected
             if ($('#tr2').hasClass('active')) {
                 if ($('#sheet option:selected').val() !== '') {
                     var key = $('#sheet option:selected').text();
                     var value = $('#level').val();
 
-                    data['sheet'] = {};
-                    data['sheet'][key] = value;
+                    data['stats'] = {};
+                    data['stats'][key] = value;
                 }
             }
 
             if (Object.entries(data).length > 0 && data.constructor === Object) {
                 $.post({
-                    url: route('page.prerequisite.add', '{{ $page->id }}'),
+                    url: route('prerequisite.store', '{{ $page->id }}'),
                     data: data
                 })
-                    .done(function () {
-                        showToast('success', {
-                            heading: '{{ trans('notification.save_success_title') }}',
-                            text: "{{ trans('notification.save_success_text') }}",
-                        });
+                    .done(function (data) {
+                        if (data.success) {
+                            var items = data.prerequisites.items;
 
-                        $('#modalCreatePrerequisite').modal('hide');
+                            items.forEach(function (item) {
+                                // Adds the new action to the table
+                                prerequisitesListDatatable.row.add([
+                                    '{{ trans('item.item') }}',
+                                    item.name,
+                                    item.quantity,
+                                    '<span class="glyphicon glyphicon-trash delete-prerequisite" data-prerequisite_id="' + item.prerequisite_id + '"></span>'
+                                ]).draw();
+                            });
+
+                            showToast('success', {
+                                heading: '{{ trans('notification.save_success_title') }}',
+                                text: "{{ trans('notification.save_success_text') }}",
+                            });
+
+                            $('#modalCreatePrerequisite').modal('hide');
+                        }
                     })
                     .fail(function (data) {
                         showToast('error', {
@@ -160,43 +177,64 @@
             }
         });
 
-        $('#create_item').on('click', function () {
-            var $this = $(this);
+        function ajaxCreatePost(route, $this, data)
+        {
+            var commonData = {
+                'story_id': {{ $story->id }}
+            };
 
             $.post({
-                url: route('item.create.post'),
-                data: {
-                    'name': $('#item_name').val(),
-                    'default_price': $('#item_price').val(),
-                    'single_use': $('#single_use').is(':checked') ? 1 : 0,
-                    'story_id': {{ $story->id }}
-                }
+                url: route,
+                data: {...data, ...commonData}
             })
-            .done(function (data) {
-                showToast('success', {
-                    heading: '{{ trans('notification.save_success_title') }}',
-                    text: "{{ trans('notification.save_success_text') }}",
-                });
+                .done(function (data) {
+                    showToast('success', {
+                        heading: '{{ trans('notification.save_success_title') }}',
+                        text: "{{ trans('notification.save_success_text') }}",
+                    });
 
-                $('#prerequisite_item_id').append(
-                    '<option value="' + data.item.id + '">' + data.item.name + '</option>'
-                );
-            })
-            .fail(function (data) {
-                showToast('error', {
-                    heading: '{{ trans('notification.save_failed_title') }}',
-                    text: "{{ trans('notification.save_failed_text') }}",
-                    errors: data.responseJSON.errors
-                });
-            })
+                    // Add the newly created item to both lists
+                    $('#prerequisite_item_id, #item_id').append(
+                        '<option value="' + data.item.id + '">' + data.item.name + '</option>'
+                    );
+                })
+                .fail(function (data) {
+                    showToast('error', {
+                        heading: '{{ trans('notification.save_failed_title') }}',
+                        text: "{{ trans('notification.save_failed_text') }}",
+                        errors: data.responseJSON.errors
+                    });
+                })
                 .always(function () {
                     $this.html($this.data('original-text'));
                     $this.prop('disabled', false);
                 });
-        })
+        }
+
+        $('#create_item_action').on('click', function () {
+            var $this = $(this);
+            var route = '{{ route('item.store') }}';
+
+            ajaxCreatePost(route,  $this, {
+                'name': $('#item_name_action').val(),
+                'default_price': $('#item_price_action').val(),
+                'single_use': $('#single_use_action').is(':checked') ? 1 : 0,
+            })
+        });
+
+        $('#create_item_prerequisites').on('click', function () {
+            var $this = $(this);
+            var route = '{{ route('item.store') }}';
+
+            ajaxCreatePost(route, $this, {
+                'name': $('#item_name_prerequisites').val(),
+                'default_price': $('#item_price_prerequisites').val(),
+                'single_use': $('#single_use_prerequisites').is(':checked') ? 1 : 0,
+            })
+        });
     });
 
-    var actionsListDatatable = $('#actions_list').DataTable({
+    var commonDTOptions = {
         dom: 'rt<p><"clear">',
         pagingType: 'simple',
         createdRow: function (row, data, index, cells) {
@@ -208,7 +246,9 @@
             var pagination = $(this).closest('.dataTables_wrapper').find('.dataTables_paginate');
             pagination.toggle(this.api().page.info().pages > 1);
         }
-    });
+    };
+    var actionsListDatatable = $('#actions_list').DataTable(commonDTOptions);
+    var prerequisitesListDatatable = $('#prerequisites_list').DataTable(commonDTOptions);
 
     // When the author chooses an item from the list
     $('#item_id').on('change', function () {
@@ -250,9 +290,7 @@
             'data': serialized,
         })
             .done(function (data) {
-                var result = JSON.parse(data);
-
-                if (result.success) {
+                if (data.success) {
                     // Show the notification
                     showToast('success', {
                         heading: '{{ trans('admin.save_succeeded') }}',
@@ -261,11 +299,11 @@
 
                     // Adds the new action to the table
                     actionsListDatatable.row.add([
-                        result.action.item.name,
-                        result.action.verb,
-                        result.action.quantity,
-                        result.action.price,
-                        '<span class="glyphicon glyphicon-trash" data-action_id="' + result.action.item.id + '"></span>'
+                        data.action.item.name,
+                        data.action.verb,
+                        data.action.quantity,
+                        data.action.price,
+                        '<span class="glyphicon glyphicon-trash delete-action" data-action_id="' + data.action.item.id + '"></span>'
                     ]).draw();
 
                     // Closes the modal
@@ -295,7 +333,7 @@
             });
     });
 
-    $('.glyphicon-trash').on('click', function () {
+    $(document).on('click', '.delete-action', function () {
         var $this = $(this);
         var actionId = $this.data('action_id');
         var loadingClass = 'fa fa-circle-o-notch fa-spin';
@@ -329,5 +367,41 @@
             .always(function () {
                 $this.attr('class', defaultClass);
             });
-    })
+    });
+
+    $(document).on('click', '.delete-prerequisite', function () {
+        var $this = $(this);
+        var prerequisiteId = $this.data('prerequisite_id');
+        var loadingClass = 'fa fa-circle-o-notch fa-spin';
+        var defaultClass = 'glyphicon glyphicon-trash';
+
+        if (!$this.hasClass('fa-spin')) {
+            $this.attr('class', loadingClass);
+        }
+
+        $.ajax({
+            url: route('prerequisite.delete', prerequisiteId),
+            method: 'DELETE'
+        })
+            .done(function () {
+                prerequisitesListDatatable
+                    .row($this.parents('tr'))
+                    .remove()
+                    .draw();
+                showToast('success', {
+                    heading: '{{ trans('notification.deletion_success_title') }}',
+                    text: "{{ trans('notification.deletion_success_text') }}",
+                });
+            })
+            .fail(function (data) {
+                showToast('error', {
+                    heading: '{{ trans('notification.deletion_failed_title') }}',
+                    text: "{{ trans('notification.deletion_failed_text') }}",
+                    errors: data.responseJSON.errors
+                });
+            })
+            .always(function () {
+                $this.attr('class', defaultClass);
+            });
+    });
 </script>

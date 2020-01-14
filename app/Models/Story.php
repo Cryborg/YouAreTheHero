@@ -99,6 +99,11 @@ class Story extends Model
 
         return Page::where('story_id', $this->id)
             ->where('is_first', true)
-            ->first();
+            ->firstOrFail();
+    }
+
+    public function sheet()
+    {
+        return $this->hasMany(StatStory::class);
     }
 }

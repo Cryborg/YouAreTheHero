@@ -63,9 +63,7 @@ class StoriesController extends Controller
                   ->orWhere('user_id', Auth::id());
         }
 
-        $stories = Cache::remember($cacheKey, Config::get('app.story.cache_ttl'), function () use ($query) {
-            return $query->get();
-        });
+        $stories = $query->get();
 
         $stories = $stories->map(function (Story $story, $key) {
             $user                       = Cache::remember('user.' . $story->user_id, Config::get('app.story.cache_ttl'), function() use ($story) {

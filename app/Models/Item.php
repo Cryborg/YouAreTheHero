@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
+use App\Presenters\ItemPresenter;
 
 class Item extends Model
 {
     use PresentableTrait;
 
-    protected $presenter = 'App\\Presenters\\ItemPresenter';
+    protected $presenter = ItemPresenter::class;
 
     protected $guarded   = ['id'];
 
@@ -36,5 +37,15 @@ class Item extends Model
     public function actions()
     {
         return $this->belongsToMany(Action::class);
+    }
+
+    public function story()
+    {
+        return $this->belongsTo(Story::class);
+    }
+
+    public function prerequisites()
+    {
+        return $this->morphMany(Prerequisite::class, 'prerequisiteable');
     }
 }

@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Item;
+use App\Models\Stat;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +28,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Relation::morphMap([
+            'stat' => Stat::class,
+            'item' => Item::class,
+        ]);
+
         Blade::directive('info', function ($expression) {
             return '<div class="alert alert-info d-flex flex-row">' .
                         '<i class="glyphicon glyphicon-info-sign mr-3"></i>' .

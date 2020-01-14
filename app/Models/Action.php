@@ -6,12 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Laracasts\Presenter\PresentableTrait;
+use App\Presenters\ActionPresenter;
 
 class Action extends Model
 {
     use PresentableTrait;
 
-    protected $presenter = 'App\\Presenters\\ActionPresenter';
+    protected $presenter = ActionPresenter::class;
 
     protected $guarded = ['id'];
 

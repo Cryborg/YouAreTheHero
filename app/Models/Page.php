@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Prerequisite;
 use Faker\Provider\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -23,7 +24,6 @@ class Page extends Model
 
     // Casts JSON as array
     protected $casts = [
-        'prerequisites' => 'array',
         'is_first'      => 'boolean',
         'is_last'       => 'boolean',
         'is_checkpoint' => 'boolean',
@@ -65,23 +65,29 @@ class Page extends Model
     /**
      * Get the available choices for the current page
      *
-     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function choices()
     {
         $pagelink = Cache::remember('choices_' . $this->id, Config::get('app.story.cache_ttl'), function () {
-            return PageLink::where('page_from', $this->id)
+            $pageLink = PageLink::where('page_from', $this->id)->first();
+
+            if ($pageLink) {
+                return Page::where('pages.id', $pageLink->page_to)
                            ->select([
-                                   'page_link.link_text',
-                                   'pages.*',
-                               ]
+                               'page_link.page_to',
+                               'page_link.link_text',
+                               'pages.*'
+                           ]
                            )
-                           ->join('pages', 'pages.id', '=', 'page_link.page_to')
+                           ->join('page_link', 'page_link.page_to', '=', 'pages.id')
                            ->get();
+            }
+
+            return null;
         }
         );
 
-        return $pagelink;
+        return $pagelink ?? collect();
     }
 
     /**
@@ -91,7 +97,6 @@ class Page extends Model
      */
     public function parents()
     {
-        //TODO: use cache ?
         return PageLink::where('page_to', $this->id)
                        ->select([
                                'page_link.link_text',
@@ -112,8 +117,8 @@ class Page extends Model
         // - the already bound children
         $potentialPages = Page::where('story_id', $this->story_id)
                               ->whereNotIn('id', $this->choices()
-                                  ->pluck('id')
-                                  ->toArray()
+                                                      ->pluck('id')
+                                                      ->toArray()
                               )
                               ->whereNotIn('id', [$this->id])
                               ->orderBy('title', 'asc')
@@ -140,5 +145,12 @@ class Page extends Model
         $validated['page_id'] = $this->id;
 
         return Action::create($validated);
+    }
+
+    public function prerequisites()
+    {
+        return \App\Models\Prerequisite::with('prerequisiteable')
+                                       ->where('page_id', $this->id)
+                                       ->get();
     }
 }

@@ -20,14 +20,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // Admin tables
-        $this->call(AdminUsersTableSeeder::class);
-        $this->call(AdminMenuTableSeeder::class);
-        $this->call(AdminPermissionsTableSeeder::class);
-        $this->call(AdminRoleMenuTableSeeder::class);
-        $this->call(AdminRolePermissionsTableSeeder::class);
-        $this->call(AdminRoleUsersTableSeeder::class);
-        $this->call(AdminUserPermissionsTableSeeder::class);
-        $this->call(AdminRolesTableSeeder::class);
+//        $this->call(AdminUsersTableSeeder::class);
+//        $this->call(AdminMenuTableSeeder::class);
+//        $this->call(AdminPermissionsTableSeeder::class);
+//        $this->call(AdminRoleMenuTableSeeder::class);
+//        $this->call(AdminRolePermissionsTableSeeder::class);
+//        $this->call(AdminRoleUsersTableSeeder::class);
+//        $this->call(AdminUserPermissionsTableSeeder::class);
+//        $this->call(AdminRolesTableSeeder::class);
 
         \Illuminate\Support\Facades\Artisan::call('cache:clear');
 
@@ -38,6 +38,10 @@ class DatabaseSeeder extends Seeder
         $this->call(PageLinkTableSeeder::class);
         $this->call(ItemsTableSeeder::class);
         $this->call(ActionsTableSeeder::class);
+        $this->call(CharactersTableSeeder::class);
+        $this->call(StatStoryTableSeeder::class);
+        $this->call(StatsTableSeeder::class);
+        $this->call(PrerequisitesTableSeeder::class);
     }
 }
 

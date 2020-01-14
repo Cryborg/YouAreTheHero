@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\Sheet;
+use App\Models\Stat;
 use App\Models\Character;
 use App\Models\Story;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -26,22 +27,32 @@ class CharacterController extends Controller
 
     public function store(Request $request, Story $story)
     {
-        $page = $story->getCurrentPage();
+        if (request()->ajax()) {
+            $page = $story->getCurrentPage();
+            $stats = $request->get('stats');
 
-        $sheet = new Sheet($story);
+            $character = Character::create([
+                'name'     => $request->get('name'),
+                'user_id'  => Auth::id(),
+                'story_id' => $story->id,
+                'page_id'  => $page->id,
+            ]
+            );
 
-        $character = Character::create([
-            'name' => $request->get('name'),
-            'user_id' => Auth::id(),
-            'story_id' => $story->id,
-            'page_id' => $page->id,
-            'sheet' => $sheet->getArray()
-        ]);
+            if ($stats) {
+                foreach ($stats as $stat) {
+                    Stat::create([
+                        'user_id'    => Auth::id(),
+                        'name'  => $stat['name'],
+                        'value' => $stat['value'],
+                    ]
+                    );
+                }
+            }
 
-        $character->sheet = $sheet;
+            return response()->json(['success' => true]);
+        }
 
-        $character->save();
-
-        return Redirect::to('story.play', ['story' => $story->id]);
+        abort(JsonResponse::HTTP_NOT_FOUND);
     }
 }

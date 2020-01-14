@@ -12,12 +12,12 @@ class StoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('stories')->delete();
-        
+
         \DB::table('stories')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'title' => 'Emergence',
@@ -30,7 +30,7 @@ class StoriesTableSeeder extends Seeder
                 'created_at' => '2019-12-19 16:29:44',
                 'updated_at' => '2019-12-19 16:29:44',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'title' => 'Un nouveau départ',
@@ -44,7 +44,5 @@ class StoriesTableSeeder extends Seeder
                 'updated_at' => '2019-12-19 16:29:44',
             ),
         ));
-        
-        
     }
 }
