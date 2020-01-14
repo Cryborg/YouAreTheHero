@@ -24,7 +24,7 @@
             <tr>
                 <th></th>   {{-- Child rows button --}}
                 <th></th>   {{-- hidden stories IDs (used by Datatables & JS --}}
-                <th>{{ __('admin.title') }}</th>
+                <th>{{ __('story.title') }}</th>
                 <th>{{ __('common.genres') }}</th>
                 <th>{{ __('common.language') }}</th>
                 <th>{{ __('common.author') }}</th>
@@ -36,8 +36,8 @@
         <tr>
             <th></th>
             <th></th>
-            <th>{{ __('admin.title') }}</th>
-            <th>{{ __('common.genres') }}</th>
+            <th>{{ __('story.title') }}</th>
+            <th>{{ __('story.genres') }}</th>
             <th>{{ __('common.language') }}</th>
             <th>{{ __('common.author') }}</th>
             <th>{{ __('common.updated_at') }}</th>

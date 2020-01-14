@@ -13,7 +13,7 @@
                 <td>{{ $prerequisite->prerequisiteable->name }}</td>
                 <td>{{ $prerequisite->quantity }}</td>
                 <td class="text-center">
-                    <span class="glyphicon glyphicon-trash delete-prerequisite" data-prerequisite_id="{{ $prerequisite->id }}" title="{{ trans('admin.delete') }}"></span>
+                    <span class="glyphicon glyphicon-trash delete-prerequisite" data-prerequisite_id="{{ $prerequisite->id }}" title="{{ trans('common.delete') }}"></span>
                 </td>
             </tr>
         @endforeach

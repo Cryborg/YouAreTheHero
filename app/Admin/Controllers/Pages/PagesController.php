@@ -37,7 +37,7 @@ class PagesController extends AdminController
                 // No need for this, we will have our own creation layout
                 $grid->disableCreateButton();
 
-                $grid->column('title', __('admin.title'));
+                $grid->column('title', __('story.title'));
 
                 $grid->is_first(__('admin.is_first_page'))->display(function ($released) {
                     return $released ? 'Yes' : '-';

@@ -45,7 +45,7 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label ml-3" for="remember">
-                                        {{ trans('admin.remember_me') }}
+                                        {{ trans('auth.remember_me') }}
                                     </label>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ trans('admin.login') }}
+                                    {{ trans('auth.login') }}
                                 </button>
                             </div>
                             @if (Route::has('password.request'))
@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="col-6 text-left">
                                         <a class="nav-link" href="{{ route('password.request') }}">
-                                            {{ trans('admin.forgot_password') }}
+                                            {{ trans('auth.forgot_password') }}
                                         </a>
                                     </div>
                             @endif

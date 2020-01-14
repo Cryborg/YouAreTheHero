@@ -158,7 +158,7 @@
                     @include('page.partials.modal_prerequisites', ['page' => $page])
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('admin.close') }}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('common.close') }}</button>
                     <button type="button" class="btn btn-success" id="add_prerequisite" data-original-text="{{ trans('actions.add_prerequisite') }}">{{ trans('actions.add_prerequisite') }}</button>
                 </div>
             </div>

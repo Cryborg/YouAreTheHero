@@ -10,7 +10,7 @@
             <tr>
                 <th></th>   {{-- Child rows button --}}
                 <th></th>   {{-- Story ID --}}
-                <th>{{ __('admin.title') }}</th>
+                <th>{{ __('story.title') }}</th>
                 <th>{{ __('common.language') }}</th>
                 <th>{{ __('common.author') }}</th>
                 <th>{{ __('common.updated_at') }}</th>
@@ -20,7 +20,7 @@
         <tr>
             <th></th>
             <th></th>
-            <th>{{ __('admin.title') }}</th>
+            <th>{{ __('story.title') }}</th>
             <th>{{ __('common.language') }}</th>
             <th>{{ __('common.author') }}</th>
             <th>{{ __('common.updated_at') }}</th>

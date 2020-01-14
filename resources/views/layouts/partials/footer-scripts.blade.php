@@ -4,14 +4,17 @@
 <script type="text/javascript" src="{{ asset('js/datatables.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/moment.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('lang/' . Config::get('app.locale') . '/moment-lang.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/datatables.moment.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.toast.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.connections.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/js.cookie.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/summernote.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('lang/' . Config::get('app.locale') . '/summernote.js') }}"></script>
 <script type="text/javascript" src="{{ asset('vendor/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
+
+@if (Config::get('app.locale') !== 'en_GB')
+    <script type="text/javascript" src="{{ asset('lang/' . Config::get('app.locale') . '/moment-lang.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('lang/' . Config::get('app.locale') . '/summernote.js') }}"></script>
+@endif
 <script type="text/javascript">
     moment.locale('fr');
 

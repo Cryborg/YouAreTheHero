@@ -102,7 +102,7 @@
 
                     showToast('error', {
                         heading: '{{ trans('notification.save_failed_title') }}',
-                        text: "{{ trans('admin.save_failed_text') }}",
+                        text: "{{ trans('notification.save_failed_text') }}",
                         errors: data.responseJSON.errors
                     });
 
@@ -293,8 +293,8 @@
                 if (data.success) {
                     // Show the notification
                     showToast('success', {
-                        heading: '{{ trans('admin.save_succeeded') }}',
-                        text: "{{ trans('actions.new_action_successfully_added') }}",
+                        heading: '{{ trans('notification.save_success_title') }}',
+                        text: "{{ trans('notification.save_success_text') }}",
                     });
 
                     // Adds the new action to the table
@@ -322,7 +322,7 @@
                     });
                 }
                 showToast('error', {
-                    heading: '{{ trans('admin.error_title') }}',
+                    heading: '{{ trans('notification.save_failed_title') }}',
                     text: "{{ trans('notification.new_action_not_added') }}",
                     errors: data.responseJSON.errors
                 });

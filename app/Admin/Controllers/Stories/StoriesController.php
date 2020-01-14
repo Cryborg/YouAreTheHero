@@ -31,7 +31,7 @@ class StoriesController extends AdminController
                 $grid->disableExport();
 
                 $grid->id('id')->setAttributes(['width' => '5%']);
-                $grid->column('title', __('admin.title'));
+                $grid->column('title', __('story.title'));
 
                 $grid->column('genres', __('common.genres'))->display(function($items){
                     $labels = [];

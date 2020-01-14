@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'fr',
+    'locale' => 'fr_FR',
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'fr',
+    'fallback_locale' => 'fr_FR',
 
     /*
     |--------------------------------------------------------------------------
@@ -170,6 +170,7 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         Orangehill\Iseed\IseedServiceProvider::class,
         Tightenco\Ziggy\ZiggyServiceProvider::class,
+        Barryvdh\TranslationManager\ManagerServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -246,7 +247,5 @@ return [
     'languages' => [
         'fr_FR',
         'en_GB',
-        'es_ES',
-        'de_DE',
     ],
 ];

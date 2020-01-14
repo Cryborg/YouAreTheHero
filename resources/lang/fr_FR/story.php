@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'title'                 => 'Titre',
     'create_title'          => 'Nouvelle histoire',
     'create_submit'         => 'Enregistrer',
     'create_page'           => 'Nouvelle page',
