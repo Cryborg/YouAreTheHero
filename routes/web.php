@@ -62,3 +62,5 @@ Auth::routes();
 // Character
 Route::get('/character/create/{story}', 'CharacterController@getCreate')->name('character.create');
 Route::post('/character/create/{story}', 'CharacterController@store')->name('character.create.post');
+
+Route::get('language/{lang}', 'HomeController@language')->name('language');

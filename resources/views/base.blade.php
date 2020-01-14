@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/default.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap-grid.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap-select/css/bootstrap-select.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.dataTables.min.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/laravel-admin.min.css') }}"/>    {{-- FIXME: overkill, remove this and fix the navbar--}}
@@ -53,6 +54,26 @@
 
                     {{-- Right Side Of Navbar --}}
                     <ul class="navbar-nav ml-auto">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#" id="navbarDropdownFlag" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <img width="32" height="32" alt="{{ session('locale') }}"
+                                        src="{!! asset('img/flags/' . session('locale') . '.png') !!}"/>
+                                </a>
+                                <div id="flags" class="dropdown-menu" aria-labelledby="navbarDropdownFlag">
+                                    @foreach(config('app.languages') as $locale)
+                                        @if($locale != session('locale'))
+                                            <a class="dropdown-item" href="{{ route('language', $locale) }}">
+                                                <img width="32" height="32" alt="{{ session('locale') }}"
+                                                    src="{!! asset('img/flags/' . $locale . '.png') !!}"/>
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </li>
+                        </ul>
+
                         {{-- Authentication Links --}}
                         @guest
                             <li class="nav-item">

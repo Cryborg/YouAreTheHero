@@ -38,6 +38,18 @@
             </div>
         @endif
 
+        <div class="form-group col-xs-12 col-lg-3">
+            {!! Form::label('genres', trans('story.genres_label')) !!}
+            <p class="help-block">{!! trans('story.genres_help') !!}</p>
+            <select class="selectpicker" title="{{ trans('story.select_genres_placeholder') }}"
+                size="6" id="genres" name="genres[]" multiple required
+                data-live-search="true" data-max-options="5">
+                @foreach($genres as $genre)
+                    <option value="{{ $genre->id }}">{{ $genre->label }}</option>
+                @endforeach
+            </select>
+        </div>
+
         {!! Form::submit(trans('story.create_submit'), ['class' => 'form-control btn btn-primary']) !!}
     {!! Form::close() !!}
 

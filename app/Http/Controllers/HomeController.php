@@ -25,4 +25,11 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function language(String $locale)
+    {
+        $locale = in_array($locale, config('app.languages')) ? $locale : config('app.fallback_locale');
+        session(['locale' => $locale]);
+        return back();
+    }
 }

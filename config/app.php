@@ -245,7 +245,8 @@ return [
     ],
     'languages' => [
         'fr_FR',
-        'en_US',
+        'en_GB',
         'es_ES',
+        'de_DE',
     ],
 ];

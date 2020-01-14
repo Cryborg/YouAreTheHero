@@ -21,6 +21,7 @@
         "laravelcollective/html": "^6.0",
         "matthiasmullie/minify": "^1.3",
         "orangehill/iseed": "^2.6",
+        "snapappointments/bootstrap-select": "^1.13",
         "tightenco/ziggy": "^0.8.1",
         "twbs/bootstrap": "^4.3",
         "yajra/laravel-datatables-oracle": "~9.0"
@@ -72,11 +73,17 @@
         ],
         "post-install-cmd": [
             "php artisan vendor:publish --tag=public --force",
-            "php artisan telescope:publish"
+            "php artisan telescope:publish",
+            "mkdir -p public/vendor/bootstrap-select",
+            "cp -R vendor/snapappointments/bootstrap-select/dist/js/ public/vendor/bootstrap-select/js/",
+            "cp -R vendor/snapappointments/bootstrap-select/dist/css/ public/vendor/bootstrap-select/css/"
         ],
         "post-update-cmd": [
             "php artisan vendor:publish --tag=public --force",
-            "php artisan telescope:publish"
+            "php artisan telescope:publish",
+            "mkdir -p public/vendor/bootstrap-select",
+            "cp -R vendor/snapappointments/bootstrap-select/dist/js/ public/vendor/bootstrap-select/js/",
+            "cp -R vendor/snapappointments/bootstrap-select/dist/css/ public/vendor/bootstrap-select/css/"
         ]
     }
 }

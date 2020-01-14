@@ -11,6 +11,7 @@
 <script type="text/javascript" src="{{ asset('js/js.cookie.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/summernote.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('lang/' . Config::get('app.locale') . '/summernote.js') }}"></script>
+<script type="text/javascript" src="{{ asset('vendor/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
 <script type="text/javascript">
     moment.locale('fr');
 

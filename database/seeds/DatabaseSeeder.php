@@ -42,6 +42,7 @@ class DatabaseSeeder extends Seeder
         $this->call(StatStoryTableSeeder::class);
         $this->call(StatsTableSeeder::class);
         $this->call(PrerequisitesTableSeeder::class);
+        $this->call(GenresTableSeeder::class);
     }
 }
 

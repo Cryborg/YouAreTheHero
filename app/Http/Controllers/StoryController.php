@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Classes\Action;
+use App\Models\Genre;
 use App\Models\Inventory;
 use App\Models\Item;
 use App\Models\Checkpoint;
@@ -370,6 +371,7 @@ class StoryController extends Controller
             'story' => $story,
             'route' => $postRoute,
             'param' => $param,
+            'genres' => Genre::all(),
         ];
 
         $view = View::make('story.create', $data);
@@ -433,8 +435,10 @@ class StoryController extends Controller
             'locale' => 'required',
             'layout' => 'required',
             'is_published' => 'boolean',
+            'genres' => 'required|array|between:1,5',
         ]);
 
+dd($validated);
         $story->update($validated);
 
         return Redirect::to(route('story.edit', $story->id));
