@@ -8,6 +8,7 @@ use App\Models\Inventory;
 use App\Models\Item;
 use App\Models\Checkpoint;
 use App\Models\Stat;
+use App\Models\StoryGenre;
 use App\Models\UniqueItemsUsed;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -438,7 +439,17 @@ class StoryController extends Controller
             'genres' => 'required|array|between:1,5',
         ]);
 
-dd($validated);
+        StoryGenre::where('story_id', $story->id)->delete();
+
+        foreach ($validated['genres'] as $genre) {
+            StoryGenre::create([
+                'story_id' => $story->id,
+                'genre_id' => (int) $genre,
+            ]);
+        }
+
+        unset($validated['genres']);
+
         $story->update($validated);
 
         return Redirect::to(route('story.edit', $story->id));

@@ -79,7 +79,7 @@
                             return moment(data).fromNow();
                         }, 'width': '20%'}
                 ],
-                "columnDefs": [
+                columnDefs: [
                     {
                         "targets": [ 1 ],
                         "visible": false,

@@ -18,7 +18,7 @@
 
             var replacements = {
                 "%TEXT%":decodedString,
-                "%PLAY_URL%": '<a href="' + route('story.play', {'story': d.id}) + '" class="btn btn-primary card-link w-100 mb-1">{{ trans('story.edit') }}</a>',
+                "%PLAY_URL%": '<a href="' + route('story.play', {'story': d.id}) + '" class="btn btn-primary card-link w-100 mb-1">{{ trans('story.start_playing') }}</a>',
                 "%EDIT_URL%": d.can_edit == true
                     ? '<a href="' + route('story.edit', {'story': d.id}) + '" class="btn btn-success card-link w-100 mb-1">{{ trans('story.edit') }}</a>'
                     : ' ',
