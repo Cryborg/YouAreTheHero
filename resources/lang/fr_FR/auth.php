@@ -10,4 +10,5 @@ return array (
   'send_password_reset_link' => 'Envoyer le mail',
   'users_count' => 'Il y a actuellement <b>:count</b> joueurs inscrits.',
   'logout' => 'Déconnexion',
+  'translations' => 'Traductions',
 );

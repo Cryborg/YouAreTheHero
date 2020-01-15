@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'choices' => 'Choix',
+    'choices'    => 'Choix',
     'exit_story' => 'Quitter',
 ];

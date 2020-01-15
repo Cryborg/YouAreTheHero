@@ -10,4 +10,5 @@ return array (
   'send_password_reset_link' => 'Send mail',
   'throttle' => 'Maximum connection attempts reached, try again in a few seconds.',
   'users_count' => 'There are <b>:count</b> registered users.',
+  'translations' => 'Translations',
 );
