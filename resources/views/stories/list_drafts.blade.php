@@ -75,7 +75,7 @@
                     {data: 'title'},
                     {data: 'locale', 'width': '10%'},
                     {data: 'user', 'width': '20%'},
-                    {data: 'created_at', "render": function (data, type, row) {
+                    {data: 'updated_at', "render": function (data, type, row) {
                             return moment(data).fromNow();
                         }, 'width': '20%'}
                 ],
