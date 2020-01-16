@@ -60,9 +60,6 @@
                 processing: true,
                 serverSide: true,
                 ajax: '{{ route('stories.list.ajax', ['draft' => true]) }}',
-                language: {
-                    "url": "{{ asset('lang/' . Config::get('app.locale') . '/datatables.json') }}"
-                },
                 columns: [
                     {
                         "className":      'details-control',

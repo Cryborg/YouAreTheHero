@@ -51,6 +51,12 @@
         }
     });
 
+    $.extend( true, $.fn.dataTable.defaults, {
+        language: {
+            "url": "{{ asset('lang/' . Config::get('app.locale') . '/datatables.json') }}"
+        },
+    } );
+
     function resetLoader($button)
     {
         $button.html($button.data('original-text'));

@@ -196,10 +196,6 @@ img.money_icon {
     height: 16px;
     margin-top: -5px;
 }
-.glyphicon-trash {
-    color: red;
-    cursor: pointer;
-}
 .minh-50 {
     min-height: 50%;
 }
@@ -221,4 +217,12 @@ table#stories-table.dataTable {
 }
 div.jq-toast-wrap {
     width: 500px;
+}
+#stats_story td {
+    padding-left: 2em;
+    font-size: .8em;
+}
+.glyphicon-disabled {
+    color: grey !important;
+    cursor: initial !important;
 }

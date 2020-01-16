@@ -40,9 +40,6 @@
             responsive: {
                 details: false
             },
-            language: {
-                "url": "{{ asset('lang/' . Config::get('app.locale') . '/datatables.json') }}"
-            },
             ajax: '{{ route('stories.list.ajax', ['draft' => false]) }}',
             columns: [
                 {

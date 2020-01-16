@@ -11100,3 +11100,13 @@ a.text-dark:focus {
   }
 }
 
+.glyphicon-trash {
+  color: #e3342f;
+  cursor: pointer;
+}
+
+.glyphicon-plus-sign {
+  color: #38c172;
+  cursor: pointer;
+}
+

@@ -56,24 +56,48 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="form-group col">
-                {!! Form::label('stat_story', trans('story.stats_label')) !!}
-                <p class="help-block">{!! trans('story.genres_help') !!}</p>
+        {!! Form::label('stat_story', trans('story.stats_label')) !!}
+        <p class="help-block">{!! trans('story.genres_help') !!}</p>
+        <table id="stats_story" class="mb-3 w-50 m-0">
+            <thead>
+                <tr>
+                    <th>{{ trans('stat.full_name') }}</th>
+                    <th>{{ trans('stat.short_name') }}</th>
+                    <th>{{ trans('stat.min_value') }}</th>
+                    <th>{{ trans('stat.max_value') }}</th>
+                    <th>{{ trans('common.actions') }}</th>
+                </tr>
+            </thead>
+            <tbody>
                 @foreach($story->stat_stories as $stat)
-                    <div class="row mb-2">
-                        <div class="col">
-                            <input type="text" name="stat_story_full[]" value="{{ $stat->full_name }}">
-                            <input type="text" name="stat_story_short[]" value="{{ $stat->short_name }}">
-                            <input type="number" name="stat_story_min[]" value="{{ $stat->min_value }}">
-                            <input type="number" name="stat_story_max[]" value="{{ $stat->max_value }}">
-                        </div>
-                    </div>
+                    <tr>
+                        <td>{{ $stat->full_name }}</td>
+                        <td>{{ $stat->short_name }}</td>
+                        <td>{{ $stat->min_value }}</td>
+                        <td>{{ $stat->max_value }}</td>
+                        <td class="text-center">
+                            <span class="glyphicon glyphicon-trash" data-statstory_id="{{ $stat->id }}"></span>
+                        </td>
+                    </tr>
                 @endforeach
-            </div>
-        </div>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th><input class="new_stat" type="text" id="full_name" maxlength="15"></th>
+                    <th><input class="new_stat" type="text" id="short_name" maxlength="5"></th>
+                    <th><input class="new_stat" type="number" id="min_value"></th>
+                    <th><input class="new_stat" type="number" id="max_value"></th>
+                    <th class="text-center">
+                        <span class="glyphicon glyphicon-plus-sign glyphicon-disabled"></span>
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
 
         {!! Form::submit(trans('story.create_submit'), ['class' => 'form-control btn btn-primary']) !!}
     {!! Form::close() !!}
-
 @endsection
+
+@push('footer-scripts')
+    @include('story.js.create-js')
+@endpush

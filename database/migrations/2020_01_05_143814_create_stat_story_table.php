@@ -17,8 +17,8 @@ class CreateStatStoryTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('story_id');
             $table->foreign('story_id')->references('id')->on('stories');
-            $table->string('full_name', 50);
-            $table->string('short_name', 3);
+            $table->string('full_name', 15);
+            $table->string('short_name', 5);
             $table->integer('min_value');
             $table->integer('max_value');
             $table->integer('start_value');

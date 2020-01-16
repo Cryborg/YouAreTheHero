@@ -53,25 +53,31 @@
                     </ul>
 
                     {{-- Right Side Of Navbar --}}
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="#" id="navbarDropdownFlag" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                <img width="32" height="32" alt="{{ session('locale') }}"
-                                    src="{!! asset('img/flags/' . session('locale') . '.png') !!}"/>
-                            </a>
-                            <div id="flags" class="dropdown-menu" aria-labelledby="navbarDropdownFlag">
-                                @foreach(config('app.languages') as $locale)
-                                    @if($locale != session('locale'))
-                                        <a class="dropdown-item" href="{{ route('language', $locale) }}">
-                                            <img width="32" height="32" alt="{{ session('locale') }}"
-                                                src="{!! asset('img/flags/' . $locale . '.png') !!}"/>
-                                        </a>
-                                    @endif
-                                @endforeach
-                            </div>
-                        </li>
-                    </ul>
+                    @if (Auth::id() === 1)
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#" id="navbarDropdownFlag" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <img width="32" height="32" alt="{{ session('locale') }}"
+                                        src="{!! asset('img/flags/' . session('locale') . '.png') !!}"/>
+                                </a>
+                                <div id="flags" class="dropdown-menu" aria-labelledby="navbarDropdownFlag">
+                                    @foreach(config('app.languages') as $locale)
+                                        @if($locale != session('locale'))
+                                            <a class="dropdown-item" href="{{ route('language', $locale) }}">
+                                                <img width="32" height="32" alt="{{ session('locale') }}"
+                                                    src="{!! asset('img/flags/' . $locale . '.png') !!}"/>
+                                            </a>
+                                        @endif
+                                    @endforeach
+
+                                    <a class="dropdown-item" href="{{ url('/translations') }}" target="_blank">
+                                        {{ trans('auth.translations') }}
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    @endif
                     <ul class="navbar-nav">
                         {{-- Authentication Links --}}
                         @guest
@@ -107,12 +113,6 @@
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        @if (Auth::id() === 1)
-                                            <a class="dropdown-item" href="{{ url('/translations') }}" target="_blank">
-                                                {{ trans('auth.translations') }}
-                                            </a>
-                                        @endif
-
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">

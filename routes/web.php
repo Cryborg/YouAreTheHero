@@ -63,4 +63,9 @@ Auth::routes();
 Route::get('/character/create/{story}', 'CharacterController@getCreate')->name('character.create');
 Route::post('/character/create/{story}', 'CharacterController@store')->name('character.create.post');
 
+// Language
 Route::get('language/{lang}', 'HomeController@language')->name('language');
+
+// StatStory
+Route::post('/stat/{story}/create', 'StatStoryController@store')->name('stat.store');
+Route::delete('/stat/{stat_story}/delete', 'StatStoryController@delete')->name('stat.delete');
