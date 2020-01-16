@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Item;
-use App\Models\Stat;
+use App\Models\CharacterStat;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Relation::morphMap([
-            'stat' => Stat::class,
+            'stat' => CharacterStat::class,
             'item' => Item::class,
         ]);
 

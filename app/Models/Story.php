@@ -102,7 +102,7 @@ class Story extends Model
             ->firstOrFail();
     }
 
-    public function sheet()
+    public function stat_stories()
     {
         return $this->hasMany(StatStory::class);
     }

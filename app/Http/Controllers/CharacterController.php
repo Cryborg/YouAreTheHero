@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Stat;
+use App\Models\CharacterStat;
 use App\Models\Character;
 use App\Models\Story;
 use Illuminate\Http\JsonResponse;
@@ -41,7 +41,7 @@ class CharacterController extends Controller
 
             if ($stats) {
                 foreach ($stats as $stat) {
-                    Stat::create([
+                    CharacterStat::create([
                         'user_id'    => Auth::id(),
                         'name'  => $stat['name'],
                         'value' => $stat['value'],

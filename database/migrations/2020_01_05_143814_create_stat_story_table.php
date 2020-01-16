@@ -17,12 +17,12 @@ class CreateStatStoryTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('story_id');
             $table->foreign('story_id')->references('id')->on('stories');
-            $table->string('stat_full_name', 50);
-            $table->string('stat_short_name', 3);
-            $table->integer('stat_min_value');
-            $table->integer('stat_max_value');
-            $table->integer('stat_start_value');
-            $table->integer('stat_order')->default(1);
+            $table->string('full_name', 50);
+            $table->string('short_name', 3);
+            $table->integer('min_value');
+            $table->integer('max_value');
+            $table->integer('start_value');
+            $table->integer('order')->default(1);
             $table->timestamps();
         });
     }

@@ -78,6 +78,6 @@ class Character extends Model
 
     public function stats()
     {
-        return $this->hasMany(Stat::class);
+        return $this->hasMany(CharacterStat::class);
     }
 }

@@ -18,4 +18,5 @@ return array (
   'tree' => 'Page tree',
   'author_is' => 'Author: :author',
   'title' => 'Title',
+  'stats_label' => 'Available character stats',
 );

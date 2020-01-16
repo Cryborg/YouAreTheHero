@@ -47,7 +47,7 @@
                         <option value=""></option>
                         @foreach(array_keys($page->story->sheet_config ?? []) as $charac)
                             @foreach($page->prerequisites() ?? [] as $prerequisite)
-                                @if ($prerequisite->prerequisiteable instanceof \App\Models\Stat)
+                                @if ($prerequisite->prerequisiteable instanceof \App\Models\CharacterStat)
                                     <option value="{{ $charac }}"
                                         @if ($prerequisite->prerequisiteable->name == $charac) selected @endif
                                     >{{ $charac }}</option>

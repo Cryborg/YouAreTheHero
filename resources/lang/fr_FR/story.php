@@ -18,4 +18,5 @@ return array (
   'tree' => 'Arborescence des pages',
   'author_is' => 'Auteur : :author',
   'title' => 'Titre',
+  'stats_label' => 'Stats disponibles',
 );

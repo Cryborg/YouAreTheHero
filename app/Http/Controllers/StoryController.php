@@ -7,7 +7,7 @@ use App\Models\Genre;
 use App\Models\Inventory;
 use App\Models\Item;
 use App\Models\Checkpoint;
-use App\Models\Stat;
+use App\Models\CharacterStat;
 use App\Models\StoryGenre;
 use App\Models\UniqueItemsUsed;
 use Illuminate\Http\JsonResponse;
@@ -135,7 +135,7 @@ class StoryController extends Controller
             if (!empty($pageTo->prerequisites())) {
                 foreach ($pageTo->prerequisites() as $prerequisite) {
                     switch (get_class($prerequisite->prerequisiteable)) {
-                        case Stat::class:
+                        case CharacterStat::class:
                             $fulfilled = $this->isStatPrerequisitesFulfilled($prerequisite->prerequisiteable, $character);
                             break;
                         case Item::class:
@@ -268,7 +268,7 @@ class StoryController extends Controller
      *
      * @return bool
      */
-    private function isStatPrerequisitesFulfilled(Stat $prerequisites, Character $character): bool
+    private function isStatPrerequisitesFulfilled(CharacterStat $prerequisites, Character $character): bool
     {
         $sheet = $character->sheet;
 

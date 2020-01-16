@@ -28,7 +28,7 @@ class StoriesTableSeeder extends Seeder
                 'sheet_config' => NULL,
                 'is_published' => 0,
                 'created_at' => '2019-12-19 16:29:44',
-                'updated_at' => '2019-12-19 16:29:44',
+                'updated_at' => '2019-12-31 16:29:44',
             ),
             1 =>
             array (
@@ -40,8 +40,8 @@ class StoriesTableSeeder extends Seeder
                 'layout' => 'play1',
                 'sheet_config' => NULL,
                 'is_published' => 0,
-                'created_at' => '2019-12-19 16:29:44',
-                'updated_at' => '2019-12-19 16:29:44',
+                'created_at' => '2019-11-12 16:29:44',
+                'updated_at' => '2020-01-02 16:29:44',
             ),
         ));
     }

@@ -18,13 +18,13 @@
 
             @foreach($story->sheet as $stat)
                 <div class="form-group row">
-                    <div class="col-sm-3 col-lg-1">{{ $stat->stat_full_name }}</div>
+                    <div class="col-sm-3 col-lg-1">{{ $stat->full_name }}</div>
                     <div class="col-sm-3 col-lg-1">
-                        {{ Form::number('stat_value', old('stat_value') ?? $stat->stat_min_value, [
+                        {{ Form::number('stat_value', old('stat_value') ?? $stat->min_value, [
                             'class' => 'form-control',
-                            'min' => $stat->stat_min_value,
-                            'max' => $stat->stat_max_value,
-                            'data-stat_name' => $stat->stat_full_name
+                            'min' => $stat->min_value,
+                            'max' => $stat->max_value,
+                            'data-stat_name' => $stat->full_name
                         ]) }}
                     </div>
                 </div>

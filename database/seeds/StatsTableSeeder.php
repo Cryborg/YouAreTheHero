@@ -12,22 +12,55 @@ class StatsTableSeeder extends Seeder
      */
     public function run()
     {
-
+        
 
         \DB::table('stats')->delete();
-
+        
         \DB::table('stats')->insert(array (
-            0 =>
+            0 => 
             array (
                 'id' => 1,
-                'character_id' => 1,
-                'name' => 'Vitesse',
-                'value' => 2,
-                'created_at' => '2020-01-10 15:34:18',
-                'updated_at' => NULL,
+                'full_name' => 'Vitesse',
+                'short_name' => 'VTS',
+            ),
+            1 => 
+            array (
+                'id' => 2,
+                'full_name' => 'Force',
+                'short_name' => 'FRC',
+            ),
+            2 => 
+            array (
+                'id' => 3,
+                'full_name' => 'Agilité',
+                'short_name' => 'AGL',
+            ),
+            3 => 
+            array (
+                'id' => 4,
+                'full_name' => 'Intelligence',
+                'short_name' => 'INT',
+            ),
+            4 => 
+            array (
+                'id' => 5,
+                'full_name' => 'Discrétion',
+                'short_name' => 'DIS',
+            ),
+            5 => 
+            array (
+                'id' => 6,
+                'full_name' => 'Perception',
+                'short_name' => 'PCP',
+            ),
+            6 => 
+            array (
+                'id' => 7,
+                'full_name' => 'Charisme',
+                'short_name' => 'CHR',
             ),
         ));
-
-
+        
+        
     }
 }

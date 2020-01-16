@@ -38,20 +38,39 @@
             </div>
         @endif
 
-        <div class="form-group col-xs-12 col-lg-3">
-            {!! Form::label('genres', trans('story.genres_label')) !!}
-            <p class="help-block">{!! trans('story.genres_help') !!}</p>
-            <select class="selectpicker" title="{{ trans('story.select_genres_placeholder') }}"
-                size="6" id="genres" name="genres[]" multiple required
-                data-live-search="true" data-max-options="5">
-                @foreach($genres as $genre)
-                    <option value="{{ $genre->id }}"
-                        @foreach ($story->genres as $storyGenre)
-                            @if ($storyGenre->id == $genre->id) selected @endif
-                        @endforeach
-                    >{{ $genre->label }}</option>
+        <div class="row">
+            <div class="form-group col-xs-12 col-lg-3">
+                {!! Form::label('genres', trans('story.genres_label')) !!}
+                <p class="help-block">{!! trans('story.genres_help') !!}</p>
+                <select class="selectpicker" title="{{ trans('story.select_genres_placeholder') }}"
+                    size="6" id="genres" name="genres[]" multiple required
+                    data-live-search="true" data-max-options="5">
+                    @foreach($genres as $genre)
+                        <option value="{{ $genre->id }}"
+                            @foreach ($story->genres as $storyGenre)
+                                @if ($storyGenre->id == $genre->id) selected @endif
+                            @endforeach
+                        >{{ $genre->label }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col">
+                {!! Form::label('stat_story', trans('story.stats_label')) !!}
+                <p class="help-block">{!! trans('story.genres_help') !!}</p>
+                @foreach($story->stat_stories as $stat)
+                    <div class="row mb-2">
+                        <div class="col">
+                            <input type="text" name="stat_story_full[]" value="{{ $stat->full_name }}">
+                            <input type="text" name="stat_story_short[]" value="{{ $stat->short_name }}">
+                            <input type="number" name="stat_story_min[]" value="{{ $stat->min_value }}">
+                            <input type="number" name="stat_story_max[]" value="{{ $stat->max_value }}">
+                        </div>
+                    </div>
                 @endforeach
-            </select>
+            </div>
         </div>
 
         {!! Form::submit(trans('story.create_submit'), ['class' => 'form-control btn btn-primary']) !!}
