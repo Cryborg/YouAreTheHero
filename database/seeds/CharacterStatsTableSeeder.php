@@ -1,8 +1,9 @@
 <?php
 
+use App\Models\CharacterStat;
 use Illuminate\Database\Seeder;
 
-class CharacterStatTableSeeder extends Seeder
+class CharacterStatsTableSeeder extends Seeder
 {
 
     /**
@@ -14,9 +15,9 @@ class CharacterStatTableSeeder extends Seeder
     {
 
 
-        \DB::table('character_stat')->delete();
+        \DB::table('character_stats')->delete();
 
-        \DB::table('character_stat')->insert(array (
+        \DB::table('character_stats')->insert(array (
             0 =>
             array (
                 'id' => 1,

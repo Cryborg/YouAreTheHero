@@ -6,7 +6,7 @@
 
         $('input[name=stat_value]').each(function () {
             stats.push({
-                'name': $(this).data('stat_name'),
+                'stat_id': $(this).data('stat_id'),
                 'value': $(this).val()
             });
         });
@@ -27,8 +27,10 @@
                 'stats': stats
             }
         })
-        .done(function () {
-            window.location.href = '{{ route('story.play', ['story' => $story->id]) }}';
+        .done(function (result) {
+            if (result.success) {
+                window.location.href = '{{ route('story.play', ['story' => $story->id]) }}';
+            }
         })
         .fail(function () {
 
@@ -36,5 +38,13 @@
         .always(function () {
             resetLoader($this);
         });
-    })
+    });
+
+    function addPoints(amount) {
+        var points = parseInt($('#points_left').html());
+        var newPoints = points + amount;
+        $('#points_left').html(newPoints);
+
+        $('#save_story').attr('disabled', newPoints > 0);
+    }
 </script>

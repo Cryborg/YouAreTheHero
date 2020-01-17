@@ -11,4 +11,5 @@ return array (
   'users_count' => 'Il y a actuellement <b>:count</b> joueurs inscrits.',
   'logout' => 'Déconnexion',
   'translations' => 'Traductions',
+  'login' => 'Connexion',
 );

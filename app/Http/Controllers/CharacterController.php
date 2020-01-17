@@ -42,8 +42,8 @@ class CharacterController extends Controller
             if ($stats) {
                 foreach ($stats as $stat) {
                     CharacterStat::create([
-                        'user_id'    => Auth::id(),
-                        'name'  => $stat['name'],
+                        'character_id'    => $character->id,
+                        'stat_story_id' => $stat['stat_id'],
                         'value' => $stat['value'],
                     ]
                     );

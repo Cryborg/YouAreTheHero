@@ -15,22 +15,33 @@
 
             {!! Form::label('stats', trans('character.stats_label'), ['class' => 'control-label']) !!}
             <p class="help-block">{{ trans('character.stats_help') }}</p>
-
-            @foreach($story->sheet as $stat)
+    <div class="row">
+        <div class="col-2 text-center">
+            {{ trans('stat.points_left_to_share') }}: <div id="points_left">{{ $story->points_to_share }}</div>
+        </div>
+        <div class="col">
+            @foreach($story->stat_stories as $stat)
                 <div class="form-group row">
                     <div class="col-sm-3 col-lg-1">{{ $stat->full_name }}</div>
-                    <div class="col-sm-3 col-lg-1">
+                    <div class="col-sm-3 col-lg-1 quantity">
                         {{ Form::number('stat_value', old('stat_value') ?? $stat->min_value, [
                             'class' => 'form-control',
                             'min' => $stat->min_value,
                             'max' => $stat->max_value,
-                            'data-stat_name' => $stat->full_name
+                            'data-stat_id' => $stat->id,
+                            'onkeydown' => 'return false'
                         ]) }}
                     </div>
+                    <small class="text-muted">({{ trans('stat.range_text', [
+                        'min' => $stat->min_value,
+                        'max' => $stat->max_value
+                         ]) }})</small>
                 </div>
             @endforeach
+        </div>
+    </div>
 
-        <button class="btn btn-success submit-btn mb-1 w-50" type="submit" data-original-text="{{ trans('story.create_submit') }}">{{ trans('story.create_submit') }}</button>
+        <button disabled id="save_story" class="btn btn-success submit-btn mb-1 w-50" type="submit" data-original-text="{{ trans('story.create_submit') }}">{{ trans('story.create_submit') }}</button>
     {!! Form::close() !!}
 @endsection
 

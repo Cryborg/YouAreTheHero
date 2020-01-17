@@ -23,6 +23,7 @@ class CreateStoriesTable extends Migration
             $table->string('layout')->default('play1');
             $table->json('sheet_config')->nullable();
             $table->boolean('is_published')->default(false);
+            $table->integer('points_to_share')->default(10);
             $table->timestamps();
         });
     }

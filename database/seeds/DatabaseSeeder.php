@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ActionsTableSeeder::class);
         $this->call(CharactersTableSeeder::class);
         $this->call(StatStoryTableSeeder::class);
-        $this->call(CharacterStatTableSeeder::class);
+        $this->call(CharacterStatsTableSeeder::class);
         $this->call(PrerequisitesTableSeeder::class);
         $this->call(GenresTableSeeder::class);
         $this->call(StatsTableSeeder::class);

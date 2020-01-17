@@ -9,6 +9,7 @@
 <script type="text/javascript" src="{{ asset('js/jquery.connections.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/js.cookie.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/summernote.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/input_number.js') }}"></script>
 <script type="text/javascript" src="{{ asset('vendor/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
 
 @if (Config::get('app.locale') !== 'en_GB')

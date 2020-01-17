@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCharacterStatTable extends Migration
+class CreateCharacterStatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCharacterStatTable extends Migration
      */
     public function up()
     {
-        Schema::create('character_stat', function (Blueprint $table) {
+        Schema::create('character_stats', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('character_id');
             $table->foreign('character_id')->references('id')->on('characters');
@@ -31,6 +31,6 @@ class CreateCharacterStatTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('character_stat');
+        Schema::dropIfExists('character_stats');
     }
 }
