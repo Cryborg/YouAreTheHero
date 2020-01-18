@@ -45,6 +45,6 @@
         var newPoints = points + amount;
         $('#points_left').html(newPoints);
 
-        $('#save_story').attr('disabled', newPoints > 0);
+        $('#save_character').attr('disabled', newPoints > 0);
     }
 </script>

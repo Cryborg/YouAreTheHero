@@ -10,6 +10,7 @@ use App\Repositories\PageRepository;
 use Faker\Provider\Uuid;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
@@ -108,6 +109,8 @@ class PageController extends Controller
                 ], [
                     'link_text' => $validated['linktitle'],
                 ]);
+
+                Cache::forget('choices_' . $validated['page_from']);
             }
 
             unset($validated['linktitle'], $validated['page_from']);

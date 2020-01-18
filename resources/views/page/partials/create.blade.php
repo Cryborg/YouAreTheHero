@@ -26,14 +26,14 @@
         {!! Form::select('layout-' . $internalId, $layouts , $page->layout ?? old('layout') , ['class' => 'form-control']) !!}
     </div>
 
-{{--    <div class="form-group form-check">--}}
-{{--        <p class="help-block">{{ trans('model.page_is_first_help') }}</p>--}}
-{{--        <label>--}}
-{{--            {!! Form::checkbox('is_first-' . $internalId, 1, $page->is_first or false, ['id' => 'is_first-' . $internalId]) !!}--}}
-{{--            @lang('model.is_first')--}}
-{{--        </label>--}}
-{{--    </div>--}}
-    @if ($page->choices()->count() === 0)
+    <div class="form-group form-check hidden">
+        <p class="help-block">{{ trans('model.page_is_first_help') }}</p>
+        <label>
+            {!! Form::checkbox('is_first-' . $internalId, 1, $page->is_first or false, ['id' => 'is_first-' . $internalId]) !!}
+            @lang('model.is_first')
+        </label>
+    </div>
+    @if ($page->choices() && $page->choices()->count() === 0 && !$page->is_first)
         <div class="form-group form-check">
             <p class="help-block">{{ trans('model.page_is_last_help') }}</p>
             <label>

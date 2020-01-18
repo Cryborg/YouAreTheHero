@@ -41,7 +41,7 @@
         </div>
     </div>
 
-        <button disabled id="save_story" class="btn btn-success submit-btn mb-1 w-50" type="submit" data-original-text="{{ trans('story.create_submit') }}">{{ trans('story.create_submit') }}</button>
+        <button disabled id="save_character" class="btn btn-success submit-btn mb-1 w-50" type="submit" data-original-text="{{ trans('story.create_submit') }}">{{ trans('story.create_submit') }}</button>
     {!! Form::close() !!}
 @endsection
 

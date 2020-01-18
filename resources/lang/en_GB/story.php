@@ -11,7 +11,7 @@ return array (
   'reset' => 'Reset adventure',
   'reset_successful_text' => 'The adventure has been successfully reset!',
   'reset_failed_text' => 'Unable to reset the adventure :(',
-  'add_choices' => 'Add choices',
+  'add_choices' => 'Full edit mode',
   'genres_label' => 'Genres',
   'genres_help' => 'Select the genre(s) that fit your story.',
   'select_genres_placeholder' => 'Choose one or more genres',

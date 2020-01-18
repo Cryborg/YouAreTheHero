@@ -12,4 +12,9 @@ class CharacterStat extends Model
     {
         return $this->morphMany(Prerequisite::class, 'prerequisiteable');
     }
+
+    public function stat_story()
+    {
+        return $this->hasOne(StatStory::class, 'id');
+    }
 }

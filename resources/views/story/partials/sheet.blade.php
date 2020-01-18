@@ -3,7 +3,7 @@
         <div class="col">
             <ul>
                 @foreach($sheet as $stat)
-                    <li>{{ $stat->name }} : {{ $stat->value }}</li>
+                    <li>{{ $stat->stat_story->full_name }} : {{ $stat->value }}</li>
                 @endforeach
             </ul>
         </div>

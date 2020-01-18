@@ -68,26 +68,24 @@ class Page extends Model
      */
     public function choices()
     {
-        $pagelink = Cache::remember('choices_' . $this->id, Config::get('app.story.cache_ttl'), function () {
-            $pageLink = PageLink::where('page_from', $this->id)->first();
+        $pages = Cache::remember('choices_' . $this->id, Config::get('app.story.cache_ttl'), function () {
+            $pageLinks = PageLink::where('page_from', $this->id)->get();
 
-            if ($pageLink) {
-                return Page::where('pages.id', $pageLink->page_to)
-                           ->select([
-                               'page_link.page_to',
-                               'page_link.link_text',
-                               'pages.*'
-                           ]
-                           )
-                           ->join('page_link', 'page_link.page_to', '=', 'pages.id')
-                           ->get();
+            if ($pageLinks) {
+                return Page::whereIn('pages.id', $pageLinks->pluck('page_to'))
+                       ->select([
+                           'page_link.page_to',
+                           'page_link.link_text',
+                           'pages.*'
+                       ])
+                       ->join('page_link', 'page_link.page_to', '=', 'pages.id')
+                       ->get();
             }
 
-            return null;
-        }
-        );
+            return collect();
+        });
 
-        return $pagelink ?? collect();
+        return $pages ?? collect();
     }
 
     /**

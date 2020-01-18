@@ -179,6 +179,14 @@ class StoryController extends Controller
                 break;
             case 'earn':
                 $isOk = $character->addMoney($action['price']);
+
+                if (isset($action['item'])) {
+                    Inventory::create([
+                        'character_id' => $character->id,
+                        'item_id' => $action['item'],
+                        'quantity' => $action['quantity'] ?? 1
+                    ]);
+                }
                 break;
         }
 

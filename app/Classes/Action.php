@@ -35,7 +35,7 @@ class Action
         $effects = $item->effects;
         $caracs  = $character->sheet;
 
-        foreach ($caracs as $name => $carac) {
+        foreach ($caracs ?? [] as $name => $carac) {
             if (array_key_exists($name, $effects)) {
                 switch ($effects[$name]['operator']) {
                     case '+':
