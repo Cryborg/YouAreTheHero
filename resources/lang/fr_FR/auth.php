@@ -12,4 +12,5 @@ return array (
   'logout' => 'Déconnexion',
   'translations' => 'Traductions',
   'login' => 'Connexion',
+  'remember_me' => 'Se souvenir de moi',
 );

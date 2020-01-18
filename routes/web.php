@@ -28,9 +28,7 @@ Route::get('/story/{story}/reset', 'StoryController@getReset')->name('story.rese
 
 Route::get('/story/create', 'StoryController@getCreate')->name('story.create');
 Route::post('/story/create', 'StoryController@store')->name('story.create.post');
-
 Route::get('/story/{story}/edit', 'StoryController@getEdit')->name('story.edit');
-Route::post('/story/{story}/edit', 'StoryController@postEdit')->name('story.edit.post');
 
 Route::get('/story/{story}/tree', 'StoryController@getTree')->name('story.tree');
 Route::get('/story/{story}/inventory', 'StoryController@inventory')->name('story.inventory');

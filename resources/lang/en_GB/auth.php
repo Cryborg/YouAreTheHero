@@ -12,4 +12,5 @@ return array (
   'users_count' => 'There are <b>:count</b> registered users.',
   'translations' => 'Translations',
   'login' => 'Login',
+  'remember_me' => 'Remember me',
 );

@@ -19,4 +19,6 @@ return array (
   'author_is' => 'Auteur : :author',
   'title' => 'Titre',
   'stats_label' => 'Stats disponibles',
+  'create_tab1' => '1. Création de l\'histoire',
+  'create_tab2' => '2. Fiche de personnage',
 );

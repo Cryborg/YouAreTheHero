@@ -51,7 +51,7 @@ class StoryController extends Controller
         // If there is an ID, save it in the session so that we show a nice URL without the page ID
         if ($page !== null) {
             setSession('page_id', $page->id);
-            return Redirect::route('story.play', ['story' => $story->id]);//'/story/' . $story->id);
+            return Redirect::route('story.play', ['story' => $story->id]);
         }
 
         $page_id = getSession('page_id');
@@ -358,7 +358,7 @@ class StoryController extends Controller
         $param = null;
 
         if ($story) {
-            $postRoute = 'story.edit.post';
+            $postRoute = 'story.create.post';
 
             $param = $story->id;
         }
@@ -383,30 +383,52 @@ class StoryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'story_id' => '',
             'title' => 'required',
             'description' => 'required',
             'locale' => 'required',
             'layout' => 'required',
             'is_published' => 'boolean',
+            'genres' => 'required|array|between:1,5',
         ]);
 
-        $story = Story::create($validated);
+        $storyId = $validated['story_id'];
+        $genres = $validated['genres'];
+        unset($validated['genres'], $validated['story_id']);
 
-        if ($story) {
-            // Create the first page with dummy data
-            $page = factory(Page::class)->create([
-                'story_id' => $story->id,
-                'is_first' => true,
-            ]);
+        try {
+            if ($storyId !== null) {
+                $story = Story::where('id', $storyId)->first();
+            } else {
+                $story = Story::create($validated);
+            }
+
+            if ($story->pages->count() === 0) {
+                // Create the first page with dummy data
+                factory(Page::class)->create([
+                    'story_id' => $story->id,
+                    'is_first' => true,
+                ]);
+            }
+
+            StoryGenre::where('story_id', $story->id)
+                      ->delete();
+
+            foreach ($genres as $genre) {
+                StoryGenre::create([
+                    'story_id' => $story->id,
+                    'genre_id' => (int) $genre,
+                ]);
+            }
 
             \flash(trans('model.save_successful'));
 
-            return Redirect::to(route('page.edit', ['page' => $page->id]));
+            return Redirect::to(route('story.edit', ['story' => $story->id]));
+        } catch (\Exception $e) {
+            \flash(trans('model.save_error'), 'error');
+
+            return Redirect::to(route('story.create'));
         }
-
-        \flash(trans('model.save_error'));
-
-        return Redirect::to(route('story.create'));
     }
 
     /**
@@ -420,39 +442,6 @@ class StoryController extends Controller
         $this->authorize('view', $story);
 
         return $this->getCreate($story);
-    }
-
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Story        $story
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function postEdit(Request $request, Story $story): \Illuminate\Http\RedirectResponse
-    {
-        $validated = $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'locale' => 'required',
-            'layout' => 'required',
-            'is_published' => 'boolean',
-            'genres' => 'required|array|between:1,5',
-        ]);
-
-        StoryGenre::where('story_id', $story->id)->delete();
-
-        foreach ($validated['genres'] as $genre) {
-            StoryGenre::create([
-                'story_id' => $story->id,
-                'genre_id' => (int) $genre,
-            ]);
-        }
-
-        unset($validated['genres']);
-
-        $story->update($validated);
-
-        return Redirect::to(route('story.edit', $story->id));
     }
 
     /**

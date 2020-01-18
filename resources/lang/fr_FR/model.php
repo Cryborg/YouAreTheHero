@@ -23,4 +23,5 @@ return array (
   'email' => 'Email',
   'username' => 'Nom d\'utilisateur',
   'password' => 'Mot de passe',
+  'save_error' => 'L\'enregistrement a échoué !',
 );

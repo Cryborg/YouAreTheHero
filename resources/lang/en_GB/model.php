@@ -23,4 +23,5 @@ return array (
   'email' => 'E-mail',
   'username' => 'Username',
   'password' => 'Password',
+  'save_error' => 'Unable to save!',
 );

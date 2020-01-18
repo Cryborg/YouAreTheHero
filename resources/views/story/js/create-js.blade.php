@@ -11,7 +11,7 @@
             ]
         });
 
-        $('.new_stat').on('change, keypress', function () {
+        $(document).on('change, keypress', '.new_stat', function () {
             var correct = true;
 
             // No field can be empty
