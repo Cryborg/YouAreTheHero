@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', trans('home.welcome_title'))
+@section('title', trans('home.home_title'))
 
 @section('content')
 <div class="container">
