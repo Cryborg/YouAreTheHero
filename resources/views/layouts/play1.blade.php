@@ -40,14 +40,24 @@
             </div>
         </div>
         <div class="col-lg-3 col-xs-12 bloc">
-            <div class="row bloc">
-                <div class="col map-bloc">
-                    @yield('map')
+            <div class="row">
+                <div class="col">
+                    <div class="title">@lang('stat.sheet')</div>
                 </div>
             </div>
-            <div class="row bloc">
+            <div class="row">
                 <div class="col sheet-block">
                     @yield('sheet', 'No available sheet')
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="title">@lang('story.map')</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col map-bloc">
+                    @yield('map')
                 </div>
             </div>
         </div>

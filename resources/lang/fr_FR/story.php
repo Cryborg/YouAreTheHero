@@ -21,4 +21,5 @@ return array (
   'stats_label' => 'Stats disponibles',
   'create_tab1' => '1. Création de l\'histoire',
   'create_tab2' => '2. Fiche de personnage',
+  'map' => 'Points de sauvegarde',
 );

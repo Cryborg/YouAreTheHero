@@ -17,7 +17,7 @@ class CreateCheckpointsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('character_id');
             $table->foreign('character_id')->references('id')->on('characters');
-            $table->string('page_id');
+            $table->uuid('page_id');
             $table->foreign('page_id')->references('id')->on('pages');
             $table->timestamps();
         });

@@ -26,13 +26,11 @@ class CreateCharactersTable extends Migration
             $table->foreign('story_id')->references('id')->on('stories');
 
             // Last page visited in the sotry
-            $table->string('page_id');
+            $table->uuid('page_id');
             $table->foreign('page_id')->references('id')->on('pages');
 
             // Amount of money owned by the character
             $table->unsignedInteger('money')->default(10);
-
-            $table->json('sheet')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

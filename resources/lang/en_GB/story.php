@@ -21,4 +21,5 @@ return array (
   'stats_label' => 'Available character stats',
   'create_tab1' => '1. Create the story',
   'create_tab2' => '2. Character sheet',
+  'map' => 'Checkpoints',
 );

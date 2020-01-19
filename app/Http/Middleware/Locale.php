@@ -20,7 +20,8 @@ class Locale
         }
         $locale = session ('locale');
         app ()->setLocale ($locale);
-        setlocale (LC_TIME, app()->environment('local') ? $locale : config('locale.languages')[$locale][1]);
+        $locales = array_flip(config('app.languages'));
+        setlocale (LC_TIME, app()->environment('local') ? $locale : $locales[$locale][1]);
         return $next ($request);
     }
 }

@@ -14,11 +14,13 @@
             <a class="nav-link @if (!$story instanceof \App\Models\Story) disabled @endif" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
                 aria-controls="pills-profile" aria-selected="false">{{ trans('story.create_tab2') }}</a>
         </li>
-        <li class="nav-item">
-            <button class="btn btn-success h-100 font-default-size" onclick="window.location.href='{{ route('page.edit', ['page' => $story->getCurrentPage()->id]) }}'">
-                {{ trans('story.resume_editing') }}
-            </button>
-        </li>
+        @if ($story)
+            <li class="nav-item">
+                <button class="btn btn-success h-100 font-default-size" onclick="window.location.href='{{ route('page.edit', ['page' => $story->getCurrentPage()->id]) }}'">
+                    {{ trans('story.resume_editing') }}
+                </button>
+            </li>
+        @endif
     </ul>
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">

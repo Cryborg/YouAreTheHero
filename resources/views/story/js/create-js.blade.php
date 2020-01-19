@@ -92,6 +92,9 @@
                         heading: '{{ trans('notification.save_success_title') }}',
                         text: "{{ trans('notification.save_success_text') }}",
                     });
+
+                    $('#full_name, #short_name, #min_value, #max_value').val('');
+                    $('#full_name').focus();
                 }
             })
             .fail(function (data) {

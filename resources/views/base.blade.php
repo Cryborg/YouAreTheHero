@@ -7,6 +7,8 @@
     {{-- CSRF Token --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <base href="{{ config('app.url') }}/">
+
     <title>@yield('title')</title>
 
     {{-- Bootstrap core CSS --}}
