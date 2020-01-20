@@ -14,10 +14,12 @@ class CreatePagesTable extends Migration
     public function up()
     {
         Schema::create('pages', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->uuid('uuid')->primary();
+            $table->unsignedInteger('number');  //FIXME: can be deleted, useless
+
             $table->unsignedInteger('story_id');
-            $table->unsignedInteger('number');
             $table->foreign('story_id')->references('id')->on('stories');
+
             $table->boolean('is_first')->default(false);
             $table->boolean('is_last')->default(false);
             $table->string('title')->nullable();

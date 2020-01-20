@@ -15,8 +15,10 @@ class CreateStatStoryTable extends Migration
     {
         Schema::create('stat_story', function (Blueprint $table) {
             $table->bigIncrements('id');
+
             $table->unsignedInteger('story_id');
             $table->foreign('story_id')->references('id')->on('stories');
+
             $table->string('full_name', 15);
             $table->string('short_name', 5);
             $table->integer('min_value');

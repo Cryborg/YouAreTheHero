@@ -50,13 +50,13 @@ class StoryController extends Controller
 
         // If there is an ID, save it in the session so that we show a nice URL without the page ID
         if ($page !== null) {
-            setSession('page_id', $page->id);
+            setSession('page_uuid', $page->uuid);
             return Redirect::route('story.play', ['story' => $story->id]);
         }
 
-        $page_id = getSession('page_id');
-        if (!empty($page_id)) {
-            $page = Page::where('id', $page_id)->first();
+        $page_uuid = getSession('page_uuid');
+        if (!empty($page_uuid)) {
+            $page = Page::where('uuid', $page_uuid)->first();
         }
 
         setSession('story_id', $story->id);
@@ -77,7 +77,7 @@ class StoryController extends Controller
         // The character exists, let's go back to the previous save point
         // Get the last visited page
         if ($page === null || empty($page)) {
-            $page = $story->getCurrentPage($character->page_id);
+            $page = $story->getCurrentPage($character->page_uuid);
         }
 
         if ($page) {
@@ -87,7 +87,7 @@ class StoryController extends Controller
                 $this->getFilteredChoicesFromPage($page, $character);
             }
 
-            $character->update(['page_id' => $page->id]);
+            $character->update(['page_uuid' => $page->uuid]);
         }
 
         setSession('character_id', $character->id);
@@ -96,7 +96,7 @@ class StoryController extends Controller
         $visitedPlaces = $character->checkpoints;
 
         $visitedPlaces = $visitedPlaces->map(function ($value, $key) {
-            $page = Page::where('id', $value['page_id'])->firstOrFail();
+            $page = Page::where('uuid', $value['page_uuid'])->firstOrFail();
             $value['page_title'] = $page->title;
             return $value;
         });
@@ -321,11 +321,11 @@ class StoryController extends Controller
         if ($page && $page->is_checkpoint) {
             Checkpoint::firstOrCreate([
                 'character_id' => $character->id,
-                'page_id'      => $page->id,
+                'page_uuid'      => $page->uuid,
             ],
             [
                 'character_id' => $character->id,
-                'page_id'      => $page->id,
+                'page_uuid'      => $page->uuid,
             ]);
         }
     }
@@ -344,10 +344,10 @@ class StoryController extends Controller
 
     private function getAllChoicesForPage(Page $page)
     {
-        $key = 'choices_' . $page->id;
+        $key = 'choices_' . $page->uuid;
 
         return Cache::remember($key, Config::get('app.story.cache_ttl'), function () use ($page, $key) {
-            return PageLink::with('pageTo')->where('page_from', $page->id)->get();
+            return PageLink::with('pageTo')->where('page_from', $page->uuid)->get();
         });
     }
 
@@ -539,7 +539,7 @@ class StoryController extends Controller
         if ($request->ajax()) {
             $pageId = $request->get('page');
             $page = Cache::remember('page_' . $pageId, Config::get('app.story.cache_ttl'), function () use ($pageId) {
-                return Page::where('id', $pageId)
+                return Page::where('uuid', $pageId)
                            ->first();
             });
 

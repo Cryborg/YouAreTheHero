@@ -14,13 +14,13 @@ class Page extends Model
 {
     use SoftDeletes;
 
-    protected $primaryKey   = 'id';
+    protected $primaryKey   = 'uuid';
 
     protected $keyType      = 'string';
 
     public    $incrementing = false;
 
-    protected $guarded      = ['id'];
+    protected $guarded      = ['uuid'];
 
     // Casts JSON as array
     protected $casts = [
@@ -43,7 +43,7 @@ class Page extends Model
 
         static::creating(static function ($page) {
             // String ID so that we prevent cheating
-            $page->id       = Uuid::uuid();
+            $page->uuid       = Uuid::uuid();
             $page->number   = $page::where('story_id', '=', $page->story_id)
                                    ->count() + 1;
             $page->is_first = $page->number === 1;
@@ -68,17 +68,17 @@ class Page extends Model
      */
     public function choices()
     {
-        $pages = Cache::remember('choices_' . $this->id, Config::get('app.story.cache_ttl'), function () {
-            $pageLinks = PageLink::where('page_from', $this->id)->get();
+        $pages = Cache::remember('choices_' . $this->uuid, Config::get('app.story.cache_ttl'), function () {
+            $pageLinks = PageLink::where('page_from', $this->uuid)->get();
 
             if ($pageLinks) {
-                return Page::whereIn('pages.id', $pageLinks->pluck('page_to'))
+                return Page::whereIn('pages.uuid', $pageLinks->pluck('page_to'))
                        ->select([
                            'page_link.page_to',
                            'page_link.link_text',
                            'pages.*'
                        ])
-                       ->join('page_link', 'page_link.page_to', '=', 'pages.id')
+                       ->join('page_link', 'page_link.page_to', '=', 'pages.uuid')
                        ->get();
             }
 
@@ -95,13 +95,13 @@ class Page extends Model
      */
     public function parents()
     {
-        return PageLink::where('page_to', $this->id)
+        return PageLink::where('page_to', $this->uuid)
                        ->select([
                                'page_link.link_text',
                                'pages.*',
                            ]
                        )
-                       ->join('pages', 'pages.id', '=', 'page_link.page_from')
+                       ->join('pages', 'pages.uuid', '=', 'page_link.page_from')
                        ->get();
     }
 
@@ -114,11 +114,11 @@ class Page extends Model
         // - the current page
         // - the already bound children
         $potentialPages = Page::where('story_id', $this->story_id)
-                              ->whereNotIn('id', $this->choices()
-                                                      ->pluck('id')
+                              ->whereNotIn('uuid', $this->choices()
+                                                      ->pluck('uuid')
                                                       ->toArray()
                               )
-                              ->whereNotIn('id', [$this->id])
+                              ->whereNotIn('uuid', [$this->uuid])
                               ->orderBy('title', 'asc')
                               ->get();
 
@@ -140,7 +140,7 @@ class Page extends Model
             ]
         );
 
-        $validated['page_id'] = $this->id;
+        $validated['page_uuid'] = $this->uuid;
 
         return Action::create($validated);
     }
@@ -148,7 +148,7 @@ class Page extends Model
     public function prerequisites()
     {
         return \App\Models\Prerequisite::with('prerequisiteable')
-                                       ->where('page_id', $this->id)
+                                       ->where('page_uuid', $this->uuid)
                                        ->get();
     }
 }

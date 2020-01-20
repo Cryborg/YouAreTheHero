@@ -19,7 +19,7 @@ namespace App\Models{
  * @property string $verb
  * @property int $quantity
  * @property int|null $price
- * @property string $page_id
+ * @property string $page_uuid
  * @property-read \App\Models\Item $item
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Action newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Action newQuery()
@@ -63,7 +63,7 @@ namespace App\Models{
  * @property string $name
  * @property int $user_id
  * @property int $story_id
- * @property string $page_id
+ * @property string $page_uuid
  * @property int $money
  * @property array|null $sheet
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -195,7 +195,7 @@ namespace App\Models{
  * App\Models\Prerequisite
  *
  * @property int $id
- * @property string $page_id
+ * @property string $page_uuid
  * @property string $prerequisiteable_type
  * @property int $prerequisiteable_id
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -359,7 +359,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property int $character_id
- * @property string $page_id
+ * @property string $page_uuid
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Character $character

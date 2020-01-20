@@ -17,8 +17,10 @@ class CreateStoriesTable extends Migration
             $table->integerIncrements('id');
             $table->string('title');
             $table->text('description');
+
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+
             $table->string('locale')->default('fr_FR');
             $table->string('layout')->default('play1');
             $table->json('sheet_config')->nullable();

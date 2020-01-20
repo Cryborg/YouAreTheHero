@@ -8,7 +8,7 @@
 
 @push('footer-scripts')
     <script type="text/javascript">
-        displayChildren('{{ $pages[0]->id }}');
+        displayChildren('{{ $pages[0]->uuid }}');
 
         function displayChildren(pageId) {
             $.ajax({

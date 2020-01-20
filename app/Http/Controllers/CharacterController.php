@@ -35,7 +35,7 @@ class CharacterController extends Controller
                 'name'     => $request->get('name'),
                 'user_id'  => Auth::id(),
                 'story_id' => $story->id,
-                'page_id'  => $page->id,
+                'page_uuid'  => $page->uuid,
             ]
             );
 

@@ -138,7 +138,7 @@
 
             if (Object.entries(data).length > 0 && data.constructor === Object) {
                 $.post({
-                    url: route('prerequisite.store', '{{ $page->id }}'),
+                    url: route('prerequisite.store', '{{ $page->uuid }}'),
                     data: data
                 })
                     .done(function (data) {
@@ -286,7 +286,7 @@
         var $this = $(this);
 
         $.post({
-            url: '{{ route('actions.store', $page->id) }}',
+            url: '{{ route('actions.store', $page->uuid) }}',
             'data': serialized,
         })
             .done(function (data) {

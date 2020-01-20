@@ -15,11 +15,15 @@ class CreateCharacterStatsTable extends Migration
     {
         Schema::create('character_stats', function (Blueprint $table) {
             $table->bigIncrements('id');
+
             $table->unsignedBigInteger('character_id');
             $table->foreign('character_id')->references('id')->on('characters');
+
             $table->unsignedBigInteger('stat_story_id');
             $table->foreign('stat_story_id')->references('id')->on('stat_story');
+
             $table->integer('value');
+
             $table->timestamps();
         });
     }

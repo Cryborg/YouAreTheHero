@@ -105,7 +105,7 @@ class PageController extends Controller
             if (isset($validated['linktitle'])) {
                 PageLink::updateOrCreate([
                     'page_from' => $validated['page_from'],
-                    'page_to'   => $page->id,
+                    'page_to'   => $page->uuid,
                 ], [
                     'link_text' => $validated['linktitle'],
                 ]);

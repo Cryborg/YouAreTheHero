@@ -23,7 +23,7 @@ class CharactersTableSeeder extends Seeder
                 'name' => 'Cryborg',
                 'user_id' => 1,
                 'story_id' => 1,
-                'page_id' => '8e32b39a-0886-37f3-93fd-f606a88950a9',
+                'page_uuid' => '8e32b39a-0886-37f3-93fd-f606a88950a9',
                 'money' => 10,
                 'created_at' => '2020-01-10 23:13:36',
                 'updated_at' => NULL,

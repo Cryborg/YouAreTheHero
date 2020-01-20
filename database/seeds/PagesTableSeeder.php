@@ -19,7 +19,7 @@ class PagesTableSeeder extends Seeder
         \DB::table('pages')->insert(array (
             0 =>
             array (
-                'id' => '03ed78ef-5f97-3f68-81ee-2fda15e2aeeb',
+                'uuid' =>'03ed78ef-5f97-3f68-81ee-2fda15e2aeeb',
                 'story_id' => 2,
                 'number' => 6,
                 'is_first' => 0,
@@ -34,7 +34,7 @@ class PagesTableSeeder extends Seeder
             ),
             1 =>
             array (
-                'id' => '0528b4c3-3586-3fb6-90d1-f47338b04d8c',
+                'uuid' =>'0528b4c3-3586-3fb6-90d1-f47338b04d8c',
                 'story_id' => 1,
                 'number' => 33,
                 'is_first' => 0,
@@ -69,7 +69,7 @@ rendre où elle le désire (ignorez alors le lancer de dé et choisissez la dire
             ),
             2 =>
             array (
-                'id' => '0602edde-89e0-37e3-8b20-9ecc0102b9da',
+                'uuid' =>'0602edde-89e0-37e3-8b20-9ecc0102b9da',
                 'story_id' => 1,
                 'number' => 23,
                 'is_first' => 0,
@@ -114,7 +114,7 @@ une nouvelle attaque, puis finit par rejoindre le chemin, qui se termine bientô
             ),
             3 =>
             array (
-                'id' => '0b47389c-5aff-3d62-a749-8b16543f9d02',
+                'uuid' =>'0b47389c-5aff-3d62-a749-8b16543f9d02',
                 'story_id' => 1,
                 'number' => 16,
                 'is_first' => 0,
@@ -147,7 +147,7 @@ rendez-vous au 34.',
             ),
             4 =>
             array (
-                'id' => '11f72382-189b-3f06-9fd2-5f1adcd5b026',
+                'uuid' =>'11f72382-189b-3f06-9fd2-5f1adcd5b026',
                 'story_id' => 1,
                 'number' => 20,
                 'is_first' => 0,
@@ -162,7 +162,7 @@ rendez-vous au 34.',
             ),
             5 =>
             array (
-                'id' => '13e04d7a-1813-3646-a1e9-3cdde2843e6a',
+                'uuid' =>'13e04d7a-1813-3646-a1e9-3cdde2843e6a',
                 'story_id' => 2,
                 'number' => 3,
                 'is_first' => 0,
@@ -177,7 +177,7 @@ rendez-vous au 34.',
             ),
             6 =>
             array (
-                'id' => '160363a5-c6b6-38b0-bbe5-1984fd1e9ed1',
+                'uuid' =>'160363a5-c6b6-38b0-bbe5-1984fd1e9ed1',
                 'story_id' => 2,
                 'number' => 4,
                 'is_first' => 0,
@@ -192,7 +192,7 @@ rendez-vous au 34.',
             ),
             7 =>
             array (
-                'id' => '1e3302dd-a97a-3e80-a254-92ea7675859e',
+                'uuid' =>'1e3302dd-a97a-3e80-a254-92ea7675859e',
                 'story_id' => 1,
                 'number' => 30,
                 'is_first' => 0,
@@ -211,7 +211,7 @@ profite pour lécher ses blessures (votre fourmi regagne un état de Vitalité e
             ),
             8 =>
             array (
-                'id' => '1fe7b9fc-94dc-3319-84b5-c2860e7d5e4b',
+                'uuid' =>'1fe7b9fc-94dc-3319-84b5-c2860e7d5e4b',
                 'story_id' => 1,
                 'number' => 35,
                 'is_first' => 0,
@@ -235,7 +235,7 @@ l\'accompagne) ouvrent le passage : allez au 9.',
             ),
             9 =>
             array (
-                'id' => '23453cb7-feb9-3247-b859-1aaf7e36e0b9',
+                'uuid' =>'23453cb7-feb9-3247-b859-1aaf7e36e0b9',
                 'story_id' => 1,
                 'number' => 15,
                 'is_first' => 0,
@@ -260,7 +260,7 @@ Sinon, allez au 74.',
             ),
             10 =>
             array (
-                'id' => '25ecb762-0083-37dc-a19c-cb4c20cda06c',
+                'uuid' =>'25ecb762-0083-37dc-a19c-cb4c20cda06c',
                 'story_id' => 1,
                 'number' => 18,
                 'is_first' => 0,
@@ -275,7 +275,7 @@ Sinon, allez au 74.',
             ),
             11 =>
             array (
-                'id' => '2907cda3-05c7-3f39-acb8-98a468540ab4',
+                'uuid' =>'2907cda3-05c7-3f39-acb8-98a468540ab4',
                 'story_id' => 2,
                 'number' => 7,
                 'is_first' => 0,
@@ -290,7 +290,7 @@ Sinon, allez au 74.',
             ),
             12 =>
             array (
-                'id' => '3442f8a3-3a40-3251-b4c8-445ff8c24595',
+                'uuid' =>'3442f8a3-3a40-3251-b4c8-445ff8c24595',
                 'story_id' => 1,
                 'number' => 6,
                 'is_first' => 0,
@@ -328,7 +328,7 @@ S\'il ne reste pas assez de temps, ou si l\'acquisition de phéromones ne vous i
             ),
             13 =>
             array (
-                'id' => '37d9a87e-bef5-3d1c-8778-690f03df33ea',
+                'uuid' =>'37d9a87e-bef5-3d1c-8778-690f03df33ea',
                 'story_id' => 1,
                 'number' => 17,
                 'is_first' => 0,
@@ -343,7 +343,7 @@ S\'il ne reste pas assez de temps, ou si l\'acquisition de phéromones ne vous i
             ),
             14 =>
             array (
-                'id' => '47b85733-87e8-3091-811e-96d3e0b34d4a',
+                'uuid' =>'47b85733-87e8-3091-811e-96d3e0b34d4a',
                 'story_id' => 1,
                 'number' => 41,
                 'is_first' => 0,
@@ -365,7 +365,7 @@ Il est temps de faire un autre choix d\'action : rendez-vous au 12.',
             ),
             15 =>
             array (
-                'id' => '497467f5-1596-3bc1-ab31-61efa3c684f6',
+                'uuid' =>'497467f5-1596-3bc1-ab31-61efa3c684f6',
                 'story_id' => 1,
                 'number' => 9,
                 'is_first' => 0,
@@ -393,7 +393,7 @@ territoires du Nid…',
             ),
             16 =>
             array (
-                'id' => '4ba20a76-1743-3fac-ac5c-9e113127785c',
+                'uuid' =>'4ba20a76-1743-3fac-ac5c-9e113127785c',
                 'story_id' => 1,
                 'number' => 45,
                 'is_first' => 0,
@@ -420,7 +420,7 @@ cas, le niveau de Faim de votre insecte remonte d\'un niveau).
             ),
             17 =>
             array (
-                'id' => '4eb18d09-3b29-346c-a58e-22bab8a6e9a3',
+                'uuid' =>'4eb18d09-3b29-346c-a58e-22bab8a6e9a3',
                 'story_id' => 2,
                 'number' => 1,
                 'is_first' => 1,
@@ -435,7 +435,7 @@ cas, le niveau de Faim de votre insecte remonte d\'un niveau).
             ),
             18 =>
             array (
-                'id' => '6448d2e1-6a4b-388e-b597-c3485643e135',
+                'uuid' =>'6448d2e1-6a4b-388e-b597-c3485643e135',
                 'story_id' => 1,
                 'number' => 8,
                 'is_first' => 0,
@@ -450,7 +450,7 @@ cas, le niveau de Faim de votre insecte remonte d\'un niveau).
             ),
             19 =>
             array (
-                'id' => '646b1a31-3ada-306d-a779-14e5e1da5e8c',
+                'uuid' =>'646b1a31-3ada-306d-a779-14e5e1da5e8c',
                 'story_id' => 1,
                 'number' => 7,
                 'is_first' => 0,
@@ -478,7 +478,7 @@ Il est temps de faire un autre choix d\'action.</p>',
             ),
             20 =>
             array (
-                'id' => '64a8170e-4529-3a18-9d40-1fedaad83767',
+                'uuid' =>'64a8170e-4529-3a18-9d40-1fedaad83767',
                 'story_id' => 1,
                 'number' => 36,
                 'is_first' => 0,
@@ -509,7 +509,7 @@ alors du paragraphe où vous souhaitez vous rendre.',
             ),
             21 =>
             array (
-                'id' => '66eb9e9c-4401-3191-9967-eaf9d4a8e47d',
+                'uuid' =>'66eb9e9c-4401-3191-9967-eaf9d4a8e47d',
                 'story_id' => 1,
                 'number' => 29,
                 'is_first' => 0,
@@ -542,7 +542,7 @@ couvrir le plus possible le terrain à explorer.</p>',
             ),
             22 =>
             array (
-                'id' => '68612b63-fbaf-3fe4-ab1a-180125bd80e3',
+                'uuid' =>'68612b63-fbaf-3fe4-ab1a-180125bd80e3',
                 'story_id' => 1,
                 'number' => 40,
                 'is_first' => 0,
@@ -563,7 +563,7 @@ envoyer quelques phéromones d\'invitation, une artilleuse à l\'abdomen effilé
             ),
             23 =>
             array (
-                'id' => '7537a837-6597-3475-b6ae-457f73a94f85',
+                'uuid' =>'7537a837-6597-3475-b6ae-457f73a94f85',
                 'story_id' => 1,
                 'number' => 49,
                 'is_first' => 0,
@@ -593,7 +593,7 @@ ou l\'autre.
             ),
             24 =>
             array (
-                'id' => '7a9ee846-a0b0-3d5b-8385-7ab1e03b836e',
+                'uuid' =>'7a9ee846-a0b0-3d5b-8385-7ab1e03b836e',
                 'story_id' => 1,
                 'number' => 46,
                 'is_first' => 0,
@@ -612,7 +612,7 @@ reformant peu à peu.
             ),
             25 =>
             array (
-                'id' => '7e2d5a4f-b308-3954-a7de-71183a7243a1',
+                'uuid' =>'7e2d5a4f-b308-3954-a7de-71183a7243a1',
                 'story_id' => 1,
                 'number' => 44,
                 'is_first' => 0,
@@ -635,7 +635,7 @@ rendez-vous au 119. </p><p>    Sinon, laissez-la saisir sa chance en vous re
             ),
             26 =>
             array (
-                'id' => '7efa51ac-4650-3968-927f-910f95fc6b64',
+                'uuid' =>'7efa51ac-4650-3968-927f-910f95fc6b64',
                 'story_id' => 1,
                 'number' => 28,
                 'is_first' => 0,
@@ -655,7 +655,7 @@ allez alors au 77. Sinon, elle se contentera d\'une feuille, comme les autres, e
             ),
             27 =>
             array (
-                'id' => '80595d7e-b35b-3afb-b288-c747da6c7600',
+                'uuid' =>'80595d7e-b35b-3afb-b288-c747da6c7600',
                 'story_id' => 2,
                 'number' => 10,
                 'is_first' => 0,
@@ -670,7 +670,7 @@ allez alors au 77. Sinon, elle se contentera d\'une feuille, comme les autres, e
             ),
             28 =>
             array (
-                'id' => '81527581-7106-342e-af47-a1151abf81f3',
+                'uuid' =>'81527581-7106-342e-af47-a1151abf81f3',
                 'story_id' => 1,
                 'number' => 39,
                 'is_first' => 0,
@@ -697,7 +697,7 @@ hors de portée de la bête. Allez alors au 42.
             ),
             29 =>
             array (
-                'id' => '89599be9-683c-34c0-89f4-dbd18ff07ff4',
+                'uuid' =>'89599be9-683c-34c0-89f4-dbd18ff07ff4',
                 'story_id' => 1,
                 'number' => 47,
                 'is_first' => 0,
@@ -712,7 +712,7 @@ hors de portée de la bête. Allez alors au 42.
             ),
             30 =>
             array (
-                'id' => '8e32b39a-0886-37f3-93fd-f606a88950a9',
+                'uuid' =>'8e32b39a-0886-37f3-93fd-f606a88950a9',
                 'story_id' => 1,
                 'number' => 1,
                 'is_first' => 1,
@@ -738,7 +738,7 @@ laisse à votre protégée un peu de temps pour s\'y préparer.</p><p>    El
             ),
             31 =>
             array (
-                'id' => '8f35f3c5-8bf4-327d-99ee-e6ab05ecdb06',
+                'uuid' =>'8f35f3c5-8bf4-327d-99ee-e6ab05ecdb06',
                 'story_id' => 1,
                 'number' => 37,
                 'is_first' => 0,
@@ -773,7 +773,7 @@ de ne pas céder à son instinct d\'exploratrice et de l\'accompagner.</p>',
             ),
             32 =>
             array (
-                'id' => '943a46a7-3a3c-36f6-b8ca-efaa09395320',
+                'uuid' =>'943a46a7-3a3c-36f6-b8ca-efaa09395320',
                 'story_id' => 1,
                 'number' => 2,
                 'is_first' => 0,
@@ -799,7 +799,7 @@ N\'oubliez pas de retrancher 2 unités de temps au total encore disponible.
             ),
             33 =>
             array (
-                'id' => '9b55d164-5507-3c9e-a50e-1176f0edf292',
+                'uuid' =>'9b55d164-5507-3c9e-a50e-1176f0edf292',
                 'story_id' => 1,
                 'number' => 31,
                 'is_first' => 0,
@@ -834,7 +834,7 @@ une telle hauteur ne la fasse pas trop virevolter (rendez-vous alors au 31).',
             ),
             34 =>
             array (
-                'id' => '9dba62ca-2438-34cf-8d14-0228dad4bc5a',
+                'uuid' =>'9dba62ca-2438-34cf-8d14-0228dad4bc5a',
                 'story_id' => 2,
                 'number' => 9,
                 'is_first' => 0,
@@ -849,7 +849,7 @@ une telle hauteur ne la fasse pas trop virevolter (rendez-vous alors au 31).',
             ),
             35 =>
             array (
-                'id' => 'a2f78c75-ddf0-35de-8d04-59f003b91faf',
+                'uuid' =>'a2f78c75-ddf0-35de-8d04-59f003b91faf',
                 'story_id' => 2,
                 'number' => 5,
                 'is_first' => 0,
@@ -864,7 +864,7 @@ une telle hauteur ne la fasse pas trop virevolter (rendez-vous alors au 31).',
             ),
             36 =>
             array (
-                'id' => 'a3972bc8-8441-3fd2-bf8d-d3d7f7df4122',
+                'uuid' =>'a3972bc8-8441-3fd2-bf8d-d3d7f7df4122',
                 'story_id' => 1,
                 'number' => 19,
                 'is_first' => 0,
@@ -879,7 +879,7 @@ une telle hauteur ne la fasse pas trop virevolter (rendez-vous alors au 31).',
             ),
             37 =>
             array (
-                'id' => 'a6a67782-1453-3ef1-bf30-dd36693e0562',
+                'uuid' =>'a6a67782-1453-3ef1-bf30-dd36693e0562',
                 'story_id' => 1,
                 'number' => 27,
                 'is_first' => 0,
@@ -898,7 +898,7 @@ Rendez-vous au 40.',
             ),
             38 =>
             array (
-                'id' => 'a8e00d08-e879-3bbd-8bde-b52b50c7900f',
+                'uuid' =>'a8e00d08-e879-3bbd-8bde-b52b50c7900f',
                 'story_id' => 1,
                 'number' => 14,
                 'is_first' => 0,
@@ -928,7 +928,7 @@ leurs anciennes compagnes ne sont en effet guère réjouissantes.',
             ),
             39 =>
             array (
-                'id' => 'a95acae1-9b00-3e23-8271-d8351c5df841',
+                'uuid' =>'a95acae1-9b00-3e23-8271-d8351c5df841',
                 'story_id' => 1,
                 'number' => 42,
                 'is_first' => 0,
@@ -950,7 +950,7 @@ Il est temps de faire un autre choix d\'action.</p>',
             ),
             40 =>
             array (
-                'id' => 'abc19abe-3811-3296-bc72-90ed62c56bde',
+                'uuid' =>'abc19abe-3811-3296-bc72-90ed62c56bde',
                 'story_id' => 1,
                 'number' => 48,
                 'is_first' => 0,
@@ -978,7 +978,7 @@ votre fourmi ailée et son compagnon ont mieux à faire… Rendez-vous au 69.</p
             ),
             41 =>
             array (
-                'id' => 'ac2f5ec7-fe90-39ca-a153-72678983e953',
+                'uuid' =>'ac2f5ec7-fe90-39ca-a153-72678983e953',
                 'story_id' => 2,
                 'number' => 11,
                 'is_first' => 0,
@@ -993,7 +993,7 @@ votre fourmi ailée et son compagnon ont mieux à faire… Rendez-vous au 69.</p
             ),
             42 =>
             array (
-                'id' => 'b9ef1b4e-7cf6-37a0-9951-2f05d2fc24b1',
+                'uuid' =>'b9ef1b4e-7cf6-37a0-9951-2f05d2fc24b1',
                 'story_id' => 1,
                 'number' => 38,
                 'is_first' => 0,
@@ -1008,7 +1008,7 @@ votre fourmi ailée et son compagnon ont mieux à faire… Rendez-vous au 69.</p
             ),
             43 =>
             array (
-                'id' => 'ba8b5412-c56b-36a9-bb3d-c0e851ee2fe3',
+                'uuid' =>'ba8b5412-c56b-36a9-bb3d-c0e851ee2fe3',
                 'story_id' => 1,
                 'number' => 21,
                 'is_first' => 0,
@@ -1035,7 +1035,7 @@ le vide. Le temps que le groupe atteigne le bout de la clairière, il ne restera
             ),
             44 =>
             array (
-                'id' => 'c0de6d4a-c282-3653-8f9d-74bff50755a8',
+                'uuid' =>'c0de6d4a-c282-3653-8f9d-74bff50755a8',
                 'story_id' => 2,
                 'number' => 8,
                 'is_first' => 0,
@@ -1050,7 +1050,7 @@ le vide. Le temps que le groupe atteigne le bout de la clairière, il ne restera
             ),
             45 =>
             array (
-                'id' => 'c100e47c-db04-3b45-8287-d55e4ceb5a41',
+                'uuid' =>'c100e47c-db04-3b45-8287-d55e4ceb5a41',
                 'story_id' => 2,
                 'number' => 2,
                 'is_first' => 0,
@@ -1065,7 +1065,7 @@ le vide. Le temps que le groupe atteigne le bout de la clairière, il ne restera
             ),
             46 =>
             array (
-                'id' => 'cf066c88-314f-3df0-be2a-4eacad2dfe32',
+                'uuid' =>'cf066c88-314f-3df0-be2a-4eacad2dfe32',
                 'story_id' => 1,
                 'number' => 4,
                 'is_first' => 0,
@@ -1086,7 +1086,7 @@ N\'oubliez pas de retrancher 2 unités de temps au total encore disponible.</p>'
             ),
             47 =>
             array (
-                'id' => 'd2b94bb0-cb20-32d2-b35d-545b69980e77',
+                'uuid' =>'d2b94bb0-cb20-32d2-b35d-545b69980e77',
                 'story_id' => 1,
                 'number' => 13,
                 'is_first' => 0,
@@ -1113,7 +1113,7 @@ Lancez un dé. Si le résultat est pair, rendez-vous au 79. Dans le cas contrair
             ),
             48 =>
             array (
-                'id' => 'd38a2175-baaf-3c40-b16d-0d7685fb3943',
+                'uuid' =>'d38a2175-baaf-3c40-b16d-0d7685fb3943',
                 'story_id' => 1,
                 'number' => 22,
                 'is_first' => 0,
@@ -1134,7 +1134,7 @@ termine bientôt sur un obstacle redoutable.',
             ),
             49 =>
             array (
-                'id' => 'd62fbb3b-5fe6-3d99-a698-57c6cae4e72f',
+                'uuid' =>'d62fbb3b-5fe6-3d99-a698-57c6cae4e72f',
                 'story_id' => 1,
                 'number' => 12,
                 'is_first' => 0,
@@ -1155,7 +1155,7 @@ Si vous pensez que ce lieu conviendra, dirigez-vous au 92.',
             ),
             50 =>
             array (
-                'id' => 'dc6f77ab-c3f3-36ad-ace6-862e1025c052',
+                'uuid' =>'dc6f77ab-c3f3-36ad-ace6-862e1025c052',
                 'story_id' => 1,
                 'number' => 11,
                 'is_first' => 0,
@@ -1194,7 +1194,7 @@ Sinon, avec son consensus habituel, le groupe décide de tenter un raccourci. Al
             ),
             51 =>
             array (
-                'id' => 'e4807008-33b4-33a4-a19e-790cabf8be61',
+                'uuid' =>'e4807008-33b4-33a4-a19e-790cabf8be61',
                 'story_id' => 1,
                 'number' => 24,
                 'is_first' => 0,
@@ -1239,7 +1239,7 @@ Celle-ci se termine devant un nouveau défi.',
             ),
             52 =>
             array (
-                'id' => 'e4a14291-b11e-3381-b271-48367f154db6',
+                'uuid' =>'e4a14291-b11e-3381-b271-48367f154db6',
                 'story_id' => 1,
                 'number' => 26,
                 'is_first' => 0,
@@ -1257,7 +1257,7 @@ Néanmoins, les exploratrices parviennent à rejoindre l\'autre rive, sans perte
             ),
             53 =>
             array (
-                'id' => 'e91c3382-b4fd-33a1-bf97-98cd1c88c57a',
+                'uuid' =>'e91c3382-b4fd-33a1-bf97-98cd1c88c57a',
                 'story_id' => 1,
                 'number' => 10,
                 'is_first' => 0,
@@ -1296,7 +1296,7 @@ moment son avancée, allez au 115.',
             ),
             54 =>
             array (
-                'id' => 'eb3c68b8-1daf-3034-a68c-6d4f3b79e687',
+                'uuid' =>'eb3c68b8-1daf-3034-a68c-6d4f3b79e687',
                 'story_id' => 1,
                 'number' => 34,
                 'is_first' => 0,
@@ -1327,7 +1327,7 @@ Sinon, il ne reste plus au groupe qu\'à explorer le reste des environs : rendez
             ),
             55 =>
             array (
-                'id' => 'efb2f3a3-9c3e-3c2e-be54-b72dd10c2f81',
+                'uuid' =>'efb2f3a3-9c3e-3c2e-be54-b72dd10c2f81',
                 'story_id' => 1,
                 'number' => 25,
                 'is_first' => 0,
@@ -1356,7 +1356,7 @@ votre fourmi d’un niveau.',
             ),
             56 =>
             array (
-                'id' => 'f1e0c655-f42e-34a0-be2f-9464f11e3e21',
+                'uuid' =>'f1e0c655-f42e-34a0-be2f-9464f11e3e21',
                 'story_id' => 1,
                 'number' => 43,
                 'is_first' => 0,
@@ -1381,7 +1381,7 @@ doux nectar, rendez-vous au 72. </p><p>&nbsp;&nbsp;&nbsp;&nbsp;Si elle préfère
             ),
             57 =>
             array (
-                'id' => 'fb772269-a27c-3f16-bebc-d6b04ed690da',
+                'uuid' =>'fb772269-a27c-3f16-bebc-d6b04ed690da',
                 'story_id' => 1,
                 'number' => 32,
                 'is_first' => 0,
@@ -1406,7 +1406,7 @@ un compagnon spécial) a pu se reconstituer quelque peu : ajoutez 2 gouttes à c
             ),
             58 =>
             array (
-                'id' => 'fbab9c67-beab-3f27-91fe-959efe6583f3',
+                'uuid' =>'fbab9c67-beab-3f27-91fe-959efe6583f3',
                 'story_id' => 1,
                 'number' => 5,
                 'is_first' => 0,
@@ -1426,7 +1426,7 @@ ou dotées de puissantes mandibules (allez au 97).</p>',
             ),
             59 =>
             array (
-                'id' => 'fe835b07-0a51-33bd-99cc-af62093052af',
+                'uuid' =>'fe835b07-0a51-33bd-99cc-af62093052af',
                 'story_id' => 1,
                 'number' => 3,
                 'is_first' => 0,

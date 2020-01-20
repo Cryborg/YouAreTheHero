@@ -41,7 +41,7 @@
     <hr>
 
     {{-- Current page --}}
-    {!! Form::hidden('page_from', $page->id, ['id' => 'page_from']) !!}
+    {!! Form::hidden('page_from', $page->uuid, ['id' => 'page_from']) !!}
     <div class="row" id="current_page">
         <div class="col-lg-8 col-xs-12 col-border-left col-current">
             @info({!! trans('page.current_page_help') !!})
@@ -99,8 +99,8 @@
                     <select class="form-control mr-sm-2" id="childrenSelect">
                         <option value="0" selected>{{ trans('page.existing_page') }}</option>
                         @foreach ($page->getPotentialChildren() as $existingPage)
-                            @if ($existingPage->id !== $page->id)
-                                <option value="{{ $existingPage->id }}">{{ $existingPage->title }}</option>
+                            @if ($existingPage->uuid !== $page->uuid)
+                                <option value="{{ $existingPage->uuid }}">{{ $existingPage->title }}</option>
                             @endif
                         @endforeach
                     </select>

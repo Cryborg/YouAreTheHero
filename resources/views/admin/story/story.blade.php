@@ -48,7 +48,7 @@
         let story_id = "{{ $story_id }}";
 
         $.ajax({
-            url: route('page.form', {page_id : node_id, story_id: story_id }),
+            url: route('page.form', {page_uuid : node_id, story_id: story_id }),
         }).done(function (data) {
             $('#page').html(data);
 
@@ -57,7 +57,7 @@
             // Soumettre la page
             $("#page form button[type='submit']").on('click', function () {
                 let content = $("textarea[name='content']").val();
-                let page_id = $("input[name='page_id']").val();
+                let page_uuid = $("input[name='page_uuid']").val();
                 let items = $('#page').find('select').val();
 
                 $.ajax({
@@ -69,7 +69,7 @@
                         $('#container').jstree("refresh");
                     },
                     url: '{{ route('admin.page.store') }}',
-                    data: {story_id: "{{ $story_id }}", content: content, page_parent: page_parent, page_id: page_id, items: items},
+                    data: {story_id: "{{ $story_id }}", content: content, page_parent: page_parent, page_uuid: page_uuid, items: items},
                     method: 'POST'
                 });
                 return false;
@@ -77,7 +77,7 @@
 
             $('#create_new_children_page').on("click", function (e) {
 
-                createPage(e,  0, $("input[name='page_id']").val());
+                createPage(e,  0, $("input[name='page_uuid']").val());
             });
 
             $('#create_new_page').on("click", function (e) {
@@ -95,7 +95,7 @@
                         $('#container').jstree("refresh");
                     },
                     url: '{{ route('admin.page.delete', ['id' => 0]) }}',
-                    data: {id: $("input[name='page_id']").val() },
+                    data: {id: $("input[name='page_uuid']").val() },
                     method: 'DELETE'
                 });
             });

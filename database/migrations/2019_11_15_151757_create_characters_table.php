@@ -26,8 +26,8 @@ class CreateCharactersTable extends Migration
             $table->foreign('story_id')->references('id')->on('stories');
 
             // Last page visited in the sotry
-            $table->uuid('page_id');
-            $table->foreign('page_id')->references('id')->on('pages');
+            $table->uuid('page_uuid');
+            $table->foreign('page_uuid')->references('uuid')->on('pages');
 
             // Amount of money owned by the character
             $table->unsignedInteger('money')->default(10);

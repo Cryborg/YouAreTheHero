@@ -36,7 +36,7 @@
 
 @section('map')
     @foreach ($visitedPlaces as $key => $place)
-        <a href="{{ route('story.play', ['story' => $story->id, 'page' => $place->page_id]) }}">{{ $place->page_title }}</a><br>
+        <a href="{{ route('story.play', ['story' => $story->id, 'page' => $place->page_uuid]) }}">{{ $place->page_title }}</a><br>
     @endforeach
 @endsection
 
@@ -91,7 +91,7 @@
         }
 
         function loadChoices() {
-            $('.choices-block').load('{{ route('story.choices', ['story' => $story->id, 'page' => $page->id]) }}');
+            $('.choices-block').load('{{ route('story.choices', ['story' => $story->id, 'page' => $page->uuid]) }}');
         }
     </script>
 @endpush

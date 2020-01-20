@@ -15,10 +15,13 @@ class CreatePageLinkTable extends Migration
     {
         Schema::create('page_link', function (Blueprint $table) {
             $table->bigIncrements('id');
+
             $table->string('page_from', 36)->nullable();
-            $table->foreign('page_from')->references('id')->on('pages');
+            $table->foreign('page_from')->references('uuid')->on('pages');
+
             $table->string('page_to', 36)->nullable();
-            $table->foreign('page_to')->references('id')->on('pages');
+            $table->foreign('page_to')->references('uuid')->on('pages');
+
             $table->text('link_text');
 
             $table->index(['page_from']);

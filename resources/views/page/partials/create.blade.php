@@ -1,5 +1,5 @@
 <div class="divAsForm" data-internalid="{{ $internalId }}"
-     data-route="{{ route('page.edit.post', $page->id) }}">
+     data-route="{{ route('page.edit.post', $page->uuid) }}">
 
     {{--  Errors --}}
     <div class="form-errors alert alert-danger hidden"></div>
@@ -54,7 +54,7 @@
 </div>
 
 @if ($internalId > 0)
-    <a class="btn btn-primary w-25" href="{{ route('page.edit', $page->id) }}#current_page">{{ trans('story.add_choices') }}</a>
+    <a class="btn btn-primary w-25" href="{{ route('page.edit', $page->uuid) }}#current_page">{{ trans('story.add_choices') }}</a>
 @endif
 
 <button class="btn btn-danger mr-1 w-25" disabled><span class="fa fa-trash mr-1"></span>Supprimer</button>

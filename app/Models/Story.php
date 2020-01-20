@@ -67,7 +67,7 @@ class Story extends Model
         $page = Page::where([
             'story_id' => $this->id,
         ])
-            ->orderBy('id', 'desc')
+            ->orderBy('uuid', 'desc')
             ->first();
 
         return $page;
@@ -78,7 +78,7 @@ class Story extends Model
      */
     public function pages()
     {
-        return $this->hasMany(Page::class);
+        return $this->hasMany(Page::class, 'uuid');
     }
 
     public function items()
@@ -87,14 +87,14 @@ class Story extends Model
     }
 
     /**
-     * @param string|null $page_id
+     * @param string|null $page_uuid
      *
      * @return \App\Models\Page|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object|null
      */
-    public function getCurrentPage(string $page_id = null)
+    public function getCurrentPage(string $page_uuid = null)
     {
-        if ($page_id !== null) {
-            return Page::whereId($page_id)->first();
+        if ($page_uuid !== null) {
+            return Page::where('uuid', $page_uuid)->first();
         }
 
         return Page::where('story_id', $this->id)

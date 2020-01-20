@@ -20,8 +20,8 @@ class CreateActionsTable extends Migration
             $table->string('verb');
             $table->integer('quantity')->default(1);
             $table->integer('price')->nullable();
-            $table->uuid('page_id');
-            $table->foreign('page_id')->references('id')->on('pages');
+            $table->uuid('page_uuid');
+            $table->foreign('page_uuid')->references('uuid')->on('pages');
         });
     }
 
