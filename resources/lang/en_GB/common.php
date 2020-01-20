@@ -26,4 +26,5 @@ return array (
   'es_ES' => 'Spanish (ES)',
   'filters' => 'Filters',
   'global_search' => 'Global search',
+  'close' => 'Close',
 );

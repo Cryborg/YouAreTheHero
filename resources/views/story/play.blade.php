@@ -11,21 +11,23 @@
         @switch($action['verb'])
             @case ('buy')
             @case ('earn')
-                <div class="pick-item" data-verb="{{ $action['verb'] }}" data-item="{{ $action['item']->id }}" data-price="{{ $action['item']->default_price  }}" data-singleuse="{{ $action['item']->single_use }}">
+            @case ('sell')
+            @case ('give')
+                <div class="pick-item" data-verb="{{ $action['verb'] }}" data-item="{{ $action['item']->id }}" data-price="{{ $action['price'] > 0 ?: $action['item']->default_price  }}" data-singleuse="{{ $action['item']->single_use }}">
                     @include('story.partials.money', [
-                        'value' => $action['item']->present()->price,
-                        'operator' => 'sub'
+                        'value' => $action['price'] > 0 ?: $action['item']->default_price,
+                        'operator' => in_array($action['verb'], ['sell','give']) ? 'add' : 'sub',
+                        'name' => $action['item']['name']
                     ])
-                    <span class="item-name">{{ $action['item']['name'] }}</span>
-                    @if ($action['item']->effects)
-                        @foreach ($action['item']->effects as $effect => $value)
-                            @include('story.partials.effects', [
-                                'name' => $effect,
-                                'value' => $value['quantity'],
-                                'operator' => $value['operator'] === '+' ? 'add' : 'sub'
-                            ])
-                        @endforeach
-                    @endif
+{{--                    @if ($action['item']->effects)--}}
+{{--                        @foreach ($action['item']->effects as $effect => $value)--}}
+{{--                            @include('story.partials.effects', [--}}
+{{--                                'name' => $effect,--}}
+{{--                                'value' => $value['quantity'],--}}
+{{--                                'operator' => $value['operator'] === '+' ? 'add' : 'sub'--}}
+{{--                            ])--}}
+{{--                        @endforeach--}}
+{{--                    @endif--}}
                 </div>
                 @break
         @endswitch

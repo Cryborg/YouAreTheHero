@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 use Laracasts\Presenter\PresentableTrait;
 use App\Presenters\CharacterPresenter;
 
@@ -20,13 +21,17 @@ class Character extends Model
     public static function boot()
     {
         parent::boot();
+
+        //static::deleting(function($character) { // before delete() method call this
+          //  $character->inventory()->delete();
+            // do the rest of the cleanup...
+        //});
     }
 
-    /**
-     * @return array
-     */
-    public function inventory(): array
+    public function inventory()
     {
+        return $this->hasMany(Inventory::class)->with('item');
+
         $inventory = Inventory::where([
             'character_id' => $this->id,
         ])->get();
@@ -76,7 +81,7 @@ class Character extends Model
         return $this->hasMany(Checkpoint::class);
     }
 
-    public function stats()
+    public function character_stats()
     {
         return $this->hasMany(CharacterStat::class)->with('stat_story');
     }

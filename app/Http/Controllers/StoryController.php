@@ -130,9 +130,9 @@ class StoryController extends Controller
         // Check if there are prerequisites, and that they are fulfilled
         foreach ($allChoices as $choice) {
             $fulfilled = false;
-            $pageTo = $this->page->find($choice->page_to);
+            $pageTo = $choice->pageTo;
 
-            if (!empty($pageTo->prerequisites())) {
+            if ($pageTo && $pageTo->prerequisites()->count() > 0) {
                 foreach ($pageTo->prerequisites() as $prerequisite) {
                     switch (get_class($prerequisite->prerequisiteable)) {
                         case CharacterStat::class:
@@ -159,6 +159,7 @@ class StoryController extends Controller
      * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function ajaxAction(Request $request): JsonResponse
     {
@@ -175,7 +176,13 @@ class StoryController extends Controller
         // Perform the action
         switch ($action['verb']) {
             case 'buy':
-                $isOk = Action::buy($character, $item);
+                $isOk = Action::buy($character, $item, $action);
+                break;
+            case 'sell':
+                $isOk = Action::sell($character, $item, $action);
+                break;
+            case 'give':
+                $isOk = Action::give($character, $item);
                 break;
             case 'earn':
                 $isOk = $character->addMoney($action['price']);
@@ -190,6 +197,7 @@ class StoryController extends Controller
                 break;
         }
 
+        // Apply item effects, if applicable
         Action::effects($character, $item);
 
         // Check if the item used has the single_use flag,
@@ -248,7 +256,7 @@ class StoryController extends Controller
         $character = $this->getCurrentCharacter($story);
 
         return view('story.partials.sheet', [
-            'sheet' => $character->stats ?? [],
+            'sheet' => $character->character_stats ?? [],
         ]);
     }
 
@@ -278,7 +286,7 @@ class StoryController extends Controller
      */
     private function isStatPrerequisitesFulfilled(CharacterStat $prerequisites, Character $character): bool
     {
-        $sheet = $character->sheet;
+        $sheet = $character->character_stats;
 
         foreach ($prerequisites as $name => $value) {
             if (array_key_exists($name, $sheet) && $sheet[$name] >= $value) {
@@ -339,7 +347,7 @@ class StoryController extends Controller
         $key = 'choices_' . $page->id;
 
         return Cache::remember($key, Config::get('app.story.cache_ttl'), function () use ($page, $key) {
-            return PageLink::where('page_from', $page->id)->get();
+            return PageLink::with('pageTo')->where('page_from', $page->id)->get();
         });
     }
 
@@ -489,8 +497,8 @@ class StoryController extends Controller
         foreach ($page->actions->toArray() as $action) {
             $isFound = false;
 
-            foreach ($character->inventory() as $items) {
-                if ($items['item']->id == $action['item_id'] && $items['item']->single_use) {
+            foreach ($character->inventory ?? [] as $items) {
+                if ($items->item->id == $action['item_id'] && $items->item->single_use) {
                     $isFound = true;
                 }
             }

@@ -87,7 +87,7 @@ tr.shown td.details-control {
 }
 
 .action-label-container {
-    outline: 1px solid black;
+    outline: 1px solid #d4d4d4;
     margin: 0 .3em;
 }
 
@@ -115,10 +115,6 @@ tr.shown td.details-control {
 }
 .effect-value-add:before {
     content: '+';
-}
-.money-symbol {
-    background-color: #f1f100;
-    color: black;
 }
 .item-name {
     display: inline-block;

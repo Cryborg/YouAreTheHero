@@ -15,11 +15,15 @@ class CreateCheckpointsTable extends Migration
     {
         Schema::create('checkpoints', function (Blueprint $table) {
             $table->bigIncrements('id');
+
             $table->unsignedBigInteger('character_id');
             $table->foreign('character_id')->references('id')->on('characters');
+
             $table->uuid('page_id');
             $table->foreign('page_id')->references('id')->on('pages');
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
