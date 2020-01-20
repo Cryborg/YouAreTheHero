@@ -13,4 +13,6 @@ return array (
   'translations' => 'Traductions',
   'login' => 'Connexion',
   'remember_me' => 'Se souvenir de moi',
+  'forgot_password' => 'Mot de passe oublié ?',
+  'register' => 'Inscription',
 );

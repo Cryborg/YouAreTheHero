@@ -13,4 +13,6 @@ return array (
   'translations' => 'Translations',
   'login' => 'Login',
   'remember_me' => 'Remember me',
+  'forgot_password' => 'Forgot password?',
+  'register' => 'Register',
 );

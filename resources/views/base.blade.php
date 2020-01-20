@@ -9,7 +9,7 @@
 
     <base href="{{ config('app.url') }}/">
 
-    <title>@yield('title')</title>
+    <title>@yield('title', trans('home.welcome'))</title>
 
     {{-- Bootstrap core CSS --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/default.css') }}">
@@ -85,11 +85,11 @@
                         {{-- Authentication Links --}}
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ trans('auth.login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ trans('auth.register') }}</a>
                                 </li>
                             @endif
                         @else
