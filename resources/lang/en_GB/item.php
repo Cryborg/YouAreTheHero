@@ -14,4 +14,5 @@ return array (
   'create_btn' => 'Create an item',
   'new_item_title' => 'New item',
   'price_help' => 'Default price of the item. <br> It can then be given another price depending on the configuration of the page the item appears in.',
+  'single_use_help' => 'Indicates if the item disappears upon use.',
 );

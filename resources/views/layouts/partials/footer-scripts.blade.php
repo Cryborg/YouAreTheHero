@@ -114,6 +114,47 @@
         }));
     }
 
+    var PlaceholdersButton = function (context) {
+        var ui = $.summernote.ui;
+        var placeholders = {
+            'character_name': '{{ trans('character.name_label') }}'
+        };
+
+        // create button
+        var buttonGroup = ui.buttonGroup([
+            ui.button({
+                className: 'dropdown-toggle',
+                contents: '<i class="fa fa-cog"/> {{ trans('page.variables_label') }}',
+                tooltip: 'hello',
+                data: {
+                    toggle: 'dropdown'
+                },
+                click: function() {
+                    // Cursor position must be saved because is lost when dropdown is opened.
+                    context.invoke('editor.saveRange');
+                }
+            }),
+            ui.dropdown({
+                className: 'drodown-style',
+                items: ['character_name'],
+                callback: function ($dropdown) {
+                    $dropdown.find('a.dropdown-item').each(function () {
+                        $(this).html(placeholders[$(this).data('value')]);
+                        $(this).click(function(e) {
+                            // We restore cursor position and text is inserted in correct pos.
+                            context.invoke('editor.restoreRange');
+                            context.invoke('editor.focus');
+                            context.invoke("editor.insertText", '[[' + $(this).data('value') + ']]');
+                            e.preventDefault();
+                        });
+                    });
+                }
+            })
+        ]);
+        return buttonGroup.render();   // return button as jquery object
+    };
+
+
     var summernoteOptions = {
         lang: 'fr-FR',
         maximumImageFileSize: 524288, // 512k
@@ -126,7 +167,11 @@
             ['table', ['table']],
             ['insert', ['link', 'picture']],
             ['view', ['fullscreen', 'codeview']],
+            ['custom', ['placeholders']],
         ],
+        buttons: {
+            placeholders: PlaceholdersButton
+        },
         spellcheck: false
     };
 

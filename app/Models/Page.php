@@ -2,17 +2,21 @@
 
 namespace App\Models;
 
-use App\Models\Prerequisite;
+use App\Presenters\PagePresenter;
 use Faker\Provider\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
+use Laracasts\Presenter\PresentableTrait;
 
 class Page extends Model
 {
+    use PresentableTrait;
     use SoftDeletes;
+
+    protected $presenter    = PagePresenter::class;
 
     protected $primaryKey   = 'uuid';
 
@@ -43,7 +47,7 @@ class Page extends Model
 
         static::creating(static function ($page) {
             // String ID so that we prevent cheating
-            $page->uuid       = Uuid::uuid();
+            $page->uuid     = Uuid::uuid();
             $page->number   = $page::where('story_id', '=', $page->story_id)
                                    ->count() + 1;
             $page->is_first = $page->number === 1;
@@ -69,21 +73,24 @@ class Page extends Model
     public function choices()
     {
         $pages = Cache::remember('choices_' . $this->uuid, Config::get('app.story.cache_ttl'), function () {
-            $pageLinks = PageLink::where('page_from', $this->uuid)->get();
+            $pageLinks = PageLink::where('page_from', $this->uuid)
+                                 ->get();
 
             if ($pageLinks) {
                 return Page::whereIn('pages.uuid', $pageLinks->pluck('page_to'))
-                       ->select([
-                           'page_link.page_to',
-                           'page_link.link_text',
-                           'pages.*'
-                       ])
-                       ->join('page_link', 'page_link.page_to', '=', 'pages.uuid')
-                       ->get();
+                           ->select([
+                               'page_link.page_to',
+                               'page_link.link_text',
+                               'pages.*',
+                           ]
+                           )
+                           ->join('page_link', 'page_link.page_to', '=', 'pages.uuid')
+                           ->get();
             }
 
             return collect();
-        });
+        }
+        );
 
         return $pages ?? collect();
     }
@@ -115,8 +122,8 @@ class Page extends Model
         // - the already bound children
         $potentialPages = Page::where('story_id', $this->story_id)
                               ->whereNotIn('uuid', $this->choices()
-                                                      ->pluck('uuid')
-                                                      ->toArray()
+                                                        ->pluck('uuid')
+                                                        ->toArray()
                               )
                               ->whereNotIn('uuid', [$this->uuid])
                               ->orderBy('title', 'asc')
@@ -147,8 +154,8 @@ class Page extends Model
 
     public function prerequisites()
     {
-        return \App\Models\Prerequisite::with('prerequisiteable')
-                                       ->where('page_uuid', $this->uuid)
-                                       ->get();
+        return Prerequisite::with('prerequisiteable')
+                           ->where('page_uuid', $this->uuid)
+                           ->get();
     }
 }

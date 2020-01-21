@@ -25,7 +25,7 @@
             </div>
             <div class="row">
                 <div class="col text-justify">
-                    <p>{!! $page->content !!}</p>
+                    <p>{!! $page->present()->content !!}</p>
                 </div>
             </div>
             <div class="row">

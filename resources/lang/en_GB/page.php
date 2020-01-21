@@ -27,4 +27,5 @@ return array (
   'level_help' => 'Minimum level that the player\'s character must have in the chosen stat to access this page. <br> If his character does not fulfill this requirement, the link to the page will not be displayed.',
   'to_be_added_prerequisites' => 'Conditions to add',
   'edit' => 'Edit',
+  'variables_label' => 'Variables',
 );

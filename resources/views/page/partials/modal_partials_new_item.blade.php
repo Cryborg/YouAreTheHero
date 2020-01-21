@@ -21,6 +21,11 @@
             {!! Form::number('item_price', 0, ['class' => 'form-control', 'min' => 0, 'id' => 'item_price_' . $context]) !!}
         </div>
     </div>
+    <div class="row mb-2">
+        <div class="col">
+            <p class="help-block">{!! trans('item.single_use_help') !!}</p>
+        </div>
+    </div>
     <label>
         {!! Form::checkbox('single_use', 1, 0,  ['id' => 'single_use_' . $context]) !!}
         {{ trans('item.single_use') }}

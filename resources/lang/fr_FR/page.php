@@ -27,4 +27,5 @@ return array (
   'level_help' => 'Niveau minimum que doit avoir le joueur dans la caractéristique choisie juste au-dessus pour accéder à cette page.<br>Si son personnage ne l\'atteint pas, le lien vers la page ne s\'affichera pas.',
   'to_be_added_prerequisites' => 'Prérequis à ajouter',
   'edit' => 'Modifier',
+  'variables_label' => 'Variables',
 );

@@ -719,7 +719,7 @@ hors de portée de la bête. Allez alors au 42.
                 'is_last' => 0,
                 'title' => '1',
                 'content' => '<p>    Les quatre pattes arrière plantées dans une paroi à l\'aide de robustes paires de griffes, le bout de
-l\'abdomen posé sur le sol, la fourmi sécrète à nouveau de la salive blanche pour en enduire à présent ses
+l\'abdomen posé sur le sol, [[character_name]] sécrète à nouveau de la salive blanche pour en enduire à présent ses
 mâchoires.</p><p>    Occupée par sa toilette, elle ne peut pour autant ignorer le flux de phéromones que lui
 envoie la nouvelle venue, une soldate âgée dotée d\'épaisses mandibules arquées. Le manque croissant
 de nourriture pousse le Nid à devenir de plus en plus téméraire, et la guerrière, par un subtil mélange
