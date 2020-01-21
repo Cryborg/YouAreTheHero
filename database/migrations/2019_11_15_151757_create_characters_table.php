@@ -15,6 +15,7 @@ class CreateCharactersTable extends Migration
     {
         Schema::create('characters', function (Blueprint $table) {
             $table->bigIncrements('id');
+
             $table->string('name');
 
             // User owning the character
@@ -22,7 +23,7 @@ class CreateCharactersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
 
             // Story in which the character plays
-            $table->unsignedInteger('story_id');
+            $table->unsignedBigInteger('story_id');
             $table->foreign('story_id')->references('id')->on('stories');
 
             // Last page visited in the sotry

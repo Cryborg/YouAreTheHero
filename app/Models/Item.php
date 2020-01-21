@@ -48,4 +48,9 @@ class Item extends Model
     {
         return $this->morphMany(Prerequisite::class, 'prerequisiteable');
     }
+
+    public function effects()
+    {
+        return $this->hasMany(Effect::class)->with('stat_story');
+    }
 }

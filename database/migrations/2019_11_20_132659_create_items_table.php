@@ -14,11 +14,13 @@ class CreateItemsTable extends Migration
     public function up()
     {
         Schema::create('items', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
+
+            $table->unsignedBigInteger('story_id');
+            $table->foreign('story_id')->references('id')->on('stories');
+
             $table->string('name', 40);
             $table->unsignedInteger('default_price')->default(0);
-            $table->unsignedInteger('story_id');
-            $table->json('effects')->nullable();
             $table->boolean('single_use')->default(false);
 
             $table->timestamps();

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUniqueItemsUsedTable extends Migration
+class CreateEffectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class CreateUniqueItemsUsedTable extends Migration
      */
     public function up()
     {
-        Schema::create('unique_items_used', function (Blueprint $table) {
+        Schema::create('effects', function (Blueprint $table) {
             $table->bigIncrements('id');
-
-            $table->unsignedBigInteger('character_id');
-            $table->foreign('character_id')->references('id')->on('characters');
 
             $table->unsignedBigInteger('item_id');
             $table->foreign('item_id')->references('id')->on('items');
+
+            $table->unsignedBigInteger('stat_story_id');
+            $table->foreign('stat_story_id')->references('id')->on('stat_story');
+
+            $table->string('operator', 2);
+            $table->integer('quantity')->default(1);
 
             $table->timestamps();
         });
@@ -33,6 +36,6 @@ class CreateUniqueItemsUsedTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('unique_items_used');
+        Schema::dropIfExists('effects');
     }
 }

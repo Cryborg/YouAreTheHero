@@ -15,17 +15,17 @@
                     </label>
                 </td>
             </tr>
-            @if($item->effects)
+            @if ($item->effects->count() > 0)
                 <tr>
                     <th scope="row">{{ trans('item.effects') }}</th>
                     <td class="p-0">
-                        @foreach ($item->effects as $carac => $effect)
+                        @foreach ($item->effects as $effect)
                             <div class="row">
                                 <div class="col p-2">
                                     @include('story.partials.effects', [
-                                        'name' => $carac,
-                                        'value' => $effect['quantity'],
-                                        'operator' => $effect['operator'] === '+' ? 'add' : 'sub'
+                                        'name' => $effect->stat_story->full_name,
+                                        'value' => $effect->quantity,
+                                        'operator' => $effect->operator === '+' ? 'add' : 'sub'
                                     ])
                                 </div>
                             </div>

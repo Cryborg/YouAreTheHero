@@ -15,6 +15,7 @@ class CreateStatsTable extends Migration
     {
         Schema::create('stats', function (Blueprint $table) {
             $table->bigIncrements('id');
+
             $table->string('full_name');
             $table->string('short_name');
         });

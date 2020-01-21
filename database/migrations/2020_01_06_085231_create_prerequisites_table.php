@@ -21,6 +21,7 @@ class CreatePrerequisitesTable extends Migration
 
             $table->morphs('prerequisiteable');
             $table->integer('quantity')->default(1);
+
             $table->timestamps();
         });
     }

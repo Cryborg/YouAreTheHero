@@ -14,7 +14,8 @@ class CreateStoriesTable extends Migration
     public function up()
     {
         Schema::create('stories', function (Blueprint $table) {
-            $table->integerIncrements('id');
+            $table->bigIncrements('id');
+
             $table->string('title');
             $table->text('description');
 
@@ -26,6 +27,7 @@ class CreateStoriesTable extends Migration
             $table->json('sheet_config')->nullable();
             $table->boolean('is_published')->default(false);
             $table->integer('points_to_share')->default(10);
+
             $table->timestamps();
         });
     }

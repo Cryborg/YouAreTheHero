@@ -16,7 +16,7 @@ class CreateStatStoryTable extends Migration
         Schema::create('stat_story', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedInteger('story_id');
+            $table->unsignedBigInteger('story_id');
             $table->foreign('story_id')->references('id')->on('stories');
 
             $table->string('full_name', 15);
@@ -25,6 +25,7 @@ class CreateStatStoryTable extends Migration
             $table->integer('max_value');
             $table->integer('start_value');
             $table->integer('order')->default(1);
+
             $table->timestamps();
         });
     }

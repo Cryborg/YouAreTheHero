@@ -106,12 +106,6 @@ return true;
                     'name'          => 'Marteau',
                     'default_price' => 1,
                     'story_id'      => $story->id,
-                    'effects'       => [
-                        'force' => [
-                            'operator' => '+',
-                            'quantity' => 1,
-                        ],
-                    ],
                     'single_use'    => true,
                 ]
             );
@@ -191,61 +185,6 @@ return true;
                     'story_id'      => $story->id,
                 ];
 
-                switch ($price) {
-                    case 1:
-                        $itemStuff['effects'] = [
-                            'experience' => [
-                                'operator' => '-',
-                                'quantity' => 2,
-                            ],
-                        ];
-                        break;
-                    case 2:
-                        $itemStuff['effects'] = [
-                            'force' => [
-                                'operator' => '-',
-                                'quantity' => 1,
-                            ],
-                        ];
-                        break;
-                    case 3:
-                        $itemStuff['effects'] = [
-                            'level' => [
-                                'operator' => '*',
-                                'quantity' => 2,
-                            ],
-                        ];
-                        break;
-                    case 4:
-                        $itemStuff['effects'] = [
-                            'level' => [
-                                'operator' => '+',
-                                'quantity' => 2,
-                            ],
-                            'exp'   => [
-                                'operator' => '/',
-                                'quantity' => 2,
-                            ],
-                        ];
-                        break;
-                    case 5:
-                        $itemStuff['effects'] = [
-                            'experience' => [
-                                'operator' => '+',
-                                'quantity' => 10,
-                            ],
-                            'force'      => [
-                                'operator' => '+',
-                                'quantity' => 1,
-                            ],
-                            'level'      => [
-                                'operator' => '+',
-                                'quantity' => 1,
-                            ],
-                        ];
-                        break;
-                }
-
                 $newItem = Item::create($itemStuff);
 
                 // Put some items to pick in one of the pages
@@ -263,12 +202,6 @@ return true;
                     'default_price' => 8,
                     'story_id'      => $story->id,
                     'single_use'    => true,
-                    'effects'       => [
-                        'experience' => [
-                            'operator' => '+',
-                            'quantity' => 10,
-                        ],
-                    ],
                 ]
             );
 

@@ -14,9 +14,10 @@ class CreateStoryGenreTable extends Migration
     public function up()
     {
         Schema::create('story_genre', function (Blueprint $table) {
-            $table->unsignedInteger('story_id');
+            $table->unsignedBigInteger('story_id');
             $table->foreign('story_id')->references('id')->on('stories');
-            $table->unsignedInteger('genre_id');
+
+            $table->unsignedBigInteger('genre_id');
             $table->foreign('genre_id')->references('id')->on('genres');
         });
     }
