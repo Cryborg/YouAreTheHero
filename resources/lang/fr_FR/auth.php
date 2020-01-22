@@ -15,4 +15,6 @@ return array (
   'remember_me' => 'Se souvenir de moi',
   'forgot_password' => 'Mot de passe oublié ?',
   'register' => 'Inscription',
+  'id' => 'ID',
+  'email' => 'Email',
 );

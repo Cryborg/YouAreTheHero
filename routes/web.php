@@ -70,3 +70,8 @@ Route::delete('/stat/{stat_story}/delete', 'StatStoryController@delete')->name('
 
 // Changelog
 Route::get('/changelog', 'HomeController@changelog')->name('changelog');
+
+// Admin
+Route::get('/admin', 'AdminController@getIndex')->name('admin');
+Route::get('/admin/stories', 'AdminController@getStories')->name('admin.stories');
+Route::get('/admin/users', 'AdminController@getUsers')->name('admin.users');

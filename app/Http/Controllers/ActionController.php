@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class ActionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function store(Request $request, Page $page)
     {
         if ($request->ajax()) {

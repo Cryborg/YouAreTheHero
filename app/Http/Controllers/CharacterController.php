@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\View;
 
 class CharacterController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function getCreate(Story $story)
     {
         $story->load('story_options');

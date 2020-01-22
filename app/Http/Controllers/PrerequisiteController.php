@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class PrerequisiteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function store(Request $request, Page $page)
     {
         if ($request->ajax()) {

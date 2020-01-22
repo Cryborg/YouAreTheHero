@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class StatStoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function store(Request $request, Story $story)
     {
         if ($request->ajax()) {

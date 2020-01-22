@@ -71,4 +71,9 @@ class User extends Authenticatable
     {
         $this->notify(new ResetPassword($token));
     }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
 }
