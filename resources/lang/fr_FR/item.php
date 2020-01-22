@@ -15,4 +15,5 @@ return array (
   'new_item_title' => 'Nouvel objet',
   'price_help' => 'Prix par défaut de l\'objet.<br>Il pourra ensuite être monnayé à un autre prix selon la configuration de la page.',
   'single_use_help' => 'Indique si l\'objet disparaît une fois utilisé.',
+  'effects_help_text' => 'Si l\'objet affecte une ou plusieurs des attributs du joueur, c\'est ici qu\'il faut l\'indiquer.',
 );

@@ -8,4 +8,5 @@ return array (
   'range_text' => 'from :min to :max',
   'points_left_to_share' => 'Points left to share',
   'sheet' => 'Character sheet',
+  'attribute' => 'Attribute',
 );

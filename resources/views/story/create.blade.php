@@ -51,7 +51,7 @@
             @if (Route::current()->getName() === 'story.edit')
                 <div class="form-group form-check">
                     <label>
-                        {!! Form::checkbox('is_published', $story ? $story->is_published : old('is_published') ?? 1, false, ['id' => 'is_published']) !!}
+                        {!! Form::checkbox('is_published', 1, $story ? $story->is_published : old('is_published') ?? 0, ['id' => 'is_published']) !!}
                         @lang('model.is_published')
                     </label>
                 </div>
@@ -106,12 +106,12 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th><input class="new_stat" type="text" id="full_name" maxlength="15"></th>
-                        <th><input class="new_stat" type="text" id="short_name" maxlength="5"></th>
-                        <th><input class="new_stat" type="number" id="min_value"></th>
-                        <th><input class="new_stat" type="number" id="max_value"></th>
+                        <th><input class="new_stat form-control" type="text" id="full_name" maxlength="15" autocomplete="nope" required></th>
+                        <th><input class="new_stat form-control" type="text" id="short_name" maxlength="5" autocomplete="nope" required></th>
+                        <th><input class="new_stat form-control" type="number" id="min_value" value="1" required></th>
+                        <th><input class="new_stat form-control" type="number" id="max_value" value="10" required></th>
                         <th class="text-center">
-                            <span class="glyphicon glyphicon-plus-sign glyphicon-disabled"></span>
+                            <span class="glyphicon glyphicon-plus-sign"></span>
                         </th>
                     </tr>
                 </tfoot>

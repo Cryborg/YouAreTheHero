@@ -8,4 +8,5 @@ return array (
   'range_text' => 'de :min à :max',
   'points_left_to_share' => 'Points restant à attribuer',
   'sheet' => 'Fiche de perso',
+  'attribute' => 'Attribut',
 );

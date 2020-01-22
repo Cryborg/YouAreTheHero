@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        @include('page.partials.modal_partials_new_item', ['context' => 'prerequisites'])
+                        @include('page.partials.modal_partials_new_item', ['context' => 'prerequisites', 'story' => $page->story])
                     </div>
                 </div>
 

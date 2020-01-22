@@ -56,7 +56,8 @@ class StoryController extends Controller
 
         $page_uuid = getSession('page_uuid');
         if (!empty($page_uuid)) {
-            $page = Page::where('uuid', $page_uuid)->first();
+            $page = Page::where('uuid', $page_uuid)
+                        ->first();
         }
 
         setSession('story_id', $story->id);
@@ -71,7 +72,8 @@ class StoryController extends Controller
         if (!$character) {
             return Redirect::route('character.create', [
                 'story' => $story->id,
-            ]);
+            ]
+            );
         }
 
         // The character exists, let's go back to the previous save point
@@ -83,7 +85,8 @@ class StoryController extends Controller
         if ($page) {
             if ($page->is_last) {
                 $page->choices = 'gameover';
-            } else {
+            }
+            else {
                 $this->getFilteredChoicesFromPage($page, $character);
             }
 
@@ -96,20 +99,23 @@ class StoryController extends Controller
         $visitedPlaces = $character->checkpoints;
 
         $visitedPlaces = $visitedPlaces->map(function ($value, $key) {
-            $page = Page::where('uuid', $value['page_uuid'])->firstOrFail();
+            $page                = Page::where('uuid', $value['page_uuid'])
+                                       ->firstOrFail();
             $value['page_title'] = $page->title;
             return $value;
-        });
+        }
+        );
 
         $actions = $this->filterActions($character, $page);
 
         $view = view('story.play', $commonParams + [
-            'page' => $page,
-            'actions' => $actions,
-            'layout' => $page->layout ?? $story->layout,
-            'character' => $character,
-            'visitedPlaces' => $visitedPlaces,
-        ]);
+                'page'          => $page,
+                'actions'       => $actions,
+                'layout'        => $page->layout ?? $story->layout,
+                'character'     => $character,
+                'visitedPlaces' => $visitedPlaces,
+            ]
+        );
 
         return $view ?? view('errors.404');
     }
@@ -122,17 +128,19 @@ class StoryController extends Controller
      *
      * @return mixed
      */
-    private function getFilteredChoicesFromPage(Page $currentPage, Character $character) {
+    private function getFilteredChoicesFromPage(Page $currentPage, Character $character)
+    {
         // Get all the choices (links to the next page(s)
-        $allChoices = $this->getAllChoicesForPage($currentPage);
+        $allChoices   = $this->getAllChoicesForPage($currentPage);
         $finalChoices = [];
 
         // Check if there are prerequisites, and that they are fulfilled
         foreach ($allChoices as $choice) {
             $fulfilled = false;
-            $pageTo = $choice->pageTo;
+            $pageTo    = $choice->pageTo;
 
-            if ($pageTo && $pageTo->prerequisites()->count() > 0) {
+            if ($pageTo && $pageTo->prerequisites()
+                                  ->count() > 0) {
                 foreach ($pageTo->prerequisites() as $prerequisite) {
                     switch (get_class($prerequisite->prerequisiteable)) {
                         case CharacterStat::class:
@@ -143,7 +151,8 @@ class StoryController extends Controller
                             break;
                     }
                 }
-            } else {
+            }
+            else {
                 $fulfilled = true;
             }
 
@@ -165,7 +174,7 @@ class StoryController extends Controller
     {
         $isOk = false;
 
-        $json = $request->get('json');
+        $json   = $request->get('json');
         $action = json_decode($json, true);
 
         /** @var \App\Models\Character $character */
@@ -190,9 +199,10 @@ class StoryController extends Controller
                 if (isset($action['item'])) {
                     Inventory::create([
                         'character_id' => $character->id,
-                        'item_id' => $action['item'],
-                        'quantity' => $action['quantity'] ?? 1
-                    ]);
+                        'item_id'      => $action['item'],
+                        'quantity'     => $action['quantity'] ?? 1,
+                    ]
+                    );
                 }
                 break;
         }
@@ -205,14 +215,16 @@ class StoryController extends Controller
         if ($item->single_use) {
             UniqueItemsUsed::create([
                 'character_id' => $character->id,
-                'item_id' => $item->id,
-            ]);
+                'item_id'      => $item->id,
+            ]
+            );
         }
 
         return response()->json([
             'result' => $isOk,
-            'money' => $character->money,
-        ], 200);
+            'money'  => $character->money,
+        ], 200
+        );
     }
 
     /**
@@ -226,22 +238,24 @@ class StoryController extends Controller
     {
         $character = $this->getCurrentCharacter($story);
 
-        $inventory = Inventory::where('character_id', $character->id)->get();
+        $inventory = Inventory::where('character_id', $character->id)
+                              ->get();
 
         if (!empty($inventory)) {
             $items = [];
 
             foreach ($inventory as $item) {
                 $items[] = [
-                    'item' => $this->getItem($item->item_id),
+                    'item'     => $this->getItem($item->item_id),
                     'quantity' => $item->quantity,
                 ];
             }
 
             return view('story.inventory', [
-                'items' => $items,
+                'items'     => $items,
                 'character' => $character,
-            ]);
+            ]
+            );
         }
 
     }
@@ -257,7 +271,8 @@ class StoryController extends Controller
 
         return view('story.partials.sheet', [
             'sheet' => $character->character_stats ?? [],
-        ]);
+        ]
+        );
     }
 
     /**
@@ -274,8 +289,9 @@ class StoryController extends Controller
 
         return view('story.partials.choices', [
             'story' => $story,
-            'page' => $page,
-        ]);
+            'page'  => $page,
+        ]
+        );
     }
 
     /**
@@ -321,17 +337,17 @@ class StoryController extends Controller
         if ($page && $page->is_checkpoint) {
             Checkpoint::firstOrCreate([
                 'character_id' => $character->id,
-                'page_uuid'      => $page->uuid,
-            ],
-            [
-                'character_id' => $character->id,
-                'page_uuid'      => $page->uuid,
-            ]);
+                'page_uuid'    => $page->uuid,
+            ], [
+                    'character_id' => $character->id,
+                    'page_uuid'    => $page->uuid,
+                ]
+            );
         }
     }
 
     /**
-     * @param \App\Models\Story|int  $story
+     * @param \App\Models\Story|int $story
      *
      * @return mixed
      */
@@ -339,7 +355,11 @@ class StoryController extends Controller
     {
         $story_id = $story instanceof Story ? $story->id : $story;
 
-        return Character::where(['user_id' => Auth::id(), 'story_id' => $story_id])->first();
+        return Character::where(['user_id'  => Auth::id(),
+                                 'story_id' => $story_id,
+        ]
+        )
+                        ->first();
     }
 
     private function getAllChoicesForPage(Page $page)
@@ -347,8 +367,11 @@ class StoryController extends Controller
         $key = 'choices_' . $page->uuid;
 
         return Cache::remember($key, Config::get('app.story.cache_ttl'), function () use ($page, $key) {
-            return PageLink::with('pageTo')->where('page_from', $page->uuid)->get();
-        });
+            return PageLink::with('pageTo')
+                           ->where('page_from', $page->uuid)
+                           ->get();
+        }
+        );
     }
 
     /**
@@ -359,8 +382,10 @@ class StoryController extends Controller
     private function getItem($itemId)
     {
         return Cache::remember('item_' . $itemId, Config::get('app.story.cache_ttl'), function () use ($itemId) {
-            return Item::where('id', $itemId)->first();
-        });
+            return Item::where('id', $itemId)
+                       ->first();
+        }
+        );
     }
 
     /**
@@ -370,25 +395,22 @@ class StoryController extends Controller
      */
     public function getCreate($story = null)
     {
-        $postRoute = 'story.create.post';
         $param = null;
 
         if ($story) {
-            $postRoute = 'story.create.post';
-
             $param = $story->id;
         }
 
         $data = [
-            'title' => trans('story.create_title'),
+            'title'   => trans('story.create_title'),
             'locales' => getLanguages(),
             'layouts' => [
                 'play1' => 'Premier layout',
             ],
-            'story' => $story,
-            'route' => $postRoute,
-            'param' => $param,
-            'genres' => Genre::all(),
+            'story'   => $story,
+            'route'   => 'story.create.post',
+            'param'   => $param,
+            'genres'  => Genre::all(),
         ];
 
         $view = View::make('story.create', $data);
@@ -399,33 +421,38 @@ class StoryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'story_id' => '',
-            'title' => 'required',
-            'description' => 'required',
-            'locale' => 'required',
-            'layout' => 'required',
+            'story_id'     => '',
+            'title'        => 'required',
+            'description'  => 'required',
+            'locale'       => 'required',
+            'layout'       => 'required',
             'is_published' => 'boolean',
-            'genres' => 'required|array|between:1,5',
-        ]);
+            'genres'       => 'required|array|between:1,5',
+        ]
+        );
 
-        $storyId = $validated['story_id'];
-        $genres = $validated['genres'];
+        $validated['is_published'] = $request->has('is_published');
+        $storyId                   = $validated['story_id'];
+        $genres                    = $validated['genres'];
         unset($validated['genres'], $validated['story_id']);
 
         try {
             if ($storyId !== null) {
-                $story = Story::where('id', $storyId)->first();
-            } else {
+                $story = Story::where('id', $storyId)
+                              ->firstOrFail();
+
+                $story->update($validated);
+            }
+            else {
                 $story = Story::create($validated);
             }
 
-            if ($story->pages->count() === 0) {
-                // Create the first page with dummy data
-                factory(Page::class)->create([
-                    'story_id' => $story->id,
-                    'is_first' => true,
-                ]);
-            }
+            // Create the first page with dummy data
+            factory(Page::class)->create([
+                'story_id' => $story->id,
+                'is_first' => true,
+            ]
+            );
 
             StoryGenre::where('story_id', $story->id)
                       ->delete();
@@ -470,13 +497,15 @@ class StoryController extends Controller
         if ($request->ajax()) {
             $validated = $request->validate([
                 'itemId' => 'integer',
-            ]);
+            ]
+            );
 
             $item = $this->getItem($validated['itemId']);
 
             $view = view('page.partials.modal_item', [
                 'item' => $item,
-            ]);
+            ]
+            );
 
             return $view ?? view('errors.404');
         }
@@ -504,8 +533,9 @@ class StoryController extends Controller
             }
 
             if (!$isFound) {
-                $action['item'] = Item::where('id', $action['item_id'])->first();
-                $actions[] = $action;
+                $action['item'] = Item::where('id', $action['item_id'])
+                                      ->first();
+                $actions[]      = $action;
             }
         }
 
@@ -522,14 +552,14 @@ class StoryController extends Controller
 
         //FIXME: does not work for now
 
-
-        $tree = [];
+        $tree  = [];
         $pages = $story->pages->where('is_first', true);
-        $page = $pages->first();
+        $page  = $pages->first();
 
         $view = View::make('story.tree', [
             'pages' => [$page],
-        ]);
+        ]
+        );
 
         return $view;
     }
@@ -538,10 +568,11 @@ class StoryController extends Controller
     {
         if ($request->ajax()) {
             $pageId = $request->get('page');
-            $page = Cache::remember('page_' . $pageId, Config::get('app.story.cache_ttl'), function () use ($pageId) {
+            $page   = Cache::remember('page_' . $pageId, Config::get('app.story.cache_ttl'), function () use ($pageId) {
                 return Page::where('uuid', $pageId)
                            ->first();
-            });
+            }
+            );
 
             $view = View::make('story.partials.treecard', ['pages' => $page->choices()]);
 
@@ -554,13 +585,16 @@ class StoryController extends Controller
     public function getReset(Request $request, Story $story)
     {
         $deleted = Character::where([
-            'user_id'   => Auth::id(),
-            'story_id'  => $story->id,
-        ])->delete();
+            'user_id'  => Auth::id(),
+            'story_id' => $story->id,
+        ]
+        )
+                            ->delete();
 
         if ($deleted == true) {
             Flash::success(trans('story.reset_successful_text'));
-        } else {
+        }
+        else {
             Flash::error(trans('story.reset_failed_text'));
         }
 

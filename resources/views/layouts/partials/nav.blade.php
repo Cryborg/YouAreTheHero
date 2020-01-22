@@ -22,7 +22,7 @@
             </li>
             <li>
                 <a href="{{ route('stories.list.draft') }}">
-                    {{ trans('common.link_stories_draft') }}
+                    {{ trans('stories.link_stories_draft') }}
                 </a>
             </li>
         </ul>

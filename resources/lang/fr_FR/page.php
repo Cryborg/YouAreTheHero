@@ -28,4 +28,5 @@ return array (
   'to_be_added_prerequisites' => 'Prérequis à ajouter',
   'edit' => 'Modifier',
   'variables_label' => 'Variables',
+  'existing_item' => 'Object existant',
 );

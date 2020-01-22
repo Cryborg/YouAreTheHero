@@ -21,7 +21,7 @@
 
     <div class="form-group form-check">
         <label>
-            {!! Form::checkbox('is_published', old('is_published') ?? '0', null,  ['id' => 'is_published']) !!}
+            {!! Form::checkbox('is_published', 1, old('is_published') ?? 0,  ['id' => 'is_published']) !!}
             @lang('model.is_published')
         </label>
     </div>

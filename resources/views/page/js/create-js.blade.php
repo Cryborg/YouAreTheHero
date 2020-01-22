@@ -214,11 +214,20 @@
         $('#create_item_action').on('click', function () {
             var $this = $(this);
             var route = '{{ route('item.store') }}';
+            var values = [];
 
+            $('input[name="stat_values[]"]:visible').each(function () {
+                values.push({
+                    'id': $(this).data('id'),
+                    'value': $(this).val()
+                });
+            });
+console.log(values);
             ajaxCreatePost(route,  $this, {
                 'name': $('#item_name_action').val(),
                 'default_price': $('#item_price_action').val(),
                 'single_use': $('#single_use_action').is(':checked') ? 1 : 0,
+                'effects': values
             })
         });
 

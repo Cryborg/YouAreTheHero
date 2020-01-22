@@ -6,7 +6,6 @@ return array (
   'link_stories' => 'Reader',
   'link_admin' => 'Author',
   'link_story_create' => 'Create a story',
-  'link_stories_draft' => 'My drafts',
   'title_pages' => 'Pages',
   'title_stories' => 'Stories',
   'description' => 'Description',

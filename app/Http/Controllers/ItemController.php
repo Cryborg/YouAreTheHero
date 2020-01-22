@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Action;
+use App\Models\Effect;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -10,6 +11,13 @@ use Illuminate\Support\Facades\Validator;
 
 class ItemController extends Controller
 {
+    public function messages()
+    {
+        return [
+            'name.unique' => 'Raté coco',
+        ];
+    }
+
     /**
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Item         $item
@@ -41,11 +49,24 @@ class ItemController extends Controller
             'default_price' => 'required',
             'single_use'    => '',
             'story_id'      => 'required|exists:stories,id',
-        ]
-        );
+            'effects'       => '',
+        ]);
+
+        $effects = $validated['effects'];
+        unset($validated['effects']);
 
         // Create the new item
         $item = Item::create($validated);
+
+        foreach ($effects as $effect) {
+            Effect::updateOrCreate([
+                'stat_story_id' => $effect['id'],
+                'item_id' => $item->id,
+            ], [
+                'operator' => '+',
+                'quantity' => $effect['value']
+            ]);
+        }
 
         // Reload the items in the story, so that we have the new one in the collection
         $item->story->load('items');

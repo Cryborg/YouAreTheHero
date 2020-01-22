@@ -129,8 +129,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'name' => [
+            'unique' => 'Un enregistrement existe déjà avec ce nom',
         ],
     ],
 

@@ -1,6 +1,7 @@
 <?php
 
-return [
-    'list_title'        => 'Histoires disponibles',
-    'drafts_list_title' => 'Mes brouillons',
-];
+return array (
+  'list_title' => 'Histoires disponibles',
+  'drafts_list_title' => 'Mes brouillons',
+  'link_stories_draft' => 'Mes histoires',
+);
