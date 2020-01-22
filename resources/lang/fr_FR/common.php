@@ -3,8 +3,6 @@
 return array (
   ':' => ' :',
   'link_home' => 'Accueil',
-  'link_reader' => 'Lecteur',
-  'link_author' => 'Auteur',
   'link_admin' => 'Admin',
   'link_story_create' => 'Créer une histoire',
   'title_pages' => 'Pages',
@@ -22,11 +20,13 @@ return array (
   'genres' => 'Genres',
   'actions' => 'Actions',
   'fr_FR' => 'Français (FR)',
-  'en_US' => 'Anglais (US)',
   'es_ES' => 'Espagnol (ES)',
   'filters' => 'Filtres',
   'global_search' => 'Recherche globale',
   'close' => 'Fermer',
   'current_version' => 'Version du site : :version',
   'changelog' => 'Changelog',
+  'link_reader' => 'Lecteur',
+  'link_author' => 'Auteur',
+  'en_GB' => 'Anglais (GB)',
 );
