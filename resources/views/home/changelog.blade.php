@@ -18,7 +18,7 @@
                             </ul>
                         </ul>
                         <ul>
-                            <li>Improvements</li>
+                            <li>Improvements:</li>
                             <ul>
                                 <li>Effects can now be added to items</li>
                             </ul>

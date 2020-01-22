@@ -5,7 +5,7 @@
 @section('content')
     <div class="row m-5">
         <div class="col-lg-2">
-            @include('admin.partials.nav')
+            @include('admin.partials.nav', ['active' => 2])
         </div>
         <div class="col-lg-10">
             <h1>{{ trans('admin.users_title') }}</h1>

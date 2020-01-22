@@ -240,6 +240,12 @@ div.jq-toast-wrap {
     background-repeat: no-repeat;
     background-position: center;
 }
+.stretched-link {
+    color: rgba(0,0,0,.9);
+}
 .stretched-link:hover {
     text-decoration: none;
+}
+.selected-stretched-link {
+    background-color: #dcefff !important;
 }

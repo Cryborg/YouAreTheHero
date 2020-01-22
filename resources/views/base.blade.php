@@ -55,7 +55,7 @@
                     </ul>
 
                     {{-- Right Side Of Navbar --}}
-                    @if (Auth::id() === 1)
+                    @can('isAdmin')
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#" id="navbarDropdownFlag" role="button" data-toggle="dropdown"

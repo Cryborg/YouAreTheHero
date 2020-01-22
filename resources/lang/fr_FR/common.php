@@ -3,8 +3,9 @@
 return array (
   ':' => ' :',
   'link_home' => 'Accueil',
-  'link_stories' => 'Lecteur',
-  'link_admin' => 'Auteur',
+  'link_reader' => 'Lecteur',
+  'link_author' => 'Auteur',
+  'link_admin' => 'Admin',
   'link_story_create' => 'Créer une histoire',
   'title_pages' => 'Pages',
   'title_stories' => 'Histoires',
