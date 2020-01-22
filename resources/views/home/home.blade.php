@@ -16,6 +16,13 @@
 
                     {!! trans('home.text')  !!}
                 </div>
+
+                <div class="card-footer text-right">
+                    <small class="text-muted">
+                        {{ trans('common.current_version', ['version' => '0.1']) }}
+                        (<a href="{{ url('changelog') }}">{{ trans('common.changelog') }}</a>)
+                    </small>
+                </div>
             </div>
         </div>
     </div>

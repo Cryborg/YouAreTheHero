@@ -1,10 +1,9 @@
-# Laravel-admin
-###### Installation
-    composer require encore/laravel-admin
-###### Mise en place des assets
-    php artisan vendor:publish --provider="Encore\Admin\AdminServiceProvider"
-###### Installation et seeding
-    php artisan admin:install
-###### Permet de créer des seeds à partir de tables
-    https://github.com/orangehill/iseed
-    php artisan iseed nom_table
+Create your own adventure !
+
+<ul>
+<li>Create your interactive story</li>
+<li>Add useful items with effects on the player stats</li>
+<li>Add conditions to reach certain pages (item, stat, money)</li>
+</ul>
+
+This is a work in progress in alpha stage, please be patient ;)

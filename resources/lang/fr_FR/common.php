@@ -26,4 +26,6 @@ return array (
   'filters' => 'Filtres',
   'global_search' => 'Recherche globale',
   'close' => 'Fermer',
+  'current_version' => 'Version du site : :version',
+  'changelog' => 'Changelog',
 );

@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home.home');
     }
 
     public function language(String $locale)
@@ -31,5 +31,10 @@ class HomeController extends Controller
         $locale = in_array($locale, config('app.languages')) ? $locale : config('app.fallback_locale');
         session(['locale' => $locale]);
         return back();
+    }
+
+    public function changelog()
+    {
+        return view('home.changelog');
     }
 }

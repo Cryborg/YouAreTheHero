@@ -67,3 +67,6 @@ Route::get('language/{lang}', 'HomeController@language')->name('language');
 // StatStory
 Route::post('/stat/{story}/create', 'StatStoryController@store')->name('stat.store');
 Route::delete('/stat/{stat_story}/delete', 'StatStoryController@delete')->name('stat.delete');
+
+// Changelog
+Route::get('/changelog', 'HomeController@changelog')->name('changelog');
