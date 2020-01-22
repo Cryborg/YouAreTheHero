@@ -24,7 +24,6 @@ $factory->define(Story::class, function (Faker $faker, $data) {
         'description'  => $faker->text,
         'user_id'      => $data['user_id'],
         'is_published' => true,
-        'sheet_config' => $data['sheet_config'] ?? null,
     ];
 
     return [
@@ -32,7 +31,6 @@ $factory->define(Story::class, function (Faker $faker, $data) {
         'description'  => $faker->text,
         'user_id'      => $data['user_id'],
         'is_published' => true,
-        'sheet_config' => $data['sheet_config'] ?? null,
     ];
 }
 );

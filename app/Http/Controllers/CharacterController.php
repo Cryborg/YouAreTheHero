@@ -15,6 +15,8 @@ class CharacterController extends Controller
 {
     public function getCreate(Story $story)
     {
+        $story->load('story_options');
+
         $data = [
             'title' => trans('character.create_title'),
             'story' => $story,

@@ -9,21 +9,23 @@
 @section('content')
     <h2 class="mb-3">{{ $story->title }}</h2>
 
-    {!! Form::open(['url' => route('character.create', ['story' => $story->id]), 'method' => 'post']) !!}
-    <div class="form-group">
-        {!! Form::label('name', trans('character.name_label'), ['class' => 'control-label']) !!}
-        <p class="help-block">{{ trans('character.name_help') }}</p>
-        {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
-        <div class="alert alert-error hidden">{{ trans('character.name_error') }}</div>
-    </div>
+    @if ($story->story_options && $story->story_options->has_character)
+        {!! Form::open(['url' => route('character.create', ['story' => $story->id]), 'method' => 'post']) !!}
+        <div class="form-group">
+            {!! Form::label('name', trans('character.name_label'), ['class' => 'control-label']) !!}
+            <p class="help-block">{{ trans('character.name_help') }}</p>
+            {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
+            <div class="alert alert-error hidden">{{ trans('character.name_error') }}</div>
+        </div>
+    @endif
 
-    @if ($story->stat_stories->count() > 0)
+    @if ($story->story_options && $story->story_options->has_stats)
         {!! Form::label('stats', trans('character.stats_label'), ['class' => 'control-label']) !!}
         <p class="help-block">{{ trans('character.stats_help') }}</p>
         <div class="row">
             <div class="col-2 text-center">
                 {{ trans('stat.points_left_to_share') }}:
-                <div id="points_left">{{ $story->points_to_share }}</div>
+                <div id="points_left">{{ $story->story_options->points_to_share }}</div>
             </div>
             <div class="col">
                 @foreach($story->stat_stories as $stat)

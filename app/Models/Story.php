@@ -17,7 +17,6 @@ class Story extends Model
     protected $guarded = ['id'];
 
     protected $casts = [
-        'sheet_config' => 'array',
         'is_published' => 'boolean',
     ];
 
@@ -106,5 +105,10 @@ class Story extends Model
     public function stat_stories()
     {
         return $this->hasMany(StatStory::class);
+    }
+
+    public function story_options()
+    {
+        return $this->hasOne(StoryOptions::class);
     }
 }

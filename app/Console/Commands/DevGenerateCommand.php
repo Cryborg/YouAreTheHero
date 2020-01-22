@@ -76,11 +76,9 @@ return true;
 
         $storyMarty = factory(Story::class)->create([
             'user_id'       => $marty->id,
-            'sheet_config'  => $sheet,
         ]);
         $storyFred = factory(Story::class)->create([
             'user_id'       => $fred->id,
-            'sheet_config'  => $sheet,
         ]);
 
         $stories = [
