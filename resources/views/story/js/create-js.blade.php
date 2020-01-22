@@ -8,7 +8,10 @@
                     "sortable": false,
                     "searchable": false
                 }
-            ]
+            ],
+            createdRow: function(row, data, dataIndex) {
+                $(row).children('td').eq(4).addClass('text-center');
+            }
         });
 
         function checkForm() {
@@ -87,7 +90,7 @@
                                 result.statStory.short_name,
                                 result.statStory.min_value,
                                 result.statStory.max_value,
-                                '<span class="glyphicon glyphicon-trash"></span>'
+                                '<span class="glyphicon glyphicon-trash" data-statstory_id="' + result.statStory.id + '"></span>'
                             ]).draw();
 
                             showToast('success', {
