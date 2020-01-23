@@ -11,7 +11,6 @@ return array (
   'reset' => 'Réinitialiser l\'aventure',
   'reset_successful_text' => 'L\'aventure a été réinitialisée avec succès !',
   'reset_failed_text' => 'Impossible de réinitialiser l\'aventure :(',
-  'add_choices' => 'Full edit mode',
   'genres_label' => 'Genres',
   'genres_help' => 'Sélectionne le ou les genres qui correspondent à ton histoire.',
   'select_genres_placeholder' => 'Choisis un ou plusieurs genres',

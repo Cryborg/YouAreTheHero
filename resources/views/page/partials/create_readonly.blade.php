@@ -1,4 +1,4 @@
-<a class="btn btn-primary ml-1 w-25 mb-4" href="{{ route('page.edit', $page->uuid) }}">{{ trans('page.edit') }}</a>
+<a data-toggle="tooltip" title="{{ trans('page.edit_help') }}" class="btn btn-primary ml-1 w-25 mb-4" href="{{ route('page.edit', $page->uuid) }}">{{ trans('page.edit') }}</a>
 
 <div class="form-group">
     {!! Form::label('title-' . $page->uuid, trans('model.title'), ['class' => 'control-label']) !!}

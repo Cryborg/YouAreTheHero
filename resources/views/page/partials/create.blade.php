@@ -54,7 +54,7 @@
 </div>
 
 @if ($internalId > 0)
-    <a class="btn btn-primary w-25" href="{{ route('page.edit', $page->uuid) }}#current_page">{{ trans('story.add_choices') }}</a>
+    <a data-toggle="tooltip" title="{{ trans('page.edit_help') }}" class="btn btn-primary w-25" href="{{ route('page.edit', $page->uuid) }}#current_page">{{ trans('page.edit') }}</a>
 @endif
 
 <button class="btn btn-danger mr-1 w-25" disabled><span class="fa fa-trash mr-1"></span>Supprimer</button>

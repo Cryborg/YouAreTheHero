@@ -26,7 +26,8 @@ return array (
   'level' => 'Level',
   'level_help' => 'Minimum level that the player\'s character must have in the chosen stat to access this page. <br> If his character does not fulfill this requirement, the link to the page will not be displayed.',
   'to_be_added_prerequisites' => 'Conditions to add',
-  'edit' => 'Edit',
+  'edit' => 'Edit this page',
   'variables_label' => 'Variables',
   'existing_item' => 'Existing item',
+  'edit_help' => 'With this button you will have access to all editing options, such as prerequisites and items creation.',
 );
