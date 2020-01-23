@@ -30,4 +30,5 @@ return array (
   'en_GB' => 'English (GB)',
   'link_author' => 'Author',
   'id' => 'ID',
+  'save' => 'Save',
 );

@@ -78,4 +78,4 @@ Route::get('/admin/users', 'AdminController@getUsers')->name('admin.users');
 
 // User
 Route::get('/user/profile', 'UserController@getProfile')->name('user.profile');
-Route::post('/user/profile', 'UserContoller@store')->name('user.profile.post');
+Route::post('/user/{user}/profile', 'UserController@store')->name('user.profile.post');

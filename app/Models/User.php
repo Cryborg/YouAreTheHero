@@ -53,7 +53,7 @@ class User extends Authenticatable
      */
     public function owns($storyId)
     {
-        $story = Story::firstOrFail($storyId)->first();
+        $story = Story::firstOrFail($storyId);
 
         return $story->user_id == $this->id;
     }
