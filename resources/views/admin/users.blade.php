@@ -1,17 +1,18 @@
 @extends('base')
 
-@section('title', $title)
+@section('title', trans('admin.title') . ' - ' . $title)
 
 @section('content')
     <div class="row m-5">
-        <div class="col-lg-2">
+        <div class="col-sm-12 col-md-4 col-lg-3 col-xl-2">
+            <h1 class="text-center">&nbsp;</h1>
             @include('admin.partials.nav', ['active' => 2])
         </div>
-        <div class="col-lg-10">
+        <div class="col-md-8 col-lg-9 col-xl-10">
             <h1>{{ trans('admin.users_title') }}</h1>
             <table class="dataTable">
                 <thead>
-                    <th>{{ trans('auth.id') }}</th>
+                    <th>{{ trans('common.id') }}</th>
                     <th>{{ trans('auth.email') }}</th>
                     <th>{{ trans('stories.number_total') }}</th>
                     <th>{{ trans('stories.number_draft') }}</th>

@@ -24,4 +24,5 @@ return array (
   'map' => 'Checkpoints',
   'author' => 'Author',
   'number_pages' => 'Number of pages',
+  'last_update' => 'Last update',
 );

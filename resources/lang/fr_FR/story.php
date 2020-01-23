@@ -24,4 +24,5 @@ return array (
   'map' => 'Points de sauvegarde',
   'number_pages' => 'Nombre de pages',
   'author' => 'Auteur',
+  'last_update' => 'Dernière mise à jour',
 );

@@ -1,20 +1,22 @@
 @extends('base')
 
-@section('title', $title)
+@section('title', trans('admin.title') . ' - ' . $title)
 
 @section('content')
     <div class="row m-5">
-        <div class="col-lg-2">
+        <div class="col-sm-12 col-md-4 col-lg-3 col-xl-2">
+            <h1 class="text-center">&nbsp;</h1>
             @include('admin.partials.nav', ['active' => 3])
         </div>
-        <div class="col-lg-10">
-            <h1>{{ trans('admin.users_title') }}</h1>
+        <div class="col-md-8 col-lg-9 col-xl-10">
+            <h1>{{ trans('admin.stories_title') }}</h1>
             <table class="dataTable">
                 <thead>
-                    <th>{{ trans('story.id') }}</th>
+                    <th>{{ trans('common.id') }}</th>
                     <th>{{ trans('story.title') }}</th>
                     <th>{{ trans('story.author') }}</th>
                     <th>{{ trans('story.number_pages') }}</th>
+                    <th>{{ trans('story.last_update') }}</th>
                 </thead>
                 <tbody>
                     @foreach ($stories as $story)
@@ -23,6 +25,7 @@
                             <td>{{ $story->title }}</td>
                             <td>{{ $story->author->username }}</td>
                             <td>{{ $story->pages->count() }}</td>
+                            <td>{{ $story->pages->sortByDesc('updated_at')->first()->updated_at->diffForHumans() }}</td>
                         </tr>
                     @endforeach
                 </tbody>
