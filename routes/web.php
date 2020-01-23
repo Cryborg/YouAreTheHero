@@ -75,3 +75,7 @@ Route::get('/changelog', 'HomeController@changelog')->name('changelog');
 Route::get('/admin', 'AdminController@getIndex')->name('admin');
 Route::get('/admin/stories', 'AdminController@getStories')->name('admin.stories');
 Route::get('/admin/users', 'AdminController@getUsers')->name('admin.users');
+
+// User
+Route::get('/user/profile', 'UserController@getProfile')->name('user.profile');
+Route::post('/user/profile', 'UserContoller@store')->name('user.profile.post');

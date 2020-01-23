@@ -3,7 +3,6 @@
 @section('title', $title)
 
 @section('content')
-
     <h1>{{ $story ? trans('story.edit_title') : trans('story.create_title') }}</h1>
 
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
