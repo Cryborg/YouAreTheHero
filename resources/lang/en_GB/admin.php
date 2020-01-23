@@ -9,4 +9,7 @@ return array (
   'users_title' => 'Users',
   'locale_text' => 'Manage translations.',
   'locale_title' => 'Translations',
+  'total_stories' => 'Published stories',
+  'total_users' => 'Users',
+  'stories_title' => 'Stories',
 );

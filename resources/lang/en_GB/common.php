@@ -29,4 +29,5 @@ return array (
   'link_reader' => 'Reader',
   'en_GB' => 'English (GB)',
   'link_author' => 'Author',
+  'id' => 'ID',
 );

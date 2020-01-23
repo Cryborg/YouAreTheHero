@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Story;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,6 +21,8 @@ class AdminController extends Controller
 
         $data = [
             'title' => trans('admin.title'),
+            'usersCount' => User::all()->count(),
+            'storiesCount' => Story::all()->count(),
         ];
 
         $view = View::make('admin.index', $data);
@@ -33,6 +36,7 @@ class AdminController extends Controller
 
         $data = [
             'title' => trans('admin.statistics_title'),
+            'stories' => Story::all(),
         ];
 
         $view = View::make('admin.stories', $data);

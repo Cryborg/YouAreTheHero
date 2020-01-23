@@ -22,4 +22,6 @@ return array (
   'create_tab1' => '1. Create the story',
   'create_tab2' => '2. Character sheet',
   'map' => 'Checkpoints',
+  'author' => 'Author',
+  'number_pages' => 'Number of pages',
 );

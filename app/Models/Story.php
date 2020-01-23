@@ -77,7 +77,7 @@ class Story extends Model
      */
     public function pages()
     {
-        return $this->hasMany(Page::class, 'uuid');
+        return $this->hasMany(Page::class);
     }
 
     public function items()
@@ -110,5 +110,10 @@ class Story extends Model
     public function story_options()
     {
         return $this->hasOne(StoryOptions::class);
+    }
+
+    public function author()
+    {
+        return $this->hasOne(\App\Models\User::class, 'id', 'user_id');
     }
 }
