@@ -10,8 +10,12 @@
             <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">{{ trans('story.create_tab1') }}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if (!$story instanceof \App\Models\Story) disabled @endif" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                aria-controls="pills-profile" aria-selected="false">{{ trans('story.create_tab2') }}</a>
+            <a class="nav-link @if (!$story instanceof \App\Models\Story) disabled @endif" id="pills-options-tab" data-toggle="pill" href="#pills-options" role="tab"
+                aria-controls="pills-options" aria-selected="false">{{ trans('story.create_tab2') }}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @if (!$story instanceof \App\Models\Story) disabled @endif" id="pills-sheet-tab" data-toggle="pill" href="#pills-sheet" role="tab"
+                aria-controls="pills-sheet" aria-selected="false">{{ trans('story.create_tab3') }}</a>
         </li>
         @if ($story)
             <li class="nav-item">
@@ -77,7 +81,53 @@
             {!! Form::close() !!}
         </div>
 
-        <div class="tab-pane" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <div class="tab-pane" id="pills-options" role="tabpanel" aria-labelledby="pills-options-tab">
+            <label>{{ trans('character.character_label') }}</label>
+            <p class="help-block">{!! trans('story.has_character_help') !!}</p>
+
+            <div class="form-group form-check ml-3">
+                <input class="form-check-input" type="checkbox" value="1" id="has_character" name="has_character"
+                    @if ($story->story_options->has_character) checked @endif
+                >
+                <label class="form-check-label" for="has_character">
+                    {{ trans('story.has_character_label') }}
+                </label>
+            </div>
+
+            <label>{{ trans('stat.sheet') }}</label>
+            <p class="help-block">{!! trans('story.has_stats_help') !!}</p>
+
+            <div class="form-group form-check ml-3">
+                <input class="form-check-input" type="checkbox" value="1" id="has_stats" name="has_stats"
+                    @if ($story->story_options->has_stats) checked @endif
+                >
+                <label class="form-check-label" for="has_stats">
+                    {{ trans('story.has_stats_label') }}
+                </label>
+            </div>
+
+{{--            EN ATTENTE DES LANCERS DE DéS            --}}
+{{--            <label>{{ trans('stat.attribution_label') }}</label>--}}
+{{--            <p class="help-block">{!! trans('story.stat_attribution_help') !!}</p>--}}
+
+{{--            <div class="form-check ml-3">--}}
+{{--                <input class="form-check-input" type="radio" name="stat_attribution" id="stat_attribution_player" value="player"--}}
+{{--                    @if ($story->story_options->stat_attribution === 'player') checked @endif--}}
+{{--                >--}}
+{{--                <label class="form-check-label" for="stat_attribution_player">--}}
+{{--                    {{ trans('story.stat_attribution_player') }}--}}
+{{--                </label>--}}
+{{--            </div>--}}
+{{--            <div class="form-check ml-3">--}}
+{{--                <input class="form-check-input" type="radio" name="stat_attribution" id="stat_attribution_dice" value="dice"--}}
+{{--                    @if ($story->story_options->stat_attribution === 'dice') checked @endif--}}
+{{--                >--}}
+{{--                <label class="form-check-label" for="stat_attribution_dice">--}}
+{{--                    {{ trans('story.stat_attribution_dice') }}--}}
+{{--                </label>--}}
+{{--            </div>--}}
+        </div>
+        <div class="tab-pane" id="pills-sheet" role="tabpanel" aria-labelledby="pills-tab-3">
             {!! Form::label('stat_story', trans('story.stats_label')) !!}
             <p class="help-block">{!! trans('story.genres_help') !!}</p>
             <table id="stats_story" class="mb-3 w-50 m-0">

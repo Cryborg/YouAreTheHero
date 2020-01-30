@@ -428,8 +428,7 @@ class StoryController extends Controller
             'layout'       => 'required',
             'is_published' => 'boolean',
             'genres'       => 'required|array|between:1,5',
-        ]
-        );
+        ]);
 
         $validated['is_published'] = $request->has('is_published');
         $storyId                   = $validated['story_id'];
@@ -445,14 +444,14 @@ class StoryController extends Controller
             }
             else {
                 $story = Story::create($validated);
+                $story->story_options()->create();
             }
 
             // Create the first page with dummy data
             factory(Page::class)->create([
                 'story_id' => $story->id,
                 'is_first' => true,
-            ]
-            );
+            ]);
 
             StoryGenre::where('story_id', $story->id)
                       ->delete();

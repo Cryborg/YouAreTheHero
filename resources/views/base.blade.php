@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/laravel-admin.min.css') }}"/>    {{-- FIXME: overkill, remove this and fix the navbar--}}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.toast.min.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/summernote-bs4.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-switch.min.css') }}"/>
 
     {{-- Scripts --}}
 {{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}

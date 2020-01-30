@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ trans('common.changelog') }}</div>
                     <fieldset>
-                        <legend>January, 23rd 2020</legend>
+                        <legend>January, 30th 2020</legend>
                         <ul>
                             <li>Fixes:</li>
                             <ul>
@@ -19,7 +19,8 @@
                             <li>Improvements:</li>
                             <ul>
                                 <li>Admin pages (basic statistics only)</li>
-                                <li>Story options (WIP)</li>
+                                <li>Basic story options</li>
+                                <li>Added a few icons here and there</li>
                             </ul>
                         </ul>
                     </fieldset>

@@ -7,4 +7,5 @@ return array (
   'name_label' => 'Character name',
   'stats_help' => 'Here you can define your character stats.',
   'stats_label' => 'Character sheet',
+  'character_label' => 'Character',
 );

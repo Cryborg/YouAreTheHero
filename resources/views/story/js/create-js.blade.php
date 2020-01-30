@@ -114,5 +114,33 @@
                     });
             }
         });
+
+        $(document).on('click', '#pills-options .form-check-input', function () {
+            var $this = $(this);
+            var id = $this.attr('id');
+            var value = $('#' + id).is(':checked');
+
+            $.post({
+                url: route('story.options.post', {'story': {{ $story->id }} }),
+                data: {option: id, value: value}
+            })
+                .done(function (data) {
+                    if (data.success) {
+                        showToast('success', {
+                            heading: '{{ trans('notification.save_success_title') }}',
+                            text: "{{ trans('notification.save_success_text') }}",
+                        });
+                    }
+                })
+                .fail(function (data) {
+                    showToast('error', {
+                        heading: '{{ trans('notification.save_failed_title') }}',
+                        text: "{{ trans('notification.save_failed_text') }}",
+                        errors: data.responseJSON.errors
+                    });
+                })
+                .always(function () {
+                });
+        });
     });
 </script>
