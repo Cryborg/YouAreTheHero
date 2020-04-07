@@ -70,10 +70,25 @@ class StoryController extends Controller
 
         // If the character does not exist, it is a new game
         if (!$character) {
+            $hasOptions = $story->story_options();
+
+            // If no option needs to be set, create an unnamed character
+            if ($hasOptions->count() === 0) {
+                Character::create([
+                   'name'     => 'Unnamed',
+                   'user_id'  => Auth::id(),
+                   'story_id' => $story->id,
+                   'page_uuid'  => $story->getCurrentPage()->uuid,
+               ]);
+
+                return Redirect::route('story.play', [
+                    'story' => $story->id,
+                ]);
+            }
+
             return Redirect::route('character.create', [
                 'story' => $story->id,
-            ]
-            );
+            ]);
         }
 
         // The character exists, let's go back to the previous save point

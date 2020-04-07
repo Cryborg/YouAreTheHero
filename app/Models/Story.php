@@ -99,7 +99,7 @@ class Story extends Model
         // Don't Fail here as we create the page later
         return Page::where('story_id', $this->id)
             ->where('is_first', true)
-            ->first();
+            ->firstOrFail();
     }
 
     public function stat_stories()
