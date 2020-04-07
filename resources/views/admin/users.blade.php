@@ -13,25 +13,27 @@
             <table class="dataTable">
                 <thead>
                     <th>{{ trans('common.id') }}</th>
+                    <th>{{ trans('auth.username') }}</th>
                     <th>{{ trans('auth.email') }}</th>
-                    <th>{{ trans('stories.number_total') }}</th>
-                    <th>{{ trans('stories.number_draft') }}</th>
+                    <th>{{ trans('stories.number_stories') }}</th>
+                    <th>{{ trans('stories.number_players') }}</th>
                 </thead>
                 <tbody>
                     @foreach ($users as $user)
                         <tr>
                             <td>{{ $user->id }}</td>
                             <td>
+                                {{ $user->username }}
+
                                 @if ($user->isAdmin())
                                     <span class="badge badge-primary">Admin</span>
                                 @endif
                                 @if ($user->isModerator())
                                     <span class="badge badge-success">Moderator</span>
                                 @endif
-                                {{ $user->email }}
                             </td>
-                            <td>{{ $user->stories->count() }}</td>
-                            <td>{{ $user->stories->where('is_published', false)->count() }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->stories->count() }} / {{ $user->stories->where('is_published', false)->count() }}</td>
                         </tr>
                     @endforeach
                 </tbody>

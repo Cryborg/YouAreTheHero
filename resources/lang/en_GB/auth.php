@@ -17,4 +17,5 @@ return array (
   'register' => 'Register',
   'email' => 'Email',
   'id' => 'ID',
+  'username' => 'Username',
 );

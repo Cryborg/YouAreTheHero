@@ -17,4 +17,5 @@ return array (
   'register' => 'Inscription',
   'id' => 'ID',
   'email' => 'Email',
+  'username' => 'Nom d\'utilisateur',
 );
