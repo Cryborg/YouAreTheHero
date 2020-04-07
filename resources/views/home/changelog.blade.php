@@ -7,6 +7,21 @@
             <div class="card">
                 <div class="card-header">{{ trans('common.changelog') }}</div>
                     <fieldset>
+                        <legend>April, 7th 2020</legend>
+                        <ul>
+                            <li>Fixes:</li>
+                            <ul>
+                                <li>Bypass character creation when there is no need for it</li>
+                            </ul>
+                        </ul>
+                        <ul>
+                            <li>Improvements:</li>
+                            <ul>
+                                <li>Show roles in admin pages (with <a target="_blank" href="https://getbootstrap.com/docs/4.4/components/badge/">Bootstrap badges</a>)</li>
+                            </ul>
+                        </ul>
+                    </fieldset>
+                    <fieldset>
                         <legend>January, 30th 2020</legend>
                         <ul>
                             <li>Fixes:</li>
@@ -20,7 +35,7 @@
                             <ul>
                                 <li>Admin pages (basic statistics only)</li>
                                 <li>Basic story options</li>
-                                <li>Added a few icons here and there</li>
+                                <li>Added a few <a target="_blank" href="https://getbootstrap.com/docs/3.3/components/">Glyphicons</a> here and there</li>
                             </ul>
                         </ul>
                     </fieldset>

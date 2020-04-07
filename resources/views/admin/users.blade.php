@@ -21,7 +21,15 @@
                     @foreach ($users as $user)
                         <tr>
                             <td>{{ $user->id }}</td>
-                            <td>{{ $user->email }}</td>
+                            <td>
+                                @if ($user->isAdmin())
+                                    <span class="badge badge-primary">Admin</span>
+                                @endif
+                                @if ($user->isModerator())
+                                    <span class="badge badge-success">Moderator</span>
+                                @endif
+                                {{ $user->email }}
+                            </td>
                             <td>{{ $user->stories->count() }}</td>
                             <td>{{ $user->stories->where('is_published', false)->count() }}</td>
                         </tr>
