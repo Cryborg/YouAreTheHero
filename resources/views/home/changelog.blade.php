@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ trans('common.changelog') }}</div>
                     <fieldset>
-                        <legend>April, 7th 2020</legend>
+                        <legend>April, 8th 2020</legend>
                         <ul>
                             <li>Fixes:</li>
                             <ul>
@@ -18,6 +18,7 @@
                             <li>Improvements:</li>
                             <ul>
                                 <li>Show roles in admin pages (with <a target="_blank" href="https://getbootstrap.com/docs/4.4/components/badge/">Bootstrap badges</a>)</li>
+                                <li>Added some info in admin pages</li>
                             </ul>
                         </ul>
                     </fieldset>

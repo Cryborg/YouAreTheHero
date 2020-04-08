@@ -33,7 +33,7 @@
                                 @endif
                             </td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->stories->count() }} / {{ $user->stories->where('is_published', false)->count() }}</td>
+                            <td>{{ $user->stories->where('is_published', true)->count() }} / {{ $user->stories->where('is_published', false)->count() }}</td>
                         </tr>
                     @endforeach
                 </tbody>
