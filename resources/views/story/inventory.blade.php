@@ -7,7 +7,12 @@
     <div class="col">
         <ul>
             @foreach ($items as $item)
-                <li>{{ $item['quantity'] }} * {{ $item['item']->name }}</li>
+                <li>
+                    @if ($item['quantity'] > 1)
+                        {{ $item['quantity'] }} *
+                    @endif
+                    {{ $item['item']->name }}
+                </li>
             @endforeach
         </ul>
     </div>

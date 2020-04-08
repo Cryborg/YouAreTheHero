@@ -52,7 +52,7 @@ class ItemController extends Controller
             'effects'       => '',
         ]);
 
-        $effects = $validated['effects'];
+        $effects = $validated['effects'] ?? [];
         unset($validated['effects']);
 
         // Create the new item

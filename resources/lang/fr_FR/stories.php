@@ -5,5 +5,5 @@ return array (
   'drafts_list_title' => 'Mes brouillons',
   'link_stories_draft' => 'Mes histoires',
   'number_stories' => 'Nombre d\'histoires (total / brouillons)',
-  'number_players' => 'Nombre de joueurs',
+  'number_games' => 'Nombre de parties jouées',
 );

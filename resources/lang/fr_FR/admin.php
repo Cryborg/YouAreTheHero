@@ -12,4 +12,5 @@ return array (
   'total_users' => 'Utilisateurs',
   'total_stories' => 'Histoires publiées',
   'stories_title' => 'Histoires',
+  'total_active_drafts' => 'Brouillons actifs',
 );

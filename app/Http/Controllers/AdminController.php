@@ -19,10 +19,13 @@ class AdminController extends Controller
     {
         $this->authorize('isAdmin');
 
+        $lastUpdate = new \DateTime('1 month ago');
         $data = [
             'title' => trans('admin.title'),
             'usersCount' => User::all()->count(),
-            'storiesCount' => Story::all()->count(),
+            'storiesCount' => Story::where('is_published', true)->count(),
+            'activeDraftsCount' => Story::where('is_published', false)
+                                        ->where('updated_at', '>=', $lastUpdate)->count(),
         ];
 
         $view = View::make('admin.index', $data);

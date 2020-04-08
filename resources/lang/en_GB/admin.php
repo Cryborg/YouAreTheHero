@@ -12,4 +12,5 @@ return array (
   'total_stories' => 'Published stories',
   'total_users' => 'Users',
   'stories_title' => 'Stories',
+  'total_active_drafts' => 'Active drafts',
 );

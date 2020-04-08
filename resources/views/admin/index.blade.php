@@ -21,6 +21,10 @@
                             {{ trans('admin.total_stories') }}
                             <span class="badge badge-primary badge-pill">{{ $storiesCount }}</span>
                         </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ trans('admin.total_active_drafts') }}
+                            <span class="badge badge-primary badge-pill">{{ $activeDraftsCount }}</span>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -16,7 +16,7 @@
                     <th>{{ trans('auth.username') }}</th>
                     <th>{{ trans('auth.email') }}</th>
                     <th>{{ trans('stories.number_stories') }}</th>
-                    <th>{{ trans('stories.number_players') }}</th>
+                    <th>{{ trans('stories.number_games') }}</th>
                 </thead>
                 <tbody>
                     @foreach ($users as $user)
