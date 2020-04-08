@@ -232,6 +232,10 @@ div.jq-toast-wrap {
     border: 1px solid black;
     margin: auto;
 }
+.required:after {
+    content:" *";
+    color: red;
+}
 .font-default-size {
     font-size: 1em !important;
 }

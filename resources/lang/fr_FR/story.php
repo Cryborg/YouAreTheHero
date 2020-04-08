@@ -29,7 +29,7 @@ return array (
   'stat_attribution_help' => 'En choisissant \'Joueur\', tu permets au joueur de distribuer comme il le veut le nombre de points que tu auras spécifié.
 Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
   'has_stats_label' => 'Y aura-t-il une feuille de personnage à gérer ?',
-  'has_character_label' => 'Autoriser les joueurs à renommer le personnage principal ?',
+  'has_character_label' => 'Autoriser les joueurs à nommer le personnage principal ?',
   'has_character_help' => 'Si tu veux autoriser tes joueurs à renommer ton personnage principal, coche cette option. Tu pourras afficher ce nom dans les textes de tes pages.',
   'has_stats_help' => 'Si tu prévois d\'utiliser une feuille de personnage, coche cette case. Tu devras ensuite la créer dans l\'onglet suivant.',
   'stat_attribution_player' => 'Je laisse le joueur décider !',

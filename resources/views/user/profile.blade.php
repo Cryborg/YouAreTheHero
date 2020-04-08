@@ -22,16 +22,16 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    {!! Form::label('username', trans('validation.attributes.username'), ['class' => 'col-sm-3 col-form-label']) !!}
+                    {!! Form::label('username', trans('validation.attributes.username'), ['class' => 'col-sm-3 col-form-label required']) !!}
                     <div class="col-sm-9">
-                        {!! Form::text('username', old('email', $user->username), ['class' => 'form-control']) !!}
+                        {!! Form::text('username', old('email', $user->username), ['class' => 'form-control', 'required' => true]) !!}
                         {!! $errors->first('username', '<p class="help-block text-danger">:message</p>') !!}
                     </div>
                 </div>
                 <div class="form-group row">
-                    {!! Form::label('email', trans('validation.attributes.email'), ['class' => 'col-sm-3 col-form-label']) !!}
+                    {!! Form::label('email', trans('validation.attributes.email'), ['class' => 'col-sm-3 col-form-label required']) !!}
                     <div class="col-sm-9">
-                        {!! Form::text('email', old('email', $user->email), ['class' => 'form-control']) !!}
+                        {!! Form::text('email', old('email', $user->email), ['class' => 'form-control', 'required' => true]) !!}
                         {!! $errors->first('email', '<p class="help-block text-danger">:message</p>') !!}
                     </div>
                 </div>
