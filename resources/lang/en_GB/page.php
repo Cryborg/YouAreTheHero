@@ -30,4 +30,6 @@ return array (
   'variables_label' => 'Variables',
   'existing_item' => 'Existing item',
   'edit_help' => 'With this button you will have access to all editing options, such as prerequisites and items creation.',
+  'riddle_header' => 'Riddle',
+  'current_page_riddles_help' => 'You can add a riddle to this page.',
 );

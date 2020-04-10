@@ -31,4 +31,6 @@ return array (
   'en_GB' => 'Anglais (GB)',
   'id' => 'ID',
   'save' => 'Enregistrer',
+  'delete' => 'Supprimer',
+  'btn_validate' => 'Valider',
 );

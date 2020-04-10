@@ -34,6 +34,11 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col">
+                    @yield('riddle')
+                </div>
+            </div>
+            <div class="row">
                 <div class="col choices-block">
                     @yield('choices')
                 </div>

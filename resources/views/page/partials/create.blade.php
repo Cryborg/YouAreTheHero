@@ -1,5 +1,5 @@
 <div class="divAsForm" data-internalid="{{ $internalId }}"
-     data-route="{{ route('page.edit.post', $page->uuid) }}">
+     data-route="{{ route('page.edit.post', ['page' => $page->uuid]) }}">
 
     {{--  Errors --}}
     <div class="form-errors alert alert-danger hidden"></div>

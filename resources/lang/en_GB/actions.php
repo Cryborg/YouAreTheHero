@@ -16,4 +16,6 @@ return array (
   'quantity' => 'Quantity',
   'quantity_help' => 'Finally, how many of these items are concerned by the action',
   'sell' => 'Sell',
+  'add_new_riddle' => 'Add a riddle',
+  'add_riddle' => 'Add a riddle',
 );

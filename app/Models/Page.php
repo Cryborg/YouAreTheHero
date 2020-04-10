@@ -152,10 +152,22 @@ class Page extends Model
         return Action::create($validated);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
     public function prerequisites()
     {
         return Prerequisite::with('prerequisiteable')
                            ->where('page_uuid', $this->uuid)
                            ->get();
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function riddle()
+    {
+        return $this->hasOne(Riddle::class);
+    }
+
 }

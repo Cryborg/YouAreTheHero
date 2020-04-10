@@ -54,7 +54,7 @@
                     @info({!! trans('page.current_page_prerequisites_help') !!})
 
                     <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalCreatePrerequisite">
-                        <span class="glyphicon glyphicon-plus-sign"></span>
+                        <span class="glyphicon glyphicon-plus"></span>
                         {{ trans('actions.add_new_prerequisite') }}
                     </button>
 
@@ -67,11 +67,24 @@
                     @info({!! trans('page.current_page_actions_help') !!})
 
                     <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalCreateAction">
-                        <span class="glyphicon glyphicon-plus-sign"></span>
+                        <span class="glyphicon glyphicon-plus"></span>
                         {{ trans('actions.add_new_action') }}
                     </button>
 
                     @include('page.partials.actions_list', ['page' => $page])
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    @info({!! trans('page.current_page_riddles_help') !!})
+
+                    <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalCreateRiddle">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        {{ trans('actions.add_new_riddle') }}
+                    </button>
+
+                    @include('page.partials.riddles_list', ['page' => $page])
                 </div>
             </div>
         </div>
@@ -118,52 +131,39 @@
         </div>
     </div>
 
+    <!-- Modal new Riddle -->
+    @include('page.partials.modal_model', [
+        'template' => 'page.partials.modal_riddle',
+        'data' => [
+            'page' => $page,
+            'id' => 'CreateRiddle',
+            'title' => @trans('page.riddle_modal_title'),
+            'btn_add_text' => @trans('actions.add_riddle')
+        ]
+    ])
+
     <!-- Modal new Action -->
-    <div class="modal" id="modalCreateAction" tabindex="-1" role="dialog" aria-labelledby="modalCreateActionTitle" aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalCreateActionTitle">{{ trans('page.actions_modal_title') }}</h5>
-                    <span class="close toggle-help glyphicon glyphicon-question-sign">
-                    </span>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    @include('page.partials.modal_actions', ['page' => $page])
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success" id="add_action"
-                        data-original-text="{{ trans('actions.add_action') }}">{{ trans('actions.add_action') }}</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('page.partials.modal_model', [
+        'template' => 'page.partials.modal_actions',
+        'data' => [
+            'page' => $page,
+            'id' => 'CreateAction',
+            'title' => @trans('page.actions_modal_title'),
+            'btn_add_text' => @trans('actions.add_action')
+        ]
+    ])
 
     <!-- Modal new Prerequisite -->
-    <div class="modal" id="modalCreatePrerequisite" tabindex="-1" role="dialog" aria-labelledby="modalCreatePrerequisiteTitle" aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalCreatePrerequisiteTitle">{{ trans('page.prerequisite_modal_title') }}</h5>
-                    <span class="close toggle-help glyphicon glyphicon-question-sign">
-                    </span>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    @include('page.partials.modal_prerequisites', ['page' => $page])
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('common.close') }}</button>
-                    <button type="button" class="btn btn-success" id="add_prerequisite" data-original-text="{{ trans('actions.add_prerequisite') }}">{{ trans('actions.add_prerequisite') }}</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('page.partials.modal_model', [
+        'template' => 'page.partials.modal_prerequisites',
+        'data' => [
+            'page' => $page,
+            'id' => 'CreatePrerequisite',
+            'title' => @trans('page.prerequisite_modal_title'),
+            'btn_add_text' => @trans('actions.add_prerequisite')
+        ]
+    ])
+
 @endsection
 
 @push('footer-scripts')

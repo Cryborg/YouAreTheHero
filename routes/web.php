@@ -47,6 +47,7 @@ Route::post('/story/{story}/options', 'StoryOptionsController@update')->name('st
 // Page
 Route::get('/page/{page}/edit', 'PageController@getEdit')->name('page.edit');
 Route::post('/page/{page}/edit', 'PageController@postEdit')->name('page.edit.post');
+Route::post('/page/{page}/riddle', 'PageController@postRiddle')->name('page.riddle.validate');
 
 // Actions
 Route::get('/actions/{page}/list', 'ActionController@list')->name('actions.list');

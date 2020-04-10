@@ -87,7 +87,7 @@
 
             <div class="form-group form-check ml-3">
                 <input class="form-check-input" type="checkbox" value="1" id="has_character" name="has_character"
-                    @if ($story->story_options && $story->story_options->has_character) checked @endif
+                    @if ($story && $story->story_options && $story->story_options->has_character) checked @endif
                 >
                 <label class="form-check-label" for="has_character">
                     {{ trans('story.has_character_label') }}
@@ -99,7 +99,7 @@
 
             <div class="form-group form-check ml-3">
                 <input class="form-check-input" type="checkbox" value="1" id="has_stats" name="has_stats"
-                    @if ($story->story_options && $story->story_options->has_stats) checked @endif
+                    @if ($story && $story->story_options && $story->story_options->has_stats) checked @endif
                 >
                 <label class="form-check-label" for="has_stats">
                     {{ trans('story.has_stats_label') }}

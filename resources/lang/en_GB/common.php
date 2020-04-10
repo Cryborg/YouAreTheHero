@@ -31,4 +31,6 @@ return array (
   'link_author' => 'Author',
   'id' => 'ID',
   'save' => 'Save',
+  'btn_validate' => 'Validate',
+  'delete' => 'Delete',
 );

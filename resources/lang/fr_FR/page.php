@@ -30,4 +30,6 @@ return array (
   'variables_label' => 'Variables',
   'existing_item' => 'Object existant',
   'edit_help' => 'Clique ici pour accéder à toutes les options d\'édition de cette page, tel que les prérequis et les objets.',
+  'riddle_header' => 'Enigme',
+  'current_page_riddles_help' => 'Tu peux ajouter une énigme à cette page.',
 );

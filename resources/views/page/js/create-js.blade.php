@@ -113,7 +113,7 @@
                 });
         });
 
-        $('#add_prerequisite').on('click', function () {
+        $('#add_CreatePrerequisite').on('click', function () {
             var $this = $(this);
             var data = {};
 
@@ -290,7 +290,7 @@ console.log(values);
     });
 
     // When the author validates the new action on the modal
-    $('#add_action').on('click', function () {
+    $('#add_CreateAction').on('click', function () {
         var serialized = $('#action_create').serialize();
         var $this = $(this);
 

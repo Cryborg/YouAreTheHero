@@ -2,6 +2,12 @@
 
 @section('title', $title)
 
+@section('riddle')
+    @if ($page->riddle()->count() > 0)
+        @include('story.partials.riddle', ['data' => $page->riddle])
+    @endif
+@endsection
+
 @section('choices')
     @include('story.partials.choices', ['page' => $page, 'story' => $story])
 @endsection
@@ -93,5 +99,22 @@
         function loadChoices() {
             $('.choices-block').load('{{ route('story.choices', ['story' => $story->id, 'page' => $page->uuid]) }}');
         }
+
+        @if ($page->riddle()->count())
+            $('#riddle_validate').on('click', function () {
+            $.post({
+                url: route('page.riddle.validate', {'page': '{{ $page->uuid }}'}),
+                data: {
+                    'answer': $('#riddle_answer').val()
+                }
+            })
+                .done(function (data) {
+                    console.log(data);
+                    $('.choices-block > fieldset > ul').append('<li>' + data.response + '</li>');
+                })
+                .fail(function (data) {
+                });
+            });
+        @endif
     </script>
 @endpush

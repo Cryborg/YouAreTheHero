@@ -126,4 +126,33 @@ class PageController extends Controller
 
         abort(JsonResponse::HTTP_NOT_FOUND);
     }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Page         $page
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function postRiddle (Request $request, Page $page): ?JsonResponse
+    {
+        if ($request->ajax()) {
+            $result = trim(strtolower($request->get('answer'))) === trim(strtolower($page->riddle->answer));
+            $response = null;
+
+            if ($result) {
+                $response = '<a href="'
+                    . route('story.play', ['story' => $page->story->id, 'page' => $page->riddle->target_page])
+                    . '">'
+                    . $page->riddle->target_text
+                    . '</a>';
+            }
+
+            return response()->json([
+                'success' => $result,
+                'response' => $response
+            ]);
+        }
+
+        abort(JsonResponse::HTTP_NOT_FOUND);
+    }
 }
