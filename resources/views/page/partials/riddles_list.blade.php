@@ -1,23 +1,30 @@
 <h3>{{ trans('page.riddle_header') }}</h3>
-<table class="table" id="riddles_list">
-    <thead class="thead-light">
-        <th scope="col">{{ trans('item.name') }}</th>
-        <th scope="col">{{ trans('item.verb') }}</th>
-        <th scope="col">{{ trans('item.quantity') }}</th>
-        <th scope="col">{{ trans('item.price') }}</th>
-        <th scope="col">{{ trans('common.actions') }}</th>
-    </thead>
-    <tbody>
-        @foreach ($page->actions as $action)
+
+@if ($page->riddle)
+    <table class="dataTable alternate-rows-colors">
+        <tr>
+            <td class="w-25">@lang('page.riddle_answer_label')</td>
+            <td>{{ $page->riddle->answer }}</td>
+        </tr>
+        @if ($page->riddle->target_page)
             <tr>
-                <td>{{ $action->item->name }}</td>
-                <td>{{ $action->present()->verb }}</td>
-                <td>{{ $action->quantity }}</td>
-                <td>{{ $action->price }}</td>
-                <td class="text-center">
-                    <span class="glyphicon glyphicon-trash delete-action" data-action_id="{{ $action->id }}" title="{{ trans('admin.delete') }}"></span>
-                </td>
+                <td>@lang('page.riddle_target_text_label')</td>
+                <td>{{ $page->riddle->target_text }}</td>
             </tr>
-        @endforeach
-    </tbody>
-</table>
+            <tr>
+                <td>@lang('page.riddle_target_page_label')</td>
+                <td>{{ $page->riddle->target_page }}</td>
+            </tr>
+        @endif
+        @if ($page->riddle->item_id)
+            <tr>
+                <td>@lang('page.riddle_item_text_label')</td>
+                <td>{{ $page->riddle->item_text }}</td>
+            </tr>
+            <tr>
+                <td>@lang('page.concerned_item')</td>
+                <td>{{ $page->riddle->item->name }}</td>
+            </tr>
+        @endif
+    </table>
+@endif

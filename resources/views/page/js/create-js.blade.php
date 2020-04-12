@@ -222,7 +222,7 @@
                     'value': $(this).val()
                 });
             });
-console.log(values);
+
             ajaxCreatePost(route,  $this, {
                 'name': $('#item_name_action').val(),
                 'default_price': $('#item_price_action').val(),
@@ -314,6 +314,53 @@ console.log(values);
                         data.action.price,
                         '<span class="glyphicon glyphicon-trash delete-action" data-action_id="' + data.action.item.id + '"></span>'
                     ]).draw();
+
+                    // Closes the modal
+                    $('#modalCreateAction').modal('hide');
+                }
+            })
+            .fail(function (data) {
+                if (data.status == 422) {
+                    $.each(data.responseJSON.errors, function (i, error) {
+                        $('#modalCreateAction')
+                            .find('[name="' + i + '"]')
+                            .addClass('input-invalid')
+                            .next()
+                            .append(error[0])
+                            .removeClass('hidden');
+                    });
+                }
+                showToast('error', {
+                    heading: '{{ trans('notification.save_failed_title') }}',
+                    text: "{{ trans('notification.new_action_not_added') }}",
+                    errors: data.responseJSON.errors
+                });
+            })
+            .always(function () {
+                $this.html($this.data('original-text'));
+                $this.prop('disabled', false);
+            });
+    });
+
+    $('#add_CreateRiddle').on('click', function () {
+        var $this = $(this);
+
+        $.post({
+            url: '{{ route('riddle.store', $page->uuid) }}',
+            'data': {
+                'answer': $('#riddle_answer_text').val(),
+                'type': $('#answer_is_integer').is(':checked') ? 1 : 0,
+                //'item_text': $('#riddle_item_text').val(),
+                'item_id': $('#riddle_item option:selected').val(),
+            },
+        })
+            .done(function (data) {
+                if (data.success) {
+                    // Show the notification
+                    showToast('success', {
+                        heading: '{{ trans('notification.save_success_title') }}',
+                        text: "{{ trans('notification.save_success_text') }}",
+                    });
 
                     // Closes the modal
                     $('#modalCreateAction').modal('hide');

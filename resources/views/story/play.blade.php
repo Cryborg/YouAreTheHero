@@ -109,7 +109,6 @@
                 }
             })
                 .done(function (data) {
-                    console.log(data);
                     $('.choices-block > fieldset > ul').append('<li>' + data.response + '</li>');
                 })
                 .fail(function (data) {

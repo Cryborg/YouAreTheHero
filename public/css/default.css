@@ -121,8 +121,9 @@ tr.shown td.details-control {
     width: 17em;
 }
 
-p.indent {
+p:not(.help-block) {
     text-indent: 2em;
+    margin-bottom: 0 !important;
 }
 
 .font-small {
@@ -252,4 +253,10 @@ div.jq-toast-wrap {
 }
 .selected-stretched-link {
     background-color: #dcefff !important;
+}
+.alternate-rows-colors tr:nth-child(odd) {
+    background: #e9ecef;
+}
+.alternate-rows-colors tr:nth-child(even) {
+    background: #fff;
 }

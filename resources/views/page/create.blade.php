@@ -137,8 +137,8 @@
         'data' => [
             'page' => $page,
             'id' => 'CreateRiddle',
-            'title' => @trans('page.riddle_modal_title'),
-            'btn_add_text' => @trans('actions.add_riddle')
+            'title' => trans('page.riddle_modal_title'),
+            'btn_add_text' => trans('actions.add_riddle')
         ]
     ])
 
@@ -148,8 +148,8 @@
         'data' => [
             'page' => $page,
             'id' => 'CreateAction',
-            'title' => @trans('page.actions_modal_title'),
-            'btn_add_text' => @trans('actions.add_action')
+            'title' => trans('page.actions_modal_title'),
+            'btn_add_text' => trans('actions.add_action')
         ]
     ])
 
@@ -159,8 +159,8 @@
         'data' => [
             'page' => $page,
             'id' => 'CreatePrerequisite',
-            'title' => @trans('page.prerequisite_modal_title'),
-            'btn_add_text' => @trans('actions.add_prerequisite')
+            'title' => trans('page.prerequisite_modal_title'),
+            'btn_add_text' => trans('actions.add_prerequisite')
         ]
     ])
 

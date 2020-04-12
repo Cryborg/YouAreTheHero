@@ -83,3 +83,6 @@ Route::get('/admin/users', 'AdminController@getUsers')->name('admin.users');
 // User
 Route::get('/user/profile', 'UserController@getProfile')->name('user.profile');
 Route::post('/user/{user}/profile', 'UserController@store')->name('user.profile.post');
+
+// Riddle
+Route::post('/page/{page}/newriddle', 'RiddleController@store')->name('riddle.store');
