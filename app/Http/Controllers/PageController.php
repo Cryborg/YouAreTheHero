@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 
@@ -136,20 +137,26 @@ class PageController extends Controller
     public function postRiddle (Request $request, Page $page): ?JsonResponse
     {
         if ($request->ajax()) {
-            $result = trim(strtolower($request->get('answer'))) === trim(strtolower($page->riddle->answer));
+            $result = strtolower(trim($request->get('answer'))) === strtolower(trim($page->riddle->answer));
             $response = null;
 
             if ($result) {
-                $response = '<a href="'
-                    . route('story.play', ['story' => $page->story->id, 'page' => $page->riddle->target_page])
-                    . '">'
-                    . $page->riddle->target_text
-                    . '</a>';
+                if ($page->riddle && $page->riddle->item) {
+                    $response = trans('page.riddle_item_earned', ['item_name' => $page->riddle->item->name]);
+                    $storySession = Session::get('story');
+
+                    // Flag the riddle as answered for this character
+                    $page->riddle->answered_riddle()->create([
+                        'character_id' => $storySession['character_id'],
+                        'riddle_id' => $page->riddle->id
+                    ]);
+                }
             }
 
             return response()->json([
                 'success' => $result,
-                'response' => $response
+                'response' => $response,
+                'solved' => $page->riddle ? $page->riddle->isSolved() : 'bouh',
             ]);
         }
 

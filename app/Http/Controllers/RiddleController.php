@@ -30,9 +30,9 @@ class RiddleController extends Controller
         $validated['type'] = $validated['type'] == 1 ? 'integer' : 'string';
 
         if ($page->riddle) {
-            $page->riddle->update($validated);
+            $page->riddle()->update($validated);
         } else {
-            $page->riddle->create($validated);
+            $page->riddle()->create($validated);
         }
 
         return response()->json([

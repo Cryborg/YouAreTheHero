@@ -134,10 +134,10 @@
     <!-- Modal new Riddle -->
     @include('page.partials.modal_model', [
         'template' => 'page.partials.modal_riddle',
+        'title' => trans('page.riddle_modal_title'),
         'data' => [
             'page' => $page,
             'id' => 'CreateRiddle',
-            'title' => trans('page.riddle_modal_title'),
             'btn_add_text' => trans('actions.add_riddle')
         ]
     ])
@@ -145,10 +145,10 @@
     <!-- Modal new Action -->
     @include('page.partials.modal_model', [
         'template' => 'page.partials.modal_actions',
+        'title' => trans('page.actions_modal_title'),
         'data' => [
             'page' => $page,
             'id' => 'CreateAction',
-            'title' => trans('page.actions_modal_title'),
             'btn_add_text' => trans('actions.add_action')
         ]
     ])
@@ -156,10 +156,10 @@
     <!-- Modal new Prerequisite -->
     @include('page.partials.modal_model', [
         'template' => 'page.partials.modal_prerequisites',
+        'title' => trans('page.prerequisite_modal_title'),
         'data' => [
             'page' => $page,
             'id' => 'CreatePrerequisite',
-            'title' => trans('page.prerequisite_modal_title'),
             'btn_add_text' => trans('actions.add_prerequisite')
         ]
     ])

@@ -43,4 +43,6 @@ return array (
   'riddle_page_help' => 'La page vers laquelle le joueur/la joueuse sera redirigé(e) en cas de succès.',
   'riddle_modal_title' => 'Nouvelle énigme',
   'riddle_item_label' => 'Récompense',
+  'riddle_item_earned' => 'Tu as gagné un(e) <item>:item_name</item>, à retrouver dans ton inventaire.',
+  'riddle_already_solved' => 'Tu as déjà résolu cette énigme.',
 );

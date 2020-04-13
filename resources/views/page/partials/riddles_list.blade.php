@@ -18,10 +18,6 @@
         @endif
         @if ($page->riddle->item_id)
             <tr>
-                <td>@lang('page.riddle_item_text_label')</td>
-                <td>{{ $page->riddle->item_text }}</td>
-            </tr>
-            <tr>
                 <td>@lang('page.concerned_item')</td>
                 <td>{{ $page->riddle->item->name }}</td>
             </tr>

@@ -102,17 +102,19 @@
 
         @if ($page->riddle()->count())
             $('#riddle_validate').on('click', function () {
-            $.post({
-                url: route('page.riddle.validate', {'page': '{{ $page->uuid }}'}),
-                data: {
-                    'answer': $('#riddle_answer').val()
-                }
-            })
-                .done(function (data) {
-                    $('.choices-block > fieldset > ul').append('<li>' + data.response + '</li>');
+                $.post({
+                    url: route('page.riddle.validate', {'page': '{{ $page->uuid }}'}),
+                    data: {
+                        'answer': $('#riddle_answer').val()
+                    }
                 })
-                .fail(function (data) {
-                });
+                    .done(function (data) {
+                        if (data.response) {
+                            $('#riddle_block').html(data.response);
+                        }
+                    })
+                    .fail(function (data) {
+                    });
             });
         @endif
     </script>

@@ -342,6 +342,7 @@
             });
     });
 
+    // When tu author creates a new riddle
     $('#add_CreateRiddle').on('click', function () {
         var $this = $(this);
 

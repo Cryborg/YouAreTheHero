@@ -27,8 +27,6 @@ class CreateRiddlesTable extends Migration
             $table->uuid('target_page')->nullable();
             $table->foreign('target_page')->references('uuid')->on('pages');
 
-            $table->string('item_text', 255)->nullable()
-                ->comment('Text to display if the riddle gives an item');
             $table->unsignedBigInteger('item_id')->nullable();
             $table->foreign('item_id')->references('id')->on('items');
         });

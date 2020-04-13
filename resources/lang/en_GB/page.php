@@ -43,4 +43,6 @@ return array (
   'riddle_page_help' => 'The page the player will be redirected to in case of success.',
   'riddle_modal_title' => 'New riddle',
   'riddle_item_label' => 'Reward item',
+  'riddle_item_earned' => 'You earned a <item>:item_name</item>, it is now available in your inventory.',
+  'riddle_already_solved' => 'You have already solved this riddle.',
 );
