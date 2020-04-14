@@ -18,4 +18,5 @@ return array (
   'email' => 'Email',
   'id' => 'ID',
   'username' => 'Username',
+  'password_confirmation' => 'Password confirmation',
 );

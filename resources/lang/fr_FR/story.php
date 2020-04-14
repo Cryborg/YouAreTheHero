@@ -34,4 +34,5 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
   'has_stats_help' => 'Si tu prévois d\'utiliser une feuille de personnage, coche cette case. Tu devras ensuite la créer dans l\'onglet suivant.',
   'stat_attribution_player' => 'Je laisse le joueur décider !',
   'stat_attribution_dice' => 'Tirer les valeurs aux dés',
+  'genres' => 'Genres',
 );

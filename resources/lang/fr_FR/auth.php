@@ -18,4 +18,5 @@ return array (
   'id' => 'ID',
   'email' => 'Email',
   'username' => 'Nom d\'utilisateur',
+  'password_confirmation' => 'Confirme le mot de passe',
 );

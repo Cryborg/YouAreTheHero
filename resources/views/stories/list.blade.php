@@ -37,7 +37,7 @@
             <th></th>
             <th></th>
             <th>{{ __('story.title') }}</th>
-            <th>{{ __('story.genres') }}</th>
+            <th>{{ __('common.genres') }}</th>
             <th>{{ __('common.language') }}</th>
             <th>{{ __('common.author') }}</th>
             <th>{{ __('common.updated_at') }}</th>

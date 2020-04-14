@@ -34,4 +34,5 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
   'has_stats_help' => 'If you plan to use a character sheet, check this option. You will then have to create it in the next tab.',
   'stat_attribution_dice' => 'Let dice decide!',
   'stat_attribution_player' => 'Let the player choose!',
+  'genres' => 'Genres',
 );
