@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Story;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
 class AdminController extends Controller
@@ -15,7 +13,11 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-    public function getIndex()
+    /**
+     * @return \Illuminate\Contracts\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function getIndex(): \Illuminate\Contracts\View\View
     {
         $this->authorize('isAdmin');
 
@@ -28,12 +30,14 @@ class AdminController extends Controller
                                         ->where('updated_at', '>=', $lastUpdate)->count(),
         ];
 
-        $view = View::make('admin.index', $data);
-
-        return $view;
+        return View::make('admin.index', $data);
     }
 
-    public function getStories()
+    /**
+     * @return \Illuminate\Contracts\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function getStories(): \Illuminate\Contracts\View\View
     {
         $this->authorize('isAdmin');
 
@@ -42,12 +46,14 @@ class AdminController extends Controller
             'stories' => Story::all(),
         ];
 
-        $view = View::make('admin.stories', $data);
-
-        return $view;
+        return View::make('admin.stories', $data);
     }
 
-    public function getUsers()
+    /**
+     * @return \Illuminate\Contracts\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function getUsers(): \Illuminate\Contracts\View\View
     {
         $this->authorize('isAdmin');
 
@@ -56,8 +62,6 @@ class AdminController extends Controller
             'users' => User::all(),
         ];
 
-        $view = View::make('admin.users', $data);
-
-        return $view;
+        return View::make('admin.users', $data);
     }
 }

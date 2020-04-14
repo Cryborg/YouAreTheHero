@@ -5,6 +5,9 @@ namespace App\Models;
 use App\Presenters\PagePresenter;
 use Faker\Provider\Uuid;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
@@ -26,17 +29,18 @@ class Page extends Model
 
     protected $guarded      = ['uuid'];
 
-    // Casts JSON as array
-    protected $casts = [
+    protected $touches      = ['story'];
+
+    protected $casts        = [
         'is_first'      => 'boolean',
         'is_last'       => 'boolean',
         'is_checkpoint' => 'boolean',
     ];
 
     /**
-     * Get the pageLinks.
+     * @return HasMany
      */
-    public function pageLinks()
+    public function pageLinks(): HasMany
     {
         return $this->hasMany(PageLink::class, 'page_from');
     }
@@ -51,17 +55,21 @@ class Page extends Model
             $page->number   = $page::where('story_id', '=', $page->story_id)
                                    ->count() + 1;
             $page->is_first = $page->number === 1;
-        }
-        );
-
+        });
     }
 
-    public function story()
+    /**
+     * @return BelongsTo
+     */
+    public function story(): BelongsTo
     {
         return $this->belongsTo(Story::class);
     }
 
-    public function actions()
+    /**
+     * @return HasMany
+     */
+    public function actions(): HasMany
     {
         return $this->hasMany(Action::class);
     }
@@ -69,6 +77,7 @@ class Page extends Model
     /**
      * Get the available choices for the current page
      *
+     * @return \Illuminate\Support\Collection|mixed
      */
     public function choices()
     {
@@ -138,7 +147,7 @@ class Page extends Model
      * @return \App\Models\Action
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function addAction(array $data)
+    public function addAction(array $data): Action
     {
         $validated = Validator::validate($data, [
                 'item_id'  => 'required',
@@ -163,11 +172,10 @@ class Page extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return HasOne
      */
-    public function riddle()
+    public function riddle(): HasOne
     {
         return $this->hasOne(Riddle::class);
     }
-
 }

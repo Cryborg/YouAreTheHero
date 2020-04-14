@@ -15,7 +15,7 @@
                 <td>{{ $action->quantity }}</td>
                 <td>{{ $action->price }}</td>
                 <td class="text-center">
-                    <span class="glyphicon glyphicon-trash delete-action" data-action_id="{{ $action->id }}" title="{{ trans('admin.delete') }}"></span>
+                    <span class="glyphicon glyphicon-trash delete-action" data-action_id="{{ $action->id }}" title="{{ trans('common.delete') }}"></span>
                 </td>
             </tr>
         @endforeach
