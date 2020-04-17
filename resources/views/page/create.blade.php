@@ -22,7 +22,7 @@
                             @endforeach
                         @endif
                     </div>
-                    <nav class="nav nav-pills" id="choicesList">
+                    <nav class="nav nav-pills">
                         @if($page->parents())
                             @foreach($page->parents() as $key => $choice)
                                 <a class="nav-item nav-link @if ($key === 0) active @endif" href="#pp{{ $key }}" data-toggle="tab">
@@ -97,7 +97,7 @@
         <div class="col col-border-left col-border-right col-choices">
             @info({!! trans('page.current_page_choices_help') !!})
 
-            <nav class="nav nav-pills" id="choicesList">
+            <nav class="nav nav-pills">
                 @if($page->choices())
                     @foreach($page->choices() as $key => $choice)
                         <a class="nav-item nav-link @if ($key === 0) active @endif" href="#p{{ $key }}" data-toggle="tab">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Action;
+use App\Models\Inventory;
 use App\Models\Page;
 use App\Models\PageLink;
 use App\Models\Story;
@@ -10,6 +11,7 @@ use App\Repositories\PageRepository;
 use Faker\Provider\Uuid;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
@@ -77,7 +79,9 @@ class PageController extends Controller
                 'sell' => trans('actions.sell'),
                 'earn' => trans('actions.earn'),
                 'give' => trans('actions.give'),
-            ]
+            ],
+
+            'contexts' => ['action', 'prerequisites', 'riddle'],
         ]);
 
         return $view;
@@ -93,7 +97,7 @@ class PageController extends Controller
     {
         if ($request->ajax()) {
             $validated = $request->validate([
-                'title'         => 'required|unique:stories',
+                'title'         => 'required',
                 'content'       => 'required',
                 'layout'        => 'required',
                 'is_first'      => 'required',
@@ -150,6 +154,16 @@ class PageController extends Controller
                         'character_id' => $storySession['character_id'],
                         'riddle_id' => $page->riddle->id
                     ]);
+
+                    if ($page->riddle->item_id) {
+                        Inventory::create(
+                            [
+                                'character_id' => $storySession['character_id'],
+                                'item_id'      => $page->riddle->item_id,
+                                'quantity'     => 1,
+                            ]
+                        );
+                    }
                 }
             }
 
@@ -157,6 +171,7 @@ class PageController extends Controller
                 'success' => $result,
                 'response' => $response,
                 'solved' => $page->riddle ? $page->riddle->isSolved() : 'bouh',
+                'refreshInventory' => $page->riddle && isset($page->riddle->item_id),
             ]);
         }
 

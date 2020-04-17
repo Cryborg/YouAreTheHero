@@ -40,8 +40,6 @@ class StoryController extends Controller
     /**
      * @param \App\Models\Story     $story
      * @param \App\Models\Page|null $page
-     *
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function getPlay(Story $story, Page $page = null)
     {
@@ -154,8 +152,7 @@ class StoryController extends Controller
             $fulfilled = false;
             $pageTo    = $choice->pageTo;
 
-            if ($pageTo && $pageTo->prerequisites()
-                                  ->count() > 0) {
+            if ($pageTo && $pageTo->prerequisites()->count() > 0) {
                 foreach ($pageTo->prerequisites() as $prerequisite) {
                     switch (get_class($prerequisite->prerequisiteable)) {
                         case CharacterStat::class:

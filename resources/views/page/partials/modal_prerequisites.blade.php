@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col">
-        <nav class="nav nav-pills mb-3" id="choicesList">
+        <nav class="nav nav-pills mb-3">
             <a class="nav-item nav-link active" href="#tr1" data-toggle="tab">
                 {{ trans('page.required_item') }}
             </a> <a class="nav-item nav-link" href="#tr2" data-toggle="tab">
@@ -37,8 +37,8 @@
                         @include('page.partials.modal_partials_new_item', ['context' => 'prerequisites', 'story' => $page->story])
                     </div>
                 </div>
-
             </div>
+
             <div class="tab-pane" id="tr2">
                 <div class="form-group mb-4">
                     {!! Form::label('sheet', trans('page.required_characteristic'), ['class' => 'sr-only']) !!}

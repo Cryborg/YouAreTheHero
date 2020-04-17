@@ -145,7 +145,7 @@ p:not(.help-block) {
 #addNewPage {
     font-size: 1.5em;
 }
-.form-control.input-invalid {
+.input-invalid {
     border: 1px solid red;
 }
 .vertical-text {

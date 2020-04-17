@@ -102,6 +102,11 @@
 
         @if ($page->riddle()->count())
             $('#riddle_validate').on('click', function () {
+                $this = $(this);
+
+                // Toggle disabled state
+                $this.prop('disabled', (i, v) => !v);
+
                 $.post({
                     url: route('page.riddle.validate', {'page': '{{ $page->uuid }}'}),
                     data: {
@@ -109,11 +114,26 @@
                     }
                 })
                     .done(function (data) {
-                        if (data.response) {
+                        if (data.success) {
                             $('#riddle_block').html(data.response);
+
+                            if (data.refreshInventory !== false) {
+                                loadInventory();
+                            }
+                        } else {
+                            var oldBorder = $('#riddle_answer').css('border');
+                            $('#riddle_answer').toggleClass('input-invalid');
+
+                            setTimeout(function() {
+                                $('#riddle_answer').toggleClass('input-invalid');
+                            }, 3000);
                         }
                     })
                     .fail(function (data) {
+                    })
+                    .always(function () {
+                        // Toggle disabled state
+                        $this.prop('disabled', (i, v) => !v);
                     });
             });
         @endif

@@ -89,7 +89,7 @@
                     });
                 })
                 .fail(function (data) {
-                    if (data.status == 422) {
+                    if (data.status === 422) {
                         $.each(data.responseJSON.errors, function (i, error) {
                             $form
                                 .find('[name="' + i + '"]')
@@ -194,7 +194,7 @@
                     });
 
                     // Add the newly created item to both lists
-                    $('#prerequisite_item_id, #item_id').append(
+                    $('#prerequisite_item_id, #item_id, #riddle_item').append(
                         '<option value="' + data.item.id + '">' + data.item.name + '</option>'
                     );
                 })
@@ -211,36 +211,27 @@
                 });
         }
 
-        $('#create_item_action').on('click', function () {
-            var $this = $(this);
-            var route = '{{ route('item.store') }}';
-            var values = [];
+        @for ($i = 0, $iMax = count($contexts); $i < $iMax; $i++)
+            $('#create_item_{{ $contexts[$i] }}').on('click', function () {
+                var $this = $(this);
+                var route = '{{ route('item.store') }}';
+                var values = [];
 
-            $('input[name="stat_values[]"]:visible').each(function () {
-                values.push({
-                    'id': $(this).data('id'),
-                    'value': $(this).val()
+                $('input[name="stat_values[]"]:visible').each(function () {
+                    values.push({
+                        'id': $(this).data('id'),
+                        'value': $(this).val()
+                    });
                 });
+
+                ajaxCreatePost(route,  $this, {
+                    'name': $('#item_name_{{ $contexts[$i] }}').val(),
+                    'default_price': $('#item_price_{{ $contexts[$i] }}').val(),
+                    'single_use': $('#single_use_{{ $contexts[$i] }}').is(':checked') ? 1 : 0,
+                    'effects': values
+                })
             });
-
-            ajaxCreatePost(route,  $this, {
-                'name': $('#item_name_action').val(),
-                'default_price': $('#item_price_action').val(),
-                'single_use': $('#single_use_action').is(':checked') ? 1 : 0,
-                'effects': values
-            })
-        });
-
-        $('#create_item_prerequisites').on('click', function () {
-            var $this = $(this);
-            var route = '{{ route('item.store') }}';
-
-            ajaxCreatePost(route, $this, {
-                'name': $('#item_name_prerequisites').val(),
-                'default_price': $('#item_price_prerequisites').val(),
-                'single_use': $('#single_use_prerequisites').is(':checked') ? 1 : 0,
-            })
-        });
+        @endfor
     });
 
     var commonDTOptions = {
@@ -263,7 +254,7 @@
     $('#item_id').on('change', function () {
         var $this = $(this);
 
-        if ($this.val() == '') return false;
+        if ($this.val() === '') return false;
 
         $.post({
             url: route('story.ajax_getitem'),
@@ -280,7 +271,7 @@
 
         var $this = $(this);
 
-        if ($this.val() == 0) return false;
+        if ($this.val() === 0) return false;
 
         $this.prop('disabled', true);
 
@@ -320,7 +311,7 @@
                 }
             })
             .fail(function (data) {
-                if (data.status == 422) {
+                if (data.status === 422) {
                     $.each(data.responseJSON.errors, function (i, error) {
                         $('#modalCreateAction')
                             .find('[name="' + i + '"]')
@@ -368,7 +359,7 @@
                 }
             })
             .fail(function (data) {
-                if (data.status == 422) {
+                if (data.status === 422) {
                     $.each(data.responseJSON.errors, function (i, error) {
                         $('#modalCreateAction')
                             .find('[name="' + i + '"]')
