@@ -35,7 +35,14 @@
         })
         .ajaxStop(function () {
             $loading.hide();
-        });
+        })
+        .ajaxComplete(function (event, request, settings) {
+            // If the session has expired
+            if (request.status === 419) {
+                alert('You have been inactive for the last minutes, please refresh the page to reconnect.');
+            }
+        })
+    ;
 
     // Put a spinner on buttons, but only if they have the 'original-text' data attribute.
     $(document).on('click', function(element) {
