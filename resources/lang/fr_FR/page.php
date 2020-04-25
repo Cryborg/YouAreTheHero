@@ -40,9 +40,11 @@ return array (
   'riddle_answer_help' => 'La réponse de l\'énigme, insensible à la casse. S\'il doit s\'agir d\'un nombre, coche la case adéquate.',
   'riddle_answer_checkbox' => 'Est-ce un nombre ?',
   'riddle_item_help' => 'L\'objet que le joueur/la joueuse gagnera s\'il ou elle trouve la solution à l\'énigme.',
-  'riddle_page_help' => 'La page vers laquelle le joueur/la joueuse sera redirigé(e) en cas de succès.',
+  'riddle_page_help' => 'La page vers laquelle le joueur/la joueuse sera redirigé(e) en cas de succès. Le texte sera celui du lien qui apparaîtra quand l\'énigme sera résolue.',
   'riddle_modal_title' => 'Nouvelle énigme',
   'riddle_item_label' => 'Récompense',
   'riddle_item_earned' => 'Tu as gagné un(e) <item>:item_name</item>, à retrouver dans ton inventaire.',
   'riddle_already_solved' => 'Tu as déjà résolu cette énigme.',
+  'riddle_page_label' => 'Mène à la page',
+  'riddle_page_text_label' => 'Texte du lien',
 );

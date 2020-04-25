@@ -119,6 +119,7 @@
 
                             if (data.refreshInventory !== false) {
                                 loadInventory();
+                                loadChoices();
                             }
                         } else {
                             var oldBorder = $('#riddle_answer').css('border');

@@ -27,7 +27,7 @@
                             @foreach($page->parents() as $key => $choice)
                                 <a class="nav-item nav-link @if ($key === 0) active @endif" href="#pp{{ $key }}" data-toggle="tab">
                                 <span class="choice_title_{{ $key }}">
-                                    <input type="text" class="form-control" placeholder="{{ trans('page.link_text') }}" value="{{ $choice->link_text }}">
+                                    <input type="text" class="form-control" value="{{ $choice->link_text }}" disabled>
                                 </span>
                                 </a>
                             @endforeach
@@ -164,6 +164,10 @@
         ]
     ])
 
+    <!-- Story options button -->
+    <div class="float-sm-right">
+        <span class="glyphicon glyphicon-cog display-4 position-fixed"></span>
+    </div>
 @endsection
 
 @push('footer-scripts')

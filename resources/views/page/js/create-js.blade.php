@@ -1,5 +1,7 @@
 <script type="text/javascript">
-    function newPage($this, route) {
+    function newPage($this, route, disableEdit) {
+        disableEdit = disableEdit || false;
+
         var newNumber = $('a.nav-item.nav-link').length;
         $('a.nav-item.nav-link, div.tab-pane').removeClass('active');
 
@@ -9,14 +11,22 @@
             '<input type="text" class="form-control" placeholder="{{ trans('page.link_text') }}" id="linktext-' + newNumber + '">' +
             '<div class="alert alert-error hidden"></div>' +
             '</span></span>' +
-            '</a>');
+            '</a>'
+        );
         $.ajax({
             'url': route,
             'data': {'internalId': newNumber}
         })
             .done(function (data) {
                 $('#choicesForm').append('<div class="tab-pane active" id="p' + newNumber + '">' + data + '</div>');
-                $('#choicesForm > div.tab-pane.active textarea').summernote(summernoteOptions);
+
+                if (disableEdit) {
+                    var $newPageSelector = $('#p' + newNumber);
+
+                    $newPageSelector.find('textarea, input').prop('disabled', true);
+                } else {
+                    $('#choicesForm > div.tab-pane.active textarea').summernote(summernoteOptions);
+                }
             })
             .always(function () {
                 $this.prop('disabled', false);
@@ -47,7 +57,7 @@
             });
         });
 
-        // Create a new tab
+        // Create a new tab with a new page
         $('#addNewPage').on('click', function (event) {
             event.preventDefault();
 
@@ -265,7 +275,7 @@
             });
     });
 
-    // When the author creates a child page
+    // When the author creates a link to an existing page
     $('.nav-item.nav-link select').on('click', function (e) {
         e.preventDefault();
 
@@ -275,7 +285,7 @@
 
         $this.prop('disabled', true);
 
-        newPage($this, route('page.create', [{{ $page->story_id }}, $this.val()]));
+        newPage($this, route('page.create', [{{ $page->story_id }}, $this.val()]), true);
 
         $("#childrenSelect option:selected").remove();
     });
@@ -342,8 +352,9 @@
             'data': {
                 'answer': $('#riddle_answer_text').val(),
                 'type': $('#answer_is_integer').is(':checked') ? 1 : 0,
-                //'item_text': $('#riddle_item_text').val(),
                 'item_id': $('#riddle_item option:selected').val(),
+                'target_page': $('#riddle_page option:selected').val(),
+                'target_text': $('#riddle_target_text').val(),
             },
         })
             .done(function (data) {

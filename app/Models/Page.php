@@ -50,10 +50,8 @@ class Page extends Model
         parent::boot();
 
         static::creating(static function ($page) {
-            // String ID so that we prevent cheating
+            // String ID so that we limit players being able to guess pages IDs
             $page->uuid     = Uuid::uuid();
-            $page->number   = $page::where('story_id', '=', $page->story_id)
-                                   ->count() + 1;
             $page->is_first = $page->number === 1;
         });
     }

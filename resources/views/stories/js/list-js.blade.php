@@ -7,6 +7,10 @@
         ).draw();
     }
 
+    function confirmAction() {
+        return confirm('{{ trans('story.reset_story_confirm') }}');
+    }
+
     $(function() {
         function format ( d ) {
             var parser = new DOMParser;
@@ -23,7 +27,9 @@
                     ? '<a href="' + route('story.edit', {'story': d.id}) + '" class="btn btn-success card-link w-100 mb-1">{{ trans('story.edit') }}</a>'
                     : ' ',
                 "%RESET_STORY%": d.can_reset == true
-                    ? '<a href="' + route('story.reset', {'story': d.id}) + '" class="btn btn-danger card-link w-100 mb-1">{{ trans('story.reset') }}</a>'
+                    ? '<a ' +
+                    'onclick="return confirmAction()"' +
+                    ' href="' + route('story.reset', {'story': d.id}) + '" class="btn btn-danger card-link w-100 mb-1">{{ trans('story.reset') }}</a>'
                     : ' ',
                 "%AUTHOR%": d.user
             };

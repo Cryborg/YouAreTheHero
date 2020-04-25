@@ -374,6 +374,11 @@ class StoryController extends Controller
                         ->first();
     }
 
+    /**
+     * @param Page $page
+     *
+     * @return mixed
+     */
     private function getAllChoicesForPage(Page $page)
     {
         $key = 'choices_' . $page->uuid;

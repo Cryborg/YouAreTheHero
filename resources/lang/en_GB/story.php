@@ -35,4 +35,5 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
   'stat_attribution_dice' => 'Let dice decide!',
   'stat_attribution_player' => 'Let the player choose!',
   'genres' => 'Genres',
+  'reset_story_confirm' => 'Are you sure you want to reset your adventure?',
 );

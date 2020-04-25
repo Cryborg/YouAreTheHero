@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Page;
 use App\Models\Story;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class RiddleController extends Controller
 {
@@ -21,10 +22,11 @@ class RiddleController extends Controller
         $success = true;
 
         $validated = $request->validate([
-            'answer'  => 'required',
-            'item_id'     => 'required',
-            //'item_text' => 'required',
-            'type' => 'required',
+            'answer'        => 'required',
+            'item_id'       => 'required',
+            'target_page'   => 'required',
+            'target_text'   => 'required',
+            'type'          => 'required',
         ]);
 
         $validated['type'] = $validated['type'] == 1 ? 'integer' : 'string';

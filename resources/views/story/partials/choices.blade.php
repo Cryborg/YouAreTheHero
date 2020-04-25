@@ -6,10 +6,15 @@
                 @foreach ($page->filtered_choices as $choice)
                     <li><a href="{{ route('story.play', ['story' => $story->id, 'page' => $choice->page_to]) }}">{!! $choice->link_text !!}</a></li>
                 @endforeach
+                @if ($page->riddle && $page->riddle->isSolved())
+                    @if ($page->riddle->target_page)
+                        <li><a href="{{ route('story.play', ['story' => $story->id, 'page' => $page->riddle->target_page]) }}">{!! $page->riddle->target_text !!}</a></li>
+                    @endif
+                @endif
             </ul>
         </fieldset>
     @else
-        <div class="border border-success rounded rounded-lg p-3 text-center mb-3">
+        <div class="border border-success rounded rounded-lg p-3 text-center mb-3 mt-5">
             <div class="text-bold display-4">
                 GAME OVER !
             </div>

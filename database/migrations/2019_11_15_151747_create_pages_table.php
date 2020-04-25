@@ -16,8 +16,6 @@ class CreatePagesTable extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->uuid('uuid')->primary();
 
-            $table->unsignedInteger('number');  //FIXME: can be deleted, useless
-
             $table->unsignedBigInteger('story_id');
             $table->foreign('story_id')->references('id')->on('stories');
 

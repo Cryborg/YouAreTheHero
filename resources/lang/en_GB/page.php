@@ -40,9 +40,11 @@ return array (
   'riddle_answer_help' => 'The answer to the riddle. This is case insensitive. If ht answer is a number, check the box.',
   'riddle_answer_checkbox' => 'Is this a number ?',
   'riddle_item_help' => 'This is the item the player will gain if he/she solves the riddle.',
-  'riddle_page_help' => 'The page the player will be redirected to in case of success.',
+  'riddle_page_help' => 'The page the player will be redirected to in case of success. The text is the text of the link that will appear when the riddle is solved.',
   'riddle_modal_title' => 'New riddle',
   'riddle_item_label' => 'Reward item',
   'riddle_item_earned' => 'You earned a <item>:item_name</item>, it is now available in your inventory.',
   'riddle_already_solved' => 'You have already solved this riddle.',
+  'riddle_page_label' => 'Go to page',
+  'riddle_page_text_label' => 'Link text',
 );

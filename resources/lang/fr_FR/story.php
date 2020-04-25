@@ -35,4 +35,5 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
   'stat_attribution_player' => 'Je laisse le joueur décider !',
   'stat_attribution_dice' => 'Tirer les valeurs aux dés',
   'genres' => 'Genres',
+  'reset_story_confirm' => 'Es-tu sûr(e) de vouloir réinitialiser ton aventure ?',
 );
