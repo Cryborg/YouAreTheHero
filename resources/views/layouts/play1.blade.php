@@ -18,7 +18,7 @@
         </div>
         <div class="col col-xs-12 bloc">
             <div class="row">
-                <div class="col text-center">
+                <div class="col text-center mb-4">
                     <div id="loadingDiv"></div>
                     <div class="title">{{ $page->title }}</div>
                 </div>
@@ -39,22 +39,24 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col choices-block">
+                <div class="col choices-block mt-4">
                     @yield('choices')
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-xs-12 bloc">
-            <div class="row">
-                <div class="col">
-                    <div class="title">@lang('stat.sheet')</div>
+            @if ($page->story->story_options->has_stats)
+                <div class="row">
+                    <div class="col">
+                        <div class="title">@lang('stat.sheet')</div>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col sheet-block">
-                    @yield('sheet', 'No available sheet')
+                <div class="row">
+                    <div class="col sheet-block">
+                        @yield('sheet', 'No available sheet')
+                    </div>
                 </div>
-            </div>
+            @endif
             <div class="row">
                 <div class="col">
                     <div class="title">@lang('story.map')</div>

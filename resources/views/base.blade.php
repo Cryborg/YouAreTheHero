@@ -13,6 +13,7 @@
 
     {{-- Bootstrap core CSS --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/default.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/buttons.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap-grid.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap-select/css/bootstrap-select.min.css') }}">

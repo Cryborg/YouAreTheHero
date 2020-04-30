@@ -26,9 +26,9 @@
                         @if($page->parents())
                             @foreach($page->parents() as $key => $choice)
                                 <a class="nav-item nav-link @if ($key === 0) active @endif" href="#pp{{ $key }}" data-toggle="tab">
-                                <span class="choice_title_{{ $key }}">
-                                    <input type="text" class="form-control" value="{{ $choice->link_text }}" disabled>
-                                </span>
+                                    <span class="choice_title_{{ $key }}">
+                                        <input type="text" class="form-control" value="{{ $choice->link_text }}" disabled>
+                                    </span>
                                 </a>
                             @endforeach
                         @endif
