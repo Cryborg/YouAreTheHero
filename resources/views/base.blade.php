@@ -85,6 +85,15 @@
                         </ul>
                     @endif
                     <ul class="navbar-nav">
+                        @isset($story)
+                            <li class="nav-item dropdown clickable" id="listAllPages">
+                                <a class="nav-link">
+                                    <span class="glyphicon glyphicon-list mr-1"></span>
+                                    {{ trans('story.list_all_pages') }}
+                                </a>
+                            </li>
+                        @endisset
+
                         {{-- Authentication Links --}}
                         @guest
                             <li class="nav-item">

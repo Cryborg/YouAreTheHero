@@ -17,7 +17,7 @@
                         @if($page->parents())
                             @foreach($page->parents() as $key => $parent)
                                 <div class="tab-pane @if ($key === 0) active @endif" id="pp{{ $key }}">
-                                    @include('page.partials.create_readonly', ['page' => $parent])
+                                    @include('page.partials.create_readonly', ['page' => $parent, 'child' => false])
                                 </div>
                             @endforeach
                         @endif
@@ -123,13 +123,23 @@
                 @if($page->choices())
                     @foreach($page->choices() as $key => $choice)
                         <div class="tab-pane @if ($key === 0) active @endif" id="p{{ $key }}">
-                            @include('page.partials.create', ['page' => $choice, 'internalId' => $key + 1])
+                            @include('page.partials.create_readonly', ['page' => $choice, 'child' => true])
                         </div>
                     @endforeach
                 @endif
             </div>
         </div>
     </div>
+
+    <!-- Modal list all pages -->
+    @include('page.partials.modal_model', [
+        'template' => 'page.partials.modal_list_pages',
+        'title' => trans('story.all_pages_modal_title'),
+        'data' => [
+            'story' => $story,
+            'id' => 'AllPages',
+        ]
+    ])
 
     <!-- Modal new Riddle -->
     @include('page.partials.modal_model', [

@@ -260,3 +260,7 @@ div.jq-toast-wrap {
 .alternate-rows-colors tr:nth-child(even) {
     background: #fff;
 }
+
+.clickable {
+    cursor: pointer;
+}

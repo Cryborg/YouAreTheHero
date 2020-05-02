@@ -10,21 +10,41 @@ class PagePresenter extends Presenter
 {
     public function content()
     {
-        $character = Character::where([
-            'story_id' => getSession('story_id'),
-            'user_id' => Auth::id(),
-        ])->firstOrFail();
+        $storyId = getSession('story_id');
 
-        // List of all placeholders
-        $placeholders = [
-            'character_name' => $character->name,
-        ];
-        $content = null;
+        if (!empty($storyId)) {
+            $character = Character::where([
+                'story_id' => getSession('story_id'),
+                'user_id' => Auth::id(),
+            ])->first();
 
-        foreach ($placeholders as $key => $placeholder) {
-            $content = str_replace('[[' . $key . ']]', $placeholder, $this->entity->content);
+            // List of all placeholders
+            $placeholders = [
+                'character_name' => $character->name,
+            ];
+            $content      = null;
+
+            foreach ($placeholders as $key => $placeholder) {
+                $content = str_replace('[[' . $key . ']]', $placeholder, $this->entity->content);
+            }
+        } else {
+            // Only show the first characters of the page, between <p></p>
+            $pContent = $this->get_string_between($this->entity->content, '<p>', '</p>');
+            $content = mb_strlen($pContent) > 200 ? mb_substr($pContent, 0, 200) . '...' : $pContent;
         }
 
         return $content;
+    }
+
+    private function get_string_between($string, $start, $end)
+    {
+        $string = " " . $string;
+        $ini    = strpos($string, $start);
+        if ($ini == 0) {
+            return "";
+        }
+        $ini += strlen($start);
+        $len = strpos($string, $end, $ini) - $ini;
+        return substr($string, $ini, $len);
     }
 }
