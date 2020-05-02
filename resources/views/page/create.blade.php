@@ -43,20 +43,25 @@
     {{-- Current page --}}
     {!! Form::hidden('page_from', $page->uuid, ['id' => 'page_from']) !!}
     <div class="row" id="current_page">
-        <div class="col-lg-8 col-xs-12 col-border-left col-current">
-            @info({!! trans('page.current_page_help') !!})
+        <div class="col-lg-8 col-xs-12 col-current">
+            <div class="row">
+                <div class="menu-bar-left" data-internalid="{{ $internalId }}">
+                    <div class="bg-primary mr-2 h-100 pull-left text-center p-3">
+                        @include('page.partials.menu-bar')
+                    </div>
+                </div>
+                <div class="col">
+                    @info({!! trans('page.current_page_help') !!})
 
-            @include('page.partials.create')
+                    @include('page.partials.create')
+                </div>
+            </div>
         </div>
+
         <div class="col-lg-4 col-xs-12 col-border-right col-current">
             <div class="row">
                 <div class="col">
                     @info({!! trans('page.current_page_prerequisites_help') !!})
-
-                    <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalCreatePrerequisite">
-                        <span class="glyphicon glyphicon-plus"></span>
-                        {{ trans('actions.add_new_prerequisite') }}
-                    </button>
 
                     @include('page.partials.prerequisites_list', ['page' => $page])
                 </div>
@@ -66,11 +71,6 @@
                 <div class="col">
                     @info({!! trans('page.current_page_actions_help') !!})
 
-                    <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalCreateAction">
-                        <span class="glyphicon glyphicon-plus"></span>
-                        {{ trans('actions.add_new_action') }}
-                    </button>
-
                     @include('page.partials.actions_list', ['page' => $page])
                 </div>
             </div>
@@ -78,11 +78,6 @@
             <div class="row">
                 <div class="col">
                     @info({!! trans('page.current_page_riddles_help') !!})
-
-                    <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalCreateRiddle">
-                        <span class="glyphicon glyphicon-plus"></span>
-                        {{ trans('actions.add_new_riddle') }}
-                    </button>
 
                     @include('page.partials.riddles_list', ['page' => $page])
                 </div>
@@ -173,11 +168,6 @@
             'btn_add_text' => trans('actions.add_prerequisite')
         ]
     ])
-
-    <!-- Story options button -->
-    <div class="float-sm-right">
-        <span class="glyphicon glyphicon-cog display-4 position-fixed"></span>
-    </div>
 @endsection
 
 @push('footer-scripts')

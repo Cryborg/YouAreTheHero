@@ -152,9 +152,6 @@ p:not(.help-block) {
     transform: rotate(90deg);
     transform-origin: left top 0;
 }
-.col-border-left {
-    border-left: 15px solid;
-}
 .col-border-right {
     border-right: 15px solid;
 }
@@ -260,7 +257,20 @@ div.jq-toast-wrap {
 .alternate-rows-colors tr:nth-child(even) {
     background: #fff;
 }
-
 .clickable {
     cursor: pointer;
+}
+.menu-bar-left {
+    width:75px;
+}
+.display-5 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+div.menu-bar-left .icon-bottom-center {
+    position: absolute;
+    top: auto;
+    left: 0;
+    padding: 13px;
 }

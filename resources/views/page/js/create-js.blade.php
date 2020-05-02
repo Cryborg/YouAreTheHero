@@ -25,7 +25,7 @@
 
                     $newPageSelector.find('textarea, input').prop('disabled', true);
                 } else {
-                    $('#choicesForm > div.tab-pane.active textarea').summernote(summernoteOptions);
+                    //$('#choicesForm > div.tab-pane.active textarea').summernote(summernoteOptions);
                 }
             })
             .always(function () {
@@ -67,17 +67,31 @@
             newPage($this, route('page.create', {{ $page->story_id }}));
         });
 
+        $(document).on('click', '.toggle-summernote', function () {
+            let $this = $(this);
+            let $parent = $this.closest('.menu-bar-left');
+            let internalId = $parent.data('internalid');
+
+            $('#content-' + internalId).summernote({focus: true});
+
+            // Change the icon
+            $this.removeClass('toggle-summernote glyphicon-edit').addClass('submit-btn glyphicon-floppy-disk');
+        });
+
         $(document).on('click', '.submit-btn', function (e) {
-            let $form = $(this).parent('div.divAsForm');
-            let $thisBtn = $(this);
+            let $this = $(this);
+            let $parent = $this.closest('.menu-bar-left');
 
             // internalId is 0 if the form being submitted is the main page.
             // Otherwise it is > 0
-            var internalId = $form.data('internalid');
+            let internalId = $parent.data('internalid');
+            let $form = $("div.divAsForm[data-internalid='" + internalId + "']");
+
+            $('#content-' + internalId).summernote('destroy');
 
             var data = {
                 'title': $('#title-' + internalId).val(),
-                'content': $('#content-' + internalId).val(),
+                'content': $('#content-' + internalId).html(),
                 'layout': $('#layout-' + internalId).val(),
                 'is_first': $('#is_first-' + internalId).is(":checked") ? 1 : 0,
                 'is_last': $('#is_last-' + internalId).is(":checked") ? 1 : 0,
@@ -118,8 +132,10 @@
 
                 })
                 .always(function () {
-                    $thisBtn.html($thisBtn.data('original-text'));
-                    $thisBtn.prop('disabled', false);
+                    $this.html($this.data('original-text'));
+                    $this.prop('disabled', false);
+
+                    $this.addClass('toggle-summernote glyphicon-edit').removeClass('submit-btn glyphicon-floppy-disk');
                 });
         });
 
@@ -161,7 +177,7 @@
                                     '{{ trans('item.item') }}',
                                     item.name,
                                     item.quantity,
-                                    '<span class="glyphicon glyphicon-trash delete-prerequisite" data-prerequisite_id="' + item.prerequisite_id + '"></span>'
+                                    '<span class="glyphicon glyphicon-trash-red delete-prerequisite" data-prerequisite_id="' + item.prerequisite_id + '"></span>'
                                 ]).draw();
                             });
 
@@ -313,7 +329,7 @@
                         data.action.verb,
                         data.action.quantity,
                         data.action.price,
-                        '<span class="glyphicon glyphicon-trash delete-action" data-action_id="' + data.action.item.id + '"></span>'
+                        '<span class="glyphicon glyphicon-trash-red delete-action" data-action_id="' + data.action.item.id + '"></span>'
                     ]).draw();
 
                     // Closes the modal
@@ -396,7 +412,7 @@
         var $this = $(this);
         var actionId = $this.data('action_id');
         var loadingClass = 'fa fa-circle-o-notch fa-spin';
-        var defaultClass = 'glyphicon glyphicon-trash';
+        var defaultClass = 'glyphicon glyphicon-trash-red';
 
         if (!$this.hasClass('fa-spin')) {
             $this.attr('class', loadingClass);
@@ -432,7 +448,7 @@
         var $this = $(this);
         var prerequisiteId = $this.data('prerequisite_id');
         var loadingClass = 'fa fa-circle-o-notch fa-spin';
-        var defaultClass = 'glyphicon glyphicon-trash';
+        var defaultClass = 'glyphicon glyphicon-trash-red';
 
         if (!$this.hasClass('fa-spin')) {
             $this.attr('class', loadingClass);

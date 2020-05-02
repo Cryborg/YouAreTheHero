@@ -148,7 +148,7 @@
                             <td>{{ $stat->min_value }}</td>
                             <td>{{ $stat->max_value }}</td>
                             <td class="text-center">
-                                <span class="glyphicon glyphicon-trash" data-statstory_id="{{ $stat->id }}"></span>
+                                <span class="glyphicon glyphicon-trash-red" data-statstory_id="{{ $stat->id }}"></span>
                             </td>
                         </tr>
                     @endforeach

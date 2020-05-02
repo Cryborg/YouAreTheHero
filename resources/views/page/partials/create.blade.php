@@ -16,7 +16,9 @@
     <div class="form-group">
         {!! Form::label('content-' . $internalId, trans('model.content'), ['class' => 'control-label']) !!}
         <p class="help-block">{{ trans('model.page_content_help') }}</p>
-        {!! Form::textarea('content-' . $internalId, $page->content ?? old('content'), ['class' => 'form-control', 'rows' => 5]) !!}
+        <div id="content-{{ $internalId }}" class="false-input">
+            {!! $page->content ?? old('content') !!}
+        </div>
         <div class="alert alert-error hidden"></div>
     </div>
 
@@ -49,12 +51,8 @@
             @lang('model.is_checkpoint')
         </label>
     </div>
-
-    <button class="btn btn-success submit-btn mb-1 w-50" data-original-text="{{ trans('story.create_submit') }}">{{ trans('story.create_submit') }}</button>
 </div>
 
 @if ($internalId > 0)
     <a data-toggle="tooltip" title="{{ trans('page.edit_help') }}" class="btn btn-primary w-25" href="{{ route('page.edit', $page->uuid) }}#current_page">{{ trans('page.edit') }}</a>
 @endif
-
-<button class="btn btn-danger mr-1 w-25" disabled><span class="fa fa-trash mr-1"></span>Supprimer</button>

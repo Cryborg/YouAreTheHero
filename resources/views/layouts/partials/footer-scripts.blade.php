@@ -202,7 +202,7 @@
         }
     };
 
-    $('textarea').summernote(summernoteOptions);
+    //$('textarea').summernote(summernoteOptions);
 
     $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
 
