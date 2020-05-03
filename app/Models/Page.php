@@ -104,19 +104,16 @@ class Page extends Model
 
     /**
      * Get the pages leading to the current page
-     *
-     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function parents()
     {
-        return PageLink::where('page_to', $this->uuid)
-                       ->select([
-                               'page_link.link_text',
-                               'pages.*',
-                           ]
-                       )
-                       ->join('pages', 'pages.uuid', '=', 'page_link.page_from')
-                       ->get();
+        return Page::where('uuid', $this->uuid)->join('page_link', 'page_link.page_to', '=', 'pages.uuid')
+            ->select([
+                         'page_link.link_text',
+                         'pages.*',
+                     ]
+            )
+            ->get();
     }
 
     /**

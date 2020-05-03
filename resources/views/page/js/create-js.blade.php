@@ -276,6 +276,10 @@
     var actionsListDatatable = $('#actions_list').DataTable(commonDTOptions);
     var prerequisitesListDatatable = $('#prerequisites_list').DataTable(commonDTOptions);
 
+    $(document).on('click', '#listAllPages tr', function () {
+        window.location.href = route('page.edit', {'page': $(this).data('pageid')});
+    });
+
     // When the author chooses an item from the list
     $('#item_id').on('change', function () {
         var $this = $(this);

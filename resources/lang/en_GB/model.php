@@ -24,4 +24,6 @@ return array (
   'username' => 'Username',
   'password' => 'Password',
   'save_error' => 'Unable to save!',
+  'created_at' => 'Created at',
+  'updated_at' => 'Last update',
 );

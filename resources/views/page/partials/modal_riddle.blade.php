@@ -1,14 +1,14 @@
 <div class="row">
     <div class="col">
         <nav class="nav nav-pills mb-3">
-            <a class="nav-item nav-link active" href="#tr1" data-toggle="tab">
+            <a class="nav-item nav-link active" href="#tr-riddle-1" data-toggle="tab">
                 {{ trans('page.riddle_header') }}
-            </a> <a class="nav-item nav-link" href="#tr2" data-toggle="tab">
+            </a> <a class="nav-item nav-link" href="#tr-riddle-2" data-toggle="tab">
                 {{ trans('item.new_item_title') }}
             </a>
         </nav>
         <div class="tab-content">
-            <div class="tab-pane active" id="tr1">
+            <div class="tab-pane active" id="tr-riddle-1">
                 <div class="row">
                     <div class="col">
                         <div class="row mb-2">
@@ -62,7 +62,7 @@
                 </div>
             </div>
 
-            <div class="tab-pane" id="tr2">
+            <div class="tab-pane" id="tr-riddle-2">
                 @include('page.partials.modal_partials_new_item', ['context' => 'riddle', 'story' => $page->story])
             </div>
         </div>

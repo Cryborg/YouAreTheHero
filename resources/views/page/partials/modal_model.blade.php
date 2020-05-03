@@ -1,5 +1,5 @@
 <div class="modal" id="modal{{ $data['id'] }}" tabindex="-1" role="dialog" aria-labelledby="modal{{ $data['id'] }}Title" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modal{{ $data['id'] }}Title">{{ $title }}</h5>
@@ -14,7 +14,7 @@
                     @include($template, ['page' => $data['page']])
                 @endisset
                 @isset($data['story'])
-                    @include($template, ['pages' => $data['story']->pages->sortBy('created_at')])
+                    @include($template, ['pages' => $data['story']->pages->sortBy('created_at')->sortByDesc('is_first')->sortBy('is_last')])
                 @endisset
             </div>
             <div class="modal-footer">

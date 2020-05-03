@@ -17,7 +17,8 @@
                         @if($page->parents())
                             @foreach($page->parents() as $key => $parent)
                                 <div class="tab-pane @if ($key === 0) active @endif" id="pp{{ $key }}">
-                                    @include('page.partials.create_readonly', ['page' => $parent, 'child' => false])
+{{--                                    @include('page.partials.create_readonly', ['page' => $parent, 'child' => false])--}}
+                                    @include('page.partials.create', ['page' => $parent])
                                 </div>
                             @endforeach
                         @endif
@@ -44,7 +45,7 @@
     {!! Form::hidden('page_from', $page->uuid, ['id' => 'page_from']) !!}
     <div class="row" id="current_page">
         <div class="col-lg-8 col-xs-12 col-current">
-            <div class="row">
+            <div class="row h-100">
                 <div class="menu-bar-left" data-internalid="{{ $internalId }}">
                     <div class="bg-primary mr-2 h-100 pull-left text-center p-3">
                         @include('page.partials.menu-bar')
@@ -53,7 +54,7 @@
                 <div class="col">
                     @info({!! trans('page.current_page_help') !!})
 
-                    @include('page.partials.create')
+                    @include('page.partials.create', ['page' => $page])
                 </div>
             </div>
         </div>
@@ -118,7 +119,8 @@
                 @if($page->choices())
                     @foreach($page->choices() as $key => $choice)
                         <div class="tab-pane @if ($key === 0) active @endif" id="p{{ $key }}">
-                            @include('page.partials.create_readonly', ['page' => $choice, 'child' => true])
+{{--                            @include('page.partials.create_readonly', ['page' => $choice, 'child' => true])--}}
+                            @include('page.partials.create', ['page' => $choice])
                         </div>
                     @endforeach
                 @endif

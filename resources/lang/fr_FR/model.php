@@ -24,4 +24,6 @@ return array (
   'username' => 'Nom d\'utilisateur',
   'password' => 'Mot de passe',
   'save_error' => 'L\'enregistrement a échoué !',
+  'updated_at' => 'Dernière mise à jour',
+  'created_at' => 'Date de création',
 );

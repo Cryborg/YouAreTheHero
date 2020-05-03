@@ -66,10 +66,6 @@
         },
     });
 
-    $('#listAllPages').on('click', function () {
-        $('#modalAllPages').show();
-    });
-
     function resetLoader($button)
     {
         $button.html($button.data('original-text'));
