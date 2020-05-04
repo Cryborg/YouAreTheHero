@@ -30,4 +30,11 @@ return array (
   'variables_label' => 'Variables',
   'existing_item' => 'Existing item',
   'last' => 'Last',
+  'riddle_answer_checkbox' => 'Is it an integer?',
+  'riddle_answer_label' => 'Answer',
+  'riddle_header' => 'Riddle',
+  'riddle_modal_title' => 'New riddle',
+  'riddle_page_label' => 'Choose a target page',
+  'riddle_page_text_label' => 'Hyperlink text',
+  'riddle_target_page_label' => 'Target page',
 );

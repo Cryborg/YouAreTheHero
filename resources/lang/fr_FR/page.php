@@ -30,4 +30,11 @@ return array (
   'variables_label' => 'Variables',
   'existing_item' => 'Object existant',
   'last' => 'Dernière',
+  'riddle_answer_label' => 'Réponse',
+  'riddle_answer_checkbox' => 'Est-ce un nombre entier ?',
+  'riddle_header' => 'Enigme',
+  'riddle_modal_title' => 'Nouvelle énigme',
+  'riddle_page_label' => 'Choisis une page cible',
+  'riddle_page_text_label' => 'Texte du lien',
+  'riddle_target_page_label' => 'Page cible',
 );

@@ -8,12 +8,12 @@
         </tr>
         @if ($page->riddle->target_page)
             <tr>
-                <td>@lang('page.riddle_target_text_label')</td>
+                <td>@lang('page.riddle_page_text_label')</td>
                 <td>{{ $page->riddle->target_text }}</td>
             </tr>
             <tr>
                 <td>@lang('page.riddle_target_page_label')</td>
-                <td>{{ $page->riddle->target_page }}</td>
+                <td class="font-italic">{{ $page->riddle->page->title }}</td>
             </tr>
         @endif
         @if ($page->riddle->item_id)
