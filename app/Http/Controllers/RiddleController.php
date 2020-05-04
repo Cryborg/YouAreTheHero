@@ -39,7 +39,9 @@ class RiddleController extends Controller
 
         return response()->json([
             'success' => $success,
-            'riddle' => $page->riddle
+            'riddle' => $page->riddle,
+            'page_title' => $page->riddle->page->title,
+            'item_name' => $page->riddle->item->name
         ]);
     }
 }

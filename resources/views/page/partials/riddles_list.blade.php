@@ -1,7 +1,7 @@
 <h3>{{ trans('page.riddle_header') }}</h3>
 
 @if ($page->riddle)
-    <table class="dataTable alternate-rows-colors">
+    <table class="table alternate-rows-colors" id="riddle_table">
         <tr>
             <td class="w-25">@lang('page.riddle_answer_label')</td>
             <td>{{ $page->riddle->answer }}</td>
@@ -16,7 +16,7 @@
                 <td class="font-italic">{{ $page->riddle->page->title }}</td>
             </tr>
         @endif
-        @if ($page->riddle->item_id)
+        @if ($page->riddle->item->name)
             <tr>
                 <td>@lang('page.concerned_item')</td>
                 <td>{{ $page->riddle->item->name }}</td>

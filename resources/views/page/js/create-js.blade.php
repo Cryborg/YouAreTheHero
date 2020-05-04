@@ -173,12 +173,14 @@
 
                             items.forEach(function (item) {
                                 // Adds the new action to the table
-                                prerequisitesListDatatable.row.add([
-                                    '{{ trans('item.item') }}',
-                                    item.name,
-                                    item.quantity,
-                                    '<span class="glyphicon glyphicon-trash-red delete-prerequisite" data-prerequisite_id="' + item.prerequisite_id + '"></span>'
-                                ]).draw();
+                                $('#prerequisites_list tbody').append(
+                                    '<tr>' +
+                                    '<td>' + '{{ trans('item.item') }}' + '</td>' +
+                                    '<td>' + item.name + '</td>' +
+                                    '<td>' + item.quantity + '</td>' +
+                                    '<td>' + '<span class="glyphicon glyphicon-trash-red delete-prerequisite" data-prerequisite_id="' + item.prerequisite_id + '"></span>' + '</td>' +
+                                    '</tr>'
+                                );
                             });
 
                             showToast('success', {
@@ -260,22 +262,6 @@
         @endfor
     });
 
-    var commonDTOptions = {
-        dom: 'rt<p><"clear">',
-        pagingType: 'simple',
-        createdRow: function (row, data, index, cells) {
-            // Adds a class to the Actions cell
-            $(cells[4], row).addClass('text-center');
-        },
-        drawCallback: function (settings) {
-            // Hides pagination when there is only one page
-            var pagination = $(this).closest('.dataTables_wrapper').find('.dataTables_paginate');
-            pagination.toggle(this.api().page.info().pages > 1);
-        }
-    };
-    var actionsListDatatable = $('#actions_list').DataTable(commonDTOptions);
-    var prerequisitesListDatatable = $('#prerequisites_list').DataTable(commonDTOptions);
-
     $(document).on('click', '#listAllPages tr', function () {
         window.location.href = route('page.edit', {'page': $(this).data('pageid')});
     });
@@ -328,13 +314,15 @@
                     });
 
                     // Adds the new action to the table
-                    actionsListDatatable.row.add([
-                        data.action.item.name,
-                        data.action.verb,
-                        data.action.quantity,
-                        data.action.price,
-                        '<span class="glyphicon glyphicon-trash-red delete-action" data-action_id="' + data.action.item.id + '"></span>'
-                    ]).draw();
+                    $('#actions_list tbody').append(
+                        '<tr>' +
+                        '<td>' + data.action.item.name + '</td>' +
+                        '<td>' + data.action.verb + '</td>' +
+                        '<td>' + data.action.quantity + '</td>' +
+                        '<td>' + data.action.price + '</td>' +
+                        '<td>' + '<span class="glyphicon glyphicon-trash-red delete-action" data-action_id="' + data.action.item.id + '"></span>' + '</td>' +
+                        '</tr>'
+                    );
 
                     // Closes the modal
                     $('#modalCreateAction').modal('hide');
@@ -384,6 +372,25 @@
                         heading: '{{ trans('notification.save_success_title') }}',
                         text: "{{ trans('notification.save_success_text') }}",
                     });
+
+                    $('#riddle_table tbody').html('').append(
+                        '<tr>' +
+                            '<td>' + '@lang('page.riddle_answer_label')' + '</td>' +
+                            '<td>' + data.riddle.answer + '</td>' +
+                        '</tr>' +
+                        '<tr>' +
+                            '<td>' + '@lang('page.riddle_page_text_label')' + '</td>' +
+                            '<td>' + data.riddle.target_text + '</td>' +
+                        '</tr>' +
+                        '<tr>' +
+                            '<td>' + '@lang('page.riddle_target_page_label')' + '</td>' +
+                            '<td class="font-italic">' + data.page_title + '</td>' +
+                        '</tr>' +
+                        '<tr>' +
+                            '<td>' + '@lang('page.concerned_item')' + '</td>' +
+                            '<td class="font-italic">' + data.item_name + '</td>' +
+                        '</tr>'
+                    );
 
                     // Closes the modal
                     $('#modalCreateAction').modal('hide');
