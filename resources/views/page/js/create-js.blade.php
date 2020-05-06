@@ -5,6 +5,7 @@
         var newNumber = $('a.nav-item.nav-link').length;
         $('a.nav-item.nav-link, div.tab-pane').removeClass('active');
 
+        // Create the tab
         $('#addNewPage').before(
             '<a class="nav-item nav-link active" href="#p' + newNumber + '" data-toggle="tab">' +
             '<span class="choice_title_' + newNumber + '">' +
@@ -13,6 +14,8 @@
             '</span></span>' +
             '</a>'
         );
+
+        // Create the page and display it
         $.ajax({
             'url': route,
             'data': {'internalId': newNumber}
@@ -99,7 +102,7 @@
             };
             if (internalId > 0) {
                 data.linktitle = $('#linktext-' + internalId).val();
-                data.page_from = $('#page_from').val();
+                data.page_from = $this.parents('is-page').find('.is-page-from').data('page-from');
             }
 
             $.post({

@@ -42,49 +42,7 @@
     <hr>
 
     {{-- Current page --}}
-    {!! Form::hidden('page_from', $page->uuid, ['id' => 'page_from']) !!}
-    <div class="row" id="current_page">
-        <div class="col-lg-8 col-xs-12 col-current">
-            <div class="row h-100">
-                <div class="menu-bar-left" data-internalid="{{ $internalId }}">
-                    <div class="bg-primary mr-2 h-100 pull-left text-center p-3">
-                        @include('page.partials.menu-bar')
-                    </div>
-                </div>
-                <div class="col">
-                    @info({!! trans('page.current_page_help') !!})
-
-                    @include('page.partials.create', ['page' => $page])
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-xs-12 col-border-right col-current">
-            <div class="row">
-                <div class="col">
-                    @info({!! trans('page.current_page_prerequisites_help') !!})
-
-                    @include('page.partials.prerequisites_list', ['page' => $page])
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col">
-                    @info({!! trans('page.current_page_actions_help') !!})
-
-                    @include('page.partials.actions_list', ['page' => $page])
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col">
-                    @info({!! trans('page.current_page_riddles_help') !!})
-
-                    @include('page.partials.riddles_list', ['page' => $page])
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('page.partials.create')
 
     <hr>
 

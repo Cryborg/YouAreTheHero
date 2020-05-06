@@ -17,7 +17,7 @@
             <a class="nav-link @if (!$story instanceof \App\Models\Story) disabled @endif" id="pills-sheet-tab" data-toggle="pill" href="#pills-sheet" role="tab"
                 aria-controls="pills-sheet" aria-selected="false">{{ trans('story.create_tab3') }}</a>
         </li>
-        @if ($story)
+        @if ($story && $story->getCurrentPage())
             <li class="nav-item">
                 <button class="btn btn-success h-100 font-default-size" onclick="window.location.href='{{ route('page.edit', ['page' => $story->getCurrentPage()->uuid]) }}'">
                     {{ trans('story.resume_editing') }}
@@ -27,7 +27,7 @@
     </ul>
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            {!! Form::model(\App\Models\Story::class, array('route' => array($route, $param))) !!}
+            {!! Form::model(\App\Models\Story::class, array('route' => array($route, $story ? $story->id : null))) !!}
             {{ Form::hidden('story_id', $story->id ?? null) }}
             <div class="form-group">
                 {!! Form::label('title', trans('model.title'), ['class' => 'control-label']) !!}

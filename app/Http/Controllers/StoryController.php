@@ -412,12 +412,6 @@ class StoryController extends Controller
      */
     public function getCreate($story = null)
     {
-        $param = null;
-
-        if ($story) {
-            $param = $story->id;
-        }
-
         $data = [
             'title'   => trans('story.create_title'),
             'locales' => getLanguages(),
@@ -426,7 +420,6 @@ class StoryController extends Controller
             ],
             'story'   => $story,
             'route'   => 'story.create.post',
-            'param'   => $param,
             'genres'  => Genre::all(),
         ];
 
