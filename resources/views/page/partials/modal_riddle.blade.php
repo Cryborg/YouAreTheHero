@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col">
-        <nav class="nav nav-pills mb-3">
+        <nav class="nav nav-tabs mb-3">
             <a class="nav-item nav-link active" href="#tr-riddle-1" data-toggle="tab">
                 {{ trans('page.riddle_header') }}
             </a> <a class="nav-item nav-link" href="#tr-riddle-2" data-toggle="tab">

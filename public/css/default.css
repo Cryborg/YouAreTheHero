@@ -261,7 +261,7 @@ div.jq-toast-wrap {
     cursor: pointer;
 }
 .menu-bar-left {
-    width:75px;
+    width: 75px;
 }
 .display-5 {
     font-size: 2.5rem;
@@ -273,4 +273,21 @@ div.menu-bar-left .icon-bottom-center {
     top: auto;
     left: 0;
     padding: 13px;
+}
+.scrollable-content {
+    overflow: auto;
+    height: 300px;
+}
+.dropdown-menu li {
+    height: 3em;
+    line-height: 3em;
+}
+.dropdown-menu>li>a {
+    height: 100%;
+    line-height: 2.7em;
+}
+.col-choices .nav-tabs, .col-parents .nav-tabs {
+    margin-left: -15px;
+    margin-top: -1px;
+    margin-bottom: -1px;
 }

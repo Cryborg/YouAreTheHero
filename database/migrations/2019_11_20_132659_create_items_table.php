@@ -19,7 +19,8 @@ class CreateItemsTable extends Migration
             $table->unsignedBigInteger('story_id');
             $table->foreign('story_id')->references('id')->on('stories');
 
-            $table->string('name', 40);
+            $table->string('category', 20)->nullable();
+            $table->string('name', 30);
             $table->unsignedInteger('default_price')->default(0);
             $table->boolean('single_use')->default(false);
 

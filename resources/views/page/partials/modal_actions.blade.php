@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col">
-        <nav class="nav nav-pills mb-3">
+        <nav class="nav nav-tabs mb-3">
             <a class="nav-item nav-link active" href="#tr1" data-toggle="tab">
                 {{ trans('page.existing_item') }}
             </a> <a class="nav-item nav-link" href="#tr2" data-toggle="tab">

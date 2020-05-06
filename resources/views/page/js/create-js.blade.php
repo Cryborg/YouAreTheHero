@@ -18,7 +18,6 @@
         // Create the page and display it
         $.ajax({
             'url': route,
-            'data': {'internalId': newNumber}
         })
             .done(function (data) {
                 $('#choicesForm').append('<div class="tab-pane active" id="p' + newNumber + '">' + data + '</div>');
@@ -72,23 +71,17 @@
 
         $(document).on('click', '.toggle-summernote', function () {
             let $this = $(this);
-            let $parent = $this.closest('.menu-bar-left');
-            let internalId = $parent.data('internalid');
-
+            let $parent = $this.closest('.is-page');
+            let internalId = $parent.data('pageid');
+console.log(internalId);
             $('#content-' + internalId).summernote({focus: true});
-
-            // Change the icon
-            $this.removeClass('toggle-summernote glyphicon-edit').addClass('submit-btn glyphicon-floppy-disk');
         });
 
-        $(document).on('click', '.submit-btn', function (e) {
+        $(document).on('click', '.glyphicon-floppy-disk', function (e) {
             let $this = $(this);
-            let $parent = $this.closest('.menu-bar-left');
-
-            // internalId is 0 if the form being submitted is the main page.
-            // Otherwise it is > 0
-            let internalId = $parent.data('internalid');
-            let $form = $("div.divAsForm[data-internalid='" + internalId + "']");
+            let $parent = $this.closest('.is-page');
+            let internalId = $parent.data('pageid');
+            let $form = $("div.is-page[data-pageid='" + internalId + "']").find('.divAsForm');
 
             $('#content-' + internalId).summernote('destroy');
 
@@ -100,8 +93,11 @@
                 'is_last': $('#is_last-' + internalId).is(":checked") ? 1 : 0,
                 'is_checkpoint': $('#is_checkpoint-' + internalId).is(":checked") ? 1 : 0,
             };
-            if (internalId > 0) {
+
+            if ($('#linktext-' + internalId).length > 0) {
                 data.linktitle = $('#linktext-' + internalId).val();
+            }
+            if ($this.parents('is-page').find('.is-page-from').length > 0) {
                 data.page_from = $this.parents('is-page').find('.is-page-from').data('page-from');
             }
 
@@ -137,8 +133,6 @@
                 .always(function () {
                     $this.html($this.data('original-text'));
                     $this.prop('disabled', false);
-
-                    $this.addClass('toggle-summernote glyphicon-edit').removeClass('submit-btn glyphicon-floppy-disk');
                 });
         });
 
@@ -147,7 +141,7 @@
             var data = {};
 
             // If the "item" tab is selected
-            if ($('#tr1').hasClass('active')) {
+            if ($('#tr-pre-1').hasClass('active')) {
                 data = {
                     'items': $('#prerequisite_item_id').val(),
                     'quantity': $('#prerequisite_quantity').val()
@@ -155,13 +149,22 @@
             }
 
             // If the "stats" tab is selected
-            if ($('#tr2').hasClass('active')) {
+            if ($('#tr-pre-2').hasClass('active')) {
                 if ($('#sheet option:selected').val() !== '') {
                     var key = $('#sheet option:selected').text();
                     var value = $('#level').val();
 
                     data['stats'] = {};
                     data['stats'][key] = value;
+                }
+            }
+
+            // If the "money" tab is selected
+            if ($('#tr-pre-3').hasClass('active')) {
+                let money = $('#prerequisite_money').val();
+
+                if (money !== '' && money > 0) {
+                    data['money'] = money;
                 }
             }
 
@@ -290,7 +293,7 @@
 
         var $this = $(this);
 
-        if ($this.val() === 0) return false;
+        if (parseInt($this.val()) === 0) return false;
 
         $this.prop('disabled', true);
 

@@ -40,7 +40,6 @@ class PageController extends Controller
             'layouts' => [
                 'play1' => 'Premier layout',
             ],
-            'internalId' => $request->get('internalId') ?? 1,
         ]);
 
         return $view;
@@ -65,7 +64,6 @@ class PageController extends Controller
                 'play2' => 'Deuxième layout (pour test)',
             ],
             'locales' => getLanguages(),
-            'internalId' => 0,
             'actions' => [
                 'buy' => trans('actions.buy'),
                 'sell' => trans('actions.sell'),
@@ -91,7 +89,7 @@ class PageController extends Controller
             $validated = $request->validate([
                 'title'         => 'required',
                 'content'       => 'required',
-                'layout'        => 'required',
+                'layout'        => 'sometimes|required',
                 'is_first'      => 'required',
                 'is_last'       => 'required',
                 'is_checkpoint' => 'required',
@@ -99,7 +97,7 @@ class PageController extends Controller
                 'page_from'     => 'sometimes|required',
             ]);
 
-            if (isset($validated['linktitle'])) {
+            if (isset($validated['linktitle'], $validated['page_from']) && !empty($validated['linktitle']) && !empty($validated['page_from'])) {
                 PageLink::updateOrCreate([
                     'page_from' => $validated['page_from'],
                     'page_to'   => $page->uuid,
@@ -113,6 +111,9 @@ class PageController extends Controller
             unset($validated['linktitle'], $validated['page_from']);
 
             if ($page->update($validated)) {
+                // Invalidate cache
+                Cache::forget('page_' . $page->uuid);
+
                 return response()->json(['success' => true]);
             }
 

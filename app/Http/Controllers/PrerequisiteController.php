@@ -20,6 +20,7 @@ class PrerequisiteController extends Controller
         if ($request->ajax()) {
             $addedPrerequisites = ['items' => [], 'stats' => []];
 
+            // Item case
             if ($request->get('items')) {
                 $quantity = $request->get('quantity');
 
@@ -42,6 +43,7 @@ class PrerequisiteController extends Controller
                 }
             }
 
+            // Stat case
             if ($request->get('stats')) {
                 foreach ($request->get('stats') as $stat => $value) {
                     $foundStat = StatStory::where([
@@ -56,6 +58,17 @@ class PrerequisiteController extends Controller
                         'quantity' => $value
                     ]);
                 }
+            }
+
+            // Money case
+            if ($request->get('money')) {
+                Prerequisite::updateOrCreate([
+                    'page_uuid'   => $page->uuid,
+                    'prerequisiteable_type' => 'money',
+                    'prerequisiteable_id' => 0,
+                ], [
+                    'quantity' => $request->get('money')
+                ]);
             }
 
             return response()->json([

@@ -9,7 +9,7 @@
     {{-- Parent page(s) --}}
     @if (!$page->is_first)
         <div class="row">
-            <div class="col col-border-left col-border-right col-parents">
+            <div class="col col-border-right col-parents">
                 @info({!! trans('page.parent_pages_help') !!})
 
                 <div>
@@ -23,7 +23,7 @@
                             @endforeach
                         @endif
                     </div>
-                    <nav class="nav nav-pills">
+                    <nav class="nav nav-tabs">
                         @if($page->parents())
                             @foreach($page->parents() as $key => $choice)
                                 <a class="nav-item nav-link @if ($key === 0) active @endif" href="#pp{{ $key }}" data-toggle="tab">
@@ -48,10 +48,10 @@
 
     {{-- Choice(s) --}}
     <div class="row">
-        <div class="col col-border-left col-border-right col-choices">
+        <div class="col col-border-right col-choices">
             @info({!! trans('page.current_page_choices_help') !!})
 
-            <nav class="nav nav-pills">
+            <nav class="nav nav-tabs">
                 @if($page->choices())
                     @foreach($page->choices() as $key => $choice)
                         <a class="nav-item nav-link @if ($key === 0) active @endif" href="#p{{ $key }}" data-toggle="tab">
