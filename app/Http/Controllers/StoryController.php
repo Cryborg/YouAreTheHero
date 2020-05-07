@@ -92,7 +92,7 @@ class StoryController extends Controller
         // The character exists, let's go back to the previous save point
         // Get the last visited page
         if ($page === null || empty($page)) {
-            $page = $story->getCurrentPage($character->page_uuid);
+            $page = $story->getCurrentPage($character->page_id);
         }
 
         if ($page) {
@@ -112,7 +112,7 @@ class StoryController extends Controller
         $visitedPlaces = $character->checkpoints;
 
         $visitedPlaces = $visitedPlaces->map(function ($value, $key) {
-            $page                = Page::where('uuid', $value['page_uuid'])
+            $page                = Page::where('uuid', $value['page_id'])
                                        ->firstOrFail();
             $value['page_title'] = $page->title;
             return $value;
@@ -353,10 +353,10 @@ class StoryController extends Controller
         if ($page && $page->is_checkpoint) {
             Checkpoint::firstOrCreate([
                 'character_id' => $character->id,
-                'page_uuid'    => $page->id,
+                'page_id'    => $page->id,
             ], [
                     'character_id' => $character->id,
-                    'page_uuid'    => $page->id,
+                    'page_id'    => $page->id,
                 ]
             );
         }
@@ -587,7 +587,7 @@ class StoryController extends Controller
             }
             );
 
-            $view = View::make('story.partials.treecard', ['pages' => $page->choices()]);
+            $view = View::make('story.partials.treecard', ['pages' => $page->choices]);
 
             return $view;
         }

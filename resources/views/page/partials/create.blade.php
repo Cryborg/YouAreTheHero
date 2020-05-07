@@ -31,9 +31,7 @@
                         </div>
 
                         <p class="help-block">{{ trans('model.page_content_help') }}</p>
-                        <div id="content-{{ $page->id }}" class="false-input scrollable-content">
-                            {!! $page->content ?? old('content') !!}
-                        </div>
+                        <div id="content-{{ $page->id }}" class="false-input scrollable-content">{!! $page->content ?? old('content') !!}</div>
                     </div>
 
                     <div class="form-group hidden">
@@ -49,7 +47,7 @@
                             @lang('model.is_first')
                         </label>
                     </div>
-                    @if (!$page->is_first && $page->choices() && $page->choices()->count() === 0)
+                    @if (!$page->is_first && $page->choices && $page->choices()->count() === 0)
                         <div class="form-group form-check">
                             <p class="help-block">{{ trans('model.page_is_last_help') }}</p>
                             <label>

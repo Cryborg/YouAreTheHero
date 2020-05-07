@@ -76,27 +76,7 @@ class Page extends Model
      */
     public function choices()
     {
-        $pages = Cache::remember('choices_' . $this->id, Config::get('app.story.cache_ttl'), function () {
-            $pageLinks = PageLink::where('page_from', $this->id)
-                                 ->get();
-
-            if ($pageLinks) {
-                return Page::whereIn('pages.id', $pageLinks->pluck('page_to'))
-                           ->select([
-                               'page_link.page_to',
-                               'page_link.link_text',
-                               'pages.*',
-                           ]
-                           )
-                           ->join('page_link', 'page_link.page_to', '=', 'pages.id')
-                           ->get();
-            }
-
-            return collect();
-        }
-        );
-
-        return $pages ?? collect();
+        return $this->belongsToMany(Page::class, 'page_link', 'page_from', 'page_to', 'id')->withPivot('link_text');
     }
 
     /**
@@ -122,13 +102,18 @@ class Page extends Model
         // - the current page
         // - the already bound children
         $potentialPages = Page::where('story_id', $this->story_id)
-                              ->whereNotIn('id', $this->choices()
-                                                        ->pluck('id')
-                                                        ->toArray()
-                              )
-                              ->whereNotIn('id', [$this->id])
-                              ->orderBy('title', 'asc')
-                              ->get();
+
+            // Don't include the choices already bound to the page
+            ->whereNotIn('id', $this->choices
+                                    ->pluck('id')
+                                    ->toArray()
+            )
+
+            // And of course don't include this page
+            ->whereNotIn('id', [$this->id])
+
+            ->orderBy('title', 'asc')
+            ->get();
 
         return $potentialPages;
     }

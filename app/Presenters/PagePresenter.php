@@ -4,19 +4,20 @@ namespace App\Presenters;
 
 use App\Models\Character;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use Laracasts\Presenter\Presenter;
 
 class PagePresenter extends Presenter
 {
     public function content()
     {
-        $storyId = getSession('story_id');
+        $routeName = Route::currentRouteName();
 
-        if (!empty($storyId)) {
+        if ($routeName === 'story.play') {
             $character = Character::where([
                 'story_id' => getSession('story_id'),
                 'user_id' => Auth::id(),
-            ])->first();
+            ])->firstOrFail();
 
             // List of all placeholders
             $placeholders = [

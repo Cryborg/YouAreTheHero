@@ -150,7 +150,7 @@ class PagesTableSeeder extends Seeder
                                                 'is_first' => 0,
                                                 'is_last' => 0,
                                                 'title' => 'Prendre congé',
-                                                'content' => '<p>- Merci beaucoup pour toutes ces informations, Monsieur, vous avez été très aimable.<br>&nbsp; &nbsp; - Mais au plaisir ! Peut-être à une prochaine fois sur une autre Tour !</p><p>Mais oui mais oui, peut-être...</p>',
+                                                'content' => '<p>- Merci beaucoup pour toutes ces informations, Monsieur, vous avez été très aimable.</p><p>- Mais au plaisir ! Peut-être à une prochaine fois sur une autre Tour !</p><p>Mais oui mais oui, peut-être...</p>',
                                                 'layout' => 'play1',
                                                 'is_checkpoint' => 0,
                                                 'created_at' => '2019-12-21 21:24:42',

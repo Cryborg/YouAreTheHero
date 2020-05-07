@@ -28,7 +28,9 @@
                                         <span class="glyphicon glyphicon-fast-forward"></span>
                                     </div>
                                 @endif
-                            {{ $page->title }}
+                            <a href="{{ route('page.edit', ['page' => $page->id]) }}">
+                                {{ $page->title }}
+                            </a>
                         </td>
                         <td>{!! $page->present()->content !!}</td>
                         <td>{{ $page->updated_at }}</td>

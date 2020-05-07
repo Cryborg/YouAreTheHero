@@ -13,6 +13,11 @@ class PageLink extends Model
 
     public $timestamps = false;
 
+    protected $casts        = [
+        'page_from'     => Page::class,
+        'page_to'       => Page::class,
+    ];
+
     /**
      * Get the page.
      */
