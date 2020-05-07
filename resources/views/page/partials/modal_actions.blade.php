@@ -9,7 +9,7 @@
         </nav>
         <div class="tab-content">
             <div class="tab-pane active" id="tr1">
-                {!! Form::open(['url' => route('actions.store', $page->uuid), 'method' => 'post', 'id' => 'action_create']) !!}
+                {!! Form::open(['url' => route('actions.store', $page->id), 'method' => 'post', 'id' => 'action_create']) !!}
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group mb-4">

@@ -18,7 +18,7 @@ class PageLink extends Model
      */
     public function pageFrom()
     {
-        return $this->belongsTo(Page::class, 'page_from', 'uuid');
+        return $this->belongsTo(Page::class, 'page_from', 'id');
     }
 
     /**
@@ -26,6 +26,6 @@ class PageLink extends Model
      */
     public function pageTo()
     {
-        return $this->belongsTo(Page::class, 'page_to', 'uuid');
+        return $this->belongsTo(Page::class, 'page_to', 'id');
     }
 }

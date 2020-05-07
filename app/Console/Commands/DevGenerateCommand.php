@@ -94,8 +94,8 @@ return true;
             );
 
             PageLink::create([
-                    'page_from' => $pages[0]->uuid,
-                    'page_to'   => $pages[1]->uuid,
+                    'page_from' => $pages[0]->id,
+                    'page_to'   => $pages[1]->id,
                     'link_text' => 'Pas le choix, je clique ici !',
                 ]
             );
@@ -120,44 +120,44 @@ return true;
                 ]
             );
             PageLink::create([
-                    'page_from' => $pages[0]->uuid,
-                    'page_to'   => $pages[10]->uuid,
+                    'page_from' => $pages[0]->id,
+                    'page_to'   => $pages[10]->id,
                     'link_text' => 'Casser un mur avec le marteau',
                 ]
             );
             PageLink::create([
-                    'page_from' => $pages[1]->uuid,
-                    'page_to'   => $pages[2]->uuid,
+                    'page_from' => $pages[1]->id,
+                    'page_to'   => $pages[2]->id,
                     'link_text' => 'Aller à gauche',
                 ]
             );
             PageLink::create([
-                    'page_from' => $pages[1]->uuid,
-                    'page_to'   => $pages[3]->uuid,
+                    'page_from' => $pages[1]->id,
+                    'page_to'   => $pages[3]->id,
                     'link_text' => 'Aller tout droit',
                 ]
             );
             PageLink::create([
-                    'page_from' => $pages[1]->uuid,
-                    'page_to'   => $pages[4]->uuid,
+                    'page_from' => $pages[1]->id,
+                    'page_to'   => $pages[4]->id,
                     'link_text' => 'Aller à droite',
                 ]
             );
             PageLink::create([
-                    'page_from' => $pages[10]->uuid,
-                    'page_to'   => $pages[4]->uuid,
+                    'page_from' => $pages[10]->id,
+                    'page_to'   => $pages[4]->id,
                     'link_text' => 'On continue !',
                 ]
             );
             PageLink::create([
-                    'page_from' => $pages[2]->uuid,
-                    'page_to'   => $pages[5]->uuid,
+                    'page_from' => $pages[2]->id,
+                    'page_to'   => $pages[5]->id,
                     'link_text' => 'Tout droit !',
                 ]
             );
             PageLink::create([
-                    'page_from' => $pages[4]->uuid,
-                    'page_to'   => $pages[5]->uuid,
+                    'page_from' => $pages[4]->id,
+                    'page_to'   => $pages[5]->id,
                     'link_text' => 'C\'est parti mon kiki !',
                 ]
             );

@@ -24,7 +24,7 @@ class ActionController extends Controller
                 'price'    => '',
             ]);
 
-            $validated['page_uuid'] = $page->uuid;
+            $validated['page_id'] = $page->id;
 
             $newAction = Action::create($validated);
 

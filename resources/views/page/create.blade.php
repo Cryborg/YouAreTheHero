@@ -66,8 +66,8 @@
                     <select class="form-control mr-sm-2" id="childrenSelect">
                         <option value="0" selected>{{ trans('page.existing_page') }}</option>
                         @foreach ($page->getPotentialChildren() as $existingPage)
-                            @if ($existingPage->uuid !== $page->uuid)
-                                <option value="{{ $existingPage->uuid }}">{{ $existingPage->title }}</option>
+                            @if ($existingPage->id !== $page->id)
+                                <option value="{{ $existingPage->id }}">{{ $existingPage->title }}</option>
                             @endif
                         @endforeach
                     </select>

@@ -23,8 +23,8 @@ class CreateActionsTable extends Migration
             $table->integer('quantity')->default(1);
             $table->integer('price')->nullable();
 
-            $table->uuid('page_uuid');
-            $table->foreign('page_uuid')->references('uuid')->on('pages');
+            $table->unsignedBigInteger('page_id');
+            $table->foreign('page_id')->references('id')->on('pages');
         });
     }
 

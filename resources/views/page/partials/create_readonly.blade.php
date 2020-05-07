@@ -1,10 +1,10 @@
 <div class="form-group">
-    {!! Form::label('title-' . $page->uuid, trans('model.title'), ['class' => 'control-label']) !!}
+    {!! Form::label('title-' . $page->id, trans('model.title'), ['class' => 'control-label']) !!}
     <div class="false-input">{{ $page->title }}</div>
 </div>
 
 <div class="form-group">
-    {!! Form::label('content-' . $page->uuid, trans('model.content'), ['class' => 'control-label']) !!}
+    {!! Form::label('content-' . $page->id, trans('model.content'), ['class' => 'control-label']) !!}
     <div class="false-input">{!! $page->content !!}</div>
 </div>
 
@@ -28,4 +28,4 @@
     </div>
 @endif
 
-<a data-toggle="tooltip" title="{{ trans('page.edit_help') }}" class="btn btn-primary ml-1 w-25 mb-4" href="{{ route('page.edit', $page->uuid) }}">{{ trans('page.edit') }}</a>
+<a data-toggle="tooltip" title="{{ trans('page.edit_help') }}" class="btn btn-primary ml-1 w-25 mb-4" href="{{ route('page.edit', $page->id) }}">{{ trans('page.edit') }}</a>

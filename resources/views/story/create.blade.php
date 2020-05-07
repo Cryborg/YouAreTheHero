@@ -19,7 +19,7 @@
         </li>
         @if ($story && $story->getCurrentPage())
             <li class="nav-item">
-                <button class="btn btn-success h-100 font-default-size" onclick="window.location.href='{{ route('page.edit', ['page' => $story->getCurrentPage()->uuid]) }}'">
+                <button class="btn btn-success h-100 font-default-size" onclick="window.location.href='{{ route('page.edit', ['page' => $story->getCurrentPage()->id]) }}'">
                     {{ trans('story.resume_editing') }}
                 </button>
             </li>

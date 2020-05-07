@@ -1,5 +1,5 @@
-<div class="row is-page" data-pageid="{{ $page->uuid }}">
-    {!! Form::hidden('page_from', $page->uuid, ['class' => 'is-page-from', 'data-page-from' => 'page_from']) !!}
+<div class="row is-page" data-pageid="{{ $page->id }}">
+    {!! Form::hidden('page_from', $page->id, ['class' => 'is-page-from', 'data-page-from' => 'page_from']) !!}
     <div class="col-lg-8 col-xs-12 col-current">
         <div class="row h-100">
             <div class="menu-bar-left">
@@ -10,7 +10,7 @@
             <div class="col">
                 @info({!! trans('page.current_page_help') !!})
 
-                <div class="divAsForm" data-route="{{ route('page.edit.post', ['page' => $page->uuid]) }}">
+                <div class="divAsForm" data-route="{{ route('page.edit.post', ['page' => $page->id]) }}">
 
                     {{--  Errors --}}
                     <div class="form-errors alert alert-danger hidden"></div>
@@ -22,7 +22,7 @@
                         </div>
 
                         <p class="help-block">{{ trans('model.page_title_help') }}</p>
-                        {!! Form::text('title', $page->title ?? old('title'), ['id' => 'title-' . $page->uuid, 'class' => 'form-control']) !!}
+                        {!! Form::text('title', $page->title ?? old('title'), ['id' => 'title-' . $page->id, 'class' => 'form-control']) !!}
                     </div>
 
                     <div class="panel panel-default clickable panel-content toggle-summernote">
@@ -31,13 +31,13 @@
                         </div>
 
                         <p class="help-block">{{ trans('model.page_content_help') }}</p>
-                        <div id="content-{{ $page->uuid }}" class="false-input scrollable-content">
+                        <div id="content-{{ $page->id }}" class="false-input scrollable-content">
                             {!! $page->content ?? old('content') !!}
                         </div>
                     </div>
 
                     <div class="form-group hidden">
-                        {!! Form::label('layout-' . $page->uuid, trans('model.layout'), ['class' => 'control-label']) !!}
+                        {!! Form::label('layout-' . $page->id, trans('model.layout'), ['class' => 'control-label']) !!}
                         <p class="help-block">{{ trans('model.page_layout_help') }}</p>
                         {!! Form::select('layout', $layouts , $page->layout ?? old('layout') , ['class' => 'form-control']) !!}
                     </div>
@@ -45,7 +45,7 @@
                     <div class="form-group form-check hidden">
                         <p class="help-block">{{ trans('model.page_is_first_help') }}</p>
                         <label>
-                            {!! Form::checkbox('is_first', 1, $page->is_first or false, ['id' => 'is_first-' . $page->uuid]) !!}
+                            {!! Form::checkbox('is_first', 1, $page->is_first or false, ['id' => 'is_first-' . $page->id]) !!}
                             @lang('model.is_first')
                         </label>
                     </div>
@@ -53,7 +53,7 @@
                         <div class="form-group form-check">
                             <p class="help-block">{{ trans('model.page_is_last_help') }}</p>
                             <label>
-                                {!! Form::checkbox('is_last', 1, $page->is_last or false, ['id' => 'is_last-' . $page->uuid]) !!}
+                                {!! Form::checkbox('is_last', 1, $page->is_last or false, ['id' => 'is_last-' . $page->id]) !!}
                                 @lang('model.is_last')
                             </label>
                         </div>
@@ -61,7 +61,7 @@
                     <div class="form-group form-check">
                         <p class="help-block">{{ trans('model.page_is_checkpoint_help') }}</p>
                         <label>
-                            {!! Form::checkbox('is_checkpoint', 1, $page->is_checkpoint or false, ['id' => 'is_checkpoint-' . $page->uuid]) !!}
+                            {!! Form::checkbox('is_checkpoint', 1, $page->is_checkpoint or false, ['id' => 'is_checkpoint-' . $page->id]) !!}
                             @lang('model.is_checkpoint')
                         </label>
                     </div>

@@ -48,13 +48,13 @@ class StoryController extends Controller
 
         // If there is an ID, save it in the session so that we show a nice URL without the page ID
         if ($page !== null) {
-            setSession('page_uuid', $page->uuid);
+            setSession('page_id', $page->id);
             return Redirect::route('story.play', ['story' => $story->id]);
         }
 
-        $page_uuid = getSession('page_uuid');
-        if (!empty($page_uuid)) {
-            $page = Page::where('uuid', $page_uuid)
+        $page_id = getSession('page_id');
+        if (!empty($page_id)) {
+            $page = Page::where('id', $page_id)
                         ->first();
         }
 
@@ -76,7 +76,7 @@ class StoryController extends Controller
                    'name'     => 'Unnamed',
                    'user_id'  => Auth::id(),
                    'story_id' => $story->id,
-                   'page_uuid'  => $story->getCurrentPage()->uuid,
+                   'page_id'  => $story->getCurrentPage()->id,
                ]);
 
                 return Redirect::route('story.play', [
@@ -103,7 +103,7 @@ class StoryController extends Controller
                 $this->getFilteredChoicesFromPage($page, $character);
             }
 
-            $character->update(['page_uuid' => $page->uuid]);
+            $character->update(['page_id' => $page->id]);
         }
 
         setSession('character_id', $character->id);
@@ -353,10 +353,10 @@ class StoryController extends Controller
         if ($page && $page->is_checkpoint) {
             Checkpoint::firstOrCreate([
                 'character_id' => $character->id,
-                'page_uuid'    => $page->uuid,
+                'page_uuid'    => $page->id,
             ], [
                     'character_id' => $character->id,
-                    'page_uuid'    => $page->uuid,
+                    'page_uuid'    => $page->id,
                 ]
             );
         }
@@ -385,11 +385,11 @@ class StoryController extends Controller
      */
     private function getAllChoicesForPage(Page $page)
     {
-        $key = 'choices_' . $page->uuid;
+        $key = 'choices_' . $page->id;
 
         return Cache::remember($key, Config::get('app.story.cache_ttl'), function () use ($page, $key) {
             return PageLink::with('pageTo')
-                           ->where('page_from', $page->uuid)
+                           ->where('page_from', $page->id)
                            ->get();
         }
         );

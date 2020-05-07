@@ -42,10 +42,10 @@
                                 <select class="form-control custom-select" id="riddle_page" size="6">
                                     <option value="0">{{ trans('page.existing_page') }}</option>
                                     @foreach ($story->pages as $existingPage)
-                                        @if ($page->uuid !== $existingPage->uuid)
-                                            <option value="{{ $existingPage->uuid }}"
+                                        @if ($page->id !== $existingPage->id)
+                                            <option value="{{ $existingPage->id }}"
                                                 @if ($page->riddle)
-                                                    @if ($existingPage->uuid === $page->riddle->target_page)
+                                                    @if ($existingPage->id === $page->riddle->target_page)
                                                         selected
                                                     @endif
                                                 @endif

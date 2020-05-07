@@ -19,8 +19,8 @@ class CreateCheckpointsTable extends Migration
             $table->unsignedBigInteger('character_id');
             $table->foreign('character_id')->references('id')->on('characters');
 
-            $table->uuid('page_uuid');
-            $table->foreign('page_uuid')->references('uuid')->on('pages');
+            $table->unsignedBigInteger('page_id');
+            $table->foreign('page_id')->references('id')->on('pages');
 
             $table->timestamps();
             $table->softDeletes();

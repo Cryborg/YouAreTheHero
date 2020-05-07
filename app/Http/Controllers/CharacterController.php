@@ -42,7 +42,7 @@ class CharacterController extends Controller
                 'name'     => $request->get('name'),
                 'user_id'  => Auth::id(),
                 'story_id' => $story->id,
-                'page_uuid'  => $page->uuid,
+                'page_uuid'  => $page->id,
             ]
             );
 

@@ -11,7 +11,7 @@
             </thead>
             <tbody class="alternate-rows-colors">
                 @foreach($pages as $page)
-                    <tr data-pageid="{{ $page->uuid }}">
+                    <tr data-pageid="{{ $page->id }}">
                         <td>
                             @if ($page->is_first)
                                 <div class="badge badge-pill badge-primary" data-toggle="tooltip" title="@lang('model.is_first')">

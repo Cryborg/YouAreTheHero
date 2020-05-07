@@ -100,7 +100,7 @@ class PageController extends Controller
             if (isset($validated['linktitle'], $validated['page_from']) && !empty($validated['linktitle']) && !empty($validated['page_from'])) {
                 PageLink::updateOrCreate([
                     'page_from' => $validated['page_from'],
-                    'page_to'   => $page->uuid,
+                    'page_to'   => $page->id,
                 ], [
                     'link_text' => $validated['linktitle'],
                 ]);
@@ -112,7 +112,7 @@ class PageController extends Controller
 
             if ($page->update($validated)) {
                 // Invalidate cache
-                Cache::forget('page_' . $page->uuid);
+                Cache::forget('page_' . $page->id);
 
                 return response()->json(['success' => true]);
             }

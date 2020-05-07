@@ -26,7 +26,7 @@ class PrerequisiteController extends Controller
 
                 foreach ($request->get('items') as $itemId) {
                     $prerequisite = Prerequisite::updateOrCreate([
-                        'page_uuid'   => $page->uuid,
+                        'page_id'   => $page->id,
                         'prerequisiteable_type' => 'item',
                         'prerequisiteable_id' => $itemId,
                     ], [
@@ -51,7 +51,7 @@ class PrerequisiteController extends Controller
                         'full_name' => $stat
                     ])->firstOrFail();
                     $addedPrerequisites['stats'][] = Prerequisite::updateOrCreate([
-                        'page_uuid'   => $page->uuid,
+                        'page_id'   => $page->id,
                         'prerequisiteable_type' => 'character_stat',
                         'prerequisiteable_id' => $foundStat->id,
                     ], [
@@ -63,7 +63,7 @@ class PrerequisiteController extends Controller
             // Money case
             if ($request->get('money')) {
                 Prerequisite::updateOrCreate([
-                    'page_uuid'   => $page->uuid,
+                    'page_id'   => $page->id,
                     'prerequisiteable_type' => 'money',
                     'prerequisiteable_id' => 0,
                 ], [

@@ -1,6 +1,6 @@
 <div class="row flex-row flex-nowrap">
     @foreach($pages as $page)
-        <div class="col" id="{{ $page->uuid }}">
+        <div class="col" id="{{ $page->id }}">
             <div class="row">
                 <div class="col-1">
                     <div class="card x-small" style="width: 18rem;">
@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col children_pages is_empty" id="children_pages_{{ $page->uuid }}" data-pageid="{{ $page->uuid }}"></div>
+                <div class="col children_pages is_empty" id="children_pages_{{ $page->id }}" data-pageid="{{ $page->id }}"></div>
             </div>
         </div>
     @endforeach
