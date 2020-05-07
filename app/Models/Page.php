@@ -107,7 +107,7 @@ class Page extends Model
      */
     public function parents()
     {
-        return Page::where('uuid', $this->uuid)->join('page_link', 'page_link.page_to', '=', 'pages.uuid')
+        return Page::where('page_link.page_to', $this->uuid)->join('page_link', 'page_link.page_from', '=', 'pages.uuid')
             ->select([
                          'page_link.link_text',
                          'pages.*',

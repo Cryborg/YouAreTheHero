@@ -69,12 +69,17 @@
             newPage($this, route('page.create', {{ $page->story_id }}));
         });
 
-        $(document).on('click', '.toggle-summernote', function () {
+        $(document).on('click', '.toggle-summernote:not(.summernote-open)', function () {
             let $this = $(this);
             let $parent = $this.closest('.is-page');
             let internalId = $parent.data('pageid');
-console.log(internalId);
-            $('#content-' + internalId).summernote({focus: true});
+
+            // Destroy all other summernotes so there is only one open at a time
+            $("[id^='content-']:hidden").summernote('destroy');
+
+            $this.removeClass('clickable');
+            $('#content-' + internalId + ':visible').summernote({focus: true});
+            $this.addClass('summernote-open');
         });
 
         $(document).on('click', '.glyphicon-floppy-disk', function (e) {
@@ -83,7 +88,8 @@ console.log(internalId);
             let internalId = $parent.data('pageid');
             let $form = $("div.is-page[data-pageid='" + internalId + "']").find('.divAsForm');
 
-            $('#content-' + internalId).summernote('destroy');
+            $('#content-' + internalId + ':hidden').summernote('destroy');
+            $('.toggle-summernote').addClass('clickable');
 
             var data = {
                 'title': $('#title-' + internalId).val(),
