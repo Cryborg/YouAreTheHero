@@ -1,5 +1,5 @@
 <h3>{{ trans('page.prerequisite_title') }}</h3>
-<table class="table" id="prerequisites_list">
+<table class="table" id="prerequisites_list-{{ $page->uuid }}">
     <thead class="thead-light">
         <th scope="col">{{ trans('page.required_type_label') }}</th>
         <th scope="col">{{ trans('item.name') }}</th>

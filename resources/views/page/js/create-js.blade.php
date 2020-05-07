@@ -36,6 +36,11 @@
     }
 
     $(document).ready(function () {
+        $('#modalCreatePrerequisite').on('show.bs.modal', function (event) {
+            var myVal = $(event.relatedTarget).data('pageid');
+            $('#modalCreatePrerequisite').data('pageid', myVal);
+        });
+
         // help-block state check from cookie
         var openToggle = Cookies.get("hero.help-block.show") || false;
 
@@ -69,6 +74,7 @@
             newPage($this, route('page.create', {{ $page->story_id }}));
         });
 
+        // Display Summernote editor on the clicked div
         $(document).on('click', '.toggle-summernote:not(.summernote-open)', function () {
             let $this = $(this);
             let $parent = $this.closest('.is-page');
@@ -82,6 +88,7 @@
             $this.addClass('summernote-open');
         });
 
+        // Saves the page
         $(document).on('click', '.glyphicon-floppy-disk', function (e) {
             let $this = $(this);
             let $parent = $this.closest('.is-page');
@@ -89,7 +96,7 @@
             let $form = $("div.is-page[data-pageid='" + internalId + "']").find('.divAsForm');
 
             $('#content-' + internalId + ':hidden').summernote('destroy');
-            $('.toggle-summernote').addClass('clickable');
+            $('.toggle-summernote').addClass('clickable').removeClass('summernote-open');
 
             var data = {
                 'title': $('#title-' + internalId).val(),
@@ -144,6 +151,7 @@
 
         $('#add_CreatePrerequisite').on('click', function () {
             var $this = $(this);
+            let $parent = $this.closest('.modal');
             var data = {};
 
             // If the "item" tab is selected
@@ -176,7 +184,7 @@
 
             if (Object.entries(data).length > 0 && data.constructor === Object) {
                 $.post({
-                    url: route('prerequisite.store', '{{ $page->uuid }}'),
+                    url: route('prerequisite.store', $parent.data('pageid')),
                     data: data
                 })
                     .done(function (data) {
@@ -185,7 +193,7 @@
 
                             items.forEach(function (item) {
                                 // Adds the new action to the table
-                                $('#prerequisites_list tbody').append(
+                                $('#prerequisites_list-' + $parent.data('pageid') + ' tbody').append(
                                     '<tr>' +
                                     '<td>' + '{{ trans('item.item') }}' + '</td>' +
                                     '<td>' + item.name + '</td>' +
@@ -311,10 +319,11 @@
     // When the author validates the new action on the modal
     $('#add_CreateAction').on('click', function () {
         var serialized = $('#action_create').serialize();
+        let $parent = $this.closest('.modal');
         var $this = $(this);
 
         $.post({
-            url: '{{ route('actions.store', $page->uuid) }}',
+            url: route('actions.store', $parent.data('pageid')),
             'data': serialized,
         })
             .done(function (data) {
@@ -366,9 +375,10 @@
     // When tu author creates a new riddle
     $('#add_CreateRiddle').on('click', function () {
         var $this = $(this);
+        let $parent = $this.closest('.modal');
 
         $.post({
-            url: '{{ route('riddle.store', $page->uuid) }}',
+            url: route('riddle.store', $parent.data('pageid')),
             'data': {
                 'answer': $('#riddle_answer_text').val(),
                 'type': $('#answer_is_integer').is(':checked') ? 1 : 0,
