@@ -30,7 +30,7 @@ class PrerequisitesTableSeeder extends Seeder
             array (
                 'id' => 2,
                 'page_uuid' => '8e32b39a-0886-37f3-93fd-f606a88950a9',
-                'prerequisiteable_type' => 'stat',
+                'prerequisiteable_type' => 'character_stat',
                 'prerequisiteable_id' => 1,
                 'created_at' => '2020-01-10 16:20:26',
                 'updated_at' => NULL,

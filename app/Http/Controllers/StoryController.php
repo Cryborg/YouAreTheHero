@@ -146,6 +146,7 @@ class StoryController extends Controller
         // Get all the choices (links to the next page(s)
         $allChoices   = $this->getAllChoicesForPage($currentPage);
         $finalChoices = [];
+        $unreachableChoices = [];
 
         // Check if there are prerequisites, and that they are fulfilled
         foreach ($allChoices as $choice) {
@@ -170,10 +171,13 @@ class StoryController extends Controller
 
             if ($fulfilled) {
                 $finalChoices[] = $choice;
+            } else {
+                $unreachableChoices[] = $choice;
             }
         }
 
         $currentPage->filtered_choices = $finalChoices;
+        $currentPage->unreachable_choices = $unreachableChoices;
     }
 
     /**

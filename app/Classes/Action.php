@@ -89,7 +89,7 @@ class Action
 
         foreach ($allEffects as $context => $effects) {
             switch ($context) {
-                case 'stat':
+                case 'character_stat':
                     foreach ($characterStats as $stat) {
                         foreach ($effects as $effect) {
                             if ($stat->stat_story_id == $effect['stat_story_id']) {

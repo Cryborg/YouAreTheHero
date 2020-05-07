@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="col-lg-3 col-xs-12 bloc">
-            @if ($page->story->story_options->has_stats)
+            @isset($page->story->story_options->has_stats)
                 <div class="row">
                     <div class="col">
                         <div class="title">@lang('stat.sheet')</div>
@@ -56,7 +56,7 @@
                         @yield('sheet', 'No available sheet')
                     </div>
                 </div>
-            @endif
+            @endisset
             <div class="row">
                 <div class="col">
                     <div class="title">@lang('story.map')</div>

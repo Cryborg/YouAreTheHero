@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Relation::morphMap([
-            'stat' => CharacterStat::class,
+            'character_stat' => CharacterStat::class,
             'item' => Item::class,
         ]);
 
