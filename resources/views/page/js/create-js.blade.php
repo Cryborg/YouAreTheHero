@@ -1,34 +1,27 @@
 <script type="text/javascript">
-    function newPage($this, route, disableEdit) {
-        disableEdit = disableEdit || false;
-
-        var newNumber = $('a.nav-item.nav-link').length;
+    function newPage($this, route) {
         $('a.nav-item.nav-link, div.tab-pane').removeClass('active');
-
-        // Create the tab
-        $('#addNewPage').before(
-            '<a class="nav-item nav-link active" href="#p' + newNumber + '" data-toggle="tab">' +
-            '<span class="choice_title_' + newNumber + '">' +
-            '<input type="text" class="form-control" placeholder="{{ trans('page.link_text') }}" id="linktext-' + newNumber + '">' +
-            '<div class="alert alert-error hidden"></div>' +
-            '</span></span>' +
-            '</a>'
-        );
 
         // Create the page and display it
         $.ajax({
             'url': route,
+            'data': {
+                'page_from': $this.data('page-from')
+            },
+            'method': 'POST'
         })
             .done(function (data) {
-                $('#choicesForm').append('<div class="tab-pane active" id="p' + newNumber + '">' + data + '</div>');
+                $('#choicesForm').append('<div class="tab-pane active" id="p' + data.page.id + '">' + data.view + '</div>');
 
-                if (disableEdit) {
-                    var $newPageSelector = $('#p' + newNumber);
-
-                    $newPageSelector.find('textarea, input').prop('disabled', true);
-                } else {
-                    //$('#choicesForm > div.tab-pane.active textarea').summernote(summernoteOptions);
-                }
+                // Create the tab
+                $('#addNewPage').before(
+                    '<a class="nav-item nav-link active" href="#p' + data.page.id + '" data-toggle="tab">' +
+                    '<span class="choice_title_' + data.page.id + '">' +
+                    '<input type="text" class="form-control" placeholder="{{ trans('page.link_text') }}" id="linktext-' + data.page.id + '">' +
+                    '<div class="alert alert-error hidden"></div>' +
+                    '</span></span>' +
+                    '</a>'
+                );
             })
             .always(function () {
                 $this.prop('disabled', false);
@@ -105,13 +98,11 @@
                 'is_first': $('#is_first-' + internalId).is(":checked") ? 1 : 0,
                 'is_last': $('#is_last-' + internalId).is(":checked") ? 1 : 0,
                 'is_checkpoint': $('#is_checkpoint-' + internalId).is(":checked") ? 1 : 0,
+                'page_from': $this.data('page-from')
             };
 
             if ($('#linktext-' + internalId).length > 0) {
-                data.linktitle = $('#linktext-' + internalId).val();
-            }
-            if ($this.parents('is-page').find('.is-page-from').length > 0) {
-                data.page_from = $this.parents('is-page').find('.is-page-from').data('page-from');
+                data.link_text = $('#linktext-' + internalId).val();
             }
 
             $.post({
@@ -311,7 +302,7 @@
 
         $this.prop('disabled', true);
 
-        newPage($this, route('page.create', [{{ $page->story_id }}, $this.val()]), true);
+        newPage($this, route('page.create', [{{ $page->story_id }}, $this.val()]));
 
         $("#childrenSelect option:selected").remove();
     });

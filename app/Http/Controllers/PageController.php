@@ -24,9 +24,8 @@ class PageController extends Controller
      * @param \App\Models\Story        $story
      * @param \App\Models\Page|null    $page
      *
-     * @return \Illuminate\Contracts\View\View
      */
-    public function getCreate(Request $request, Story $story, Page $page = null): \Illuminate\Contracts\View\View
+    public function postCreate(Request $request, Story $story, Page $page = null)
     {
         if ($page === null) {
             $page = factory(Page::class)->create([
@@ -40,9 +39,16 @@ class PageController extends Controller
             'layouts' => [
                 'play1' => 'Premier layout',
             ],
+            'page_from' => $request->get('page_from')
         ]);
 
-        return $view;
+        return response()->json(
+            [
+                'success' => true,
+                'view'    => html_entity_decode($view),
+                'page'    => $page,
+            ]
+        );
     }
 
     /**
@@ -93,22 +99,22 @@ class PageController extends Controller
                 'is_first'      => 'required',
                 'is_last'       => 'required',
                 'is_checkpoint' => 'required',
-                'linktitle'     => 'sometimes|required',
+                'link_text'     => 'sometimes|required',
                 'page_from'     => 'sometimes|required',
             ]);
 
-            if (isset($validated['linktitle'], $validated['page_from']) && !empty($validated['linktitle']) && !empty($validated['page_from'])) {
+            if (isset($validated['link_text'], $validated['page_from']) && !empty($validated['link_text']) && !empty($validated['page_from'])) {
                 PageLink::updateOrCreate([
                     'page_from' => $validated['page_from'],
                     'page_to'   => $page->id,
                 ], [
-                    'link_text' => $validated['linktitle'],
+                    'link_text' => $validated['link_text'],
                 ]);
 
                 Cache::forget('choices_' . $validated['page_from']);
             }
 
-            unset($validated['linktitle'], $validated['page_from']);
+            unset($validated['link_text'], $validated['page_from']);
 
             if ($page->update($validated)) {
                 // Invalidate cache

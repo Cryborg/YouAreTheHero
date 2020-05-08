@@ -33,7 +33,7 @@ Route::get('/story/{story}/edit', 'StoryController@getEdit')->name('story.edit')
 Route::get('/story/{story}/tree', 'StoryController@getTree')->name('story.tree');
 Route::get('/story/{story}/inventory', 'StoryController@inventory')->name('story.inventory');
 Route::get('/story/{story}/sheet', 'StoryController@sheet')->name('story.sheet');
-Route::get('/story/{story}/page/create/{page?}', 'PageController@getCreate')->name('page.create');
+Route::post('/story/{story}/page/create/{page?}', 'PageController@postCreate')->name('page.create');
 Route::get('/story/{story}/{page}/choices', 'StoryController@choices')->name('story.choices');
 Route::get('/story/{story}/{page?}', 'StoryController@getPlay')->name('story.play');
 

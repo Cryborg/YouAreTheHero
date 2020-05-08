@@ -56,14 +56,14 @@
                     @foreach($page->choices as $key => $choice)
                         <a class="nav-item nav-link @if ($key === 0) active @endif" href="#p{{ $key }}" data-toggle="tab">
                             <span class="choice_title_{{ $key }}">
-                                <input type="text" class="form-control" placeholder="{{ trans('page.link_text') }}" id="linktext-{{ $key + 1 }}" value="{{ $choice->pivot->link_text }}">
+                                <input type="text" class="form-control" placeholder="{{ trans('page.link_text') }}" id="linktext-{{ $choice->id }}" value="{{ $choice->pivot->link_text }}">
                             </span>
                         </a>
                     @endforeach
                 @endif
                 <a class="nav-item nav-link" href="" id="addNewPage">+</a>
                 <a class="nav-item nav-link" href="">
-                    <select class="form-control mr-sm-2" id="childrenSelect">
+                    <select class="form-control mr-sm-2" id="childrenSelect" data-page-from="{{ $page->id }}">
                         <option value="0" selected>{{ trans('page.existing_page') }}</option>
                         @foreach ($page->getPotentialChildren() as $existingPage)
                             @if ($existingPage->id !== $page->id)

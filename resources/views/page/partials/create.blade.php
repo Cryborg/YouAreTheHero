@@ -1,5 +1,5 @@
 <div class="row is-page" data-pageid="{{ $page->id }}">
-    {!! Form::hidden('page_from', $page->id, ['class' => 'is-page-from', 'data-page-from' => 'page_from']) !!}
+    {!! Form::hidden('page_from', $page->id, ['class' => 'is-page-from', 'data-page-from' => $page_from ?? 0]) !!}
     <div class="col-lg-8 col-xs-12 col-current">
         <div class="row h-100">
             <div class="menu-bar-left">
