@@ -126,8 +126,11 @@ p:not(.help-block) {
     margin-bottom: 0 !important;
 }
 
-.font-small {
+.font-smallest {
     font-size: .5em;
+}
+.font-smaller {
+    font-size: .75em;
 }
 .help-block {
     font-size: .8em;
@@ -268,11 +271,19 @@ div.jq-toast-wrap {
     font-weight: 300;
     line-height: 1.2;
 }
-div.menu-bar-left .icon-bottom-center {
-    position: absolute;
+div.menu-bar-left .menu-icon {
     top: auto;
     left: 0;
-    padding: 13px;
+    height: 64px;
+    width: 64px;
+    margin: -5px;
+}
+div.menu-bar-left .menu-icon-top {
+    background-color: green;
+}
+div.menu-bar-left .menu-icon-bottom {
+    bottom: 0;
+    background-color: red;
 }
 .scrollable-content {
     overflow: auto;
@@ -290,4 +301,14 @@ div.menu-bar-left .icon-bottom-center {
     margin-left: -15px;
     margin-top: -1px;
     margin-bottom: -1px;
+}
+.right-side {
+    margin-left: 0;
+}
+.left-side {
+    margin-right: 0;
+}
+.glyphicon-none:before {
+    content: "\2122";
+    color: transparent !important;
 }

@@ -69,14 +69,16 @@
     </div>
 
     <div class="col-lg-4 col-xs-12 col-border-right col-current">
-        <div class="row">
-            <div class="col">
-                @info({!! trans('page.current_page_prerequisites_help') !!})
+        @if (!$page->is_first)
+            <div class="row">
+                <div class="col">
+                    @info({!! trans('page.current_page_prerequisites_help') !!})
 
-                @include('page.partials.prerequisites_list', ['page' => $page])
+                    @include('page.partials.prerequisites_list', ['page' => $page])
+                </div>
             </div>
-        </div>
-        <hr>
+            <hr>
+        @endif
         <div class="row">
             <div class="col">
                 @info({!! trans('page.current_page_actions_help') !!})

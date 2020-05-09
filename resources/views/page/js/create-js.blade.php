@@ -271,6 +271,18 @@
                 })
             });
         @endfor
+
+        // Convert dates to human readable strings
+        $('td.moment_date').each(function(id, elt) {
+            var originalDate = $(elt).html();
+            var momentDate = moment(originalDate).fromNow();
+
+            if (momentDate) {
+                $(elt)
+                    .html(momentDate)
+                    .attr('title', originalDate);
+            }
+        });
     });
 
     $(document).on('click', '#listAllPages tr', function () {

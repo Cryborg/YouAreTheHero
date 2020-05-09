@@ -12,7 +12,7 @@ return array (
   'add_new_prerequisite' => 'Ajouter un prérequis',
   'add_prerequisite' => 'Ajouter le prérequis',
   'new_action_successfully_added' => 'L\'action a bien été ajoutée à la page.',
-  'earn' => 'Gagner',
+  'take' => 'Prendre',
   'buy' => 'Acheter',
   'sell' => 'Vendre',
   'give' => 'Donner',

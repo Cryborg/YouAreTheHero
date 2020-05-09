@@ -14,8 +14,8 @@
 
                 <div>
                     <div class="tab-content">
-                        @if($page->parents())
-                            @foreach($page->parents() as $key => $parent)
+                        @if($page->parents->count() > 0)
+                            @foreach($page->parents as $key => $parent)
                                 <div class="tab-pane @if ($key === 0) active @endif" id="pp{{ $key }}">
 {{--                                    @include('page.partials.create_readonly', ['page' => $parent, 'child' => false])--}}
                                     @include('page.partials.create', ['page' => $parent])
@@ -24,8 +24,8 @@
                         @endif
                     </div>
                     <nav class="nav nav-tabs">
-                        @if($page->parents())
-                            @foreach($page->parents() as $key => $choice)
+                        @if($page->parents->count() > 0)
+                            @foreach($page->parents as $key => $choice)
                                 <a class="nav-item nav-link @if ($key === 0) active @endif" href="#pp{{ $key }}" data-toggle="tab">
                                     <span class="choice_title_{{ $key }}">
                                         <input type="text" class="form-control" value="{{ $choice->link_text }}" disabled>

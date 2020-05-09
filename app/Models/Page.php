@@ -36,14 +36,6 @@ class Page extends Model
         'is_checkpoint' => 'boolean',
     ];
 
-    /**
-     * @return HasMany
-     */
-    public function pageLinks(): HasMany
-    {
-        return $this->hasMany(PageLink::class, 'page_from');
-    }
-
     public static function boot()
     {
         parent::boot();
@@ -84,6 +76,8 @@ class Page extends Model
      */
     public function parents()
     {
+        return $this->belongsToMany(Page::class, 'page_link', 'page_to', 'page_from', 'id')->withPivot('link_text');
+
         return Page::where('page_link.page_to', $this->id)->join('page_link', 'page_link.page_from', '=', 'pages.id')
             ->select([
                          'page_link.link_text',

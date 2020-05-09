@@ -209,7 +209,7 @@ class StoryController extends Controller
             case 'give':
                 $isOk = Action::give($character, $item);
                 break;
-            case 'earn':
+            case 'take':
                 $isOk = $character->addMoney($action['price']);
 
                 if (isset($action['item'])) {

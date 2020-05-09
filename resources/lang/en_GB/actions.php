@@ -8,7 +8,7 @@ return array (
   'add_new_prerequisite' => 'Add a condition',
   'add_prerequisite' => 'Add the condition',
   'buy' => 'Buy',
-  'earn' => 'Earn',
+  'take' => 'Take',
   'give' => 'Give',
   'new_action_successfully_added' => 'The action has been added to the page',
   'price' => 'Price',

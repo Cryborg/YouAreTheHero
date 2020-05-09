@@ -205,7 +205,7 @@ return true;
 
             $pages[5]->addAction([
                     'item_id'  => $newItem->id,
-                    'verb'     => 'earn',
+                    'verb'     => 'take',
                     'quantity' => $newItem->default_price,
                 ]
             );

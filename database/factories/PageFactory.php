@@ -20,7 +20,7 @@ use Illuminate\Support\Str;
 $factory->define(Page::class, function (Faker $faker, $data) {
     return [
         'title'         => ucfirst($faker->words(5, true)),
-        'content'       => $faker->text,
+        'content'       => '<p>' . $faker->text . '</p>',
         'is_first'      => $data['is_first'] ?? false,
         'is_last'       => false,
         'is_checkpoint' => $faker->boolean,

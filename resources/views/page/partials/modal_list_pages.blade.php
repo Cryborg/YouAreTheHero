@@ -13,27 +13,41 @@
                 @foreach($pages as $page)
                     <tr data-pageid="{{ $page->id }}">
                         <td>
-                            @if ($page->is_first)
-                                <div class="badge badge-pill badge-primary" data-toggle="tooltip" title="@lang('model.is_first')">
-                                    <span class="glyphicon glyphicon-play"></span>
-                                </div>
-                            @endif
-                            @if ($page->is_checkpoint)
-                                <div class="badge badge-pill badge-secondary" data-toggle="tooltip" title="@lang('model.is_checkpoint')">
-                                    <span class="glyphicon glyphicon-map-marker"></span>
-                                </div>
-                            @endif
+                            <div class="font-smaller">
+                                @if ($page->is_first)
+                                    <div class="badge badge-primary pull-left" data-toggle="tooltip" title="@lang('model.is_first')">
+                                        <span class="glyphicon glyphicon-play"></span>
+                                    </div>
+                                @endif
+                                @if ($page->is_checkpoint)
+                                    <div class="pull-left" data-toggle="tooltip" title="@lang('model.is_checkpoint')">
+                                        <span class="glyphicon glyphicon-map-marker"></span>
+                                    </div>
+                                @endif
                                 @if ($page->is_last)
-                                    <div class="badge badge-pill badge-danger" data-toggle="tooltip" title="@lang('model.is_last')">
+                                    <div class="pull-left" data-toggle="tooltip" title="@lang('model.is_last')">
                                         <span class="glyphicon glyphicon-fast-forward"></span>
                                     </div>
                                 @endif
-                            <a href="{{ route('page.edit', ['page' => $page->id]) }}">
-                                {{ $page->title }}
-                            </a>
+
+                                <div class="badge badge-light pull-right">
+                                    {{ $page->parents->count() }} / {{ $page->choices->count() }}
+                                </div>
+                            </div>
+                            <br>
+                            <div>
+                                <a href="{{ route('page.edit', ['page' => $page->id]) }}">
+                                    {{ $page->title }}
+                                </a>
+                            </div>
+                            <div class="font-smaller pull-right">
+                                @if ($page->parents->count() === 0 && $page->choices->count() === 0)
+                                    <span class="glyphicon glyphicon-trash text-danger clickable"></span>
+                                @endif
+                            </div>
                         </td>
                         <td>{!! $page->present()->content !!}</td>
-                        <td>{{ $page->updated_at }}</td>
+                        <td class="moment_date">{{ $page->updated_at }}</td>
                     </tr>
                 @endforeach
             </tbody>

@@ -73,7 +73,7 @@ class PageController extends Controller
             'actions' => [
                 'buy' => trans('actions.buy'),
                 'sell' => trans('actions.sell'),
-                'earn' => trans('actions.earn'),
+                'take' => trans('actions.take'),
                 'give' => trans('actions.give'),
             ],
 

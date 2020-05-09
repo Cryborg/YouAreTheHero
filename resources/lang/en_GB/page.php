@@ -9,7 +9,7 @@ return array (
   'existing_page' => 'Choose an existing page',
   'edit_pages_title' => 'Pages creation',
   'actions_modal_title' => 'New action',
-  'current_page_actions_help' => 'Choose the actions you want to add to this page.',
+  'current_page_actions_help' => 'Choose the items you want to add to this page and the actions that can be done on it.',
   'items_list' => 'Items list',
   'concerned_item' => 'Item concerned',
   'concerned_item_help' => 'First choose the item concerned by the action you want to add.',

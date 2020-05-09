@@ -16,7 +16,7 @@
     @foreach ($actions as $action)
         @switch($action['verb'])
             @case ('buy')
-            @case ('earn')
+            @case ('take')
             @case ('sell')
             @case ('give')
                 <div class="pick-item" data-verb="{{ $action['verb'] }}" data-item="{{ $action['item']->id }}" data-price="{{ $action['price'] > 0 ?: $action['item']->default_price  }}" data-singleuse="{{ $action['item']->single_use }}">
@@ -65,7 +65,7 @@
 
                     // If the character has enough money
                     // OR if the action will credit money
-                    if ($('#character_money').html() >= $(this).data('price') || $.inArray($this.data('verb'), ['earn']) > -1) {
+                    if ($('#character_money').html() >= $(this).data('price') || $.inArray($this.data('verb'), ['take']) > -1) {
                         $this.addClass('has-money');
 
                         $this.on('click', function()
