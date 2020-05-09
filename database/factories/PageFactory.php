@@ -23,8 +23,9 @@ $factory->define(Page::class, function (Faker $faker, $data) {
         'content'       => '<p>' . $faker->text . '</p>',
         'is_first'      => $data['is_first'] ?? false,
         'is_last'       => false,
-        'is_checkpoint' => $faker->boolean,
+        'is_checkpoint' => false,
         'story_id'      => $data['story_id'],
+        'layout'        => 'play1',
     ];
 }
 );

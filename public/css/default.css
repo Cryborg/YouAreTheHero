@@ -155,18 +155,6 @@ p:not(.help-block) {
     transform: rotate(90deg);
     transform-origin: left top 0;
 }
-.col-border-right {
-    border-right: 15px solid;
-}
-.col-parents {
-    border-color: #ffc107;
-}
-.col-current {
-    border-color: #007bff;
-}
-.col-choices {
-    border-color: #28a745;
-}
 .false-input {
     background-color: white;
     padding: 5px;

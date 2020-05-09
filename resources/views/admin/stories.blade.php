@@ -25,7 +25,7 @@
                             <td>{{ $story->title }}</td>
                             <td>{{ $story->author->username }}</td>
                             <td>{{ $story->pages->count() }}</td>
-                            <td>{{ $story->pages->sortByDesc('updated_at')->first()->updated_at->diffForHumans() }}</td>
+                            <td>{{ optional(optional($story->pages->sortByDesc('updated_at')->first())->updated_at)->diffForHumans() }}</td>
                         </tr>
                     @endforeach
                 </tbody>

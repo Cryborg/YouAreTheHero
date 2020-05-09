@@ -23,7 +23,7 @@ class CreatePagesTable extends Migration
             $table->boolean('is_last')->default(false);
             $table->string('title')->nullable();
             $table->text('content');
-            $table->string('layout')->nullable();
+            $table->string('layout')->default('play1')->nullable();
             $table->boolean('is_checkpoint')->default(false);
 
             $table->timestamps();

@@ -24,8 +24,6 @@ class Page extends Model
 
     protected $keyType      = 'string';
 
-    public    $incrementing = false;
-
     protected $guarded      = ['id'];
 
     protected $touches      = ['story'];

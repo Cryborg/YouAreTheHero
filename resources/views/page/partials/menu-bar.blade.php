@@ -4,15 +4,13 @@
 <span class="glyphicon glyphicon-none display-4"></span>
 
 @if (!$page->is_first)
-    <span data-pageid="{{ $page->id }}" class="glyphicon glyphicon-plus display-5 clickable menu-show"
+    <span data-pageid="{{ $page->id }}" class="glyphicon glyphicon-plus display-5 clickable pb-4 menu-show"
         data-toggle="modal" data-target="#modalCreatePrerequisite"></span>
 @endif
 
-<span data-pageid="{{ $page->id }}" class="display-5 clickable" data-toggle="popover" data-content="Disabled popover" data-trigger="hover">
-    <span class="glyphicon glyphicon-gift" data-toggle="modal" data-target="#modalCreateAction"></span>
-</span>
+<span class="glyphicon glyphicon-gift display-5 clickable pb-4" data-toggle="modal" data-target="#modalCreateAction"></span>
 
-<span data-pageid="{{ $page->id }}" class="glyphicon glyphicon-question-sign display-5 clickable"
+<span data-pageid="{{ $page->id }}" class="glyphicon glyphicon-question-sign display-5 clickable pb-4"
     data-toggle="modal" data-target="#modalCreateRiddle"></span>
 
 {{-- Divider --}}

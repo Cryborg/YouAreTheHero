@@ -47,193 +47,66 @@ class DevGenerateCommand extends Command
         // TODO: use more factories
 
         // Users
-        $marty = User::firstOrCreate([
+        User::firstOrCreate([
                 'email'      => 'cryborg@live.fr',
             ], [
                 'first_name' => 'Marty',
-                'last_name'  => 'FRIEDMAN',
+                'last_name'  => 'ADMIN',
                 'username'   => 'Cryborg',
                 'password'   => '$2y$10$DbdP2HjT0HRyRw5smftYzewPGiuZD9uvhG1TcnD3fd6auYnIdPLk2',
+                'role'       => 'admin',
+            ]
+        );
+        User::firstOrCreate([
+                'email'      => 'cryborg_modo@live.fr',
+            ], [
+                'first_name' => 'Marty',
+                'last_name'  => 'MODERATOR',
+                'username'   => 'Cryborg_modo',
+                'password'   => '$2y$10$DbdP2HjT0HRyRw5smftYzewPGiuZD9uvhG1TcnD3fd6auYnIdPLk2',
+                'role'       => 'moderator',
+            ]
+        );
+        User::firstOrCreate([
+                'email'      => 'cryborg_member@live.fr',
+            ], [
+                'first_name' => 'Marty',
+                'last_name'  => 'MEMBER',
+                'username'   => 'Cryborg_member',
+                'password'   => '$2y$10$DbdP2HjT0HRyRw5smftYzewPGiuZD9uvhG1TcnD3fd6auYnIdPLk2',
+                'role'       => 'member',
             ]
         );
 
-        $fred = User::firstOrCreate([
-                'email'      => 'fred@live.fr',
+        User::firstOrCreate([
+                'email'      => 'fred_admin@live.fr',
             ], [
                 'first_name' => 'Fred',
-                'last_name'  => 'ASTAIR',
+                'last_name'  => 'ADMIN',
                 'username'   => 'Fred',
                 'password'   => '$2y$10$DbdP2HjT0HRyRw5smftYzewPGiuZD9uvhG1TcnD3fd6auYnIdPLk2',
+                'role'       => 'admin',
             ]
         );
-return true;
-        // Stories
-        $sheet = [
-            'experience' => 0,
-            'level'      => 1,
-            'force'      => 1,
-        ];
-
-        $storyMarty = factory(Story::class)->create([
-            'user_id'       => $marty->id,
-        ]);
-        $storyFred = factory(Story::class)->create([
-            'user_id'       => $fred->id,
-        ]);
-
-        $stories = [
-            $storyMarty,
-            $storyFred,
-        ];
-
-        foreach ($stories as $story) {
-            /** @var \App\Models\Page[] $pages */
-            $pages = factory(Page::class, 11)->create([
-                    'story_id' => $story->id,
-                ]
-            );
-
-            PageLink::create([
-                    'page_from' => $pages[0]->id,
-                    'page_to'   => $pages[1]->id,
-                    'link_text' => 'Pas le choix, je clique ici !',
-                ]
-            );
-
-            $marteau = Item::create([
-                    'name'          => 'Marteau',
-                    'default_price' => 1,
-                    'story_id'      => $story->id,
-                    'single_use'    => true,
-                ]
-            );
-
-            $pages[0]->addAction([
-                    'item_id'  => $marteau->id,
-                    'verb'     => 'buy',
-                    'quantity' => $marteau->default_price,
-                ]
-            );
-
-            $pages[10] = factory(Page::class)->create([
-                    'story_id' => $story->id,
-                ]
-            );
-            PageLink::create([
-                    'page_from' => $pages[0]->id,
-                    'page_to'   => $pages[10]->id,
-                    'link_text' => 'Casser un mur avec le marteau',
-                ]
-            );
-            PageLink::create([
-                    'page_from' => $pages[1]->id,
-                    'page_to'   => $pages[2]->id,
-                    'link_text' => 'Aller à gauche',
-                ]
-            );
-            PageLink::create([
-                    'page_from' => $pages[1]->id,
-                    'page_to'   => $pages[3]->id,
-                    'link_text' => 'Aller tout droit',
-                ]
-            );
-            PageLink::create([
-                    'page_from' => $pages[1]->id,
-                    'page_to'   => $pages[4]->id,
-                    'link_text' => 'Aller à droite',
-                ]
-            );
-            PageLink::create([
-                    'page_from' => $pages[10]->id,
-                    'page_to'   => $pages[4]->id,
-                    'link_text' => 'On continue !',
-                ]
-            );
-            PageLink::create([
-                    'page_from' => $pages[2]->id,
-                    'page_to'   => $pages[5]->id,
-                    'link_text' => 'Tout droit !',
-                ]
-            );
-            PageLink::create([
-                    'page_from' => $pages[4]->id,
-                    'page_to'   => $pages[5]->id,
-                    'link_text' => 'C\'est parti mon kiki !',
-                ]
-            );
-
-            // Create some items
-            $items = [
-                'Epée rouillée',
-                'Bouclier du pauvre',
-                'Jambières de fillette',
-                'Gants délicats',
-                'Cotte de mouille',
-                'Epoulettes',
-                'Casque efféminé',
-                'Pantoufles de verre',
-                'Vif d\'or (plaqué)',
-                'Pain de campagne magique',
-            ];
-            foreach ($items as $item) {
-                $price     = round(rand(1, 5));
-                $itemStuff = [
-                    'name'          => $item,
-                    'default_price' => $price,
-                    'story_id'      => $story->id,
-                ];
-
-                $newItem = Item::create($itemStuff);
-
-                // Put some items to pick in one of the pages
-                $pages[5]->addAction([
-                        'item_id'  => $newItem->id,
-                        'verb'     => 'buy',
-                        'quantity' => $newItem->default_price,
-                    ]
-                );
-            }
-
-            // Put a purse with money in it
-            $newItem = Item::create([
-                    'name'          => 'Porte-monnaie perdu',
-                    'default_price' => 8,
-                    'story_id'      => $story->id,
-                    'single_use'    => true,
-                ]
-            );
-
-            $pages[5]->addAction([
-                    'item_id'  => $newItem->id,
-                    'verb'     => 'take',
-                    'quantity' => $newItem->default_price,
-                ]
-            );
-
-            // Genres
-            $genres  = [
-                'science-fiction',
-                'romance',
-                'policier',
-                'thriller',
-                'epouvante',
-                'comedie',
-                'drame',
-                'biographie',
-            ];
-            $aGenres = [];
-            foreach ($genres as $genre) {
-                $aGenres[] = Genre::create([
-                        'label' => $genre,
-                    ]
-                );
-            }
-
-            StoryGenre::create([
-                    'story_id' => $story->id,
-                    'genre_id' => $aGenres[count($aGenres) - 1]->id,
-                ]
-            );
-        }
+        User::firstOrCreate([
+                'email'      => 'fred_modo@live.fr',
+            ], [
+                'first_name' => 'Fred',
+                'last_name'  => 'MODERATOR',
+                'username'   => 'Fred_modo',
+                'password'   => '$2y$10$DbdP2HjT0HRyRw5smftYzewPGiuZD9uvhG1TcnD3fd6auYnIdPLk2',
+                'role'       => 'moderator',
+            ]
+        );
+        User::firstOrCreate([
+                'email'      => 'fred_member@live.fr',
+            ], [
+                'first_name' => 'Fred',
+                'last_name'  => 'MEMBER',
+                'username'   => 'Fred_member',
+                'password'   => '$2y$10$DbdP2HjT0HRyRw5smftYzewPGiuZD9uvhG1TcnD3fd6auYnIdPLk2',
+                'role'       => 'member',
+            ]
+        );
     }
 }

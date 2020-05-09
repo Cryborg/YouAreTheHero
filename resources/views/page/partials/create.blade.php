@@ -68,7 +68,7 @@
         </div>
     </div>
 
-    <div class="col-lg-4 col-xs-12 col-border-right col-current">
+    <div class="col-lg-4 col-xs-12">
         @if (!$page->is_first)
             <div class="row">
                 <div class="col">

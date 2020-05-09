@@ -45,7 +45,7 @@ class PageController extends Controller
         return response()->json(
             [
                 'success' => true,
-                'view'    => html_entity_decode($view),
+                'view'    => html_entity_decode($view->render()),
                 'page'    => $page,
             ]
         );

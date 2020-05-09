@@ -9,7 +9,7 @@
     {{-- Parent page(s) --}}
     @if (!$page->is_first)
         <div class="row">
-            <div class="col col-border-right col-parents">
+            <div class="col">
                 @info({!! trans('page.parent_pages_help') !!})
 
                 <div>
@@ -48,7 +48,7 @@
 
     {{-- Choice(s) --}}
     <div class="row">
-        <div class="col col-border-right col-choices">
+        <div class="col">
             @info({!! trans('page.current_page_choices_help') !!})
 
             <nav class="nav nav-tabs">
