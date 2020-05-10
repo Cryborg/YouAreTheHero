@@ -115,26 +115,26 @@
                 })
                     .done(function (data) {
                         if (data.success) {
-                            $('#riddle_block').html(data.response);
+                            $('#riddle_block').html(data.itemResponse);
 
                             if (data.refreshInventory !== false) {
                                 loadInventory();
                                 loadChoices();
                             }
                         } else {
-                            var oldBorder = $('#riddle_answer').css('border');
-                            $('#riddle_answer').toggleClass('input-invalid');
-
-                            setTimeout(function() {
-                                $('#riddle_answer').toggleClass('input-invalid');
-                            }, 3000);
+                            $this.parents('.panel').addClass('panel-danger');
                         }
                     })
                     .fail(function (data) {
+                        $this.parents('.panel').addClass('panel-danger');
                     })
                     .always(function () {
                         // Toggle disabled state
                         $this.prop('disabled', (i, v) => !v);
+
+                        setTimeout(function() {
+                            $this.parents('.panel').removeClass('panel-danger');
+                        }, 3000);
                     });
             });
         @endif

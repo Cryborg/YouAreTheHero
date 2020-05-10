@@ -42,4 +42,6 @@ return array (
   'riddle_item_help' => 'The item the player earns if the riddle is solved.',
   'riddle_page_help' => 'The page to which the player gains access when the riddle is solved',
   'riddle_answer_help' => 'The answer to the riddle. If is a numeric value, tick the checkbox. (will be used in a future release)',
+  'riddle_item_earned' => 'You just earned a :item_name',
+  'riddle_already_solved' => 'You have already solved this riddle.',
 );

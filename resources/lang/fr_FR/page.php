@@ -42,4 +42,6 @@ return array (
   'riddle_item_help' => 'L\'objet à gagner à la résolution de l\'énigme',
   'riddle_page_help' => 'La page à laquelle le joueur peut accéder une fois l\'énigme résolue.',
   'riddle_answer_help' => 'La réponse à l\'énigme. S\'il s\'agit d\'une valeur numérique, coche la case. (Servira dans une version future)',
+  'riddle_item_earned' => 'Tu as obtenu un(e) :item_name',
+  'riddle_already_solved' => 'Tu as déjà résolu cette énigme.',
 );
