@@ -33,11 +33,11 @@
             return correct;
         }
 
-        $(document).on('click', '.glyphicon-trash-red', function () {
+        $(document).on('click', '.glyphicon-trash', function () {
             var $this = $(this);
             var id = $this.data('statstory_id');
             var loadingClass = 'fa fa-circle-o-notch fa-spin';
-            var defaultClass = 'glyphicon glyphicon-trash-red';
+            var defaultClass = 'glyphicon glyphicon-trash text-danger';
 
             if (!$this.hasClass('fa-spin')) {
                 $this.attr('class', loadingClass);
@@ -90,7 +90,7 @@
                                 result.statStory.short_name,
                                 result.statStory.min_value,
                                 result.statStory.max_value,
-                                '<span class="glyphicon glyphicon-trash-red" data-statstory_id="' + result.statStory.id + '"></span>'
+                                '<span class="glyphicon glyphicon-trash text-danger" data-statstory_id="' + result.statStory.id + '"></span>'
                             ]).draw();
 
                             showToast('success', {

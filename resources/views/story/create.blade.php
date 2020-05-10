@@ -137,7 +137,7 @@
                         <th>{{ trans('stat.short_name') }}</th>
                         <th>{{ trans('stat.min_value') }}</th>
                         <th>{{ trans('stat.max_value') }}</th>
-                        <th>{{ trans('common.actions') }}</th>
+                        <th class="text-center">{{ trans('common.actions') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -148,7 +148,7 @@
                             <td>{{ $stat->min_value }}</td>
                             <td>{{ $stat->max_value }}</td>
                             <td class="text-center">
-                                <span class="glyphicon glyphicon-trash-red" data-statstory_id="{{ $stat->id }}"></span>
+                                <span class="glyphicon glyphicon-trash text-danger" data-statstory_id="{{ $stat->id }}"></span>
                             </td>
                         </tr>
                     @endforeach

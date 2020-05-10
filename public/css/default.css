@@ -273,6 +273,9 @@ div.menu-bar-left .menu-icon-bottom {
     bottom: 0;
     background-color: red;
 }
+div.menu-bar-left .menu-icon-bottom:disabled {
+    background-color: grey;
+}
 .scrollable-content {
     overflow: auto;
     height: 300px;
@@ -299,4 +302,7 @@ div.menu-bar-left .menu-icon-bottom {
 .glyphicon-none:before {
     content: "\2122";
     color: transparent !important;
+}
+.glyphicon-trash {
+    cursor: pointer;
 }

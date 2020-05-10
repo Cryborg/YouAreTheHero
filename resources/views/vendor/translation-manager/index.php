@@ -262,7 +262,7 @@
                             <a href="<?php echo action('\Barryvdh\TranslationManager\Controller@postDelete', [$group, $key]) ?>"
                                class="delete-key"
                                data-confirm="Are you sure you want to delete the translations for '<?php echo htmlentities($key, ENT_QUOTES, 'UTF-8', false) ?>?"><span
-                                        class="glyphicon glyphicon-trash-red"></span></a>
+                                        class="glyphicon glyphicon-trash text-danger"></span></a>
                         </td>
                     <?php endif; ?>
                 </tr>

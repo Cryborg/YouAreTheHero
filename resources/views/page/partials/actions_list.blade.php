@@ -5,7 +5,7 @@
         <th scope="col">{{ trans('item.verb') }}</th>
         <th scope="col">{{ trans('item.quantity') }}</th>
         <th scope="col">{{ trans('item.price') }}</th>
-        <th scope="col">{{ trans('common.actions') }}</th>
+        <th scope="col" class="text-center">{{ trans('common.actions') }}</th>
     </thead>
     <tbody>
         @foreach ($page->actions as $action)
@@ -15,7 +15,7 @@
                 <td>{{ $action->quantity }}</td>
                 <td>{{ $action->price }}</td>
                 <td class="text-center">
-                    <span class="glyphicon glyphicon-trash-red delete-action" data-action_id="{{ $action->id }}" title="{{ trans('common.delete') }}"></span>
+                    <span class="glyphicon glyphicon-trash text-danger delete-action" data-action_id="{{ $action->id }}" title="{{ trans('common.delete') }}"></span>
                 </td>
             </tr>
         @endforeach

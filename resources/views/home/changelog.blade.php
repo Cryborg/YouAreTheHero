@@ -7,11 +7,12 @@
             <div class="card">
                 <div class="card-header">{{ trans('common.changelog') }}</div>
                     <fieldset>
-                        <legend>April, xxxxxxxth 2020</legend>
+                        <legend>May 2020</legend>
                         <ul>
                             <li>Improvements:</li>
                             <ul>
                                 <li>Storytellers can now include <b>basic riddles</b> in their pages! It allows the creation of <b>escape books</b>!</li>
+                                <li>Improved pages creation</li>
                             </ul>
                         </ul>
                     </fieldset>

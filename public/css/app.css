@@ -11099,12 +11099,6 @@ a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
-
-.glyphicon-trash-red {
-  color: #e3342f;
-  cursor: pointer;
-}
-
 .glyphicon-plus-sign {
   color: #38c172;
   cursor: pointer;

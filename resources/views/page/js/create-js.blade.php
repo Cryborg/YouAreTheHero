@@ -191,7 +191,7 @@
                                     '<td>' + '{{ trans('item.item') }}' + '</td>' +
                                     '<td>' + item.name + '</td>' +
                                     '<td>' + item.quantity + '</td>' +
-                                    '<td>' + '<span class="glyphicon glyphicon-trash-red delete-prerequisite" data-prerequisite_id="' + item.prerequisite_id + '"></span>' + '</td>' +
+                                    '<td class="text-center">' + '<span class="glyphicon glyphicon-trash text-danger delete-prerequisite" data-prerequisite_id="' + item.prerequisite_id + '"></span>' + '</td>' +
                                     '</tr>'
                                 );
                             });
@@ -323,9 +323,9 @@
 
     // When the author validates the new action on the modal
     $('#add_CreateAction').on('click', function () {
+        var $this = $(this);
         var serialized = $('#action_create').serialize();
         let $parent = $this.closest('.modal');
-        var $this = $(this);
 
         $.post({
             url: route('actions.store', $parent.data('pageid')),
@@ -346,7 +346,7 @@
                         '<td>' + data.action.verb + '</td>' +
                         '<td>' + data.action.quantity + '</td>' +
                         '<td>' + data.action.price + '</td>' +
-                        '<td>' + '<span class="glyphicon glyphicon-trash-red delete-action" data-action_id="' + data.action.item.id + '"></span>' + '</td>' +
+                        '<td class="text-center">' + '<span class="glyphicon glyphicon-trash text-danger delete-action" data-action_id="' + data.action.item.id + '"></span>' + '</td>' +
                         '</tr>'
                     );
 
@@ -450,7 +450,7 @@
         var $this = $(this);
         var actionId = $this.data('action_id');
         var loadingClass = 'fa fa-circle-o-notch fa-spin';
-        var defaultClass = 'glyphicon glyphicon-trash-red';
+        var defaultClass = 'glyphicon glyphicon-trash text-danger';
 
         if (!$this.hasClass('fa-spin')) {
             $this.attr('class', loadingClass);
@@ -461,10 +461,8 @@
             method: 'DELETE'
         })
             .done(function () {
-                actionsListDatatable
-                    .row($this.parents('tr'))
-                    .remove()
-                    .draw();
+                $this.parents('tr').remove();
+
                 showToast('success', {
                     heading: '{{ trans('notification.deletion_success_title') }}',
                     text: "{{ trans('notification.deletion_success_text') }}",
@@ -486,7 +484,7 @@
         var $this = $(this);
         var prerequisiteId = $this.data('prerequisite_id');
         var loadingClass = 'fa fa-circle-o-notch fa-spin';
-        var defaultClass = 'glyphicon glyphicon-trash-red';
+        var defaultClass = 'glyphicon glyphicon-trash text-danger';
 
         if (!$this.hasClass('fa-spin')) {
             $this.attr('class', loadingClass);
@@ -497,10 +495,8 @@
             method: 'DELETE'
         })
             .done(function () {
-                prerequisitesListDatatable
-                    .row($this.parents('tr'))
-                    .remove()
-                    .draw();
+                $this.parents('tr').remove();
+
                 showToast('success', {
                     heading: '{{ trans('notification.deletion_success_title') }}',
                     text: "{{ trans('notification.deletion_success_text') }}",

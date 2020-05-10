@@ -6,41 +6,6 @@
     <span class="pull-right toggle-help close glyphicon glyphicon-question-sign"></span>
     <h2>{{ trans('page.edit_pages_title') }}</h2>
 
-    {{-- Parent page(s) --}}
-    @if (!$page->is_first)
-        <div class="row">
-            <div class="col">
-                @info({!! trans('page.parent_pages_help') !!})
-
-                <div>
-                    <div class="tab-content">
-                        @if($page->parents->count() > 0)
-                            @foreach($page->parents as $key => $parent)
-                                <div class="tab-pane @if ($key === 0) active @endif" id="pp{{ $key }}">
-{{--                                    @include('page.partials.create_readonly', ['page' => $parent, 'child' => false])--}}
-                                    @include('page.partials.create', ['page' => $parent])
-                                </div>
-                            @endforeach
-                        @endif
-                    </div>
-                    <nav class="nav nav-tabs">
-                        @if($page->parents->count() > 0)
-                            @foreach($page->parents as $key => $choice)
-                                <a class="nav-item nav-link @if ($key === 0) active @endif" href="#pp{{ $key }}" data-toggle="tab">
-                                    <span class="choice_title_{{ $key }}">
-                                        <input type="text" class="form-control" value="{{ $choice->link_text }}" disabled>
-                                    </span>
-                                </a>
-                            @endforeach
-                        @endif
-                    </nav>
-                </div>
-            </div>
-        </div>
-    @endif
-
-    <hr>
-
     {{-- Current page --}}
     @include('page.partials.create')
 

@@ -5,7 +5,6 @@ return array (
   'link_text' => 'Choice text',
   'current_page_help' => 'Here is the page being edited.',
   'current_page_choices_help' => 'The tabs are the choices that will be shown in the current page. <br> The text in the tab will be the link on which the player will have to click to reach the page you are going to create. <br> Click on the tab marked with a + to add a new choice.',
-  'parent_pages_help' => 'All the pages leading to the one being edited are listed here. <br> You cannot modify them directly, you must use the link provided to edit it.',
   'existing_page' => 'Choose an existing page',
   'edit_pages_title' => 'Pages creation',
   'actions_modal_title' => 'New action',
