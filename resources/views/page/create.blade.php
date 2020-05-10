@@ -61,7 +61,7 @@
                         </a>
                     @endforeach
                 @endif
-                <a class="nav-item nav-link" href="" id="addNewPage">+</a>
+                <a class="nav-item nav-link" href="" id="addNewPage" data-page-from="{{ $page->id }}">+</a>
                 <a class="nav-item nav-link" href="">
                     <select class="form-control mr-sm-2" id="childrenSelect" data-page-from="{{ $page->id }}">
                         <option value="0" selected>{{ trans('page.existing_page') }}</option>

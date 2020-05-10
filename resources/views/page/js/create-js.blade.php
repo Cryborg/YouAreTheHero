@@ -29,9 +29,11 @@
     }
 
     $(document).ready(function () {
-        $('#modalCreatePrerequisite').on('show.bs.modal', function (event) {
-            var myVal = $(event.relatedTarget).data('pageid');
-            $('#modalCreatePrerequisite').data('pageid', myVal);
+        $('#modalCreatePrerequisite,#modalCreateAction,#modalCreateRiddle').on('show.bs.modal', function (event) {
+            var $this = $(this);
+            var $parent = $(event.relatedTarget);
+            var myVal = $parent.data('pageid');
+            $this.data('pageid', myVal);
         });
 
         // help-block state check from cookie
@@ -381,7 +383,7 @@
         let $parent = $this.closest('.modal');
 
         $.post({
-            url: route('riddle.store', $parent.data('pageid')),
+            url: route('riddle.store', {'page': $parent.data('pageid')}),
             'data': {
                 'answer': $('#riddle_answer_text').val(),
                 'type': $('#answer_is_integer').is(':checked') ? 1 : 0,

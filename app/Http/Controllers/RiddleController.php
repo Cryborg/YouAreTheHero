@@ -23,9 +23,9 @@ class RiddleController extends Controller
 
         $validated = $request->validate([
             'answer'        => 'required',
-            'item_id'       => 'required',
-            'target_page'   => 'required',
-            'target_text'   => 'required',
+            'item_id'       => 'present',
+            'target_page'   => 'present',
+            'target_text'   => 'present',
             'type'          => 'required',
         ]);
 
@@ -40,8 +40,8 @@ class RiddleController extends Controller
         return response()->json([
             'success' => $success,
             'riddle' => $page->riddle,
-            'page_title' => $page->riddle->page->title,
-            'item_name' => $page->riddle->item->name
+            'page_title' => optional($page->riddle->page)->title,
+            'item_name' => optional($page->riddle->item)->name
         ]);
     }
 }

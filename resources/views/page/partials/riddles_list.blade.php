@@ -16,7 +16,7 @@
                 <td class="font-italic">{{ $page->riddle->page->title }}</td>
             </tr>
         @endif
-        @if ($page->riddle->item->name)
+        @if ($page->riddle->item)
             <tr>
                 <td>@lang('page.concerned_item')</td>
                 <td>{{ $page->riddle->item->name }}</td>
