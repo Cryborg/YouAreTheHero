@@ -29,6 +29,23 @@
     }
 
     $(document).ready(function () {
+        $('.menu-icon-bottom.glyphicon-trash').on('click', function ()
+        {
+            if (!confirm('Sure?')) return false;
+
+            var $this = $(this);
+
+            $.ajax({
+                url: route('page.delete', {'page': {{ $page->id }} }),
+                method: 'DELETE'
+            })
+                .done(function (result) {
+                    if (result.success) {
+                        window.location.href = result.redirectTo;
+                    }
+                })
+        });
+
         $('#modalCreatePrerequisite,#modalCreateAction,#modalCreateRiddle').on('show.bs.modal', function (event) {
             var $this = $(this);
             var $parent = $(event.relatedTarget);

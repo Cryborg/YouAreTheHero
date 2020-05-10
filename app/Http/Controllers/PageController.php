@@ -9,6 +9,7 @@ use App\Models\Story;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 
@@ -92,6 +93,8 @@ class PageController extends Controller
     public function postEdit(Request $request, Page $page)
     {
         if ($request->ajax()) {
+            $this->authorize('edit', $page);
+
             $validated = $request->validate([
                 'title'         => 'required',
                 'content'       => 'required',
@@ -142,6 +145,8 @@ class PageController extends Controller
     public function postRiddle (Request $request, Page $page): ?JsonResponse
     {
         if ($request->ajax()) {
+            $this->authorize('edit', $page);
+
             $result = strtolower(trim($request->get('answer'))) === strtolower(trim($page->riddle->answer));
             $itemResponse = null;
             $pageResponse = null;
@@ -179,6 +184,32 @@ class PageController extends Controller
                 'pageResponse' => $pageResponse,
                 'solved' => $page->riddle ? $page->riddle->isSolved() : 'bouh',
                 'refreshInventory' => $page->riddle && (isset($page->riddle->item_id) || isset($page->riddle->target_page)),
+            ]);
+        }
+
+        abort(JsonResponse::HTTP_NOT_FOUND);
+    }
+
+    public function delete(Request $request, Page $page)
+    {
+        if ($request->ajax()) {
+            $this->authorize('edit', $page);
+
+            $success = true;
+            $message = null;
+            $story = $page->story;
+
+            try {
+                $page->delete();
+            } catch (\Exception $e) {
+                $success = false;
+                $message = $e->getMessage();
+            }
+
+            return response()->json([
+                'success' => $success,
+                'message' => $message,
+                'redirectTo' => route('page.edit', ['page' => $story->getLastCreatedPage()])
             ]);
         }
 

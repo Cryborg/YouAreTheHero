@@ -21,4 +21,15 @@ class PagePolicy
     {
         return $user->id == $page->story->user_id;
     }
+
+    /**
+     * @param \App\Models\User $user
+     * @param \App\Models\Page $page
+     *
+     * @return bool
+     */
+    public function edit(User $user, Page $page)
+    {
+        return $user->id == $page->story->user_id;
+    }
 }

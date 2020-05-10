@@ -42,7 +42,7 @@
 
                 var replacements = {
                     "%TEXT%":decodedString,
-                    "%PLAY_URL%": '<a href="' + route('page.edit', {'page': d.last_created_page.id}) + '#current_page" class="btn btn-primary card-link w-100 mb-1">{{ trans('story.resume_editing') }}</a>',
+                    "%PLAY_URL%": '<a href="' + route('page.edit', {'page': d.last_created_page.id}) + '" class="btn btn-primary card-link w-100 mb-1">{{ trans('story.resume_editing') }}</a>',
                     "%EDIT_URL%": d.can_edit == true
                         ? '<a href="' + route('story.edit', {'story': d.id}) + '" class="btn btn-success card-link w-100 mb-1">{{ trans('story.edit') }}</a>'
                         : ' ',
