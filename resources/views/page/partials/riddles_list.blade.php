@@ -18,7 +18,7 @@
         @endif
         @if ($page->riddle->item)
             <tr>
-                <td>@lang('page.concerned_item')</td>
+                <td>@lang('page.earned_item')</td>
                 <td>{{ $page->riddle->item->name }}</td>
             </tr>
         @endif

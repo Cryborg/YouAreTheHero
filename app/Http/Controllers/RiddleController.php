@@ -24,18 +24,20 @@ class RiddleController extends Controller
         $validated = $request->validate([
             'answer'        => 'required',
             'item_id'       => 'present',
-            'target_page'   => 'present',
-            'target_text'   => 'present',
+            'target_page'   => 'required_with:target_text',
+            'target_text'   => 'required_with:target_page',
             'type'          => 'required',
         ]);
 
         $validated['type'] = $validated['type'] == 1 ? 'integer' : 'string';
 
-        if ($page->riddle) {
-            $page->riddle()->update($validated);
-        } else {
-            $page->riddle()->create($validated);
-        }
+        $validated = array_filter($validated);
+
+        optional($page->riddle)->delete();
+
+        $page->riddle()->create($validated);
+
+        $page->load('riddle');
 
         return response()->json([
             'success' => $success,

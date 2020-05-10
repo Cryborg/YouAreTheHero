@@ -37,4 +37,9 @@ return array (
   'riddle_page_label' => 'Choose a target page',
   'riddle_page_text_label' => 'Hyperlink text',
   'riddle_target_page_label' => 'Target page',
+  'earned_item' => 'Gained item',
+  'riddle_item_label' => 'Prize item',
+  'riddle_item_help' => 'The item the player earns if the riddle is solved.',
+  'riddle_page_help' => 'The page to which the player gains access when the riddle is solved',
+  'riddle_answer_help' => 'The answer to the riddle. If is a numeric value, tick the checkbox. (will be used in a future release)',
 );

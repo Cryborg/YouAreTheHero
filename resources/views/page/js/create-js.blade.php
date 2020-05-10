@@ -414,7 +414,7 @@
                             '<td class="font-italic">' + data.page_title + '</td>' +
                         '</tr>' +
                         '<tr>' +
-                            '<td>' + '@lang('page.concerned_item')' + '</td>' +
+                            '<td>' + '@lang('page.earned_item')' + '</td>' +
                             '<td class="font-italic">' + data.item_name + '</td>' +
                         '</tr>'
                     );

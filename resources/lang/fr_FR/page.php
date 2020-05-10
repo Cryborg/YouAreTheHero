@@ -37,4 +37,9 @@ return array (
   'riddle_page_label' => 'Choisis une page cible',
   'riddle_page_text_label' => 'Texte du lien',
   'riddle_target_page_label' => 'Page cible',
+  'earned_item' => 'Objet obtenu',
+  'riddle_item_label' => 'Objet à gagner',
+  'riddle_item_help' => 'L\'objet à gagner à la résolution de l\'énigme',
+  'riddle_page_help' => 'La page à laquelle le joueur peut accéder une fois l\'énigme résolue.',
+  'riddle_answer_help' => 'La réponse à l\'énigme. S\'il s\'agit d\'une valeur numérique, coche la case. (Servira dans une version future)',
 );
