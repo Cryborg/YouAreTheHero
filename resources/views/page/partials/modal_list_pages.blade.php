@@ -42,7 +42,10 @@
                             </div>
                             <div class="font-smaller pull-right">
                                 @if ($page->parents->count() === 0 && $page->choices->count() === 0)
-                                    <span class="glyphicon glyphicon-trash text-danger clickable"></span>
+                                    <span class="glyphicon glyphicon-trash text-danger clickable"
+                                        data-pageid="{{ $page->id }}"
+                                        data-toggle="tooltip" title="@lang('common.delete')"
+                                    ></span>
                                 @endif
                             </div>
                         </td>

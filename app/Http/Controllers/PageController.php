@@ -9,15 +9,22 @@ use App\Models\Story;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 
 class PageController extends Controller
 {
+    private $placeholders;
+
+
     public function __construct()
     {
         $this->middleware('auth');
+
+        // List of placeholders in the Summernote editor
+        $this->placeholders = [
+            'character_name' => trans('character.name_label'),
+        ];
     }
 
     /**
@@ -79,6 +86,8 @@ class PageController extends Controller
             ],
 
             'contexts' => ['action', 'prerequisites', 'riddle'],
+
+            'placeholders' => $this->placeholders,
         ]);
 
         return $view;

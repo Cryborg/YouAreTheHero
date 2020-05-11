@@ -57,43 +57,34 @@
                     </ul>
 
                     {{-- Right Side Of Navbar --}}
-                    @can('isAdmin')
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="#" id="navbarDropdownFlag" role="button" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    <img width="32" height="32" alt="{{ session('locale') }}"
-                                        src="{!! asset('img/flags/' . session('locale') . '.png') !!}"/>
-                                </a>
-                                <div id="flags" class="dropdown-menu" aria-labelledby="navbarDropdownFlag">
-                                    @foreach(config('app.languages') as $locale)
-                                        @if($locale != session('locale'))
-                                            <a class="dropdown-item" href="{{ route('language', $locale) }}">
-                                                <img width="32" height="32" alt="{{ session('locale') }}"
-                                                    src="{!! asset('img/flags/' . $locale . '.png') !!}"/>
-                                            </a>
-                                        @endif
-                                    @endforeach
-
-                                    <div role="separator" class="dropdown-divider"></div>
-
-                                    <a class="dropdown-item" href="{{ url('/translations') }}" target="_blank">
-                                        {{ trans('auth.translations') }}
+                            @can('isAdmin')
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#" id="navbarDropdownFlag" role="button" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <img width="32" height="32" alt="{{ session('locale') }}"
+                                            src="{!! asset('img/flags/' . session('locale') . '.png') !!}"/>
                                     </a>
-                                </div>
-                            </li>
-                        </ul>
-                    @endif
-                    <ul class="navbar-nav">
-                        @isset($story)
-                            <li class="nav-item dropdown clickable" data-toggle="modal" data-target="#modalAllPages">
-                                <a class="nav-link">
-                                    <span class="glyphicon glyphicon-list mr-1"></span>
-                                    {{ trans('story.list_all_pages') }}
-                                </a>
-                            </li>
-                        @endisset
+                                    <div id="flags" class="dropdown-menu" aria-labelledby="navbarDropdownFlag">
+                                        @foreach(config('app.languages') as $locale)
+                                            @if($locale != session('locale'))
+                                                <a class="dropdown-item" href="{{ route('language', $locale) }}">
+                                                    <img width="32" height="32" alt="{{ session('locale') }}"
+                                                        src="{!! asset('img/flags/' . $locale . '.png') !!}"/>
+                                                </a>
+                                            @endif
+                                        @endforeach
 
+                                        <div role="separator" class="dropdown-divider"></div>
+
+                                        <a class="dropdown-item" href="{{ url('/translations') }}" target="_blank">
+                                            {{ trans('auth.translations') }}
+                                        </a>
+                                    </div>
+                                </li>
+                            @endif
+                        </ul>
+                    <ul class="navbar-nav">
                         {{-- Authentication Links --}}
                         @guest
                             <li class="nav-item">

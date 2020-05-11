@@ -20,6 +20,15 @@
 <script type="text/javascript">
     moment.locale('fr');
 
+    // Load emojis
+    $.ajax({
+        url: 'https://api.github.com/emojis',
+        async: false
+    }).then(function(data) {
+        window.emojis = Object.keys(data);
+        window.emojiUrls = data;
+    });
+
     // Global ajax options
     $.ajaxSetup({
         headers: {
@@ -125,7 +134,9 @@
     var PlaceholdersButton = function (context) {
         var ui = $.summernote.ui;
         var placeholders = {
-            'character_name': '{{ trans('character.name_label') }}'
+            @foreach($placeholders as $key => $placeholder)
+                '{{ $key }}': '{{ $placeholder }}',
+            @endforeach
         };
 
         // create button
@@ -162,7 +173,6 @@
         return buttonGroup.render();   // return button as jquery object
     };
 
-
     var summernoteOptions = {
         lang: 'fr-FR',
         maximumImageFileSize: 524288, // 512k
@@ -195,6 +205,26 @@
             limitDisplay: 'both', // text|html|both
             limitStop: false, // true/false
             showOutput: false
+        },
+        focus: true,
+        hint: {
+            match: /:([\-+\w]+)$/,
+            search: function (keyword, callback) {
+                callback($.grep(emojis, function (item) {
+                    return item.indexOf(keyword)  === 0;
+                }));
+            },
+            template: function (item) {
+                var content = emojiUrls[item];
+                return '<img src="' + content + '" width="20" /> :' + item + ':';
+            },
+            content: function (item) {
+                var url = emojiUrls[item];
+                if (url) {
+                    return $('<img />').attr('src', url).css('width', 20)[0];
+                }
+                return '';
+            }
         }
     };
 

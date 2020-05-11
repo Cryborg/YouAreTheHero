@@ -20,6 +20,7 @@ class PagePresenter extends Presenter
             ])->firstOrFail();
 
             // List of all placeholders
+            // FIXME: factorize this, for the moment the other is set in PageController
             $placeholders = [
                 'character_name' => $character->name,
             ];

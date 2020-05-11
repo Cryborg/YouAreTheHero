@@ -3,8 +3,9 @@
 return array (
   'create_title' => 'New page',
   'link_text' => 'Choice text',
-  'current_page_help' => 'Here is the page being edited.',
-  'current_page_choices_help' => 'The tabs are the choices that will be shown in the current page. <br> The text in the tab will be the link on which the player will have to click to reach the page you are going to create. <br> Click on the tab marked with a + to add a new choice.',
+  'current_page_help' => 'Click on the text of the page to edit it. Don\'t forget to save regularly!',
+  'current_page_choices_help' => 'The tabs are the choices that will be shown in the current page. <br> The text in the tab will be the link on which the player will have to click to reach the page you are going to create. <br> Click on the tab marked with a + to add a new choice.<br>
+Click on an already existing page to link to it.',
   'existing_page' => 'Choose an existing page',
   'edit_pages_title' => 'Pages creation',
   'actions_modal_title' => 'New action',
@@ -43,4 +44,5 @@ return array (
   'riddle_answer_help' => 'The answer to the riddle. If is a numeric value, tick the checkbox. (will be used in a future release)',
   'riddle_item_earned' => 'You just earned a :item_name',
   'riddle_already_solved' => 'You have already solved this riddle.',
+  'confirm_delete' => 'Are you sure you want to delete this page?',
 );

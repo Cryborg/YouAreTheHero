@@ -30,4 +30,7 @@ return array (
   'create_tab3' => '3. Character sheet',
   'has_character_help' => 'Check this if the player can name the character.',
   'has_stats_help' => 'Check this if you want to create a character sheet.',
+  'author' => 'Author',
+  'last_update' => 'Last update',
+  'number_pages' => 'Number of pages',
 );

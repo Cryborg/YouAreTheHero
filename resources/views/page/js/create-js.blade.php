@@ -29,14 +29,17 @@
     }
 
     $(document).ready(function () {
-        $('.menu-icon-bottom.glyphicon-trash').on('click', function ()
+
+        // Delete a page
+        $('.menu-icon-bottom.glyphicon-trash, #listAllPages .glyphicon-trash').on('click', function ()
         {
-            if (!confirm('Sure?')) return false;
+            if (!confirm('@lang('page.confirm_delete')')) return false;
 
             var $this = $(this);
+            var pageId = $this.data('pageid');
 
             $.ajax({
-                url: route('page.delete', {'page': {{ $page->id }} }),
+                url: route('page.delete', {'page': pageId }),
                 method: 'DELETE'
             })
                 .done(function (result) {
@@ -96,7 +99,7 @@
             $("[id^='content-']:hidden").summernote('destroy');
 
             $this.removeClass('clickable');
-            $('#content-' + internalId + ':visible').summernote({focus: true});
+            $('#content-' + internalId + ':visible').summernote(summernoteOptions);
             $this.addClass('summernote-open');
         });
 

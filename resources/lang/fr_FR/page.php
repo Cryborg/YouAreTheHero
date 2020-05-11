@@ -3,8 +3,9 @@
 return array (
   'create_title' => 'Nouvelle page',
   'link_text' => 'Texte du choix',
-  'current_page_help' => 'Ici se trouve la page en cours d\'édition.',
-  'current_page_choices_help' => 'Les onglets ci-dessous correspondent aux choix qui seront proposés dans la page en cours d\'édition, juste au-dessus.<br>Le texte dans l\'onglet sera le lien sur lequel cliquera le joueur pour atteindre la page que tu vas créer dans l\'onglet.<br>Clique sur l\'onglet marqué d\'un + pour ajouter un nouveau choix.',
+  'current_page_help' => 'Clique sur le texte de la page pour le modifier. N\'oublie pas d\'enregistrer fréquemment !',
+  'current_page_choices_help' => 'Les onglets ci-dessous correspondent aux choix qui seront proposés dans la page en cours d\'édition, juste au-dessus.<br>Le texte dans l\'onglet sera le lien sur lequel cliquera le joueur pour atteindre la page que tu vas créer dans l\'onglet.<br>Clique sur l\'onglet marqué d\'un + pour ajouter un nouveau choix.<br>
+Choisis une page déjà existante pour que le joueur puisse y retourner.',
   'existing_page' => 'Choisis une page existante',
   'edit_pages_title' => 'Création de nouvelles pages',
   'actions_modal_title' => 'Nouvelle action',
@@ -43,4 +44,5 @@ return array (
   'riddle_answer_help' => 'La réponse à l\'énigme. S\'il s\'agit d\'une valeur numérique, coche la case. (Servira dans une version future)',
   'riddle_item_earned' => 'Tu as obtenu un(e) :item_name',
   'riddle_already_solved' => 'Tu as déjà résolu cette énigme.',
+  'confirm_delete' => 'Es-tu sûr(e) de vouloir supprimer cette page ?',
 );
