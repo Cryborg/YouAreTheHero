@@ -134,7 +134,7 @@
     var PlaceholdersButton = function (context) {
         var ui = $.summernote.ui;
         var placeholders = {
-            @foreach($placeholders as $key => $placeholder)
+            @foreach($placeholders ?? [] as $key => $placeholder)
                 '{{ $key }}': '{{ $placeholder }}',
             @endforeach
         };

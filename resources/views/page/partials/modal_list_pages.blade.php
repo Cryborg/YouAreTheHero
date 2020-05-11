@@ -1,59 +1,55 @@
-<div class="row">
-    <div class="col">
-        @info({!! trans('story.list_all_pages_help') !!})
-        <table id="listAllPages">
-            <thead>
-                <tr>
-                    <th class="w-25">@lang('model.title')</th>
-                    <th>@lang('model.content')</th>
-                    <th class="w-25">@lang('model.updated_at')</th>
-                </tr>
-            </thead>
-            <tbody class="alternate-rows-colors">
-                @foreach($pages as $page)
-                    <tr data-pageid="{{ $page->id }}">
-                        <td>
-                            <div class="font-smaller">
-                                @if ($page->is_first)
-                                    <div class="badge badge-primary pull-left" data-toggle="tooltip" title="@lang('model.is_first')">
-                                        <span class="glyphicon glyphicon-play"></span>
-                                    </div>
-                                @endif
-                                @if ($page->is_checkpoint)
-                                    <div class="pull-left" data-toggle="tooltip" title="@lang('model.is_checkpoint')">
-                                        <span class="glyphicon glyphicon-map-marker"></span>
-                                    </div>
-                                @endif
-                                @if ($page->is_last)
-                                    <div class="pull-left" data-toggle="tooltip" title="@lang('model.is_last')">
-                                        <span class="glyphicon glyphicon-fast-forward"></span>
-                                    </div>
-                                @endif
+@info({!! trans('story.list_all_pages_help') !!})
 
+<div class="row">
+@foreach($pages as $page)
+        <div class="col-sm-6">
+            <div class="card mb-3 border-secondary clickable" data-pageid="{{ $page->id }}">
+                <div class="row no-gutters">
+                    <div class="col-md-1 card-header text-center">
+                        @if ($page->is_first)
+                            <div class="badge badge-primary w-100" data-toggle="tooltip" title="@lang('model.is_first')">
+                                <span class="glyphicon glyphicon-play"></span>
+                            </div>
+                        @endif
+                        @if ($page->is_checkpoint)
+                            <div class="badge badge-success w-100 text-white" data-toggle="tooltip" title="@lang('model.is_checkpoint')">
+                                <span class="glyphicon glyphicon-map-marker"></span>
+                            </div>
+                        @endif
+                        @if ($page->is_last)
+                            <div class="badge badge-success w-100" data-toggle="tooltip" title="@lang('model.is_last')">
+                                <span class="glyphicon glyphicon-fast-forward"></span>
+                            </div>
+                        @endif
+
+                            @if ($page->parents->count() === 0 && $page->choices->count() === 0)
+                                <div class="badge badge-danger font-smaller w-100">
+                                    <span class="glyphicon glyphicon-trash clickable"
+                                        data-pageid="{{ $page->id }}"
+                                        data-toggle="tooltip" title="@lang('common.delete')"
+                                    ></span>
+                                </div>
+                            @endif
+
+                    </div>
+                    <div class="col-md-11">
+                        <div class="card-header">
+                            {{ $page->title }}
+                            <div class="font-smaller">
                                 <div class="badge badge-light pull-right">
                                     {{ $page->parents->count() }} / {{ $page->choices->count() }}
                                 </div>
                             </div>
-                            <br>
-                            <div>
-                                <a href="{{ route('page.edit', ['page' => $page->id]) }}">
-                                    {{ $page->title }}
-                                </a>
-                            </div>
-                            <div class="font-smaller pull-right">
-                                @if ($page->parents->count() === 0 && $page->choices->count() === 0)
-                                    <span class="glyphicon glyphicon-trash text-danger clickable"
-                                        data-pageid="{{ $page->id }}"
-                                        data-toggle="tooltip" title="@lang('common.delete')"
-                                    ></span>
-                                @endif
-                            </div>
-                        </td>
-                        <td>{!! $page->present()->content !!}</td>
-                        <td class="moment_date">{{ $page->updated_at }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{!! $page->present()->content !!}</p>
+                            <p class="card-text text-right"><small class="text-muted moment_date">{{ $page->updated_at }}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+@endforeach
 </div>
+

@@ -306,3 +306,9 @@ div.menu-bar-left .menu-icon-bottom:disabled {
 .glyphicon-trash {
     cursor: pointer;
 }
+.modal .card.border-secondary {
+    border-width: 1px;
+}
+.modal .card:hover {
+    background-color: #f5f5f5;
+}

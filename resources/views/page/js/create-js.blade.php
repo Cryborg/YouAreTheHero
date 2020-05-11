@@ -31,7 +31,7 @@
     $(document).ready(function () {
 
         // Delete a page
-        $('.menu-icon-bottom.glyphicon-trash, #listAllPages .glyphicon-trash').on('click', function ()
+        $('.menu-icon-bottom.glyphicon-trash, .card .glyphicon-trash').on('click', function ()
         {
             if (!confirm('@lang('page.confirm_delete')')) return false;
 
@@ -295,7 +295,7 @@
         @endfor
 
         // Convert dates to human readable strings
-        $('td.moment_date').each(function(id, elt) {
+        $('.moment_date').each(function(id, elt) {
             var originalDate = $(elt).html();
             var momentDate = moment(originalDate).fromNow();
 
@@ -307,7 +307,7 @@
         });
     });
 
-    $(document).on('click', '#listAllPages tr', function () {
+    $(document).on('click', '.modal .card', function () {
         window.location.href = route('page.edit', {'page': $(this).data('pageid')});
     });
 
