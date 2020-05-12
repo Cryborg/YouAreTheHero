@@ -69,9 +69,9 @@ Route::post('/character/create/{story}', 'CharacterController@store')->name('cha
 // Language
 Route::get('language/{lang}', 'HomeController@language')->name('language');
 
-// StatStory
-Route::post('/stat/{story}/create', 'StatStoryController@store')->name('stat.store');
-Route::delete('/stat/{stat_story}/delete', 'StatStoryController@delete')->name('stat.delete');
+// Field
+Route::post('/field/{story}/create', 'FieldController@store')->name('field.store');
+Route::delete('/field/{field}/delete', 'FieldController@delete')->name('field.delete');
 
 // Changelog
 Route::get('/changelog', 'HomeController@changelog')->name('changelog');

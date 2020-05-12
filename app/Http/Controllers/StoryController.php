@@ -9,13 +9,13 @@ use App\Models\Item;
 use App\Models\Checkpoint;
 use App\Models\CharacterStat;
 use App\Models\StoryGenre;
-use App\Models\UniqueItemsUsed;
+use App\Models\CharacterItem;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use \App\Models\Story;
 use \App\Models\Character;
 use \App\Models\Page;
-use \App\Models\PageLink;
+use \App\Models\Choices;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
@@ -229,7 +229,7 @@ class StoryController extends Controller
         // Check if the item used has the single_use flag,
         // and in this case it must not be shown again
         if ($item->single_use) {
-            UniqueItemsUsed::create([
+            CharacterItem::create([
                 'character_id' => $character->id,
                 'item_id'      => $item->id,
             ]
@@ -388,9 +388,9 @@ class StoryController extends Controller
         $key = 'choices_' . $page->id;
 
         return Cache::remember($key, Config::get('app.story.cache_ttl'), function () use ($page, $key) {
-            return PageLink::with('pageTo')
-                           ->where('page_from', $page->id)
-                           ->get();
+            return Choices::with('pageTo')
+                          ->where('page_from', $page->id)
+                          ->get();
         }
         );
     }

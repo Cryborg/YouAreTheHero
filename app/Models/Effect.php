@@ -13,8 +13,8 @@ class Effect extends Model
         return $this->hasMany(Item::class);
     }
 
-    public function stat_story()
+    public function field()
     {
-        return $this->belongsTo(StatStory::class);
+        return $this->belongsTo(Field::class);
     }
 }

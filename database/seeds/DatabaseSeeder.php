@@ -6,7 +6,7 @@ use App\Models\StoryGenre;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Page;
-use App\Models\PageLink;
+use App\Models\Choices;
 use App\Models\Item;
 
 class DatabaseSeeder extends Seeder
@@ -26,8 +26,7 @@ class DatabaseSeeder extends Seeder
         \Illuminate\Support\Facades\Artisan::call('dev:generate');
         $this->call(StoriesTableSeeder::class);
         $this->call(PagesTableSeeder::class);
-        $this->call(PageLinkTableSeeder::class);
-        $this->call(StatsTableSeeder::class);
+        $this->call(ChoicesTableSeeder::class);
     }
 }
 

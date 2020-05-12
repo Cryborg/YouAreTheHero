@@ -24,7 +24,7 @@ class Riddle extends Model
 
     public function answered_riddle()
     {
-        return $this->hasOne(AnsweredRiddle::class);
+        return $this->hasOne(CharacterRiddle::class);
     }
 
     public function isSolved()

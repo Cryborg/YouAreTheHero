@@ -92,7 +92,7 @@ class Action
                 case 'character_stat':
                     foreach ($characterStats as $stat) {
                         foreach ($effects as $effect) {
-                            if ($stat->stat_story_id == $effect['stat_story_id']) {
+                            if ($stat->field_id == $effect['field_id']) {
                                 switch ($effect['operator']) {
                                     case '+':
                                         $stat->value += $effect['quantity'];

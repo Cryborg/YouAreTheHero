@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAnsweredRiddlesTable extends Migration
+class CreateCharacterRiddleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAnsweredRiddlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('answered_riddles', function (Blueprint $table) {
+        Schema::create('character_riddle', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             $table->unsignedBigInteger('character_id');
@@ -33,6 +33,6 @@ class CreateAnsweredRiddlesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answered_riddles');
+        Schema::dropIfExists('character_riddle');
     }
 }

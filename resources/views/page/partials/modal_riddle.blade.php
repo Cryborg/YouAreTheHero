@@ -60,7 +60,7 @@
                                                 @if ($page->id !== $existingPage->id)
                                                     <option value="{{ $existingPage->id }}"
                                                         @if ($page->riddle)
-                                                        @if ($existingPage->id === $page->riddle->target_page)
+                                                        @if ($existingPage->id === $page->riddle->target_page_id)
                                                         selected
                                                         @endif
                                                         @endif
@@ -78,7 +78,7 @@
                                         {!! Form::label('riddle_page_text_label', trans('page.riddle_page_text_label', ['class' => 'control-label'])) !!}
                                     </div>
                                     <div class="panel-body">
-                                        {!! Form::text('riddle_target_text', $page->riddle ? $page->riddle->target_text : '',  ['id' => 'riddle_target_text']) !!}
+                                        {!! Form::text('riddle_target_page_text', $page->riddle ? $page->riddle->target_page_text : '',  ['id' => 'riddle_target_page_text']) !!}
                                     </div>
                                 </div>
                             </div>

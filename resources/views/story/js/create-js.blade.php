@@ -18,7 +18,7 @@
             var correct = true;
 
             // No field can be empty
-            $('input.new_stat').each(function () {
+            $('input.new_field').each(function () {
                 if ($(this).val() === '') {
                     correct = false;
                     $(this).addClass('input-invalid');
@@ -35,7 +35,7 @@
 
         $(document).on('click', '.glyphicon-trash', function () {
             var $this = $(this);
-            var id = $this.data('statstory_id');
+            var id = $this.data('field_id');
             var loadingClass = 'fa fa-circle-o-notch fa-spin';
             var defaultClass = 'glyphicon glyphicon-trash text-danger';
 
@@ -44,7 +44,7 @@
             }
 
             $.get({
-                url: route('stat.delete', {stat_story: id}),
+                url: route('field.delete', {field: id}),
                 method: 'DELETE'
             })
                 .done(function (result) {
@@ -75,7 +75,7 @@
         $(document).on('click', '.glyphicon-plus-sign', function () {
             if (checkForm()) {
                 $.post({
-                    url: route('stat.store', {'story': {{ $story->id }} }),
+                    url: route('field.store', {'story': {{ $story->id }} }),
                     data: {
                         'full_name': $('#full_name').val(),
                         'short_name': $('#short_name').val(),
@@ -86,11 +86,11 @@
                     .done(function (result) {
                         if (result.success) {
                             statsDatatable.row.add([
-                                result.statStory.full_name,
-                                result.statStory.short_name,
-                                result.statStory.min_value,
-                                result.statStory.max_value,
-                                '<span class="glyphicon glyphicon-trash text-danger" data-statstory_id="' + result.statStory.id + '"></span>'
+                                result.field.full_name,
+                                result.field.short_name,
+                                result.field.min_value,
+                                result.field.max_value,
+                                '<span class="glyphicon glyphicon-trash text-danger" data-field_id="' + result.field.id + '"></span>'
                             ]).draw();
 
                             showToast('success', {
@@ -98,7 +98,9 @@
                                 text: "{{ trans('notification.save_success_text') }}",
                             });
 
-                            $('#full_name, #short_name, #min_value, #max_value').val('');
+                            $('#full_name, #short_name').val('');
+                            $('#min_value').val('1');
+                            $('#max_value').val('10');
                             $('#full_name').focus();
                         }
                     })

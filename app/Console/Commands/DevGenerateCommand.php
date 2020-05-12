@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Genre;
 use App\Models\Item;
 use App\Models\Page;
-use App\Models\PageLink;
+use App\Models\Choices;
 use App\Models\Story;
 use App\Models\StoryGenre;
 use App\Models\User;

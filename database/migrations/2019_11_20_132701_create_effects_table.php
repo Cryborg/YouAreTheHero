@@ -19,8 +19,8 @@ class CreateEffectsTable extends Migration
             $table->unsignedBigInteger('item_id');
             $table->foreign('item_id')->references('id')->on('items');
 
-            $table->unsignedBigInteger('stat_story_id');
-            $table->foreign('stat_story_id')->references('id')->on('stat_story');
+            $table->unsignedBigInteger('field_id');
+            $table->foreign('field_id')->references('id')->on('fields');
 
             $table->string('operator', 2);
             $table->integer('quantity')->default(1);

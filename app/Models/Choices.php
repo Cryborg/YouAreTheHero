@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PageLink extends Model
+class Choices extends Model
 {
-    protected $table = "page_link";
     protected $guarded = ['id'];
 
     protected $keyType = 'string';

@@ -6,13 +6,13 @@
             <td class="w-25">@lang('page.riddle_answer_label')</td>
             <td>{{ $page->riddle->answer }}</td>
         </tr>
-        @if ($page->riddle->target_page)
+        @if ($page->riddle->target_page_id)
             <tr>
                 <td>@lang('page.riddle_page_text_label')</td>
-                <td>{{ $page->riddle->target_text }}</td>
+                <td>{{ $page->riddle->target_page_text }}</td>
             </tr>
             <tr>
-                <td>@lang('page.riddle_target_page_label')</td>
+                <td>@lang('page.riddle_target_page_id_label')</td>
                 <td class="font-italic">{{ $page->riddle->page->title }}</td>
             </tr>
         @endif

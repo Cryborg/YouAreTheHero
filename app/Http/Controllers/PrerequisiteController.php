@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Action;
 use App\Models\Item;use App\Models\Page;
 use App\Models\Prerequisite;
-use App\Models\CharacterStat;use App\Models\StatStory;use Illuminate\Http\JsonResponse;
+use App\Models\CharacterStat;use App\Models\Field;use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class PrerequisiteController extends Controller
@@ -46,7 +46,7 @@ class PrerequisiteController extends Controller
             // Stat case
             if ($request->get('stats')) {
                 foreach ($request->get('stats') as $stat => $value) {
-                    $foundStat = StatStory::where([
+                    $foundStat = Field::where([
                         'story_id' => $page->story->id,
                         'full_name' => $stat
                     ])->firstOrFail();

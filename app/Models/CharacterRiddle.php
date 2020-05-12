@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AnsweredRiddle extends Model
+class CharacterRiddle extends Model
 {
     protected $guarded = ['id'];
 

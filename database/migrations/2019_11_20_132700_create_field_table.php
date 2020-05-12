@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStatStoryTable extends Migration
+class CreateFieldTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateStatStoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('stat_story', function (Blueprint $table) {
+        Schema::create('fields', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             $table->unsignedBigInteger('story_id');
@@ -37,6 +37,6 @@ class CreateStatStoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stat_story');
+        Schema::dropIfExists('fields');
     }
 }

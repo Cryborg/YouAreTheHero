@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Inventory;
 use App\Models\Page;
-use App\Models\PageLink;
+use App\Models\Choices;
 use App\Models\Story;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -116,7 +116,7 @@ class PageController extends Controller
             ]);
 
             if (isset($validated['link_text'], $validated['page_from']) && !empty($validated['link_text']) && !empty($validated['page_from'])) {
-                PageLink::updateOrCreate([
+                Choices::updateOrCreate([
                     'page_from' => $validated['page_from'],
                     'page_to'   => $page->id,
                 ], [
@@ -182,8 +182,8 @@ class PageController extends Controller
                     }
                 }
 
-                if ($page->riddle && $page->riddle->target_page) {
-                    $pageResponse = $page->riddle->target_text;
+                if ($page->riddle && $page->riddle->target_page_id) {
+                    $pageResponse = $page->riddle->target_page_text;
                 }
             }
 
@@ -192,7 +192,7 @@ class PageController extends Controller
                 'itemResponse' => $itemResponse,
                 'pageResponse' => $pageResponse,
                 'solved' => $page->riddle ? $page->riddle->isSolved() : 'bouh',
-                'refreshInventory' => $page->riddle && (isset($page->riddle->item_id) || isset($page->riddle->target_page)),
+                'refreshInventory' => $page->riddle && (isset($page->riddle->item_id) || isset($page->riddle->target_page_id)),
             ]);
         }
 

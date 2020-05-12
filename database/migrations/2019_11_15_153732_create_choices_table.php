@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePageLinkTable extends Migration
+class CreateChoicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePageLinkTable extends Migration
      */
     public function up()
     {
-        Schema::create('page_link', function (Blueprint $table) {
+        Schema::create('choices', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             $table->unsignedBigInteger('page_from')->nullable();
@@ -35,6 +35,6 @@ class CreatePageLinkTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('page_link');
+        Schema::dropIfExists('choices');
     }
 }

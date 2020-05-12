@@ -51,6 +51,6 @@ class Item extends Model
 
     public function effects()
     {
-        return $this->hasMany(Effect::class)->with('stat_story');
+        return $this->hasMany(Effect::class)->with('field');
     }
 }

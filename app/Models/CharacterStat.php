@@ -8,8 +8,8 @@ class CharacterStat extends Model
 {
     protected $guarded = ['id'];
 
-    public function stat_story()
+    public function field()
     {
-        return $this->belongsTo(StatStory::class);
+        return $this->belongsTo(Field::class);
     }
 }

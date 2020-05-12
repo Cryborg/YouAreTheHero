@@ -23,7 +23,7 @@
                             <div class="row">
                                 <div class="col p-2">
                                     @include('story.partials.effects', [
-                                        'name' => $effect->stat_story->full_name,
+                                        'name' => $effect->field->full_name,
                                         'value' => $effect->quantity,
                                         'operator' => $effect->operator === '+' ? 'add' : 'sub'
                                     ])

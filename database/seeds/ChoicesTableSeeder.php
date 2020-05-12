@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class PageLinkTableSeeder extends Seeder
+class ChoicesTableSeeder extends Seeder
 {
 
     /**
@@ -14,9 +14,9 @@ class PageLinkTableSeeder extends Seeder
     {
 
 
-        \DB::table('page_link')->delete();
+        \DB::table('choices')->delete();
 
-        \DB::table('page_link')->insert(array (
+        \DB::table('choices')->insert(array (
                                             0 =>
                                                 array (
                                                     'id' => 86,

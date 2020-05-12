@@ -102,9 +102,9 @@ class Story extends Model
             ->first();
     }
 
-    public function stat_stories()
+    public function fields()
     {
-        return $this->hasMany(StatStory::class);
+        return $this->hasMany(Field::class);
     }
 
     public function story_options()

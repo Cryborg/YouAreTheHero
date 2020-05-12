@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\StatStory;
+use App\Models\Field;
 use App\Models\Story;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class StatStoryController extends Controller
+class FieldController extends Controller
 {
     public function __construct()
     {
@@ -28,22 +28,22 @@ class StatStoryController extends Controller
             $validated['story_id'] = $story->id;
             $validated['start_value'] = $validated['min_value'];
 
-            $statStory = StatStory::create($validated);
+            $field = Field::create($validated);
 
             return response()->json([
-                'success'   => $statStory instanceof StatStory,
-                'statStory' => $statStory->toArray(),
+                                        'success'   => $field instanceof Field,
+                                        'field' => $field->toArray(),
             ]);
         }
 
         abort(JsonResponse::HTTP_NOT_FOUND);
     }
 
-    public function delete(Request $request, StatStory $statStory)
+    public function delete(Request $request, Field $field)
     {
         if ($request->ajax()) {
             return response()->json([
-                'success' => $statStory->delete()
+                'success' => $field->delete()
             ]);
         }
 

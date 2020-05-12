@@ -14,4 +14,5 @@ return array (
   'stat_attribution_help' => 'If you choose \'Player\', the player will have to manually choose how many points go to which stat. You have to define how many of these points they can share.
 If you choose \'Dice\', the player will have to throw dice and their stats will be accordingly set.',
   'attribution_label' => 'Stats attribution',
+  'gain_or_loss' => 'Gain/Loss',
 );

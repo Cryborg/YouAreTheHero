@@ -41,16 +41,16 @@ class Page extends Model
         static::deleted(function($page)
         {
             // Delete the links that lead to the page we just deleted
-            $page->page_links_to()->delete();
+            $page->links_to()->delete();
         });
     }
 
     /**
      * @return HasMany
      */
-    public function page_links_to()
+    public function links_to()
     {
-        return $this->hasMany(PageLink::class, 'page_to');
+        return $this->hasMany(Choices::class, 'page_to');
     }
 
     /**
@@ -76,7 +76,7 @@ class Page extends Model
      */
     public function choices()
     {
-        return $this->belongsToMany(Page::class, 'page_link', 'page_from', 'page_to', 'id')->withPivot('link_text');
+        return $this->belongsToMany(Page::class, 'choices', 'page_from', 'page_to', 'id')->withPivot('link_text');
     }
 
     /**
@@ -84,7 +84,7 @@ class Page extends Model
      */
     public function parents()
     {
-        return $this->belongsToMany(Page::class, 'page_link', 'page_to', 'page_from', 'id')->withPivot('link_text');
+        return $this->belongsToMany(Page::class, 'choices', 'page_to', 'page_from', 'id')->withPivot('link_text');
     }
 
     /**

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUniqueItemsUsedTable extends Migration
+class CreateCharacterItemTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUniqueItemsUsedTable extends Migration
      */
     public function up()
     {
-        Schema::create('unique_items_used', function (Blueprint $table) {
+        Schema::create('character_item', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             $table->unsignedBigInteger('character_id');
@@ -33,6 +33,6 @@ class CreateUniqueItemsUsedTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('unique_items_used');
+        Schema::dropIfExists('character_item');
     }
 }

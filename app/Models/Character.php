@@ -83,6 +83,6 @@ class Character extends Model
 
     public function character_stats()
     {
-        return $this->hasMany(CharacterStat::class)->with('stat_story');
+        return $this->hasMany(CharacterStat::class)->with('field');
     }
 }

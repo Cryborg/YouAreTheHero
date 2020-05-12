@@ -55,7 +55,7 @@
             @isset($page->story->story_options->has_stats)
                 <div class="row">
                     <div class="col">
-                        <div class="title">@lang('stat.sheet')</div>
+                        <div class="title">@lang('field.sheet')</div>
                     </div>
                 </div>
                 <div class="row">

@@ -44,13 +44,13 @@ namespace App\Models{
  * @property string $link_text
  * @property-read \App\Models\Page|null $pageFrom
  * @property-read \App\Models\Page|null $pageTo
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PageLink newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PageLink newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PageLink query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PageLink whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PageLink whereLinkText($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PageLink wherePageFrom($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PageLink wherePageTo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choices newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choices newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choices query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choices whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choices whereLinkText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choices wherePageFrom($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choices wherePageTo($value)
  */
 	class PageLink extends \Eloquent {}
 }
@@ -178,14 +178,14 @@ namespace App\Models{
  * @property int $item_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UniqueItemsUsed newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UniqueItemsUsed newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UniqueItemsUsed query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UniqueItemsUsed whereCharacterId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UniqueItemsUsed whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UniqueItemsUsed whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UniqueItemsUsed whereItemId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UniqueItemsUsed whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CharacterItem newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CharacterItem newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CharacterItem query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CharacterItem whereCharacterId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CharacterItem whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CharacterItem whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CharacterItem whereItemId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CharacterItem whereUpdatedAt($value)
  */
 	class UniqueItemsUsed extends \Eloquent {}
 }
@@ -299,20 +299,20 @@ namespace App\Models{
  * @property int $number
  * @property bool $is_first
  * @property bool $is_last
- * @property string|null $title
- * @property string $content
+ * @property string|null                                                         $title
+ * @property string                                                              $content
  * @property \Illuminate\Database\Eloquent\Collection|\App\Models\Prerequisite[] $prerequisites
- * @property string|null $layout
- * @property bool $is_checkpoint
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Action[] $actions
- * @property-read int|null $actions_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\PageLink[] $pageLinks
- * @property-read int|null $page_links_count
- * @property-read int|null $prerequisites_count
- * @property-read \App\Models\Story $story
+ * @property string|null                                                         $layout
+ * @property bool                                                                $is_checkpoint
+ * @property \Illuminate\Support\Carbon|null                                     $created_at
+ * @property \Illuminate\Support\Carbon|null                                     $updated_at
+ * @property \Illuminate\Support\Carbon|null                                     $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Action[]  $actions
+ * @property-read int|null                                                       $actions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Choices[] $pageLinks
+ * @property-read int|null                                                       $page_links_count
+ * @property-read int|null                                                       $prerequisites_count
+ * @property-read \App\Models\Story                                              $story
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page newQuery()

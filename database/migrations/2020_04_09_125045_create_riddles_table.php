@@ -22,10 +22,10 @@ class CreateRiddlesTable extends Migration
             $table->string('answer', 30);
             $table->enum('type', ['integer', 'string'])->default('string');
 
-            $table->string('target_text', 255)->nullable()
+            $table->string('target_page_text', 255)->nullable()
                 ->comment('Text of the link giving the access to another page, if the riddle leads to somewhere else');
-            $table->unsignedBigInteger('target_page')->nullable();
-            $table->foreign('target_page')->references('id')->on('pages');
+            $table->unsignedBigInteger('target_page_id')->nullable();
+            $table->foreign('target_page_id')->references('id')->on('pages');
 
             $table->unsignedBigInteger('item_id')->nullable();
             $table->foreign('item_id')->references('id')->on('items');

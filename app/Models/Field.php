@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class StatStory extends Model
+class Field extends Model
 {
-    protected $table = 'stat_story';
     protected $guarded = ['id'];
 
     public function prerequisites()

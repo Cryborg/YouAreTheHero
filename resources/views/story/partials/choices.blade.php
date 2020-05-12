@@ -7,9 +7,9 @@
                 </a>
             @endforeach
             @if ($page->riddle && $page->riddle->isSolved())
-                @if ($page->riddle->target_page)
-                    <a href="{{ route('story.play', ['story' => $story->id, 'page' => $page->riddle->target_page]) }}">
-                        <button class="large button">{!! $page->riddle->target_text !!}</button>
+                @if ($page->riddle->target_page_id)
+                    <a href="{{ route('story.play', ['story' => $story->id, 'page' => $page->riddle->target_page_id]) }}">
+                        <button class="large button">{!! $page->riddle->target_page_text !!}</button>
                     </a>
                 @endif
             @endif

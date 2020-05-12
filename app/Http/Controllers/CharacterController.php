@@ -50,7 +50,7 @@ class CharacterController extends Controller
                 foreach ($stats as $stat) {
                     CharacterStat::create([
                         'character_id'    => $character->id,
-                        'stat_story_id' => $stat['stat_id'],
+                        'field_id' => $stat['stat_id'],
                         'value' => $stat['value'],
                     ]
                     );

@@ -60,7 +60,7 @@ class ItemController extends Controller
 
         foreach ($effects as $effect) {
             Effect::updateOrCreate([
-                'stat_story_id' => $effect['id'],
+                'field_id' => $effect['id'],
                 'item_id' => $item->id,
             ], [
                 'operator' => '+',

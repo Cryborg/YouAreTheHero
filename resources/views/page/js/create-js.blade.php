@@ -408,8 +408,8 @@
                 'answer': $('#riddle_answer_text').val(),
                 'type': $('#answer_is_integer').is(':checked') ? 1 : 0,
                 'item_id': $('#riddle_item option:selected').val(),
-                'target_page': $('#riddle_page option:selected').val(),
-                'target_text': $('#riddle_target_text').val(),
+                'target_page_id': $('#riddle_page option:selected').val(),
+                'target_page_text': $('#riddle_target_page_text').val(),
             },
         })
             .done(function (data) {
@@ -427,10 +427,10 @@
                         '</tr>' +
                         '<tr>' +
                             '<td>' + '@lang('page.riddle_page_text_label')' + '</td>' +
-                            '<td>' + data.riddle.target_text + '</td>' +
+                            '<td>' + data.riddle.target_page_text + '</td>' +
                         '</tr>' +
                         '<tr>' +
-                            '<td>' + '@lang('page.riddle_target_page_label')' + '</td>' +
+                            '<td>' + '@lang('page.riddle_target_page_id_label')' + '</td>' +
                             '<td class="font-italic">' + data.page_title + '</td>' +
                         '</tr>' +
                         '<tr>' +

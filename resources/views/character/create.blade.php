@@ -24,11 +24,11 @@
         <p class="help-block">{{ trans('character.stats_help') }}</p>
         <div class="row">
             <div class="col-2 text-center">
-                {{ trans('stat.points_left_to_share') }}:
+                {{ trans('field.points_left_to_share') }}:
                 <div id="points_left">{{ $story->story_options->points_to_share }}</div>
             </div>
             <div class="col">
-                @foreach($story->stat_stories as $stat)
+                @foreach($story->fields as $stat)
                     <div class="form-group row">
                         <div class="col-sm-3 col-lg-1">{{ $stat->full_name }}</div>
                         <div class="col-sm-3 col-lg-1 quantity">
@@ -40,7 +40,7 @@
                                 'onkeydown' => 'return false'
                             ]) }}
                         </div>
-                        <small class="text-muted">({{ trans('stat.range_text', [
+                        <small class="text-muted">({{ trans('field.range_text', [
                             'min' => $stat->min_value,
                             'max' => $stat->max_value
                              ]) }})</small>
@@ -52,7 +52,7 @@
 
     <button id="save_character" class="btn btn-success submit-btn mb-1 w-50"
         type="submit" data-original-text="{{ trans('story.create_submit') }}"
-        @if ($story->stat_stories->count() > 0) disabled @endif
+        @if ($story->fields->count() > 0) disabled @endif
         >{{ trans('story.create_submit') }}</button>
     {!! Form::close() !!}
 @endsection

@@ -45,11 +45,11 @@
                 <div class="col pl-sm-2 pl-lg-5">
                     <table class="w-100">
                         <thead>
-                            <th>{{ trans('stat.attribute') }}</th>
-                            <th>{{ trans('stat.min_value') }}</th>
+                            <th>{{ trans('field.attribute') }}</th>
+                            <th>{{ trans('field.gain_or_loss') }}</th>
                         </thead>
                         <tbody>
-                            @foreach($story->stat_stories as $stat)
+                            @foreach($story->fields as $stat)
                                 <tr>
                                     <td>{{ $stat->full_name }}</td>
                                     <td><input name="stat_values[]" data-id="{{ $stat->id }}" class="mb-1" type="number"></td>

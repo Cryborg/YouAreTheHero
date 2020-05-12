@@ -24,8 +24,8 @@ class RiddleController extends Controller
         $validated = $request->validate([
             'answer'        => 'required',
             'item_id'       => 'present',
-            'target_page'   => 'required_with:target_text',
-            'target_text'   => 'required_with:target_page',
+            'target_page_id'   => 'required_with:target_page_text',
+            'target_page_text'   => 'required_with:target_page_id',
             'type'          => 'required',
         ]);
 

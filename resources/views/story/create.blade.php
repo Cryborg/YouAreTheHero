@@ -94,7 +94,7 @@
                 </label>
             </div>
 
-            <label>{{ trans('stat.sheet') }}</label>
+            <label>{{ trans('field.sheet') }}</label>
             <p class="help-block">{!! trans('story.has_stats_help') !!}</p>
 
             <div class="form-group form-check ml-3">
@@ -107,7 +107,7 @@
             </div>
 
 {{--            EN ATTENTE DES LANCERS DE DéS            --}}
-{{--            <label>{{ trans('stat.attribution_label') }}</label>--}}
+{{--            <label>{{ trans('field.attribution_label') }}</label>--}}
 {{--            <p class="help-block">{!! trans('story.stat_attribution_help') !!}</p>--}}
 
 {{--            <div class="form-check ml-3">--}}
@@ -128,37 +128,37 @@
 {{--            </div>--}}
         </div>
         <div class="tab-pane" id="pills-sheet" role="tabpanel" aria-labelledby="pills-tab-3">
-            {!! Form::label('stat_story', trans('story.stats_label')) !!}
+            {!! Form::label('field', trans('story.stats_label')) !!}
             <p class="help-block">{!! trans('story.genres_help') !!}</p>
             <table id="stats_story" class="mb-3 w-50 m-0">
                 <thead>
                     <tr>
-                        <th>{{ trans('stat.full_name') }}</th>
-                        <th>{{ trans('stat.short_name') }}</th>
-                        <th>{{ trans('stat.min_value') }}</th>
-                        <th>{{ trans('stat.max_value') }}</th>
+                        <th>{{ trans('field.full_name') }}</th>
+                        <th>{{ trans('field.short_name') }}</th>
+                        <th>{{ trans('field.min_value') }}</th>
+                        <th>{{ trans('field.max_value') }}</th>
                         <th class="text-center">{{ trans('common.actions') }}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($story->stat_stories ?? [] as $stat)
+                    @foreach($story->fields ?? [] as $stat)
                         <tr>
                             <td>{{ $stat->full_name }}</td>
                             <td>{{ $stat->short_name }}</td>
                             <td>{{ $stat->min_value }}</td>
                             <td>{{ $stat->max_value }}</td>
                             <td class="text-center">
-                                <span class="glyphicon glyphicon-trash text-danger" data-statstory_id="{{ $stat->id }}"></span>
+                                <span class="glyphicon glyphicon-trash text-danger" data-field_id="{{ $stat->id }}"></span>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th><input class="new_stat form-control" type="text" id="full_name" maxlength="15" autocomplete="nope" required></th>
-                        <th><input class="new_stat form-control" type="text" id="short_name" maxlength="5" autocomplete="nope" required></th>
-                        <th><input class="new_stat form-control" type="number" id="min_value" value="1" required></th>
-                        <th><input class="new_stat form-control" type="number" id="max_value" value="10" required></th>
+                        <th><input class="new_field form-control" type="text" id="full_name" maxlength="15" autocomplete="nope" required></th>
+                        <th><input class="new_field form-control" type="text" id="short_name" maxlength="5" autocomplete="nope" required></th>
+                        <th><input class="new_field form-control" type="number" id="min_value" value="1" required></th>
+                        <th><input class="new_field form-control" type="number" id="max_value" value="10" required></th>
                         <th class="text-center">
                             <span class="glyphicon glyphicon-plus-sign"></span>
                         </th>
