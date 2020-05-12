@@ -10,20 +10,20 @@
             <tr>
                 <th></th>   {{-- Child rows button --}}
                 <th></th>   {{-- Story ID --}}
-                <th>{{ __('story.title') }}</th>
-                <th>{{ __('common.language') }}</th>
-                <th>{{ __('common.author') }}</th>
-                <th>{{ __('common.updated_at') }}</th>
+                <th>@lang('story.title')</th>
+                <th>@lang('common.language')</th>
+                <th>@lang('common.author')</th>
+                <th>@lang('common.updated_at')</th>
             </tr>
         </thead>
         <tfoot>
         <tr>
             <th></th>
             <th></th>
-            <th>{{ __('story.title') }}</th>
-            <th>{{ __('common.language') }}</th>
-            <th>{{ __('common.author') }}</th>
-            <th>{{ __('common.updated_at') }}</th>
+            <th>@lang('story.title')</th>
+            <th>@lang('common.language')</th>
+            <th>@lang('common.author')</th>
+            <th>@lang('common.updated_at')</th>
         </tr>
         </tfoot>
     </table>

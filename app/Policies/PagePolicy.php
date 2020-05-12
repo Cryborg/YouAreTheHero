@@ -19,7 +19,7 @@ class PagePolicy
      */
     public function view(User $user, Page $page)
     {
-        return $user->id == $page->story->user_id;
+        return $user->role === 'admin' || $user->id == $page->story->user_id;
     }
 
     /**

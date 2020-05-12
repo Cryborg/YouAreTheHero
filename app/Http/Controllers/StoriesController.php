@@ -49,18 +49,18 @@ class StoriesController extends Controller
      */
     public function ajaxList(Request $request)
     {
-        $query = Story::select(['id','title','description','user_id','locale','updated_at']);
+        $query = Story::select();
 
         $draft = $request->get('draft') == '1';
-        $cacheKey = 'stories.list';
 
         if ($draft) {
             $query->where('is_published', false)
                 ->where('user_id', Auth::id());
-            $cacheKey = 'stories.list.draft';
-        } else {
-            $query->where('is_published', true)
-                  ->orWhere('user_id', Auth::id());
+        }
+
+        if (!Auth::user()->hasRole('admin')) {
+            $query->where('user_id', Auth::id())
+                ->orWhere('is_published', true);
         }
 
         $stories = $query->get();
