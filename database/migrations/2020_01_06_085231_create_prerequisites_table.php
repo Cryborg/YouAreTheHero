@@ -16,11 +16,12 @@ class CreatePrerequisitesTable extends Migration
         Schema::create('prerequisites', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedBigInteger('page_id');
-            $table->foreign('page_id')->references('id')->on('pages');
+            $table->integer('quantity')->default(1);
 
             $table->morphs('prerequisiteable');
-            $table->integer('quantity')->default(1);
+
+            $table->unsignedBigInteger('page_id');
+            $table->foreign('page_id')->references('id')->on('pages');
 
             $table->timestamps();
         });

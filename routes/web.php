@@ -41,7 +41,7 @@ Route::post('/story/ajax_action', 'StoryController@ajaxAction')->name('story.aja
 Route::post('/story/ajax_get_item', 'StoryController@getItemAjax')->name('story.ajax_getitem');
 Route::post('/story/ajax_post_children_pages', 'StoryController@postChildrenPagesAjax')->name('story.ajax_postchildrenpages');
 
-Route::post('/story/{story}/options', 'StoryOptionsController@update')->name('story.options.post');
+Route::post('/story/{story}/options', 'StoryOptionController@update')->name('story.options.post');
 
 
 // Page

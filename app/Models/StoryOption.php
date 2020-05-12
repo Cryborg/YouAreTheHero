@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class StoryOptions extends Model
+class StoryOption extends Model
 {
-    protected $table = 'story_options';
 }

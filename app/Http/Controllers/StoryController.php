@@ -68,10 +68,10 @@ class StoryController extends Controller
 
         // If the character does not exist, it is a new game
         if (!$character) {
-            $storyOptions = $story->story_options();
+            $storyOption = $story->story_options();
 
             // If no option needs to be set, create an unnamed character
-            if ($storyOptions->count() === 0 || $story->story_options->has_character == false) {
+            if ($storyOption->count() === 0 || $story->story_options->has_character == false) {
                 Character::create([
                    'name'     => 'Unnamed',
                    'user_id'  => Auth::id(),

@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Notifications\ResetPassword;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -46,18 +45,6 @@ class User extends Authenticatable
         return $this->hasMany(Story::class);
     }
 
-    /**
-     * @param $storyId
-     *
-     * @return bool
-     */
-    public function owns($storyId)
-    {
-        $story = Story::firstOrFail($storyId);
-
-        return $story->user_id == $this->id;
-    }
-
     public function hasBeganStory(Story $story)
     {
         return Character::where([
@@ -70,15 +57,5 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPassword($token));
-    }
-
-    public function isAdmin()
-    {
-        return $this->role === 'admin';
-    }
-
-    public function isModerator()
-    {
-        return $this->role === 'moderator';
     }
 }

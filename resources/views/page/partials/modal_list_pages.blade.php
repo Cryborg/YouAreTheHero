@@ -24,14 +24,14 @@
 
                             @if ($page->parents->count() === 0 && $page->choices->count() === 0)
                                 <div class="badge badge-danger font-smaller w-100">
-                                    <span class="glyphicon glyphicon-trash clickable"
+                                    <span class="glyphicon glyphicon-trash clickable w-100"
                                         data-pageid="{{ $page->id }}"
                                         data-toggle="tooltip" title="@lang('common.delete')"
                                     ></span>
                                 </div>
                             @endif
-
                     </div>
+
                     <div class="col-md-11">
                         <div class="card-header">
                             {{ $page->title }}

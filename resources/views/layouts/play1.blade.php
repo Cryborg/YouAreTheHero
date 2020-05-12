@@ -19,6 +19,13 @@
         <div class="col col-xs-12 bloc">
             <div class="row">
                 <div class="col text-center mb-4">
+                    @can('edit', $page)
+                        <a href="{{ route('page.edit', ['page' => $page]) }}" target="_blank">
+                            <button class="pull-left">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                            </button>
+                        </a>
+                    @endcan
                     <div id="loadingDiv"></div>
                     <div class="title">{{ $page->title }}</div>
                 </div>

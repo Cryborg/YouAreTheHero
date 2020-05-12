@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Story;
 use Illuminate\Http\Request;
 
-class StoryOptionsController extends Controller
+class StoryOptionController extends Controller
 {
     /**
      * Update the specified resource in storage.

@@ -109,7 +109,7 @@ class Story extends Model
 
     public function story_options()
     {
-        return $this->hasOne(StoryOptions::class);
+        return $this->hasOne(StoryOption::class);
     }
 
     public function author()
