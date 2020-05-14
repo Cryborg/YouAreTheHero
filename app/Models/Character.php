@@ -27,11 +27,6 @@ class Character extends Model
         //});
     }
 
-    public function inventory()
-    {
-        return $this->hasMany(Inventory::class)->with('item');
-    }
-
     /**
      * @param $amount
      *
@@ -61,18 +56,23 @@ class Character extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function checkpoints(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function pages(): \Illuminate\Database\Eloquent\Relations\belongsToMany
     {
-        return $this->hasMany(Checkpoint::class);
+        return $this->belongsToMany(Page::class);
     }
 
-    public function fields()
+    public function fields(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Field::class)->withPivot('value');
     }
 
     public function riddles()
     {
-        return $this->hasMany(Riddle::class);
+        return $this->belongsToMany(Riddle::class);
+    }
+
+    public function inventory()
+    {
+        return $this->hasMany(Inventory::class)->with('item');
     }
 }

@@ -12,12 +12,12 @@ class PagesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('pages')->delete();
-        
+
         \DB::table('pages')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'story_id' => 2,
@@ -31,7 +31,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 16:34:01',
                 'deleted_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'story_id' => 2,
@@ -45,7 +45,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 16:39:49',
                 'deleted_at' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'story_id' => 2,
@@ -59,7 +59,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 16:42:35',
                 'deleted_at' => NULL,
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'story_id' => 2,
@@ -73,7 +73,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 21:11:54',
                 'deleted_at' => NULL,
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'story_id' => 2,
@@ -87,7 +87,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 16:45:34',
                 'deleted_at' => NULL,
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'story_id' => 2,
@@ -101,7 +101,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 21:18:08',
                 'deleted_at' => NULL,
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'story_id' => 2,
@@ -115,7 +115,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 21:24:39',
                 'deleted_at' => NULL,
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'story_id' => 2,
@@ -129,7 +129,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 21:27:20',
                 'deleted_at' => NULL,
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'story_id' => 2,
@@ -143,7 +143,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 21:29:03',
                 'deleted_at' => NULL,
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
                 'story_id' => 2,
@@ -157,7 +157,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 21:31:26',
                 'deleted_at' => NULL,
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
                 'story_id' => 2,
@@ -171,7 +171,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-14 03:48:11',
                 'deleted_at' => NULL,
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 12,
                 'story_id' => 4,
@@ -185,21 +185,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-09 14:07:21',
                 'deleted_at' => NULL,
             ),
-            12 => 
-            array (
-                'id' => 13,
-                'story_id' => 4,
-                'is_first' => 0,
-                'is_last' => 0,
-                'title' => 'Le hall d\'entrée',
-                'content' => '<p>Impressionnant, il n\'y a pas d\'autres mots.</p>',
-                'layout' => NULL,
-                'is_checkpoint' => 0,
-                'created_at' => '2020-05-09 14:39:25',
-                'updated_at' => '2020-05-11 05:23:30',
-                'deleted_at' => '2020-05-11 05:23:30',
-            ),
-            13 => 
+            13 =>
             array (
                 'id' => 14,
                 'story_id' => 4,
@@ -208,12 +194,12 @@ class PagesTableSeeder extends Seeder
                 'title' => 'Le hall d\'entrée',
                 'content' => '<p>Vraiment impressionnant, il faut bien le dire. Un escalier double se présente devant toi, menant à 4 portes à l\'étage. Deux autres portes imposantes se trouvent à ta gauche et à ta droite. Où veux-tu aller ?</p>',
                 'layout' => NULL,
-                'is_checkpoint' => 0,
+                'is_checkpoint' => 1,
                 'created_at' => '2020-05-09 14:49:56',
                 'updated_at' => '2020-05-10 07:43:08',
                 'deleted_at' => NULL,
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 15,
                 'story_id' => 4,
@@ -227,7 +213,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-09 14:53:41',
                 'deleted_at' => NULL,
             ),
-            15 => 
+            15 =>
             array (
                 'id' => 16,
                 'story_id' => 4,
@@ -241,7 +227,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-10 09:03:12',
                 'deleted_at' => NULL,
             ),
-            16 => 
+            16 =>
             array (
                 'id' => 17,
                 'story_id' => 4,
@@ -262,7 +248,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-11 11:48:57',
                 'deleted_at' => NULL,
             ),
-            17 => 
+            17 =>
             array (
                 'id' => 18,
                 'story_id' => 4,
@@ -276,7 +262,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-10 08:51:11',
                 'deleted_at' => NULL,
             ),
-            18 => 
+            18 =>
             array (
                 'id' => 19,
                 'story_id' => 4,
@@ -290,7 +276,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-11 06:26:43',
                 'deleted_at' => NULL,
             ),
-            19 => 
+            19 =>
             array (
                 'id' => 20,
                 'story_id' => 4,
@@ -304,7 +290,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-10 08:51:46',
                 'deleted_at' => NULL,
             ),
-            20 => 
+            20 =>
             array (
                 'id' => 21,
                 'story_id' => 4,
@@ -318,7 +304,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-11 06:26:38',
                 'deleted_at' => NULL,
             ),
-            21 => 
+            21 =>
             array (
                 'id' => 22,
                 'story_id' => 4,
@@ -332,63 +318,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-11 19:43:35',
                 'deleted_at' => NULL,
             ),
-            22 => 
-            array (
-                'id' => 23,
-                'story_id' => 4,
-                'is_first' => 0,
-                'is_last' => 0,
-                'title' => 'Sed nisi at corrupti laboriosam',
-                'content' => 'Veritatis sint necessitatibus dolorem. Est aut consequatur placeat quia aut ducimus. Delectus incidunt velit dolorum culpa ullam. Sed quia error saepe voluptatem sint beatae cum.',
-                'layout' => NULL,
-                'is_checkpoint' => 0,
-                'created_at' => '2020-05-11 05:22:31',
-                'updated_at' => '2020-05-11 05:23:40',
-                'deleted_at' => '2020-05-11 05:23:40',
-            ),
-            23 => 
-            array (
-                'id' => 24,
-                'story_id' => 4,
-                'is_first' => 1,
-                'is_last' => 0,
-                'title' => 'Reprehenderit porro a fugit beatae',
-                'content' => '<p>Doloremque accusantium amet fugit. Voluptatibus sed praesentium quae dolor in inventore qui. Sapiente dignissimos quia voluptates placeat rerum nulla saepe.</p>',
-                'layout' => 'play1',
-                'is_checkpoint' => 0,
-                'created_at' => '2020-05-11 11:53:07',
-                'updated_at' => '2020-05-11 19:34:02',
-                'deleted_at' => '2020-05-11 19:34:02',
-            ),
-            24 => 
-            array (
-                'id' => 25,
-                'story_id' => 4,
-                'is_first' => 1,
-                'is_last' => 0,
-                'title' => 'Dolorem aut dolorem dicta iste',
-                'content' => '<p>Saepe qui similique molestiae. Ut ut totam fuga quia. Qui dolor enim repellendus. Sed tempora sed sit omnis cum commodi.</p>',
-                'layout' => 'play1',
-                'is_checkpoint' => 0,
-                'created_at' => '2020-05-11 11:53:50',
-                'updated_at' => '2020-05-11 19:34:07',
-                'deleted_at' => '2020-05-11 19:34:07',
-            ),
-            25 => 
-            array (
-                'id' => 26,
-                'story_id' => 4,
-                'is_first' => 1,
-                'is_last' => 0,
-                'title' => 'Est et fugiat quos odit',
-                'content' => '<p>Omnis facere eos omnis sapiente in et qui maiores. Eos maiores itaque autem earum aut eum eligendi dolor. Minima praesentium dolor molestias quos sed fugiat est rerum.</p>',
-                'layout' => 'play1',
-                'is_checkpoint' => 0,
-                'created_at' => '2020-05-11 11:54:31',
-                'updated_at' => '2020-05-11 19:35:15',
-                'deleted_at' => '2020-05-11 19:35:15',
-            ),
-            26 => 
+            26 =>
             array (
                 'id' => 27,
                 'story_id' => 4,
@@ -402,7 +332,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-11 19:40:43',
                 'deleted_at' => NULL,
             ),
-            27 => 
+            27 =>
             array (
                 'id' => 28,
                 'story_id' => 4,
@@ -416,7 +346,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-11 19:42:05',
                 'deleted_at' => NULL,
             ),
-            28 => 
+            28 =>
             array (
                 'id' => 29,
                 'story_id' => 5,
@@ -430,7 +360,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 11:31:30',
                 'deleted_at' => NULL,
             ),
-            29 => 
+            29 =>
             array (
                 'id' => 30,
                 'story_id' => 5,
@@ -444,7 +374,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 11:36:55',
                 'deleted_at' => NULL,
             ),
-            30 => 
+            30 =>
             array (
                 'id' => 31,
                 'story_id' => 5,
@@ -459,7 +389,7 @@ class PagesTableSeeder extends Seeder
                 'deleted_at' => NULL,
             ),
         ));
-        
-        
+
+
     }
 }

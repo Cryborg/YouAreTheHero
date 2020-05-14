@@ -59,18 +59,18 @@ namespace App\Models{
 /**
  * App\Models\Character
  *
- * @property int $id
- * @property string $name
- * @property int $user_id
- * @property int $story_id
- * @property string $page_uuid
- * @property int $money
- * @property array|null $sheet
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Checkpoint[] $checkpoints
- * @property-read int|null $checkpoints_count
+ * @property int                                                                       $id
+ * @property string                                                                    $name
+ * @property int                                                                       $user_id
+ * @property int                                                                       $story_id
+ * @property string                                                                    $page_uuid
+ * @property int                                                                       $money
+ * @property array|null                                                                $sheet
+ * @property \Illuminate\Support\Carbon|null                                           $created_at
+ * @property \Illuminate\Support\Carbon|null                                           $updated_at
+ * @property \Illuminate\Support\Carbon|null                                           $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CharacterPage[] $checkpoints
+ * @property-read int|null                                                             $checkpoints_count
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Character newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Character newQuery()
@@ -363,14 +363,14 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Character $character
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Checkpoint newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Checkpoint newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Checkpoint query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Checkpoint whereCharacterId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Checkpoint whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Checkpoint whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Checkpoint wherePageId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Checkpoint whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CharacterPage newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CharacterPage newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CharacterPage query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CharacterPage whereCharacterId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CharacterPage whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CharacterPage whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CharacterPage wherePageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CharacterPage whereUpdatedAt($value)
  */
 	class Checkpoint extends \Eloquent {}
 }

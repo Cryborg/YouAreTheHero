@@ -41,7 +41,7 @@
 @endsection
 
 @section('map')
-    @foreach ($visitedPlaces as $key => $place)
+    @foreach ($visitedPlaces as $place)
         <a href="{{ route('story.play', ['story' => $story->id, 'page' => $place->page_id]) }}">{{ $place->page_title }}</a><br>
     @endforeach
 @endsection

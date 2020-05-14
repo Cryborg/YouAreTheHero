@@ -13,16 +13,12 @@ class CreateCheckpointsTable extends Migration
      */
     public function up()
     {
-        Schema::create('checkpoints', function (Blueprint $table) {
-            $table->bigIncrements('id');
-
+        Schema::create('character_page', function (Blueprint $table) {
             $table->unsignedBigInteger('character_id');
             $table->foreign('character_id')->references('id')->on('characters');
 
             $table->unsignedBigInteger('page_id');
             $table->foreign('page_id')->references('id')->on('pages');
-
-            $table->timestamps();
         });
     }
 
@@ -33,6 +29,6 @@ class CreateCheckpointsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('checkpoints');
+        Schema::dropIfExists('character_page');
     }
 }

@@ -23,6 +23,7 @@
         "matthiasmullie/minify": "^1.3",
         "orangehill/iseed": "^2.6",
         "snapappointments/bootstrap-select": "^1.13",
+        "spatie/laravel-activitylog": "^3.14",
         "stichoza/google-translate-php": "^4.0",
         "tightenco/ziggy": "^0.8.1",
         "twbs/bootstrap": "^4.3",

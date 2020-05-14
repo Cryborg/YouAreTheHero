@@ -6,7 +6,7 @@ use App\Classes\Action;
 use App\Models\Genre;
 use App\Models\Inventory;
 use App\Models\Item;
-use App\Models\Checkpoint;
+use App\Models\CharacterPage;
 use App\Models\CharacterField;
 use App\Models\StoryGenre;
 use App\Models\CharacterItem;
@@ -53,6 +53,7 @@ class StoryController extends Controller
         }
 
         $page_id = getSession('page_id');
+
         if (!empty($page_id)) {
             $page = Page::where('id', $page_id)
                         ->first();
@@ -109,15 +110,7 @@ class StoryController extends Controller
         setSession('character_id', $character->id);
         $this->saveCheckpoint($character, $page);
 
-        $visitedPlaces = $character->checkpoints;
-
-        $visitedPlaces = $visitedPlaces->map(function ($value, $key) {
-            $page                = Page::where('uuid', $value['page_id'])
-                                       ->firstOrFail();
-            $value['page_title'] = $page->title;
-            return $value;
-        }
-        );
+        $visitedPlaces = $character->pages;
 
         $actions = $this->filterActions($character, $page);
 
@@ -252,9 +245,9 @@ class StoryController extends Controller
      */
     public function inventory(Story $story)
     {
-        $character = $this->getCurrentCharacter($story);
+//        $character = $this->getCurrentCharacter($story);
 
-        $inventory = Inventory::where('character_id', $character->id)
+        $inventory = Inventory::where('character_id', getSession('character_id'))
                               ->get();
 
         if (!empty($inventory)) {
@@ -269,7 +262,7 @@ class StoryController extends Controller
 
             return view('story.inventory', [
                 'items'     => $items,
-                'character' => $character,
+                'character' => Character::find(getSession('character_id')),
             ]
             );
         }
@@ -349,14 +342,7 @@ class StoryController extends Controller
     private function saveCheckpoint(Character $character, $page): void
     {
         if ($page && $page->is_checkpoint) {
-            Checkpoint::firstOrCreate([
-                'character_id' => $character->id,
-                'page_id'    => $page->id,
-            ], [
-                    'character_id' => $character->id,
-                    'page_id'    => $page->id,
-                ]
-            );
+            $character->pages()->syncWithoutDetaching($page->id);
         }
     }
 
@@ -580,7 +566,7 @@ class StoryController extends Controller
         if ($request->ajax()) {
             $pageId = $request->get('page');
             $page   = Cache::remember('page_' . $pageId, Config::get('app.story.cache_ttl'), function () use ($pageId) {
-                return Page::where('uuid', $pageId)
+                return Page::where('id', $pageId)
                            ->first();
             }
             );
@@ -601,9 +587,12 @@ class StoryController extends Controller
         ])->firstOrFail();
 
         $deleted = $character->delete();
+
+        // FIXME put this in the boot()
         $character->inventory()->delete();
         $character->riddles()->detach();
         $character->fields()->detach();
+        $character->pages()->detach();
 
         if ($deleted == true) {
             Flash::success(trans('story.reset_successful_text'));
