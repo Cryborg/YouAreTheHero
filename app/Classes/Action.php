@@ -85,11 +85,11 @@ class Action
     public static function effects(Character $character, Item $item): void
     {
         $allEffects = $item->effects;
-        $characterStats  = $character->character_stats;
+        $characterStats  = $character->fields;
 
         foreach ($allEffects as $context => $effects) {
             switch ($context) {
-                case 'character_stat':
+                case 'character_fields':
                     foreach ($characterStats as $stat) {
                         foreach ($effects as $effect) {
                             if ($stat->field_id == $effect['field_id']) {

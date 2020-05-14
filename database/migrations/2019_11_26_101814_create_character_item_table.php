@@ -14,15 +14,11 @@ class CreateCharacterItemTable extends Migration
     public function up()
     {
         Schema::create('character_item', function (Blueprint $table) {
-            $table->bigIncrements('id');
-
             $table->unsignedBigInteger('character_id');
             $table->foreign('character_id')->references('id')->on('characters');
 
             $table->unsignedBigInteger('item_id');
             $table->foreign('item_id')->references('id')->on('items');
-
-            $table->timestamps();
         });
     }
 

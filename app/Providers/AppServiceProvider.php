@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Item;
-use App\Models\CharacterStat;
+use App\Models\CharacterField;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -29,8 +29,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Relation::morphMap([
-            'character_stat' => CharacterStat::class,
-            'item' => Item::class,
+                               'character_field' => CharacterField::class,
+                               'item' => Item::class,
         ]);
 
         Blade::directive('info', function ($expression) {

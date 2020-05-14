@@ -36,7 +36,7 @@
                                 'class' => 'form-control',
                                 'min' => $stat->min_value,
                                 'max' => $stat->max_value,
-                                'data-stat_id' => $stat->id,
+                                'data-field_id' => $stat->id,
                                 'onkeydown' => 'return false'
                             ]) }}
                         </div>

@@ -22,15 +22,15 @@ class Riddle extends Model
         return $this->belongsTo(Item::class);
     }
 
-    public function answered_riddle()
+    public function character()
     {
-        return $this->hasOne(CharacterRiddle::class);
+        return $this->belongsToMany(Character::class);
     }
 
     public function isSolved()
     {
         if ($this->isRiddleSolved === null) {
-            $this->isRiddleSolved = $this->answered_riddle()->count() > 0;
+            $this->isRiddleSolved = $this->character()->count() > 0;
         }
 
         return $this->isRiddleSolved;

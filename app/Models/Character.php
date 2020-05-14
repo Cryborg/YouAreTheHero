@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\DB;
 use Laracasts\Presenter\PresentableTrait;
 use App\Presenters\CharacterPresenter;
 
@@ -31,20 +30,6 @@ class Character extends Model
     public function inventory()
     {
         return $this->hasMany(Inventory::class)->with('item');
-
-        $inventory = Inventory::where([
-            'character_id' => $this->id,
-        ])->get();
-        $items = [];
-
-        foreach ($inventory as $item) {
-            $items[] = [
-                'item' => Item::where('id', $item->item_id)->first(),
-                'quantity' => $item['quantity'],
-            ];
-        }
-
-        return $items;
     }
 
     /**
@@ -81,8 +66,13 @@ class Character extends Model
         return $this->hasMany(Checkpoint::class);
     }
 
-    public function character_stats()
+    public function fields()
     {
-        return $this->hasMany(CharacterStat::class)->with('field');
+        return $this->belongsToMany(Field::class)->withPivot('value');
+    }
+
+    public function riddles()
+    {
+        return $this->hasMany(Riddle::class);
     }
 }

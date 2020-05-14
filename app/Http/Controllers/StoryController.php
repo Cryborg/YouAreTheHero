@@ -7,7 +7,7 @@ use App\Models\Genre;
 use App\Models\Inventory;
 use App\Models\Item;
 use App\Models\Checkpoint;
-use App\Models\CharacterStat;
+use App\Models\CharacterField;
 use App\Models\StoryGenre;
 use App\Models\CharacterItem;
 use Illuminate\Http\JsonResponse;
@@ -156,7 +156,7 @@ class StoryController extends Controller
             if ($pageTo && $pageTo->prerequisites()->count() > 0) {
                 foreach ($pageTo->prerequisites() as $prerequisite) {
                     switch (get_class($prerequisite->prerequisiteable)) {
-                        case CharacterStat::class:
+                        case CharacterField::class:
                             $fulfilled = $this->isStatPrerequisitesFulfilled($prerequisite->prerequisiteable, $character);
                             break;
                         case Item::class:
@@ -286,7 +286,7 @@ class StoryController extends Controller
         $character = $this->getCurrentCharacter($story);
 
         return view('story.partials.sheet', [
-            'sheet' => $character->character_stats ?? [],
+            'sheet' => $character->fields ?? [],
         ]
         );
     }
@@ -316,9 +316,9 @@ class StoryController extends Controller
      *
      * @return bool
      */
-    private function isStatPrerequisitesFulfilled(CharacterStat $prerequisites, Character $character): bool
+    private function isStatPrerequisitesFulfilled(CharacterField $prerequisites, Character $character): bool
     {
-        $sheet = $character->character_stats;
+        $sheet = $character->fields;
 
         foreach ($prerequisites as $name => $value) {
             if (array_key_exists($name, $sheet) && $sheet[$name] >= $value) {
@@ -329,15 +329,13 @@ class StoryController extends Controller
         return false;
     }
 
-    private function isItemPrerequisitesFulfilled(Item $prerequisites, Character $character): bool
+    private function isItemPrerequisitesFulfilled(Item $requiredItem, Character $character): bool
     {
-        $itemsInInventory = $character->inventory();
+        $itemsInInventory = $character->inventory;
 
-        foreach ($prerequisites as $requiredItemId) {
-            foreach ($itemsInInventory as $item) {
-                if ($item['item']['id'] == $requiredItemId) {
-                    return true;
-                }
+        foreach ($itemsInInventory as $item) {
+            if ($item['item']['id'] == $requiredItem->id) {
+                return true;
             }
         }
 
@@ -597,12 +595,15 @@ class StoryController extends Controller
 
     public function getReset(Request $request, Story $story)
     {
-        $deleted = Character::where([
+        $character = Character::where([
             'user_id'  => Auth::id(),
             'story_id' => $story->id,
-        ]
-        )
-                            ->delete();
+        ])->firstOrFail();
+
+        $deleted = $character->delete();
+        $character->inventory()->delete();
+        $character->riddles()->detach();
+        $character->fields()->detach();
 
         if ($deleted == true) {
             Flash::success(trans('story.reset_successful_text'));

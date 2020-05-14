@@ -166,8 +166,7 @@ class PageController extends Controller
                     $storySession = Session::get('story');
 
                     // Flag the riddle as answered for this character
-                    $page->riddle->answered_riddle()->create([
-                        'character_id' => $storySession['character_id'],
+                    $page->riddle->character()->attach($storySession['character_id'], [
                         'riddle_id' => $page->riddle->id
                     ]);
 

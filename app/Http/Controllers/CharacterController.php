@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CharacterStat;
+use App\Models\CharacterField;
 use App\Models\Character;
 use App\Models\Story;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 
 class CharacterController extends Controller
@@ -36,7 +35,7 @@ class CharacterController extends Controller
     {
         if (request()->ajax()) {
             $page = $story->getCurrentPage();
-            $stats = $request->get('stats');
+            $fields = $request->get('stats');
 
             $character = Character::create([
                 'name'     => $request->get('name'),
@@ -46,12 +45,11 @@ class CharacterController extends Controller
             ]
             );
 
-            if ($stats) {
-                foreach ($stats as $stat) {
-                    CharacterStat::create([
+            if ($fields) {
+                foreach ($fields as $field) {
+                    $character->fields()->attach($field['field_id'], [
                         'character_id'    => $character->id,
-                        'field_id' => $stat['stat_id'],
-                        'value' => $stat['value'],
+                        'value' => $field['value'],
                     ]
                     );
                 }

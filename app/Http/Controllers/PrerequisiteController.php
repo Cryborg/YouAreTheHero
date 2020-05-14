@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Action;
 use App\Models\Item;use App\Models\Page;
 use App\Models\Prerequisite;
-use App\Models\CharacterStat;use App\Models\Field;use Illuminate\Http\JsonResponse;
+use App\Models\CharacterField;use App\Models\Field;use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class PrerequisiteController extends Controller
@@ -52,7 +52,7 @@ class PrerequisiteController extends Controller
                     ])->firstOrFail();
                     $addedPrerequisites['stats'][] = Prerequisite::updateOrCreate([
                         'page_id'   => $page->id,
-                        'prerequisiteable_type' => 'character_stat',
+                        'prerequisiteable_type' => 'character_field',
                         'prerequisiteable_id' => $foundStat->id,
                     ], [
                         'quantity' => $value

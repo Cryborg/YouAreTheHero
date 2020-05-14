@@ -23,10 +23,16 @@ class DatabaseSeeder extends Seeder
         $this->call(GenresTableSeeder::class);
 
         //TODO: remove this once in prod ;)
-        \Illuminate\Support\Facades\Artisan::call('dev:generate');
+        $this->call(UsersTableSeeder::class);
         $this->call(StoriesTableSeeder::class);
         $this->call(PagesTableSeeder::class);
         $this->call(ChoicesTableSeeder::class);
+        $this->call(FieldsTableSeeder::class);
+        $this->call(ItemsTableSeeder::class);
+        $this->call(PrerequisitesTableSeeder::class);
+        $this->call(RiddlesTableSeeder::class);
+        $this->call(StoryGenreTableSeeder::class);
+        $this->call(StoryOptionsTableSeeder::class);
     }
 }
 

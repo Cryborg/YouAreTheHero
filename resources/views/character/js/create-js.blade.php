@@ -6,7 +6,7 @@
 
         $('input[name=stat_value]').each(function () {
             stats.push({
-                'stat_id': $(this).data('stat_id'),
+                'field_id': $(this).data('field_id'),
                 'value': $(this).val()
             });
         });
