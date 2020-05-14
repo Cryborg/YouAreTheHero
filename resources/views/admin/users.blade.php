@@ -25,10 +25,10 @@
                             <td>
                                 {{ $user->username }}
 
-                                @if ($user->isAdmin())
+                                @if ($user->hasRole('admin'))
                                     <span class="badge badge-primary">Admin</span>
                                 @endif
-                                @if ($user->isModerator())
+                                @if ($user->hasRole('moderator'))
                                     <span class="badge badge-success">Moderator</span>
                                 @endif
                             </td>

@@ -171,6 +171,13 @@ class StoryController extends Controller
 
         $currentPage->filtered_choices = $finalChoices;
         $currentPage->unreachable_choices = $unreachableChoices;
+
+        // Log if there is no choice, and the story is not finished
+        if (!$currentPage->is_last && count($currentPage->filtered_choices) === 0) {
+            activity()
+                ->performedOn($currentPage)
+                ->log('The player has nowhere to go!');
+        }
     }
 
     /**
