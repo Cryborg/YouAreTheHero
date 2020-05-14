@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Action;
+use App\Models\ItemPage;
 use App\Models\Item;use App\Models\Page;
 use App\Models\Prerequisite;
 use App\Models\CharacterField;use App\Models\Field;use Illuminate\Http\JsonResponse;
@@ -82,7 +82,7 @@ class PrerequisiteController extends Controller
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Action   $action
+     * @param \App\Models\ItemPage     $action
      *
      * @return false|string
      * @throws \Exception

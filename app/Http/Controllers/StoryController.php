@@ -8,6 +8,7 @@ use App\Models\Inventory;
 use App\Models\Item;
 use App\Models\CharacterPage;
 use App\Models\CharacterField;
+use App\Models\ItemPage;
 use App\Models\StoryGenre;
 use App\Models\CharacterItem;
 use Illuminate\Http\JsonResponse;
@@ -190,36 +191,34 @@ class StoryController extends Controller
     {
         $isOk = false;
 
-        $json   = $request->get('json');
-        $action = json_decode($json, true);
+        $actionId = $request->get('actionid');
+        $pageId = $request->get('pageid');
+        $page = Page::find($pageId);
 
-        /** @var \App\Models\Character $character */
         $character = $this->getCurrentCharacter(getSession('story_id'));
 
-        $item = $this->getItem($action['item']);
+        $item = $page->items->where('pivot.id', $actionId)->first();
 
         // Perform the action
-        switch ($action['verb']) {
+        switch ($item->pivot->verb) {
             case 'buy':
-                $isOk = Action::buy($character, $item, $action);
+                $isOk = Action::buy($character, $item);
                 break;
             case 'sell':
-                $isOk = Action::sell($character, $item, $action);
+                $isOk = Action::sell($character, $item);
                 break;
             case 'give':
                 $isOk = Action::give($character, $item);
                 break;
             case 'take':
-                $isOk = $character->addMoney($action['price']);
-
-                if (isset($action['item'])) {
-                    Inventory::create([
-                        'character_id' => $character->id,
-                        'item_id'      => $action['item'],
-                        'quantity'     => $action['quantity'] ?? 1,
-                    ]
-                    );
+                if (isset($item)) {
+                    $character->inventory()->create([
+                        'item_id'      => $item->id,
+                        'quantity'     => $item->pivot->quantity ?? 1,
+                    ]);
                 }
+
+                $isOk = true;
                 break;
         }
 
@@ -527,19 +526,17 @@ class StoryController extends Controller
     {
         $actions = [];
 
-        foreach ($page->actions->toArray() as $action) {
+        foreach ($page->items as $item) {
             $isFound = false;
 
             foreach ($character->inventory ?? [] as $items) {
-                if ($items->item->id == $action['item_id'] && $items->item->single_use) {
+                if ($items->item->id == $item->id && $items->item->single_use) {
                     $isFound = true;
                 }
             }
 
             if (!$isFound) {
-                $action['item'] = Item::where('id', $action['item_id'])
-                                      ->first();
-                $actions[]      = $action;
+                $actions[] = $item;
             }
         }
 
@@ -594,12 +591,6 @@ class StoryController extends Controller
         ])->firstOrFail();
 
         $deleted = $character->delete();
-
-        // FIXME put this in the boot()
-        $character->inventory()->delete();
-        $character->riddles()->detach();
-        $character->fields()->detach();
-        $character->pages()->detach();
 
         if ($deleted == true) {
             Flash::success(trans('story.reset_successful_text'));

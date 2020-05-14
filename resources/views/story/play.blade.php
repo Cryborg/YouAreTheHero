@@ -13,31 +13,35 @@
 @endsection
 
 @section('actions')
-    @foreach ($actions as $action)
-        @switch($action['verb'])
-            @case ('buy')
-            @case ('take')
-            @case ('sell')
-            @case ('give')
-                <div class="pick-item" data-verb="{{ $action['verb'] }}" data-item="{{ $action['item']->id }}" data-price="{{ $action['price'] > 0 ?: $action['item']->default_price  }}" data-singleuse="{{ $action['item']->single_use }}">
-                    @include('story.partials.money', [
-                        'value' => $action['price'] > 0 ?: $action['item']->default_price,
-                        'operator' => in_array($action['verb'], ['sell','give']) ? 'add' : 'sub',
-                        'name' => $action['item']['name']
-                    ])
-{{--                    @if ($action['item']->effects)--}}
-{{--                        @foreach ($action['item']->effects as $effect => $value)--}}
-{{--                            @include('story.partials.effects', [--}}
-{{--                                'name' => $effect,--}}
-{{--                                'value' => $value['quantity'],--}}
-{{--                                'operator' => $value['operator'] === '+' ? 'add' : 'sub'--}}
-{{--                            ])--}}
-{{--                        @endforeach--}}
-{{--                    @endif--}}
-                </div>
-                @break
-        @endswitch
-    @endforeach
+    <div class="row mt-3">
+        <div class="col-xl-6 col-md-12">
+            @foreach ($actions as $action)
+                @switch($action->pivot->verb)
+                    @case ('buy')
+                    @case ('take')
+                    @case ('sell')
+                    @case ('give')
+                        <div class="pick-item" data-actionid="{{ $action->pivot->id }}">
+                            @include('story.partials.money', [
+                                'value' => $action->pivot->price,
+                                'icon' => in_array($action->pivot->verb, ['sell','give']) ? 'glyphicon-euro' : 'glyphicon-shopping-cart',
+                                'name' => $action->name
+                            ])
+        {{--                    @if ($action['item']->effects)--}}
+        {{--                        @foreach ($action['item']->effects as $effect => $value)--}}
+        {{--                            @include('story.partials.effects', [--}}
+        {{--                                'name' => $effect,--}}
+        {{--                                'value' => $value['quantity'],--}}
+        {{--                                'operator' => $value['operator'] === '+' ? 'add' : 'sub'--}}
+        {{--                            ])--}}
+        {{--                        @endforeach--}}
+        {{--                    @endif--}}
+                        </div>
+                        @break
+                @endswitch
+            @endforeach
+        </div>
+    </div>
 @endsection
 
 @section('map')
@@ -48,6 +52,32 @@
 
 @push('footer-scripts')
     <script type="text/javascript">
+        $(document).ready(function () {
+            $('.pick-item').on('click', function () {
+                var $this = $(this);
+
+                $.ajax({
+                    'method': 'POST',
+                    'url': '{{ route('story.ajax_action') }}',
+                    'data': {
+                        'actionid': $this.data('actionid'),
+                        'pageid': {{ $page->id }}
+                    },
+                })
+                    .done(function(rst) {
+                        if (rst.result === true) {
+                            loadInventory();
+                            loadSheet();
+                            loadChoices();
+                        }
+                        if (rst.singleuse === true) {
+                            $this.remove();
+                        }
+                    });
+            });
+
+        });
+
         $(function() {
             loadInventory();
             loadSheet();
@@ -55,41 +85,7 @@
         });
 
         function loadInventory() {
-            $('.inventory-block').load('{{ route('story.inventory', ['story' => $story->id]) }}', function () {
-                $('.pick-item').each(function () {
-                    var $this = $(this);
-
-                    // Reset the links
-                    $this.unbind('click');
-                    $this.removeClass('has-money');
-
-                    // If the character has enough money
-                    // OR if the action will credit money
-                    if ($('#character_money').html() >= $(this).data('price') || $.inArray($this.data('verb'), ['take']) > -1) {
-                        $this.addClass('has-money');
-
-                        $this.on('click', function()
-                        {
-                            if ($this.data('singleuse')) {
-                                $this.remove();
-                            }
-
-                            $.ajax({
-                                'method': 'POST',
-                                'url': '{{ route('story.ajax_action') }}',
-                                'data': {'json': JSON.stringify($this.data())},
-                            })
-                            .done(function(rst) {
-                                if (rst.result === true) {
-                                    loadInventory();
-                                    loadSheet();
-                                    loadChoices();
-                                }
-                            });
-                        });
-                    }
-                });
-            });
+            $('.inventory-block').load('{{ route('story.inventory', ['story' => $story->id]) }}');
         }
 
         function loadSheet() {

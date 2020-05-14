@@ -61,12 +61,9 @@ class Page extends Model
         return $this->belongsTo(Story::class);
     }
 
-    /**
-     * @return HasMany
-     */
-    public function actions(): HasMany
+    public function items()
     {
-        return $this->hasMany(Action::class);
+        return $this->belongsToMany(Item::class)->withPivot(['id', 'verb', 'quantity', 'price']);
     }
 
     /**
@@ -115,10 +112,10 @@ class Page extends Model
     /**
      * @param array $data
      *
-     * @return \App\Models\Action
+     * @return \App\Models\ItemPage
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function addAction(array $data): Action
+    public function addAction(array $data): ItemPage
     {
         $validated = Validator::validate($data, [
                 'item_id'  => 'required',
@@ -129,7 +126,7 @@ class Page extends Model
 
         $validated['page_id'] = $this->id;
 
-        return Action::create($validated);
+        return ItemPage::create($validated);
     }
 
     /**

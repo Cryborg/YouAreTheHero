@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Action;
+use App\Models\ItemPage;
 use App\Models\Effect;
 use App\Models\Item;
 use Illuminate\Http\Request;

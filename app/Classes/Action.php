@@ -12,13 +12,11 @@ class Action
      * @param \App\Models\Character $character
      * @param \App\Models\Item      $item
      *
-     * @param array                 $action
-     *
      * @return bool
      */
-    public static function buy(Character $character, Item $item, array $action): bool
+    public static function buy(Character $character, Item $item): bool
     {
-        if (!$character->spendMoney($action['price'] > 0 ?: $item->default_price)) {
+        if (!$character->spendMoney($item->pivot->price)) {
             return false;
         }
 
@@ -42,13 +40,17 @@ class Action
      * @return bool
      * @throws \Exception
      */
-    public static function sell(Character $character, Item $item, array $action): bool
+    public static function sell(Character $character, Item $item): bool
     {
-        if (!$character->addMoney($action['price'] > 0 ?: $item->default_price)) {
-            return false;
+        if ($character->inventory()->where('item_id', $item->id)->count() > 0) {
+            if (!$character->addMoney($item->pivot->price)) {
+                return false;
+            }
+
+            return self::give($character, $item);
         }
 
-        return self::give($character, $item);
+        return false;
     }
 
     /**
@@ -65,12 +67,14 @@ class Action
             $inventory = Inventory::where([
                 'item_id'      => $item->id,
                 'character_id' => $character->id,
-            ])->firstOrFail();
+            ])->first();
 
-            if ($inventory->quantity === 1) {
+            if (!$inventory) return false;
+            --$inventory->quantity;
+
+            if ($inventory->quantity <= 0) {
                 return $inventory->delete();
             } else {
-                --$inventory->quantity;
                 return $inventory->save();
             }
         } catch (\Exception $e) {

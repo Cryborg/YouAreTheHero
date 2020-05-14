@@ -8,14 +8,14 @@
         <th scope="col" class="text-center">{{ trans('common.actions') }}</th>
     </thead>
     <tbody>
-        @foreach ($page->actions as $action)
+        @foreach ($page->items as $item)
             <tr>
-                <td>{{ $action->item->name }}</td>
-                <td>{{ $action->present()->verb }}</td>
-                <td>{{ $action->quantity }}</td>
-                <td>{{ $action->price }}</td>
+                <td>{{ $item->name }}</td>
+                <td>{{ $item->pivot->verb }}</td>
+                <td>{{ $item->pivot->quantity }}</td>
+                <td>{{ $item->pivot->price }}</td>
                 <td class="text-center">
-                    <span class="glyphicon glyphicon-trash text-danger delete-action" data-action_id="{{ $action->id }}" title="{{ trans('common.delete') }}"></span>
+                    <span class="glyphicon glyphicon-trash text-danger delete-action" data-action_id="{{ $item->pivot->id }}" title="{{ trans('common.delete') }}"></span>
                 </td>
             </tr>
         @endforeach

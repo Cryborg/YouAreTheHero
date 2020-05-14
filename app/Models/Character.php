@@ -21,10 +21,12 @@ class Character extends Model
     {
         parent::boot();
 
-        //static::deleting(function($character) { // before delete() method call this
-          //  $character->inventory()->delete();
-            // do the rest of the cleanup...
-        //});
+        static::deleting(function($character) { // before delete() method call this
+            $character->inventory()->delete();
+            $character->riddles()->detach();
+            $character->fields()->detach();
+            $character->pages()->detach();
+        });
     }
 
     /**

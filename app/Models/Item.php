@@ -36,7 +36,7 @@ class Item extends Model
      */
     public function actions()
     {
-        return $this->belongsToMany(Action::class);
+        return $this->belongsToMany(ItemPage::class);
     }
 
     public function story()
