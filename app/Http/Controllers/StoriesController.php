@@ -69,7 +69,12 @@ class StoriesController extends Controller
             $user                       = Cache::remember('user.' . $story->user_id, Config::get('app.story.cache_ttl'), function() use ($story) {
                 return User::where('id', $story->user_id)->first();
             });
+
             $name                       = $user->first_name . ' ' . $user->last_name;
+            if (empty(trim($name))) {
+                $name = $user->username;
+            }
+
             $story['user']              = $name;
             $story['genres']            = $story->genres;
             $story['last_created_page'] = $story->getLastCreatedPage();
