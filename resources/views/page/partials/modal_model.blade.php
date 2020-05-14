@@ -10,12 +10,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                @isset($data['page'])
-                    @include($template, ['page' => $data['page']])
-                @endisset
-                @isset($data['story'])
-                    @include($template, ['pages' => $data['story']->pages->sortBy('created_at')->sortByDesc('is_first')->sortBy('is_last')])
-                @endisset
+                @if (!$async)
+                    @isset($data['page'])
+                        @include($template, ['page' => $data['page']])
+                    @endisset
+                    @isset($data['story'])
+                        @include($template, ['pages' => $data['story']->pages->sortBy('created_at')->sortByDesc('is_first')->sortBy('is_last')])
+                    @endisset
+                @endif
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('common.close')</button>
@@ -27,3 +29,18 @@
         </div>
     </div>
 </div>
+
+@if ($async)
+    @push('footer-scripts')
+        <script>
+            $('#modalAllPages').on('show.bs.modal', function (event) {
+                $.get({
+                    url: route('page.modal.ajax', {story: {{ $data['story']->id }}})
+                })
+                    .done(function (html) {
+                        $('.modal-body').html(html);
+                    });
+            });
+        </script>
+    @endpush
+@endif

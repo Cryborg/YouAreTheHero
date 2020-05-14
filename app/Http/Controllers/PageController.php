@@ -224,4 +224,13 @@ class PageController extends Controller
 
         abort(JsonResponse::HTTP_NOT_FOUND);
     }
+
+    public function ajaxListModal(Story $story)
+    {
+        $view = View::make('page.partials.modal_list_pages', [
+            'pages' => $story->pages->sortBy('created_at')->sortByDesc('is_first')->sortBy('is_last'),
+        ]);
+
+        return $view;
+    }
 }

@@ -54,6 +54,7 @@
     <!-- Modal list all pages -->
     @include('page.partials.modal_model', [
         'template' => 'page.partials.modal_list_pages',
+        'async' => true,
         'title' => trans('story.all_pages_modal_title'),
         'data' => [
             'story' => $story,
@@ -64,6 +65,7 @@
     <!-- Modal new Riddle -->
     @include('page.partials.modal_model', [
         'template' => 'page.partials.modal_riddle',
+        'async' => false,
         'title' => trans('page.riddle_modal_title'),
         'data' => [
             'page' => $page,
@@ -75,6 +77,7 @@
     <!-- Modal new Action -->
     @include('page.partials.modal_model', [
         'template' => 'page.partials.modal_actions',
+        'async' => false,
         'title' => trans('page.actions_modal_title'),
         'data' => [
             'page' => $page,
@@ -86,6 +89,7 @@
     <!-- Modal new Prerequisite -->
     @include('page.partials.modal_model', [
         'template' => 'page.partials.modal_prerequisites',
+        'async' => false,
         'title' => trans('page.prerequisite_modal_title'),
         'data' => [
             'page' => $page,
