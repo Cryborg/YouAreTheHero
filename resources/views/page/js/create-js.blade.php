@@ -294,21 +294,7 @@
             });
         @endfor
 
-        // Convert dates to human readable strings
-        $('.moment_date').each(function(id, elt) {
-            var originalDate = $(elt).html();
-            var momentDate = moment(originalDate).fromNow();
-
-            if (momentDate) {
-                $(elt)
-                    .html(momentDate)
-                    .attr('title', originalDate);
-            }
-        });
-    });
-
-    $(document).on('click', '.modal .card', function () {
-        window.location.href = route('page.edit', {'page': $(this).data('pageid')});
+        showHumanReadableDates();
     });
 
     // When the author chooses an item from the list

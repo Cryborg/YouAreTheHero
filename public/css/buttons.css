@@ -183,17 +183,19 @@
     *display: inline;
     zoom: 1;
 }
-
 .button-group{
     font-size: 0; /* Inline block elements gap - fix */
     margin: 0;
-    padding: 0;
     background: rgba(0, 0, 0, .1);
     border-bottom: 1px solid rgba(0, 0, 0, .1);
     padding: 7px;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
     border-radius: 7px;
+}
+
+.btn-toolbar .button-group{
+    border-radius: 0;
 }
 
 .button-group li{

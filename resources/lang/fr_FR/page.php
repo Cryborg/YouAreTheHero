@@ -45,4 +45,6 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
   'riddle_item_earned' => 'Tu as obtenu un(e) :item_name',
   'riddle_already_solved' => 'Tu as déjà résolu cette énigme.',
   'confirm_delete' => 'Es-tu sûr(e) de vouloir supprimer cette page ?',
+  'number_parents' => '{0} Aucun parent|{1} :count parent|{2,*} :count parents',
+  'number_choices' => '{0} Aucun choix|{1,*} :count choix',
 );

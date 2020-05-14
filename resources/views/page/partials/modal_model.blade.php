@@ -9,15 +9,18 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body shadow-sm">
                 @if (!$async)
                     @isset($data['page'])
                         @include($template, ['page' => $data['page']])
                     @endisset
-                    @isset($data['story'])
-                        @include($template, ['pages' => $data['story']->pages->sortBy('created_at')->sortByDesc('is_first')->sortBy('is_last')])
-                    @endisset
                 @endif
+            </div>
+            <div class="modal-body modal-body-preview h-100 hidden">
+                <button type="button" class="close" data-dismiss="modal-preview" aria-label="Fermer">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <div class="modal-preview-content"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('common.close')</button>
@@ -38,8 +41,38 @@
                     url: route('page.modal.ajax', {story: {{ $data['story']->id }}})
                 })
                     .done(function (html) {
-                        $('.modal-body').html(html);
+                        $('#modalAllPages .modal-body:not(.modal-body-preview)').html(html);
+
+                        showHumanReadableDates();
                     });
+            });
+
+            $('[data-dismiss="modal-preview"]').on('click', function () {
+                $('.modal-body-preview').addClass('hidden');
+                $('.modal-preview-content').html('');
+            });
+
+            $(document).on('click', '.button-preview', function (event) {
+                event.stopImmediatePropagation();
+
+                var $this = $(this);
+
+                $('.modal-body-preview').removeClass('hidden');
+                $('.modal-preview-content').html('');
+
+                $(['parents', 'choices']).each(function (id, source) {
+                    var data = $this.data(source);
+
+                    $(data).each(function (id, val) {
+                        $('#modalAllPages .card[data-pageid="' + val + '"]')
+                            .clone()
+                            .appendTo('.modal-preview-content')
+                            .wrap('<div class="col-6"></div>');
+                    });
+
+                    $('.modal-preview-content').wrapInner('<div class="row"></div>');
+                });
+
             });
         </script>
     @endpush

@@ -236,5 +236,20 @@
         $('[data-toggle="tooltip"]')
             .data('html', true)
             .tooltip()
-    })
+    });
+
+    // Convert dates to human readable strings
+    function showHumanReadableDates() {
+        $('.moment_date').each(function (id, elt) {
+            var originalDate = $(elt).html();
+            var momentDate = moment(originalDate).fromNow();
+
+            if (momentDate) {
+                $(elt)
+                    .html(momentDate)
+                    .attr('title', originalDate);
+            }
+        });
+    }
+
 </script>

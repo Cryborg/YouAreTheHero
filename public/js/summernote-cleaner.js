@@ -103,7 +103,7 @@
             this.events = {
                 'summernote.init': function () {
                     if ($.summernote.interface === 'lite') {
-                        $("head").append('<style>.note-statusbar .pull-right{float:right!important}.note-status-output .text-muted{color:#777}.note-status-output .text-primary{color:#286090}.note-status-output .text-success{color:#3c763d}.note-status-output .text-info{color:#31708f}.note-status-output .text-warning{color:#8a6d3b}.note-status-output .text-danger{color:#a94442}.alert{margin:-7px 0 0 0;padding:7px 10px;border:1px solid transparent;border-radius:0}.alert .note-icon{margin-right:5px}.alert-success{color:#3c763d!important;background-color: #dff0d8 !important;border-color:#d6e9c6}.alert-info{color:#31708f;background-color:#d9edf7;border-color:#bce8f1}.alert-warning{color:#8a6d3b;background-color:#fcf8e3;border-color:#faebcc}.alert-danger{color:#a94442;background-color:#f2dede;border-color:#ebccd1}</style>');
+                        $("head").append('<style>.note-statusbar .float-right{float:right!important}.note-status-output .text-muted{color:#777}.note-status-output .text-primary{color:#286090}.note-status-output .text-success{color:#3c763d}.note-status-output .text-info{color:#31708f}.note-status-output .text-warning{color:#8a6d3b}.note-status-output .text-danger{color:#a94442}.alert{margin:-7px 0 0 0;padding:7px 10px;border:1px solid transparent;border-radius:0}.alert .note-icon{margin-right:5px}.alert-success{color:#3c763d!important;background-color: #dff0d8 !important;border-color:#d6e9c6}.alert-info{color:#31708f;background-color:#d9edf7;border-color:#bce8f1}.alert-warning{color:#8a6d3b;background-color:#fcf8e3;border-color:#faebcc}.alert-danger{color:#a94442;background-color:#f2dede;border-color:#ebccd1}</style>');
                     }
                     if (options.cleaner.limitChars != 0 || options.cleaner.limitDisplay != 'none') {
                         var textLength = $editor.find(".note-editable").text().replace(/(<([^>]+)>)/ig, "").replace(/( )/, " ");
@@ -116,7 +116,7 @@
                         if (options.cleaner.limitDisplay == 'text' || options.cleaner.limitDisplay == 'both') lengthStatus += lang.cleaner.limitText + ': ' + textLength.length;
                         if (options.cleaner.limitDisplay == 'both') lengthStatus += ' / ';
                         if (options.cleaner.limitDisplay == 'html' || options.cleaner.limitDisplay == 'both') lengthStatus += lang.cleaner.limitHTML + ': ' + codeLength.length;
-                        if (options.cleaner.showOutput) $editor.find('.note-status-output').html('<small class="pull-right ' + lengthStatus + '&nbsp;</small>');
+                        if (options.cleaner.showOutput) $editor.find('.note-status-output').html('<small class="float-right ' + lengthStatus + '&nbsp;</small>');
                     }
                 },
                 'summernote.keydown': function (we, e) {
@@ -147,7 +147,7 @@
                             if (options.cleaner.limitDisplay == 'html' || options.cleaner.limitDisplay == 'both')
                                 lengthStatus += lang.cleaner.limitHTML + ': ' + codeLength.length;
                             if (options.cleaner.showOutput)
-                                $editor.find('.note-status-output').html('<small class="cleanerLimit pull-right ' + lengthStatus + '&nbsp;</small>');
+                                $editor.find('.note-status-output').html('<small class="cleanerLimit float-right ' + lengthStatus + '&nbsp;</small>');
                         }
                     }
                 },

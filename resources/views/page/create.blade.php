@@ -3,7 +3,7 @@
 @section('title', $title)
 
 @section('content')
-    <span class="pull-right toggle-help close glyphicon glyphicon-question-sign"></span>
+    <span class="float-right toggle-help close glyphicon glyphicon-question-sign"></span>
     <h2>{{ trans('page.edit_pages_title') }}</h2>
 
     {{-- Current page --}}
