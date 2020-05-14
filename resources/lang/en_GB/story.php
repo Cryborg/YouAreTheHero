@@ -33,4 +33,5 @@ return array (
   'author' => 'Author',
   'last_update' => 'Last update',
   'number_pages' => 'Number of pages',
+  'reset_story_confirm' => 'Are you sure you want to reset the story?',
 );

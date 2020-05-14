@@ -33,4 +33,5 @@ return array (
   'author' => 'Auteur',
   'number_pages' => 'Nombre de pages',
   'last_update' => 'Dernière mise à jour',
+  'reset_story_confirm' => 'Es-tu sûr(e) de vouloir réinitialiser l\'aventure ?',
 );

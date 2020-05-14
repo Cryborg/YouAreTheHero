@@ -64,10 +64,11 @@
                     var data = $this.data(source);
 
                     $(data).each(function (id, val) {
+                        var colWidth = data.length === 1 ? '12' : '6';
                         $('#modalAllPages .card[data-pageid="' + val + '"]')
                             .clone()
                             .appendTo('.modal-preview-content')
-                            .wrap('<div class="col-6"></div>');
+                            .wrap('<div class="col-' + colWidth + '"></div>');
                     });
 
                     $('.modal-preview-content').wrapInner('<div class="row"></div>');

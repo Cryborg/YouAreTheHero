@@ -15,18 +15,21 @@
             @endif
         </div>
     @else
-        <div class="border border-success rounded rounded-lg p-3 mb-3 mt-5">
-            <div class="text-bold display-5">
-                GAME OVER !
+        @if (!$page->is_last)
+            <div class="border border-success rounded rounded-lg p-3 mb-3 mt-5">
+                <div class="text-bold display-5">
+                    IMPASSE !
+                </div>
+                <div class="text-muted w-75">
+                    Cela ne devrait pas arriver, l'auteur s'est bien planté ;)<br>
+                    Principales causes :
+                    <ul>
+                        <li>aucune page n'est reliée à celle-ci</li>
+                        <li>aucune page n'est accessible car il te manque les prérequis pour y accéder</li>
+                    </ul>
+                </div>
             </div>
-            <div class="text-muted w-75">
-                Principales causes :
-                <ul>
-                    <li>aucune page n'est reliée à celle-ci</li>
-                    <li>aucune page n'est accessible car il te manque les prérequis pour y accéder</li>
-                </ul>
-            </div>
-        </div>
+        @endif
     @endif
 @endif
 
@@ -48,5 +51,8 @@
         <div class="text-muted">
             Cause : cette page est tagguée comme étant la dernière
         </div>
+    </div>
+    <div class="choices-links button-group w-100">
+        <a onclick="return confirm('{{ addslashes(trans('story.reset_story_confirm')) }}');" href="{{ route('story.reset', ['story' => $page->story]) }}" class="btn btn-danger card-link w-100 mb-1">{{ trans('story.reset') }}</a>
     </div>
 @endif
