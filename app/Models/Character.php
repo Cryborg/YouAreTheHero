@@ -77,4 +77,11 @@ class Character extends Model
     {
         return $this->hasMany(Inventory::class)->with('item');
     }
+
+    public function items(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Item::class);
+    }
+
+
 }

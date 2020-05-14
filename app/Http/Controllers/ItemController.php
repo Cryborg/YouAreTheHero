@@ -59,13 +59,18 @@ class ItemController extends Controller
         $item = Item::create($validated);
 
         foreach ($effects as $effect) {
-            Effect::updateOrCreate([
-                'field_id' => $effect['id'],
-                'item_id' => $item->id,
-            ], [
-                'operator' => '+',
-                'quantity' => $effect['value']
-            ]);
+            if ($effect['value'] != '') {
+                Effect::updateOrCreate(
+                    [
+                        'field_id' => $effect['id'],
+                        'item_id'  => $item->id,
+                    ],
+                    [
+                        'operator' => '+',
+                        'quantity' => $effect['value']
+                    ]
+                );
+            }
         }
 
         // Reload the items in the story, so that we have the new one in the collection

@@ -228,16 +228,13 @@ class StoryController extends Controller
         // Check if the item used has the single_use flag,
         // and in this case it must not be shown again
         if ($item->single_use) {
-            CharacterItem::create([
-                'character_id' => $character->id,
-                'item_id'      => $item->id,
-            ]
-            );
+            $character->items()->syncWithoutDetaching([$item->id]);
         }
 
         return response()->json([
             'result' => $isOk,
             'money'  => $character->money,
+            'singleuse' => $item->single_use
         ], 200
         );
     }
