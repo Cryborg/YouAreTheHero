@@ -31,7 +31,7 @@
     $(document).ready(function () {
 
         // Delete a page
-        $('.menu-icon-bottom.glyphicon-trash, .card .glyphicon-trash').on('click', function ()
+        $('.menu-icon-bottom.icon-trash, .card .icon-trash').on('click', function ()
         {
             if (!confirm('@lang('page.confirm_delete')')) return false;
 
@@ -107,25 +107,28 @@
         // Saves the page
         $(document).on('click', '.icon-save', function (e) {
             let $this = $(this);
-            let $parent = $this.closest('.is-page');
-            let internalId = $parent.data('pageid');
-            let $form = $("div.is-page[data-pageid='" + internalId + "']").find('.divAsForm');
+            let $currentPage = $this.closest('.is-page');
+            let currentPageId = $currentPage.data('pageid');
+            let parentPageId = $this.data('page-from');
 
-            $('#content-' + internalId + ':hidden').summernote('destroy');
+            // Find parent page form
+            let $form = $("div.is-page[data-pageid='" + currentPageId + "']").find('.divAsForm');
+
+            $('#content-' + currentPageId + ':hidden').summernote('destroy');
             $('.toggle-summernote').addClass('clickable').removeClass('summernote-open');
 
             var data = {
-                'title': $('#title-' + internalId).val(),
-                'content': $('#content-' + internalId).html(),
-                'layout': $('#layout-' + internalId).val(),
-                'is_first': $('#is_first-' + internalId).is(":checked") ? 1 : 0,
-                'is_last': $('#is_last-' + internalId).is(":checked") ? 1 : 0,
-                'is_checkpoint': $('#is_checkpoint-' + internalId).is(":checked") ? 1 : 0,
-                'page_from': $this.data('page-from')
+                'title': $('#title-' + currentPageId).val(),
+                'content': $('#content-' + currentPageId).html(),
+                'layout': $('#layout-' + currentPageId).val(),
+                'is_first': $('#is_first-' + currentPageId).is(":checked") ? 1 : 0,
+                'is_last': $('#is_last-' + currentPageId).is(":checked") ? 1 : 0,
+                'is_checkpoint': $('#is_checkpoint-' + currentPageId).is(":checked") ? 1 : 0,
+                'page_from': parentPageId
             };
 
-            if ($('#linktext-' + internalId).length > 0) {
-                data.link_text = $('#linktext-' + internalId).val();
+            if ($('#linktext-' + currentPageId).length > 0) {
+                data.link_text = $('#linktext-' + currentPageId).val();
             }
 
             $.post({
@@ -212,7 +215,7 @@
                                     '<td>' + '{{ trans('item.item') }}' + '</td>' +
                                     '<td>' + item.name + '</td>' +
                                     '<td>' + item.quantity + '</td>' +
-                                    '<td class="text-center">' + '<span class="glyphicon glyphicon-trash text-danger delete-prerequisite" data-prerequisite_id="' + item.prerequisite_id + '"></span>' + '</td>' +
+                                    '<td class="text-center">' + '<span class="icon-trash text-danger delete-prerequisite" data-prerequisite_id="' + item.prerequisite_id + '"></span>' + '</td>' +
                                     '</tr>'
                                 );
                             });
@@ -299,7 +302,7 @@
                         '<td>' + data.action.verb + '</td>' +
                         '<td>' + data.action.quantity + '</td>' +
                         '<td>' + data.action.price + '</td>' +
-                        '<td class="text-center">' + '<span class="glyphicon glyphicon-trash text-danger delete-action" data-action_id="' + data.action.item.id + '"></span>' + '</td>' +
+                        '<td class="text-center">' + '<span class="icon-trash text-danger delete-action" data-action_id="' + data.action.item.id + '"></span>' + '</td>' +
                         '</tr>'
                     );
 
@@ -403,7 +406,7 @@
         var $this = $(this);
         var actionId = $this.data('action_id');
         var loadingClass = 'fa fa-circle-o-notch fa-spin';
-        var defaultClass = 'glyphicon glyphicon-trash text-danger';
+        var defaultClass = 'icon-trash text-danger';
 
         if (!$this.hasClass('fa-spin')) {
             $this.attr('class', loadingClass);
@@ -437,7 +440,7 @@
         var $this = $(this);
         var prerequisiteId = $this.data('prerequisite_id');
         var loadingClass = 'fa fa-circle-o-notch fa-spin';
-        var defaultClass = 'glyphicon glyphicon-trash text-danger';
+        var defaultClass = 'icon-trash text-danger';
 
         if (!$this.hasClass('fa-spin')) {
             $this.attr('class', loadingClass);

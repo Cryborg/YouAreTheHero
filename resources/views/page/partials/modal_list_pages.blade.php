@@ -26,7 +26,7 @@
                         @if (!$page->is_first && $page->parents->count() === 0 && $page->choices->count() === 0)
                             <div>
                             <div class="badge badge-danger">
-                                <span class="icon-trash clickable"
+                                <span class="icon-trash clickable text-white"
                                     data-pageid="{{ $page->id }}"
                                     data-toggle="tooltip" title="@lang('common.delete')"
                                 ></span>
@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="button-group">
                                     <a href="{{ route('page.edit', ['page' => $page]) }}" class="button">
-                                        <span class="glyphicon glyphicon-edit"></span>
+                                        <span class="icon-fountain-pen"></span>
                                         @lang('page.edit')
                                     </a>
                                 </div>

@@ -90,7 +90,7 @@
                                 result.field.short_name,
                                 result.field.min_value,
                                 result.field.max_value,
-                                '<span class="glyphicon glyphicon-trash text-danger" data-field_id="' + result.field.id + '"></span>'
+                                '<span class="icon-trash text-danger" data-field_id="' + result.field.id + '"></span>'
                             ]).draw();
 
                             showToast('success', {

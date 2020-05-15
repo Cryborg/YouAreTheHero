@@ -116,12 +116,8 @@ class PageController extends Controller
             ]);
 
             if (isset($validated['link_text'], $validated['page_from']) && !empty($validated['link_text']) && !empty($validated['page_from'])) {
-                Choices::updateOrCreate([
-                    'page_from' => $validated['page_from'],
-                    'page_to'   => $page->id,
-                ], [
-                    'link_text' => $validated['link_text'],
-                ]);
+                // We save a new parent for this page, as we are editing a child page
+                $page->parents()->syncWithoutDetaching([$validated['page_from'] => ['link_text' => $validated['link_text']]]);
 
                 Cache::forget('choices_' . $validated['page_from']);
             }

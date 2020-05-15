@@ -152,7 +152,7 @@
                             <td>{{ $stat->min_value }}</td>
                             <td>{{ $stat->max_value }}</td>
                             <td class="text-center">
-                                <span class="glyphicon glyphicon-trash text-danger" data-field_id="{{ $stat->id }}"></span>
+                                <span class="icon-trash text-danger" data-field_id="{{ $stat->id }}"></span>
                             </td>
                         </tr>
                     @endforeach

@@ -15,7 +15,7 @@
                 <td>{{ $item->pivot->quantity }}</td>
                 <td>{{ $item->pivot->price }}</td>
                 <td class="text-center">
-                    <span class="glyphicon glyphicon-trash text-danger delete-action" data-action_id="{{ $item->pivot->id }}" title="{{ trans('common.delete') }}"></span>
+                    <span class="icon-trash text-danger delete-action" data-action_id="{{ $item->pivot->id }}" title="{{ trans('common.delete') }}"></span>
                 </td>
             </tr>
         @endforeach
