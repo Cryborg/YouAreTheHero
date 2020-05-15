@@ -37,15 +37,8 @@
     });
 
     // Loading screen
-    var $loading = $('#loadingDiv').hide();
 
     $(document)
-        .ajaxStart(function () {
-            $loading.show();
-        })
-        .ajaxStop(function () {
-            $loading.hide();
-        })
         .ajaxComplete(function (event, request, settings) {
             // If the session has expired
             if (request.status === 419) {

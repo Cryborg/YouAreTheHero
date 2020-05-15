@@ -124,6 +124,13 @@ class StoryController extends Controller
             ]
         );
 
+        if (\Illuminate\Support\Facades\Request::ajax()) {
+            $view = view('layouts.partials.page_content', $commonParams + [
+                'page' => $page,
+                'actions' => $actions,
+            ]);
+        }
+
         return $view ?? view('errors.404');
     }
 

@@ -2,10 +2,9 @@
 
 @section('content')
     <div class="row h-100">
-        <div class="col col-xs-12 bloc">
+        <div class="col col-xs-12">
             <div class="row">
                 <div class="col">
-                    <div id="loadingDiv"></div>
                     <div class="title">{{ $page->title }}</div>
                 </div>
             </div>

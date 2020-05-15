@@ -3,13 +3,13 @@
         @if (count($page->filtered_choices) > 0)
             <div class="choices-links button-group">
                 @foreach ($page->filtered_choices as $choice)
-                    <a href="{{ route('story.play', ['story' => $story->id, 'page' => $choice->page_to]) }}">
+                    <a data-href="{{ route('story.play', ['story' => $story->id, 'page' => $choice->page_to]) }}">
                         <button class="large button">{!! $choice->link_text !!}</button>
                     </a>
                 @endforeach
                 @if ($page->riddle && $page->riddle->isSolved())
                     @if ($page->riddle->target_page_id)
-                        <a href="{{ route('story.play', ['story' => $story->id, 'page' => $page->riddle->target_page_id]) }}">
+                        <a data-href="{{ route('story.play', ['story' => $story->id, 'page' => $page->riddle->target_page_id]) }}">
                             <button class="large button">{!! $page->riddle->target_page_text !!}</button>
                         </a>
                     @endif

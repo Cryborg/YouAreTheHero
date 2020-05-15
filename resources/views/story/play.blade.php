@@ -2,48 +2,6 @@
 
 @section('title', $title)
 
-@section('riddle')
-    @if ($page->riddle()->count() > 0)
-        @include('story.partials.riddle', ['data' => $page->riddle])
-    @endif
-@endsection
-
-@section('choices')
-    @include('story.partials.choices', ['page' => $page, 'story' => $story])
-@endsection
-
-@section('actions')
-    <div class="row mt-3">
-        <div class="col-xl-6 col-md-12">
-            @foreach ($actions as $action)
-                @switch($action->pivot->verb)
-                    @case ('buy')
-                    @case ('take')
-                    @case ('sell')
-                    @case ('give')
-                        <div class="pick-item" data-actionid="{{ $action->pivot->id }}">
-                            @include('story.partials.money', [
-                                'value' => $action->pivot->price,
-                                'icon' => in_array($action->pivot->verb, ['sell','give']) ? 'icon-receive-money' : 'icon-pay-money',
-                                'name' => $action->name
-                            ])
-        {{--                    @if ($action['item']->effects)--}}
-        {{--                        @foreach ($action['item']->effects as $effect => $value)--}}
-        {{--                            @include('story.partials.effects', [--}}
-        {{--                                'name' => $effect,--}}
-        {{--                                'value' => $value['quantity'],--}}
-        {{--                                'operator' => $value['operator'] === '+' ? 'add' : 'sub'--}}
-        {{--                            ])--}}
-        {{--                        @endforeach--}}
-        {{--                    @endif--}}
-                        </div>
-                        @break
-                @endswitch
-            @endforeach
-        </div>
-    </div>
-@endsection
-
 @section('map')
     @foreach ($visitedPlaces as $place)
         <a href="{{ route('story.play', ['story' => $story->id, 'page' => $place->page_id]) }}">{{ $place->page_title }}</a><br>
@@ -53,6 +11,23 @@
 @push('footer-scripts')
     <script type="text/javascript">
         $(document).ready(function () {
+
+            // Ajax links
+            $(document).on('click', 'a', function () {
+                var $this = $(this);
+                var href = $this.data('href');
+
+                if (href !== undefined) {
+                    $.get({
+                        url: href
+                    })
+                    .done(function (res) {
+                        $('#page_content').html(res);
+                    })
+                }
+            });
+
+            // When the player clicks on an item
             $('.pick-item').on('click', function () {
                 var $this = $(this);
 
@@ -97,7 +72,7 @@
         }
 
         @if ($page->riddle()->count())
-            $('#riddle_validate').on('click', function () {
+            $(document).on('click', '#riddle_validate', function () {
                 $this = $(this);
 
                 // Toggle disabled state
