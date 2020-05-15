@@ -28,11 +28,6 @@ main.py-4 {
     background-color: #e5e5e5;
 }
 
-.bloc {
-    border: 1px solid rgba(0, 0, 0, 0.22);
-    margin: 3px;
-}
-
 footer {
     position: absolute !important;
     bottom: 0;
@@ -44,11 +39,11 @@ footer {
     height: 84%;
 }
 
-.map-bloc {
+.map-block {
     width: 300px;
 }
 
-.map-bloc img {
+.map-block img {
     width: 100%;
 }
 
@@ -76,14 +71,6 @@ footer {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
-
-td.details-control {
-    background: url('/img/details_open.png') no-repeat center center;
-    cursor: pointer;
-}
-tr.shown td.details-control {
-    background: url('/img/details_close.png') no-repeat center center;
 }
 
 .action-label-container {
@@ -259,6 +246,11 @@ div.jq-toast-wrap {
     font-weight: 300;
     line-height: 1.2;
 }
+.display-6 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
 div.menu-bar-left .menu-icon {
     top: auto;
     left: 0;
@@ -315,4 +307,7 @@ div.menu-bar-left .menu-icon-bottom:disabled {
 .modal-body-preview .card-header,
 .modal-body-preview .card-footer {
     background-color: #d5efff;
+}
+th.icon-expand:before, th.icon-contract:before {
+    content: none;
 }

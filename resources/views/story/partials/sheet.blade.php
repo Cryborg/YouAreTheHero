@@ -1,13 +1,12 @@
-@if ($sheet)
-    <div class="row">
-        <div class="col">
-            <ul>
-                @foreach($sheet as $stat)
-                    @if ($stat->field)
-                        <li>{{ $stat->field->full_name }} : {{ $stat->value }}</li>
-                    @endif
-                @endforeach
-            </ul>
+@foreach($fields as $field)
+    <div class="input-group mb-1">
+        <div class="input-group-prepend w-50">
+            <span class="input-group-text w-100">
+                {{ $field->full_name }}
+            </span>
+        </div>
+        <div class="form-control">
+            {{ $field->pivot->value }}
         </div>
     </div>
-@endif
+@endforeach

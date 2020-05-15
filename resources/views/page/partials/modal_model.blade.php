@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <span class="{{ $icon }} text-black display-5 mr-3 shadow"></span>
+                <span class="{{ $icon }} display-5 mr-3 shadow"></span>
                 <h5 class="modal-title" id="modal{{ $data['id'] }}Title">{{ $title }}</h5>
                 <span class="close toggle-help glyphicon glyphicon-question-sign">
                     </span>

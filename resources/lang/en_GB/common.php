@@ -26,7 +26,7 @@ return array (
   'close' => 'Close',
   'current_version' => 'Current version: :version',
   'changelog' => 'Changelog',
-  'link_reader' => 'Reader',
+  'link_read' => 'Read',
   'en_GB' => 'English (GB)',
   'link_author' => 'Author',
   'id' => 'ID',

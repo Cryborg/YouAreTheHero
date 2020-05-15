@@ -30,7 +30,7 @@ return array (
   'create_tab3' => '3. Fiche de perso',
   'has_character_help' => 'Coche cette case si le joueur peut nommer le personnage.',
   'has_stats_help' => 'Coche ceci si tu veux créer une fiche de personnage.',
-  'author' => 'Auteur',
+  'write' => 'Ecrire',
   'number_pages' => 'Nombre de pages',
   'last_update' => 'Dernière mise à jour',
   'reset_story_confirm' => 'Es-tu sûr(e) de vouloir réinitialiser l\'aventure ?',

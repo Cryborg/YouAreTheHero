@@ -24,7 +24,7 @@
                         <div class="pick-item" data-actionid="{{ $action->pivot->id }}">
                             @include('story.partials.money', [
                                 'value' => $action->pivot->price,
-                                'icon' => in_array($action->pivot->verb, ['sell','give']) ? 'glyphicon-euro' : 'glyphicon-shopping-cart',
+                                'icon' => in_array($action->pivot->verb, ['sell','give']) ? 'icon-receive-money' : 'icon-pay-money',
                                 'name' => $action->name
                             ])
         {{--                    @if ($action['item']->effects)--}}

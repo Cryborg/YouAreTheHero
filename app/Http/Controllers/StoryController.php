@@ -282,7 +282,7 @@ class StoryController extends Controller
         $character = $this->getCurrentCharacter($story);
 
         return view('story.partials.sheet', [
-            'sheet' => $character->fields ?? [],
+            'fields' => $character->fields ?? [],
         ]
         );
     }

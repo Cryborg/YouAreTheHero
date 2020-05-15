@@ -49,7 +49,7 @@
             ajax: '{{ route('stories.list.ajax', ['draft' => false]) }}',
             columns: [
                 {
-                    "className":      'details-control',
+                    "className":      'details-control text-center icon-expand clickable display-6',
                     "orderable":      false,
                     "data":           null,
                     "defaultContent": '',
@@ -95,18 +95,21 @@
 
         // Add event listener for opening and closing details
         $('#stories-table tbody').on('click', 'td.details-control', function () {
-            var tr = $(this).closest('tr');
+            var $this = $(this);
+            var tr = $this.closest('tr');
             var row = table.row( tr );
 
             if ( row.child.isShown() ) {
                 // This row is already open - close it
                 row.child.hide();
                 tr.removeClass('shown');
+                $this.removeClass('icon-contract').addClass('icon-expand');
             }
             else {
                 // Open this row
                 row.child( format(row.data()), tr.hasClass('odd') ? 'odd' : '' ).show();
                 tr.addClass('shown');
+                $this.removeClass('icon-expand').addClass('icon-contract');
             }
         } );
     });

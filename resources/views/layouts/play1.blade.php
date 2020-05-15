@@ -3,77 +3,69 @@
 @section('content')
 
     <div class="row h-100">
-        <div class="col-lg-2 col-xs-12 bloc">
-            <div class="row">
-                <div class="col">
-                    <div class="title">@lang('common.inventory')</div>
+        <div class="col-lg-2 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="icon-backpack display-5 mr-2"></span>
+                    @lang('common.inventory')
                 </div>
-            </div>
-            <div class="row">
-                <div class="col inventory-block">
+                <div class="panel-body inventory-block">
                     @yield('inventory')
                 </div>
             </div>
-
         </div>
-        <div class="col col-xs-12 bloc">
-            <div class="row">
-                <div class="col text-center mb-4">
+        <div class="col col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
                     @can('edit', $page)
-                        <a href="{{ route('page.edit', ['page' => $page]) }}" target="_blank">
-                            <button class="pull-left">
-                                    <span class="glyphicon glyphicon-edit"></span>
+                        <a href="{{ route('page.edit', ['page' => $page]) }}" target="_blank" class="pull-left">
+                            <button>
+                                <span class="icon-fountain-pen display-6"></span>
                             </button>
                         </a>
                     @endcan
+
+                    {{ $page->title }}
                     <div id="loadingDiv"></div>
-                    <div class="title">{{ $page->title }}</div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col text-justify">
-                    <p>{!! $page->present()->content !!}</p>
+                <div class="panel-body text-justify">
+                    {!! $page->present()->content !!}
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
+
+                <div class="panel-body">
                     @yield('actions')
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
+                <div class="panel-body">
                     @yield('riddle')
                 </div>
-            </div>
-            <div class="row">
-                <div class="col choices-block mt-4">
+                <div class="panel-body">
                     @yield('choices')
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-xs-12 bloc">
+        <div class="col-lg-3 col-xs-12">
             @isset($page->story->story_options->has_stats)
-                <div class="row">
-                    <div class="col">
-                        <div class="title">@lang('field.sheet')</div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="icon-ninja-heroic-stance display-5 mr-2"></span>
+                        @lang('field.sheet')
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col sheet-block">
-                        @yield('sheet', 'No available sheet')
+                    <div class="panel-body sheet-block">
+                        @yield('sheet', '-')
                     </div>
                 </div>
             @endisset
-            <div class="row">
-                <div class="col">
-                    <div class="title">@lang('story.map')</div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="icon-treasure-map display-5 mr-2"></span>
+                    @lang('story.map')
                 </div>
-            </div>
-            <div class="row">
-                <div class="col map-bloc">
+                <div class="panel-body map-block">
                     @yield('map')
                 </div>
             </div>
+
         </div>
     </div>
 @endsection

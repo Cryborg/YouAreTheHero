@@ -19,7 +19,7 @@
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-    color: #fff;
+    color: #414141;
 
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
@@ -43,4 +43,37 @@
 }
 .icon-trash:before {
     content: "\e903";
+}
+.icon-contract:before {
+    content: "\e904";
+}
+.icon-expand:before {
+    content: "\e905";
+}
+.icon-treasure-map:before {
+    content: "\e906";
+}
+.icon-path-distance:before {
+    content: "\e907";
+}
+.icon-ninja-heroic-stance:before {
+    content: "\e908";
+}
+.icon-backpack:before {
+    content: "\e90b";
+}
+.icon-receive-money:before {
+    content: "\e90c";
+}
+.icon-pay-money:before {
+    content: "\e90d";
+}
+.icon-fountain-pen:before {
+    content: "\e90e";
+}
+.icon-newspaper:before {
+    content: "\e90f";
+}
+.icon-lightning-tear:before {
+    content: "\e910";
 }

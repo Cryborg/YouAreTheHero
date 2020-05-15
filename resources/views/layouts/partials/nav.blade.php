@@ -1,14 +1,14 @@
 <ul class="nav navbar-nav">
     <li>
         <a class="navbar-brand" href="{{ url('/stories') }}">
-            <span class="glyphicon glyphicon-book mr-2"></span>
-            {{ trans('common.link_reader') }}
+            <span class="icon-newspaper mr-2"></span>
+            {{ trans('common.link_read') }}
         </a>
     </li>
     <li>
         <a href="#" data-toggle="dropdown" role="button" class="dropdown-toggle navbar-brand">
-            <span class="glyphicon glyphicon-pencil mr-2"></span>
-            {{ trans('common.link_author') }}
+            <span class="icon-fountain-pen mr-2"></span>
+            {{ trans('common.link_write') }}
         </a>
         <ul class="dropdown-menu">
 {{--            <li role="separator" class="divider"></li>--}}
@@ -29,7 +29,7 @@
     @can('isAdmin')
         <li>
             <a class="navbar-brand" href="{{ url('admin') }}">
-                <span class="glyphicon glyphicon-cog mr-2"></span>
+                <span class="icon-lightning-tear mr-2"></span>
                 {{ trans('common.link_admin') }}
             </a>
         </li>

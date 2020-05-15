@@ -30,6 +30,11 @@
                         </ul>
                     </div>
                 </div>
+                @can('isAdmin')
+                    <div class="choices-links button-group w-100">
+                        <a onclick="return confirm('{{ addslashes(trans('story.reset_story_confirm')) }}');" href="{{ route('story.reset', ['story' => $page->story]) }}" class="btn btn-danger card-link w-100 mb-1">{{ trans('story.reset') }}</a>
+                    </div>
+                @endcan
             @endif
         @endif
     @endif
