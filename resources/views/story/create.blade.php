@@ -171,28 +171,30 @@
             </table>
         </div>
 
-        <div class="tab-pane" id="pills-items" role="tabpanel" aria-labelledby="pills-tab-4">
-            <div class="row">
-                <div class="col">
-                    @include('item.partials.new_item', ['story' => $story, 'context' => 'story_creation'])
-                </div>
-                <div class="col">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            @lang('story.existing_items')
-                        </div>
-                        <div class="panel-body">
-                            <select multiple="" class="form-control custom-select" size="12" id="story_item" name="story_item">
-                                <option value=""></option>
-                                @foreach ($story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
-                                    <option value="{{ $itemId }}">{{ $itemName }}</option>
-                                @endforeach
-                            </select>
+        @isset($story)
+            <div class="tab-pane" id="pills-items" role="tabpanel" aria-labelledby="pills-tab-4">
+                <div class="row">
+                    <div class="col">
+                        @include('item.partials.new_item', ['story' => $story, 'context' => 'story_creation'])
+                    </div>
+                    <div class="col">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                @lang('story.existing_items')
+                            </div>
+                            <div class="panel-body">
+                                <select multiple="" class="form-control custom-select" size="12" id="story_item" name="story_item">
+                                    <option value=""></option>
+                                    @foreach ($story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
+                                        <option value="{{ $itemId }}">{{ $itemName }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endisset
     </div>
 @endsection
 

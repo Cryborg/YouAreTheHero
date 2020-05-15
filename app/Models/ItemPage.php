@@ -16,4 +16,9 @@ class ItemPage extends Model
     protected $table = 'item_page';
 
     public $timestamps = false;
+
+    public function item()
+    {
+        return $this->belongsTo(Item::class);
+    }
 }

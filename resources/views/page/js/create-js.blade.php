@@ -49,6 +49,7 @@
                 })
         });
 
+        // Put the ID of the page into the modal
         $('#modalCreatePrerequisite,#modalCreateAction,#modalCreateRiddle').on('show.bs.modal', function (event) {
             var $this = $(this);
             var $parent = $(event.relatedTarget);
@@ -104,7 +105,7 @@
         });
 
         // Saves the page
-        $(document).on('click', '.glyphicon-floppy-disk', function (e) {
+        $(document).on('click', '.icon-save', function (e) {
             let $this = $(this);
             let $parent = $this.closest('.is-page');
             let internalId = $parent.data('pageid');

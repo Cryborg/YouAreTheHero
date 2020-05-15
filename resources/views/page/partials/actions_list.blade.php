@@ -11,7 +11,7 @@
         @foreach ($page->items as $item)
             <tr>
                 <td>{{ $item->name }}</td>
-                <td>{{ $item->pivot->verb }}</td>
+                <td>{{ trans('actions.' . $item->pivot->verb) }}</td>
                 <td>{{ $item->pivot->quantity }}</td>
                 <td>{{ $item->pivot->price }}</td>
                 <td class="text-center">

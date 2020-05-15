@@ -8,27 +8,29 @@
                 <div class="row no-gutters">
                     <div class="col-md-1 card-header text-center">
                         @if ($page->is_first)
-                            <div class="badge badge-primary w-100" data-toggle="tooltip" title="@lang('model.is_first')">
+                            <div class="badge badge-primary" data-toggle="tooltip" title="@lang('model.is_first')">
                                 <span class="glyphicon glyphicon-play"></span>
                             </div>
                         @endif
                         @if ($page->is_checkpoint)
-                            <div class="badge badge-success w-100 text-white" data-toggle="tooltip" title="@lang('model.is_checkpoint')">
+                            <div class="badge badge-success text-white" data-toggle="tooltip" title="@lang('model.is_checkpoint')">
                                 <span class="glyphicon glyphicon-map-marker"></span>
                             </div>
                         @endif
                         @if ($page->is_last)
-                            <div class="badge badge-success w-100" data-toggle="tooltip" title="@lang('model.is_last')">
+                            <div class="badge badge-success" data-toggle="tooltip" title="@lang('model.is_last')">
                                 <span class="glyphicon glyphicon-fast-forward"></span>
                             </div>
                         @endif
 
-                        @if ($page->parents->count() === 0 && $page->choices->count() === 0)
-                            <div class="badge badge-danger font-smaller w-100">
-                                <span class="glyphicon glyphicon-trash clickable w-100"
+                        @if (!$page->is_first && $page->parents->count() === 0 && $page->choices->count() === 0)
+                            <div>
+                            <div class="badge badge-danger">
+                                <span class="icon-trash clickable"
                                     data-pageid="{{ $page->id }}"
                                     data-toggle="tooltip" title="@lang('common.delete')"
                                 ></span>
+                            </div>
                             </div>
                         @endif
 

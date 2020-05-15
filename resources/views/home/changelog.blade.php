@@ -13,6 +13,7 @@
                             <ul>
                                 <li>Storytellers can now include <b>basic riddles</b> in their pages! It allows the creation of <b>escape books</b>!</li>
                                 <li>Improved pages creation</li>
+                                <li>New icons (https://game-icons.net + https://icomoon.io/app)</li>
                             </ul>
                         </ul>
                     </fieldset>
