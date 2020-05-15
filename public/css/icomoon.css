@@ -19,6 +19,7 @@
     font-variant: normal;
     text-transform: none;
     line-height: 1;
+    color: #fff;
 
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
@@ -27,25 +28,19 @@
 
 .icon-save:before {
     content: "\e901";
-    color: #fff;
 }
 .icon-papers:before {
     content: "\e902";
-    color: #fff;
 }
 .icon-chest:before {
     content: "\e900";
-    color: #fff;
 }
 .icon-jigsaw-piece:before {
     content: "\e909";
-    color: #fff;
 }
 .icon-unlocking:before {
     content: "\e90a";
-    color: #fff;
 }
 .icon-trash:before {
     content: "\e903";
-    color: #fff;
 }

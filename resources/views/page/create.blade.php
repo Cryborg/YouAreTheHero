@@ -56,6 +56,7 @@
         'template' => 'page.partials.modal_list_pages',
         'async' => true,
         'title' => trans('story.all_pages_modal_title'),
+        'icon' => 'icon-papers',
         'data' => [
             'story' => $story,
             'id' => 'AllPages',
@@ -67,6 +68,7 @@
         'template' => 'page.partials.modal_riddle',
         'async' => false,
         'title' => trans('page.riddle_modal_title'),
+        'icon' => 'icon-jigsaw-piece',
         'data' => [
             'page' => $page,
             'id' => 'CreateRiddle',
@@ -79,6 +81,7 @@
         'template' => 'page.partials.modal_actions',
         'async' => false,
         'title' => trans('page.actions_modal_title'),
+        'icon' => 'icon-chest',
         'data' => [
             'page' => $page,
             'id' => 'CreateAction',
@@ -91,6 +94,7 @@
         'template' => 'page.partials.modal_prerequisites',
         'async' => false,
         'title' => trans('page.prerequisite_modal_title'),
+        'icon' => 'icon-unlocking',
         'data' => [
             'page' => $page,
             'id' => 'CreatePrerequisite',

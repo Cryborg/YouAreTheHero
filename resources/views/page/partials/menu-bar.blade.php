@@ -21,7 +21,7 @@
 </div>
 
 <div data-toggle="tooltip" data-placement="right" data-original-title="@lang('actions.add_new_riddle')" class="clickable shadow mb-2">
-    <span data-pageid="{{ $page->id }}" class="text-black icon-jigsaw-piece display-4"
+    <span data-pageid="{{ $page->id }}" class="icon-jigsaw-piece display-4"
         data-toggle="modal" data-target="#modalCreateRiddle"></span>
 </div>
 
