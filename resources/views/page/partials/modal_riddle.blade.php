@@ -49,9 +49,7 @@
                                     <option value="">{{ trans('page.existing_page') }}</option>
                                     @foreach ($story->pages as $existingPage)
                                         @if ($page->id !== $existingPage->id)
-                                            <option value="{{ $existingPage->id }}" @if ($page->riddle)@if ($existingPage->id === $page->riddle->target_page_id)selected
-                                                @endif
-                                                @endif
+                                            <option value="{{ $existingPage->id }}" @if ($page->riddle) @if ($existingPage->id === $page->riddle->target_page_id) selected @endif @endif
                                             >{{ $existingPage->title }}
                                             </option>
                                         @endif

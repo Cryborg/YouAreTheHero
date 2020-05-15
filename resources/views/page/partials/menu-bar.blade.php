@@ -1,31 +1,35 @@
-<button data-page-from="{{ $page_from ?? 0 }}" class="glyphicon glyphicon-floppy-disk display-5 clickable menu-icon menu-icon-top rounded-lg" data-toggle="tooltip" data-placement="right" data-original-title="@lang('page.edit')"></button>
+<div data-page-from="{{ $page_from ?? 0 }}" class="clickable bg-success shadow mb-2" data-toggle="tooltip" data-placement="right" data-original-title="@lang('page.edit')">
+    <span class="icon-save display-4"></span>
+</div>
 
-<span data-toggle="tooltip" data-placement="right" data-original-title="@lang('story.list_all_pages')">
-    <span data-pageid="{{ $page->id }}" class="glyphicon glyphicon-list display-5 clickable pb-4 pt-4" data-toggle="modal" data-target="#modalAllPages"></span>
-</span>
+<div data-toggle="tooltip" data-placement="right" data-original-title="@lang('story.list_all_pages')" class="clickable shadow">
+    <span class="icon-papers display-4" data-pageid="{{ $page->id }}" data-target="#modalAllPages" data-toggle="modal"></span>
+</div>
 
 {{-- Divider --}}
 <span class="glyphicon glyphicon-none display-4"></span>
 
 @if (!$page->is_first)
-    <span data-toggle="tooltip" data-placement="right" data-original-title="@lang('actions.add_new_prerequisite')">
-        <span data-pageid="{{ $page->id }}" class="glyphicon glyphicon-plus display-5 clickable pb-4 menu-show"
+    <div data-toggle="tooltip" data-placement="right" data-original-title="@lang('actions.add_new_prerequisite')" class="clickable shadow mb-2">
+        <span data-pageid="{{ $page->id }}" class="icon-unlocking display-4"
             data-toggle="modal" data-target="#modalCreatePrerequisite"></span>
-    </span>
+    </div>
 @endif
 
-<span data-toggle="tooltip" data-placement="right" data-original-title="@lang('actions.add_new_action')">
-    <span data-pageid="{{ $page->id }}" class="glyphicon glyphicon-gift display-5 clickable pb-4" data-toggle="modal" data-target="#modalCreateAction"></span>
-</span>
+<div data-toggle="tooltip" data-placement="right" data-original-title="@lang('actions.add_new_action')" class="clickable shadow mb-2">
+    <span class="icon-chest display-4" data-pageid="{{ $page->id }}" data-target="#modalCreateAction" data-toggle="modal"></span>
+</div>
 
-<span data-toggle="tooltip" data-placement="right" data-original-title="@lang('actions.add_new_riddle')">
-    <span data-pageid="{{ $page->id }}" class="glyphicon glyphicon-question-sign display-5 clickable pb-4"
+<div data-toggle="tooltip" data-placement="right" data-original-title="@lang('actions.add_new_riddle')" class="clickable shadow mb-2">
+    <span data-pageid="{{ $page->id }}" class="text-black icon-jigsaw-piece display-4"
         data-toggle="modal" data-target="#modalCreateRiddle"></span>
-</span>
+</div>
 
 {{-- Divider --}}
 <span class="glyphicon glyphicon-none display-4"></span>
 
-<button data-pageid="{{ $page->id }}" class="glyphicon glyphicon-trash display-5 clickable menu-icon menu-icon-bottom rounded-lg"
+<div class="clickable menu-icon menu-icon-bottom shadow bg-danger" data-pageid="{{ $page->id }}"
     @if ($page->choices->count() > 0) disabled @endif
-    data-toggle="tooltip" data-placement="right" data-original-title="@lang('common.delete')"></button>
+    data-toggle="tooltip" data-placement="right" data-original-title="@lang('common.delete')">
+    <span class="icon-trash display-4"></span>
+</div>

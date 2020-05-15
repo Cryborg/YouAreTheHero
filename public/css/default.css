@@ -316,3 +316,7 @@ div.menu-bar-left .menu-icon-bottom:disabled {
 .modal-body-preview .card-footer {
     background-color: #d5efff;
 }
+.icon-big {
+    height: 64px;
+    width: 64px;
+}
