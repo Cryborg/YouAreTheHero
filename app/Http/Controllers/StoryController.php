@@ -412,6 +412,7 @@ class StoryController extends Controller
             'story'   => $story,
             'route'   => 'story.create.post',
             'genres'  => Genre::all(),
+            'contexts' => ['story_creation'],
         ];
 
         $view = View::make('story.create', $data);

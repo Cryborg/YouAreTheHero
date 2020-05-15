@@ -17,6 +17,10 @@
             <a class="nav-link @if (!$story instanceof \App\Models\Story) disabled @endif" id="pills-sheet-tab" data-toggle="pill" href="#pills-sheet" role="tab"
                 aria-controls="pills-sheet" aria-selected="false">{{ trans('story.create_tab3') }}</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link @if (!$story instanceof \App\Models\Story) disabled @endif" id="pills-items-tab" data-toggle="pill" href="#pills-items" role="tab"
+                aria-controls="pills-sheet" aria-selected="false">{{ trans('story.create_tab4') }}</a>
+        </li>
         @if ($story && $story->getCurrentPage())
             <li class="nav-item">
                 <button class="btn btn-success h-100 font-default-size" onclick="window.location.href='{{ route('page.edit', ['page' => $story->getCurrentPage()->id]) }}'">
@@ -166,11 +170,35 @@
                 </tfoot>
             </table>
         </div>
+
+        <div class="tab-pane" id="pills-items" role="tabpanel" aria-labelledby="pills-tab-4">
+            <div class="row">
+                <div class="col">
+                    @include('item.partials.new_item', ['story' => $story, 'context' => 'story_creation'])
+                </div>
+                <div class="col">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            @lang('story.existing_items')
+                        </div>
+                        <div class="panel-body">
+                            <select multiple="" class="form-control custom-select" size="12" id="story_item" name="story_item">
+                                <option value=""></option>
+                                @foreach ($story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
+                                    <option value="{{ $itemId }}">{{ $itemName }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 
 @push('footer-scripts')
     @if ($story)
         @include('story.js.create-js')
+        @include('item.js.create_item_js', ['story' => $story, 'contexts' => $contexts])
     @endif
 @endpush

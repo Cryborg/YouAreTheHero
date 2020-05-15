@@ -53,7 +53,9 @@
                 {!! Form::close() !!}
             </div>
             <div class="tab-pane" id="tr2">
-                @include('page.partials.modal_partials_new_item', ['context' => 'action', 'story' => $page->story])
+                <div class="container">
+                    @include('item.partials.new_item', ['context' => 'prerequisites', 'story' => $page->story])
+                </div>
             </div>
         </div>
     </div>

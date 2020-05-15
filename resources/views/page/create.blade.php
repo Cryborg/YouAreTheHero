@@ -101,4 +101,5 @@
 
 @push('footer-scripts')
     @include('page.js.create-js')
+    @include('item.js.create_item_js', ['story' => $story, 'contexts' => $contexts])
 @endpush
