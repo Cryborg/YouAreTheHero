@@ -284,9 +284,6 @@ div.menu-bar-left .menu-icon-bottom:disabled {
     content: "\2122";
     color: transparent !important;
 }
-.glyphicon-trash {
-    cursor: pointer;
-}
 .modal .card.border-secondary {
     border-width: 1px;
 }

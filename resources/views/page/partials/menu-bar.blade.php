@@ -28,8 +28,21 @@
 {{-- Divider --}}
 <span class="glyphicon glyphicon-none display-4"></span>
 
-<div class="clickable menu-icon menu-icon-bottom shadow bg-danger" data-pageid="{{ $page->id }}"
-    @if ($page->choices->count() > 0) disabled @endif
-    data-toggle="tooltip" data-placement="right" data-original-title="@lang('common.delete')">
-    <span class="icon-trash display-4 text-white"></span>
-</div>
+@isset($page_from)
+    <div class="clickable menu-icon menu-icon-bottom shadow bg-danger mb-3"
+        data-toggle="tooltip" data-placement="right" data-original-title="@lang('common.delete_link')">
+        <span class="icon-breaking-chain display-4 text-white" data-pageid="{{ $page->id }}" data-page-from="{{ $page_from }}"></span>
+    </div>
+@endisset
+
+@if ($page->choices()->count() > 0)
+    <div class="menu-icon menu-icon-bottom shadow bg-secondary"
+        data-toggle="tooltip" data-placement="right" data-original-title="@lang('common.cannot_delete')">
+        <span class="icon-trash display-4 text-dark" data-pageid="{{ $page->id }}"></span>
+    </div>
+@else
+    <div class="clickable menu-icon menu-icon-bottom shadow bg-danger"
+        data-toggle="tooltip" data-placement="right" data-original-title="@lang('common.delete')">
+        <span class="icon-trash display-4 text-white" data-pageid="{{ $page->id }}"></span>
+    </div>
+@endif

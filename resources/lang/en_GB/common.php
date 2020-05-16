@@ -33,4 +33,6 @@ return array (
   'save' => 'Save',
   'btn_validate' => 'Validate',
   'delete' => 'Delete',
+  'delete_link' => 'Delete the link between these two pages',
+  'cannot_delete' => 'You cannot delete a page if it is linked to another',
 );

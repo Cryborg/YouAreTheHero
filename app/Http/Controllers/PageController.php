@@ -220,6 +220,33 @@ class PageController extends Controller
         abort(JsonResponse::HTTP_NOT_FOUND);
     }
 
+    public function deleteChoice(Request $request, Page $page, Page $pageFrom)
+    {
+        if ($request->ajax()) {
+            $this->authorize('edit', $page);
+
+            $success = true;
+            $message = null;
+            $story = $page->story;
+
+            try {
+                $pageFrom->choices()->detach($page->id);
+            } catch (\Exception $e) {
+                $success = false;
+                $message = $e->getMessage();
+            }
+
+            return response()->json([
+                'success' => $success,
+                'message' => $message,
+                'page' => $page->id,
+                'pageFrom' => $pageFrom->id
+            ]);
+        }
+
+        abort(JsonResponse::HTTP_NOT_FOUND);
+    }
+
     public function ajaxListModal(Story $story)
     {
         $view = View::make('page.partials.modal_list_pages', [

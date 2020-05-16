@@ -33,11 +33,11 @@
             return correct;
         }
 
-        $(document).on('click', '.glyphicon-trash', function () {
+        $(document).on('click', '.icon-trash', function () {
             var $this = $(this);
             var id = $this.data('field_id');
             var loadingClass = 'fa fa-circle-o-notch fa-spin';
-            var defaultClass = 'glyphicon glyphicon-trash text-danger';
+            var defaultClass = 'icon-trash text-danger';
 
             if (!$this.hasClass('fa-spin')) {
                 $this.attr('class', loadingClass);

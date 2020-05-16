@@ -49,6 +49,7 @@ Route::get('/page/{page}/edit', 'PageController@getEdit')->name('page.edit');
 Route::post('/page/{page}/edit', 'PageController@postEdit')->name('page.edit.post');
 Route::post('/page/{page}/riddle', 'PageController@postRiddle')->name('page.riddle.validate');
 Route::delete('/page/{page}/delete', 'PageController@delete')->name('page.delete');
+Route::delete('/page/{page}/{page_from}/delete', 'PageController@deleteChoice')->name('page.choice.delete');
 Route::get('/page/{story}/ajax_list_modal', 'PageController@ajaxListModal')->name('page.modal.ajax');
 
 // Actions

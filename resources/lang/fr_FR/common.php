@@ -33,4 +33,6 @@ return array (
   'save' => 'Enregistrer',
   'delete' => 'Supprimer',
   'btn_validate' => 'Valider',
+  'delete_link' => 'Supprimer le lien entre ces deux pages',
+  'cannot_delete' => 'Impossible de supprimer une page ayant des choix',
 );

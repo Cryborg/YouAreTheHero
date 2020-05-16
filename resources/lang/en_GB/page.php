@@ -47,4 +47,5 @@ Click on an already existing page to link to it.',
   'confirm_delete' => 'Are you sure you want to delete this page?',
   'number_choices' => '{0} No choice|{1} :count choice|{2,*} :count choices',
   'number_parents' => '{0} No parent|{1} :count parent|{2,*} :count parents',
+  'confirm_delete_link' => 'Are you sure you want to delete this choice?\\nThe page itself will not be deleted, only the link between the above page and this one.',
 );

@@ -31,7 +31,7 @@
     $(document).ready(function () {
 
         // Delete a page
-        $('.menu-icon-bottom.icon-trash, .card .icon-trash').on('click', function ()
+        $('.menu-icon-bottom>.icon-trash:not(.text-dark), .card .icon-trash').on('click', function ()
         {
             if (!confirm('@lang('page.confirm_delete')')) return false;
 
@@ -39,12 +39,32 @@
             var pageId = $this.data('pageid');
 
             $.ajax({
-                url: route('page.delete', {'page': pageId }),
+                url: route('page.delete', {page: pageId }),
                 method: 'DELETE'
             })
                 .done(function (result) {
                     if (result.success) {
                         window.location.href = result.redirectTo;
+                    }
+                })
+        });
+
+        // Delete the link between two pages
+        $('.icon-breaking-chain').on('click', function ()
+        {
+            if (!confirm('@lang('page.confirm_delete_link')')) return false;
+
+            var $this = $(this);
+            var pageId = $this.data('pageid');
+            var pageFrom = $this.data('page-from');
+
+            $.ajax({
+                url: route('page.choice.delete', {page: pageId, page_from: pageFrom }),
+                method: 'DELETE'
+            })
+                .done(function (result) {
+                    if (result.success) {
+                        window.location.reload();
                     }
                 })
         });
