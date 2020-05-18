@@ -228,7 +228,16 @@
     $(function () {
         $('[data-toggle="tooltip"]')
             .data('html', true)
-            .tooltip()
+            .tooltip({
+                'template': '<div class="tooltip bg-white text-dark" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
+            });
+        $(function () {
+            $('[data-toggle="popover"]').popover({
+                animation: false,
+                html: true
+            })
+        });
+
     });
 
     // Convert dates to human readable strings

@@ -35,6 +35,19 @@ class PagePresenter extends Presenter
             $content = mb_strlen($pContent) > 200 ? mb_substr($pContent, 0, 200) . '...' : $pContent;
         }
 
+        // Check if there are some other placeholders, such as Descriptions
+        if ($this->entity->descriptions()->count() > 0) {
+            foreach ($this->entity->descriptions as $description)
+            {
+                $replacementText = '<a tabindex="0" role="button" data-trigger="focus" data-placement="top" data-toggle="popover" title="'
+                                   . $description['placeholder'] . '" data-content="' . $description['description']
+                                   . '"><span class="icon-eye text-lightgrey mr-1"></span>' . $description['placeholder'] . '</a>';
+                $this->entity->content = str_replace('[[' . $description['placeholder'] . ']]', $replacementText, $this->entity->content);
+            }
+
+            $content = $this->entity->content;
+        }
+
         return $content;
     }
 

@@ -146,4 +146,9 @@ class Page extends Model
     {
         return $this->hasOne(Riddle::class);
     }
+
+    public function descriptions()
+    {
+        return $this->hasMany(Description::class);
+    }
 }

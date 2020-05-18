@@ -132,14 +132,6 @@
 
 <div class="row">
     <div class="col">
-        <div class="tab-content choicesForm" data-page-from="{{ $page->id }}">
-            {{--                @if($page->choices)--}}
-            {{--                    @foreach($page->choices as $key => $choice)--}}
-            {{--                        <div class="tab-pane @if ($key === 0) active @endif" id="p{{ $key }}">--}}
-            {{--                            @include('page.partials.create', ['page' => $choice, 'page_from' => $page->id])--}}
-            {{--                        </div>--}}
-            {{--                    @endforeach--}}
-            {{--                @endif--}}
-        </div>
+        <div class="tab-content choicesForm" data-page-from="{{ $page->id }}"></div>
     </div>
 </div>

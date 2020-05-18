@@ -298,3 +298,6 @@ div.menu-bar-left .menu-icon-bottom:disabled {
 th.icon-expand:before, th.icon-contract:before {
     content: none;
 }
+.text-lightgrey {
+    color: lightgrey !important;
+}
