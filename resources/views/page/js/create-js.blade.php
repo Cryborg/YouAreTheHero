@@ -1,6 +1,6 @@
 <script type="text/javascript">
     function newPage($this, route) {
-        $('a.nav-item.nav-link, div.tab-pane').removeClass('active');
+        $('.nav-item.nav-link, div.tab-pane').removeClass('active');
 
         // Create the page and display it
         $.ajax({
@@ -11,16 +11,20 @@
             'method': 'POST'
         })
             .done(function (data) {
-                $('#choicesForm').append('<div class="tab-pane active" id="p' + data.page.id + '">' + data.view + '</div>');
+                // Displays the page creation
+                $('.choicesForm[data-page-from="' + $this.data('page-from') + '"]')
+                    .append('<div class="tab-pane active" id="p' + data.page.id + '">' + data.view + '</div>');
 
                 // Create the tab
-                $('#addNewPage').before(
-                    '<a class="nav-item nav-link active" href="#p' + data.page.id + '" data-toggle="tab">' +
+                $('.addNewPage[data-page-from="' + $this.data('page-from') + '"]').before(
+                    '<span class="nav-item nav-link active" href="#p' + data.page.id +
+                    '" data-toggle="tab" data-page-from="' + $this.data('page-from') +
+                    '" data-pageid="' + data.page.id + '"' +
+                    '">' +
                     '<span class="choice_title_' + data.page.id + '">' +
                     '<input type="text" class="form-control" placeholder="{{ trans('page.link_text') }}" id="linktext-' + data.page.id + '">' +
-                    '<div class="alert alert-error hidden"></div>' +
-                    '</span></span>' +
-                    '</a>'
+                    '</span>' +
+                    '</span>'
                 );
             })
             .always(function () {
@@ -28,10 +32,24 @@
             });
     }
 
-    $(document).ready(function () {
+    $(document).ready(function ()
+    {
+        // Asynchronously loads a page to edit
+        $(document).on('show.bs.tab', '.nav-item.nav-link[data-toggle="tab"]', function (event) {
+            var $this = $(this);
+
+            $.get({
+                url: route('page.create', [{{ $page->story_id }}, $this.data('pageid')]),
+                method: 'POST'
+            })
+                .done(function (html) {
+                    $('.choicesForm[data-page-from="' + $this.data('page-from') + '"]')
+                        .html('<div class="tab-pane active" id="p' + $this.data('pageid') + '">' + html.view + '</div>');
+                });
+        });
 
         // Delete a page
-        $('.menu-icon-bottom>.icon-trash:not(.text-dark), .card .icon-trash').on('click', function ()
+        $(document).on('click', '.menu-icon-bottom>.icon-trash:not(.text-dark), .card .icon-trash', function ()
         {
             if (!confirm('@lang('page.confirm_delete')')) return false;
 
@@ -50,7 +68,7 @@
         });
 
         // Delete the link between two pages
-        $('.icon-breaking-chain').on('click', function ()
+        $(document).on('click', '.icon-breaking-chain', function ()
         {
             if (!confirm('@lang('page.confirm_delete_link')')) return false;
 
@@ -86,7 +104,7 @@
             $("p.help-block").hide();
         }
 
-        $('.toggle-help').on('click', function () {
+        $(document).on('click', '.toggle-help', function () {
             var $pBlocks = $('p.help-block');
             var done = false;
 
@@ -101,7 +119,7 @@
         });
 
         // Create a new tab with a new page
-        $('#addNewPage').on('click', function (event) {
+        $(document).on('click', '.addNewPage', function (event) {
             event.preventDefault();
 
             var $this = $(this);
@@ -186,7 +204,7 @@
                 });
         });
 
-        $('#add_CreatePrerequisite').on('click', function () {
+        $(document).on('click', '#add_CreatePrerequisite', function () {
             var $this = $(this);
             let $parent = $this.closest('.modal');
             var data = {};
@@ -268,7 +286,7 @@
     });
 
     // When the author chooses an item from the list
-    $('#item_id').on('change', function () {
+    $(document).on('change', '#item_id', function () {
         var $this = $(this);
 
         if ($this.val() === '') return false;
@@ -283,7 +301,7 @@
     });
 
     // When the author creates a link to an existing page
-    $('.nav-item.nav-link select').on('click', function (e) {
+    $(document).on('click', '.childrenSelect', function (e) {
         e.preventDefault();
 
         var $this = $(this);
@@ -292,13 +310,13 @@
 
         $this.prop('disabled', true);
 
-        newPage($this, route('page.create', [{{ $page->story_id }}, $this.val()]));
+        newPage($this, route('page.create', [{{ $page->story_id }}, $this.data('page-from')]));
 
-        $("#childrenSelect option:selected").remove();
+        $(".childrenSelect option:selected").remove();
     });
 
     // When the author validates the new action on the modal
-    $('#add_CreateAction').on('click', function () {
+    $(document).on('click', '#add_CreateAction', function () {
         var $this = $(this);
         var serialized = $('#action_create').serialize();
         let $parent = $this.closest('.modal');
@@ -354,7 +372,7 @@
     });
 
     // When tu author creates a new riddle
-    $('#add_CreateRiddle').on('click', function () {
+    $(document).on('click', '#add_CreateRiddle', function () {
         var $this = $(this);
         let $parent = $this.closest('.modal');
 

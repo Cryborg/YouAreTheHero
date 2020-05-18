@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('locale', 5)->default('fr_FR');
             $table->dateTime('email_verified_at')->nullable();
             $table->string('remember_token', 100)->nullable();
-            $table->enum('role', ['member', 'admin', 'moderator'])->default('member');
+            $table->enum('role', ['admin', 'moderator', 'member', 'developer'])->default('member');
 
             $table->timestamps();
             $table->softDeletes();

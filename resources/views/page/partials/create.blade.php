@@ -12,8 +12,10 @@
 
                 <div class="divAsForm" data-route="{{ route('page.edit.post', ['page' => $page->id]) }}">
 
-                    {{--  Errors --}}
-                    <div class="form-errors alert alert-danger hidden"></div>
+                    @can('debug')
+                        From: <span class="badge badge-warning">{{ $page_from ?? 0 }}</span>
+                        This: <span class="badge badge-warning">{{ $page->id }}</span>
+                    @endcan
 
                     {{-- Form --}}
                     <div class="panel panel-default">
@@ -93,6 +95,51 @@
 
                 @include('page.partials.riddles_list', ['page' => $page])
             </div>
+        </div>
+    </div>
+
+    <hr>
+
+    {{-- Choice(s) --}}
+    <div class="col">
+        @info({!! trans('page.current_page_choices_help') !!})
+
+        <nav class="nav nav-tabs">
+            @if($page->choices)
+                @foreach($page->choices as $key => $choice)
+                    <span class="nav-item nav-link href="#p{{ $key }}"
+                        data-toggle="tab" data-pageid="{{ $choice->id }}" data-page-from="{{ $page->id }}">
+                        <span class="choice_title_{{ $choice->id }}">
+                            <input type="text" class="form-control" placeholder="{{ trans('page.link_text') }}" id="linktext-{{ $choice->id }}" value="{{ $choice->pivot->link_text }}">
+                        </span>
+                    </span>
+                @endforeach
+            @endif
+            <a class="nav-item nav-link addNewPage" href="" data-page-from="{{ $page->id }}">+</a>
+            <a class="nav-item nav-link" href="">
+                <select class="form-control mr-sm-2 childrenSelect" data-page-from="{{ $page->id }}">
+                    <option value="0" selected>{{ trans('page.existing_page') }}</option>
+                    @foreach ($page->getPotentialChildren() as $existingPage)
+                        @if ($existingPage->id !== $page->id)
+                            <option value="{{ $existingPage->id }}">{{ $existingPage->title }}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </a>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="tab-content choicesForm" data-page-from="{{ $page->id }}">
+            {{--                @if($page->choices)--}}
+            {{--                    @foreach($page->choices as $key => $choice)--}}
+            {{--                        <div class="tab-pane @if ($key === 0) active @endif" id="p{{ $key }}">--}}
+            {{--                            @include('page.partials.create', ['page' => $choice, 'page_from' => $page->id])--}}
+            {{--                        </div>--}}
+            {{--                    @endforeach--}}
+            {{--                @endif--}}
         </div>
     </div>
 </div>

@@ -9,48 +9,6 @@
     {{-- Current page --}}
     @include('page.partials.create')
 
-    <hr>
-
-    {{-- Choice(s) --}}
-    <div class="row">
-        <div class="col">
-            @info({!! trans('page.current_page_choices_help') !!})
-
-            <nav class="nav nav-tabs">
-                @if($page->choices)
-                    @foreach($page->choices as $key => $choice)
-                        <a class="nav-item nav-link @if ($key === 0) active @endif" href="#p{{ $key }}" data-toggle="tab">
-                            <span class="choice_title_{{ $key }}">
-                                <input type="text" class="form-control" placeholder="{{ trans('page.link_text') }}" id="linktext-{{ $choice->id }}" value="{{ $choice->pivot->link_text }}">
-                            </span>
-                        </a>
-                    @endforeach
-                @endif
-                <a class="nav-item nav-link" href="" id="addNewPage" data-page-from="{{ $page->id }}">+</a>
-                <a class="nav-item nav-link" href="">
-                    <select class="form-control mr-sm-2" id="childrenSelect" data-page-from="{{ $page->id }}">
-                        <option value="0" selected>{{ trans('page.existing_page') }}</option>
-                        @foreach ($page->getPotentialChildren() as $existingPage)
-                            @if ($existingPage->id !== $page->id)
-                                <option value="{{ $existingPage->id }}">{{ $existingPage->title }}</option>
-                            @endif
-                        @endforeach
-                    </select>
-                </a>
-            </nav>
-            <div class="tab-content" id="choicesForm">
-                @if($page->choices)
-                    @foreach($page->choices as $key => $choice)
-                        <div class="tab-pane @if ($key === 0) active @endif" id="p{{ $key }}">
-{{--                            @include('page.partials.create_readonly', ['page' => $choice, 'child' => true])--}}
-                            @include('page.partials.create', ['page' => $choice, 'page_from' => $page->id])
-                        </div>
-                    @endforeach
-                @endif
-            </div>
-        </div>
-    </div>
-
     <!-- Modal list all pages -->
     @include('page.partials.modal_model', [
         'template' => 'page.partials.modal_list_pages',

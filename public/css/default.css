@@ -121,8 +121,9 @@ p:not(.help-block) {
     align-self: center;
     font-size: 1.5em;
 }
-#addNewPage {
+.addNewPage {
     font-size: 1.5em;
+    cursor: pointer;
 }
 .input-invalid {
     border: 1px solid red;

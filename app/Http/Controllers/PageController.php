@@ -47,7 +47,7 @@ class PageController extends Controller
             'layouts' => [
                 'play1' => 'Premier layout',
             ],
-            'page_from' => $request->get('page_from')
+            'page_from' => $request->get('page_from', 0)
         ]);
 
         return response()->json(
