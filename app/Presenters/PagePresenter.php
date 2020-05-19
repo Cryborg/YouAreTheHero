@@ -39,7 +39,7 @@ class PagePresenter extends Presenter
         if ($this->entity->descriptions()->count() > 0) {
             foreach ($this->entity->descriptions as $description)
             {
-                $replacementText = '<a tabindex="0" role="button" data-trigger="focus" data-placement="top" data-toggle="popover" title="'
+                $replacementText = '<a tabindex="0" role="button" data-trigger="hover" data-placement="top" data-toggle="popover" title="'
                                    . $description['placeholder'] . '" data-content="' . $description['description']
                                    . '"><span class="icon-eye text-lightgrey mr-1"></span>' . $description['placeholder'] . '</a>';
                 $this->entity->content = str_replace('{{' . $description['placeholder'] . '}}', $replacementText, $this->entity->content);

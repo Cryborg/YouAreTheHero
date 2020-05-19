@@ -135,10 +135,12 @@
             let internalId = $parent.data('pageid');
 
             // Destroy all other summernotes so there is only one open at a time
-            $("[id^='content-']:hidden").summernote('destroy');
+            $("[id^='content-editable-']:hidden").summernote('destroy');
 
             $this.removeClass('clickable');
-            $('#content-' + internalId + ':visible').summernote(summernoteOptions);
+            $('#content-' + internalId).addClass('hidden');
+            $('#content-editable-' + internalId).removeClass('hidden');
+            $('#content-editable-' + internalId + ':visible').summernote(summernoteOptions);
             $this.addClass('summernote-open');
         });
 
@@ -152,12 +154,14 @@
             // Find parent page form
             let $form = $("div.is-page[data-pageid='" + currentPageId + "']").find('.divAsForm');
 
-            $('#content-' + currentPageId + ':hidden').summernote('destroy');
+            $('#content-editable-' + currentPageId + ':hidden').summernote('destroy');
+            $('#content-editable-' + currentPageId + ':visible').addClass('hidden');
+            $('#content-' + currentPageId).removeClass('hidden');
             $('.toggle-summernote').addClass('clickable').removeClass('summernote-open');
 
             var data = {
                 'title': $('#title-' + currentPageId).val(),
-                'content': $('#content-' + currentPageId).html(),
+                'content': $('#content-editable-' + currentPageId).html(),
                 'layout': $('#layout-' + currentPageId).val(),
                 'is_first': $('#is_first-' + currentPageId).is(":checked") ? 1 : 0,
                 'is_last': $('#is_last-' + currentPageId).is(":checked") ? 1 : 0,
@@ -174,6 +178,7 @@
                 data: data
             })
                 .done(function (data) {
+                    $('#content-' + currentPageId).html(data.content);
                     showToast('success', {
                         heading: '{{ trans('notification.save_success_title') }}',
                         text: "{{ trans('notification.save_success_text') }}",

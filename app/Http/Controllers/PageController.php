@@ -128,7 +128,10 @@ class PageController extends Controller
                 // Invalidate cache
                 Cache::forget('page_' . $page->id);
 
-                return response()->json(['success' => true]);
+                return response()->json([
+                    'success' => true,
+                    'content' => $page->present()->content,
+                ]);
             }
 
             \flash(trans('model.save_error'));
