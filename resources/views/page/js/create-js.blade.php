@@ -310,7 +310,7 @@
 
         $this.prop('disabled', true);
 
-        newPage($this, route('page.create', [{{ $page->story_id }}, $this.data('page-from')]));
+        newPage($this, route('page.create', [{{ $page->story_id }}, $this.val()]));
 
         $(".childrenSelect option:selected").remove();
     });
