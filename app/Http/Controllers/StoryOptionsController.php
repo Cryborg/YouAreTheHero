@@ -36,7 +36,7 @@ class StoryOptionController extends Controller
                 break;
         }
 
-        $success = $story->story_options()->update([
+        $success = $story->story_options()->updateOrCreate(['story_id' => $story->id], [
             $option => $value
         ]);
 
