@@ -10,7 +10,7 @@
 
         <div class="form-group row ml-2">
             {!! Form::label('languages', trans('common.language'), ['class' => 'control-label col-xs-12 col-lg-2']) !!}
-            {!! Form::select('languages', $languages , null , ['class' => 'form-control col-xs-12 col-4', 'id' => 'languages']) !!}
+            {!! Form::select('languages', $languages, null , ['class' => 'form-control col-xs-12 col-4', 'id' => 'languages']) !!}
         </div>
 
         <div class="form-group row ml-2">

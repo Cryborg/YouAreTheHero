@@ -7,7 +7,7 @@ return array (
   'edit_title' => 'Edit story',
   'resume_editing' => 'Resume writing',
   'edit' => 'Edit story',
-  'start_playing' => 'Start the story',
+  'start_playing' => 'Start playing',
   'reset' => 'Reset adventure',
   'reset_successful_text' => 'The adventure has been successfully reset!',
   'reset_failed_text' => 'Unable to reset the adventure :(',

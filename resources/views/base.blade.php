@@ -59,31 +59,29 @@
 
                     {{-- Right Side Of Navbar --}}
                         <ul class="navbar-nav ml-auto">
-                            @can('isAdmin')
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link" href="#" id="navbarDropdownFlag" role="button" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        <img width="32" height="32" alt="{{ session('locale') }}"
-                                            src="{!! asset('img/flags/' . session('locale') . '.png') !!}"/>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#" id="navbarDropdownFlag" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <img width="32" height="32" alt="{{ session('locale') }}"
+                                        src="{!! asset('img/flags/' . session('locale') . '.png') !!}"/>
+                                </a>
+                                <div id="flags" class="dropdown-menu" aria-labelledby="navbarDropdownFlag">
+                                    @foreach(config('app.languages') as $locale)
+                                        @if($locale != session('locale'))
+                                            <a class="dropdown-item" href="{{ route('language', $locale) }}">
+                                                <img width="32" height="32" alt="{{ session('locale') }}"
+                                                    src="{!! asset('img/flags/' . $locale . '.png') !!}"/>
+                                            </a>
+                                        @endif
+                                    @endforeach
+
+                                    <div role="separator" class="dropdown-divider"></div>
+
+                                    <a class="dropdown-item" href="{{ url('/translations') }}" target="_blank">
+                                        {{ trans('auth.translations') }}
                                     </a>
-                                    <div id="flags" class="dropdown-menu" aria-labelledby="navbarDropdownFlag">
-                                        @foreach(config('app.languages') as $locale)
-                                            @if($locale != session('locale'))
-                                                <a class="dropdown-item" href="{{ route('language', $locale) }}">
-                                                    <img width="32" height="32" alt="{{ session('locale') }}"
-                                                        src="{!! asset('img/flags/' . $locale . '.png') !!}"/>
-                                                </a>
-                                            @endif
-                                        @endforeach
-
-                                        <div role="separator" class="dropdown-divider"></div>
-
-                                        <a class="dropdown-item" href="{{ url('/translations') }}" target="_blank">
-                                            {{ trans('auth.translations') }}
-                                        </a>
-                                    </div>
-                                </li>
-                            @endif
+                                </div>
+                            </li>
                         </ul>
                     <ul class="navbar-nav">
                         {{-- Authentication Links --}}
