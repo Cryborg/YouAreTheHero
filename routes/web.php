@@ -82,6 +82,14 @@ Route::get('/changelog', 'HomeController@changelog')->name('changelog');
 Route::get('/admin', 'AdminController@getIndex')->name('admin');
 Route::get('/admin/stories', 'AdminController@getStories')->name('admin.stories');
 Route::get('/admin/users', 'AdminController@getUsers')->name('admin.users');
+Route::get('/admin/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return redirect()->route('admin');
+})->name('admin.clear.cache');
+Route::get('/admin/clear-view', function() {
+    Artisan::call('view:clear');
+    return redirect()->route('admin');
+})->name('admin.clear.view');
 
 // User
 Route::get('/user/profile', 'UserController@getProfile')->name('user.profile');

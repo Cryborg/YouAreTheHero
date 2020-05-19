@@ -13,4 +13,6 @@ return array (
   'total_stories' => 'Histoires publiées',
   'stories_title' => 'Histoires',
   'total_active_drafts' => 'Brouillons actifs',
+  'clear_cache' => 'Vider cache données',
+  'clear_view' => 'Vider cache vues',
 );

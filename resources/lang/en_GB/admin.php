@@ -13,4 +13,6 @@ return array (
   'total_users' => 'Users',
   'stories_title' => 'Stories',
   'total_active_drafts' => 'Active drafts',
+  'clear_cache' => 'Clear cache',
+  'clear_view' => 'Clear views',
 );
