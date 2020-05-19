@@ -12,26 +12,26 @@ class PagesTableSeeder extends Seeder
      */
     public function run()
     {
-
+        
 
         \DB::table('pages')->delete();
-
+        
         \DB::table('pages')->insert(array (
-            0 =>
+            0 => 
             array (
                 'id' => 1,
                 'story_id' => 2,
                 'is_first' => 1,
                 'is_last' => 0,
                 'title' => 'Prologue',
-                'content' => '<p>Je n\'ai jamais été très grand fan de science-fiction. La science est déjà elle-même tellement mystérieuse que je n\'ai jamais eu le besoin d\'aller chercher ailleurs une autre source d\'émerveillement.</p><p>Gamin déjà, je m\'imaginais traversant l\'espace à bord d\'un vaisseau que j\'aurais moi-même construit. J\'avais commencé dans mon jardin, mais je me suis vite rendu compte que cet assemblage de bouts de bois n\'allait pas aller bien loin...</p><p>Comme beaucoup de personnes, j\'ai souvent cherché à savoir ce que le futur nous apporterait. C\'est probablement ce qui m\'a fait m\'intéresser aux sciences dans un premier temps. Et la carrière militaire me permettait de travailler sur des projets que j\'imaginais passionnants.</p><p>Mais ce temps est révolu. La science, le futur, les innovations, j\'ai tout devant moi. De mes yeux je contemple la vraie version de ce que sera le futur de l\'humanité.</p>',
+                'content' => '<p>Je n\'ai jamais été très grand fan de science-fiction. La science est déjà elle-même tellement mystérieuse que je n\'ai jamais eu le besoin d\'aller chercher ailleurs une autre source d\'émerveillement.</p><p>Gamin déjà, je m\'imaginais traversant l\'espace à bord d\'un vaisseau que j\'aurais moi-même construit. J\'avais commencé dans mon jardin, mais je me suis vite rendu compte que cet assemblage de bouts de bois n\'allait pas aller bien loin...</p><p>Comme beaucoup de personnes, j\'ai souvent cherché à savoir ce que le futur nous apporterait. C\'est probablement ce qui m\'a fait m\'intéresser aux sciences dans un premier temps. Et la carrière militaire me permettait de travailler sur des projets que j\'imaginais passionnants.</p><p>Mais ce temps est révolu. La science, le [[futur]], les [[innovations]], j\'ai tout devant moi. De mes yeux je contemple la vraie version de ce que sera le futur de l\'humanité.</p>',
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2019-12-21 16:28:07',
-                'updated_at' => '2019-12-21 16:34:01',
+                'updated_at' => '2020-05-18 20:37:21',
                 'deleted_at' => NULL,
             ),
-            1 =>
+            1 => 
             array (
                 'id' => 2,
                 'story_id' => 2,
@@ -45,7 +45,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 16:39:49',
                 'deleted_at' => NULL,
             ),
-            2 =>
+            2 => 
             array (
                 'id' => 3,
                 'story_id' => 2,
@@ -59,7 +59,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 16:42:35',
                 'deleted_at' => NULL,
             ),
-            3 =>
+            3 => 
             array (
                 'id' => 4,
                 'story_id' => 2,
@@ -73,7 +73,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 21:11:54',
                 'deleted_at' => NULL,
             ),
-            4 =>
+            4 => 
             array (
                 'id' => 5,
                 'story_id' => 2,
@@ -87,7 +87,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 16:45:34',
                 'deleted_at' => NULL,
             ),
-            5 =>
+            5 => 
             array (
                 'id' => 6,
                 'story_id' => 2,
@@ -101,7 +101,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 21:18:08',
                 'deleted_at' => NULL,
             ),
-            6 =>
+            6 => 
             array (
                 'id' => 7,
                 'story_id' => 2,
@@ -115,7 +115,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 21:24:39',
                 'deleted_at' => NULL,
             ),
-            7 =>
+            7 => 
             array (
                 'id' => 8,
                 'story_id' => 2,
@@ -129,7 +129,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 21:27:20',
                 'deleted_at' => NULL,
             ),
-            8 =>
+            8 => 
             array (
                 'id' => 9,
                 'story_id' => 2,
@@ -143,7 +143,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 21:29:03',
                 'deleted_at' => NULL,
             ),
-            9 =>
+            9 => 
             array (
                 'id' => 10,
                 'story_id' => 2,
@@ -157,7 +157,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 21:31:26',
                 'deleted_at' => NULL,
             ),
-            10 =>
+            10 => 
             array (
                 'id' => 11,
                 'story_id' => 2,
@@ -171,7 +171,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-14 03:48:11',
                 'deleted_at' => NULL,
             ),
-            11 =>
+            11 => 
             array (
                 'id' => 12,
                 'story_id' => 4,
@@ -185,7 +185,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-09 14:07:21',
                 'deleted_at' => NULL,
             ),
-            13 =>
+            12 => 
             array (
                 'id' => 14,
                 'story_id' => 4,
@@ -199,7 +199,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-10 07:43:08',
                 'deleted_at' => NULL,
             ),
-            14 =>
+            13 => 
             array (
                 'id' => 15,
                 'story_id' => 4,
@@ -213,7 +213,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-09 14:53:41',
                 'deleted_at' => NULL,
             ),
-            15 =>
+            14 => 
             array (
                 'id' => 16,
                 'story_id' => 4,
@@ -227,7 +227,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-10 09:03:12',
                 'deleted_at' => NULL,
             ),
-            16 =>
+            15 => 
             array (
                 'id' => 17,
                 'story_id' => 4,
@@ -248,21 +248,21 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-11 11:48:57',
                 'deleted_at' => NULL,
             ),
-            17 =>
+            16 => 
             array (
                 'id' => 18,
                 'story_id' => 4,
                 'is_first' => 0,
                 'is_last' => 0,
-                'title' => 'Premier étage',
+                'title' => 'Premier étage bis',
                 'content' => '<p>Les 4 portes ont toutes l\'air plus lugubres les unes que les autres, chacune ornée d\'un animal légendaire : une licorne, un dragon, un centaure et un satyre. Bizarrement aucune n\'a de poignée, mais tu remarques à la gauche de chacune d\'elles une petite fente dans laquelle on pourrait glisser une pièce, ou peut-être un médaillon.</p>',
                 'layout' => NULL,
                 'is_checkpoint' => 0,
                 'created_at' => '2020-05-10 07:43:34',
-                'updated_at' => '2020-05-10 08:51:11',
+                'updated_at' => '2020-05-15 20:48:39',
                 'deleted_at' => NULL,
             ),
-            18 =>
+            17 => 
             array (
                 'id' => 19,
                 'story_id' => 4,
@@ -276,7 +276,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-11 06:26:43',
                 'deleted_at' => NULL,
             ),
-            19 =>
+            18 => 
             array (
                 'id' => 20,
                 'story_id' => 4,
@@ -290,7 +290,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-10 08:51:46',
                 'deleted_at' => NULL,
             ),
-            20 =>
+            19 => 
             array (
                 'id' => 21,
                 'story_id' => 4,
@@ -304,7 +304,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-11 06:26:38',
                 'deleted_at' => NULL,
             ),
-            21 =>
+            20 => 
             array (
                 'id' => 22,
                 'story_id' => 4,
@@ -318,7 +318,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-11 19:43:35',
                 'deleted_at' => NULL,
             ),
-            26 =>
+            21 => 
             array (
                 'id' => 27,
                 'story_id' => 4,
@@ -332,21 +332,21 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-11 19:40:43',
                 'deleted_at' => NULL,
             ),
-            27 =>
+            22 => 
             array (
                 'id' => 28,
                 'story_id' => 4,
                 'is_first' => 0,
                 'is_last' => 0,
-                'title' => 'Minima accusamus tenetur quam autem',
+                'title' => 'Page parent',
                 'content' => '<p>Tempore doloribus temporibus consequatur consequatur. Non reprehenderit officia beatae hic voluptatem dolorem. Et deleniti sit qui culpa.</p>',
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
                 'created_at' => '2020-05-11 19:42:05',
-                'updated_at' => '2020-05-11 19:42:05',
+                'updated_at' => '2020-05-17 09:17:08',
                 'deleted_at' => NULL,
             ),
-            28 =>
+            23 => 
             array (
                 'id' => 29,
                 'story_id' => 5,
@@ -360,7 +360,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 11:31:30',
                 'deleted_at' => NULL,
             ),
-            29 =>
+            24 => 
             array (
                 'id' => 30,
                 'story_id' => 5,
@@ -374,7 +374,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 11:36:55',
                 'deleted_at' => NULL,
             ),
-            30 =>
+            25 => 
             array (
                 'id' => 31,
                 'story_id' => 5,
@@ -388,8 +388,554 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 11:36:42',
                 'deleted_at' => NULL,
             ),
+            26 => 
+            array (
+                'id' => 32,
+                'story_id' => 4,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Aut nihil voluptatem quis voluptatem',
+                'content' => '<p>Dolorem ut minus omnis cupiditate repudiandae et. Suscipit velit blanditiis sint animi quam iste non. Aut vero ut sapiente dolorem et nam. Autem molestias cupiditate deserunt reiciendis.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-15 21:45:26',
+                'updated_at' => '2020-05-15 21:45:26',
+                'deleted_at' => NULL,
+            ),
+            27 => 
+            array (
+                'id' => 33,
+                'story_id' => 4,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Voluptatem est omnis possimus tempora',
+                'content' => '<p>Sunt beatae et eligendi omnis aliquam ea et. Distinctio impedit quasi odio ut quia laborum dolore recusandae.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-16 14:44:34',
+                'updated_at' => '2020-05-16 14:44:34',
+                'deleted_at' => NULL,
+            ),
+            28 => 
+            array (
+                'id' => 34,
+                'story_id' => 4,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Quis saepe ab sit et',
+                'content' => '<p>Ut alias optio quos consequatur vitae. Quibusdam minus recusandae optio soluta ipsa totam itaque. Neque deleniti quo ab non.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-16 14:44:56',
+                'updated_at' => '2020-05-16 14:44:56',
+                'deleted_at' => NULL,
+            ),
+            29 => 
+            array (
+                'id' => 35,
+                'story_id' => 4,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Ad ex sit magnam et',
+                'content' => '<p>Cumque corporis esse nihil numquam molestiae omnis occaecati. Autem impedit in tempora soluta. Qui aut odio enim autem nostrum ut. Porro asperiores reiciendis aut ex minus rerum.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-16 14:54:56',
+                'updated_at' => '2020-05-16 14:56:30',
+                'deleted_at' => '2020-05-16 14:56:30',
+            ),
+            30 => 
+            array (
+                'id' => 36,
+                'story_id' => 4,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Ratione rerum voluptas velit modi',
+                'content' => '<p>Dolores et ut hic qui vitae rem reiciendis eum. Sequi deleniti nam quae ea accusantium eos distinctio possimus.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-16 14:59:37',
+                'updated_at' => '2020-05-16 14:59:37',
+                'deleted_at' => NULL,
+            ),
+            31 => 
+            array (
+                'id' => 37,
+                'story_id' => 4,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Omnis modi harum beatae praesentium',
+                'content' => '<p>Praesentium enim accusantium pariatur dolor sit illum. Sed perspiciatis omnis optio eligendi debitis repudiandae eum in. Ut id omnis omnis voluptatem.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-16 15:00:16',
+                'updated_at' => '2020-05-16 15:00:16',
+                'deleted_at' => NULL,
+            ),
+            32 => 
+            array (
+                'id' => 38,
+                'story_id' => 4,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Optio reiciendis error impedit assumenda',
+                'content' => '<p>Voluptas veritatis molestiae tempore autem illum ullam temporibus. Animi autem asperiores voluptate eos consequatur consequuntur quia. Excepturi aut et ullam adipisci et est dicta.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-16 15:00:55',
+                'updated_at' => '2020-05-16 15:00:55',
+                'deleted_at' => NULL,
+            ),
+            33 => 
+            array (
+                'id' => 39,
+                'story_id' => 4,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Nostrum nesciunt quia consectetur officia',
+                'content' => '<p>Molestias officiis voluptas est velit dignissimos. Veniam perferendis sit atque mollitia magni ducimus aut natus. Est doloremque nesciunt eligendi dolores aut reiciendis occaecati.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-16 20:18:52',
+                'updated_at' => '2020-05-16 20:18:52',
+                'deleted_at' => NULL,
+            ),
+            34 => 
+            array (
+                'id' => 40,
+                'story_id' => 4,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'test titre',
+                'content' => '<p>Sit eius hic architecto distinctio. Nihil eos impedit laudantium dolorem qui omnis non. Possimus ratione sapiente fugit.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-16 20:19:34',
+                'updated_at' => '2020-05-16 20:19:47',
+                'deleted_at' => NULL,
+            ),
+            35 => 
+            array (
+                'id' => 41,
+                'story_id' => 4,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Texte 2',
+                'content' => '<p>At aut velit ut. Officiis laborum maiores ullam animi. Laborum quam in odit.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-16 20:30:31',
+                'updated_at' => '2020-05-16 20:30:43',
+                'deleted_at' => NULL,
+            ),
+            36 => 
+            array (
+                'id' => 42,
+                'story_id' => 4,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Doloribus nobis voluptatum quis blanditiis',
+                'content' => '<p>Rerum ut quo ea omnis. Deserunt nam aut error unde. Autem sequi cupiditate minus id. Nihil ipsam facere minus accusantium sunt.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-17 09:18:46',
+                'updated_at' => '2020-05-17 09:18:46',
+                'deleted_at' => NULL,
+            ),
+            37 => 
+            array (
+                'id' => 43,
+                'story_id' => 6,
+                'is_first' => 1,
+                'is_last' => 0,
+                'title' => 'Entrée',
+                'content' => '<p>Esse quas natus at deserunt omnis officia error. Ex ipsum ut molestiae dolorem ut consequatur. Officia earum possimus inventore aut. Asperiores facilis voluptatum enim laboriosam aut.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-17 09:19:24',
+                'updated_at' => '2020-05-17 09:19:57',
+                'deleted_at' => NULL,
+            ),
+            38 => 
+            array (
+                'id' => 44,
+                'story_id' => 6,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Omnis illum in qui est',
+                'content' => '<p>Nihil quis fugit modi voluptatem. Placeat eum sit ex accusantium autem. Est enim fugiat et qui saepe ad inventore.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-17 09:19:59',
+                'updated_at' => '2020-05-17 09:19:59',
+                'deleted_at' => NULL,
+            ),
+            39 => 
+            array (
+                'id' => 45,
+                'story_id' => 6,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Est et quas mollitia quia',
+                'content' => '<p>Accusantium pariatur quasi et esse minus veniam rerum quis. Quis adipisci aliquid sequi sapiente. Culpa incidunt necessitatibus ea in occaecati. Ut iure nesciunt sunt.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-17 09:20:13',
+                'updated_at' => '2020-05-17 09:20:13',
+                'deleted_at' => NULL,
+            ),
+            40 => 
+            array (
+                'id' => 46,
+                'story_id' => 6,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Eos quia et eum qui',
+                'content' => '<p>Similique ea dolorum debitis voluptatem a explicabo. Quis fugit ullam ducimus nam facere nihil atque quisquam. Odio omnis consequatur sint et. Tempore magnam necessitatibus sit repudiandae.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-17 09:24:07',
+                'updated_at' => '2020-05-17 09:24:07',
+                'deleted_at' => NULL,
+            ),
+            41 => 
+            array (
+                'id' => 47,
+                'story_id' => 6,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Praesentium voluptatem ea omnis eligendi',
+                'content' => '<p>Ut animi totam perspiciatis qui quisquam. Cumque ut qui cumque dolore at. Eum vitae aut sunt esse. Voluptatem laudantium qui qui numquam sequi molestiae sed.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-17 09:24:40',
+                'updated_at' => '2020-05-17 09:24:40',
+                'deleted_at' => NULL,
+            ),
+            42 => 
+            array (
+                'id' => 48,
+                'story_id' => 6,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Et hic recusandae est dignissimos',
+                'content' => '<p>Repellat impedit veritatis et qui harum autem debitis. Non omnis quae nisi non ad dignissimos. Modi nisi reiciendis pariatur. Illum alias cupiditate id vel autem quibusdam.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-17 15:53:54',
+                'updated_at' => '2020-05-17 15:53:54',
+                'deleted_at' => NULL,
+            ),
+            43 => 
+            array (
+                'id' => 49,
+                'story_id' => 6,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Sed qui esse quibusdam fuga',
+                'content' => '<p>Dolorem aut velit cupiditate eum. Dolores laudantium vel aliquam cum perferendis pariatur quia exercitationem. Ipsa est praesentium sed.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-17 15:54:51',
+                'updated_at' => '2020-05-17 15:54:51',
+                'deleted_at' => NULL,
+            ),
+            44 => 
+            array (
+                'id' => 50,
+                'story_id' => 6,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Eius et aspernatur ut voluptas',
+                'content' => '<p>Inventore non id est vel animi. Praesentium voluptas non et reiciendis molestiae quos libero. Libero recusandae placeat incidunt mollitia sed tenetur sed iusto. Et ut molestias nobis eum quia.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-17 15:55:21',
+                'updated_at' => '2020-05-17 15:55:21',
+                'deleted_at' => NULL,
+            ),
+            45 => 
+            array (
+                'id' => 51,
+                'story_id' => 6,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Voluptates sunt necessitatibus nesciunt incidunt',
+                'content' => '<p>Non est nihil ex neque impedit. Eligendi vero animi rerum optio. Non est quo deserunt voluptatum exercitationem vero impedit commodi. Non asperiores aut qui labore.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-17 15:55:28',
+                'updated_at' => '2020-05-17 15:55:28',
+                'deleted_at' => NULL,
+            ),
+            46 => 
+            array (
+                'id' => 52,
+                'story_id' => 6,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Et tempora molestiae deleniti est',
+                'content' => '<p>Et aperiam iure voluptatum inventore. Est rerum quod ad eos fugit in omnis. Quia quisquam possimus unde qui quidem.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-17 15:55:57',
+                'updated_at' => '2020-05-17 15:55:57',
+                'deleted_at' => NULL,
+            ),
+            47 => 
+            array (
+                'id' => 53,
+                'story_id' => 6,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Ab accusamus culpa rerum et',
+                'content' => '<p>Earum ullam sit quod id. Dignissimos delectus quam pariatur ducimus eum sed animi. Et aspernatur molestiae provident tempora qui provident.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-17 15:57:40',
+                'updated_at' => '2020-05-17 15:57:40',
+                'deleted_at' => NULL,
+            ),
+            48 => 
+            array (
+                'id' => 54,
+                'story_id' => 6,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Nobis unde et voluptas dicta',
+                'content' => '<p>Est fugiat ut est aperiam et. Dignissimos quod est tenetur architecto fugiat. Voluptas hic enim rerum laborum exercitationem occaecati corrupti. Laborum commodi et veritatis aut.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-17 15:58:39',
+                'updated_at' => '2020-05-17 15:58:39',
+                'deleted_at' => NULL,
+            ),
+            49 => 
+            array (
+                'id' => 55,
+                'story_id' => 6,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Illo est earum qui et',
+                'content' => '<p>Error reiciendis libero aut culpa. Possimus qui occaecati necessitatibus minus sed ut.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-17 15:58:49',
+                'updated_at' => '2020-05-17 15:58:49',
+                'deleted_at' => NULL,
+            ),
+            50 => 
+            array (
+                'id' => 56,
+                'story_id' => 6,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Qui assumenda ut vitae explicabo',
+                'content' => '<p>Voluptas a non et nihil accusantium minima. Vero aut sit sed voluptatem doloribus corrupti. Esse voluptatibus quo facilis et aut hic nemo. Harum adipisci accusamus qui debitis.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-17 15:59:26',
+                'updated_at' => '2020-05-17 15:59:26',
+                'deleted_at' => NULL,
+            ),
+            51 => 
+            array (
+                'id' => 57,
+                'story_id' => 4,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Quis sit aspernatur explicabo aut',
+                'content' => '<p>Incidunt distinctio dolorem esse error eligendi neque corporis. Qui reprehenderit et quia autem molestiae ut. Laborum ex facilis sapiente.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-18 13:06:16',
+                'updated_at' => '2020-05-18 13:06:16',
+                'deleted_at' => NULL,
+            ),
+            52 => 
+            array (
+                'id' => 58,
+                'story_id' => 4,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Perspiciatis id necessitatibus harum expedita',
+                'content' => '<p>Voluptas et occaecati et sequi voluptatum. Consequatur ad ea omnis hic non asperiores. Quas itaque doloremque cum deserunt.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-18 13:06:28',
+                'updated_at' => '2020-05-18 13:06:28',
+                'deleted_at' => NULL,
+            ),
+            53 => 
+            array (
+                'id' => 59,
+                'story_id' => 4,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Saepe qui nostrum qui aliquam',
+                'content' => '<p>Ea quisquam odit nulla. Et sapiente ex et omnis numquam. Voluptas voluptate cumque neque tempora.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-18 13:18:23',
+                'updated_at' => '2020-05-18 13:18:23',
+                'deleted_at' => NULL,
+            ),
+            54 => 
+            array (
+                'id' => 60,
+                'story_id' => 4,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Voluptatem ex placeat et est',
+                'content' => '<p>Quia similique autem error dolor ea illum rerum non. Cupiditate natus sapiente error sint.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-18 13:18:32',
+                'updated_at' => '2020-05-18 13:18:32',
+                'deleted_at' => NULL,
+            ),
+            55 => 
+            array (
+                'id' => 61,
+                'story_id' => 4,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Reprehenderit et error sunt hic',
+                'content' => '<p>Pariatur deleniti nihil accusamus ut non sunt. Voluptatibus quia quo fugit vel amet voluptas fugiat laborum. Molestiae aperiam totam corporis pariatur maxime alias.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-18 13:18:50',
+                'updated_at' => '2020-05-18 13:18:50',
+                'deleted_at' => NULL,
+            ),
+            56 => 
+            array (
+                'id' => 62,
+                'story_id' => 4,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Dolor iste totam enim praesentium',
+                'content' => '<p>Aut et nemo perspiciatis quis fuga. Maxime itaque nostrum ad sunt. Vel deleniti omnis fuga iste possimus voluptate. Fugiat quam cum minima provident magni.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-18 13:30:39',
+                'updated_at' => '2020-05-18 13:30:39',
+                'deleted_at' => NULL,
+            ),
+            57 => 
+            array (
+                'id' => 72,
+                'story_id' => 7,
+                'is_first' => 1,
+                'is_last' => 0,
+                'title' => 'Prologue',
+                'content' => '<p>Te voilà dans de beaux draps ! Enfermé dans une pièce en bordel et seulement vêtu d\'un maillot de bain tout droit sorti du catalogue de la Redoute début 1900... Tu imagines sans problème qu\'il va te falloir résoudre quelques énigmes, vu que tu as lu le descriptif de l\'histoire <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f609.png?v8" style="width: 20px;"></p><p>Pas besoin de chercher sur internet, toutes les réponses se trouvent dans les textes et les éventuelles images, si cette feignasse d\'auteur se sent assez en forme pour faire quelques recherches !</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-18 18:04:22',
+                'updated_at' => '2020-05-18 18:12:07',
+                'deleted_at' => NULL,
+            ),
+            58 => 
+            array (
+                'id' => 73,
+                'story_id' => 7,
+                'is_first' => 0,
+                'is_last' => 1,
+                'title' => 'Bon bah... tant pis !',
+                'content' => '<p>Ce fut court ! Félicitations pour cette partie un poil rapide, mais eh, il paraît qu\'on apprend peu par la victoire, et plus par la défaite, tu es en bonne voie !</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-18 18:12:10',
+                'updated_at' => '2020-05-18 18:13:51',
+                'deleted_at' => NULL,
+            ),
+            59 => 
+            array (
+                'id' => 74,
+                'story_id' => 7,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Première salle',
+                'content' => '<p>Tu te trouves dans une salle contenant un fouillis indescriptible. Mais si je ne le décris pas, tu ne risques pas de résoudre quoi que ce soit, je vais donc faire un effort.</p><p><br></p><p>En face de toi se trouve {{une porte}}. Fermée, il va sans dire. Sur ta droite se trouve un petit bureau avec un ordinateur, un {{digicode}} et un {{carnet de notes}}.</p><p><br></p><p>Du côté gauche de la pièce tu remarques un {{tableau très moche}}, mais ne dit-on pas que tous les goûts sont dans la nature ? A mon avis certains devraient y rester.</p><p><br></p><p>Au sol c\'est un {{entassement de livres}} qui attire ton attention. Toutes ces couleurs t\'agressent les pupilles, mais le pire reste probablement le fait qu\'ils soient ainsi éparpillés par terre et non dans une bibliothèque ! Qui est aussi cruel ?</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-18 18:13:55',
+                'updated_at' => '2020-05-19 08:39:34',
+                'deleted_at' => NULL,
+            ),
+            60 => 
+            array (
+                'id' => 75,
+                'story_id' => 7,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'L\'ordinateur',
+                'content' => '<p>C\'est un vieux machin mais il fonctionne toujours. La seule session disponible est au nom de "Princesse Fiona". Et il y a un mot de passe, évidemment...</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-19 08:34:32',
+                'updated_at' => '2020-05-19 09:02:24',
+                'deleted_at' => NULL,
+            ),
+            61 => 
+            array (
+                'id' => 76,
+                'story_id' => 7,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Les dossiers de Princesse Fiona',
+                'content' => '<p>Comme tu t\'en doutais il n\'y a pas grand-chose d\'intéressant dans les dossiers de la petite fille. Beaucoup d\'images trouvées sur internet, surtout des personnages de Disney. Et une histoire qu\'elle a écrite à propos d\'un cheval qui rêvait d\'être une licorne. C\'est pas de la grande littérature mais le monde qu\'elle décrit a le mérite d\'être original.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-19 08:35:21',
+                'updated_at' => '2020-05-19 09:14:05',
+                'deleted_at' => NULL,
+            ),
+            62 => 
+            array (
+                'id' => 77,
+                'story_id' => 7,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Mot de passe oublié',
+                'content' => '<p>A l\'écran un message t\'indique qu\'un mail a été envoyé pour réinitialiser le mot de passe. Ca ne t\'avance pas beaucoup, tu ignores de quel mail il s\'agit. Et puis tu n\'y aurais pas accès de toute manière.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-19 08:35:36',
+                'updated_at' => '2020-05-19 08:40:13',
+                'deleted_at' => NULL,
+            ),
+            63 => 
+            array (
+                'id' => 78,
+                'story_id' => 7,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Voluptates architecto sunt dolore eos',
+                'content' => '<p>Corrupti in et voluptas id magni enim et. Voluptatem voluptatem distinctio mollitia magni suscipit fuga quo maiores. Vero earum qui eveniet laboriosam.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-19 08:35:42',
+                'updated_at' => '2020-05-19 09:14:52',
+                'deleted_at' => '2020-05-19 09:14:52',
+            ),
+            64 => 
+            array (
+                'id' => 79,
+                'story_id' => 7,
+                'is_first' => 0,
+                'is_last' => 0,
+                'title' => 'Aliquid animi qui adipisci vel',
+                'content' => '<p>Et veritatis aspernatur dolor iusto. Vero nam modi est. Sit pariatur commodi cupiditate aut. Similique at repellat dicta distinctio aut sit.</p>',
+                'layout' => 'play1',
+                'is_checkpoint' => 0,
+                'created_at' => '2020-05-19 09:14:12',
+                'updated_at' => '2020-05-19 09:14:59',
+                'deleted_at' => '2020-05-19 09:14:59',
+            ),
         ));
-
-
+        
+        
     }
 }

@@ -12,12 +12,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-
+        
 
         \DB::table('users')->delete();
-
+        
         \DB::table('users')->insert(array (
-            0 =>
+            0 => 
             array (
                 'id' => 1,
                 'first_name' => 'Marty',
@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 14:50:25',
                 'deleted_at' => NULL,
             ),
-            1 =>
+            1 => 
             array (
                 'id' => 2,
                 'first_name' => 'Marty',
@@ -49,7 +49,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 14:50:25',
                 'deleted_at' => NULL,
             ),
-            2 =>
+            2 => 
             array (
                 'id' => 3,
                 'first_name' => 'Marty',
@@ -65,7 +65,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 14:50:25',
                 'deleted_at' => NULL,
             ),
-            3 =>
+            3 => 
             array (
                 'id' => 4,
                 'first_name' => 'Fred',
@@ -81,7 +81,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 14:50:25',
                 'deleted_at' => NULL,
             ),
-            4 =>
+            4 => 
             array (
                 'id' => 5,
                 'first_name' => 'Fred',
@@ -97,7 +97,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 14:50:25',
                 'deleted_at' => NULL,
             ),
-            5 =>
+            5 => 
             array (
                 'id' => 6,
                 'first_name' => 'Fred',
@@ -113,7 +113,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 14:50:25',
                 'deleted_at' => NULL,
             ),
-            6 =>
+            6 => 
             array (
                 'id' => 7,
                 'first_name' => NULL,
@@ -129,7 +129,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 13:22:02',
                 'deleted_at' => NULL,
             ),
-            7 =>
+            7 => 
             array (
                 'id' => 8,
                 'first_name' => NULL,
@@ -145,7 +145,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2020-01-20 05:43:46',
                 'deleted_at' => NULL,
             ),
-            8 =>
+            8 => 
             array (
                 'id' => 9,
                 'first_name' => 'Frédéric',
@@ -161,7 +161,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2020-04-21 09:33:31',
                 'deleted_at' => NULL,
             ),
-            9 =>
+            9 => 
             array (
                 'id' => 10,
                 'first_name' => NULL,
@@ -177,7 +177,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2020-01-22 08:50:27',
                 'deleted_at' => NULL,
             ),
-            10 =>
+            10 => 
             array (
                 'id' => 11,
                 'first_name' => NULL,
@@ -193,7 +193,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2020-02-05 23:29:38',
                 'deleted_at' => NULL,
             ),
-            11 =>
+            11 => 
             array (
                 'id' => 12,
                 'first_name' => NULL,
@@ -209,7 +209,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2020-03-19 11:01:25',
                 'deleted_at' => NULL,
             ),
-            12 =>
+            12 => 
             array (
                 'id' => 13,
                 'first_name' => 'Elowenn',
@@ -226,7 +226,7 @@ class UsersTableSeeder extends Seeder
                 'deleted_at' => NULL,
             ),
         ));
-
-
+        
+        
     }
 }

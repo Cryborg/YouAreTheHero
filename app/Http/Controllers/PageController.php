@@ -152,19 +152,15 @@ class PageController extends Controller
         if ($request->ajax()) {
             $this->authorize('edit', $page);
 
-            $result = strtolower(trim($request->get('answer'))) === strtolower(trim($page->riddle->answer));
+            $answerIsCorrect = strtolower(trim($request->get('answer'))) === strtolower(trim($page->riddle->answer));
+            $storySession = Session::get('story');
             $itemResponse = null;
             $pageResponse = null;
 
-            if ($result) {
+            if ($answerIsCorrect) {
+                // If the player earns an item
                 if ($page->riddle && $page->riddle->item) {
                     $itemResponse = trans('page.riddle_item_earned', ['item_name' => $page->riddle->item->name]);
-                    $storySession = Session::get('story');
-
-                    // Flag the riddle as answered for this character
-                    $page->riddle->character()->attach($storySession['character_id'], [
-                        'riddle_id' => $page->riddle->id
-                    ]);
 
                     if ($page->riddle->item_id) {
                         Inventory::create(
@@ -177,13 +173,22 @@ class PageController extends Controller
                     }
                 }
 
+                // If it unlocks a new page
                 if ($page->riddle && $page->riddle->target_page_id) {
-                    $pageResponse = $page->riddle->target_page_text;
+                    $pageResponse = '<div class="choices-links button-group"><a data-href="' . route('story.play', ['story' => $page->story->id, 'page' => $page->id]) . '">
+                        <button class="large button">' . $page->riddle->target_page_text . '</button>
+                    </a></div>';
+                    $itemResponse = trans('page.riddle_already_solved');
                 }
+
+                // Flag the riddle as answered for this character
+                $page->riddle->character()->attach($storySession['character_id'], [
+                    'riddle_id' => $page->riddle->id
+                ]);
             }
 
             return response()->json([
-                'success' => $result,
+                'success' => $answerIsCorrect,
                 'itemResponse' => $itemResponse,
                 'pageResponse' => $pageResponse,
                 'solved' => $page->riddle ? $page->riddle->isSolved() : 'bouh',

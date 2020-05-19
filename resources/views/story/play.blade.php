@@ -86,7 +86,13 @@
                 })
                     .done(function (data) {
                         if (data.success) {
-                            $('#riddle_block').html(data.itemResponse);
+                            if (data.itemResponse) {
+                                $('#riddle_block').html(data.itemResponse);
+                            }
+
+                            if (data.pageResponse) {
+                                $('.btn-toolbar').append(data.pageResponse);
+                            }
 
                             if (data.refreshInventory !== false) {
                                 loadInventory();

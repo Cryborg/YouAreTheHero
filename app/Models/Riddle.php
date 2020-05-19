@@ -35,4 +35,10 @@ class Riddle extends Model
 
         return $this->isRiddleSolved;
     }
+
+    public function prerequisites()
+    {
+        return $this->morphMany(Prerequisite::class, 'prerequisiteable');
+    }
+
 }

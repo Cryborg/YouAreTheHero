@@ -27,6 +27,11 @@ class StoryGenreTableSeeder extends Seeder
                 'story_id' => 5,
                 'genre_id' => 4,
             ),
+            2 => 
+            array (
+                'story_id' => 6,
+                'genre_id' => 9,
+            ),
         ));
         
         

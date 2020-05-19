@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RiddlesTableSeeder::class);
         $this->call(StoryGenreTableSeeder::class);
         $this->call(StoryOptionsTableSeeder::class);
+        $this->call(DescriptionsTableSeeder::class);
     }
 }
 

@@ -48,4 +48,5 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
   'number_parents' => '{0} Aucun parent|{1} :count parent|{2,*} :count parents',
   'number_choices' => '{0} Aucun choix|{1,*} :count choix',
   'confirm_delete_link' => 'Es-tu sûr(e) de vouloir supprimer ce choix ?\\nSeul le lien entre les pages sera supprimé, pas la page elle-même.',
+  'current_page_riddles_help' => 'Ici se trouvent les détails de l\'énigme de cette page.',
 );

@@ -11,11 +11,11 @@
                         <ul>
                             <li>Improvements:</li>
                             <ul>
-                                <li>Storytellers can now include <b>basic riddles</b> in their pages! It allows the creation of <b>escape books</b>!</li>
+                                <li>Storytellers can include <b>basic riddles</b> in their pages! It allows the creation of <b>escape books</b>!</li>
                                 <li>Improved pages creation</li>
-                                <li>New icons (https://game-icons.net + https://icomoon.io/app)</li>
-                                <li>Items can be created during story creation</li>
-                                <li>Texts can now contain clickable items for inline descriptions</li>
+                                <li>New icons (<a target="_blank" href="https://game-icons.net">GameIcons</a> + <a target="_blank" href="https://icomoon.io/app">IcoMoon</a>)</li>
+                                <li>Items creation during story creation</li>
+                                <li>Clickable items for inline descriptions</li>
                             </ul>
                         </ul>
                     </fieldset>
