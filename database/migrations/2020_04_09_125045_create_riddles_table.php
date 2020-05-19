@@ -19,6 +19,7 @@ class CreateRiddlesTable extends Migration
             $table->unsignedBigInteger('page_id');
             $table->foreign('page_id')->references('id')->on('pages');
 
+            $table->string('title', 30)->nullable();
             $table->string('answer', 30);
             $table->enum('type', ['integer', 'string'])->default('string');
 

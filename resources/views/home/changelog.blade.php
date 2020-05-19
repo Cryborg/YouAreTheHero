@@ -15,6 +15,7 @@
                                 <li>Improved pages creation</li>
                                 <li>New icons (https://game-icons.net + https://icomoon.io/app)</li>
                                 <li>Items can be created during story creation</li>
+                                <li>Texts can now contain clickable items for inline descriptions</li>
                             </ul>
                         </ul>
                     </fieldset>
