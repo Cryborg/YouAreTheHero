@@ -174,6 +174,7 @@ class PageController extends Controller
                 }
 
                 // If it unlocks a new page
+                //FIXME: Moche, mettre ça dans un partial
                 if ($page->riddle && $page->riddle->target_page_id) {
                     $pageResponse = '<div class="choices-links button-group"><a data-href="' . route('story.play', ['story' => $page->story->id, 'page' => $page->id]) . '">
                         <button class="large button">' . $page->riddle->target_page_text . '</button>

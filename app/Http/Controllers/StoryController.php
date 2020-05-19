@@ -56,8 +56,7 @@ class StoryController extends Controller
         $page_id = getSession('page_id');
 
         if (!empty($page_id)) {
-            $page = Page::where('id', $page_id)
-                        ->first();
+            $page = Page::where('id', $page_id)->first();
         }
 
         setSession('story_id', $story->id);

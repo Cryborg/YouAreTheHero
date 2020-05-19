@@ -9,6 +9,10 @@
                 </a>
             @endcan
 
+            @can('debug')
+                    <span class="badge badge-warning"><span class="font-smaller">#</span>{{ $page->id }}</span>
+            @endcan
+
             {{ $page->title }}
         </div>
         <div class="panel-body text-justify">

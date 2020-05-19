@@ -44,6 +44,11 @@
             if (request.status === 419) {
                 alert('You have been inactive for the last minutes, please refresh the page to reconnect.');
             }
+
+            $('[data-toggle="popover"]').popover({
+                animation: false,
+                html: true
+            });
         })
     ;
 
