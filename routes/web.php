@@ -97,3 +97,6 @@ Route::post('/user/{user}/profile', 'UserController@store')->name('user.profile.
 
 // Riddle
 Route::post('/page/{page}/newriddle', 'RiddleController@store')->name('riddle.store');
+
+// Descriptions
+Route::get('/descriptions/{page}', 'DescriptionController@list')->name('page.descriptions');

@@ -34,6 +34,10 @@
 
     $(document).ready(function ()
     {
+        $(document).on('show.bs.modal', '#modalPopovers', function (event) {
+            $('.summernote').summernote(summernoteOptionsLight);
+        });
+
         // Asynchronously loads a page to edit
         $(document).on('show.bs.tab', '.nav-item.nav-link[data-toggle="tab"]', function (event) {
             var $this = $(this);
@@ -136,6 +140,7 @@
 
             // Destroy all other summernotes so there is only one open at a time
             $("[id^='content-editable-']:hidden").summernote('destroy');
+            $('.toggle-summernote').addClass('clickable').removeClass('summernote-open');
 
             $this.removeClass('clickable');
             $('#content-' + internalId).addClass('hidden');

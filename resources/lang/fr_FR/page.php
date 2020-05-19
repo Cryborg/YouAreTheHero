@@ -49,4 +49,5 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
   'number_choices' => '{0} Aucun choix|{1,*} :count choix',
   'confirm_delete_link' => 'Es-tu sûr(e) de vouloir supprimer ce choix ?\\nSeul le lien entre les pages sera supprimé, pas la page elle-même.',
   'current_page_riddles_help' => 'Ici se trouvent les détails de l\'énigme de cette page.',
+  'descriptions_help' => 'Tu peux ajouter des descriptions dans ton texte. Le ou les mots que tu auras choisis, une fois survolés par la souris, montreront la description qui leur est associée.',
 );

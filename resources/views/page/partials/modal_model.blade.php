@@ -11,10 +11,8 @@
                 </button>
             </div>
             <div class="modal-body shadow-sm">
-                @if (!$async)
-                    @isset($data['page'])
-                        @include($template, ['page' => $data['page']])
-                    @endisset
+                @if (in_array($context, ['prerequisites', 'actions', 'riddles']))
+                    @include($template, ['page' => $data['page']])
                 @endif
             </div>
             <div class="modal-body modal-body-preview h-100 hidden">
@@ -34,10 +32,13 @@
     </div>
 </div>
 
-@if ($async)
+@if ($context === 'list_pages')
     @push('footer-scripts')
         <script>
-            $('#modalAllPages').on('show.bs.modal', function (event) {
+            $(document).on('show.bs.modal', '#modalAllPages', function (event)
+            {
+                $('#modalAllPages .modal-body:not(.modal-body-preview)').html('');
+
                 $.get({
                     url: route('page.modal.ajax', {story: {{ $data['story']->id }}})
                 })
@@ -75,6 +76,27 @@
                     $('.modal-preview-content').wrapInner('<div class="row"></div>');
                 });
 
+            });
+        </script>
+    @endpush
+@endif
+
+@if ($context === 'popovers')
+    @push('footer-scripts')
+        <script>
+            $(document).on('show.bs.modal', '#modalPopovers', function (event) {
+                var $this = $(this);
+
+                $('#modalPopovers .modal-body').html('');
+
+                $.get({
+                    url: route('page.descriptions', {page: $this.data('pageid')})
+                })
+                    .done(function (html) {
+                        $('#modalPopovers .modal-body').html(html);
+
+                        $('.summernote').summernote(summernoteOptionsLight);
+                    });
             });
         </script>
     @endpush

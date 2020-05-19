@@ -83,4 +83,6 @@
 .icon-eye:before {
     content: "\e912";
 }
-
+.icon-archive-research:before {
+    content: "\e913";
+}

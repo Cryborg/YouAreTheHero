@@ -171,6 +171,21 @@
         return buttonGroup.render();   // return button as jquery object
     };
 
+    var PopoverButton = function (context) {
+        var $this = $(this);
+        var ui = $.summernote.ui;
+        var button = ui.button({
+            contents: '<span data-target="#modalPopovers" data-toggle="modal">Popovers</span>',
+            tooltip: 'Highlight text with red color',
+            click: function() {
+                console.log(context.$note.parents('.is-page').data('pageid'));
+                $('#modalPopovers').data('pageid', context.$note.parents('.is-page').data('pageid'));
+            }
+        });
+
+        return button.render();
+    };
+
     var summernoteOptions = {
         lang: 'fr-FR',
         maximumImageFileSize: 524288, // 512k
@@ -183,10 +198,11 @@
             ['table', ['table']],
             ['insert', ['link', 'picture']],
             ['view', ['fullscreen', 'codeview']],
-            ['custom', ['placeholders']],
+            ['custom', ['placeholders', 'popovers']],
         ],
         buttons: {
-            placeholders: PlaceholdersButton
+            placeholders: PlaceholdersButton,
+            popovers: PopoverButton
         },
         spellcheck: false,
         cleaner: {
@@ -226,7 +242,21 @@
         }
     };
 
-    //$('textarea').summernote(summernoteOptions);
+    var summernoteOptionsLight = {
+        lang: 'fr-FR',
+        maximumImageFileSize: 524288, // 512k
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['fontname', ['fontname']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['picture']],
+        ],
+        spellcheck: false,
+        focus: true
+    };
 
     $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
 

@@ -12,7 +12,7 @@
     <!-- Modal list all pages -->
     @include('page.partials.modal_model', [
         'template' => 'page.partials.modal_list_pages',
-        'async' => true,
+        'context' => 'list_pages',
         'title' => trans('story.all_pages_modal_title'),
         'icon' => 'icon-papers',
         'data' => [
@@ -21,10 +21,22 @@
         ]
     ])
 
+    <!-- Modal insert popover -->
+    @include('page.partials.modal_model', [
+        'template' => 'page.partials.modal_popovers',
+        'context' => 'popovers',
+        'title' => trans('story.popovers_modal_title'),
+        'icon' => 'icon-archive-research',
+        'data' => [
+            'page' => $page,
+            'id' => 'Popovers',
+        ]
+    ])
+
     <!-- Modal new Riddle -->
     @include('page.partials.modal_model', [
         'template' => 'page.partials.modal_riddle',
-        'async' => false,
+        'context' => 'riddles',
         'title' => trans('page.riddle_modal_title'),
         'icon' => 'icon-jigsaw-piece',
         'data' => [
@@ -37,7 +49,7 @@
     <!-- Modal new Action -->
     @include('page.partials.modal_model', [
         'template' => 'page.partials.modal_actions',
-        'async' => false,
+        'context' => 'actions',
         'title' => trans('page.actions_modal_title'),
         'icon' => 'icon-chest',
         'data' => [
@@ -50,7 +62,7 @@
     <!-- Modal new Prerequisite -->
     @include('page.partials.modal_model', [
         'template' => 'page.partials.modal_prerequisites',
-        'async' => false,
+        'context' => 'prerequisites',
         'title' => trans('page.prerequisite_modal_title'),
         'icon' => 'icon-unlocking',
         'data' => [

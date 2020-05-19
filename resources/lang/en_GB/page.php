@@ -49,4 +49,5 @@ Click on an already existing page to link to it.',
   'number_parents' => '{0} No parent|{1} :count parent|{2,*} :count parents',
   'confirm_delete_link' => 'Are you sure you want to delete this choice?\\nThe page itself will not be deleted, only the link between the above page and this one.',
   'current_page_riddles_help' => 'Here are the details about the riddle on this page.',
+  'descriptions_help' => 'There you can add inline descriptions to your text. The word(s) you choose will be hoverable, and the description you wrote will pop open.',
 );

@@ -36,4 +36,5 @@ return array (
   'reset_story_confirm' => 'Es-tu sûr(e) de vouloir réinitialiser l\'aventure ?',
   'create_tab4' => '4. Créations d\'objets',
   'existing_items' => 'Objets existants',
+  'popovers_modal_title' => 'Descriptions',
 );
