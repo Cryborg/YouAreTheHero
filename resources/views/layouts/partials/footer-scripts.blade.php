@@ -178,7 +178,8 @@
             contents: '<span data-target="#modalPopovers" data-toggle="modal">Popovers</span>',
             tooltip: 'Highlight text with red color',
             click: function() {
-                console.log(context.$note.parents('.is-page').data('pageid'));
+                console.log('popover click');
+                $('.icon-save').addClass('disabled');
                 $('#modalPopovers').data('pageid', context.$note.parents('.is-page').data('pageid'));
             }
         });
@@ -241,8 +242,13 @@
             }
         },
         callbacks: {
-            onBlur: function() {
-                $('.icon-save').trigger('click');
+            onBlur: function(e) {
+                var p = e.target.parentNode.parentNode
+
+                // Don't trigger if we click in the Summernote toolbar
+                if (! (e.relatedTarget && $.contains(p, e.relatedTarget))) {
+                    $('.icon-save').trigger('click');
+                }
             }
         }
     };
