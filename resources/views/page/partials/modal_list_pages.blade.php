@@ -41,6 +41,9 @@
 
                     <div class="col-md-11">
                         <div class="card-header">
+                            @can('debug')
+                                <span class="badge badge-warning"><span class="font-smaller">#</span>{{ $page->id }}</span>
+                            @endcan
                             {{ $page->title }}
                         </div>
                         <div class="card-body">

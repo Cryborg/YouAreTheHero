@@ -41,22 +41,19 @@ class PageController extends Controller
             ]);
         }
 
-        $view = View::make('page.partials.create', [
-            'story' => $story,
-            'page' => $page,
-            'layouts' => [
-                'play1' => 'Premier layout',
-            ],
-            'page_from' => $request->get('page_from', 0)
-        ]);
+        $pageFromId = (int) $request->get('page_from', 0);
 
-        return response()->json(
-            [
-                'success' => true,
-                'view'    => html_entity_decode($view->render()),
-                'page'    => $page,
-            ]
-        );
+        // Create the link between the two pages
+        if ($pageFromId > 0) {
+            $page->parents()
+                 ->attach($pageFromId, [
+                     'link_text' => $request->get('link_text')
+                 ]);
+        }
+
+        return response()->json([
+            'redirect_to' => route('page.edit', ['page' => $page->id])
+        ]);
     }
 
     /**
@@ -68,6 +65,11 @@ class PageController extends Controller
     public function getEdit(Page $page): \Illuminate\Contracts\View\View
     {
         $this->authorize('view', $page);
+
+        // Create a tree with the closest parents, children and siblings of the current page
+        $family = [];
+        $parents = $page->parents;
+        $children = $page->choices;
 
         $view = View::make('page.create', [
             'title' => $page->story->title,

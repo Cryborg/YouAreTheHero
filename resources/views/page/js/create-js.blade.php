@@ -1,31 +1,38 @@
 <script type="text/javascript">
+    $(document).on('click', '#add_AddChoice', function () {
+        var $this = $(this);
+        var selectedVal = $('.childrenSelect option:selected').val();
+
+        if (selectedVal === '0') {
+            newPage($this,
+                route('page.create', {{ $page->story_id }})
+            );
+        } else {
+            newPage($this,
+                route('page.create', {'story': {{ $page->story_id }}, 'page': selectedVal})
+            );
+        }
+
+    });
+
     function newPage($this, route) {
-        $('.nav-item.nav-link, div.tab-pane').removeClass('active');
+        let $parent = $this.closest('.modal');
 
         // Create the page and display it
         $.ajax({
             'url': route,
             'data': {
-                'page_from': $this.data('page-from')
+                'page_from': $parent.data('pageid'),
+                'link_text': $parent.find('#link_text').val()
             },
             'method': 'POST'
         })
             .done(function (data) {
-                // Displays the page creation
-                $('.choicesForm[data-page-from="' + $this.data('page-from') + '"]')
-                    .append('<div class="tab-pane active" id="p' + data.page.id + '">' + data.view + '</div>');
-
-                // Create the tab
-                $('.addNewPage[data-page-from="' + $this.data('page-from') + '"]').before(
-                    '<span class="nav-item nav-link active" href="#p' + data.page.id +
-                    '" data-toggle="tab" data-page-from="' + $this.data('page-from') +
-                    '" data-pageid="' + data.page.id + '"' +
-                    '">' +
-                    '<span class="choice_title_' + data.page.id + '">' +
-                    '<input type="text" class="form-control" placeholder="{{ trans('page.link_text') }}" id="linktext-' + data.page.id + '">' +
-                    '</span>' +
-                    '</span>'
-                );
+                if ($parent.find('#show_new_page:checked').val() === '1') {
+                    window.location.href = data.redirect_to;
+                } else {
+                    window.location.reload();
+                }
             })
             .always(function () {
                 $this.prop('disabled', false);
@@ -92,7 +99,7 @@
         });
 
         // Put the ID of the page into the modal
-        $('#modalCreatePrerequisite,#modalCreateAction,#modalCreateRiddle').on('show.bs.modal', function (event) {
+        $('#modalCreatePrerequisite,#modalCreateAction,#modalCreateRiddle,#modalAddChoice').on('show.bs.modal', function (event) {
             var $this = $(this);
             var $parent = $(event.relatedTarget);
             var myVal = $parent.data('pageid');
@@ -120,16 +127,6 @@
                     done = true;
                 }
             });
-        });
-
-        // Create a new tab with a new page
-        $(document).on('click', '.addNewPage', function (event) {
-            event.preventDefault();
-
-            var $this = $(this);
-            $this.prop('disabled', true);
-
-            newPage($this, route('page.create', {{ $page->story_id }}));
         });
 
         // Display Summernote editor on the clicked div
@@ -308,21 +305,6 @@
             .done(function (data) {
                 $('#item_description').html(data);
             });
-    });
-
-    // When the author creates a link to an existing page
-    $(document).on('click', '.childrenSelect', function (e) {
-        e.preventDefault();
-
-        var $this = $(this);
-
-        if (parseInt($this.val()) === 0) return false;
-
-        $this.prop('disabled', true);
-
-        newPage($this, route('page.create', [{{ $page->story_id }}, $this.val()]));
-
-        $(".childrenSelect option:selected").remove();
     });
 
     // When the author validates the new action on the modal

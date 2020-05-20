@@ -2,6 +2,10 @@
     <span class="icon-save display-4 text-white" data-page-from="{{ $page_from ?? 0 }}"></span>
 </div>
 
+<div data-toggle="tooltip" data-placement="right" data-original-title="@lang('page.add_choice')" class="clickable shadow mb-2">
+    <span class="icon-choice text-white display-4" data-pageid="{{ $page->id }}" data-target="#modalAddChoice" data-toggle="modal"></span>
+</div>
+
 <div data-toggle="tooltip" data-placement="right" data-original-title="@lang('story.list_all_pages')" class="clickable shadow">
     <span class="icon-papers text-white display-4" data-pageid="{{ $page->id }}" data-target="#modalAllPages" data-toggle="modal"></span>
 </div>

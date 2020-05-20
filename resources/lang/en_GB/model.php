@@ -14,7 +14,7 @@ return array (
   'is_first' => 'First page of the story',
   'is_last' => 'End of the story',
   'is_checkpoint' => 'Save point',
-  'page_title_help' => 'This is the title of the page. This is completely optional, unless you select the \'checkpoint\' option as this will be the only way to identify the page and return to it.',
+  'page_title_help' => 'This is the title of the page. Very important because it is used to identify your page throughout the interface.',
   'page_content_help' => 'This is the text of the page, where the action takes place, the passions tear apart,....',
   'page_layout_help' => 'You can choose the appearance of your page from a choice of different presentations. By default it is that of the story, but for some pages you may need to change it to better stick to your content.',
   'page_is_first_help' => 'Check this box if this is the first page of your story.',

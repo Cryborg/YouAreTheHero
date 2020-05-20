@@ -1,5 +1,5 @@
 <div class="modal" id="modal{{ $data['id'] }}" tabindex="-1" role="dialog" aria-labelledby="modal{{ $data['id'] }}Title" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+    <div class="modal-dialog @if($big) modal-xl @endif modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <span class="{{ $icon }} display-5 mr-3 shadow"></span>
@@ -11,7 +11,7 @@
                 </button>
             </div>
             <div class="modal-body shadow-sm">
-                @if (in_array($context, ['prerequisites', 'actions', 'riddles']))
+                @if (in_array($context, ['prerequisites', 'actions', 'riddles', 'add_choice']))
                     @include($template, ['page' => $data['page']])
                 @endif
             </div>

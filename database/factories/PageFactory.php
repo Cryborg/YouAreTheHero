@@ -19,8 +19,8 @@ use Illuminate\Support\Str;
 
 $factory->define(Page::class, function (Faker $faker, $data) {
     return [
-        'title'         => ucfirst($faker->words(5, true)),
-        'content'       => '<p>' . $faker->text . '</p>',
+        'title'         => trans('model.title'),
+        'content'       => '<p>' . trans('model.content') . '</p>',
         'is_first'      => $data['is_first'] ?? false,
         'is_last'       => false,
         'is_checkpoint' => false,
