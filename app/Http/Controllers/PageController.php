@@ -237,11 +237,15 @@ class PageController extends Controller
             $this->authorize('edit', $page);
 
             $success = true;
+            $isLonely = false;
             $message = null;
-            $story = $page->story;
 
             try {
                 $pageFrom->choices()->detach($page->id);
+
+                if ($page->choices()->count() === 0 && $page->parents()->count() === 0) {
+                    $isLonely = true;
+                }
             } catch (\Exception $e) {
                 $success = false;
                 $message = $e->getMessage();
@@ -251,7 +255,8 @@ class PageController extends Controller
                 'success' => $success,
                 'message' => $message,
                 'page' => $page->id,
-                'pageFrom' => $pageFrom->id
+                'pageFrom' => $pageFrom->id,
+                'alone' => $isLonely,
             ]);
         }
 

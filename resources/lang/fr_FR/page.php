@@ -60,4 +60,5 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
   'add_choice_modal_title' => 'Créer un nouveau choix',
   'show_after_create' => 'Afficher la page nouvellement créée',
   'add_choice' => 'Ajoute un nouveau choix',
+  'delete_lone_page' => 'La page cible n\'a plus de lien avec aucune autre. Veux-tu la supprimer ?',
 );

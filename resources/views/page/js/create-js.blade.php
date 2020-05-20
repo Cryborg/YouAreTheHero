@@ -67,16 +67,38 @@
             var $this = $(this);
             var pageId = $this.data('pageid');
 
+            deletePage(pageId, true);
+        });
+
+        function deletePage(pageId, redirect)
+        {
+            var $this = $(this);
+
             $.ajax({
                 url: route('page.delete', {page: pageId }),
                 method: 'DELETE'
             })
                 .done(function (result) {
                     if (result.success) {
-                        window.location.href = result.redirectTo;
+                        if (redirect) {
+                            window.location.href = result.redirectTo;
+                        } else {
+                            showToast('success', {
+                                heading: '{{ trans('notification.deletion_success_title') }}',
+                                text: "{{ trans('notification.deletion_success_text') }}",
+                            });
+                        }
                     }
                 })
-        });
+                .fail(function (data) {
+                    showToast('error', {
+                        heading: '{{ trans('notification.deletion_failed_title') }}',
+                        text: "{{ trans('notification.deletion_failed_text') }}",
+                        errors: data.responseJSON.errors
+                    });
+                })
+            ;
+        }
 
         // Delete the link between two pages
         $(document).on('click', '.icon-breaking-chain', function ()
@@ -93,7 +115,13 @@
             })
                 .done(function (result) {
                     if (result.success) {
-                        window.location.reload();
+                        $this.parents('.choices_list').remove();
+                    }
+
+                    if (result.alone) {
+                        if (confirm('{{ trans('page.delete_lone_page') }}')) {
+                            deletePage(result.page, false);
+                        }
                     }
                 })
         });

@@ -60,4 +60,5 @@ Click on an already existing page to link to it.',
   'add_choice_modal_title' => 'New choice',
   'show_after_create' => 'Display the new created page',
   'add_choice' => 'Add a new choice',
+  'delete_lone_page' => 'The target page is not linked to any other page, do you want to delete it?',
 );

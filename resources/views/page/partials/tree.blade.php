@@ -1,5 +1,5 @@
 <div class="tree">
-    <table class="table" id="pages_tree">
+    <table class="table table-sm" id="pages_tree">
         <thead class="thead-light">
             <tr>
                 <th scope="col">
@@ -45,16 +45,17 @@
                             @endif
                         @endforeach
                     @endforeach
-{{--                    <div>--}}
-{{--                        {{ $choice->title }}--}}
-{{--                    </div>--}}
                 </td>
                 <td>
                     @foreach ($page->choices as $choice)
-                        <div>
+                        <div class="choices_list">
                             <a class="btn btn-light btn-sm" href="{{ route('page.edit', ['page' => $choice]) }}">
                                 <span class="icon-fountain-pen"></span>
                             </a>
+                            <div class="btn btn-light btn-sm"
+                                data-toggle="tooltip" data-placement="right" data-original-title="@lang('common.delete_link')">
+                                <span class="icon-breaking-chain text-red" data-pageid="{{ $choice->id }}" data-page-from="{{ $page->id }}"></span>
+                            </div>
                             <span class="badge badge-light border border-dark">{{ $choice->pivot->link_text }}</span>
                             {{ $choice->title }}
                         </div>
