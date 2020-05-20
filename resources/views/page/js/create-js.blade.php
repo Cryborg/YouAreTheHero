@@ -59,8 +59,8 @@
                 });
         });
 
-        // Delete a page
-        $(document).on('click', '.menu-icon-bottom>.icon-trash:not(.text-dark), .card .icon-trash', function ()
+        // Delete a page from the left menu
+        $(document).on('click', '.menu-icon-bottom>.icon-trash:not(.text-dark)', function ()
         {
             if (!confirm('@lang('page.confirm_delete')')) return false;
 
@@ -68,6 +68,23 @@
             var pageId = $this.data('pageid');
 
             deletePage(pageId, true);
+        });
+
+        // Delete a page from the "list all pages" popup
+        $(document).on('click', '.card .icon-trash', function ()
+        {
+            if (!confirm('@lang('page.confirm_delete')')) return false;
+
+            var $this = $(this);
+            var pageId = $this.data('pageid');
+
+            var success = deletePage(pageId, false);
+
+            if (success) {
+                $this.parents('div.col-12').slideUp(1500, function () {
+                    $(this).remove();
+                });
+            }
         });
 
         function deletePage(pageId, redirect)
@@ -89,6 +106,8 @@
                             });
                         }
                     }
+
+                    return result.success;
                 })
                 .fail(function (data) {
                     showToast('error', {
@@ -96,6 +115,8 @@
                         text: "{{ trans('notification.deletion_failed_text') }}",
                         errors: data.responseJSON.errors
                     });
+
+                    return false;
                 })
             ;
         }
