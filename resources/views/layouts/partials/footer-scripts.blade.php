@@ -239,6 +239,11 @@
                 }
                 return '';
             }
+        },
+        callbacks: {
+            onBlur: function() {
+                $('.icon-save').trigger('click');
+            }
         }
     };
 

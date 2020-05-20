@@ -143,6 +143,7 @@
             $('#content-' + internalId).addClass('hidden');
             $('#content-editable-' + internalId).removeClass('hidden');
             $('#content-editable-' + internalId + ':visible').summernote(summernoteOptions);
+
             $this.addClass('summernote-open');
         });
 

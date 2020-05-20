@@ -58,6 +58,6 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
   'children_label_help' => 'Il s\'agit ici des pages vers lesquelles la page en cours renvoie. <span class="badge badge-light border border-dark"">Ce texte</span> est celui du lien menant à la page. Le reste est le titre de la page fille.',
   'tree_help' => 'L\'arborescence de la page en cours est présentée ici, avec ses pages sœurs, parentes et enfants.',
   'add_choice_modal_title' => 'Créer un nouveau choix',
-  'add_choice' => 'Ajoute un nouveau choix',
   'show_after_create' => 'Afficher la page nouvellement créée',
+  'add_choice' => 'Ajoute un nouveau choix',
 );
