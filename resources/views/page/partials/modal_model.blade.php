@@ -10,12 +10,12 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body shadow-sm">
+            <div class="modal-body shadow-sm h-50">
                 @if (in_array($context, ['prerequisites', 'actions', 'riddles', 'add_choice']))
                     @include($template, ['page' => $data['page']])
                 @endif
             </div>
-            <div class="modal-body modal-body-preview h-100 hidden">
+            <div class="modal-body modal-body-preview h-50 ml-3 hidden">
                 <button type="button" class="close" data-dismiss="modal-preview" aria-label="Fermer">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -70,7 +70,7 @@
                         $('#modalAllPages .card[data-pageid="' + val + '"]')
                             .clone()
                             .appendTo('.modal-preview-content')
-                            .wrap('<div class="col-' + colWidth + '"></div>');
+                            .wrap('<div class="col-lg-' + colWidth + ' col-xs-12"></div>');
                     });
 
                     $('.modal-preview-content').wrapInner('<div class="row"></div>');

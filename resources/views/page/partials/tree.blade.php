@@ -33,7 +33,7 @@
                                 <a class="btn btn-light btn-sm" href="{{ route('page.edit', ['page' => $choice]) }}">
                                     <span class="icon-fountain-pen"></span>
                                 </a>
-                                <span data-toggle="popover" data-trigger="hover" data-content="{!! trans('page.link_text_is', ['link_text' => $choice->pivot->link_text, 'choice_title' => $choice->title]) !!}" title="@lang('page.link_text')">
+                                <span data-toggle="popover" data-trigger="hover" data-content="{{ trans('page.link_text_is', ['link_text' => $choice->pivot->link_text, 'choice_title' => $choice->title]) }}" title="@lang('page.link_text')">
                                     {{ $choice->title }}
                                 </span>
                             </div>
