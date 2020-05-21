@@ -61,4 +61,7 @@ Click on an already existing page to link to it.',
   'show_after_create' => 'Display the new created page',
   'add_choice' => 'Add a new choice',
   'delete_lone_page' => 'The target page is not linked to any other page, do you want to delete it?',
+  'link_text_help' => 'This is the text of the hyperlink that will lead to the next page.',
+  'link_page_help' => 'If you don\'t choose an existing page, a new page will be created.',
+  'show_new_page_help' => 'Check this if you want to edit the newly created page.',
 );

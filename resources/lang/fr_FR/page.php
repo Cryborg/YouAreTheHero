@@ -61,4 +61,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
   'show_after_create' => 'Afficher la page nouvellement créée',
   'add_choice' => 'Ajoute un nouveau choix',
   'delete_lone_page' => 'La page cible n\'a plus de lien avec aucune autre. Veux-tu la supprimer ?',
+  'link_text_help' => 'Texte du lien qui mènera jusqu\'à la page suivante.',
+  'link_page_help' => 'Si tu ne choisis pas une page existante, une nouvelle sera créée.',
+  'show_new_page_help' => 'Coche cette case pour modifier la page nouvelle créée.',
 );

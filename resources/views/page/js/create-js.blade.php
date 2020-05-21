@@ -41,6 +41,13 @@
 
     $(document).ready(function ()
     {
+        $(document).on('change', '.childrenSelect', function () {
+            var $this = $(this);
+
+            $('#show_new_page').attr('checked', $this.val() == 0);
+        });
+
+        // Enable summernote on "new description" modal
         $(document).on('show.bs.modal', '#modalPopovers', function (event) {
             $('.summernote').summernote(summernoteOptionsLight);
         });
