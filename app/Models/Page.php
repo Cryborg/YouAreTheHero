@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
 use Laracasts\Presenter\PresentableTrait;
 
@@ -151,4 +149,20 @@ class Page extends Model
     {
         return $this->hasMany(Description::class);
     }
+
+    public function actions()
+    {
+        return $this->morphMany(Action::class, 'actionable');
+    }
+
+    public function trigger()
+    {
+        return $this->morphMany(Action::class, 'trigger')->with('actionable');
+    }
+
+    public function fields()
+    {
+        return $this->trigger()->where('actionable_type', 'field')->with('actionable');
+    }
+
 }

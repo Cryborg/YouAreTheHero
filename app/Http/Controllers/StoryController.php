@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Classes\Action;
+use App\Models\Field;
 use App\Models\Genre;
 use App\Models\Inventory;
 use App\Models\Item;
@@ -123,6 +124,9 @@ class StoryController extends Controller
             ]
         );
 
+        // Check if there is an action bound to this page, and execute it
+        $this->executeAction($page, $character);
+
         if (\Illuminate\Support\Facades\Request::ajax()) {
             $view = view('layouts.partials.page_content', $commonParams + [
                 'page' => $page,
@@ -131,6 +135,28 @@ class StoryController extends Controller
         }
 
         return $view ?? view('errors.404');
+    }
+
+    /**
+     * @param \App\Models\Page      $page
+     * @param \App\Models\Character $character
+     */
+    private function executeAction(Page $page, Character $character)
+    {
+        foreach ($page->trigger as $trigger) {
+            if ($trigger->actionable instanceof Field) {
+                $field = $character->fields->where('pivot.field_id', $trigger->actionable->id)->first();
+
+                // Check if the action has already been done
+                // Don't do it again if it is the case
+                if ($character->actions->where('pivot.action_id', $trigger->id)->count() === 0) {
+                    $field->pivot->value += $trigger->quantity;
+                    $field->pivot->save();
+                }
+            }
+
+            $character->actions()->sync($trigger->id);
+        }
     }
 
     /**

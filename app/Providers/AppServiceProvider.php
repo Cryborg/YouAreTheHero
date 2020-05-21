@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Field;
 use App\Models\Item;
 use App\Models\CharacterField;
+use App\Models\Page;
 use App\Models\Riddle;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -33,6 +35,8 @@ class AppServiceProvider extends ServiceProvider
            'character_field' => CharacterField::class,
            'item' => Item::class,
            'riddle' => Riddle::class,
+           'page' => Page::class,
+           'field' => Field::class,
         ]);
 
         Blade::directive('info', function ($expression) {
