@@ -64,4 +64,6 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
   'link_text_help' => 'Texte du lien qui mènera jusqu\'à la page suivante.',
   'link_page_help' => 'Si tu ne choisis pas une page existante, une nouvelle sera créée.',
   'show_new_page_help' => 'Coche cette case pour modifier la page nouvelle créée.',
+  'link_text_is' => 'Le texte du lien est :<br><i>:link_text</i><br><br>
+Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>',
 );

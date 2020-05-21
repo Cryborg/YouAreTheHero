@@ -224,9 +224,6 @@ div.jq-toast-wrap {
 .clickable {
     cursor: pointer;
 }
-.menu-bar-left {
-    width: 75px;
-}
 .display-5 {
     font-size: 2.5rem;
     font-weight: 300;
@@ -237,21 +234,7 @@ div.jq-toast-wrap {
     font-weight: 300;
     line-height: 1.2;
 }
-div.menu-bar-left .menu-icon {
-    top: auto;
-    left: 0;
-    height: 64px;
-    width: 64px;
-    margin: -5px;
-}
-div.menu-bar-left .menu-icon-top {
-    background-color: green;
-}
-div.menu-bar-left .menu-icon-bottom {
-    bottom: 0;
-    background-color: red;
-}
-div.menu-bar-left .menu-icon-bottom:disabled {
+.icon-trash.disabled {
     background-color: grey;
 }
 .scrollable-content {
@@ -296,4 +279,7 @@ th.icon-expand:before, th.icon-contract:before {
 }
 .text-lightgrey {
     color: lightgrey !important;
+}
+.hidden {
+    display: none;
 }

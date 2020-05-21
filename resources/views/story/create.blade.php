@@ -178,17 +178,19 @@
                         @include('item.partials.new_item', ['story' => $story, 'context' => 'story_creation'])
                     </div>
                     <div class="col">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                @lang('story.existing_items')
-                            </div>
-                            <div class="panel-body">
-                                <select multiple="" class="form-control custom-select" size="12" id="story_item" name="story_item">
-                                    <option value=""></option>
-                                    @foreach ($story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
-                                        <option value="{{ $itemId }}">{{ $itemName }}</option>
-                                    @endforeach
-                                </select>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    @lang('story.existing_items')
+                                </h5>
+                                <div class="card-text">
+                                    <select multiple="" class="form-control custom-select" size="12" id="story_item" name="story_item">
+                                        <option value=""></option>
+                                        @foreach ($story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
+                                            <option value="{{ $itemId }}">{{ $itemName }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>

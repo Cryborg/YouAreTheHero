@@ -1,37 +1,28 @@
-<ul class="nav navbar-nav">
-    <li>
-        <a class="navbar-brand" href="{{ url('/stories') }}">
-            <span class="icon-newspaper mr-2"></span>
-            {{ trans('common.link_read') }}
+<li class="nav-item">
+    <a class="nav-link" href="{{ url('/stories') }}">
+        <span class="icon-newspaper mr-2"></span>
+        {{ trans('common.link_read') }}
+    </a>
+</li>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="icon-fountain-pen mr-2"></span>
+        {{ trans('common.link_write') }}
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="{{ route('story.create') }}">
+            {{ trans('common.link_story_create') }}
+        </a>
+        <a class="dropdown-item" href="{{ route('stories.list.draft') }}">
+            {{ trans('stories.link_stories_draft') }}
+        </a>
+    </div>
+</li>
+@can('isAdmin')
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('admin') }}">
+            <span class="icon-lightning-tear mr-2"></span>
+            {{ trans('common.link_admin') }}
         </a>
     </li>
-    <li>
-        <a href="#" data-toggle="dropdown" role="button" class="dropdown-toggle navbar-brand">
-            <span class="icon-fountain-pen mr-2"></span>
-            {{ trans('common.link_write') }}
-        </a>
-        <ul class="dropdown-menu">
-{{--            <li role="separator" class="divider"></li>--}}
-            <li>
-                <a href="{{ route('story.create') }}">
-                    <span class="glyphicon glyphicon-plus mr-2"></span>
-                    {{ trans('common.link_story_create') }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('stories.list.draft') }}">
-                    <span class="glyphicon glyphicon-paperclip mr-2"></span>
-                    {{ trans('stories.link_stories_draft') }}
-                </a>
-            </li>
-        </ul>
-    </li>
-    @can('isAdmin')
-        <li>
-            <a class="navbar-brand" href="{{ url('admin') }}">
-                <span class="icon-lightning-tear mr-2"></span>
-                {{ trans('common.link_admin') }}
-            </a>
-        </li>
-    @endcan
-</ul>
+@endcan

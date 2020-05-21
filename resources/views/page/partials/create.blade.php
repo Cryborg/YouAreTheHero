@@ -1,12 +1,12 @@
 <div class="row is-page" data-pageid="{{ $page->id }}">
     {!! Form::hidden('page_from', $page->id, ['class' => 'is-page-from', 'data-page-from' => $page_from ?? 0]) !!}
-    <div class="col-lg-8 col-xs-12 col-current">
-        <div class="row h-100">
-            <div class="menu-bar-left">
-                <div class="bg-primary mr-2 h-100 pull-left text-center p-3">
-                    @include('page.partials.menu-bar')
-                </div>
+    <div class="col-lg-8 col-xs-12">
+        <div>
+            <div class="col-12 bg-primary p-2">
+                @include('page.partials.menu-bar')
             </div>
+        </div>
+        <div class="row">
             <div class="col">
                 @info({!! trans('page.tree_help') !!})
 
@@ -22,23 +22,29 @@
                     @endcan
 
                     {{-- Form --}}
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            @lang('model.title')
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                @lang('model.title')
+                            </h5>
+                            <div class="card-text">
+                                <p class="help-block">{{ trans('model.page_title_help') }}</p>
+                                {!! Form::text('title', $page->title ?? old('title'), ['id' => 'title-' . $page->id, 'class' => 'form-control']) !!}
+                            </div>
                         </div>
-
-                        <p class="help-block">{{ trans('model.page_title_help') }}</p>
-                        {!! Form::text('title', $page->title ?? old('title'), ['id' => 'title-' . $page->id, 'class' => 'form-control']) !!}
                     </div>
 
-                    <div class="panel panel-default clickable panel-content toggle-summernote">
-                        <div class="panel-heading">
-                            @lang('model.content')
+                    <div class="card clickable panel-content toggle-summernote">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                @lang('model.content')
+                            </h5>
+                            <div class="card-text">
+                                <p class="help-block">{{ trans('model.page_content_help') }}</p>
+                                <div id="content-editable-{{ $page->id }}" class="false-input scrollable-content hidden">{!! $page->content ?? old('content') !!}</div>
+                                <div id="content-{{ $page->id }}" class="false-input scrollable-content">{!! $page->present()->content ?? old('content') !!}</div>
+                            </div>
                         </div>
-
-                        <p class="help-block">{{ trans('model.page_content_help') }}</p>
-                        <div id="content-editable-{{ $page->id }}" class="false-input scrollable-content hidden">{!! $page->content ?? old('content') !!}</div>
-                        <div id="content-{{ $page->id }}" class="false-input scrollable-content">{!! $page->present()->content ?? old('content') !!}</div>
                     </div>
 
                     <div class="form-group hidden">

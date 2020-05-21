@@ -1,15 +1,15 @@
 <div class="row">
     <div class="col-md-6 col-sm-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                @if ($page->riddle && $page->riddle->title)
-                    {{ $page->riddle->title }}
-                @else
-                    @lang('page.riddle_header')
-                @endif
-            </div>
-            <div class="panel-body">
-                <div id="riddle_block">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    @if ($page->riddle && $page->riddle->title)
+                        {{ $page->riddle->title }}
+                    @else
+                        @lang('page.riddle_header')
+                    @endif
+                </h5>
+                <p class="card-text riddle-block"></p>
                     @if ($page->riddle->isSolved())
                         @lang('page.riddle_already_solved')
                     @else
@@ -21,7 +21,6 @@
                             </div>
                         </div>
                     @endif
-                </div>
             </div>
         </div>
     </div>

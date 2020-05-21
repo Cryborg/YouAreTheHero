@@ -1,4 +1,4 @@
-@extends('base', ['fluid' => true])
+@extends('base')
 
 @section('title', trans('story.tree'))
 

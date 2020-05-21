@@ -1,25 +1,27 @@
 <div class="col col-xs-12" id="page_content">
-    <div class="panel panel-default">
-        <div class="panel-heading text-center">
-            @can('edit', $page)
-                <a href="{{ route('page.edit', ['page' => $page]) }}" target="_blank" class="pull-left">
-                    <button>
-                        <span class="icon-fountain-pen display-6"></span>
-                    </button>
-                </a>
-            @endcan
+    <div class="card">
+        <div class="card-body text-justify">
+            <h5 class="card-title text-center">
+                @can('edit', $page)
+                    <a href="{{ route('page.edit', ['page' => $page]) }}" target="_blank" class="pull-left">
+                        <button>
+                            <span class="icon-fountain-pen display-6"></span>
+                        </button>
+                    </a>
+                @endcan
 
-            @can('debug')
+                @can('debug')
                     <span class="badge badge-warning"><span class="font-smaller">#</span>{{ $page->id }}</span>
-            @endcan
+                @endcan
 
-            {{ $page->title }}
-        </div>
-        <div class="panel-body text-justify">
-            {!! $page->present()->content !!}
+                {{ $page->title }}
+            </h5>
+            <div class="card-text">
+                {!! $page->present()->content !!}
+            </div>
         </div>
 
-        <div class="panel-body">
+        <div class="card-body">
             <div class="row mt-3">
                 <div class="col-xl-6 col-md-12">
                     @foreach ($actions as $action)
@@ -50,12 +52,12 @@
                 </div>
             </div>
         </div>
-        <div class="panel-body">
+        <div class="card-body">
             @if ($page->riddle()->count() > 0)
                 @include('story.partials.riddle', ['data' => $page->riddle])
             @endif
         </div>
-        <div class="panel-body">
+        <div class="card-body">
             @include('story.partials.choices', ['page' => $page, 'story' => $story])
         </div>
     </div>

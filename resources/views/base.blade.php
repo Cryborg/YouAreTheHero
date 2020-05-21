@@ -18,8 +18,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap-grid.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap-select/css/bootstrap-select.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}"/>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.dataTables.min.css') }}"/>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/laravel-admin.min.css') }}"/>    {{-- FIXME: overkill, remove this and fix the navbar--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.dataTables.min.css') }}"/>--}}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.toast.min.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/summernote-bs4.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-switch.min.css') }}"/>
@@ -41,7 +40,7 @@
     @include('flash::message')
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="@if($fluid ?? true) container-fluid @else container @endif">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}" title="@lang('common.link_home')">
                     <img src="{{ asset('img/minibot.jpg') }}" width="64" height="64" style="margin-top: -12px">
                 </a>
@@ -53,6 +52,7 @@
                     {{-- Left Side Of Navbar --}}
                     <ul class="navbar-nav mr-auto">
                         @auth
+{{--                            , ['active' => 3] --}}
                             @include('layouts.partials.nav')
                         @endauth
                     </ul>

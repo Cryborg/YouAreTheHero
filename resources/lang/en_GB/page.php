@@ -64,4 +64,6 @@ Click on an already existing page to link to it.',
   'link_text_help' => 'This is the text of the hyperlink that will lead to the next page.',
   'link_page_help' => 'If you don\'t choose an existing page, a new page will be created.',
   'show_new_page_help' => 'Check this if you want to edit the newly created page.',
+  'link_text_is' => 'The text of the link is:<br><i>:link_text</i><br><br>
+This links to the page with the title:<br><i>:choice_title</i>',
 );

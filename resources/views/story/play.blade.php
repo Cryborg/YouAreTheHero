@@ -87,7 +87,7 @@
                     .done(function (data) {
                         if (data.success) {
                             if (data.itemResponse) {
-                                $('#riddle_block').html(data.itemResponse);
+                                $('.riddle-block').html(data.itemResponse);
                             }
 
                             if (data.pageResponse) {

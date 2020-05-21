@@ -4520,12 +4520,12 @@ input[type=button].btn-block {
   border-top-right-radius: 0;
 }
 
-.nav-tabs .nav-link {
+.nav-pills .nav-link {
   border-radius: 0.25rem;
 }
 
-.nav-tabs .nav-link.active,
-.nav-tabs .show > .nav-link {
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
   color: #fff;
   background-color: #3490dc;
 }
@@ -11099,8 +11099,15 @@ a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
+
 .glyphicon-plus-sign {
   color: #38c172;
   cursor: pointer;
+}
+
+.header-light {
+  color: #495057;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
 }
 
