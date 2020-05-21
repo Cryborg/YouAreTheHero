@@ -2,8 +2,8 @@
     <div class="col-sm-12 col-lg-6 border-right">
         <div class="row mb-2">
             <div class="card w-100">
+                <h5 class="card-header">@lang('item.name')</h5>
                 <div class="card-body">
-                    <h5 class="card-title">@lang('item.name')</h5>
                     <div class="card-text">
                         {!! Form::text('item_name', null, ['class' => 'form-control', 'placeholder' => trans('item.name'), 'id' => 'item_name_' . $context, 'autocomplete' => 'nope']) !!}
                     </div>
@@ -16,8 +16,8 @@
         </div>
         <div class="row mb-2">
             <div class="card w-100">
+                <h5 class="card-header">@lang('item.price')</h5>
                 <div class="card-body">
-                    <h5 class="card-title">@lang('item.price')</h5>
                     <div class="card-text">
                         <p class="help-block">{!! trans('item.price_help') !!}</p>
                         {!! Form::number('item_price', 0, ['class' => 'form-control', 'min' => 0, 'id' => 'item_price_' . $context]) !!}
@@ -33,8 +33,8 @@
 
     <div class="col-sm-12 col-lg-6">
         <div class="card w-100">
+            <h5 class="card-header">@lang('item.options')</h5>
             <div class="card-body">
-                <h5 class="card-title">@lang('item.options')</h5>
                 <div class="card-text">
                     <p class="help-block">{!! trans('item.single_use_help') !!}</p>
                     <label>
@@ -43,8 +43,8 @@
                     </label>
                 </div>
             </div>
+            <h5 class="card-header">@lang('item.effects')</h5>
             <div class="card-body">
-                <h5 class="card-title">@lang('item.effects')</h5>
                 <div class="card-text">
                     <p class="help-block">{{ trans('item.effects_help_text') }}</p>
 

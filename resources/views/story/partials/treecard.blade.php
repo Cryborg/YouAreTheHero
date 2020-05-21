@@ -4,8 +4,8 @@
             <div class="row">
                 <div class="col-1">
                     <div class="card x-small" style="width: 18rem;">
+                        <h5 class="card-header">{{ $page->title }}</h5>
                         <div class="card-body">
-                            <h5 class="card-title">{{ $page->title }}</h5>
                             @if ($page->is_checkpoint)
                                 <h6 class="card-subtitle mb-2 text-muted">{{ trans('model.is_checkpoint') }}</h6>
                             @endif

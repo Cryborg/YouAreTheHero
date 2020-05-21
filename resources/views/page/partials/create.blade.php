@@ -23,10 +23,10 @@
 
                     {{-- Form --}}
                     <div class="card">
+                        <h5 class="card-header">
+                            @lang('model.title')
+                        </h5>
                         <div class="card-body">
-                            <h5 class="card-title">
-                                @lang('model.title')
-                            </h5>
                             <div class="card-text">
                                 <p class="help-block">{{ trans('model.page_title_help') }}</p>
                                 {!! Form::text('title', $page->title ?? old('title'), ['id' => 'title-' . $page->id, 'class' => 'form-control']) !!}
@@ -35,10 +35,10 @@
                     </div>
 
                     <div class="card clickable panel-content toggle-summernote">
+                        <h5 class="card-header">
+                            @lang('model.content')
+                        </h5>
                         <div class="card-body">
-                            <h5 class="card-title">
-                                @lang('model.content')
-                            </h5>
                             <div class="card-text">
                                 <p class="help-block">{{ trans('model.page_content_help') }}</p>
                                 <div id="content-editable-{{ $page->id }}" class="false-input scrollable-content hidden">{!! $page->content ?? old('content') !!}</div>

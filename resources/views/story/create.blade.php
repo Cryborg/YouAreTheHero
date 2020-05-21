@@ -179,10 +179,10 @@
                     </div>
                     <div class="col">
                         <div class="card">
+                            <h5 class="card-header">
+                                @lang('story.existing_items')
+                            </h5>
                             <div class="card-body">
-                                <h5 class="card-title">
-                                    @lang('story.existing_items')
-                                </h5>
                                 <div class="card-text">
                                     <select multiple="" class="form-control custom-select" size="12" id="story_item" name="story_item">
                                         <option value=""></option>

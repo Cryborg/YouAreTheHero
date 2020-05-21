@@ -1,8 +1,8 @@
 <div class="card">
+    <h5 class="card-header">
+        @lang('page.link_text')
+    </h5>
     <div class="card-body">
-        <h5 class="card-title">
-            @lang('page.link_text')
-        </h5>
         <div class="card-text">
             <p class="help-block">@lang('page.link_text_help')</p>
             <input type="text" id="link_text">
@@ -11,10 +11,10 @@
 </div>
 
 <div class="card">
+    <h5 class="card-header">
+        @lang('page.existing_page')
+    </h5>
     <div class="card-body">
-        <h5 class="card-title">
-            @lang('page.existing_page')
-        </h5>
         <div class="card-text">
             <p class="help-block">@lang('page.link_page_help')</p>
             <select class="form-control mr-sm-2 childrenSelect" data-page-from="{{ $page->id }}">

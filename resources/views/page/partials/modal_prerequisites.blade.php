@@ -18,11 +18,11 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="card">
+                            <h5 class="card-header">
+                                {!! Form::label('prerequisite_item_id', trans('page.required_item'), ['class' => 'sr-only']) !!}
+                                @lang('page.required_item')
+                            </h5>
                             <div class="card-body">
-                                <h5 class="card-title">
-                                    {!! Form::label('prerequisite_item_id', trans('page.required_item'), ['class' => 'sr-only']) !!}
-                                    @lang('page.required_item')
-                                </h5>
                                 <div class="card-text">
                                     <p class="help-block">{!! trans('page.required_item_help') !!}</p>
                                     <select multiple="" class="form-control custom-select" size="10" id="prerequisite_item_id" name="prerequisite_item_id">
@@ -36,10 +36,10 @@
                                     </select>
                                 </div>
                             </div>
+                            <h5 class="card-header">
+                                {!! Form::label('prerequisite_quantity', trans('item.quantity')) !!}
+                            </h5>
                             <div class="card-body">
-                                <h5 class="card-title">
-                                    {!! Form::label('prerequisite_quantity', trans('item.quantity')) !!}
-                                </h5>
                                 <div class="card-text">
                                     {!! Form::number('prerequisite_quantity', old('prerequisite_quantity') ?? 1, ['class' => 'form-control']) !!}
                                 </div>

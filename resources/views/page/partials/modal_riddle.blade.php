@@ -12,10 +12,10 @@
                 <div class="row">
                     <div class="col">
                         <div class="card">
+                            <h5 class="card-header">
+                                {!! Form::label('riddle_answer', trans('page.riddle_answer_label', ['class' => 'control-label'])) !!}
+                            </h5>
                             <div class="card-body">
-                                <h5 class="card-title">
-                                    {!! Form::label('riddle_answer', trans('page.riddle_answer_label', ['class' => 'control-label'])) !!}
-                                </h5>
                                 <div class="card-text">
                                     <p class="help-block">{!! trans('page.riddle_answer_help') !!}</p>
                                     {!! Form::text('riddle_answer_text', $page->riddle ? $page->riddle->answer : '',  ['id' => 'riddle_answer_text']) !!}
@@ -26,10 +26,10 @@
                             </div>
                         </div>
                         <div class="card">
+                            <h5 class="card-header">
+                                {!! Form::label('riddle_item', trans('page.riddle_item_label', ['class' => 'control-label'])) !!}
+                            </h5>
                             <div class="card-body">
-                                <h5 class="card-title">
-                                    {!! Form::label('riddle_item', trans('page.riddle_item_label', ['class' => 'control-label'])) !!}
-                                </h5>
                                 <div class="card-title">
                                     <p class="help-block">{!! trans('page.riddle_item_help') !!}</p>
                                     {!! Form::select(
@@ -44,10 +44,10 @@
                     </div>
                     <div class="col">
                         <div class="card">
+                            <h5 class="card-header">
+                                {!! Form::label('riddle_page', trans('page.riddle_page_label', ['class' => 'control-label'])) !!}
+                            </h5>
                             <div class="card-body">
-                                <h5 class="card-title">
-                                    {!! Form::label('riddle_page', trans('page.riddle_page_label', ['class' => 'control-label'])) !!}
-                                </h5>
                                 <div class="card-text">
                                     <p class="help-block">{!! trans('page.riddle_page_help') !!}</p>
                                     <select class="form-control custom-select" id="riddle_page" size="6">
@@ -62,10 +62,10 @@
                                     </select>
                                 </div>
                             </div>
+                            <h5 class="card-header">
+                                {!! Form::label('riddle_page_text_label', trans('page.riddle_page_text_label', ['class' => 'control-label'])) !!}
+                            </h5>
                             <div class="card-body">
-                                <h5 class="card-title">
-                                    {!! Form::label('riddle_page_text_label', trans('page.riddle_page_text_label', ['class' => 'control-label'])) !!}
-                                </h5>
                                 <div class="card-text">
                                     {!! Form::text('riddle_target_page_text', $page->riddle ? $page->riddle->target_page_text : '',  ['id' => 'riddle_target_page_text']) !!}
                                 </div>

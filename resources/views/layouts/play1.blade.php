@@ -4,11 +4,11 @@
     <div class="row h-100">
         <div class="col-lg-2 col-xs-12">
             <div class="card">
+                <h5 class="card-header">
+                    <span class="icon-backpack display-5 mr-2"></span>
+                    @lang('common.inventory')
+                </h5>
                 <div class="card-body">
-                    <h5 class="card-title">
-                        <span class="icon-backpack display-5 mr-2"></span>
-                        @lang('common.inventory')
-                    </h5>
                     <div class="card-text inventory-block">
                         @yield('inventory')
                     </div>
@@ -21,11 +21,11 @@
         <div class="col-lg-3 col-xs-12">
             @isset($page->story->story_options->has_stats)
                 <div class="card">
+                    <h5 class="card-header">
+                        <span class="icon-ninja-heroic-stance display-5 mr-2"></span>
+                        @lang('field.sheet')
+                    </h5>
                     <div class="card-body">
-                        <h5 class="card-title">
-                            <span class="icon-ninja-heroic-stance display-5 mr-2"></span>
-                            @lang('field.sheet')
-                        </h5>
                         <div class="card-text sheet-block">
                             @yield('sheet', '-')
                         </div>
@@ -34,11 +34,11 @@
             @endisset
 
             <div class="card">
+                <h5 class="card-header">
+                    <span class="icon-treasure-map display-5 mr-2"></span>
+                    @lang('story.map')
+                </h5>
                 <div class="card-body">
-                    <h5 class="card-title">
-                        <span class="icon-treasure-map display-5 mr-2"></span>
-                        @lang('story.map')
-                    </h5>
                     <div class="card-text map-block">
                         @yield('map')
                     </div>

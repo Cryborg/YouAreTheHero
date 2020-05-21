@@ -1,21 +1,21 @@
 <div class="col col-xs-12" id="page_content">
     <div class="card">
+        <h5 class="card-header text-center">
+            @can('edit', $page)
+                <a href="{{ route('page.edit', ['page' => $page]) }}" target="_blank" class="pull-left">
+                    <button>
+                        <span class="icon-fountain-pen display-6"></span>
+                    </button>
+                </a>
+            @endcan
+
+            @can('debug')
+                <span class="badge badge-warning"><span class="font-smaller">#</span>{{ $page->id }}</span>
+            @endcan
+
+            {{ $page->title }}
+        </h5>
         <div class="card-body text-justify">
-            <h5 class="card-title text-center">
-                @can('edit', $page)
-                    <a href="{{ route('page.edit', ['page' => $page]) }}" target="_blank" class="pull-left">
-                        <button>
-                            <span class="icon-fountain-pen display-6"></span>
-                        </button>
-                    </a>
-                @endcan
-
-                @can('debug')
-                    <span class="badge badge-warning"><span class="font-smaller">#</span>{{ $page->id }}</span>
-                @endcan
-
-                {{ $page->title }}
-            </h5>
             <div class="card-text">
                 {!! $page->present()->content !!}
             </div>
