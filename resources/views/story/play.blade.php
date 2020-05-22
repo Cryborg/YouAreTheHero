@@ -99,18 +99,18 @@
                                 loadChoices();
                             }
                         } else {
-                            $this.parents('.panel').addClass('panel-danger');
+                            $this.parents('.card').addClass('card-danger');
                         }
                     })
                     .fail(function (data) {
-                        $this.parents('.panel').addClass('panel-danger');
+                        $this.parents('.card').addClass('card-danger');
                     })
                     .always(function () {
                         // Toggle disabled state
                         $this.prop('disabled', (i, v) => !v);
 
                         setTimeout(function() {
-                            $this.parents('.panel').removeClass('panel-danger');
+                            $this.parents('.card').removeClass('card-danger');
                         }, 3000);
                     });
             });

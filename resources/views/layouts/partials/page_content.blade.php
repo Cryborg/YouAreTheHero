@@ -15,6 +15,21 @@
 
             {{ $page->title }}
         </h5>
+        @if ($messages)
+            <div class="card-body">
+                <div class="card-text">
+                    @foreach($messages as $message)
+                        <div class="alert alert-{{ $message['type'] }} alert-dismissible fade show" role="alert">
+                            {{ $message['text'] }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @endif
+
         <div class="card-body text-justify">
             <div class="card-text">
                 {!! $page->present()->content !!}

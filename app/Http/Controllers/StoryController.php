@@ -115,22 +115,25 @@ class StoryController extends Controller
 
         $actions = $this->filterActions($character, $page);
 
+        // Check if there is an action bound to this page, and execute it
+        $messages = $this->executeAction($page, $character);
+
+        // First display of the page
         $view = view('story.play', $commonParams + [
                 'page'          => $page,
                 'actions'       => $actions,
                 'layout'        => $page->layout ?? $story->layout,
                 'character'     => $character,
                 'visitedPlaces' => $visitedPlaces,
+                'messages'      => $messages,
             ]
         );
-
-        // Check if there is an action bound to this page, and execute it
-        $this->executeAction($page, $character);
 
         if (\Illuminate\Support\Facades\Request::ajax()) {
             $view = view('layouts.partials.page_content', $commonParams + [
                 'page' => $page,
                 'actions' => $actions,
+                'messages' => $messages,
             ]);
         }
 
@@ -143,7 +146,11 @@ class StoryController extends Controller
      */
     private function executeAction(Page $page, Character $character)
     {
-        foreach ($page->trigger as $trigger) {
+        // Will contain messages such as "You lost 1 gold coin" or "You gained 2 health points"
+        $messages = [];
+
+        foreach ($page->trigger as $trigger)
+        {
             if ($trigger->actionable instanceof Field) {
                 $field = $character->fields->where('pivot.field_id', $trigger->actionable->id)->first();
 
@@ -151,12 +158,59 @@ class StoryController extends Controller
                 // Don't do it again if it is the case
                 if ($character->actions->where('pivot.action_id', $trigger->id)->count() === 0) {
                     $field->pivot->value += $trigger->quantity;
-                    $field->pivot->save();
+                    if ($field->pivot->save())
+                    {
+                        $messages[] = [
+                            'text' => $trigger->quantity > 0
+                                ? trans('common.you_earned_something', [
+                                    'quantity' => $trigger->quantity,
+                                    'item'     => $trigger->actionable->full_name
+                                ])
+                                : trans('common.you_lost_something', [
+                                    'quantity' => $trigger->quantity * -1,
+                                    'item'     => $trigger->actionable->full_name
+                                ]),
+                            'type' => $trigger->quantity > 0 ? 'success' : 'warning',
+                        ];
+                    }
                 }
             }
 
-            $character->actions()->sync($trigger->id);
+            // If this is an item
+            if ($trigger->actionable instanceof Item) {
+                // If the character has something in his inventory
+                if ($character->inventory()->count() > 0) {
+                    foreach ($character->inventory as $inventory) {
+                        // If the character has the item in the inventory
+                        if ($inventory->item == $trigger->actionable) {
+                            if ($character->actions->where('pivot.action_id', $trigger->id)->count() === 0) {
+                                $inventory->quantity += $trigger->quantity;
+
+                                if ($inventory->save()) {
+                                    $messages[] = [
+                                        'text' => $trigger->quantity > 0
+                                            ? trans('common.you_earned_something', [
+                                                     'quantity' => $trigger->quantity,
+                                                     'item'     => $trigger->actionable->name
+                                                 ])
+                                            : trans('common.you_lost_something', [
+                                                  'quantity' => $trigger->quantity * -1,
+                                                  'item'     => $trigger->actionable->name
+                                              ]),
+                                        'type' => $trigger->quantity > 0 ? 'success' : 'warning',
+                                    ];
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            //$character->actions()->syncWithoutDetaching($trigger->id);
         }
+
+        return $messages;
     }
 
     /**

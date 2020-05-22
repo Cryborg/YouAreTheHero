@@ -35,4 +35,6 @@ return array (
   'btn_validate' => 'Valider',
   'delete_link' => 'Supprimer le lien entre ces deux pages',
   'cannot_delete' => 'Impossible de supprimer une page ayant des choix',
+  'you_earned_something' => 'Tu as gagné :quantity :item',
+  'you_lost_something' => 'Tu as perdu :quantity :item',
 );

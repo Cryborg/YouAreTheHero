@@ -35,4 +35,7 @@ return array (
   'delete' => 'Delete',
   'delete_link' => 'Delete the link between these two pages',
   'cannot_delete' => 'You cannot delete a page if it is linked to another',
+  'link_write' => 'Write',
+  'you_earned_something' => 'You earned :quantity :item',
+  'you_lost_something' => 'You lost :quantity :item',
 );
