@@ -99,18 +99,18 @@
                                 loadChoices();
                             }
                         } else {
-                            $this.parents('.card').addClass('card-danger');
+                            $this.closest('.card').addClass('border-danger');
                         }
                     })
                     .fail(function (data) {
-                        $this.parents('.card').addClass('card-danger');
+                        $this.closest('.card').addClass('border-danger');
                     })
                     .always(function () {
                         // Toggle disabled state
                         $this.prop('disabled', (i, v) => !v);
 
                         setTimeout(function() {
-                            $this.parents('.card').removeClass('card-danger');
+                            $this.closest('.card').removeClass('border-danger');
                         }, 3000);
                     });
             });

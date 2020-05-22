@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-6 col-sm-12">
-        <div class="card">
+        <div class="card border">
             <h5 class="card-header">
                 @if ($page->riddle && $page->riddle->title)
                     {{ $page->riddle->title }}

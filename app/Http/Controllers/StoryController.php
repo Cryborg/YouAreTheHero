@@ -207,7 +207,7 @@ class StoryController extends Controller
 
             }
 
-            //$character->actions()->syncWithoutDetaching($trigger->id);
+            $character->actions()->syncWithoutDetaching($trigger->id);
         }
 
         return $messages;
