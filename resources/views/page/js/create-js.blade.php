@@ -427,7 +427,7 @@
                         heading: '{{ trans('notification.save_success_title') }}',
                         text: "{{ trans('notification.save_success_text') }}",
                     });
-console.log(data);
+
                     $('#riddle_table tbody').html('').append(
                         '<tr>' +
                             '<td>' + '@lang('page.riddle_answer_label')' + '</td>' +

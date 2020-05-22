@@ -286,3 +286,6 @@ th.icon-expand:before, th.icon-contract:before {
 .hidden {
     display: none !important;
 }
+div.height-big {
+    line-height: 3em;
+}

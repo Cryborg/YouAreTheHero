@@ -649,24 +649,6 @@ class StoryController extends Controller
         return $view;
     }
 
-    public function postChildrenPagesAjax(Request $request)
-    {
-        if ($request->ajax()) {
-            $pageId = $request->get('page');
-            $page   = Cache::remember('page_' . $pageId, Config::get('app.story.cache_ttl'), function () use ($pageId) {
-                return Page::where('id', $pageId)
-                           ->first();
-            }
-            );
-
-            $view = View::make('story.partials.treecard', ['pages' => $page->choices]);
-
-            return $view;
-        }
-
-        abort(JsonResponse::HTTP_NOT_FOUND);
-    }
-
     public function getReset(Request $request, Story $story)
     {
         $character = Character::where([
