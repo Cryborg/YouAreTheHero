@@ -178,9 +178,7 @@
             contents: '<span data-target="#modalPopovers" data-toggle="modal">Popovers</span>',
             tooltip: 'Highlight text with red color',
             click: function() {
-                console.log('popover click');
                 $('.icon-save').addClass('disabled');
-                $('#modalPopovers').data('pageid', context.$note.parents('.is-page').data('pageid'));
             }
         });
 

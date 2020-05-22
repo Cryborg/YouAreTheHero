@@ -280,6 +280,9 @@ th.icon-expand:before, th.icon-contract:before {
 .text-lightgrey {
     color: lightgrey !important;
 }
+.text-red {
+    color: red !important;
+}
 .hidden {
-    display: none;
+    display: none !important;
 }

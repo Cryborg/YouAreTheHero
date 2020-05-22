@@ -2,7 +2,7 @@
     <div class="col-lg-4 col-md-12">
         <div>
             <div class="col-12 header-light">
-                <span tabindex="0" class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover"
+                <span tabindex="0" class="icon-help" data-toggle="popover" data-trigger="hover"
                     title="@lang('page.parents_label')" data-content="{{ trans('page.parents_label_help') }}"></span>
                 @lang('page.parents_label')
             </div>
@@ -21,7 +21,7 @@
     <div class="col-lg-4 col-md-12">
         <div>
             <div class="col-12 header-light">
-                <span tabindex="0" class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover"
+                <span tabindex="0" class="icon-help" data-toggle="popover" data-trigger="hover"
                     title="@lang('page.siblings_label')" data-content="{{ trans('page.siblings_label_help') }}"></span>
                 @lang('page.siblings_label')
             </div>
@@ -45,7 +45,7 @@
     </div>
     <div class="col-lg-4 col-md-12">
         <div class="col-12 header-light">
-                    <span tabindex="0" class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover"
+                    <span tabindex="0" class="icon-help" data-toggle="popover" data-trigger="hover"
                         title="@lang('page.children_label')" data-content="{{ trans('page.children_label_help') }}"></span>
             @lang('page.children_label')
         </div>

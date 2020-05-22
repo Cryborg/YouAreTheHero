@@ -32,12 +32,14 @@
                             <div class="card-body">
                                 <div class="card-title">
                                     <p class="help-block">{!! trans('page.riddle_item_help') !!}</p>
-                                    {!! Form::select(
-                                        'riddle_item',
-                                        ['' => ''] + $page->story->items->sortBy('name')->pluck('name', 'id')->toArray(),
-                                        $page->riddle && $page->riddle->item_id ?? null,
-                                        ['class' => 'form-control custom-select', 'size' => 6])
-                                    !!}
+                                        <select class="form-control custom-select" id="riddle_item" size="6">
+                                        <option></option>
+                                        @foreach ($items = $page->story->items->sortBy('name')->pluck('name', 'id')->toArray() as $id => $item)
+                                            <option value="{{ $id }}"
+                                                @if ($page->riddle && $page->riddle->item_id == $id) selected @endif
+                                            >{{ $item }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +56,7 @@
                                         <option value="">{{ trans('page.existing_page') }}</option>
                                         @foreach ($story->pages as $existingPage)
                                             @if ($page->id !== $existingPage->id)
-                                                <option value="{{ $existingPage->id }}" @if ($page->riddle) @if ($existingPage->id === $page->riddle->target_page_id) selected @endif @endif
+                                                <option value="{{ $existingPage->id }}" @if ($page->riddle) @if ($existingPage->id == $page->riddle->target_page_id) selected @endif @endif
                                                 >{{ $existingPage->title }}
                                                 </option>
                                             @endif

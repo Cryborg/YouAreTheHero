@@ -79,7 +79,7 @@
                 $this.prop('disabled', (i, v) => !v);
 
                 $.post({
-                    url: route('page.riddle.validate', {'page': $this.data('pageid')}),
+                    url: route('page.riddle.validate', {'page': {{ $page->id }}}),
                     data: {
                         'answer': $('#riddle_answer').val()
                     }

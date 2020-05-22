@@ -4,7 +4,7 @@
             <div class="modal-header">
                 <span class="{{ $icon }} display-5 mr-3 shadow"></span>
                 <h5 class="modal-title" id="modal{{ $data['id'] }}Title">{{ $title }}</h5>
-                <span class="close toggle-help glyphicon glyphicon-question-sign">
+                <span class="close toggle-help icon-help">
                     </span>
                 <button type="button" class="close" data-dismiss="modal" aria-label="@lang('common.close')">
                     <span aria-hidden="true">&times;</span>
@@ -90,7 +90,7 @@
                 $('#modalPopovers .modal-body').html('');
 
                 $.get({
-                    url: route('page.descriptions', {page: $this.data('pageid')})
+                    url: route('page.descriptions', {page: {{ $page->id }}})
                 })
                     .done(function (html) {
                         $('#modalPopovers .modal-body').html(html);

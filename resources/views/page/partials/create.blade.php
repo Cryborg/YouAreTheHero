@@ -1,4 +1,4 @@
-<div class="row is-page" data-pageid="{{ $page->id }}">
+<div class="row is-page">
     {!! Form::hidden('page_from', $page->id, ['class' => 'is-page-from', 'data-page-from' => $page_from ?? 0]) !!}
     <div class="col-lg-8 col-xs-12">
         <div>
@@ -15,11 +15,6 @@
                 @info({!! trans('page.current_page_help') !!})
 
                 <div class="divAsForm" data-route="{{ route('page.edit.post', ['page' => $page->id]) }}">
-
-                    @can('debug')
-                        From: <span class="badge badge-warning">{{ $page_from ?? 0 }}</span>
-                        This: <span class="badge badge-warning">{{ $page->id }}</span>
-                    @endcan
 
                     {{-- Form --}}
                     <div class="card">

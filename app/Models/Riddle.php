@@ -14,7 +14,7 @@ class Riddle extends Model
 
     public function page()
     {
-        return $this->belongsTo(Page::class);
+        return $this->belongsTo(Page::class, 'target_page_id');
     }
 
     public function item()

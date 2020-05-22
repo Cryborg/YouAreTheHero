@@ -36,8 +36,8 @@ class RiddleController extends Controller
         optional($page->riddle)->delete();
 
         $page->riddle()->create($validated);
-
         $page->load('riddle');
+        $page->riddle->load('page');
 
         return response()->json([
             'success' => $success,

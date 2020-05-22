@@ -22,7 +22,7 @@
         $.ajax({
             'url': route,
             'data': {
-                'page_from': $parent.data('pageid'),
+                'page_from': {{ $page->id }},
                 'link_text': $parent.find('#link_text').val()
             },
             'method': 'POST'
@@ -57,12 +57,12 @@
             var $this = $(this);
 
             $.get({
-                url: route('page.create', [{{ $page->story_id }}, $this.data('pageid')]),
+                url: route('page.create', [{{ $page->story_id }}, {{ $page->id }}]),
                 method: 'POST'
             })
                 .done(function (html) {
                     $('.choicesForm[data-page-from="' + $this.data('page-from') + '"]')
-                        .html('<div class="tab-pane active" id="p' + $this.data('pageid') + '">' + html.view + '</div>');
+                        .html('<div class="tab-pane active" id="p{{ $page->id }}">' + html.view + '</div>');
                 });
         });
 
@@ -72,9 +72,8 @@
             if (!confirm('@lang('page.confirm_delete')')) return false;
 
             var $this = $(this);
-            var pageId = $this.data('pageid');
 
-            deletePage(pageId, true);
+            deletePage(true);
         });
 
         // Delete a page from the "list all pages" popup
@@ -83,9 +82,7 @@
             if (!confirm('@lang('page.confirm_delete')')) return false;
 
             var $this = $(this);
-            var pageId = $this.data('pageid');
-
-            var success = deletePage(pageId, false);
+            var success = deletePage(false);
 
             if (success) {
                 $this.parents('div.col-12').slideUp(1500, function () {
@@ -94,12 +91,12 @@
             }
         });
 
-        function deletePage(pageId, redirect)
+        function deletePage(redirect)
         {
             var $this = $(this);
 
             $.ajax({
-                url: route('page.delete', {page: pageId }),
+                url: route('page.delete', {page: {{ $page->id }} }),
                 method: 'DELETE'
             })
                 .done(function (result) {
@@ -134,11 +131,10 @@
             if (!confirm('@lang('page.confirm_delete_link')')) return false;
 
             var $this = $(this);
-            var pageId = $this.data('pageid');
             var pageFrom = $this.data('page-from');
 
             $.ajax({
-                url: route('page.choice.delete', {page: pageId, page_from: pageFrom }),
+                url: route('page.choice.delete', {page: {{ $page->id }}, page_from: pageFrom }),
                 method: 'DELETE'
             })
                 .done(function (result) {
@@ -152,14 +148,6 @@
                         }
                     }
                 })
-        });
-
-        // Put the ID of the page into the modal
-        $('#modalCreatePrerequisite,#modalCreateAction,#modalCreateRiddle,#modalAddChoice').on('show.bs.modal', function (event) {
-            var $this = $(this);
-            var $parent = $(event.relatedTarget);
-            var myVal = $parent.data('pageid');
-            $this.data('pageid', myVal);
         });
 
         // help-block state check from cookie
@@ -189,7 +177,7 @@
         $(document).on('click', '.toggle-summernote:not(.summernote-open)', function () {
             let $this = $(this);
             let $parent = $this.closest('.is-page');
-            let internalId = $parent.data('pageid');
+            let internalId = {{ $page->id }};
 
             // Destroy all other summernotes so there is only one open at a time
             $("[id^='content-editable-']:hidden").summernote('destroy');
@@ -206,12 +194,10 @@
         // Saves the page
         $(document).on('click', '.icon-save', function (e) {
             let $this = $(this);
-            let $currentPage = $this.closest('.is-page');
-            let currentPageId = $currentPage.data('pageid');
-            let parentPageId = $this.data('page-from');
+            let currentPageId = {{ $page->id }};
 
             // Find parent page form
-            let $form = $("div.is-page[data-pageid='" + currentPageId + "']").find('.divAsForm');
+            let $form = $('.divAsForm');
 
             $('#content-editable-' + currentPageId + ':hidden').summernote('destroy');
             $('#content-editable-' + currentPageId + ':visible').addClass('hidden');
@@ -225,7 +211,6 @@
                 'is_first': $('#is_first-' + currentPageId).is(":checked") ? 1 : 0,
                 'is_last': $('#is_last-' + currentPageId).is(":checked") ? 1 : 0,
                 'is_checkpoint': $('#is_checkpoint-' + currentPageId).is(":checked") ? 1 : 0,
-                'page_from': parentPageId
             };
 
             if ($('#linktext-' + currentPageId).length > 0) {
@@ -303,7 +288,7 @@
 
             if (Object.entries(data).length > 0 && data.constructor === Object) {
                 $.post({
-                    url: route('prerequisite.store', $parent.data('pageid')),
+                    url: route('prerequisite.store', {{ $page->id }}),
                     data: data
                 })
                     .done(function (data) {
@@ -312,7 +297,7 @@
 
                             items.forEach(function (item) {
                                 // Adds the new action to the table
-                                $('#prerequisites_list-' + $parent.data('pageid') + ' tbody').append(
+                                $('#prerequisites_list-{{ $page->id }} tbody').append(
                                     '<tr>' +
                                     '<td>' + '{{ trans('item.item') }}' + '</td>' +
                                     '<td>' + item.name + '</td>' +
@@ -371,7 +356,7 @@
         let $parent = $this.closest('.modal');
 
         $.post({
-            url: route('actions.store', $parent.data('pageid')),
+            url: route('actions.store', {{ $page->id }}),
             'data': serialized,
         })
             .done(function (data) {
@@ -426,7 +411,7 @@
         let $parent = $this.closest('.modal');
 
         $.post({
-            url: route('riddle.store', {'page': $parent.data('pageid')}),
+            url: route('riddle.store', {'page': {{ $page->id }}}),
             'data': {
                 'answer': $('#riddle_answer_text').val(),
                 'type': $('#answer_is_integer').is(':checked') ? 1 : 0,
@@ -442,12 +427,13 @@
                         heading: '{{ trans('notification.save_success_title') }}',
                         text: "{{ trans('notification.save_success_text') }}",
                     });
-
+console.log(data);
                     $('#riddle_table tbody').html('').append(
                         '<tr>' +
                             '<td>' + '@lang('page.riddle_answer_label')' + '</td>' +
                             '<td>' + data.riddle.answer + '</td>' +
                         '</tr>' +
+                        (data.riddle.target_page_text != null ?
                         '<tr>' +
                             '<td>' + '@lang('page.riddle_page_text_label')' + '</td>' +
                             '<td>' + data.riddle.target_page_text + '</td>' +
@@ -455,7 +441,8 @@
                         '<tr>' +
                             '<td>' + '@lang('page.riddle_target_page_id_label')' + '</td>' +
                             '<td class="font-italic">' + data.page_title + '</td>' +
-                        '</tr>' +
+                            '</tr>'
+                            : '') +
                         '<tr>' +
                             '<td>' + '@lang('page.earned_item')' + '</td>' +
                             '<td class="font-italic">' + data.item_name + '</td>' +

@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
 
         Blade::directive('info', function ($expression) {
             return '<div class="alert alert-info d-flex flex-row">' .
-                        '<i class="glyphicon glyphicon-info-sign mr-3"></i>' .
+                        '<i class="icon-info mr-3 display-6 text-primary"></i>' .
                            '<div>' .
                                 $expression .
                            '</div>' .
@@ -49,7 +49,7 @@ class AppServiceProvider extends ServiceProvider
         });
         Blade::directive('warning', function ($expression) {
             return '<div class="alert alert-warning d-flex flex-row">' .
-                        '<i class="glyphicon glyphicon-warning-sign mr-3"></i>' .
+                        '<i class="icon-warning mr-3"></i>' .
                            '<div>' .
                                 $expression .
                            '</div>' .

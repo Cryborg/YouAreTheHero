@@ -12,12 +12,12 @@ class StoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('stories')->delete();
-        
+
         \DB::table('stories')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 2,
                 'title' => 'Un nouveau départ',
@@ -29,7 +29,7 @@ class StoriesTableSeeder extends Seeder
                 'created_at' => '2019-11-12 16:29:44',
                 'updated_at' => '2020-05-18 20:37:21',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 3,
                 'title' => 'Deuxième histoire',
@@ -41,13 +41,13 @@ class StoriesTableSeeder extends Seeder
                 'created_at' => '2019-11-12 16:29:44',
                 'updated_at' => '2020-01-02 16:29:44',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 4,
                 'title' => 'Trouvez Charlie',
             'description' => 'Histoire sans queue ni tête, juste pour montrer les possibilités offertes par le site :)
 
-<div class="alert alert-info d-flex flex-row w-50"><i class="glyphicon glyphicon-info-sign mr-3"></i><div>Certaines des énigmes ne peuvent être résolues qu\'en recherchant sur internet !</div></div>',
+<div class="alert alert-info d-flex flex-row w-50"><i class="icon-info mr-3 display-6 text-primary"></i><div>Certaines des énigmes ne peuvent être résolues qu\'en recherchant sur internet !</div></div>',
             'user_id' => 1,
             'locale' => 'fr_FR',
             'layout' => 'play1',
@@ -55,7 +55,7 @@ class StoriesTableSeeder extends Seeder
             'created_at' => '2020-05-09 14:04:38',
             'updated_at' => '2020-05-18 13:30:39',
         ),
-        3 => 
+        3 =>
         array (
             'id' => 5,
             'title' => 'LE Titre',
@@ -67,7 +67,7 @@ class StoriesTableSeeder extends Seeder
             'created_at' => '2020-05-12 11:26:15',
             'updated_at' => '2020-05-12 11:36:55',
         ),
-        4 => 
+        4 =>
         array (
             'id' => 6,
             'title' => 'Test',
@@ -79,7 +79,7 @@ class StoriesTableSeeder extends Seeder
             'created_at' => '2020-05-17 09:19:23',
             'updated_at' => '2020-05-17 15:59:26',
         ),
-        5 => 
+        5 =>
         array (
             'id' => 7,
             'title' => 'Escape game',
@@ -94,7 +94,7 @@ Un petit exemple d\'escape game qu\'il est possible d\'écrire sans aucune conna
         'updated_at' => '2020-05-19 09:14:59',
     ),
 ));
-        
-        
+
+
     }
 }

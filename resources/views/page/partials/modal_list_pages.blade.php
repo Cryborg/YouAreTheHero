@@ -3,8 +3,7 @@
 <div class="row">
 @foreach($pages as $page)
         <div class="col-12">
-            <div class="card mb-3 border-secondary clickable"
-                data-pageid="{{ $page->id }}">
+            <div class="card mb-3 border-secondary clickable" data-pageid="{{ $page->id }}">
                 <div class="row no-gutters">
                     <div class="col-md-1 card-header text-center">
                         @if ($page->is_first)
@@ -27,7 +26,6 @@
                             <div>
                                 <div class="badge badge-danger">
                                     <span class="icon-trash clickable text-white"
-                                        data-pageid="{{ $page->id }}"
                                         data-toggle="tooltip" title="@lang('common.delete')"
                                     ></span>
                                 </div>

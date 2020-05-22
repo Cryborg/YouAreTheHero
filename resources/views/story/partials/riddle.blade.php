@@ -16,8 +16,7 @@
                         <div class="input-group mb-3">
                             <input id="riddle_answer" type="text" class="form-control">
                             <div class="input-group-prepend">
-                                <button id="riddle_validate" class="btn btn-outline-secondary" type="button"
-                                    data-pageid="{{ $page->id }}">@lang('common.btn_validate')</button>
+                                <button id="riddle_validate" class="btn btn-outline-secondary" type="button">@lang('common.btn_validate')</button>
                             </div>
                         </div>
                     @endif

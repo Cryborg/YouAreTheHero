@@ -89,3 +89,12 @@
 .icon-choice:before {
     content: "\e914";
 }
+.icon-warning:before {
+    content: "\e915";
+}
+.icon-help:before {
+    content: "\e916";
+}
+.icon-info:before {
+    content: "\e917";
+}
