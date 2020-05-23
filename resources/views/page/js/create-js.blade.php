@@ -48,8 +48,10 @@
         });
 
         // Enable summernote on "new description" modal
-        $(document).on('show.bs.modal', '#modalPopovers', function (event) {
+        $(document).on('show.bs.modal', '#modalDescriptions', function (event) {
             $('.summernote').summernote(summernoteOptionsLight);
+
+            displayDescriptionsList();
         });
 
         // Asynchronously loads a page to edit
@@ -77,7 +79,7 @@
         });
 
         // Delete a page from the "list all pages" popup
-        $(document).on('click', '.card .icon-trash', function ()
+        $(document).on('click', '.card .deletePage', function ()
         {
             if (!confirm('@lang('page.confirm_delete')')) return false;
 

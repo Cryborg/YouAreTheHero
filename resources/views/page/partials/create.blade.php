@@ -36,8 +36,8 @@
                         <div class="card-body">
                             <div class="card-text">
                                 <p class="help-block">{{ trans('model.page_content_help') }}</p>
-                                <div id="content-editable-{{ $page->id }}" class="false-input scrollable-content hidden">{!! $page->content ?? old('content') !!}</div>
-                                <div id="content-{{ $page->id }}" class="false-input scrollable-content">{!! $page->present()->content ?? old('content') !!}</div>
+                                <div id="content-editable-{{ $page->id }}" class="false-input scrollable-content hidden h-300px">{!! $page->content ?? old('content') !!}</div>
+                                <div id="content-{{ $page->id }}" class="false-input scrollable-content h-300px">{!! $page->present()->content ?? old('content') !!}</div>
                             </div>
                         </div>
                     </div>

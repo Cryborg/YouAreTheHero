@@ -99,4 +99,6 @@ Route::post('/user/{user}/profile', 'UserController@store')->name('user.profile.
 Route::post('/page/{page}/newriddle', 'RiddleController@store')->name('riddle.store');
 
 // Descriptions
-Route::get('/descriptions/{page}', 'DescriptionController@list')->name('page.descriptions');
+Route::get('/description/{page}', 'DescriptionController@showModal')->name('descriptions.show_modal');
+Route::post('/description/{page}', 'DescriptionController@store')->name('description.create');
+Route::delete('/description/{description}/delete', 'DescriptionController@delete')->name('description.delete');

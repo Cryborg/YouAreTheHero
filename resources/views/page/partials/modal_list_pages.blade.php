@@ -25,7 +25,7 @@
                         @if (!$page->is_first && $page->parents->count() === 0 && $page->choices->count() === 0)
                             <div>
                                 <div class="badge badge-danger">
-                                    <span class="icon-trash clickable text-white"
+                                    <span class="icon-trash clickable text-white deletePage"
                                         data-toggle="tooltip" title="@lang('common.delete')"
                                     ></span>
                                 </div>

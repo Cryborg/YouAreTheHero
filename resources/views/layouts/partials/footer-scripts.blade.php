@@ -175,7 +175,7 @@
         var $this = $(this);
         var ui = $.summernote.ui;
         var button = ui.button({
-            contents: '<span data-target="#modalPopovers" data-toggle="modal">Popovers</span>',
+            contents: '<span data-target="#modalDescriptions" data-toggle="modal">Popovers</span>',
             tooltip: 'Highlight text with red color',
             click: function() {
                 $('.icon-save').addClass('disabled');
@@ -190,7 +190,7 @@
         maximumImageFileSize: 524288, // 512k
         toolbar: [
             ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
+            ['font', ['bold', 'italic', 'underline', 'clear']],
             ['fontname', ['fontname']],
             ['color', ['color']],
             ['para', ['ul', 'ol', 'paragraph']],
@@ -255,9 +255,7 @@
         lang: 'fr-FR',
         maximumImageFileSize: 524288, // 512k
         toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['fontname', ['fontname']],
+            ['font', ['bold', 'italic', 'underline', 'clear']],
             ['color', ['color']],
             ['para', ['ul', 'ol', 'paragraph']],
             ['table', ['table']],

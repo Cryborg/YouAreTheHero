@@ -38,14 +38,14 @@
 
     <!-- Modal insert popover -->
     @include('page.partials.modal_model', [
-        'template' => 'page.partials.modal_popovers',
-        'context' => 'popovers',
+        'template' => 'page.partials.modal_descriptions',
+        'context' => 'descriptions',
         'title' => trans('story.popovers_modal_title'),
         'icon' => 'icon-archive-research',
         'big' => true,
         'data' => [
             'page' => $page,
-            'id' => 'Popovers',
+            'id' => 'Descriptions',
         ]
     ])
 

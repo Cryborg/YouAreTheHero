@@ -20,7 +20,7 @@ class CreateDescriptionsTable extends Migration
             $table->foreign('page_id')->references('id')->on('pages');
 
             // The placeholder that will be replaced in the page
-            $table->string('placeholder', 50);
+            $table->string('keyword', 50);
 
             // The text that will replace the placeholder
             $table->text('description');

@@ -239,7 +239,6 @@ div.jq-toast-wrap {
 }
 .scrollable-content {
     overflow: auto;
-    height: 300px;
 }
 .dropdown-menu li {
     height: 3em;
@@ -288,4 +287,10 @@ th.icon-expand:before, th.icon-contract:before {
 }
 div.height-big {
     line-height: 3em;
+}
+.h-300px {
+    height: 300px;
+}
+.h-600px {
+    height: 600px;
 }

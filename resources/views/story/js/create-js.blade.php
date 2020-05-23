@@ -33,7 +33,8 @@
             return correct;
         }
 
-        $(document).on('click', '.icon-trash', function () {
+        // Delete a character_field
+        $(document).on('click', '.deleteCharacterField', function () {
             var $this = $(this);
             var id = $this.data('field_id');
             var loadingClass = 'fa fa-circle-o-notch fa-spin';
@@ -90,7 +91,7 @@
                                 result.field.short_name,
                                 result.field.min_value,
                                 result.field.max_value,
-                                '<span class="icon-trash text-danger" data-field_id="' + result.field.id + '"></span>'
+                                '<span class="icon-trash text-danger deleteCharacterField" data-field_id="' + result.field.id + '"></span>'
                             ]).draw();
 
                             showToast('success', {

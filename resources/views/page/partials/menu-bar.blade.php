@@ -34,10 +34,10 @@
 
 @if ($page->choices()->count() > 0)
     <span data-toggle="tooltip" data-placement="bottom" data-original-title="@lang('common.cannot_delete')">
-        <span class="icon-trash display-5 text-dark clickable shadow disabled"></span>
+        <span class="icon-trash display-5 text-dark clickable shadow disabled deleteChoice"></span>
     </span>
 @else
     <span data-toggle="tooltip" data-placement="bottom" data-original-title="@lang('common.delete')">
-        <span class="icon-trash display-5 text-white clickable shadow bg-danger rounded-lg"></span>
+        <span class="icon-trash display-5 text-white clickable shadow bg-danger rounded-lg deleteChoice"></span>
     </span>
 @endif
