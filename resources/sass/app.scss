@@ -11,3 +11,6 @@
     color: $green;
     cursor: pointer;
 }
+.border-menu-active {
+    border-bottom: 5px solid $green !important;
+}
