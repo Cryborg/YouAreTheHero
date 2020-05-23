@@ -40,9 +40,9 @@ class PagePresenter extends Presenter
             foreach ($this->entity->descriptions as $description)
             {
                 $replacementText = '<a tabindex="0" role="button" data-trigger="hover" data-placement="top" data-toggle="popover" title="'
-                                   . $description['placeholder'] . '" data-content="' . $description['description']
-                                   . '"><span class="icon-eye text-lightgrey mr-1"></span>' . $description['placeholder'] . '</a>';
-                $this->entity->content = str_replace('{{' . $description['placeholder'] . '}}', $replacementText, $this->entity->content);
+                                   . $description['keyword'] . '" data-content="' . $description['description']
+                                   . '"><span class="icon-eye text-lightgrey mr-1"></span>' . $description['keyword'] . '</a>';
+                $this->entity->content = str_replace('{{' . $description['keyword'] . '}}', $replacementText, $this->entity->content);
             }
 
             $content = $this->entity->content;

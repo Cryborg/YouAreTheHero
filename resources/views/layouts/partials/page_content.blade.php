@@ -31,9 +31,7 @@
         @endif
 
         <div class="card-body text-justify">
-            <div class="card-text">
-                {!! $page->present()->content !!}
-            </div>
+            {!! $page->present()->content !!}
         </div>
 
         <div class="card-body">
