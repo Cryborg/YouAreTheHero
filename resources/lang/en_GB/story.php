@@ -7,7 +7,7 @@ return array (
   'edit_title' => 'Edit story',
   'resume_editing' => 'Resume writing',
   'edit' => 'Edit story',
-  'start_playing' => 'Start playing',
+  'start_playing' => 'Start the story',
   'reset' => 'Reset adventure',
   'reset_successful_text' => 'The adventure has been successfully reset!',
   'reset_failed_text' => 'Unable to reset the adventure :(',
@@ -37,4 +37,5 @@ return array (
   'create_tab4' => '4. Items creation',
   'existing_items' => 'Existing items',
   'popovers_modal_title' => 'Descriptions',
+  'play' => 'Start',
 );

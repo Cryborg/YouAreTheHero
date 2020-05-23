@@ -13,7 +13,7 @@
         <a class="dropdown-item" href="{{ route('story.create') }}">
             {{ trans('common.link_story_create') }}
         </a>
-        <a class="dropdown-item" href="{{ route('stories.list.draft') }}">
+        <a class="dropdown-item active" href="{{ route('stories.list.draft') }}">
             {{ trans('stories.link_stories_draft') }}
         </a>
     </div>

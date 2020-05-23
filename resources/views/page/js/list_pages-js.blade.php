@@ -39,6 +39,5 @@
 
             $('.modal-preview-content').wrapInner('<div class="row"></div>');
         });
-
     });
 </script>

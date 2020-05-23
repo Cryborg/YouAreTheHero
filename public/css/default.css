@@ -294,3 +294,17 @@ div.height-big {
 .h-600px {
     height: 600px;
 }
+.button-right {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+}
+.button-right:hover {
+    opacity: .8;
+
+    box-shadow: 0 0 5px 5px rgba(209, 209, 209, 0.6);
+    border-radius:100px;
+}

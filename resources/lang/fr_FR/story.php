@@ -37,4 +37,5 @@ return array (
   'create_tab4' => '4. Créations d\'objets',
   'existing_items' => 'Objets existants',
   'popovers_modal_title' => 'Descriptions',
+  'play' => 'Commencer',
 );

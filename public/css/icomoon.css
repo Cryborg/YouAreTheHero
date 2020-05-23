@@ -98,3 +98,12 @@
 .icon-info:before {
     content: "\e917";
 }
+.icon-recycle:before {
+    content: "\e918";
+}
+.icon-play:before {
+    content: "\e919";
+}
+.icon-menu-dots:before {
+    content: "\e91a";
+}

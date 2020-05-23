@@ -21,7 +21,6 @@ Route::post('/item/create', 'ItemController@store')->name('item.store');
 // Stories
 Route::get('/stories/draft', 'StoriesController@listDraft')->name('stories.list.draft');
 Route::get('/stories', 'StoriesController@list')->name('stories.list');
-Route::get('/stories/ajax_list', 'StoriesController@ajaxList')->name('stories.list.ajax');
 
 // Story
 Route::get('/story/{story}/reset', 'StoryController@getReset')->name('story.reset');
