@@ -21,6 +21,8 @@
                                         <span class="icon-menu-dots display-6 text-black clickable"></span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
+{{--                                        FIXME $story->pages->last()->id --}}
+                                        <a class="dropdown-item" href="{{ route('page.edit', ['page' => 74]) }}">@lang('story.resume_editing')</a>
                                         @if (Auth::id() === $story->user->id)
                                             <a class="dropdown-item" href="{{ route('story.edit', ['story' => $story]) }}">@lang('story.edit')</a>
                                         @endif

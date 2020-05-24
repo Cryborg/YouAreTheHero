@@ -38,7 +38,7 @@ class StoriesController extends Controller
      */
     public function list(Request $request)
     {
-        $query = Story::select();
+        $query = Story::select()->with(['pages']);
 
         $draft = $request->get('draft') == '1';
 

@@ -16,6 +16,7 @@
                                 <li>New icons (<a target="_blank" href="https://game-icons.net">GameIcons</a> + <a target="_blank" href="https://icomoon.io/app">IcoMoon</a>)</li>
                                 <li>Items creation during story creation</li>
                                 <li>Clickable items for inline descriptions</li>
+                                <li>New look for the stories list page</li>
                             </ul>
                         </ul>
                     </fieldset>
