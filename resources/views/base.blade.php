@@ -44,11 +44,11 @@
                 <a class="navbar-brand" href="{{ url('/') }}" title="@lang('common.link_home')">
                     <img src="{{ asset('img/minibot.jpg') }}" width="64" height="64" style="margin-top: -12px">
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarMainMenu">
                     {{-- Left Side Of Navbar --}}
                     <ul class="navbar-nav mr-auto">
                         @auth

@@ -3,34 +3,28 @@
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-2">
             <div class="card border border-dark h-100 shadow">
                 <div class="card-header p-0">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-right">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <nav class="navbar navbar-expand navbar-light bg-light navbar-right">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent{{ $story->id }}" aria-controls="navbarSupportedContent{{ $story->id }}" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
                         {{ $story->title }}
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent{{ $story->id }}">
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('story.play', ['story' => $story]) }}">
+                                    <a class="nav-link" href="{{ route('story.play', ['story' => $story]) }}" title="@lang('story.start_playing')">
                                         <span class="icon-play bg-primary rounded-circle display-6 text-white p-1 clickable mr-2"></span>
                                     </a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="icon-menu-dots display-6 text-black clickable"></span>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-{{--                                        FIXME $story->pages->last()->id --}}
-                                        <a class="dropdown-item" href="{{ route('page.edit', ['page' => 74]) }}">@lang('story.resume_editing')</a>
-                                        @if (Auth::id() === $story->user->id)
-                                            <a class="dropdown-item" href="{{ route('story.edit', ['story' => $story]) }}">@lang('story.edit')</a>
-                                        @endif
-                                        @if (Auth::user()->hasBeganStory($story))
+                                    @if (Auth::user()->hasBeganStory($story))
+                                        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="icon-menu-dots display-6 text-black clickable"></span>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item" href="{{ route('story.reset', ['story' => $story]) }}">@lang('story.reset')</a>
-                                        @endif
-{{--                                        <div class="dropdown-divider"></div>--}}
-                                    </div>
+                                        </div>
+                                    @endif
                                 </li>
                             </ul>
                         </div>
@@ -42,6 +36,13 @@
                     </div>
                 </div>
                 <div class="card-footer">
+                    <div class="row">
+                        <div class="col">
+                            @foreach ($story->genres as $genre)
+                                <span class="badge badge-primary mr-1 p-1">{{ $genre->label }}</span>
+                            @endforeach
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col">
                             <span class="text-muted font-smaller">

@@ -1,13 +1,13 @@
 <h3>{{ trans('item.items_title') }}</h3>
 <table class="table" id="actions_list">
-    <thead class="thead-light">
+    <thead class="thead-lightblue">
         <th scope="col">{{ trans('item.name') }}</th>
         <th scope="col">{{ trans('item.verb') }}</th>
         <th scope="col">{{ trans('item.quantity') }}</th>
         <th scope="col">{{ trans('item.price') }}</th>
         <th scope="col" class="text-center">{{ trans('common.actions') }}</th>
     </thead>
-    <tbody>
+    <tbody class="alternate-rows-colors">
         @foreach ($page->items as $item)
             <tr>
                 <td>{{ $item->name }}</td>

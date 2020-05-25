@@ -25,7 +25,9 @@ class StoriesController extends Controller
         // Delete old story session
         Session::remove('story');
 
-        return view('stories.list_drafts');
+        return view('stories.list_drafts', [
+            'stories' => Auth::user()->stories
+        ]);
     }
 
     /**
@@ -38,7 +40,9 @@ class StoriesController extends Controller
      */
     public function list(Request $request)
     {
-        $query = Story::select()->with(['pages']);
+        $query = Story::select()
+            ->orderByDesc('updated_at')
+            ->with(['pages']);
 
         $draft = $request->get('draft') == '1';
 

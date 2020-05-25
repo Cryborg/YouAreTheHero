@@ -21,6 +21,8 @@
     line-height: 1;
     color: #414141;
 
+    vertical-align: middle;
+
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -106,4 +108,10 @@
 }
 .icon-menu-dots:before {
     content: "\e91a";
+}
+.icon-settings:before {
+    content: "\e91b";
+}
+button {
+    vertical-align: middle;
 }

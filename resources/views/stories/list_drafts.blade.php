@@ -5,25 +5,47 @@
 @section('content')
     <h1>{{ trans('stories.drafts_list_title') }}</h1>
 
-    <table id="stories-table" class="stripe">
+    <table class="table" id="stories-table">
         <thead>
             <tr>
-                <th></th>   {{-- Child rows button --}}
-                <th></th>   {{-- Story ID --}}
+                <th>@lang('common.id')</th>
+                <th>@lang('common.actions')</th>
                 <th>@lang('story.title')</th>
-                <th>@lang('common.language')</th>
-                <th>@lang('common.author')</th>
-                <th>@lang('common.updated_at')</th>
+                <th>@lang('story.number_pages')</th>
             </tr>
         </thead>
+        <tbody>
+            @foreach($stories as $story)
+                <tr>
+                    <td>{{ $story->id }}</td>
+                    <td>
+                        <div class="btn-toolbar" role="toolbar">
+                            <div class="btn-group mr-2" role="group">
+                                <a class="btn btn-light" href="{{ route('page.edit', ['page' => $story->pages->last()->id]) }}">
+                                    <span class="icon-fountain-pen"></span>
+                                </a>
+                                <a class="btn btn-light" href="{{ route('story.edit', ['story' => $story->id]) }}">
+                                    <span class="icon-settings"></span>
+                                </a>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <a class="btn bg-danger">
+                                    <span class="icon-trash text-white"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="w-50">{{ $story->title }}</td>
+                    <td>{{ $story->pages()->count() }}</td>
+                </tr>
+            @endforeach
+        </tbody>
         <tfoot>
         <tr>
-            <th></th>
-            <th></th>
+            <th>@lang('common.id')</th>
+            <th>@lang('common.actions')</th>
             <th>@lang('story.title')</th>
-            <th>@lang('common.language')</th>
-            <th>@lang('common.author')</th>
-            <th>@lang('common.updated_at')</th>
+            <th>@lang('story.number_pages')</th>
         </tr>
         </tfoot>
     </table>
@@ -31,79 +53,5 @@
 
 @push('footer-scripts')
     <script type="text/javascript">
-        $(function() {
-            function format ( d ) {
-                var parser = new DOMParser;
-                var dom = parser.parseFromString(d.description, 'text/html');
-                var decodedString = dom.body.textContent;
-
-                // Backticks are mandatory here !
-                var template = `{!! includeAsJsString('stories.partials.story_details') !!}`;
-
-                var replacements = {
-                    "%TEXT%":decodedString,
-                    "%PLAY_URL%": '<a href="' + route('page.edit', {'page': d.last_created_page.id}) + '" class="btn btn-primary card-link w-100 mb-1">{{ trans('story.resume_editing') }}</a>',
-                    "%EDIT_URL%": d.can_edit == true
-                        ? '<a href="' + route('story.edit', {'story': d.id}) + '" class="btn btn-success card-link w-100 mb-1">{{ trans('story.edit') }}</a>'
-                        : ' ',
-                    "%RESET_STORY%": ' ',
-                    "%AUTHOR%": d.user
-                };
-
-                return template.replace(/%\w+%/g, function(all) {
-                    return replacements[all] || all;
-                });
-            }
-
-            var table = $('#stories-table').DataTable({
-                dom: 'rt<p><"clear">',
-                processing: true,
-                serverSide: true,
-                ajax: '{{ route('stories.list.ajax', ['draft' => true]) }}',
-                columns: [
-                    {
-                        "className":      'details-control text-center icon-expand clickable display-6',
-                        "orderable":      false,
-                        "data":           null,
-                        "defaultContent": '',
-                        "width":          '5%'
-                    },
-                    {data: 'id'},
-                    {data: 'title'},
-                    {data: 'locale', 'width': '10%'},
-                    {data: 'user', 'width': '20%'},
-                    {data: 'updated_at', "render": function (data, type, row) {
-                            return moment(data).fromNow();
-                        }, 'width': '20%'}
-                ],
-                columnDefs: [
-                    {
-                        "targets": [ 1 ],
-                        "visible": false,
-                        "searchable": false
-                    }
-                ]
-            });
-
-            // Add event listener for opening and closing details
-            $('#stories-table tbody').on('click', 'td.details-control', function () {
-                var $this = $(this);
-                var tr = $this.closest('tr');
-                var row = table.row( tr );
-
-                if ( row.child.isShown() ) {
-                    // This row is already open - close it
-                    row.child.hide();
-                    tr.removeClass('shown');
-                    $this.removeClass('icon-contract').addClass('icon-expand');
-                }
-                else {
-                    // Open this row
-                    row.child( format(row.data()), tr.hasClass('odd') ? 'odd' : '' ).show();
-                    tr.addClass('shown');
-                    $this.removeClass('icon-expand').addClass('icon-contract');
-                }
-            } );
-        });
     </script>
 @endpush

@@ -108,6 +108,9 @@ p:not(.help-block) {
 .font-smaller {
     font-size: .75em;
 }
+.font-bigger {
+    font-size: 1.25em;
+}
 .help-block {
     font-size: .8em;
     font-style: italic;
@@ -216,10 +219,10 @@ div.jq-toast-wrap {
     background-color: #dcefff !important;
 }
 .alternate-rows-colors tr:nth-child(odd) {
-    background: #e9ecef;
+    background: #fff;
 }
 .alternate-rows-colors tr:nth-child(even) {
-    background: #fff;
+    background: #e2f0fb;
 }
 .clickable {
     cursor: pointer;
@@ -302,9 +305,21 @@ div.height-big {
     color: #000;
     text-shadow: 0 1px 0 #fff;
 }
-.button-right:hover {
-    opacity: .8;
+.icon-play.clickable {
+    opacity: .7;
+}
+.icon-play.clickable:hover {
+    opacity: 1;
 
     box-shadow: 0 0 5px 5px rgba(209, 209, 209, 0.6);
     border-radius:100px;
+}
+.w-10 {
+    width: 10% !important;
+}
+.w-90 {
+    width: 90% !important;
+}
+.thead-lightblue {
+    background-color: #e2f0fb;
 }
