@@ -38,4 +38,5 @@ return array (
   'link_write' => 'Write',
   'you_earned_something' => 'You earned :quantity :item',
   'you_lost_something' => 'You lost :quantity :item',
+  'optional' => 'Optional',
 );

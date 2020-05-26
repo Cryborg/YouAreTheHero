@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "dagre-d3": "^0.6.4",
         "popper": "^1.0.1"
     }
 }

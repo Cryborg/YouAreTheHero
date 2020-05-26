@@ -29,11 +29,8 @@
     top: 0;
     left: 0;
 }
-g.node {
-    cursor: pointer;
-}
-g.node:hover {
-    fill: dodgerblue;
+g.node a:hover {
+    text-decoration: none;
 }
 g.node.active {
     fill: red;

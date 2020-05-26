@@ -19,7 +19,7 @@
             <p class="help-block">@lang('page.link_page_help')</p>
             <select class="form-control mr-sm-2 childrenSelect" data-page-from="{{ $page->id }}">
                 <option value="0" selected>{{ trans('page.existing_page') }}</option>
-                @foreach ($page->getPotentialChildren() as $existingPage)
+                @foreach ($page->story->pages as $existingPage)
                     @if ($existingPage->id !== $page->id)
                         <option value="{{ $existingPage->id }}">{{ $existingPage->title }}</option>
                     @endif

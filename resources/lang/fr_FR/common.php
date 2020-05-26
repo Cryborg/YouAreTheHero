@@ -37,4 +37,5 @@ return array (
   'cannot_delete' => 'Impossible de supprimer une page ayant des choix',
   'you_earned_something' => 'Tu as gagné :quantity :item',
   'you_lost_something' => 'Tu as perdu :quantity :item',
+  'optional' => 'Optionnel',
 );

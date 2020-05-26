@@ -331,11 +331,36 @@
             }
         });
 
-
-
         showHumanReadableDates();
 
         @include('page.js.dagred3-js', ['pages' => $page->story->pages, 'current' => $page])
+    });
+
+    $(document).on('click', '.choice-text.icon-fountain-pen', function () {
+        var choiceId = $(this).data('choice-id');
+
+        if (confirm('Sûr ?')) {
+            // $.get({
+            //     url: route('')
+            // })
+        }
+    });
+
+    $(document).on('click', '.choice-text.icon-trash', function () {
+        var pageFrom = $(this).data('page-from');
+        var pageTo = $(this).data('page-to');
+
+        if (confirm('Sûr ?')) {
+            {{--$.get({--}}
+            {{--    url: route('page.choice.delete', {'page': pageFrom, 'page_to': pageTo})--}}
+            {{--})--}}
+            {{--.done(function (data) {--}}
+            {{--    showToast('success', {--}}
+            {{--        heading: '{{ trans('notification.save_success_title') }}',--}}
+            {{--        text: "{{ trans('notification.save_success_text') }}",--}}
+            {{--    });--}}
+            {{--});--}}
+        }
     });
 
     // When the author chooses an item from the list

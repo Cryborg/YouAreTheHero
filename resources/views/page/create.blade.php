@@ -22,6 +22,20 @@
         ]
     ])
 
+    <!-- Modal edit choice -->
+    @include('page.partials.modal_model', [
+        'template' => 'page.partials.modal_edit_choice',
+        'context' => 'edit_choice',
+        'title' => trans('page.edit_choice_modal_title'),
+        'icon' => 'icon-choice',
+        'big' => false,
+        'data' => [
+            'page' => $page,
+            'id' => 'EditChoice',
+            'btn_add_text' => trans('common.save')
+        ]
+    ])
+
     <!-- Modal list all pages -->
     @include('page.partials.modal_model', [
         'template' => 'page.partials.modal_list_pages',
