@@ -323,3 +323,6 @@ div.height-big {
 .thead-lightblue {
     background-color: #e2f0fb;
 }
+.nav-item.text-white.nav-link.active {
+    background-color: rgba(255,255,255,.2);
+}

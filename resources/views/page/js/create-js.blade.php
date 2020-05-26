@@ -334,6 +334,8 @@
 
 
         showHumanReadableDates();
+
+        @include('page.js.dagred3-js', ['pages' => $page->story->pages, 'current' => $page])
     });
 
     // When the author chooses an item from the list

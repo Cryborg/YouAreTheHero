@@ -1,3 +1,8 @@
+<script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+<script src="{{ asset('js/dagre-d3.js') }}"></script>
+<script src="{{ asset('js/he.js') }}"></script>
+
+<script type="text/javascript" src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -175,7 +180,7 @@
         var $this = $(this);
         var ui = $.summernote.ui;
         var button = ui.button({
-            contents: '<span data-target="#modalDescriptions" data-toggle="modal">Popovers</span>',
+            contents: '<span data-target="#modalDescriptions" data-toggle="modal">@lang('description.descriptions_button_label')</span>',
             tooltip: 'Highlight text with red color',
             click: function() {
                 $('.icon-save').addClass('disabled');

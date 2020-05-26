@@ -1,0 +1,40 @@
+.node rect,
+.node circle,
+.node ellipse,
+.node polygon {
+    stroke: #333;
+    fill: #fff;
+    stroke-width: 1.5px;
+}
+
+.edgePath path.path {
+    stroke: #333;
+    fill: none;
+    stroke-width: 1.5px;
+}
+.svg-container.active {
+    display: inline-block;
+}
+.svg-container {
+    display: none;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    vertical-align: middle;
+    overflow: hidden;
+}
+.svg-content {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+g.node {
+    cursor: pointer;
+}
+g.node:hover {
+    fill: dodgerblue;
+}
+g.node.active {
+    fill: red;
+}
