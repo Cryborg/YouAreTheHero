@@ -28,11 +28,13 @@
                                     <span class="icon-settings"></span>
                                 </a>
                             </div>
-                            <div class="btn-group" role="group">
-                                <a class="btn bg-danger">
-                                    <span class="icon-trash text-white"></span>
-                                </a>
-                            </div>
+                            @if ($story->is_published === false)
+                                <div class="btn-group" role="group">
+                                    <a class="btn bg-danger">
+                                        <span class="icon-trash text-white deleteStory" data-storyid="{{ $story->id }}"></span>
+                                    </a>
+                                </div>
+                            @endif
                         </div>
                     </td>
                     <td class="w-50">{{ $story->title }}</td>
@@ -52,6 +54,5 @@
 @endsection
 
 @push('footer-scripts')
-    <script type="text/javascript">
-    </script>
+    @include('stories.js.list-js')
 @endpush

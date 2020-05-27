@@ -24,6 +24,7 @@ class CreatePrerequisitesTable extends Migration
             $table->foreign('page_id')->references('id')->on('pages');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

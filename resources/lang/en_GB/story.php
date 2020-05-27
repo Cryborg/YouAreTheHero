@@ -38,4 +38,5 @@ return array (
   'existing_items' => 'Existing items',
   'popovers_modal_title' => 'Descriptions',
   'play' => 'Start',
+  'confirm_delete' => 'Are you sure you want to delete this story?',
 );

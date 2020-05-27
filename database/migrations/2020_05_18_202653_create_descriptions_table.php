@@ -24,6 +24,9 @@ class CreateDescriptionsTable extends Migration
 
             // The text that will replace the placeholder
             $table->text('description');
+
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

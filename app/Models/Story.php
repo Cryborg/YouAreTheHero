@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use \App\Models\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Laracasts\Presenter\PresentableTrait;
@@ -11,7 +11,9 @@ use Laracasts\Presenter\PresentableTrait;
 class Story extends Model
 {
     use PresentableTrait;
+    use SoftDeletes;
 
+    protected $dates = ['deleted_at'];
     protected $presenter = 'App\\Presenters\\StoryPresenter';
 
     protected $guarded = ['id'];
@@ -36,6 +38,16 @@ class Story extends Model
         static::created(static function($page)
         {
             Cache::forget('stories.list');
+        });
+
+        static::deleting(function ($story) { // before delete() method call this
+            $story->pages->each(function($page) {
+                $page->delete();
+            });
+            $story->fields->each(function($field) {
+                $field->delete();
+            });
+
         });
     }
 

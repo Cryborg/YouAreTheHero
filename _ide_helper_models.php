@@ -337,6 +337,27 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Choice
+ *
+ * @property string $id
+ * @property \App\Models\Page|null $page_from
+ * @property \App\Models\Page|null $page_to
+ * @property string $link_text
+ * @property-read \App\Models\Page|null $pageFrom
+ * @property-read \App\Models\Page|null $pageTo
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choice newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choice newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choice query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choice whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choice whereLinkText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choice wherePageFrom($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choice wherePageTo($value)
+ */
+	class Choice extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Riddle
  *
  * @property int $id
@@ -421,27 +442,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\Choices
- *
- * @property string $id
- * @property \App\Models\Page|null $page_from
- * @property \App\Models\Page|null $page_to
- * @property string $link_text
- * @property-read \App\Models\Page|null $pageFrom
- * @property-read \App\Models\Page|null $pageTo
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choice newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choice newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choice query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choice whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choice whereLinkText($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choice wherePageFrom($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Choice wherePageTo($value)
- */
-	class Choices extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
  * App\Models\Description
  *
  * @property int $id
@@ -514,24 +514,24 @@ namespace App\Models{
  * @property string|null $layout
  * @property bool $is_checkpoint
  * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null                                         $updated_at
- * @property \Illuminate\Support\Carbon|null                                         $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Action[]      $actions
- * @property-read int|null                                                           $actions_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[]        $choices
- * @property-read int|null                                                           $choices_count
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Action[] $actions
+ * @property-read int|null $actions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[] $choices
+ * @property-read int|null $choices_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Description[] $descriptions
- * @property-read int|null                                                           $descriptions_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[]        $items
- * @property-read int|null                                                           $items_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Choice[]      $links_to
- * @property-read int|null                                                           $links_to_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[]        $parents
- * @property-read int|null                                                           $parents_count
- * @property-read \App\Models\Riddle|null                                            $riddle
- * @property-read \App\Models\Story                                                  $story
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Action[]      $trigger
- * @property-read int|null                                                           $trigger_count
+ * @property-read int|null $descriptions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[] $items
+ * @property-read int|null $items_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Choice[] $links_to
+ * @property-read int|null $links_to_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[] $parents
+ * @property-read int|null $parents_count
+ * @property-read \App\Models\Riddle|null $riddle
+ * @property-read \App\Models\Story $story
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Action[] $trigger
+ * @property-read int|null $trigger_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page newQuery()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Page onlyTrashed()

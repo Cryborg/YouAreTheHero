@@ -4,7 +4,7 @@
         $('#modalAllPages .modal-body:not(.modal-body-preview)').html('');
 
         $.get({
-            url: route('page.modal.ajax', {story: {{ $data['story']->id }}})
+            url: route('page.list', {story: {{ $data['story']->id }}})
         })
             .done(function (html) {
                 $('#modalAllPages .modal-body:not(.modal-body-preview)').html(html);

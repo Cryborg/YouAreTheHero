@@ -26,6 +26,7 @@ class CreateEffectsTable extends Migration
             $table->integer('quantity')->default(1);
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

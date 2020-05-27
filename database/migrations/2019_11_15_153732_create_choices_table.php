@@ -25,6 +25,8 @@ class CreateChoicesTable extends Migration
             $table->text('link_text');
 
             $table->index(['page_from']);
+
+            $table->softDeletes();
         });
     }
 

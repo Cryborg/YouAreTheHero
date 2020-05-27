@@ -18,6 +18,7 @@ use \App\Models\Choice;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 use App\Repositories\PageRepository;
@@ -608,5 +609,21 @@ class StoryController extends Controller
         Session::remove('story');
 
         return Redirect::route('stories.list');
+    }
+
+    public function delete(Story $story)
+    {
+        $this->authorize('view', $story);
+
+        DB::beginTransaction();
+        $success = $story->delete();
+
+        if ($success) {
+            DB::commit();
+        } else {
+            DB::rollBack();
+        }
+
+        return response()->json(['success' => $success]);
     }
 }

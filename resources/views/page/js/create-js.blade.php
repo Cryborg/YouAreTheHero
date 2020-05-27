@@ -15,40 +15,6 @@
 
     });
 
-    function deletePage(redirect)
-    {
-        var $this = $(this);
-
-        $.ajax({
-            url: route('page.delete', {page: {{ $page->id }} }),
-            method: 'DELETE'
-        })
-            .done(function (result) {
-                if (result.success) {
-                    if (redirect) {
-                        window.location.href = result.redirectTo;
-                    } else {
-                        showToast('success', {
-                            heading: '{{ trans('notification.deletion_success_title') }}',
-                            text: "{{ trans('notification.deletion_success_text') }}",
-                        });
-                    }
-                }
-
-                return result.success;
-            })
-            .fail(function (data) {
-                showToast('error', {
-                    heading: '{{ trans('notification.deletion_failed_title') }}',
-                    text: "{{ trans('notification.deletion_failed_text') }}",
-                    errors: data.responseJSON.errors
-                });
-
-                return false;
-            })
-        ;
-    }
-
     function newPage($this, route) {
         let $parent = $this.closest('.modal');
 
@@ -102,29 +68,38 @@
                 });
         });
 
-        // Delete a page from the left menu
-        $(document).on('click', '.menu-icon-bottom>.icon-trash:not(.text-dark)', function ()
-        {
-            if (!confirm('@lang('page.confirm_delete')')) return false;
-
-            var $this = $(this);
-
-            deletePage(true);
-        });
-
         // Delete a page from the "list all pages" popup
-        $(document).on('click', '.card .deletePage', function ()
+        $(document).on('click', '.deletePage', function ()
         {
+            var $this = $(this);
+
             if (!confirm('@lang('page.confirm_delete')')) return false;
 
-            var $this = $(this);
-            var success = deletePage(false);
+            $.ajax({
+                url: route('page.delete', {page: $this.data('pageid') }),
+                method: 'DELETE'
+            })
+                .done(function (result) {
+                    if (result.success) {
+                        $this.closest('div.col-12').slideUp(1000, function () {
+                            $(this).remove();
+                        });
 
-            if (success) {
-                $this.parents('div.col-12').slideUp(1500, function () {
-                    $(this).remove();
+                        showToast('success', {
+                            heading: '{{ trans('notification.deletion_success_title') }}',
+                            text: "{{ trans('notification.deletion_success_text') }}",
+                        });
+                    }
+                })
+                .fail(function (data) {
+                    console.log('fail');
+                    console.log(data);
+                    showToast('error', {
+                        heading: '{{ trans('notification.deletion_failed_title') }}',
+                        text: "{{ trans('notification.deletion_failed_text') }}",
+                        errors: data.responseJSON.errors
+                    });
                 });
-            }
         });
 
         // help-block state check from cookie

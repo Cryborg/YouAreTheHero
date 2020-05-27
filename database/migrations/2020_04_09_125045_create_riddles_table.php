@@ -30,6 +30,9 @@ class CreateRiddlesTable extends Migration
 
             $table->unsignedBigInteger('item_id')->nullable();
             $table->foreign('item_id')->references('id')->on('items');
+
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -32,25 +32,6 @@ class Page extends Model
         'is_checkpoint' => 'boolean',
     ];
 
-    public static function boot()
-    {
-        parent::boot();
-
-        static::deleted(function($page)
-        {
-            // Delete the links that lead to the page we just deleted
-            $page->links_to()->delete();
-        });
-    }
-
-    /**
-     * @return HasMany
-     */
-    public function links_to()
-    {
-        return $this->hasMany(Choice::class, 'page_to');
-    }
-
     /**
      * @return BelongsTo
      */
@@ -105,26 +86,6 @@ class Page extends Model
             ->get();
 
         return $potentialPages;
-    }
-
-    /**
-     * @param array $data
-     *
-     * @return \App\Models\ItemPage
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function addAction(array $data): ItemPage
-    {
-        $validated = Validator::validate($data, [
-                'item_id'  => 'required',
-                'verb'     => 'required',
-                'quantity' => 'required',
-            ]
-        );
-
-        $validated['page_id'] = $this->id;
-
-        return ItemPage::create($validated);
     }
 
     /**

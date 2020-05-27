@@ -38,4 +38,6 @@ return array (
   'existing_items' => 'Objets existants',
   'popovers_modal_title' => 'Descriptions',
   'play' => 'Commencer',
+  'confirm_delete' => 'Etes-vous sûr(e) de vouloir supprimer cette histoire ?',
+  'author' => 'Auteur',
 );

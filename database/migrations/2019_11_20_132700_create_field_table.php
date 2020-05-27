@@ -27,6 +27,7 @@ class CreateFieldTable extends Migration
             $table->integer('order')->default(1);
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -29,6 +29,7 @@ class CreateStoryOptionTable extends Migration
                 ->comment('Points to share amongst character stats');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

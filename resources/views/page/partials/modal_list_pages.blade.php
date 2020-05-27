@@ -26,6 +26,7 @@
                             <div>
                                 <div class="badge badge-danger">
                                     <span class="icon-trash clickable text-white deletePage"
+                                        data-pageid="{{ $page->id }}"
                                         data-toggle="tooltip" title="@lang('common.delete')"
                                     ></span>
                                 </div>

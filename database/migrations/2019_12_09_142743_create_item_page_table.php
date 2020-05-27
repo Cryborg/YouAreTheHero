@@ -25,6 +25,8 @@ class CreateItemPageTable extends Migration
             $table->string('verb');
             $table->integer('quantity')->default(1);
             $table->integer('price')->nullable();
+
+            $table->softDeletes();
         });
     }
 
