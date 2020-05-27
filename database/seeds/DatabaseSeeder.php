@@ -6,7 +6,7 @@ use App\Models\StoryGenre;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Page;
-use App\Models\Choices;
+use App\Models\Choice;
 use App\Models\Item;
 
 class DatabaseSeeder extends Seeder

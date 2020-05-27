@@ -174,9 +174,6 @@ div.alert.alert-banner {
     width: 40%;
     top: 3%;
 }
-table#stories-table.dataTable {
-    border-collapse: collapse;
-}
 div.jq-toast-wrap {
     width: 500px;
 }

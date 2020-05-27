@@ -10,7 +10,7 @@
         </div>
         <div class="col-md-8 col-lg-9 col-xl-10">
             <h1>{{ trans('admin.stories_title') }}</h1>
-            <table class="dataTable">
+            <table class="table">
                 <thead>
                     <th>{{ trans('common.id') }}</th>
                     <th>{{ trans('story.title') }}</th>

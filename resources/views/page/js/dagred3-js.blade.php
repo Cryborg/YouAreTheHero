@@ -8,8 +8,7 @@ var g = new dagreD3.graphlib.Graph()
 @foreach ($pages as $page)
     g.setNode({{ $page->id }},  {
         labelType: "html",
-        label: '<a href="{{ route('page.edit', ['page' => $page->id]) }}">{{ $page->title }}</a>',
-{{--        label: he.decode("{{ $page->title }}"),--}}
+        label: '{!! includeAsJsString('page.js.partials.edge', ['page' => $page]) !!}',
         class: "align-middle text-center",
         labelStyle: "margin-top: 4px;"
     });
@@ -27,11 +26,7 @@ g.nodes().forEach(function(v) {
         @foreach ($page->choices as $choice)
             g.setEdge({{ $page->id }}, {{ $choice->id }}, {
                 labelType: "html",
-                label: '<span class="choice-text icon-fountain-pen text-white clickable border-right border-light p-1 mr-2" ' +
-                    'data-choice-id="{{ $choice->pivot->id }}" ' +
-                    'data-page-to="{{ $choice->id }}"></span>{{ $choice->pivot->link_text }}' +
-                    '<span class="choice-text icon-trash clickable text-red border-left border-light p-1 ml-2" ' +
-                    'data-page-from="{{ $page->id }}"></span>',
+                label: '{!! includeAsJsString('page.js.partials.node', ['choice' => $choice, 'page' => $page]) !!}',
                 labelStyle: "border: 1px solid white;color:white;background-color:black;padding:3px;font-size:.8em"
             });
         @endforeach

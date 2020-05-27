@@ -68,7 +68,7 @@
         }
 
         function loadChoices() {
-            $('.choices-block').load('{{ route('story.choices', ['story' => $story->id, 'page' => $page->id]) }}');
+            $('.choices-block').load('{{ route('page.choices', ['page' => $page->id]) }}');
         }
 
         @if ($page->riddle()->count())

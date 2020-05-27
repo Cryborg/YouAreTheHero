@@ -1,19 +1,5 @@
 <script type="text/javascript">
     $(document).ready(function () {
-        var statsDatatable = $('#stats_story').DataTable({
-            dom: 't',
-            columnDefs: [
-                {
-                    "targets": [ 4 ],
-                    "sortable": false,
-                    "searchable": false
-                }
-            ],
-            createdRow: function(row, data, dataIndex) {
-                $(row).children('td').eq(4).addClass('text-center');
-            }
-        });
-
         function checkForm() {
             var correct = true;
 
@@ -50,10 +36,7 @@
             })
                 .done(function (result) {
                     if (result.success) {
-                        statsDatatable
-                            .row($this.parents('tr'))
-                            .remove()
-                            .draw();
+                        $this.closest('tr').remove();
 
                         showToast('success', {
                             heading: '{{ trans('notification.save_success_title') }}',
@@ -73,7 +56,7 @@
                 });
         });
 
-        $(document).on('click', '.glyphicon-plus-sign', function () {
+        $(document).on('click', '.addField', function () {
             if (checkForm()) {
                 $.post({
                     url: route('field.store', {'story': {{ $story->id }} }),
@@ -86,13 +69,14 @@
                 })
                     .done(function (result) {
                         if (result.success) {
-                            statsDatatable.row.add([
-                                result.field.full_name,
-                                result.field.short_name,
-                                result.field.min_value,
-                                result.field.max_value,
-                                '<span class="icon-trash text-danger deleteCharacterField" data-field_id="' + result.field.id + '"></span>'
-                            ]).draw();
+                            var html = '<tr>' +
+                                '<td><div>' + result.field.full_name + '</div></td>' +
+                                '<td><div>' + result.field.short_name + '</div></td>' +
+                                '<td><div>' + result.field.min_value + '</div></td>' +
+                                '<td><div>' + result.field.max_value + '</div></td>' +
+                                '<td><div><span class="icon-trash text-danger deleteCharacterField" data-field_id="' + result.field.id + '"></span></div></td>' +
+                                '</tr>';
+                            $('#stats_story').append(html);
 
                             showToast('success', {
                                 heading: '{{ trans('notification.save_success_title') }}',

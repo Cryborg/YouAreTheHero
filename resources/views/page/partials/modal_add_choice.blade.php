@@ -5,7 +5,7 @@
     <div class="card-body">
         <div class="card-text">
             <p class="help-block">@lang('page.link_text_help')</p>
-            <input type="text" id="link_text">
+            <input type="text" id="link_text" class="w-100">
         </div>
     </div>
 </div>

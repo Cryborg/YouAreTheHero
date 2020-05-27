@@ -134,7 +134,7 @@
         <div class="tab-pane" id="pills-sheet" role="tabpanel" aria-labelledby="pills-tab-3">
             {!! Form::label('field', trans('story.stats_label')) !!}
             <p class="help-block">{!! trans('story.genres_help') !!}</p>
-            <table id="stats_story" class="mb-3 w-50 m-0">
+            <table id="stats_story" class="table mb-3 w-50 m-0">
                 <thead>
                     <tr>
                         <th>{{ trans('field.full_name') }}</th>
@@ -152,7 +152,7 @@
                             <td>{{ $stat->min_value }}</td>
                             <td>{{ $stat->max_value }}</td>
                             <td class="text-center">
-                                <span class="icon-trash text-danger deleteField" data-field_id="{{ $stat->id }}"></span>
+                                <span class="icon-trash text-danger deleteCharacterField" data-field_id="{{ $stat->id }}"></span>
                             </td>
                         </tr>
                     @endforeach
@@ -164,6 +164,7 @@
                         <th><input class="new_field form-control" type="number" id="min_value" value="1" required></th>
                         <th><input class="new_field form-control" type="number" id="max_value" value="10" required></th>
                         <th class="text-center">
+                            <span class="btn btn-primary addField">Add</span>
                             <span class="glyphicon glyphicon-plus-sign"></span>
                         </th>
                     </tr>

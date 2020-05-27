@@ -17,8 +17,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap-grid.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap-select/css/bootstrap-select.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}"/>
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.dataTables.min.css') }}"/>--}}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.toast.min.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/summernote-bs4.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-switch.min.css') }}"/>

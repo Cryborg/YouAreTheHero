@@ -14,13 +14,14 @@ use Illuminate\Http\Request;
 use \App\Models\Story;
 use \App\Models\Character;
 use \App\Models\Page;
-use \App\Models\Choices;
+use \App\Models\Choice;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
 
 use App\Repositories\PageRepository;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
 
@@ -43,7 +44,7 @@ class StoryController extends Controller
     public function getPlay(Story $story, Page $page = null)
     {
         // Check if the user has an already existing character for this story
-        $character = $this->getCurrentCharacter($story);
+        $character = $story->currentCharacter();
 
         // If there is an ID, save it in the session so that we show a nice URL without the page ID
         if ($page !== null) {
@@ -96,6 +97,7 @@ class StoryController extends Controller
 
         if ($page) {
             if ($page->is_last) {
+                // FIXME
                 $page->choices = 'gameover';
             }
             else {
@@ -278,7 +280,7 @@ class StoryController extends Controller
         $pageId = $request->get('pageid');
         $page = Page::find($pageId);
 
-        $character = $this->getCurrentCharacter(getSession('story_id'));
+        $character = $page->story->currentCharacter();
 
         $item = $page->items->where('pivot.id', $actionId)->first();
 
@@ -362,29 +364,10 @@ class StoryController extends Controller
      */
     public function sheet(Story $story)
     {
-        $character = $this->getCurrentCharacter($story);
+        $character = $story->currentCharacter();
 
         return view('story.partials.sheet', [
             'fields' => $character->fields ?? [],
-        ]
-        );
-    }
-
-    /**
-     * @param \App\Models\Story $story
-     * @param \App\Models\Page  $page
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function choices(Story $story, Page $page)
-    {
-        $character = $this->getCurrentCharacter($story);
-
-        $this->getFilteredChoicesFromPage($page, $character);
-
-        return view('story.partials.choices', [
-            'story' => $story,
-            'page'  => $page,
         ]
         );
     }
@@ -433,22 +416,6 @@ class StoryController extends Controller
     }
 
     /**
-     * @param \App\Models\Story|int $story
-     *
-     * @return mixed
-     */
-    private function getCurrentCharacter($story)
-    {
-        $story_id = $story instanceof Story ? $story->id : $story;
-
-        return Character::where(['user_id'  => Auth::id(),
-                                 'story_id' => $story_id,
-        ]
-        )
-                        ->first();
-    }
-
-    /**
      * @param Page $page
      *
      * @return mixed
@@ -458,9 +425,9 @@ class StoryController extends Controller
         $key = 'choices_' . $page->id;
 
         return Cache::remember($key, Config::get('app.story.cache_ttl'), function () use ($page, $key) {
-            return Choices::with('pageTo')
-                          ->where('page_from', $page->id)
-                          ->get();
+            return Choice::with('pageTo')
+                         ->where('page_from', $page->id)
+                         ->get();
         }
         );
     }
@@ -624,43 +591,21 @@ class StoryController extends Controller
         return $actions;
     }
 
-    /**
-     * @param \App\Models\Story $story
-     *
-     * @return \Illuminate\Contracts\View\View
-     */
-    public function getTree(Story $story)
+    public function getReset(Story $story)
     {
+        $character = $story->currentCharacter();
 
-        //FIXME: does not work for now
+        if ($character !== null) {
+            $deleted = $character->delete();
 
-        $tree  = [];
-        $pages = $story->pages->where('is_first', true);
-        $page  = $pages->first();
-
-        $view = View::make('story.tree', [
-            'pages' => [$page],
-        ]
-        );
-
-        return $view;
-    }
-
-    public function getReset(Request $request, Story $story)
-    {
-        $character = Character::where([
-            'user_id'  => Auth::id(),
-            'story_id' => $story->id,
-        ])->firstOrFail();
-
-        $deleted = $character->delete();
-
-        if ($deleted == true) {
-            Flash::success(trans('story.reset_successful_text'));
+            if ($deleted == true) {
+                Flash::success(trans('story.reset_successful_text'));
+            } else {
+                Flash::error(trans('story.reset_failed_text'));
+            }
         }
-        else {
-            Flash::error(trans('story.reset_failed_text'));
-        }
+
+        Session::remove('story');
 
         return Redirect::route('stories.list');
     }

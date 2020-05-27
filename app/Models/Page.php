@@ -48,7 +48,7 @@ class Page extends Model
      */
     public function links_to()
     {
-        return $this->hasMany(Choices::class, 'page_to');
+        return $this->hasMany(Choice::class, 'page_to');
     }
 
     /**

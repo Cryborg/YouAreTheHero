@@ -3,10 +3,6 @@
     <div class="col-lg-8 col-xs-12">
         <div class="row">
             <div class="col">
-{{--                @info({!! trans('page.tree_help') !!})--}}
-
-{{--                @include('page.partials.tree', ['page' => $page])--}}
-
                 @info({!! trans('page.current_page_help') !!})
 
                 <div class="divAsForm" data-route="{{ route('page.edit.post', ['page' => $page->id]) }}">
@@ -71,7 +67,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <button class="btn btn-primary shadow bg-success">
+                <button class="btn btn-primary shadow bg-success savePage">
                     <span class="icon-save text-white display-6 align-middle mr-3"></span>
                     <span class="align-middle">@lang('common.save')</span>
                 </button>

@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Story;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
-use Yajra\DataTables\DataTables;
 
 class StoriesController extends Controller
 {

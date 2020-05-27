@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Inventory;
 use App\Models\Page;
-use App\Models\Choices;
+use App\Models\Choice;
 use App\Models\Story;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -237,15 +237,10 @@ class PageController extends Controller
             $this->authorize('edit', $page);
 
             $success = true;
-            $isLonely = false;
             $message = null;
 
             try {
                 $pageFrom->choices()->detach($page->id);
-
-                if ($page->choices()->count() === 0 && $page->parents()->count() === 0) {
-                    $isLonely = true;
-                }
             } catch (\Exception $e) {
                 $success = false;
                 $message = $e->getMessage();
@@ -256,7 +251,6 @@ class PageController extends Controller
                 'message' => $message,
                 'page' => $page->id,
                 'pageFrom' => $pageFrom->id,
-                'alone' => $isLonely,
             ]);
         }
 
@@ -271,4 +265,23 @@ class PageController extends Controller
 
         return $view;
     }
+
+    /**
+     * @param \App\Models\Story $story
+     * @param \App\Models\Page  $page
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function availableChoices(Page $page)
+    {
+        $character = $page->story->currentCharacter();
+
+        $this->getFilteredChoicesFromPage($page, $character);
+
+        return view('story.partials.choices', [
+            'page'  => $page,
+        ]);
+    }
+
+
 }

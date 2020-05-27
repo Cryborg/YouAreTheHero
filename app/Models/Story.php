@@ -29,7 +29,7 @@ class Story extends Model
             $authId = Auth::id();
 
             if ($authId) {
-                $story['user_id'] = Auth::id();
+                $story['user_id'] = $authId;
             }
         });
 
@@ -115,5 +115,11 @@ class Story extends Model
     public function author()
     {
         return $this->hasOne(\App\Models\User::class, 'id', 'user_id');
+    }
+
+    public function currentCharacter()
+    {
+        return Character::where('user_id', Auth::id())
+            ->where('story_id', $this->id)->first();
     }
 }

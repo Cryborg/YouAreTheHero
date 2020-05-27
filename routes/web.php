@@ -29,11 +29,9 @@ Route::get('/story/create', 'StoryController@getCreate')->name('story.create');
 Route::post('/story/create', 'StoryController@store')->name('story.create.post');
 Route::get('/story/{story}/edit', 'StoryController@getEdit')->name('story.edit');
 
-Route::get('/story/{story}/tree', 'StoryController@getTree')->name('story.tree');
 Route::get('/story/{story}/inventory', 'StoryController@inventory')->name('story.inventory');
 Route::get('/story/{story}/sheet', 'StoryController@sheet')->name('story.sheet');
 Route::post('/story/{story}/page/create/{page?}', 'PageController@postCreate')->name('page.create');
-Route::get('/story/{story}/{page}/choices', 'StoryController@choices')->name('story.choices');
 Route::get('/story/{story}/{page?}', 'StoryController@getPlay')->name('story.play');
 
 Route::post('/story/ajax_action', 'StoryController@ajaxAction')->name('story.ajax_action');
@@ -50,6 +48,9 @@ Route::post('/page/{page}/riddle', 'PageController@postRiddle')->name('page.ridd
 Route::delete('/page/{page}/delete', 'PageController@delete')->name('page.delete');
 Route::delete('/page/{page}/{page_from}/delete', 'PageController@deleteChoice')->name('page.choice.delete');
 Route::get('/page/{story}/ajax_list_modal', 'PageController@ajaxListModal')->name('page.modal.ajax');
+Route::get('/page/{page}/choices', 'PageController@availableChoices')->name('page.choices');
+Route::get('/page/{pageFrom}/{pageTo}/choice', 'ChoiceController@get')->name('page.choice');
+Route::post('/page/choice/{choice}','ChoiceController@update')->name('choice.update');
 
 // Actions
 Route::get('/actions/{page}/list', 'ActionController@list')->name('actions.list');

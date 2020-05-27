@@ -66,4 +66,5 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
   'link_text_is' => 'Le texte du lien est :<br><i>:link_text</i><br><br>
 Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>',
   'settings' => 'Options',
+  'edit_choice_modal_title' => 'Modifier le texte du choix',
 );

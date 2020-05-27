@@ -6,10 +6,7 @@
 <script type="text/javascript" src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/datatables.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/moment.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/datatables.moment.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.toast.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.connections.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/js.cookie.min.js') }}"></script>
@@ -70,12 +67,6 @@
                 $this.prop('disabled', true);
             }
         }
-    });
-
-    $.extend( true, $.fn.dataTable.defaults, {
-        language: {
-            "url": "{{ asset('lang/' . Config::get('app.locale') . '/datatables.json') }}"
-        },
     });
 
     function resetLoader($button)
@@ -183,7 +174,7 @@
             contents: '<span data-target="#modalDescriptions" data-toggle="modal">@lang('description.descriptions_button_label')</span>',
             tooltip: 'Highlight text with red color',
             click: function() {
-                $('.icon-save').addClass('disabled');
+                $('.savePage').addClass('disabled');
             }
         });
 
@@ -250,7 +241,7 @@
 
                 // Don't trigger if we click in the Summernote toolbar
                 if (! (e.relatedTarget && $.contains(p, e.relatedTarget))) {
-                    $('.icon-save').trigger('click');
+                    $('.savePage').trigger('click');
                 }
             }
         }

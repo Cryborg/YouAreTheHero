@@ -66,4 +66,5 @@ Click on an already existing page to link to it.',
   'link_text_is' => 'The text of the link is:<br><i>:link_text</i><br><br>
 This links to the page with the title:<br><i>:choice_title</i>',
   'settings' => 'Options',
+  'edit_choice_modal_title' => 'Edit choice text',
 );

@@ -15,6 +15,40 @@
 
     });
 
+    function deletePage(redirect)
+    {
+        var $this = $(this);
+
+        $.ajax({
+            url: route('page.delete', {page: {{ $page->id }} }),
+            method: 'DELETE'
+        })
+            .done(function (result) {
+                if (result.success) {
+                    if (redirect) {
+                        window.location.href = result.redirectTo;
+                    } else {
+                        showToast('success', {
+                            heading: '{{ trans('notification.deletion_success_title') }}',
+                            text: "{{ trans('notification.deletion_success_text') }}",
+                        });
+                    }
+                }
+
+                return result.success;
+            })
+            .fail(function (data) {
+                showToast('error', {
+                    heading: '{{ trans('notification.deletion_failed_title') }}',
+                    text: "{{ trans('notification.deletion_failed_text') }}",
+                    errors: data.responseJSON.errors
+                });
+
+                return false;
+            })
+        ;
+    }
+
     function newPage($this, route) {
         let $parent = $this.closest('.modal');
 
@@ -93,65 +127,6 @@
             }
         });
 
-        function deletePage(redirect)
-        {
-            var $this = $(this);
-
-            $.ajax({
-                url: route('page.delete', {page: {{ $page->id }} }),
-                method: 'DELETE'
-            })
-                .done(function (result) {
-                    if (result.success) {
-                        if (redirect) {
-                            window.location.href = result.redirectTo;
-                        } else {
-                            showToast('success', {
-                                heading: '{{ trans('notification.deletion_success_title') }}',
-                                text: "{{ trans('notification.deletion_success_text') }}",
-                            });
-                        }
-                    }
-
-                    return result.success;
-                })
-                .fail(function (data) {
-                    showToast('error', {
-                        heading: '{{ trans('notification.deletion_failed_title') }}',
-                        text: "{{ trans('notification.deletion_failed_text') }}",
-                        errors: data.responseJSON.errors
-                    });
-
-                    return false;
-                })
-            ;
-        }
-
-        // Delete the link between two pages
-        $(document).on('click', '.icon-breaking-chain', function ()
-        {
-            if (!confirm('@lang('page.confirm_delete_link')')) return false;
-
-            var $this = $(this);
-            var pageFrom = $this.data('page-from');
-
-            $.ajax({
-                url: route('page.choice.delete', {page: {{ $page->id }}, page_from: pageFrom }),
-                method: 'DELETE'
-            })
-                .done(function (result) {
-                    if (result.success) {
-                        $this.parents('.choices_list').remove();
-                    }
-
-                    if (result.alone) {
-                        if (confirm('{{ trans('page.delete_lone_page') }}')) {
-                            deletePage(result.page, false);
-                        }
-                    }
-                })
-        });
-
         // help-block state check from cookie
         var openToggle = Cookies.get("hero.help-block.show") || false;
 
@@ -194,7 +169,7 @@
         });
 
         // Saves the page
-        $(document).on('click', '.icon-save', function (e) {
+        $(document).on('click', '.savePage', function (e) {
             let $this = $(this);
             let currentPageId = {{ $page->id }};
 
@@ -337,29 +312,49 @@
     });
 
     $(document).on('click', '.choice-text.icon-fountain-pen', function () {
-        var choiceId = $(this).data('choice-id');
+        var $this = $(this);
+        var pageFrom = $this.parent().data('page-from');
+        var pageTo = $this.parent().data('page-to');
 
-        if (confirm('Sûr ?')) {
-            // $.get({
-            //     url: route('')
-            // })
-        }
+        $this.parent().find('.link-text').attr('id', 'edited_text');
+
+        $.get({
+            url: route('page.choice', {pageFrom: pageFrom, pageTo: pageTo})
+        })
+            .done(function (result) {
+                $('#modalEditChoice #link_text').val(result.choice.link_text);
+                $('#modalEditChoice #hidden_choice_id').val(result.choice.id);
+
+                $('#modalEditChoice').modal('show');
+            });
     });
 
     $(document).on('click', '.choice-text.icon-trash', function () {
-        var pageFrom = $(this).data('page-from');
-        var pageTo = $(this).data('page-to');
+        var $this = $(this);
+        var pageFrom = $this.parent().data('page-from');
+        var pageTo = $this.parent().data('page-to');
 
-        if (confirm('Sûr ?')) {
-            {{--$.get({--}}
-            {{--    url: route('page.choice.delete', {'page': pageFrom, 'page_to': pageTo})--}}
-            {{--})--}}
-            {{--.done(function (data) {--}}
-            {{--    showToast('success', {--}}
-            {{--        heading: '{{ trans('notification.save_success_title') }}',--}}
-            {{--        text: "{{ trans('notification.save_success_text') }}",--}}
-            {{--    });--}}
-            {{--});--}}
+        if (confirm('@lang('page.confirm_delete_link')')) {
+            $.ajax({
+                url: route('page.choice.delete', {'page': pageTo, 'page_from': pageFrom}),
+                method: 'DELETE'
+            })
+                .done(function (result) {
+                    console.log($this.closest('edgeLabels'));
+                    $this.closest('edgeLabels').remove();
+
+                    showToast('success', {
+                        heading: '{{ trans('notification.deletion_success_title') }}',
+                        text: "{{ trans('notification.deletion_success_text') }}",
+                    });
+                })
+                .fail(function (data) {
+                    showToast('error', {
+                        heading: '{{ trans('notification.deletion_failed_title') }}',
+                        text: "{{ trans('notification.deletion_failed_text') }}",
+                        errors: data.responseJSON.errors
+                    });
+                });
         }
     });
 
