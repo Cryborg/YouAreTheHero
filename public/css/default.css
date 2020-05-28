@@ -114,7 +114,6 @@ p:not(.help-block) {
 .help-block {
     font-size: .8em;
     font-style: italic;
-    margin-bottom: 0;
 }
 .alert {
     font-size: .8em;
@@ -322,4 +321,7 @@ div.height-big {
 }
 .nav-item.text-white.nav-link.active {
     background-color: rgba(255,255,255,.2);
+}
+.card-body {
+    padding-top: .1rem !important;
 }

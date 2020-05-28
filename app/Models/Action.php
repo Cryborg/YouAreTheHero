@@ -9,6 +9,8 @@ class Action extends Model
 {
     use SoftDeletes;
 
+    protected $guarded = ['id'];
+
     public function actionable()
     {
         return $this->morphTo();

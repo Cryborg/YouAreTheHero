@@ -48,7 +48,7 @@ class PrerequisiteController extends Controller
                 foreach ($request->get('stats') as $stat => $value) {
                     $foundStat = Field::where([
                         'story_id' => $page->story->id,
-                        'full_name' => $stat
+                        'name' => $stat
                     ])->firstOrFail();
                     $addedPrerequisites['stats'][] = Prerequisite::updateOrCreate([
                         'page_id'   => $page->id,

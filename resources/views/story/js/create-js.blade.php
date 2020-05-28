@@ -61,7 +61,7 @@
                 $.post({
                     url: route('field.store', {'story': {{ $story->id }} }),
                     data: {
-                        'full_name': $('#full_name').val(),
+                        'name': $('#name').val(),
                         'short_name': $('#short_name').val(),
                         'min_value': $('#min_value').val(),
                         'max_value': $('#max_value').val(),
@@ -70,7 +70,7 @@
                     .done(function (result) {
                         if (result.success) {
                             var html = '<tr>' +
-                                '<td><div>' + result.field.full_name + '</div></td>' +
+                                '<td><div>' + result.field.name + '</div></td>' +
                                 '<td><div>' + result.field.short_name + '</div></td>' +
                                 '<td><div>' + result.field.min_value + '</div></td>' +
                                 '<td><div>' + result.field.max_value + '</div></td>' +
@@ -83,10 +83,10 @@
                                 text: "{{ trans('notification.save_success_text') }}",
                             });
 
-                            $('#full_name, #short_name').val('');
+                            $('#name, #short_name').val('');
                             $('#min_value').val('1');
                             $('#max_value').val('10');
-                            $('#full_name').focus();
+                            $('#name').focus();
                         }
                     })
                     .fail(function (data) {

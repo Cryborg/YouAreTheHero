@@ -53,10 +53,10 @@ Route::get('/page/{page}/choices', 'PageController@availableChoices')->name('pag
 Route::get('/page/{pageFrom}/{pageTo}/choice', 'ChoiceController@get')->name('page.choice');
 Route::post('/page/choice/{choice}','ChoiceController@update')->name('choice.update');
 
-// Actions
-Route::get('/actions/{page}/list', 'ItemPageController@list')->name('item_page.list');
-Route::post('/actions/create/{page}', 'ItemPageController@store')->name('item_page.store');
-Route::delete('/actions/{action}/delete', 'ItemPageController@delete')->name('item_page.delete');
+// ItemPage
+Route::get('/item_page/{page}/list', 'ItemPageController@list')->name('item_page.list');
+Route::post('/item_page/create/{page}', 'ItemPageController@store')->name('item_page.store');
+Route::delete('/item_page/{item_page}/delete', 'ItemPageController@delete')->name('item_page.delete');
 
 // Prerequisites
 Route::post('/prerequisite/store/{page}', 'PrerequisiteController@store')->name('prerequisite.store');
@@ -103,3 +103,9 @@ Route::post('/page/{page}/newriddle', 'RiddleController@store')->name('riddle.st
 Route::get('/description/{page}', 'DescriptionController@showModal')->name('descriptions.show_modal');
 Route::post('/description/{page}', 'DescriptionController@store')->name('description.create');
 Route::delete('/description/{description}/delete', 'DescriptionController@delete')->name('description.delete');
+
+// Actions
+Route::post('/action/{page}/field/{field}/create', 'ActionController@createField')->name('action.field.create');
+Route::post('/action/{page}/item/{item}/create', 'ActionController@createItem')->name('action.item.create');
+Route::get('/actions/{page}', 'ActionController@listjs')->name('action.listjs');
+Route::delete('/action/{action}/delete', 'ActionController@delete')->name('action.delete');

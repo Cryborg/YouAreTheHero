@@ -11,7 +11,7 @@
                 </button>
             </div>
             <div class="modal-body shadow-sm h-50">
-                @if (in_array($context, ['prerequisites', 'actions', 'riddles', 'add_choice', 'edit_choice']))
+                @if (in_array($context, ['prerequisites', 'item_page', 'riddles', 'add_choice', 'edit_choice', 'add_actions']))
                     @include($template, ['page' => $data['page']])
                 @endif
             </div>
@@ -47,5 +47,11 @@
 @if ($context === 'edit_choice')
     @push('footer-scripts')
         @include('page.js.edit_choice-js')
+    @endpush
+@endif
+
+@if ($context === 'add_actions')
+    @push('footer-scripts')
+        @include('page.js.add_actions-js')
     @endpush
 @endif

@@ -137,7 +137,7 @@
             <table id="stats_story" class="table mb-3 w-50 m-0">
                 <thead>
                     <tr>
-                        <th>{{ trans('field.full_name') }}</th>
+                        <th>{{ trans('field.name') }}</th>
                         <th>{{ trans('field.short_name') }}</th>
                         <th>{{ trans('field.min_value') }}</th>
                         <th>{{ trans('field.max_value') }}</th>
@@ -147,7 +147,7 @@
                 <tbody>
                     @foreach($story->fields ?? [] as $stat)
                         <tr>
-                            <td>{{ $stat->full_name }}</td>
+                            <td>{{ $stat->name }}</td>
                             <td>{{ $stat->short_name }}</td>
                             <td>{{ $stat->min_value }}</td>
                             <td>{{ $stat->max_value }}</td>
@@ -159,7 +159,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th><input class="new_field form-control" type="text" id="full_name" maxlength="15" autocomplete="nope" required></th>
+                        <th><input class="new_field form-control" type="text" id="name" maxlength="15" autocomplete="nope" required></th>
                         <th><input class="new_field form-control" type="text" id="short_name" maxlength="5" autocomplete="nope" required></th>
                         <th><input class="new_field form-control" type="number" id="min_value" value="1" required></th>
                         <th><input class="new_field form-control" type="number" id="max_value" value="10" required></th>
@@ -185,7 +185,7 @@
                             </h5>
                             <div class="card-body">
                                 <div class="card-text">
-                                    <select multiple="" class="form-control custom-select" size="12" id="story_item" name="story_item">
+                                    <select multiple="" class="form-control custom-select itemSelectList" size="12" id="story_item" name="story_item">
                                         <option value=""></option>
                                         @foreach ($story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
                                             <option value="{{ $itemId }}">{{ $itemName }}</option>

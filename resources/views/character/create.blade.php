@@ -30,7 +30,7 @@
             <div class="col">
                 @foreach($story->fields as $stat)
                     <div class="form-group row">
-                        <div class="col-sm-3 col-lg-1">{{ $stat->full_name }}</div>
+                        <div class="col-sm-3 col-lg-1">{{ $stat->name }}</div>
                         <div class="col-sm-3 col-lg-1 quantity">
                             {{ Form::number('stat_value', old('stat_value') ?? $stat->min_value, [
                                 'class' => 'form-control',

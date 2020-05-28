@@ -25,7 +25,7 @@
                             <div class="card-body">
                                 <div class="card-text">
                                     <p class="help-block">{!! trans('page.required_item_help') !!}</p>
-                                    <select multiple="" class="form-control custom-select" size="10" id="prerequisite_item_id" name="prerequisite_item_id">
+                                    <select multiple="" class="form-control custom-select itemSelectList" size="10" id="prerequisite_item_id" name="prerequisite_item_id">
                                         <option value=""></option>
                                         @foreach ($page->story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
                                             <option value="{{ $itemId }}" @foreach($page->prerequisites() ?? [] as $prerequisite)@foreach ($prerequisite->items ?? [] as $item)@if ($item->id == $itemId) selected @endif

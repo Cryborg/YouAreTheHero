@@ -1,58 +1,102 @@
 <div class="row">
     <div class="col">
         <nav class="nav nav-tabs mb-3">
-            <a class="nav-item nav-link active" href="#tr1" data-toggle="tab">
-                {{ trans('page.existing_item') }}
-            </a> <a class="nav-item nav-link" href="#tr2" data-toggle="tab">
+            <a class="nav-item nav-link active" href="#tr-actions-1" data-toggle="tab">
+                @lang('actions.item')
+            </a>
+            <a class="nav-item nav-link" href="#tr-actions-2" data-toggle="tab">
+                @lang('actions.field')
+            </a>
+            <a class="nav-item nav-link" href="#tr-actions-3" data-toggle="tab">
                 {{ trans('item.new_item_title') }}
             </a>
         </nav>
         <div class="tab-content">
-            <div class="tab-pane active" id="tr1">
-                {!! Form::open(['url' => route('item_page.store', $page->id), 'method' => 'post', 'id' => 'action_create']) !!}
+            <div class="tab-pane active" id="tr-actions-1">
                 <div class="row">
-                    <div class="col-6">
-                        <div class="form-group mb-4">
-                            {!! Form::label('item_id', '1. ' . trans('page.concerned_item'), ['class' => 'control-label']) !!}
-                            <p class="help-block">{{ trans('page.concerned_item_help') }}</p>
-                            {!! Form::select('item_id', ['' => ''] + $page->story->items->sortBy('name')->pluck('name', 'id')->toArray(), null, ['class' => 'form-control custom-select', 'size' => 6]) !!}
-                            <div class="alert alert-error hidden"></div>
-                        </div>
-                        <p class="help-block">{{ trans('item_page.action_help') }}</p>
-                        <div class="row mb-2">
-                            <div class="col-3">
-                                {!! Form::label('verb', '2. ' . trans('item_page.action'), ['class' => 'control-label mt-2']) !!}
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                @lang('actions.item')
                             </div>
-                            <div class="col-9">
-                                {!! Form::select('verb', $actions, null , ['class' => 'form-control']) !!}
+                            <div class="card-body">
+                                <p class="help-block">@lang('actions.item_help')</p>
+
+                                <select class="form-control custom-select itemSelectList" size="10" id="{{ $context }}_item_id" name="{{ $context }}_item_id">
+                                    @foreach ($page->story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
+                                        <option value="{{ $itemId }}">{{ $itemName }}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                        </div>
-                        <p class="help-block">{{ trans('item_page.quantity_help') }}</p>
-                        <div class="row mb-2">
-                            <div class="col-3">
-                                {!! Form::label('quantity', '3. ' . trans('item_page.quantity'), ['class' => 'control-label mt-2']) !!}
+                            <div class="card-header">
+                                @lang('actions.quantity')
                             </div>
-                            <div class="col-9">
-                                {!! Form::number('quantity', 1, ['class' => 'form-control']) !!}
+                            <div class="card-body">
+                                <input type="number" id="actions_item_qty" value="1">
                             </div>
-                        </div>
-                        <p class="help-block">{{ trans('item_page.price_help') }}</p>
-                        <div class="row mb-2">
-                            <div class="col-3">
-                                {!! Form::label('price', '4. ' . trans('item_page.price'), ['class' => 'control-label mt-2']) !!}
-                            </div>
-                            <div class="col-9">
-                                {!! Form::number('price', 1, ['class' => 'form-control']) !!}
+                            <div class="card-footer">
+                                <div class="btn btn-primary addActionsItem">
+                                    <span class="icon-add text-white mr-2"></span> @lang('common.add')
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="row h-25" id="item_description"></div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                @lang('actions.existing_bonuses')
+                            </div>
+                            <div class="card-body">
+                                <p class="help-block">@lang('actions.bonuses_help')</p>
+                                @include('page.partials.actions_list', ['page' => $page])
+                            </div>
+                        </div>
                     </div>
                 </div>
-                {!! Form::close() !!}
             </div>
-            <div class="tab-pane" id="tr2">
+            <div class="tab-pane" id="tr-actions-2">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                @lang('actions.field')
+                            </div>
+                            <div class="card-body">
+                                <p class="help-block">@lang('actions.field_help')</p>
+
+                                <select class="form-control custom-select" size="10" id="actions_field_id" name="{{ $context }}_item_id">
+                                    @foreach ($page->story->fields->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
+                                        <option value="{{ $itemId }}">{{ $itemName }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="card-header">
+                                @lang('actions.quantity')
+                            </div>
+                            <div class="card-body">
+                                <input type="number" id="actions_field_qty" value="1">
+                            </div>
+                            <div class="card-footer">
+                                <div class="btn btn-primary addActionsField">
+                                    <span class="icon-add text-white mr-2"></span> @lang('common.add')
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                @lang('actions.existing_bonuses')
+                            </div>
+                            <div class="card-body">
+                                <p class="help-block">@lang('actions.bonuses_help')</p>
+                                @include('page.partials.actions_list', ['page' => $page])
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="tr-actions-3">
                 <div class="container">
                     @include('item.partials.new_item', ['context' => $context, 'story' => $page->story])
                 </div>

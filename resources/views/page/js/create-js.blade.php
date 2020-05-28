@@ -347,7 +347,7 @@
                     });
 
                     // Adds the new action to the table
-                    $('#actions_list tbody').append(
+                    $('#item_page_list tbody').append(
                         '<tr>' +
                         '<td>' + data.action.item.name + '</td>' +
                         '<td>' + data.action.verb + '</td>' +

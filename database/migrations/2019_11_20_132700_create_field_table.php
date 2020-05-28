@@ -19,7 +19,7 @@ class CreateFieldTable extends Migration
             $table->unsignedBigInteger('story_id');
             $table->foreign('story_id')->references('id')->on('stories');
 
-            $table->string('full_name', 15);
+            $table->string('name', 15);
             $table->string('short_name', 5);
             $table->integer('min_value');
             $table->integer('max_value');

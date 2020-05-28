@@ -65,4 +65,6 @@ Click on an already existing page to link to it.',
 This links to the page with the title:<br><i>:choice_title</i>',
   'settings' => 'Options',
   'edit_choice_modal_title' => 'Edit choice text',
+  'add_actions_modal_title' => 'Add Bonus / Malus',
+  'bonus_label' => 'Bonus / Malus',
 );

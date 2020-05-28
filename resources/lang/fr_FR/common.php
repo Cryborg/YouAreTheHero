@@ -38,4 +38,5 @@ return array (
   'you_earned_something' => 'Tu as gagné :quantity :item',
   'you_lost_something' => 'Tu as perdu :quantity :item',
   'optional' => 'Optionnel',
+  'add' => 'Ajouter',
 );

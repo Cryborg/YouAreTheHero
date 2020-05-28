@@ -1,20 +1,13 @@
 <?php
 
 return array (
-  'action' => 'Action',
-  'action_help' => 'Choose an action to perform on this item',
-  'add_item_page' => 'Add item on page',
-  'add_new_prerequisite' => 'Add a condition',
-  'add_prerequisite' => 'Add the condition',
-  'buy' => 'Buy',
-  'take' => 'Take',
-  'give' => 'Give',
-  'new_action_successfully_added' => 'The action has been added to the page',
-  'price' => 'Price',
-  'price_help' => 'If you type a price here, it will override the item\'s',
+  'actionable_name' => 'Name',
+  'existing_bonuses' => 'Existing bonus/malus',
+  'field' => 'Stat',
+  'item' => 'Item',
   'quantity' => 'Quantity',
-  'quantity_help' => 'Finally, how many of these items are concerned by the action',
-  'sell' => 'Sell',
-  'add_new_riddle' => 'Add a riddle',
-  'add_riddle' => 'Add a riddle',
+  'type' => 'Type',
+  'bonuses_help' => 'When the player arrives on this page you can give him something, or take it from him. This can be an item or some skill points for example.',
+  'field_help' => 'Choose what and how much you want the player to gain or lose.',
+  'item_help' => 'Choose the item you want the player to earn or lose, and the quantity.',
 );

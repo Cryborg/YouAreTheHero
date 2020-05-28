@@ -89,7 +89,7 @@ class PageController extends Controller
                 'give' => trans('item_page.give'),
             ],
 
-            'contexts' => ['actions', 'prerequisites', 'riddle', 'story_creation'],
+            'contexts' => ['item_page', 'add_actions', 'prerequisites', 'riddle', 'story_creation'],
 
             'placeholders' => $this->placeholders,
         ]);

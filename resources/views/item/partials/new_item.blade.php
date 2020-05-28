@@ -57,7 +57,7 @@
                             <tbody>
                                 @foreach($story->fields as $stat)
                                     <tr>
-                                        <td>{{ $stat->full_name }}</td>
+                                        <td>{{ $stat->name }}</td>
                                         <td><input name="stat_values[]" data-id="{{ $stat->id }}" class="mb-1" type="number"></td>
                                     </tr>
                                 @endforeach

@@ -2,7 +2,7 @@
     <div class="input-group mb-1">
         <div class="input-group-prepend w-50">
             <span class="input-group-text w-100">
-                {{ $field->full_name }}
+                {{ $field->name }}
             </span>
         </div>
         <div class="form-control">

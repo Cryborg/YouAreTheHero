@@ -16,7 +16,7 @@
                 });
 
                 // Add the newly created item to both lists
-                $('#prerequisite_item_id, #item_id, #riddle_item, #story_item').append(
+                $('.itemSelectList').append(
                     '<option value="' + data.item.id + '">' + data.item.name + '</option>'
                 );
             })

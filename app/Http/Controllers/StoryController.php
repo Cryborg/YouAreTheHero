@@ -164,11 +164,11 @@ class StoryController extends Controller
                             'text' => $trigger->quantity > 0
                                 ? trans('common.you_earned_something', [
                                     'quantity' => $trigger->quantity,
-                                    'item'     => $trigger->actionable->full_name
+                                    'item'     => $trigger->actionable->name
                                 ])
                                 : trans('common.you_lost_something', [
                                     'quantity' => $trigger->quantity * -1,
-                                    'item'     => $trigger->actionable->full_name
+                                    'item'     => $trigger->actionable->name
                                 ]),
                             'type' => $trigger->quantity > 0 ? 'success' : 'warning',
                         ];

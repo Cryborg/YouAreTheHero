@@ -115,3 +115,6 @@
 button {
     vertical-align: middle;
 }
+.icon-add:before {
+    content: "\e91c";
+}

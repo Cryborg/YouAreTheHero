@@ -45,15 +45,15 @@ class ItemPageController extends Controller
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\ItemPage     $action
+     * @param \App\Models\ItemPage     $itemPage
      *
      * @return false|string
      * @throws \Exception
      */
-    public function delete(Request $request, ItemPage $action)
+    public function delete(Request $request, ItemPage $itemPage)
     {
         if ($request->ajax()) {
-            $deleted = $action->delete();
+            $deleted = $itemPage->delete();
 
             return response()->json(['success' => $deleted]);
         }

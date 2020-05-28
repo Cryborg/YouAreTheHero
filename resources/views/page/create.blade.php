@@ -10,15 +10,14 @@
 
     <!-- Modal add choice -->
     @include('page.partials.modal_model', [
-        'template' => 'page.partials.modal_add_choice',
-        'context' => 'add_choice',
-        'title' => trans('page.add_choice_modal_title'),
+        'template' => 'page.partials.modal_actions',
+        'context' => 'add_actions',
+        'title' => trans('page.add_actions_modal_title'),
         'icon' => 'icon-choice',
-        'big' => false,
+        'big' => true,
         'data' => [
             'page' => $page,
-            'id' => 'AddChoice',
-            'btn_add_text' => trans('common.save')
+            'id' => 'CreateActions'
         ]
     ])
 
@@ -94,7 +93,7 @@
     <!-- Modal add item on page -->
     @include('page.partials.modal_model', [
         'template' => 'page.partials.modal_item_page',
-        'context' => 'actions',
+        'context' => 'item_page',
         'title' => trans('page.item_page_modal_title'),
         'icon' => 'icon-chest',
         'big' => true,

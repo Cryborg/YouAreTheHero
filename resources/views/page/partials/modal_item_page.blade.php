@@ -15,7 +15,7 @@
                         <div class="form-group mb-4">
                             {!! Form::label('item_id', '1. ' . trans('page.concerned_item'), ['class' => 'control-label']) !!}
                             <p class="help-block">{{ trans('page.concerned_item_help') }}</p>
-                            {!! Form::select('item_id', ['' => ''] + $page->story->items->sortBy('name')->pluck('name', 'id')->toArray(), null, ['class' => 'form-control custom-select', 'size' => 6]) !!}
+                            {!! Form::select('item_id', ['' => ''] + $page->story->items->sortBy('name')->pluck('name', 'id')->toArray(), null, ['class' => 'form-control custom-select itemSelectList', 'size' => 6]) !!}
                             <div class="alert alert-error hidden"></div>
                         </div>
                         <p class="help-block">{{ trans('item_page.action_help') }}</p>

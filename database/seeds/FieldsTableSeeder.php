@@ -12,16 +12,16 @@ class FieldsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('fields')->delete();
-        
+
         \DB::table('fields')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'story_id' => 4,
-                'full_name' => 'Vitesse',
+                'name' => 'Vitesse',
                 'short_name' => 'VTS',
                 'min_value' => 1,
                 'max_value' => 10,
@@ -30,11 +30,11 @@ class FieldsTableSeeder extends Seeder
                 'created_at' => '2020-05-12 14:56:09',
                 'updated_at' => '2020-05-12 14:56:09',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'story_id' => 4,
-                'full_name' => 'Force',
+                'name' => 'Force',
                 'short_name' => 'FOR',
                 'min_value' => 1,
                 'max_value' => 10,
@@ -43,11 +43,11 @@ class FieldsTableSeeder extends Seeder
                 'created_at' => '2020-05-12 14:56:22',
                 'updated_at' => '2020-05-12 14:56:22',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'story_id' => 4,
-                'full_name' => 'Endurance',
+                'name' => 'Endurance',
                 'short_name' => 'END',
                 'min_value' => 1,
                 'max_value' => 10,
@@ -57,7 +57,7 @@ class FieldsTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 14:58:41',
             ),
         ));
-        
-        
+
+
     }
 }
