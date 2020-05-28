@@ -67,4 +67,5 @@ This links to the page with the title:<br><i>:choice_title</i>',
   'edit_choice_modal_title' => 'Edit choice text',
   'add_actions_modal_title' => 'Add Bonus / Malus',
   'bonus_label' => 'Bonus / Malus',
+  'current_page_item_page_help' => 'Choose objects that will appear in the page, and the actions the player can do with them.',
 );

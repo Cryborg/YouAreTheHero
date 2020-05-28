@@ -95,13 +95,13 @@
                 <svg class="svg-content h-100 w-100"><g/></svg>
             </div>
             <div class="tab-pane" id="p2">
-                <button class="btn btn-primary shadow w-90 align-middle text-left" data-target="#modalCreateActions" data-toggle="modal">
-                    <span class="icon-unlocking text-white display-6 align-middle mr-3"></span>
-                    <span class="align-middle">@lang('page.add_actions_modal_title')</span>
-                    <span class="badge badge-warning rounded float-right shadow font-bigger">{{ $page->trigger()->count() }}</span>
-                </button><button class="btn btn-primary shadow w-10 mb-3 align-middle show-help" data-help="actions_help"><span class="icon-help text-white align-middle display-6"></span></button>
-                <div class="w-100 text-white bg-info p-2 mb-3" style="display: none" id="actions_help">
-                    @if (!$page->is_first)
+                @if (!$page->is_first)
+                    <button class="btn btn-primary shadow w-90 align-middle text-left" data-target="#modalCreateActions" data-toggle="modal">
+                        <span class="icon-unlocking text-white display-6 align-middle mr-3"></span>
+                        <span class="align-middle">@lang('page.add_actions_modal_title')</span>
+                        <span class="badge badge-warning rounded float-right shadow font-bigger">{{ $page->trigger()->count() }}</span>
+                    </button><button class="btn btn-primary shadow w-10 mb-3 align-middle show-help" data-help="actions_help"><span class="icon-help text-white align-middle display-6"></span></button>
+                    <div class="w-100 text-white bg-info p-2 mb-3" style="display: none" id="actions_help">
                         <div class="row">
                             <div class="col">
                                 @info({!! trans('page.current_page_actions_help') !!})
@@ -111,16 +111,16 @@
                             </div>
                         </div>
                         <hr>
-                    @endif
-                </div>
+                    </div>
+                @endif
 
-                <button class="btn btn-primary shadow w-90 align-middle text-left" data-target="#modalCreatePrerequisite" data-toggle="modal">
-                    <span class="icon-unlocking text-white display-6 align-middle mr-3"></span>
-                    <span class="align-middle">@lang('item_page.add_prerequisite')</span>
-                    <span class="badge badge-warning rounded float-right shadow font-bigger">{{ $page->prerequisites()->count() }}</span>
-                </button><button class="btn btn-primary shadow w-10 mb-3 align-middle show-help" data-help="prerequisites_help"><span class="icon-help text-white align-middle display-6"></span></button>
-                <div class="w-100 text-white bg-info p-2 mb-3" style="display: none" id="prerequisites_help">
-                    @if (!$page->is_first)
+                @if (!$page->is_first)
+                    <button class="btn btn-primary shadow w-90 align-middle text-left" data-target="#modalCreatePrerequisite" data-toggle="modal">
+                        <span class="icon-unlocking text-white display-6 align-middle mr-3"></span>
+                        <span class="align-middle">@lang('item_page.add_prerequisite')</span>
+                        <span class="badge badge-warning rounded float-right shadow font-bigger">{{ $page->prerequisites()->count() }}</span>
+                    </button><button class="btn btn-primary shadow w-10 mb-3 align-middle show-help" data-help="prerequisites_help"><span class="icon-help text-white align-middle display-6"></span></button>
+                    <div class="w-100 text-white bg-info p-2 mb-3" style="display: none" id="prerequisites_help">
                         <div class="row">
                             <div class="col">
                                 @info({!! trans('page.current_page_prerequisites_help') !!})
@@ -129,16 +129,16 @@
                             </div>
                         </div>
                         <hr>
-                    @endif
-                </div>
+                    </div>
+                @endif
 
                 <button class="btn btn-primary shadow w-90 align-middle text-left" data-target="#modalCreateItemPage" data-toggle="modal">
                     <span class="icon-chest text-white display-6 align-middle mr-3"></span>
                     <span class="align-middle">@lang('item_page.add_item_page')</span>
                     <span class="badge badge-warning rounded float-right shadow font-bigger">{{ $page->actions()->count() }}</span>
-                </button><button class="btn btn-primary shadow w-10 mb-3 align-middle show-help" data-help="actions_help"><span class="icon-help text-white align-middle display-6"></span></button>
-                <div class="w-100 text-white bg-info p-2 mb-3" style="display: none" id="actions_help">
-                    @info({!! trans('page.current_page_actions_help') !!})
+                </button><button class="btn btn-primary shadow w-10 mb-3 align-middle show-help" data-help="item_page_help"><span class="icon-help text-white align-middle display-6"></span></button>
+                <div class="w-100 text-white bg-info p-2 mb-3" style="display: none" id="item_page_help">
+                    @info({!! trans('page.current_page_item_page_help') !!})
 
                     @include('page.partials.item_page_list', ['page' => $page])
                 </div>
