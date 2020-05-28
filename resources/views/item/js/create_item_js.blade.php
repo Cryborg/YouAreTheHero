@@ -34,7 +34,7 @@
     }
 
     @for ($i = 0, $iMax = count($contexts); $i < $iMax; $i++)
-    $('#create_item_{{ $contexts[$i] }}').on('click', function () {
+    $(document).on('click', '#create_item_{{ $contexts[$i] }}', function () {
         var $this = $(this);
         var route = '{{ route('item.store') }}';
         var values = [];

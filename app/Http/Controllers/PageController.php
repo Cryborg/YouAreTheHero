@@ -33,7 +33,7 @@ class PageController extends Controller
      * @param \App\Models\Page|null    $page
      *
      */
-    public function postCreate(Request $request, Story $story, Page $page = null)
+    public function create(Request $request, Story $story, Page $page = null)
     {
         if ($page === null) {
             $page = factory(Page::class)->create([
@@ -49,10 +49,12 @@ class PageController extends Controller
                  ->attach($pageFromId, [
                      'link_text' => $request->get('link_text')
                  ]);
+
+            Cache::forget('choices_' . $pageFromId);
         }
 
         return response()->json([
-            'redirect_to' => route('page.edit', ['page' => $page->id])
+            'page_to' => $page->id
         ]);
     }
 
@@ -113,18 +115,7 @@ class PageController extends Controller
                 'is_first'      => 'required',
                 'is_last'       => 'required',
                 'is_checkpoint' => 'required',
-                'link_text'     => 'sometimes|required',
-                'page_from'     => 'sometimes|required',
             ]);
-
-            if (isset($validated['link_text'], $validated['page_from']) && !empty($validated['link_text']) && !empty($validated['page_from'])) {
-                // We save a new parent for this page, as we are editing a child page
-                $page->parents()->syncWithoutDetaching([$validated['page_from'] => ['link_text' => $validated['link_text']]]);
-
-                Cache::forget('choices_' . $validated['page_from']);
-            }
-
-            unset($validated['link_text'], $validated['page_from']);
 
             if ($page->update($validated)) {
                 // Invalidate cache
@@ -245,6 +236,8 @@ class PageController extends Controller
                 $success = false;
                 $message = $e->getMessage();
             }
+
+            Cache::forget('choices_' . $pageFrom->id);
 
             return response()->json([
                 'success' => $success,

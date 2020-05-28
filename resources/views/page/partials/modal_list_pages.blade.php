@@ -46,7 +46,7 @@
                             {{ $page->title }}
                         </div>
                         <div class="card-body">
-                            <p class="card-text">{!! $page->present()->content !!}</p>
+                            <p class="card-text">{!! $page->present()->short_content !!}</p>
                         </div>
                     </div>
                 </div>

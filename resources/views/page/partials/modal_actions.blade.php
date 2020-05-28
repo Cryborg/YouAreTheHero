@@ -54,7 +54,7 @@
             </div>
             <div class="tab-pane" id="tr2">
                 <div class="container">
-                    @include('item.partials.new_item', ['context' => 'prerequisites', 'story' => $page->story])
+                    @include('item.partials.new_item', ['context' => $context, 'story' => $page->story])
                 </div>
             </div>
         </div>

@@ -14,6 +14,7 @@
         var $this = $(this);
 
         $('#modalDescriptions .modal-body').html('');
+        $('.summernote').summernote(summernoteOptionsLight);
 
         displayDescriptionsList();
     });

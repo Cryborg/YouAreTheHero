@@ -1,4 +1,6 @@
 <script type="text/javascript">
+    @include('page.js.dagred3-js', ['pages' => $page->story->pages, 'current' => $page])
+
     $(document).on('click', '#add_AddChoice', function () {
         var $this = $(this);
         var selectedVal = $('.childrenSelect option:selected').val();
@@ -28,11 +30,11 @@
             'method': 'POST'
         })
             .done(function (data) {
-                if ($parent.find('#show_new_page:checked').val() === '1') {
-                    window.location.href = data.redirect_to;
-                } else {
-                    window.location.reload();
-                }
+                // Show the link on the tree
+                g.setEdge({{ $page->id }}, data.page_to);
+                render(svg.select("g"), g);
+
+                $('#modalAddChoice').modal('toggle');
             })
             .always(function () {
                 $this.prop('disabled', false);
@@ -45,27 +47,6 @@
             var $this = $(this);
 
             $('#show_new_page').attr('checked', $this.val() == 0);
-        });
-
-        // Enable summernote on "new description" modal
-        $(document).on('show.bs.modal', '#modalDescriptions', function (event) {
-            $('.summernote').summernote(summernoteOptionsLight);
-
-            displayDescriptionsList();
-        });
-
-        // Asynchronously loads a page to edit
-        $(document).on('show.bs.tab', '.nav-item.nav-link[data-toggle="tab"]', function (event) {
-            var $this = $(this);
-
-            $.get({
-                url: route('page.create', [{{ $page->story_id }}, {{ $page->id }}]),
-                method: 'POST'
-            })
-                .done(function (html) {
-                    $('.choicesForm[data-page-from="' + $this.data('page-from') + '"]')
-                        .html('<div class="tab-pane active" id="p{{ $page->id }}">' + html.view + '</div>');
-                });
         });
 
         // Delete a page from the "list all pages" popup
@@ -282,8 +263,6 @@
         });
 
         showHumanReadableDates();
-
-        @include('page.js.dagred3-js', ['pages' => $page->story->pages, 'current' => $page])
     });
 
     $(document).on('click', '.choice-text.icon-fountain-pen', function () {
@@ -315,8 +294,9 @@
                 method: 'DELETE'
             })
                 .done(function (result) {
-                    console.log($this.closest('edgeLabels'));
-                    $this.closest('edgeLabels').remove();
+                    // Delete the link on the tree
+                    g.removeEdge(pageFrom, pageTo);
+                    render(svg.select("g"), g);
 
                     showToast('success', {
                         heading: '{{ trans('notification.deletion_success_title') }}',
