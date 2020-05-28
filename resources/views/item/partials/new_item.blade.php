@@ -43,27 +43,29 @@
                     </label>
                 </div>
             </div>
-            <h5 class="card-header">@lang('item.effects')</h5>
-            <div class="card-body">
-                <div class="card-text">
-                    <p class="help-block">{{ trans('item.effects_help_text') }}</p>
+            @if ($story->story_options && $story->story_options->has_stats)
+                <h5 class="card-header">@lang('item.effects')</h5>
+                <div class="card-body">
+                    <div class="card-text">
+                        <p class="help-block">{{ trans('item.effects_help_text') }}</p>
 
-                    <table class="w-100">
-                        <thead>
-                            <th>{{ trans('field.attribute') }}</th>
-                            <th>{{ trans('field.gain_or_loss') }}</th>
-                        </thead>
-                        <tbody>
-                            @foreach($story->fields as $stat)
-                                <tr>
-                                    <td>{{ $stat->full_name }}</td>
-                                    <td><input name="stat_values[]" data-id="{{ $stat->id }}" class="mb-1" type="number"></td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                        <table class="w-100">
+                            <thead>
+                                <th>{{ trans('field.attribute') }}</th>
+                                <th>{{ trans('field.gain_or_loss') }}</th>
+                            </thead>
+                            <tbody>
+                                @foreach($story->fields as $stat)
+                                    <tr>
+                                        <td>{{ $stat->full_name }}</td>
+                                        <td><input name="stat_values[]" data-id="{{ $stat->id }}" class="mb-1" type="number"></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 </div>

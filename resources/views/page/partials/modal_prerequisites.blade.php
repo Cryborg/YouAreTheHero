@@ -10,7 +10,7 @@
                 </a>
             @endif
             <a class="nav-item nav-link" href="#tr-pre-3" data-toggle="tab">
-                {{ trans('page.required_money') }}
+                {{ trans('item.new_item_title') }}
             </a>
         </nav>
         <div class="tab-content">
@@ -46,11 +46,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="container">
-                            @include('item.partials.new_item', ['context' => $context, 'story' => $page->story])
-                        </div>
-                    </div>
                 </div>
             </div>
             @if ($story->story_options && $story->story_options->has_stats)
@@ -78,9 +73,9 @@
                 </div>
             @endif
             <div class="tab-pane" id="tr-pre-3">
-                {!! Form::label('sheet', trans('page.required_money'), ['class' => 'sr-only']) !!}
-                <p class="help-block">{!! trans('page.required_money_help') !!}</p>
-                {!! Form::number('money', 1, ['class' => 'form-control', 'id' => 'prerequisite_money']) !!}
+                <div class="container">
+                    @include('item.partials.new_item', ['context' => $context, 'story' => $page->story])
+                </div>
             </div>
         </div>
     </div>
