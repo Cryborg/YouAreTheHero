@@ -97,7 +97,7 @@
             <div class="tab-pane" id="p2">
                 <button class="btn btn-primary shadow w-90 align-middle text-left" data-target="#modalCreatePrerequisite" data-toggle="modal">
                     <span class="icon-unlocking text-white display-6 align-middle mr-3"></span>
-                    <span class="align-middle">@lang('actions.add_prerequisite')</span>
+                    <span class="align-middle">@lang('item_page.add_prerequisite')</span>
                     <span class="badge badge-warning rounded float-right shadow font-bigger">{{ $page->prerequisites()->count() }}</span>
                 </button><button class="btn btn-primary shadow w-10 mb-3 align-middle show-help" data-help="prerequisites_help"><span class="icon-help text-white align-middle display-6"></span></button>
                 <div class="w-100 text-white bg-info p-2 mb-3" style="display: none" id="prerequisites_help">
@@ -113,9 +113,9 @@
                     @endif
                 </div>
 
-                <button class="btn btn-primary shadow w-90 align-middle text-left" data-target="#modalCreateAction" data-toggle="modal">
+                <button class="btn btn-primary shadow w-90 align-middle text-left" data-target="#modalCreateItemPage" data-toggle="modal">
                     <span class="icon-chest text-white display-6 align-middle mr-3"></span>
-                    <span class="align-middle">@lang('actions.add_new_action')</span>
+                    <span class="align-middle">@lang('item_page.add_item_page')</span>
                     <span class="badge badge-warning rounded float-right shadow font-bigger">{{ $page->actions()->count() }}</span>
                 </button><button class="btn btn-primary shadow w-10 mb-3 align-middle show-help" data-help="actions_help"><span class="icon-help text-white align-middle display-6"></span></button>
                 <div class="w-100 text-white bg-info p-2 mb-3" style="display: none" id="actions_help">
@@ -126,7 +126,7 @@
 
                 <button class="btn btn-primary shadow w-90 align-middle text-left" data-target="#modalCreateRiddle" data-toggle="modal">
                     <span class="icon-jigsaw-piece text-white display-6 align-middle mr-3"></span>
-                    <span class="align-middle">@lang('actions.add_new_riddle')</span>
+                    <span class="align-middle">@lang('item_page.add_new_riddle')</span>
                 </button><button class="btn btn-primary shadow w-10 mb-3 align-middle show-help" data-help="riddles_help"><span class="icon-help text-white align-middle display-6"></span></button>
                 <div class="w-100 text-white bg-info p-2 mb-3" style="display: none" id="riddles_help">
                     @info({!! trans('page.current_page_riddles_help') !!})

@@ -7,7 +7,7 @@ return array (
   'current_page_choices_help' => 'The tabs are the choices that will be shown in the current page. <br> The text in the tab will be the link on which the player will have to click to reach the page you are going to create. <br> Click on the tab marked with a + to add a new choice.<br>
 Click on an already existing page to link to it.',
   'existing_page' => 'Choose an existing page',
-  'actions_modal_title' => 'New action',
+  'item_page_modal_title' => 'Put an item in the page',
   'current_page_actions_help' => 'These are all the actions that can be done in this page.',
   'items_list' => 'Items list',
   'concerned_item' => 'Item concerned',

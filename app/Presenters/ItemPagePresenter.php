@@ -8,6 +8,6 @@ class ItemPagePresenter extends Presenter
 {
     public function verb()
     {
-        return trans('actions.' . $this->entity->verb);
+        return trans('item_page.' . $this->entity->verb);
     }
 }

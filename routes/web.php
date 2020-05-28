@@ -54,9 +54,9 @@ Route::get('/page/{pageFrom}/{pageTo}/choice', 'ChoiceController@get')->name('pa
 Route::post('/page/choice/{choice}','ChoiceController@update')->name('choice.update');
 
 // Actions
-Route::get('/actions/{page}/list', 'ActionController@list')->name('actions.list');
-Route::post('/actions/create/{page}', 'ActionController@store')->name('actions.store');
-Route::delete('/actions/{action}/delete', 'ActionController@delete')->name('actions.delete');
+Route::get('/actions/{page}/list', 'ItemPageController@list')->name('item_page.list');
+Route::post('/actions/create/{page}', 'ItemPageController@store')->name('item_page.store');
+Route::delete('/actions/{action}/delete', 'ItemPageController@delete')->name('item_page.delete');
 
 // Prerequisites
 Route::post('/prerequisite/store/{page}', 'PrerequisiteController@store')->name('prerequisite.store');

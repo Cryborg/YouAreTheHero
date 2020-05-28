@@ -329,13 +329,13 @@
     });
 
     // When the author validates the new action on the modal
-    $(document).on('click', '#add_CreateAction', function () {
+    $(document).on('click', '#add_CreateItemPage', function () {
         var $this = $(this);
         var serialized = $('#action_create').serialize();
         let $parent = $this.closest('.modal');
 
         $.post({
-            url: route('actions.store', {{ $page->id }}),
+            url: route('item_page.store', {{ $page->id }}),
             'data': serialized,
         })
             .done(function (data) {
@@ -358,13 +358,13 @@
                     );
 
                     // Closes the modal
-                    $('#modalCreateAction').modal('hide');
+                    $('#modalCreateItemPage').modal('hide');
                 }
             })
             .fail(function (data) {
                 if (data.status === 422) {
                     $.each(data.responseJSON.errors, function (i, error) {
-                        $('#modalCreateAction')
+                        $('#modalCreateItemPage')
                             .find('[name="' + i + '"]')
                             .addClass('input-invalid')
                             .next()
@@ -429,13 +429,13 @@
                     );
 
                     // Closes the modal
-                    $('#modalCreateAction').modal('hide');
+                    $('#modalCreateItemPage').modal('hide');
                 }
             })
             .fail(function (data) {
                 if (data.status === 422) {
                     $.each(data.responseJSON.errors, function (i, error) {
-                        $('#modalCreateAction')
+                        $('#modalCreateItemPage')
                             .find('[name="' + i + '"]')
                             .addClass('input-invalid')
                             .next()
@@ -466,7 +466,7 @@
         }
 
         $.ajax({
-            url: route('actions.delete', actionId),
+            url: route('item_page.delete', actionId),
             method: 'DELETE'
         })
             .done(function () {

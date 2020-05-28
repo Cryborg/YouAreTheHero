@@ -3,8 +3,7 @@
 return array (
   'action' => 'Action',
   'action_help' => 'Choose an action to perform on this item',
-  'add_action' => 'Add action',
-  'add_new_action' => 'Add an action',
+  'add_item_page' => 'Add item on page',
   'add_new_prerequisite' => 'Add a condition',
   'add_prerequisite' => 'Add the condition',
   'buy' => 'Buy',

@@ -22,6 +22,21 @@
         ]
     ])
 
+
+    <!-- Modal add choice -->
+    @include('page.partials.modal_model', [
+        'template' => 'page.partials.modal_add_choice',
+        'context' => 'add_choice',
+        'title' => trans('page.add_choice_modal_title'),
+        'icon' => 'icon-choice',
+        'big' => false,
+        'data' => [
+            'page' => $page,
+            'id' => 'AddChoice',
+            'btn_add_text' => trans('common.save')
+        ]
+    ])
+
     <!-- Modal edit choice -->
     @include('page.partials.modal_model', [
         'template' => 'page.partials.modal_edit_choice',
@@ -72,21 +87,21 @@
         'data' => [
             'page' => $page,
             'id' => 'CreateRiddle',
-            'btn_add_text' => trans('actions.add_riddle')
+            'btn_add_text' => trans('item_page.add_riddle')
         ]
     ])
 
-    <!-- Modal new Action -->
+    <!-- Modal add item on page -->
     @include('page.partials.modal_model', [
-        'template' => 'page.partials.modal_actions',
+        'template' => 'page.partials.modal_item_page',
         'context' => 'actions',
-        'title' => trans('page.actions_modal_title'),
+        'title' => trans('page.item_page_modal_title'),
         'icon' => 'icon-chest',
         'big' => true,
         'data' => [
             'page' => $page,
-            'id' => 'CreateAction',
-            'btn_add_text' => trans('actions.add_action')
+            'id' => 'CreateItemPage',
+            'btn_add_text' => trans('item_page.add_item_page')
         ]
     ])
 
@@ -100,7 +115,7 @@
         'data' => [
             'page' => $page,
             'id' => 'CreatePrerequisite',
-            'btn_add_text' => trans('actions.add_prerequisite')
+            'btn_add_text' => trans('item_page.add_prerequisite')
         ]
     ])
 @endsection

@@ -7,7 +7,7 @@ use App\Models\Page;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class ActionController extends Controller
+class ItemPageController extends Controller
 {
     public function __construct()
     {
@@ -32,7 +32,7 @@ class ActionController extends Controller
             $newAction['item'] = $newAction->item;
 
             // Translate the verb, as we cannot do this in JS without plugin
-            $newAction['verb'] = trans('actions.' . $newAction['verb']);
+            $newAction['verb'] = trans('item_page.' . $newAction['verb']);
 
             return response()->json([
                 'action' => $newAction,

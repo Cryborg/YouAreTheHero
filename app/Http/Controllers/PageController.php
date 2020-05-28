@@ -83,13 +83,13 @@ class PageController extends Controller
             ],
             'locales' => getLanguages(),
             'actions' => [
-                'buy' => trans('actions.buy'),
-                'sell' => trans('actions.sell'),
-                'take' => trans('actions.take'),
-                'give' => trans('actions.give'),
+                'buy' => trans('item_page.buy'),
+                'sell' => trans('item_page.sell'),
+                'take' => trans('item_page.take'),
+                'give' => trans('item_page.give'),
             ],
 
-            'contexts' => ['action', 'prerequisites', 'riddle', 'story_creation'],
+            'contexts' => ['actions', 'prerequisites', 'riddle', 'story_creation'],
 
             'placeholders' => $this->placeholders,
         ]);
