@@ -47,7 +47,7 @@ class StoriesTableSeeder extends Seeder
                 'title' => 'Trouvez Charlie',
             'description' => 'Histoire sans queue ni tête, juste pour montrer les possibilités offertes par le site :)
 
-<div class="alert alert-info d-flex flex-row w-50"><i class="icon-info mr-3 display-6 text-primary"></i><div>Certaines des énigmes ne peuvent être résolues qu\'en recherchant sur internet !</div></div>',
+<div class="alert alert-info d-flex flex-row"><i class="icon-info mr-3 display-6 text-primary"></i><div>Certaines des énigmes ne peuvent être résolues qu\'en recherchant sur internet !</div></div>',
             'user_id' => 1,
             'locale' => 'fr_FR',
             'layout' => 'play1',

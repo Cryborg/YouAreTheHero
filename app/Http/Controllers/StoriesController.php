@@ -54,6 +54,14 @@ class StoriesController extends Controller
 
         $stories = $query->get();
 
+        // Count words in the whole story. Cache this later
+        $stories->map(function ($story) {
+            $story->wordsCount = 0;
+            $story->pages->map(function ($page) use ($story) {
+                $story->wordsCount += count(explode(' ', $page->content));
+            });
+        });
+
         return View::make('stories.list', [
             'stories' => $stories
         ]);
