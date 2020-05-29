@@ -35,10 +35,13 @@ class PageController extends Controller
      */
     public function create(Request $request, Story $story, Page $page = null)
     {
+        $redirect = null;
+
         if ($page === null) {
             $page = factory(Page::class)->create([
                 'story_id' => $story->id
             ]);
+            $redirect = route('page.edit', ['page' => $page]);
         }
 
         $pageFromId = (int) $request->get('page_from', 0);
@@ -54,7 +57,8 @@ class PageController extends Controller
         }
 
         return response()->json([
-            'page_to' => $page->id
+            'page' => $page,
+            'redirect' => $redirect,
         ]);
     }
 

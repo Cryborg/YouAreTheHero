@@ -9,7 +9,7 @@ var g = new dagreD3.graphlib.Graph()
     g.setNode({{ $page->id }},  {
         labelType: "html",
         label: '{!! includeAsJsString('page.js.partials.edge', ['page' => $page]) !!}',
-        class: "align-middle text-center",
+        class: "align-middle text-center @if ($page->id == $current->id) currentNode @endif",
         labelStyle: "margin-top: 4px;"
     });
 @endforeach
@@ -46,4 +46,3 @@ svg.call(zoom)
 
 // Run the renderer. This is what draws the final graph.
 render(d3.select("svg g"), g);
-

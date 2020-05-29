@@ -35,7 +35,6 @@
                         {!! $story->description !!}
                     </div>
                     <span class="badge badge-success bottom-right p-1 pl-2 pr-2">{{ $story->wordsCount }} words</span>
-
                 </div>
                 <div class="card-footer">
                     <div class="row">

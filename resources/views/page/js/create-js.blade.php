@@ -7,22 +7,23 @@
 
         if (selectedVal === '0') {
             newPage($this,
-                route('page.create', {{ $page->story_id }})
+                route('page.create', {'story': {{ $page->story_id }} }),
+                true
             );
         } else {
             newPage($this,
-                route('page.create', {'story': {{ $page->story_id }}, 'page': selectedVal})
+                route('page.create', {'story': {{ $page->story_id }}, 'page': selectedVal}),
+                false
             );
         }
-
     });
 
-    function newPage($this, route) {
+    function newPage($this, url, newNode) {
         let $parent = $this.closest('.modal');
 
         // Create the page and display it
         $.ajax({
-            'url': route,
+            'url': url,
             'data': {
                 'page_from': {{ $page->id }},
                 'link_text': $parent.find('#link_text').val()
@@ -30,8 +31,22 @@
             'method': 'POST'
         })
             .done(function (data) {
+                if (data.redirect) {
+                    window.location.href = data.redirect;
+                }
+
                 // Show the link on the tree
-                g.setEdge({{ $page->id }}, data.page_to);
+                if (newNode) {
+                    let nnode = g.setNode(data.page.id,  {
+                        labelType: "html",
+                        label: '<a href="' + route('page.edit', {'page': data.page.id}) + '">' + data.page.title + '</a>',
+                        class: "align-middle text-center",
+                        labelStyle: "margin-top: 4px;"
+                    });
+                }
+                g.setEdge({{ $page->id }}, data.page.id, {
+                    label: 'bouh',
+                });
                 render(svg.select("g"), g);
 
                 $('#modalAddChoice').modal('toggle');
