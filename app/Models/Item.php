@@ -54,4 +54,9 @@ class Item extends Model
     {
         return $this->hasMany(Effect::class)->with('field');
     }
+
+    public function characters()
+    {
+        return $this->belongsToMany(Character::class);
+    }
 }

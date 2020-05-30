@@ -2,7 +2,6 @@
 
 namespace App\Classes;
 
-use App\Models\Inventory;
 use App\Models\Character;
 use App\Models\Item;
 
@@ -26,6 +25,7 @@ class Action
 
         // Add the item to the character inventory
         // or increase the quantity if it already exists
+        //$item = $character->items->where(-e($value))
         $inventory = Inventory::firstOrNew([
             'character_id' => $character->id,
             'item_id' => $item->id,
@@ -46,7 +46,7 @@ class Action
      */
     public static function sell(Character $character, Item $item): bool
     {
-        if ($character->inventory()->where('item_id', $item->id)->count() > 0) {
+        if ($character->items()->count() > 0) {
             if (!$character->addMoney($item->pivot->price)) {
                 return false;
             }
@@ -141,9 +141,9 @@ class Action
 
         if ($options) {
             if ($options->inventory_slots > -1) {
-                $occupiedSlots = 0;
+                $occupiedSlots = $item->size;
                 $character->items->each(function ($item) use (&$occupiedSlots) {
-                    $occupiedSlots += $item->size;
+                    $occupiedSlots += ($item->size * $item->pivot->quantity);
                 });
 
                 return $occupiedSlots <= $options->inventory_slots;

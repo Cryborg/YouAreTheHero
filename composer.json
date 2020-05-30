@@ -77,6 +77,9 @@
             "php artisan vendor:publish --tag=public --force",
             "php artisan telescope:publish",
             "php artisan ziggy:generate",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:meta",
+            "@php artisan ide-helper:models -N",
             "mkdir -p public/vendor/bootstrap-select",
             "cp -R vendor/snapappointments/bootstrap-select/dist/js/ public/vendor/bootstrap-select/js/",
             "cp -R vendor/snapappointments/bootstrap-select/dist/css/ public/vendor/bootstrap-select/css/"

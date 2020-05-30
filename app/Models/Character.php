@@ -22,7 +22,7 @@ class Character extends Model
         parent::boot();
 
         static::deleting(function($character) { // before delete() method call this
-            $character->inventory()->delete();
+            $character->items()->detach();
             $character->riddles()->detach();
             $character->fields()->detach();
             $character->pages()->detach();
@@ -73,14 +73,9 @@ class Character extends Model
         return $this->belongsToMany(Riddle::class);
     }
 
-    public function inventory()
-    {
-        return $this->hasMany(Inventory::class)->with('item');
-    }
-
     public function items(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Item::class);
+        return $this->belongsToMany(Item::class)->withPivot('quantity');
     }
 
     public function actions()

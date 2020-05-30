@@ -112,11 +112,17 @@ class ItemController extends Controller
             case 'take':
                 if (isset($item)) {
                     if (Action::hasRoomLeftInInventory($character, $item)) {
-                        $character->inventory()
-                                  ->create([
-                                               'item_id'  => $item->id,
-                                               'quantity' => $itemPage->quantity ?? 1,
-                                           ]);
+                        $existingItem = $character->items()->where('items.id', $item->id)->first();
+
+                        if ($existingItem) {
+                            $existingItem->pivot->quantity++;
+                            $existingItem->pivot->save();
+                        } else {
+                            $character->items()
+                                ->attach([
+                                    $item->id => ['quantity' => $itemPage->quantity ?? 1]
+                                ]);
+                        }
 
                         $isOk = true;
                     } else {
@@ -133,7 +139,7 @@ class ItemController extends Controller
         // Check if the item used has the single_use flag,
         // and in this case it must not be shown again
         if ($item->single_use) {
-            $character->items()->syncWithoutDetaching([$item->id]);
+            $character->items()->syncWithoutDetaching([$item->id => ['used' => true]]);
         }
 
         return response()->json([

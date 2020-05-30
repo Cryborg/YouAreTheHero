@@ -8,14 +8,13 @@
                 @lang('common.inventory')
             </div>
             <div class="card-body">
-                @dump($items)
                 <ul>
-                    @foreach ($items as $item)
+                    @foreach ($character->items as $item)
                         <li data-toggle="popover" data-trigger="hover" data-content="">
-                            @if ($item->item->quantity > 1)
-                                {{ $item->item->quantity }} *
+                            @if ($item->pivot->quantity > 1)
+                                {{ $item->pivot->quantity }} *
                             @endif
-                            {{ $item->item->name }}
+                            {{ $item->name }}
                         </li>
                     @endforeach
                 </ul>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInventoriesTable extends Migration
+class CreateCharacterItemTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateInventoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('inventories', function (Blueprint $table) {
+        Schema::create('character_item', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             $table->unsignedBigInteger('character_id');
@@ -24,9 +24,6 @@ class CreateInventoriesTable extends Migration
 
             $table->unsignedInteger('quantity')->default(0);
             $table->boolean('used')->default(false);
-
-            $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -37,6 +34,6 @@ class CreateInventoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inventories');
+        Schema::dropIfExists('character_item');
     }
 }

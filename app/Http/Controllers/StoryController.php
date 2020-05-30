@@ -179,7 +179,7 @@ class StoryController extends Controller
             // If this is an item
             if ($trigger->actionable instanceof Item) {
                 // If the character has something in his inventory
-                if ($character->inventory()->count() > 0) {
+                if ($character->items()->count() > 0) {
                     foreach ($character->inventory as $inventory) {
                         // If the character has the item in the inventory
                         if ($inventory->item == $trigger->actionable) {
@@ -279,8 +279,7 @@ class StoryController extends Controller
         $character = Character::find(getSession('character_id'));
 
         return view('story.inventory', [
-            'items'     => $character->inventory,
-            'character' => Character::find(getSession('character_id')),
+            'character' => $character,
         ]);
 
     }
@@ -321,10 +320,8 @@ class StoryController extends Controller
 
     private function isItemPrerequisitesFulfilled(Item $requiredItem, Character $character): bool
     {
-        $itemsInInventory = $character->inventory;
-
-        foreach ($itemsInInventory as $item) {
-            if ($item['item']['id'] == $requiredItem->id) {
+        foreach ($character->items as $item) {
+            if ($item->id == $requiredItem->id) {
                 return true;
             }
         }
@@ -502,17 +499,17 @@ class StoryController extends Controller
     {
         $actions = [];
 
-        foreach ($page->items as $item) {
+        foreach ($page->items as $pageItem) {
             $isFound = false;
 
-            foreach ($character->inventory ?? [] as $items) {
-                if ($items->item->id == $item->id && $items->item->single_use) {
+            foreach ($character->items as $characterItem) {
+                if ($characterItem->id == $pageItem->id && $characterItem->single_use) {
                     $isFound = true;
                 }
             }
 
             if (!$isFound) {
-                $actions[] = $item;
+                $actions[] = $pageItem;
             }
         }
 
