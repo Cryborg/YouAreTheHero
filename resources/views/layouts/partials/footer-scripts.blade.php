@@ -103,6 +103,7 @@
 
         switch (type) {
             case 'error':
+                data.heading = data.heading || '@lang('common.error')';
                 icon = 'error';
                 bgColor = '#e3342f';
                 toastOptions.hideAfter = 10000;

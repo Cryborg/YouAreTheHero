@@ -39,4 +39,6 @@ return array (
   'you_lost_something' => 'Tu as perdu :quantity :item',
   'optional' => 'Optionnel',
   'add' => 'Ajouter',
+  'error' => 'Erreur',
+  'link_author' => 'Auteur',
 );

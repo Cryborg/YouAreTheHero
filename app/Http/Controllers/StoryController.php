@@ -113,7 +113,7 @@ class StoryController extends Controller
 
         $visitedPlaces = $character->pages;
 
-        $actions = $this->filterActions($character, $page);
+        $items = $this->filterItems($character, $page);
 
         // Check if there is an action bound to this page, and execute it
         $messages = $this->executeAction($page, $character);
@@ -121,7 +121,7 @@ class StoryController extends Controller
         // First display of the page
         $view = view('story.play', $commonParams + [
                 'page'          => $page,
-                'actions'       => $actions,
+                'items'         => $items,
                 'layout'        => $page->layout ?? $story->layout,
                 'character'     => $character,
                 'visitedPlaces' => $visitedPlaces,
@@ -131,9 +131,9 @@ class StoryController extends Controller
 
         if (\Illuminate\Support\Facades\Request::ajax()) {
             $view = view('layouts.partials.page_content', $commonParams + [
-                'page' => $page,
-                'actions' => $actions,
-                'messages' => $messages,
+                'page'      => $page,
+                'items'     => $items,
+                'messages'  => $messages,
             ]);
         }
 
@@ -268,64 +268,6 @@ class StoryController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Exception
-     */
-    public function ajaxAction(Request $request): JsonResponse
-    {
-        $isOk = false;
-
-        $actionId = $request->get('actionid');
-        $pageId = $request->get('pageid');
-        $page = Page::find($pageId);
-
-        $character = $page->story->currentCharacter();
-
-        $item = $page->items->where('pivot.id', $actionId)->first();
-
-        // Perform the action
-        switch ($item->pivot->verb) {
-            case 'buy':
-                $isOk = Action::buy($character, $item);
-                break;
-            case 'sell':
-                $isOk = Action::sell($character, $item);
-                break;
-            case 'give':
-                $isOk = Action::give($character, $item);
-                break;
-            case 'take':
-                if (isset($item)) {
-                    $character->inventory()->create([
-                        'item_id'      => $item->id,
-                        'quantity'     => $item->pivot->quantity ?? 1,
-                    ]);
-                }
-
-                $isOk = true;
-                break;
-        }
-
-        // Apply item effects, if applicable
-        Action::effects($character, $item);
-
-        // Check if the item used has the single_use flag,
-        // and in this case it must not be shown again
-        if ($item->single_use) {
-            $character->items()->syncWithoutDetaching([$item->id]);
-        }
-
-        return response()->json([
-            'result' => $isOk,
-            'money'  => $character->money,
-            'singleuse' => $item->single_use
-        ], 200
-        );
-    }
-
-    /**
      * Get a character's inventory
      *
      * @param \App\Models\Story $story
@@ -334,27 +276,12 @@ class StoryController extends Controller
      */
     public function inventory(Story $story)
     {
-//        $character = $this->getCurrentCharacter($story);
+        $character = Character::find(getSession('character_id'));
 
-        $inventory = Inventory::where('character_id', getSession('character_id'))
-                              ->get();
-
-        if (!empty($inventory)) {
-            $items = [];
-
-            foreach ($inventory as $item) {
-                $items[] = [
-                    'item'     => $this->getItem($item->item_id),
-                    'quantity' => $item->quantity,
-                ];
-            }
-
-            return view('story.inventory', [
-                'items'     => $items,
-                'character' => Character::find(getSession('character_id')),
-            ]
-            );
-        }
+        return view('story.inventory', [
+            'items'     => $character->inventory,
+            'character' => Character::find(getSession('character_id')),
+        ]);
 
     }
 
@@ -571,7 +498,7 @@ class StoryController extends Controller
      *
      * @return array
      */
-    private function filterActions(Character $character, Page $page)
+    private function filterItems(Character $character, Page $page)
     {
         $actions = [];
 

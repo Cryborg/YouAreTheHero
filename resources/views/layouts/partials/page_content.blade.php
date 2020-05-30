@@ -37,20 +37,19 @@
         <div class="card-body">
             <div class="row mt-3">
                 <div class="col-xl-6 col-md-12">
-                    @foreach ($actions as $action)
-                        @switch($action->pivot->verb)
+                    @foreach ($items as $item)
+                        @switch($item->pivot->verb)
                             @case ('buy')
                             @case ('take')
                             @case ('sell')
                             @case ('give')
-                            <div class="pick-item" data-actionid="{{ $action->pivot->id }}">
+                            <div class="pick-item">
                                 @include('story.partials.money', [
-                                    'value' => $action->pivot->price,
-                                    'icon' => in_array($action->pivot->verb, ['sell','give']) ? 'icon-receive-money' : 'icon-pay-money',
-                                    'name' => $action->name
+                                    'item' => $item,
+                                    'icon' => in_array($item->pivot->verb, ['sell','give']) ? 'icon-receive-money' : 'icon-pay-money',
                                 ])
-                                {{--                    @if ($action['item']->effects)--}}
-                                {{--                        @foreach ($action['item']->effects as $effect => $value)--}}
+                                {{--                    @if ($item['item']->effects)--}}
+                                {{--                        @foreach ($item['item']->effects as $effect => $value)--}}
                                 {{--                            @include('story.partials.effects', [--}}
                                 {{--                                'name' => $effect,--}}
                                 {{--                                'value' => $value['quantity'],--}}

@@ -26,7 +26,14 @@
             </div>
         </div>
         <div class="row mb-2">
-            <div class="col">
+            <div class="card w-100">
+                <h5 class="card-header">@lang('item.size')</h5>
+                <div class="card-body">
+                    <div class="card-text">
+                        <p class="help-block">{!! trans('item.size_help') !!}</p>
+                        {!! Form::number('item_size', 1, ['class' => 'form-control', 'min' => 0, 'step' => .1, 'id' => 'item_size_' . $context]) !!}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

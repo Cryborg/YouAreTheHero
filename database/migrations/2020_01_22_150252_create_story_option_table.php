@@ -27,6 +27,8 @@ class CreateStoryOptionTable extends Migration
                 ->comment('"player" means the player gives :points_to_share: points manually to his character. "dice" means it is done by throwing dice.');
             $table->integer('points_to_share')->default(10)
                 ->comment('Points to share amongst character stats');
+            $table->integer('inventory_slots')->default(-1)
+                ->comment('How much (virtual) slots there are in the inventory.');
 
             $table->timestamps();
             $table->softDeletes();

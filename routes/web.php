@@ -17,6 +17,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 // Items
 Route::post('/item/create', 'ItemController@store')->name('item.store');
+Route::get('/item/{page}/{item}/take', 'ItemController@take')->name('item.take');
 
 // Stories
 Route::get('/stories/draft', 'StoriesController@listDraft')->name('stories.list.draft');
@@ -34,7 +35,6 @@ Route::get('/story/{story}/sheet', 'StoryController@sheet')->name('story.sheet')
 Route::post('/story/{story}/page/create/{page?}', 'PageController@create')->name('page.create');
 Route::get('/story/{story}/{page?}', 'StoryController@getPlay')->name('story.play');
 
-Route::post('/story/ajax_action', 'StoryController@ajaxAction')->name('story.ajax_action');
 Route::post('/story/ajax_get_item', 'StoryController@getItemAjax')->name('story.ajax_getitem');
 Route::post('/story/ajax_post_children_pages', 'StoryController@postChildrenPagesAjax')->name('story.ajax_postchildrenpages');
 

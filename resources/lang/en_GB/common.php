@@ -40,4 +40,5 @@ return array (
   'you_lost_something' => 'You lost :quantity :item',
   'optional' => 'Optional',
   'add' => 'Add',
+  'error' => 'Error',
 );

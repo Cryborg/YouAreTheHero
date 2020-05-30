@@ -28,25 +28,27 @@
             });
 
             // When the player clicks on an item
-            $('.pick-item').on('click', function () {
+            $('.pick-item button').on('click', function () {
                 var $this = $(this);
 
-                $.ajax({
-                    'method': 'POST',
-                    'url': '{{ route('story.ajax_action') }}',
-                    'data': {
-                        'actionid': $this.data('actionid'),
-                        'pageid': {{ $page->id }}
-                    },
+                $.get({
+                    'url': route('item.take', {'page': {{ $page->id }}, 'item': $this.data('itemid')}),
                 })
                     .done(function(rst) {
-                        if (rst.result === true) {
+                        if (rst.result == true) {
                             loadInventory();
                             loadSheet();
                             loadChoices();
-                        }
-                        if (rst.singleuse === true) {
-                            $this.remove();
+
+                            if (rst.singleuse === true) {
+                                $this.closest('.pick-item').remove();
+                            }
+                        } else {
+                            if (rst.message) {
+                                showToast('error', {
+                                    text: rst.message
+                                });
+                            }
                         }
                     });
             });

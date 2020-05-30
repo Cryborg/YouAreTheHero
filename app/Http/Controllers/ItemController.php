@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\Action;
 use App\Models\ItemPage;
 use App\Models\Effect;
 use App\Models\Item;
+use App\Models\Page;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -49,6 +52,7 @@ class ItemController extends Controller
             'default_price' => 'required',
             'single_use'    => '',
             'story_id'      => 'required|exists:stories,id',
+            'size'          => 'required|min:0',
             'effects'       => '',
         ]);
 
@@ -80,5 +84,64 @@ class ItemController extends Controller
             'success'   => $item instanceof Item,
             'item'      => $item->toArray(),
         ]);
+    }
+
+    public function take(Page $page, Item $item): JsonResponse
+    {
+        $isOk = false;
+        $message = null;
+
+        $character = $page->story->currentCharacter();
+
+        $itemPage = ItemPage::where([
+            'item_id' => $item->id,
+            'page_id' => $page->id,
+        ])->first();
+
+        // Perform the action
+        switch ($itemPage->verb) {
+            case 'buy':
+                $isOk = Action::buy($character, $item);
+                break;
+            case 'sell':
+                $isOk = Action::sell($character, $item);
+                break;
+            case 'give':
+                $isOk = Action::give($character, $item);
+                break;
+            case 'take':
+                if (isset($item)) {
+                    if (Action::hasRoomLeftInInventory($character, $item)) {
+                        $character->inventory()
+                                  ->create([
+                                               'item_id'  => $item->id,
+                                               'quantity' => $itemPage->quantity ?? 1,
+                                           ]);
+
+                        $isOk = true;
+                    } else {
+                        $message = trans('inventory.no_more_room');
+                    }
+                }
+
+                break;
+        }
+
+        // Apply item effects, if applicable
+        Action::effects($character, $item);
+
+        // Check if the item used has the single_use flag,
+        // and in this case it must not be shown again
+        if ($item->single_use) {
+            $character->items()->syncWithoutDetaching([$item->id]);
+        }
+
+        return response()->json([
+                'result' => $isOk,
+                'money'  => $character->money,
+                'singleuse' => $item->single_use,
+                'message' => $message,
+            ], 200
+        );
     }
 }

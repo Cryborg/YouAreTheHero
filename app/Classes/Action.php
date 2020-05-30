@@ -20,6 +20,10 @@ class Action
             return false;
         }
 
+        if (self::hasRoomLeftInInventory($character, $item) === false) {
+            return false;
+        }
+
         // Add the item to the character inventory
         // or increase the quantity if it already exists
         $inventory = Inventory::firstOrNew([
@@ -121,5 +125,31 @@ class Action
                     break;
             }
         }
+    }
+
+    /**
+     * Check if there is room left in the inventoy for another item
+     *
+     * @param \App\Models\Character $character
+     * @param \App\Models\Item      $item
+     *
+     * @return bool
+     */
+    public static function hasRoomLeftInInventory(Character $character, Item $item)
+    {
+        $options = $character->story->story_options;
+
+        if ($options) {
+            if ($options->inventory_slots > -1) {
+                $occupiedSlots = 0;
+                $character->items->each(function ($item) use (&$occupiedSlots) {
+                    $occupiedSlots += $item->size;
+                });
+
+                return $occupiedSlots <= $options->inventory_slots;
+            }
+        }
+
+        return true;
     }
 }

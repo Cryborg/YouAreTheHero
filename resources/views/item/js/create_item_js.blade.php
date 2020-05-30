@@ -50,6 +50,7 @@
             'name': $('#item_name_{{ $contexts[$i] }}').val(),
             'default_price': $('#item_price_{{ $contexts[$i] }}').val(),
             'single_use': $('#single_use_{{ $contexts[$i] }}').is(':checked') ? 1 : 0,
+            'size': $('#item_size_{{ $contexts[$i] }}').val(),
             'effects': values
         })
     });
