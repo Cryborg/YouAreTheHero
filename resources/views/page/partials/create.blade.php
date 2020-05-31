@@ -135,12 +135,14 @@
                 <button class="btn btn-primary shadow w-90 align-middle text-left" data-target="#modalCreateItemPage" data-toggle="modal">
                     <span class="icon-chest text-white display-6 align-middle mr-3"></span>
                     <span class="align-middle">@lang('item_page.add_item_page')</span>
-                    <span class="badge badge-warning rounded float-right shadow font-bigger">{{ $page->actions()->count() }}</span>
+                    <span class="badge badge-warning rounded float-right shadow font-bigger">{{ $page->items()->count() }}</span>
                 </button><button class="btn btn-primary shadow w-10 mb-3 align-middle show-help" data-help="item_page_help"><span class="icon-help text-white align-middle display-6"></span></button>
                 <div class="w-100 text-white bg-info p-2 mb-3" style="display: none" id="item_page_help">
                     @info({!! trans('page.current_page_item_page_help') !!})
 
-                    @include('page.partials.item_page_list', ['page' => $page])
+                    <div class="itemsOnPage">
+                        @include('page.partials.item_page_list', ['items' => $page->items])
+                    </div>
                 </div>
 
                 <button class="btn btn-primary shadow w-90 align-middle text-left" data-target="#modalCreateRiddle" data-toggle="modal">

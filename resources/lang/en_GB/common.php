@@ -41,4 +41,7 @@ return array (
   'optional' => 'Optional',
   'add' => 'Add',
   'error' => 'Error',
+  'no' => 'No',
+  'yes' => 'Yes',
+  'none_selected' => 'No selection',
 );

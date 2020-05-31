@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inventory;
+use App\Models\Item;
 use App\Models\Page;
 use App\Models\Choice;
 use App\Models\Story;
@@ -87,9 +88,9 @@ class PageController extends Controller
             ],
             'locales' => getLanguages(),
             'actions' => [
+                'take' => trans('item_page.take'),
                 'buy' => trans('item_page.buy'),
                 'sell' => trans('item_page.sell'),
-                'take' => trans('item_page.take'),
                 'give' => trans('item_page.give'),
             ],
 
@@ -280,5 +281,48 @@ class PageController extends Controller
         ]);
     }
 
+    public function deleteItem(Page $page, Item $item, string $verb)
+    {
+        return response()->json([
+           'success' => $page->items()->wherePivot('verb', $verb)->detach($item->id)
+        ]);
+    }
 
+    public function storeItem(Request $request, Page $page)
+    {
+        if ($request->ajax()) {
+            $validated = $request->validate([
+                'item_id'  => 'required',
+                'verb'     => 'required',
+                'quantity' => 'required',
+                'price'    => '',
+            ]);
+
+            $validated['page_id'] = $page->id;
+
+            $attached = $page->items()->syncWithoutDetaching([
+                $validated['item_id'] => [
+                    'verb' => $validated['verb'],
+                    'quantity' => $validated['quantity'],
+                    'price' => $validated['price'],
+                ]
+            ]);
+
+            return response()->json([
+                'success' => !empty($attached['attached']),
+            ]);
+        }
+
+        abort(JsonResponse::HTTP_NOT_FOUND);
+    }
+
+    /**
+     * @param \App\Models\Page $page
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function listItems(Page $page)
+    {
+        return View::make('page.partials.item_page_list', ['items' => $page->items]);
+    }
 }

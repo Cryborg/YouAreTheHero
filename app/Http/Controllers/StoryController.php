@@ -464,32 +464,6 @@ class StoryController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return mixed
-     */
-    public function getItemAjax(Request $request)
-    {
-        if ($request->ajax()) {
-            $validated = $request->validate([
-                'itemId' => 'integer',
-            ]
-            );
-
-            $item = $this->getItem($validated['itemId']);
-
-            $view = view('page.partials.modal_item', [
-                'item' => $item,
-            ]
-            );
-
-            return $view ?? view('errors.404');
-        }
-
-        abort(JsonResponse::HTTP_NOT_FOUND);
-    }
-
-    /**
      * @param \App\Models\Character $character
      * @param \App\Models\Page      $page
      *

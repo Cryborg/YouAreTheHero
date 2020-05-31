@@ -35,7 +35,6 @@ Route::get('/story/{story}/sheet', 'StoryController@sheet')->name('story.sheet')
 Route::post('/story/{story}/page/create/{page?}', 'PageController@create')->name('page.create');
 Route::get('/story/{story}/{page?}', 'StoryController@getPlay')->name('story.play');
 
-Route::post('/story/ajax_get_item', 'StoryController@getItemAjax')->name('story.ajax_getitem');
 Route::post('/story/ajax_post_children_pages', 'StoryController@postChildrenPagesAjax')->name('story.ajax_postchildrenpages');
 
 Route::post('/story/{story}/options', 'StoryOptionController@update')->name('story.options.post');
@@ -44,19 +43,19 @@ Route::delete('/story/{story}/delete', 'StoryController@delete')->name('story.de
 
 // Page
 Route::get('/page/{page}/edit', 'PageController@getEdit')->name('page.edit');
-Route::post('/page/{page}/edit', 'PageController@postEdit')->name('page.edit.post');
-Route::post('/page/{page}/riddle', 'PageController@postRiddle')->name('page.riddle.validate');
-Route::delete('/page/{page}/delete', 'PageController@delete')->name('page.delete');
-Route::delete('/page/{page}/{page_from}/delete', 'PageController@deleteChoice')->name('page.choice.delete');
 Route::get('/page/{story}/list', 'PageController@list')->name('page.list');
 Route::get('/page/{page}/choices', 'PageController@availableChoices')->name('page.choices');
 Route::get('/page/{pageFrom}/{pageTo}/choice', 'ChoiceController@get')->name('page.choice');
-Route::post('/page/choice/{choice}','ChoiceController@update')->name('choice.update');
+Route::get('/page/{page}/items/list', 'PageController@listItems')->name('page.items.list');
 
-// ItemPage
-Route::get('/item_page/{page}/list', 'ItemPageController@list')->name('item_page.list');
-Route::post('/item_page/create/{page}', 'ItemPageController@store')->name('item_page.store');
-Route::delete('/item_page/{item_page}/delete', 'ItemPageController@delete')->name('item_page.delete');
+Route::post('/page/choice/{choice}','ChoiceController@update')->name('choice.update');
+Route::post('/page/{page}/edit', 'PageController@postEdit')->name('page.edit.post');
+Route::post('/page/{page}/riddle', 'PageController@postRiddle')->name('page.riddle.validate');
+Route::post('/page/item/{page}/create', 'PageController@storeItem')->name('page.item.store');
+
+Route::delete('/page/{page}/delete', 'PageController@delete')->name('page.delete');
+Route::delete('/page/{page}/{page_from}/delete', 'PageController@deleteChoice')->name('page.choice.delete');
+Route::delete('/page/{page}/{item}/{verb}/item/delete', 'PageController@deleteItem')->name('page.item.delete');
 
 // Prerequisites
 Route::post('/prerequisite/store/{page}', 'PrerequisiteController@store')->name('prerequisite.store');

@@ -41,4 +41,7 @@ return array (
   'add' => 'Ajouter',
   'error' => 'Erreur',
   'link_author' => 'Auteur',
+  'yes' => 'Oui',
+  'no' => 'Non',
+  'none_selected' => 'Aucune sélection',
 );

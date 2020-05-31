@@ -68,4 +68,5 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
   'add_actions_modal_title' => 'Ajouter Bonus / Malus',
   'bonus_label' => 'Bonus / Malus',
   'current_page_item_page_help' => 'Choisis ou crée des objets à placer dans la page, avec lesquels le joueur pourra interagir.',
+  'items_on_page' => 'Objets déjà sur la page',
 );

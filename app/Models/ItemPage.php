@@ -23,4 +23,9 @@ class ItemPage extends Model
     {
         return $this->belongsTo(Item::class);
     }
+
+    public function page()
+    {
+        return $this->belongsTo(Page::class);
+    }
 }

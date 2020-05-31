@@ -12,7 +12,6 @@
     <title>@yield('title', trans('home.welcome'))</title>
 
     {{-- Bootstrap core CSS --}}
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/default.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/buttons.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap-grid.min.css') }}">
@@ -22,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-switch.min.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/icomoon.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/dagred3.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/default.css') }}">
 
     {{-- Scripts --}}
 {{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}

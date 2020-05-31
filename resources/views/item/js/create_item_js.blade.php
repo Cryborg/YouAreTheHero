@@ -15,7 +15,7 @@
                     text: "{{ trans('notification.save_success_text') }}",
                 });
 
-                // Add the newly created item to both lists
+                // Add the newly created item to existing lists
                 $('.itemSelectList').append(
                     '<option value="' + data.item.id + '">' + data.item.name + '</option>'
                 );

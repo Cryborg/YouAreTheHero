@@ -328,30 +328,14 @@
         }
     });
 
-    // When the author chooses an item from the list
-    $(document).on('change', '#item_id', function () {
-        var $this = $(this);
-
-        if ($this.val() === '') return false;
-
-        $.post({
-            url: route('story.ajax_getitem'),
-            data: {'itemId': $this.val()}
-        })
-            .done(function (data) {
-                $('#item_description').html(data);
-            });
-    });
-
     // When the author validates the new action on the modal
     $(document).on('click', '#add_CreateItemPage', function () {
         var $this = $(this);
         var serialized = $('#action_create').serialize();
-        let $parent = $this.closest('.modal');
 
         $.post({
-            url: route('item_page.store', {{ $page->id }}),
-            'data': serialized,
+            url: route('page.item.store', {{ $page->id }}),
+            data: serialized,
         })
             .done(function (data) {
                 if (data.success) {
@@ -361,32 +345,11 @@
                         text: "{{ trans('notification.save_success_text') }}",
                     });
 
-                    // Adds the new action to the table
-                    $('#item_page_list tbody').append(
-                        '<tr>' +
-                        '<td>' + data.action.item.name + '</td>' +
-                        '<td>' + data.action.verb + '</td>' +
-                        '<td>' + data.action.quantity + '</td>' +
-                        '<td>' + data.action.price + '</td>' +
-                        '<td class="text-center">' + '<span class="icon-trash text-danger delete-action" data-action_id="' + data.action.item.id + '"></span>' + '</td>' +
-                        '</tr>'
-                    );
-
-                    // Closes the modal
-                    $('#modalCreateItemPage').modal('hide');
+                    // Refresh the actions table
+                    displayActions();
                 }
             })
             .fail(function (data) {
-                if (data.status === 422) {
-                    $.each(data.responseJSON.errors, function (i, error) {
-                        $('#modalCreateItemPage')
-                            .find('[name="' + i + '"]')
-                            .addClass('input-invalid')
-                            .next()
-                            .append(error[0])
-                            .removeClass('hidden');
-                    });
-                }
                 showToast('error', {
                     heading: '{{ trans('notification.save_failed_title') }}',
                     text: "{{ trans('notification.new_action_not_added') }}",
@@ -399,10 +362,19 @@
             });
     });
 
+    function displayActions()
+    {
+        $.get({
+            url: route('page.items.list', {page: {{ $page->id }} })
+        })
+            .done(function (html) {
+                $('.itemsOnPage').html(html);
+            });
+    }
+
     // When tu author creates a new riddle
     $(document).on('click', '#add_CreateRiddle', function () {
         var $this = $(this);
-        let $parent = $this.closest('.modal');
 
         $.post({
             url: route('riddle.store', {'page': {{ $page->id }}}),
@@ -470,9 +442,10 @@
             });
     });
 
-    $(document).on('click', '.delete-action', function () {
+    $(document).on('click', '.deleteItemPage', function () {
         var $this = $(this);
-        var actionId = $this.data('action_id');
+        var itemId = $this.data('itemid');
+        var itemVerb = $this.data('itemverb');
         var loadingClass = 'fa fa-circle-o-notch fa-spin';
         var defaultClass = 'icon-trash text-danger';
 
@@ -481,11 +454,11 @@
         }
 
         $.ajax({
-            url: route('item_page.delete', actionId),
+            url: route('page.item.delete', {page: {{ $page->id }}, item: itemId, verb: itemVerb}),
             method: 'DELETE'
         })
             .done(function () {
-                $this.parents('tr').remove();
+                displayActions();
 
                 showToast('success', {
                     heading: '{{ trans('notification.deletion_success_title') }}',

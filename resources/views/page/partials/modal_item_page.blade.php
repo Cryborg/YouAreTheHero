@@ -9,45 +9,73 @@
         </nav>
         <div class="tab-content">
             <div class="tab-pane active" id="tr1">
-                {!! Form::open(['url' => route('item_page.store', $page->id), 'method' => 'post', 'id' => 'action_create']) !!}
+                {!! Form::open(['url' => route('page.item.store', $page->id), 'method' => 'post', 'id' => 'action_create']) !!}
                 <div class="row">
-                    <div class="col-6">
-                        <div class="form-group mb-4">
-                            {!! Form::label('item_id', '1. ' . trans('page.concerned_item'), ['class' => 'control-label']) !!}
-                            <p class="help-block">{{ trans('page.concerned_item_help') }}</p>
-                            {!! Form::select('item_id', ['' => ''] + $page->story->items->sortBy('name')->pluck('name', 'id')->toArray(), null, ['class' => 'form-control custom-select itemSelectList', 'size' => 6]) !!}
-                            <div class="alert alert-error hidden"></div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                {!! Form::label('item_id', trans('page.concerned_item'), ['class' => 'control-label mt-2']) !!}
+                            </div>
+                            <div class="card-body">
+                                <p class="help-block">{{ trans('page.concerned_item_help') }}</p>
+                                <div>
+                                    <select class="selectpicker itemSelectList w-100" id="item_id" name="item_id"
+                                        data-header="@lang('item.select_item')" size="6"
+                                        data-live-search="true"
+                                        data-live-search-normalize="true"
+                                        data-none-selected-text="@lang('common.none_selected')">
+                                        @foreach ($page->story->items->sortBy('name') as $item)
+                                            <option value="{{ $item->id }}" data-content='@include('page.js.partials.select_subtext', ['item' => $item])'></option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <p class="help-block">{{ trans('item_page.action_help') }}</p>
-                        <div class="row mb-2">
-                            <div class="col-3">
-                                {!! Form::label('verb', '2. ' . trans('item_page.action'), ['class' => 'control-label mt-2']) !!}
+
+                        <div class="card">
+                            <div class="card-header">
+                                {!! Form::label('verb', trans('item_page.action'), ['class' => 'control-label mt-2']) !!}
                             </div>
-                            <div class="col-9">
-                                {!! Form::select('verb', $actions, null , ['class' => 'form-control']) !!}
+                            <div class="card-body">
+                                <p class="help-block">{{ trans('item_page.action_help') }}</p>
+                                <select class="selectpicker" id="verb" name="verb"
+                                    data-header="@lang('item.select_actions')">
+                                    @foreach ($actions as $key => $action)
+                                        <option value="{{ $key }}">{{ $action }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
-                        <p class="help-block">{{ trans('item_page.quantity_help') }}</p>
-                        <div class="row mb-2">
-                            <div class="col-3">
-                                {!! Form::label('quantity', '3. ' . trans('item_page.quantity'), ['class' => 'control-label mt-2']) !!}
+
+                        <div class="card">
+                            <div class="card-header">
+                                {!! Form::label('quantity', trans('item_page.quantity'), ['class' => 'control-label mt-2']) !!}
                             </div>
-                            <div class="col-9">
+                            <div class="card-body">
+                                <p class="help-block">{{ trans('item_page.quantity_help') }}</p>
                                 {!! Form::number('quantity', 1, ['class' => 'form-control']) !!}
                             </div>
                         </div>
-                        <p class="help-block">{{ trans('item_page.price_help') }}</p>
-                        <div class="row mb-2">
-                            <div class="col-3">
-                                {!! Form::label('price', '4. ' . trans('item_page.price'), ['class' => 'control-label mt-2']) !!}
+
+                        <div class="card">
+                            <div class="card-header">
+                                {!! Form::label('price', trans('item_page.price'), ['class' => 'control-label mt-2']) !!}
                             </div>
-                            <div class="col-9">
+                            <div class="card-body">
+                                <p class="help-block">{{ trans('item_page.price_help') }}</p>
                                 {!! Form::number('price', 1, ['class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="row h-25" id="item_description"></div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                @lang('page.items_on_page')
+                            </div>
+                            <div class="card-body itemsOnPage">
+                                @include('page.partials.item_page_list', ['items' => $page->items])
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {!! Form::close() !!}

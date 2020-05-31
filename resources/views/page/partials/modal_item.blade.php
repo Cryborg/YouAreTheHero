@@ -4,16 +4,20 @@
     <table class="table w-100 table-striped">
         <tbody>
             <tr>
-                <th scope="row" class="w-50">{{ trans('item.price') }}</th>
+                <th scope="row" class="w-50">@lang('item.price')</th>
                 <td>{!! $item->present()->price !!}</td>
             </tr>
             <tr>
-                <th scope="row">{{ trans('item.single_use') }}</th>
+                <th scope="row">@lang('item.single_use')</th>
                 <td>
                     <label>
                         {!! Form::checkbox('single_use', 1, $item->single_use,  ['id' => 'single_use', 'disabled' => true]) !!}
                     </label>
                 </td>
+            </tr>
+            <tr>
+                <th scope="row">@lang('item.size')</th>
+                <td>{{ $item->size }}</td>
             </tr>
             @if ($item->effects->count() > 0)
                 <tr>
