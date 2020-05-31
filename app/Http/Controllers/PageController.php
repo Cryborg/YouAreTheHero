@@ -300,17 +300,26 @@ class PageController extends Controller
 
             $validated['page_id'] = $page->id;
 
-            $attached = $page->items()->syncWithoutDetaching([
-                $validated['item_id'] => [
-                    'verb' => $validated['verb'],
-                    'quantity' => $validated['quantity'],
-                    'price' => $validated['price'],
-                ]
-            ]);
+            try {
+                $attached = $page->items()
+                    ->syncWithoutDetaching([
+                        $validated['item_id'] => [
+                            'verb'     => $validated['verb'],
+                            'quantity' => $validated['quantity'],
+                            'price'    => $validated['price'],
+                        ]
+                    ]);
 
-            return response()->json([
-                'success' => !empty($attached['attached']),
-            ]);
+                return response()->json([
+                    'success' => true,
+                ]);
+            } catch (\Exception $e)
+            {
+                return response()->json([
+                    'success' => false,
+                    'message' => $e->getMessage()
+                ]);
+            }
         }
 
         abort(JsonResponse::HTTP_NOT_FOUND);

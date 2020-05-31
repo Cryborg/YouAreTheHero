@@ -39,7 +39,7 @@
                             <div class="card-body">
                                 <p class="help-block">{{ trans('item_page.action_help') }}</p>
                                 <select class="selectpicker" id="verb" name="verb"
-                                    data-header="@lang('item.select_actions')">
+                                    data-header="@lang('item.select_action')">
                                     @foreach ($actions as $key => $action)
                                         <option value="{{ $key }}">{{ $action }}</option>
                                     @endforeach

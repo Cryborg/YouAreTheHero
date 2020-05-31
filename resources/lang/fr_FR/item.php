@@ -19,4 +19,5 @@ return array (
   'size' => 'Taille/poids',
   'size_help' => 'Taille ou poids de l\'objet. Lorsque l\'option est sélectionnée dans les paramètres de l\'histoire, les objets prennent de la place, ce qui limite le nombre que le joueur peut transporter.',
   'select_item' => 'Sélectionne un objet',
+  'select_action' => 'Choisis une action',
 );
