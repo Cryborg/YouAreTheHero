@@ -11,6 +11,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
 
 class ItemController extends Controller
 {
@@ -81,8 +82,8 @@ class ItemController extends Controller
         $item->story->load('items');
 
         return response()->json([
-            'success'   => $item instanceof Item,
-            'item'      => $item->toArray(),
+            'success'       => $item instanceof Item,
+            'item'          => $item->toArray(),
         ]);
     }
 

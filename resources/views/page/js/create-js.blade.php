@@ -335,7 +335,7 @@
 
         $.post({
             url: route('page.item.store', {{ $page->id }}),
-            data: serialized,
+            data: serialized
         })
             .done(function (data) {
                 if (data.success) {

@@ -278,7 +278,7 @@ class StoryController extends Controller
     {
         $character = Character::find(getSession('character_id'));
 
-        return view('story.inventory', [
+        return view('story.partials.inventory', [
             'character' => $character,
         ]);
 

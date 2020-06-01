@@ -15,4 +15,5 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
   'has_character_help' => 'Si tu veux autoriser tes joueurs à renommer ton personnage principal, coche cette option. Tu pourras afficher ce nom dans les textes de tes pages.',
   'attribution_label' => 'Attribution des points',
   'gain_or_loss' => 'Gain/Perte',
+  'hidden_to_players' => 'N\'apparaît pas au joueur',
 );

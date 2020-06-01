@@ -71,7 +71,7 @@
                     {!! Form::label('genres', trans('story.genres_label')) !!}
                     <p class="help-block">{!! trans('story.genres_help') !!}</p>
                     <select class="selectpicker" title="{{ trans('story.select_genres_placeholder') }}"
-                        size="6" id="genres" name="genres[]" multiple required
+                        data-size="6" id="genres" name="genres[]" multiple required
                         data-live-search="true" data-max-options="5">
                         @foreach($genres as $genre)
                             <option value="{{ $genre->id }}"
@@ -190,7 +190,7 @@
                             </h5>
                             <div class="card-body">
                                 <div class="card-text">
-                                    <select multiple="" class="form-control custom-select itemSelectList" size="12" id="story_item" name="story_item">
+                                    <select multiple="" class="form-control custom-select itemSelectList" size="6" id="story_item" name="story_item">
                                         <option value=""></option>
                                         @foreach ($story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
                                             <option value="{{ $itemId }}">{{ $itemName }}</option>

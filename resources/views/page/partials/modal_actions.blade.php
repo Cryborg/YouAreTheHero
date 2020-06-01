@@ -26,7 +26,7 @@
                             <div class="card-body">
                                 <p class="help-block">@lang('actions.item_help')</p>
 
-                                <select class="form-control custom-select itemSelectList" size="10" id="{{ $context }}_item_id" name="{{ $context }}_item_id">
+                                <select class="form-control custom-select itemSelectList" size="6" id="{{ $context }}_item_id" name="{{ $context }}_item_id">
                                     @foreach ($page->story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
                                         <option value="{{ $itemId }}">{{ $itemName }}</option>
                                     @endforeach

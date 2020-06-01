@@ -1,3 +1,4 @@
+
 <div class="row">
     <div class="col">
         <nav class="nav nav-tabs mb-3">
@@ -20,7 +21,7 @@
                                 <p class="help-block">{{ trans('page.concerned_item_help') }}</p>
                                 <div>
                                     <select class="selectpicker itemSelectList w-100" id="item_id" name="item_id"
-                                        data-header="@lang('item.select_item')" size="6"
+                                        data-header="@lang('item.select_item')" data-size="6"
                                         data-live-search="true"
                                         data-live-search-normalize="true"
                                         data-none-selected-text="@lang('common.none_selected')">

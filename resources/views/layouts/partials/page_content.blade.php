@@ -44,19 +44,19 @@
                             @case ('sell')
                             @case ('give')
                             <div class="pick-item">
-                                @include('story.partials.money', [
+                                @include('story.partials.pick-item', [
                                     'item' => $item,
                                     'icon' => in_array($item->pivot->verb, ['sell','give']) ? 'icon-receive-money' : 'icon-pay-money',
                                 ])
-                                {{--                    @if ($item['item']->effects)--}}
-                                {{--                        @foreach ($item['item']->effects as $effect => $value)--}}
-                                {{--                            @include('story.partials.effects', [--}}
-                                {{--                                'name' => $effect,--}}
-                                {{--                                'value' => $value['quantity'],--}}
-                                {{--                                'operator' => $value['operator'] === '+' ? 'add' : 'sub'--}}
-                                {{--                            ])--}}
-                                {{--                        @endforeach--}}
-                                {{--                    @endif--}}
+                                @if ($item->effects)
+                                    @foreach ($item->effects as $effect => $value)
+                                        @include('story.partials.effects', [
+                                            'name' => $effect,
+                                            'value' => $value['quantity'],
+                                            'operator' => $value['operator'] === '+' ? 'add' : 'sub'
+                                        ])
+                                    @endforeach
+                                @endif
                             </div>
                             @break
                         @endswitch

@@ -62,10 +62,16 @@
                                 <th>{{ trans('field.gain_or_loss') }}</th>
                             </thead>
                             <tbody>
-                                @foreach($story->fields as $stat)
+                                @foreach($story->fields as $field)
                                     <tr>
-                                        <td>{{ $stat->name }}</td>
-                                        <td><input name="stat_values[]" data-id="{{ $stat->id }}" class="mb-1" type="number"></td>
+                                        <td>
+                                            @if ($field->hidden === true)
+                                                <span class="icon-hidden text-red font-bigger mr-2" title="@lang('field.hidden_to_players')"></span>
+                                            @endif
+
+                                            {{ $field->name }}
+                                        </td>
+                                        <td><input name="stat_values[]" data-id="{{ $field->id }}" class="mb-1" type="number"></td>
                                     </tr>
                                 @endforeach
                             </tbody>

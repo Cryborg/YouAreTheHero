@@ -16,9 +16,10 @@
                 });
 
                 // Add the newly created item to existing lists
-                $('.itemSelectList').append(
-                    '<option value="' + data.item.id + '">' + data.item.name + '</option>'
+                $('.selectpicker.itemSelectList').prepend(
+                    '<option value="' + data.item.id + '" selected>' + data.item.name + '</option>'
                 );
+                $('.selectpicker').selectpicker('refresh');
             })
             .fail(function (data) {
                 showToast('error', {
