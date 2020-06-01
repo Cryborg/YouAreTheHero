@@ -10,6 +10,9 @@ class Field extends Model
     use SoftDeletes;
 
     protected $guarded = ['id'];
+    protected $casts = [
+        'hidden' => 'boolean'
+    ];
 
     public function prerequisites()
     {

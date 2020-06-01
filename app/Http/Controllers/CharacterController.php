@@ -46,12 +46,26 @@ class CharacterController extends Controller
             );
 
             if ($fields) {
-                foreach ($fields as $field) {
-                    $character->fields()->attach($field['field_id'], [
-                        'character_id'    => $character->id,
-                        'value' => $field['value'],
-                    ]
-                    );
+                foreach ($story->fields as $storyField) {
+                    if ($storyField->hidden) {
+                        $character->fields()
+                                  ->attach($storyField->id, [
+                                      'character_id' => $character->id,
+                                      'value' => $storyField->min_value
+                                  ]);
+                    }
+                    foreach ($fields as $field) {
+                        if ($field['field_id'] == $storyField->id) {
+                            $character->fields()
+                                      ->attach(
+                                          $field['field_id'],
+                                          [
+                                              'character_id' => $character->id,
+                                              'value'        => $field['value'],
+                                          ]
+                                      );
+                        }
+                    }
                 }
             }
 

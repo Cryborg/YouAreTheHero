@@ -63,8 +63,9 @@
                     data: {
                         'name': $('#name').val(),
                         'short_name': $('#short_name').val(),
+                        'hidden': $('#hidden_field').is(':checked') ? 1 : 0,
                         'min_value': $('#min_value').val(),
-                        'max_value': $('#max_value').val(),
+                        'max_value': $('#max_value').val()
                     }
                 })
                     .done(function (result) {
@@ -74,12 +75,15 @@
                                 '<td><div>' + result.field.short_name + '</div></td>' +
                                 '<td><div>' + result.field.min_value + '</div></td>' +
                                 '<td><div>' + result.field.max_value + '</div></td>' +
-                                '<td><div><span class="icon-trash text-danger deleteCharacterField" data-field_id="' + result.field.id + '"></span></div></td>' +
+                                '<td class="text-center"><div><input type="checkbox" value="1" ' +
+                                    (result.field.hidden ? 'checked' : '') +
+                                '></div></td>' +
+                                '<td class="text-center"><div><span class="icon-trash text-danger deleteCharacterField" data-field_id="' + result.field.id + '"></span></div></td>' +
                                 '</tr>';
                             $('#stats_story').append(html);
 
                             showToast('success', {
-                                heading: '{{ trans('notification.save_success_title') }}',
+                                heading: "{{ trans('notification.save_success_title') }}",
                                 text: "{{ trans('notification.save_success_text') }}",
                             });
 

@@ -118,3 +118,6 @@ button {
 .icon-add:before {
     content: "\e91c";
 }
+.icon-hidden:before {
+    content: "\e91d";
+}

@@ -9,18 +9,20 @@
         <li class="nav-item">
             <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">{{ trans('story.create_tab1') }}</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link @if (!$story instanceof \App\Models\Story) disabled @endif" id="pills-options-tab" data-toggle="pill" href="#pills-options" role="tab"
-                aria-controls="pills-options" aria-selected="false">{{ trans('story.create_tab2') }}</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link @if (!$story instanceof \App\Models\Story) disabled @endif" id="pills-sheet-tab" data-toggle="pill" href="#pills-sheet" role="tab"
-                aria-controls="pills-sheet" aria-selected="false">{{ trans('story.create_tab3') }}</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link @if (!$story instanceof \App\Models\Story) disabled @endif" id="pills-items-tab" data-toggle="pill" href="#pills-items" role="tab"
-                aria-controls="pills-sheet" aria-selected="false">{{ trans('story.create_tab4') }}</a>
-        </li>
+        @if ($story)
+            <li class="nav-item">
+                <a class="nav-link" id="pills-options-tab" data-toggle="pill" href="#pills-options" role="tab"
+                    aria-controls="pills-options" aria-selected="false">{{ trans('story.create_tab2') }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-sheet-tab" data-toggle="pill" href="#pills-sheet" role="tab"
+                    aria-controls="pills-sheet" aria-selected="false">{{ trans('story.create_tab3') }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-items-tab" data-toggle="pill" href="#pills-items" role="tab"
+                    aria-controls="pills-sheet" aria-selected="false">{{ trans('story.create_tab4') }}</a>
+            </li>
+        @endif
         @if ($story && $story->getCurrentPage())
             <li class="nav-item">
                 <button class="btn btn-success h-100 font-default-size" onclick="window.location.href='{{ route('page.edit', ['page' => $story->getCurrentPage()->id]) }}'">
@@ -141,6 +143,7 @@
                         <th>{{ trans('field.short_name') }}</th>
                         <th>{{ trans('field.min_value') }}</th>
                         <th>{{ trans('field.max_value') }}</th>
+                        <th class="text-center">{{ trans('field.hidden') }}</th>
                         <th class="text-center">{{ trans('common.actions') }}</th>
                     </tr>
                 </thead>
@@ -151,6 +154,7 @@
                             <td>{{ $stat->short_name }}</td>
                             <td>{{ $stat->min_value }}</td>
                             <td>{{ $stat->max_value }}</td>
+                            <td class="text-center"><input type="checkbox" @if ($stat->hidden) checked @endif disabled></td>
                             <td class="text-center">
                                 <span class="icon-trash text-danger deleteCharacterField" data-field_id="{{ $stat->id }}"></span>
                             </td>
@@ -163,6 +167,7 @@
                         <th><input class="new_field form-control" type="text" id="short_name" maxlength="5" autocomplete="nope" required></th>
                         <th><input class="new_field form-control" type="number" id="min_value" value="1" required></th>
                         <th><input class="new_field form-control" type="number" id="max_value" value="10" required></th>
+                        <th class="text-center pl-4"><input class="new_field" type="checkbox" id="hidden_field" value="1"></th>
                         <th class="text-center">
                             <span class="btn btn-primary addField">Add</span>
                             <span class="glyphicon glyphicon-plus-sign"></span>

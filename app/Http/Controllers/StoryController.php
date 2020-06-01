@@ -294,9 +294,9 @@ class StoryController extends Controller
         $character = $story->currentCharacter();
 
         return view('story.partials.sheet', [
-            'fields' => $character->fields ?? [],
-        ]
-        );
+            'fields' => $character->fields,
+            'show_hidden_fields' => Auth::id() === $story->user->id
+        ]);
     }
 
     /**
