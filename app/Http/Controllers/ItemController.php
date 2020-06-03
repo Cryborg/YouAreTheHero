@@ -7,6 +7,7 @@ use App\Models\ItemPage;
 use App\Models\Effect;
 use App\Models\Item;
 use App\Models\Page;
+use App\Models\Story;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -15,13 +16,6 @@ use Illuminate\Support\Facades\View;
 
 class ItemController extends Controller
 {
-    public function messages()
-    {
-        return [
-            'name.unique' => 'Raté coco',
-        ];
-    }
-
     /**
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Item         $item
@@ -48,14 +42,15 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = Validator::validate($request->all(), [
-            'name'          => 'required|min:2|unique:items',
-            'default_price' => 'required',
-            'single_use'    => '',
-            'story_id'      => 'required|exists:stories,id',
-            'size'          => 'required|min:0',
-            'effects'       => '',
-        ]);
+        $validated = Validator::validate($request->all(),
+            [
+                'name'          => 'required|min:2',
+                'default_price' => 'required',
+                'single_use'    => '',
+                'story_id'      => 'required|exists:stories,id',
+                'size'          => 'required|min:0',
+                'effects'       => '',
+            ]);
 
         $effects = $validated['effects'] ?? [];
         unset($validated['effects']);
@@ -65,16 +60,14 @@ class ItemController extends Controller
 
         foreach ($effects as $effect) {
             if ($effect['value'] != '') {
-                Effect::updateOrCreate(
-                    [
-                        'field_id' => $effect['id'],
-                        'item_id'  => $item->id,
-                    ],
+                Effect::updateOrCreate([
+                    'field_id' => $effect['id'],
+                    'item_id'  => $item->id,
+                ],
                     [
                         'operator' => '+',
-                        'quantity' => $effect['value']
-                    ]
-                );
+                        'quantity' => $effect['value'],
+                    ]);
             }
         }
 
@@ -82,14 +75,14 @@ class ItemController extends Controller
         $item->story->load('items');
 
         return response()->json([
-            'success'       => $item instanceof Item,
-            'item'          => $item->toArray(),
+            'success' => $item instanceof Item,
+            'item'    => $item->toArray(),
         ]);
     }
 
     public function take(Page $page, Item $item): JsonResponse
     {
-        $isOk = false;
+        $isOk    = false;
         $message = null;
 
         $character = $page->story->currentCharacter();
@@ -119,9 +112,8 @@ class ItemController extends Controller
                             $existingItem->pivot->quantity++;
                             $existingItem->pivot->save();
                         } else {
-                            $character->items()
-                                ->attach([
-                                    $item->id => ['quantity' => $itemPage->quantity ?? 1]
+                            $character->items()->attach([
+                                    $item->id => ['quantity' => $itemPage->quantity ?? 1],
                                 ]);
                         }
 
@@ -144,11 +136,26 @@ class ItemController extends Controller
         }
 
         return response()->json([
-                'result' => $isOk,
-                'money'  => $character->money,
-                'singleuse' => $item->single_use,
-                'message' => $message,
-            ], 200
-        );
+            'result'    => $isOk,
+            'money'     => $character->money,
+            'singleuse' => $item->single_use,
+            'message'   => $message,
+        ],
+            200);
+    }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Story        $story
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function htmlList(Request $request, Story $story)
+    {
+        $validated = $request->validate([
+            'context' => 'required|in:div,select'
+        ]);
+
+        return View::make('page.js.partials.item_list_' . $validated['context'], ['items' => $story->items->sortBy('name')]);
     }
 }

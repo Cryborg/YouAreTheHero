@@ -189,13 +189,8 @@
                                 @lang('story.existing_items')
                             </h5>
                             <div class="card-body">
-                                <div class="card-text">
-                                    <select multiple="" class="form-control custom-select itemSelectList" size="6" id="story_item" name="story_item">
-                                        <option value=""></option>
-                                        @foreach ($story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
-                                            <option value="{{ $itemId }}">{{ $itemName }}</option>
-                                        @endforeach
-                                    </select>
+                                <div class="card-text itemListDiv">
+                                    @include('page.js.partials.item_list_div', ['items' => $story->items])
                                 </div>
                             </div>
                         </div>

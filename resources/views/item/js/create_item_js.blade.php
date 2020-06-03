@@ -15,11 +15,9 @@
                     text: "{{ trans('notification.save_success_text') }}",
                 });
 
-                // Add the newly created item to existing lists
-                $('.selectpicker.itemSelectList').prepend(
-                    '<option value="' + data.item.id + '" selected>' + data.item.name + '</option>'
-                );
-                $('.selectpicker').selectpicker('refresh');
+                // Refresh the items list
+                if ($('.itemListDiv').length > 0) showItemsList('div');
+                if ($('.selectpicker.itemSelectList').length > 0) showItemsList('select');
             })
             .fail(function (data) {
                 showToast('error', {
@@ -56,4 +54,18 @@
         })
     });
     @endfor
+
+    function showItemsList(context) {
+        $.get({
+            url: route('items.html.list', {'story': {{ $story->id }}, 'context': context}),
+        })
+            .done(function (html) {
+                if (context === 'div') {
+                    $('.itemListDiv').html(html);
+                } else {
+                    $('.dropdown.itemSelectList').html(html);
+                    $('.selectpicker').selectpicker();
+                }
+            });
+    }
 </script>

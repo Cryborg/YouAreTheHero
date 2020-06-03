@@ -20,15 +20,7 @@
                             <div class="card-body">
                                 <p class="help-block">{{ trans('page.concerned_item_help') }}</p>
                                 <div>
-                                    <select class="selectpicker itemSelectList w-100" id="item_id" name="item_id"
-                                        data-header="@lang('item.select_item')" data-size="6"
-                                        data-live-search="true"
-                                        data-live-search-normalize="true"
-                                        data-none-selected-text="@lang('common.none_selected')">
-                                        @foreach ($page->story->items->sortBy('name') as $item)
-                                            <option value="{{ $item->id }}" data-content='@include('page.js.partials.select_subtext', ['item' => $item])'></option>
-                                        @endforeach
-                                    </select>
+                                    @include('page.js.partials.item_list_select', ['items' => $story->items])
                                 </div>
                             </div>
                         </div>
