@@ -82,7 +82,7 @@
                         });
 
                         showToast('success', {
-                            heading: '{{ trans('notification.deletion_success_title') }}',
+                            heading: "{{ trans('notification.deletion_success_title') }}",
                             text: "{{ trans('notification.deletion_success_text') }}",
                         });
                     }
@@ -91,7 +91,7 @@
                     console.log('fail');
                     console.log(data);
                     showToast('error', {
-                        heading: '{{ trans('notification.deletion_failed_title') }}',
+                        heading: "{{ trans('notification.deletion_failed_title') }}",
                         text: "{{ trans('notification.deletion_failed_text') }}",
                         errors: data.responseJSON.errors
                     });
@@ -172,7 +172,7 @@
                 .done(function (data) {
                     $('#content-' + currentPageId).html(data.content);
                     showToast('success', {
-                        heading: '{{ trans('notification.save_success_title') }}',
+                        heading: "{{ trans('notification.save_success_title') }}",
                         text: "{{ trans('notification.save_success_text') }}",
                     });
                 })
@@ -256,7 +256,7 @@
                             });
 
                             showToast('success', {
-                                heading: '{{ trans('notification.save_success_title') }}',
+                                heading: "{{ trans('notification.save_success_title') }}",
                                 text: "{{ trans('notification.save_success_text') }}",
                             });
 
@@ -314,13 +314,13 @@
                     render(svg.select("g"), g);
 
                     showToast('success', {
-                        heading: '{{ trans('notification.deletion_success_title') }}',
+                        heading: "{{ trans('notification.deletion_success_title') }}",
                         text: "{{ trans('notification.deletion_success_text') }}",
                     });
                 })
                 .fail(function (data) {
                     showToast('error', {
-                        heading: '{{ trans('notification.deletion_failed_title') }}',
+                        heading: "{{ trans('notification.deletion_failed_title') }}",
                         text: "{{ trans('notification.deletion_failed_text') }}",
                         errors: data.responseJSON.errors
                     });
@@ -341,7 +341,7 @@
                 if (data.success) {
                     // Show the notification
                     showToast('success', {
-                        heading: '{{ trans('notification.save_success_title') }}',
+                        heading: "{{ trans('notification.save_success_title') }}",
                         text: "{{ trans('notification.save_success_text') }}",
                     });
 
@@ -390,7 +390,7 @@
                 if (data.success) {
                     // Show the notification
                     showToast('success', {
-                        heading: '{{ trans('notification.save_success_title') }}',
+                        heading: "{{ trans('notification.save_success_title') }}",
                         text: "{{ trans('notification.save_success_text') }}",
                     });
 
@@ -461,13 +461,13 @@
                 displayActions();
 
                 showToast('success', {
-                    heading: '{{ trans('notification.deletion_success_title') }}',
+                    heading: "{{ trans('notification.deletion_success_title') }}",
                     text: "{{ trans('notification.deletion_success_text') }}",
                 });
             })
             .fail(function (data) {
                 showToast('error', {
-                    heading: '{{ trans('notification.deletion_failed_title') }}',
+                    heading: "{{ trans('notification.deletion_failed_title') }}",
                     text: "{{ trans('notification.deletion_failed_text') }}",
                     errors: data.responseJSON.errors
                 });
@@ -495,13 +495,13 @@
                 $this.parents('tr').remove();
 
                 showToast('success', {
-                    heading: '{{ trans('notification.deletion_success_title') }}',
+                    heading: "{{ trans('notification.deletion_success_title') }}",
                     text: "{{ trans('notification.deletion_success_text') }}",
                 });
             })
             .fail(function (data) {
                 showToast('error', {
-                    heading: '{{ trans('notification.deletion_failed_title') }}',
+                    heading: "{{ trans('notification.deletion_failed_title') }}",
                     text: "{{ trans('notification.deletion_failed_text') }}",
                     errors: data.responseJSON.errors
                 });

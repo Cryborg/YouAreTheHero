@@ -11,7 +11,7 @@
         })
             .done(function (data) {
                 showToast('success', {
-                    heading: '{{ trans('notification.save_success_title') }}',
+                    heading: "{{ trans('notification.save_success_title') }}",
                     text: "{{ trans('notification.save_success_text') }}",
                 });
 

@@ -17,6 +17,7 @@
                                 <li>Items creation during story creation</li>
                                 <li>Clickable items for inline descriptions</li>
                                 <li>New look for the stories list page</li>
+                                <li>Players can report errors found on a page</li>
                             </ul>
                         </ul>
                     </fieldset>
