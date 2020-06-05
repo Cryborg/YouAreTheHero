@@ -484,17 +484,23 @@ namespace App\Models{
  * @property string $comment
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Page|null $page
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read \App\Models\Page $page
+ * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report newQuery()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Report onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report whereComment($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report whereErrorType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report wherePageId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report whereUserId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Report withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Report withoutTrashed()
  */
 	class Report extends \Eloquent {}
 }
