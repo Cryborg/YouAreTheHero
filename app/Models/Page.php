@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Validator;
 use Laracasts\Presenter\PresentableTrait;
 
 class Page extends Model
@@ -126,4 +125,8 @@ class Page extends Model
         return $this->trigger()->where('actionable_type', 'field')->with('actionable');
     }
 
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
+    }
 }

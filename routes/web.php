@@ -109,3 +109,8 @@ Route::post('/action/{page}/field/{field}/create', 'ActionController@createField
 Route::post('/action/{page}/item/{item}/create', 'ActionController@createItem')->name('action.item.create');
 Route::get('/actions/{page}', 'ActionController@listjs')->name('action.listjs');
 Route::delete('/action/{action}/delete', 'ActionController@delete')->name('action.delete');
+
+// Reports
+Route::post('/report/{page}/create', 'ReportController@store')->name('report.store');
+Route::get('/reports/{story}/list', 'ReportController@index')->name('reports.list');
+Route::delete('/report/{report}/delete', 'ReportController@destroy')->name('report.delete');

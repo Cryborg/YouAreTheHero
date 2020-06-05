@@ -11,7 +11,7 @@
                 <th>@lang('common.id')</th>
                 <th>@lang('common.actions')</th>
                 <th>@lang('story.title')</th>
-                <th>@lang('story.number_pages')</th>
+                <th>@lang('story.number_pages') (@lang('page.report_count')</th>
             </tr>
         </thead>
         <tbody>
@@ -38,7 +38,11 @@
                         </div>
                     </td>
                     <td class="w-50">{{ $story->title }}</td>
-                    <td>{{ $story->pages()->count() }}</td>
+                    <td>{{ $story->pages()->count() }}
+                        @if ($story->reports()->count() > 0)
+                            (<a href="{{ route('reports.list', ['story' => $story]) }}">{{ $story->reports()->count() }}</a>)
+                        @endif
+                    </td>
                 </tr>
             @endforeach
         </tbody>

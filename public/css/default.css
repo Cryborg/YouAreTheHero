@@ -340,3 +340,8 @@ div.height-big {
 .highlight-hover:hover {
     background-color: #eee;
 }
+.fixed-bottom.report-btn {
+    width: 250px;
+    bottom: 5px;
+    left: 5px;
+}

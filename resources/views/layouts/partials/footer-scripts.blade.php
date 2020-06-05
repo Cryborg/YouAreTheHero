@@ -55,7 +55,7 @@
     ;
 
     // Put a spinner on buttons, but only if they have the 'original-text' data attribute.
-    $(document).on('click', function(element) {
+    $(document).on('click', 'button', function(element) {
         var $this = $(element.target);
 
         if (typeof $this.data('original-text') != 'undefined') {
@@ -67,6 +67,10 @@
                 $this.prop('disabled', true);
             }
         }
+    });
+
+    $(document).on('hide.bs.modal', function (event) {
+        $(this).find('button').prop('disabled', false);
     });
 
     function resetLoader($button)

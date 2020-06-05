@@ -134,4 +134,9 @@ class Story extends Model
         return Character::where('user_id', Auth::id())
             ->where('story_id', $this->id)->first();
     }
+
+    public function reports()
+    {
+        return $this->hasManyThrough(Report::class, Page::class);
+    }
 }

@@ -11,8 +11,6 @@
     }
 
     $(document).on('show.bs.modal', '#modalDescriptions', function (event) {
-        var $this = $(this);
-
         $('#modalDescriptions .modal-body').html('');
         $('.summernote').summernote(summernoteOptionsLight);
 

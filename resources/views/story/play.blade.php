@@ -11,6 +11,38 @@
 @push('footer-scripts')
     <script type="text/javascript">
         $(document).ready(function () {
+            $(document).on('click', '#add_PageReport', function () {
+                var $this = $(this);
+                var type = $('#modalPageReport #report_error_type option:selected').val();
+                var comment = $('#modalPageReport #report_comment').val();
+
+                $.post({
+                    url: route('report.store', {page: {{ $page->id }} }),
+                    data: {
+                        'error_type': type,
+                        'comment': comment
+                    }
+                })
+                    .done(function (data) {
+                        if (data.success) {
+                            showToast('success', {
+                                heading: '{{ trans('notification.save_success_title') }}',
+                                text: "{{ trans('notification.save_success_text') }}",
+                            });
+                        } else {
+                            showToast('error', {
+                                heading: '{{ trans('notification.save_failed_title') }}',
+                                text: "{{ trans('notification.save_failed_text') }}",
+                            });
+                        }
+                    })
+                    .fail(function (data) {
+                        showToast('error', {
+                            heading: '{{ trans('notification.save_failed_title') }}',
+                            text: "{{ trans('notification.save_failed_text') }}",
+                        });
+                    });
+            });
 
             // Ajax links
             $(document).on('click', 'a', function () {

@@ -44,4 +44,6 @@ return array (
   'yes' => 'Oui',
   'no' => 'Non',
   'none_selected' => 'Aucune sélection',
+  'created_at' => 'Date de création',
+  'created_by' => 'Créé par',
 );

@@ -89,6 +89,9 @@
         <nav class="nav nav-pills mb-2">
             <a class="nav-item nav-link active text-white" href="#p1" data-toggle="tab">@lang('story.tree')</a>
             <a class="nav-item nav-link text-white" href="#p2" data-toggle="tab">@lang('page.settings')</a>
+            @if ($page->reports()->count() > 0)
+                <a class="nav-item nav-link text-white" href="#p3" data-toggle="tab">@lang('page.reports')</a>
+            @endif
         </nav>
         <div class="tab-content">
             <div class="tab-pane svg-container active" id="p1">

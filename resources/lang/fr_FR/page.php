@@ -69,4 +69,10 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
   'bonus_label' => 'Bonus / Malus',
   'current_page_item_page_help' => 'Choisis ou crée des objets à placer dans la page, avec lesquels le joueur pourra interagir.',
   'items_on_page' => 'Objets déjà sur la page',
+  'report_page' => 'Page concernée',
+  'reports_list_title' => 'Liste des rapports d\'erreurs',
+  'report_error_type_spelling' => 'Orthographe',
+  'report_error_type_other' => 'Autre',
+  'report_error_type' => 'Type d\'erreur',
+  'report_comment' => 'Commentaire',
 );

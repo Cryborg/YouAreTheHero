@@ -11,7 +11,7 @@
                 </button>
             </div>
             <div class="modal-body shadow-sm h-50">
-                @if (in_array($context, ['prerequisites', 'item_page', 'riddles', 'add_choice', 'edit_choice', 'add_actions']))
+                @if (in_array($context, ['prerequisites', 'item_page', 'riddles', 'add_choice', 'edit_choice', 'add_actions', 'report']))
                     @include($template, ['page' => $data['page']])
                 @endif
             </div>

@@ -44,4 +44,6 @@ return array (
   'no' => 'No',
   'yes' => 'Yes',
   'none_selected' => 'No selection',
+  'created_at' => 'Creation date',
+  'created_by' => 'Created by',
 );

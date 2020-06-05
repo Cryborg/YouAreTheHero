@@ -18,6 +18,7 @@ namespace App\Models{
  * @property int $story_id
  * @property string $name
  * @property string $short_name
+ * @property bool $hidden
  * @property int $min_value
  * @property int $max_value
  * @property int $start_value
@@ -34,6 +35,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Field query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Field whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Field whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Field whereHidden($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Field whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Field whereMaxValue($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Field whereMinValue($value)
@@ -71,13 +73,12 @@ namespace App\Models{
  * @property string $verb
  * @property int $quantity
  * @property int|null $price
- * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \App\Models\Item $item
+ * @property-read \App\Models\Page $page
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage newQuery()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\ItemPage onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage whereItemId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage wherePageId($value)
@@ -437,6 +438,8 @@ namespace App\Models{
  * @property-read int|null $items_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[] $pages
  * @property-read int|null $pages_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Report[] $reports
+ * @property-read int|null $reports_count
  * @property-read \App\Models\StoryOption|null $story_options
  * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Story newModelQuery()
@@ -468,6 +471,32 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ActionCharacter query()
  */
 	class ActionCharacter extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Report
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $page_id
+ * @property string $error_type
+ * @property string $comment
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Page|null $page
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report whereComment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report whereErrorType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report wherePageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Report whereUserId($value)
+ */
+	class Report extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -565,6 +594,8 @@ namespace App\Models{
  * @property-read int|null $items_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[] $parents
  * @property-read int|null $parents_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Report[] $reports
+ * @property-read int|null $reports_count
  * @property-read \App\Models\Riddle|null $riddle
  * @property-read \App\Models\Story $story
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Action[] $trigger

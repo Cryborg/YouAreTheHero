@@ -47,4 +47,20 @@
 
         </div>
     </div>
+
+    <div class="fixed-bottom btn btn-danger report-btn" data-toggle="modal" data-target="#modalPageReport">@lang('page.report_button')</div>
+
+    <!-- Modal add choice -->
+    @include('page.partials.modal_model', [
+        'template' => 'page.partials.modal_report',
+        'context' => 'report',
+        'title' => trans('page.report_modal_title'),
+        'icon' => 'icon-choice',
+        'big' => false,
+        'data' => [
+            'page' => $page,
+            'id' => 'PageReport',
+            'btn_add_text' => trans('common.save')
+        ]
+    ])
 @endsection

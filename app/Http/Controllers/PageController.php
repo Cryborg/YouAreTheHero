@@ -73,11 +73,6 @@ class PageController extends Controller
     {
         $this->authorize('view', $page);
 
-        // Create a tree with the closest parents, children and siblings of the current page
-        $family = [];
-        $parents = $page->parents;
-        $children = $page->choices;
-
         $view = View::make('page.create', [
             'title' => $page->story->title,
             'story' => $page->story,
@@ -94,7 +89,7 @@ class PageController extends Controller
                 'give' => trans('item_page.give'),
             ],
 
-            'contexts' => ['item_page', 'add_actions', 'prerequisites', 'riddle', 'story_creation'],
+            'contexts' => ['item_page', 'add_actions', 'prerequisites', 'riddle', 'story_creation', 'report'],
 
             'placeholders' => $this->placeholders,
         ]);
