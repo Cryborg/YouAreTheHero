@@ -135,6 +135,15 @@
                     </div>
                 </div>
             </div>
+            <div class="card">
+                <div class="card-header">
+                    @lang('story.inventory_slots')
+                </div>
+                <div class="card-body">
+                    <p class="help-block">@lang('story.inventory_slots_help')</p>
+                    {!! Form::number('inventory_slots', $story->story_options->inventory_slots, ['class' => 'form-control', 'min' => 0, 'id' => 'inventory_slots']) !!}
+                </div>
+            </div>
 
 
 {{--            EN ATTENTE DES LANCERS DE DéS            --}}

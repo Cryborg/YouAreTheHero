@@ -39,4 +39,6 @@ return array (
   'popovers_modal_title' => 'Descriptions',
   'play' => 'Start',
   'confirm_delete' => 'Are you sure you want to delete this story?',
+  'inventory_slots' => 'Inventory slots',
+  'inventory_slots_help' => 'This is how much the character can carry. It can be a weight or a size, each item having its own.',
 );

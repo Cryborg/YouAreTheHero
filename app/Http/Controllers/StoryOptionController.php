@@ -34,6 +34,10 @@ class StoryOptionController extends Controller
                 $option = 'stat_attribution';
                 $value = 'dice';
                 break;
+            case 'inventory_slots':
+                $option = 'inventory_slots';
+                $value = $request->get('value');
+                break;
         }
 
         $success = $story->story_options()->updateOrCreate(['story_id' => $story->id], [

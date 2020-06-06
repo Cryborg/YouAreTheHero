@@ -40,4 +40,6 @@ return array (
   'play' => 'Commencer',
   'confirm_delete' => 'Etes-vous sûr(e) de vouloir supprimer cette histoire ?',
   'author' => 'Auteur',
+  'inventory_slots' => 'Place dans l\'inventaire',
+  'inventory_slots_help' => 'Combien le personnage pourra porter ? Ce peut être un poids ou une taille, chaque objet ayant son propre attribut.',
 );

@@ -1,4 +1,6 @@
 <script type="text/javascript">
+    var storyId = {{ $story->id }};
+
     $(document).ready(function () {
         function checkForm() {
             var correct = true;
@@ -59,7 +61,7 @@
         $(document).on('click', '.addField', function () {
             if (checkForm()) {
                 $.post({
-                    url: route('field.store', {'story': {{ $story->id }} }),
+                    url: route('field.store', {'story': storyId}),
                     data: {
                         'name': $('#name').val(),
                         'short_name': $('#short_name').val(),
@@ -99,9 +101,6 @@
                             text: "{{ trans('notification.save_failed_text') }}",
                             errors: data.responseJSON.errors
                         });
-                    })
-                    .always(function () {
-
                     });
             }
         });
@@ -111,27 +110,34 @@
             var id = $this.attr('id');
             var value = $('#' + id).is(':checked');
 
-            $.post({
-                url: route('story.options.post', {'story': {{ $story->id }} }),
-                data: {option: id, value: value}
-            })
-                .done(function (data) {
-                    if (data.success) {
-                        showToast('success', {
-                            heading: "{{ trans('notification.save_success_title') }}",
-                            text: "{{ trans('notification.save_success_text') }}",
-                        });
-                    }
-                })
-                .fail(function (data) {
-                    showToast('error', {
-                        heading: '{{ trans('notification.save_failed_title') }}',
-                        text: "{{ trans('notification.save_failed_text') }}",
-                        errors: data.responseJSON.errors
-                    });
-                })
-                .always(function () {
-                });
+            saveOption(id, value);
         });
     });
+
+    $(document).on('blur', '#inventory_slots', function () {
+        var $this = $(this);
+
+        saveOption('inventory_slots', $this.val());
+    });
+
+    function saveOption(id, value) {
+        $.post({
+            url: route('story.options.post', {'story': storyId}),
+            data: {option: id, value: value}
+        })
+        .done(function (data) {
+            if (data.success) {
+                showToast('success', {
+                    heading: "{{ trans('notification.save_success_title') }}",
+                    text: "{{ trans('notification.save_success_text') }}"
+                });
+            }
+        })
+        .fail(function (data) {
+            showToast('error', {
+                heading: "{{ trans('notification.save_failed_title') }}",
+                text: "{{ trans('notification.save_failed_text') }}"
+            });
+        });
+    }
 </script>
