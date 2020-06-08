@@ -1,24 +1,14 @@
-<div class="row">
-    <div class="col">
-        <div class="card">
-            <div class="card-header">
-                @lang('common.money')@lang(':') {{ $character->money }}
+@foreach ($character->items as $item)
+    <div data-toggle="popover" data-trigger="hover" data-content="">
+        @if ($item->pivot->quantity > 1)
+            {{ $item->pivot->quantity }} *
+        @endif
+        <a class="clickable itemThrowAwayMenu" data-id="popup-{{ $item->id }}"
+            data-itemid="{{ $item->id }}">
+            {{ $item->name }}
+            <div class="popup-menu border border-dark" style="display:none" data-popupid="popup-{{ $item->id }}">
+                <div class="highlight-hover p-2 clickable itemThrowAway">@lang('item.throw_away')</div>
             </div>
-            <div class="card-header">
-                @lang('common.inventory')
-            </div>
-            <div class="card-body">
-                <ul>
-                    @foreach ($character->items as $item)
-                        <li data-toggle="popover" data-trigger="hover" data-content="">
-                            @if ($item->pivot->quantity > 1)
-                                {{ $item->pivot->quantity }} *
-                            @endif
-                            {{ $item->name }}
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
+        </a>
     </div>
-</div>
+@endforeach

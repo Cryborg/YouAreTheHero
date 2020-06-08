@@ -75,4 +75,7 @@ This links to the page with the title:<br><i>:choice_title</i>',
   'report_error_type_other' => 'Other',
   'report_error_type' => 'Error type',
   'report_comment' => 'Comment',
+  'report_button' => 'Report an error',
+  'report_count' => 'Reports count',
+  'report_modal_title' => 'Report an error on this page',
 );

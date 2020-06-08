@@ -23,8 +23,12 @@ class CreateItemPageTable extends Migration
             $table->foreign('page_id')->references('id')->on('pages');
 
             $table->string('verb');
-            $table->integer('quantity')->default(1);
+            $table->integer('quantity')->nullable();
             $table->integer('price')->nullable();
+
+            $table->unsignedBigInteger('character_id')->nullable()->default(null)
+                ->comment('Only used when a character drops an item from his inventory.');
+            $table->foreign('character_id')->references('id')->on('characters');
         });
     }
 

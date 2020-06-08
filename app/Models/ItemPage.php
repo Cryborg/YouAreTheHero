@@ -10,14 +10,14 @@ use App\Presenters\ItemPagePresenter;
 class ItemPage extends Model
 {
     use PresentableTrait;
-    use SoftDeletes;
 
-    protected $presenter = ItemPagePresenter::class;
+    protected $presenter  = ItemPagePresenter::class;
 
-    protected $guarded = ['id'];
-    protected $table = 'item_page';
+    protected $guarded    = ['id'];
 
-    public $timestamps = false;
+    protected $table      = 'item_page';
+
+    public    $timestamps = false;
 
     public function item()
     {
@@ -27,5 +27,10 @@ class ItemPage extends Model
     public function page()
     {
         return $this->belongsTo(Page::class);
+    }
+
+    public function character()
+    {
+        return $this->belongsTo(Character::class);
     }
 }

@@ -158,4 +158,18 @@ class ItemController extends Controller
 
         return View::make('page.js.partials.item_list_' . $validated['context'], ['items' => $story->items->sortBy('name')]);
     }
+
+    public function throwAway(Item $item)
+    {
+        $character = $item->story->currentCharacter();
+
+        if ($item->single_use) {
+            $detached = $character->items()->detach($item);
+
+            return response()->json([
+               'refreshInventory' => $detached,
+               'refreshContent' => $detached,
+            ]);
+        }
+    }
 }

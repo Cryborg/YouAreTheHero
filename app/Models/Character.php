@@ -14,14 +14,13 @@ class Character extends Model
 
     protected $presenter = CharacterPresenter::class;
 
-    protected $guarded = ['id'];
-
+    protected $guarded   = ['id'];
 
     public static function boot()
     {
         parent::boot();
 
-        static::deleting(function($character) { // before delete() method call this
+        static::deleting(function ($character) { // before delete() method call this
             $character->items()->detach();
             $character->riddles()->detach();
             $character->fields()->detach();

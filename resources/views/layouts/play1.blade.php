@@ -4,20 +4,24 @@
     <div class="row h-100">
         <div class="col-lg-2 col-xs-12">
             <div class="card">
-                <h5 class="card-header">
+                <div class="card-header">
                     <span class="icon-backpack display-5 mr-2"></span>
                     @lang('common.inventory')
-                </h5>
-                <div class="card-body">
-                    <div class="card-text inventory-block">
-                        @yield('inventory')
-                    </div>
+                </div>
+                <div class="card-header">
+                    @lang('common.money')@lang(':') {{ $character->money }}
+                </div>
+                <div class="card-header">
+                    @lang('common.inventory')
+                </div>
+                <div class="card-body inventory-block">
+                    @yield('inventory')
                 </div>
             </div>
         </div>
-
-        @include('layouts.partials.page_content', ['page' => $page])
-
+        <div class="col col-xs-12" id="page_content">
+            @include('layouts.partials.page_content', ['page' => $page])
+        </div>
         <div class="col-lg-3 col-xs-12">
             @isset($page->story->story_options->has_stats)
                 <div class="card">
@@ -32,7 +36,6 @@
                     </div>
                 </div>
             @endisset
-
             <div class="card">
                 <h5 class="card-header">
                     <span class="icon-treasure-map display-5 mr-2"></span>
@@ -44,7 +47,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 

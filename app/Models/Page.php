@@ -39,9 +39,18 @@ class Page extends Model
         return $this->belongsTo(Story::class);
     }
 
+    /**
+     * Show items in pages
+     * Except when there is a character_id that is different from the Auth::id()
+     * because that would mean the item has been thrown away by another character
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function items()
     {
-        return $this->belongsToMany(Item::class)->withPivot(['id', 'verb', 'quantity', 'price']);
+        return $this->belongsToMany(Item::class)->withPivot(['id', 'verb', 'quantity', 'price', 'character_id'])
+            ->wherePivot('character_id', null)
+            ->orWherePivot('character_id', getSession('character_id'));
     }
 
     /**

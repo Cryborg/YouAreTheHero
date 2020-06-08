@@ -45,7 +45,7 @@
                     });
                 }
                 g.setEdge({{ $page->id }}, data.page.id, {
-                    label: 'bouh',
+                    label: $parent.find('#link_text').val(),
                 });
                 render(svg.select("g"), g);
 

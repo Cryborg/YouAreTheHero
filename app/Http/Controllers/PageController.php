@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Character;
+use App\Models\CharacterItem;
 use App\Models\Inventory;
 use App\Models\Item;
 use App\Models\Page;
@@ -16,7 +18,6 @@ use Illuminate\Support\Facades\View;
 class PageController extends Controller
 {
     private $placeholders;
-
 
     public function __construct()
     {
@@ -39,26 +40,26 @@ class PageController extends Controller
         $redirect = null;
 
         if ($page === null) {
-            $page = factory(Page::class)->create([
-                'story_id' => $story->id
+            $page     = factory(Page::class)->create([
+                'story_id' => $story->id,
             ]);
             $redirect = route('page.edit', ['page' => $page]);
         }
 
-        $pageFromId = (int) $request->get('page_from', 0);
+        $pageFromId = (int)$request->get('page_from', 0);
 
         // Create the link between the two pages
         if ($pageFromId > 0) {
-            $page->parents()
-                 ->attach($pageFromId, [
-                     'link_text' => $request->get('link_text')
-                 ]);
+            $page->parents()->attach($pageFromId,
+                    [
+                        'link_text' => $request->get('link_text'),
+                    ]);
 
             Cache::forget('choices_' . $pageFromId);
         }
 
         return response()->json([
-            'page' => $page,
+            'page'     => $page,
             'redirect' => $redirect,
         ]);
     }
@@ -73,26 +74,27 @@ class PageController extends Controller
     {
         $this->authorize('view', $page);
 
-        $view = View::make('page.create', [
-            'title' => $page->story->title,
-            'story' => $page->story,
-            'page' => $page,
-            'layouts' => [
-                'play1' => 'Premier layout (ok)',
-                'play2' => 'Deuxième layout (pour test)',
-            ],
-            'locales' => getLanguages(),
-            'actions' => [
-                'take' => trans('item_page.take'),
-                'buy' => trans('item_page.buy'),
-                'sell' => trans('item_page.sell'),
-                'give' => trans('item_page.give'),
-            ],
+        $view = View::make('page.create',
+            [
+                'title'   => $page->story->title,
+                'story'   => $page->story,
+                'page'    => $page,
+                'layouts' => [
+                    'play1' => 'Premier layout (ok)',
+                    'play2' => 'Deuxième layout (pour test)',
+                ],
+                'locales' => getLanguages(),
+                'actions' => [
+                    'take' => trans('item_page.take'),
+                    'buy'  => trans('item_page.buy'),
+                    'sell' => trans('item_page.sell'),
+                    'give' => trans('item_page.give'),
+                ],
 
-            'contexts' => ['item_page', 'add_actions', 'prerequisites', 'riddle', 'story_creation', 'report'],
+                'contexts' => ['item_page', 'add_actions', 'prerequisites', 'riddle', 'story_creation', 'report'],
 
-            'placeholders' => $this->placeholders,
-        ]);
+                'placeholders' => $this->placeholders,
+            ]);
 
         return $view;
     }
@@ -143,15 +145,15 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postRiddle (Request $request, Page $page): ?JsonResponse
+    public function postRiddle(Request $request, Page $page): ?JsonResponse
     {
         if ($request->ajax()) {
             $this->authorize('edit', $page);
 
-            $answerIsCorrect = strtolower(trim($request->get('answer'))) === strtolower(trim($page->riddle->answer));
-            $storySession = Session::get('story');
-            $itemResponse = null;
-            $pageResponse = null;
+            $answerIsCorrect = strtolower(trim($request->post('answer'))) === strtolower(trim($page->riddle->answer));
+            $storySession    = Session::get('story');
+            $itemResponse    = null;
+            $pageResponse    = null;
 
             if ($answerIsCorrect) {
                 // If the player earns an item
@@ -159,37 +161,38 @@ class PageController extends Controller
                     $itemResponse = trans('page.riddle_item_earned', ['item_name' => $page->riddle->item->name]);
 
                     if ($page->riddle->item_id) {
-                        Inventory::create(
-                            [
-                                'character_id' => $storySession['character_id'],
-                                'item_id'      => $page->riddle->item_id,
-                                'quantity'     => 1,
-                            ]
-                        );
+                        $character = Character::find($storySession['character_id']);
+                        $character->items()->attach([
+                                'item_id'  => $page->riddle->item_id,
+                                'quantity' => 1,
+                            ]);
                     }
                 }
 
                 // If it unlocks a new page
                 //FIXME: Moche, mettre ça dans un partial
                 if ($page->riddle && $page->riddle->target_page_id) {
-                    $pageResponse = '<div class="choices-links button-group"><a data-href="' . route('story.play', ['story' => $page->story->id, 'page' => $page->id]) . '">
+                    $pageResponse = '<div class="choices-links button-group"><a data-href="' . route('story.play',
+                            ['story' => $page->story->id, 'page' => $page->id]) . '">
                         <button class="large button">' . $page->riddle->target_page_text . '</button>
                     </a></div>';
                     $itemResponse = trans('page.riddle_already_solved');
                 }
 
                 // Flag the riddle as answered for this character
-                $page->riddle->character()->attach($storySession['character_id'], [
-                    'riddle_id' => $page->riddle->id
-                ]);
+                $page->riddle->character()->attach($storySession['character_id'],
+                    [
+                        'riddle_id' => $page->riddle->id,
+                    ]);
             }
 
             return response()->json([
-                'success' => $answerIsCorrect,
-                'itemResponse' => $itemResponse,
-                'pageResponse' => $pageResponse,
-                'solved' => $page->riddle ? $page->riddle->isSolved() : 'bouh',
-                'refreshInventory' => $page->riddle && (isset($page->riddle->item_id) || isset($page->riddle->target_page_id)),
+                'success'          => $answerIsCorrect,
+                'itemResponse'     => $itemResponse,
+                'pageResponse'     => $pageResponse,
+                'solved'           => $page->riddle ? $page->riddle->isSolved() : 'bouh',
+                'refreshInventory' => $page->riddle && $page->riddle->item_id,
+                'refreshChoices'   => $page->riddle && $page->riddle->target_page_id,
             ]);
         }
 
@@ -203,7 +206,7 @@ class PageController extends Controller
 
             $success = true;
             $message = null;
-            $story = $page->story;
+            $story   = $page->story;
 
             try {
                 $page->delete();
@@ -213,9 +216,9 @@ class PageController extends Controller
             }
 
             return response()->json([
-                'success' => $success,
-                'message' => $message,
-                'redirectTo' => route('page.edit', ['page' => $story->getLastCreatedPage()])
+                'success'    => $success,
+                'message'    => $message,
+                'redirectTo' => route('page.edit', ['page' => $story->getLastCreatedPage()]),
             ]);
         }
 
@@ -240,9 +243,9 @@ class PageController extends Controller
             Cache::forget('choices_' . $pageFrom->id);
 
             return response()->json([
-                'success' => $success,
-                'message' => $message,
-                'page' => $page->id,
+                'success'  => $success,
+                'message'  => $message,
+                'page'     => $page->id,
                 'pageFrom' => $pageFrom->id,
             ]);
         }
@@ -252,9 +255,10 @@ class PageController extends Controller
 
     public function list(Story $story)
     {
-        $view = View::make('page.partials.modal_list_pages', [
-            'pages' => $story->pages->sortBy('created_at')->sortByDesc('is_first')->sortBy('is_last'),
-        ]);
+        $view = View::make('page.partials.modal_list_pages',
+            [
+                'pages' => $story->pages->sortBy('created_at')->sortByDesc('is_first')->sortBy('is_last'),
+            ]);
 
         return $view;
     }
@@ -271,15 +275,16 @@ class PageController extends Controller
 
         $this->getFilteredChoicesFromPage($page, $character);
 
-        return view('story.partials.choices', [
-            'page'  => $page,
-        ]);
+        return view('story.partials.choices',
+            [
+                'page' => $page,
+            ]);
     }
 
     public function deleteItem(Page $page, Item $item, string $verb)
     {
         return response()->json([
-           'success' => $page->items()->wherePivot('verb', $verb)->detach($item->id)
+            'success' => $page->items()->wherePivot('verb', $verb)->detach($item->id),
         ]);
     }
 
@@ -296,23 +301,21 @@ class PageController extends Controller
             $validated['page_id'] = $page->id;
 
             try {
-                $attached = $page->items()
-                    ->syncWithoutDetaching([
+                $attached = $page->items()->syncWithoutDetaching([
                         $validated['item_id'] => [
                             'verb'     => $validated['verb'],
                             'quantity' => $validated['quantity'],
                             'price'    => $validated['price'],
-                        ]
+                        ],
                     ]);
 
                 return response()->json([
                     'success' => true,
                 ]);
-            } catch (\Exception $e)
-            {
+            } catch (\Exception $e) {
                 return response()->json([
                     'success' => false,
-                    'message' => $e->getMessage()
+                    'message' => $e->getMessage(),
                 ]);
             }
         }

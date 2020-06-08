@@ -25,14 +25,16 @@ class Action
 
         // Add the item to the character inventory
         // or increase the quantity if it already exists
-        //$item = $character->items->where(-e($value))
-        $inventory = Inventory::firstOrNew([
-            'character_id' => $character->id,
-            'item_id' => $item->id,
-        ]);
-
-        ++$inventory->quantity;
-        $inventory->save();
+        $item = $character->items->where('item_id', $item->id)->first();
+        $item->pivot->quantity++;
+        $item->save();
+//        $inventory = Inventory::firstOrNew([
+//            'character_id' => $character->id,
+//            'item_id' => $item->id,
+//        ]);
+//
+//        ++$inventory->quantity;
+//        $inventory->save();
 
         return true;
     }

@@ -75,4 +75,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
   'report_error_type_other' => 'Autre',
   'report_error_type' => 'Type d\'erreur',
   'report_comment' => 'Commentaire',
+  'report_modal_title' => 'Signaler une erreur sur cette page',
+  'report_count' => 'Nombre de signalements',
+  'report_button' => 'Signaler une erreur',
 );

@@ -20,4 +20,5 @@ return array (
   'size_help' => 'This is the size or weight of the object, it will affect the room left in the inventory if the option is set for this story.',
   'select_item' => 'Select an item',
   'select_action' => 'Select an action',
+  'throw_away' => 'Throw away',
 );
