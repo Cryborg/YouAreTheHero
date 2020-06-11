@@ -1,6 +1,6 @@
 <div class="row is-page">
     {!! Form::hidden('page_from', $page->id, ['class' => 'is-page-from', 'data-page-from' => $page_from ?? 0]) !!}
-    <div class="col-lg-8 col-xs-12">
+    <div class="col-lg-6 col-xs-12">
         <div class="row">
             <div class="col">
                 @info({!! trans('page.current_page_help') !!})
@@ -85,7 +85,7 @@
         </div>
     </div>
 
-    <div class="col-lg-4 col-xs-12 bg-primary pt-2">
+    <div class="col-lg-6 col-xs-12 bg-primary pt-2">
         <nav class="nav nav-pills mb-2">
             <a class="nav-item nav-link active text-white" href="#p1" data-toggle="tab">@lang('story.tree')</a>
             <a class="nav-item nav-link text-white" href="#p2" data-toggle="tab">@lang('page.settings')</a>

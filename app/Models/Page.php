@@ -48,9 +48,14 @@ class Page extends Model
      */
     public function items()
     {
-        return $this->belongsToMany(Item::class)->withPivot(['id', 'verb', 'quantity', 'price', 'character_id'])
-            ->wherePivot('character_id', null)
-            ->orWherePivot('character_id', getSession('character_id'));
+        $query = $this->belongsToMany(Item::class)->withPivot(['id', 'verb', 'quantity', 'price', 'character_id'])
+            ->wherePivot('character_id', null);
+
+        if (!empty(getSession('character_id'))) {
+            $query->orWherePivot('character_id', getSession('character_id'));
+        }
+
+        return $query;
     }
 
     /**

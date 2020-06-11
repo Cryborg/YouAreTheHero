@@ -71,22 +71,22 @@ namespace App\Models{
  * @property int $item_id
  * @property int $page_id
  * @property string $verb
- * @property int $quantity
+ * @property int|null $quantity
  * @property int|null $price
+ * @property int|null $character_id Only used when a character drops an item from his inventory.
+ * @property-read \App\Models\Character|null $character
  * @property-read \App\Models\Item $item
  * @property-read \App\Models\Page $page
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage newQuery()
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ItemPage onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage whereCharacterId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage whereItemId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage wherePageId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage whereQuantity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage whereVerb($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ItemPage withTrashed()
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ItemPage withoutTrashed()
  */
 	class ItemPage extends \Eloquent {}
 }

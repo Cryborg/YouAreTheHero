@@ -88,8 +88,6 @@
                     }
                 })
                 .fail(function (data) {
-                    console.log('fail');
-                    console.log(data);
                     showToast('error', {
                         heading: "{{ trans('notification.deletion_failed_title') }}",
                         text: "{{ trans('notification.deletion_failed_text') }}",

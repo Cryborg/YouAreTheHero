@@ -6,12 +6,12 @@ var g = new dagreD3.graphlib.Graph()
 // Here we're setting nodeclass, which is used by our custom drawNodes function
 // below.
 @foreach ($pages as $page)
-    g.setNode({{ $page->id }},  {
-        labelType: "html",
+g.setNode({{ $page->id }},  {
+    labelType: "html",
         label: '{!! includeAsJsString('page.js.partials.edge', ['page' => $page]) !!}',
         class: "align-middle text-center @if ($page->id == $current->id) currentNode @endif",
         labelStyle: "margin-top: 4px;"
-    });
+});
 @endforeach
 
 g.nodes().forEach(function(v) {
@@ -22,26 +22,27 @@ g.nodes().forEach(function(v) {
 
 // Set up edges
 @foreach ($pages as $page)
-    @if ($page->choices()->count() > 0)
-        @foreach ($page->choices as $choice)
-            g.setEdge({{ $page->id }}, {{ $choice->id }}, {
-                labelType: "html",
-                label: '{!! includeAsJsString('page.js.partials.node', ['choice' => $choice, 'page' => $page]) !!}',
-                labelStyle: "border: 1px solid white;color:white;background-color:black;padding:3px;font-size:.8em"
-            });
-        @endforeach
-    @endif
+@if ($page->choices()->count() > 0)
+@foreach ($page->choices as $choice)
+g.setEdge({{ $page->id }}, {{ $choice->id }}, {
+    labelType: "html",
+        label: '{!! includeAsJsString('page.js.partials.node', ['choice' => $choice, 'page' => $page]) !!}',
+        labelStyle: "border: 1px solid white;color:white;background-color:black;padding:3px;font-size:.8em"
+});
+@endforeach
+@endif
 @endforeach
 
 // Create the renderer
 var render = new dagreD3.render();
 
 var svg = d3.select("svg"),
-  inner = svg.select("g");
+    inner = svg.select("g");
 
 var zoom = d3.zoom().on("zoom", function() {
     inner.attr("transform", d3.event.transform);
 });
+console.log(d3);
 svg.call(zoom)
 
 // Run the renderer. This is what draws the final graph.

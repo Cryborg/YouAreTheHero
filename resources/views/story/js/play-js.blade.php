@@ -27,7 +27,6 @@ $(document).on('click', '.itemThrowAway', function () {
         url: route('item.throw_away', {'item': itemId})
     })
         .done(function (result) {
-            console.log(result);
             loadContent(routeContent);
         })
         .fail(function (result) {

@@ -97,11 +97,7 @@ class StoryController extends Controller
         }
 
         if ($page) {
-            if ($page->is_last) {
-                // FIXME
-                $page->choices = 'gameover';
-            }
-            else {
+            if (!$page->is_last) {
                 $this->getFilteredChoicesFromPage($page, $character);
             }
 
