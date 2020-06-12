@@ -247,7 +247,10 @@
 @push('footer-scripts')
     @if ($story)
         <script type="text/javascript">
+            var storyId = {{ $story->id }};
             @include('story.js.create-js')
+
+            var routeItem = '{{ route('item.store') }}';
             @include('item.js.create_item_js', ['story' => $story, 'contexts' => $contexts])
         </script>
     @endif

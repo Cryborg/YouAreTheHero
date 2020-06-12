@@ -1,5 +1,3 @@
-    var storyId = {{ $story->id }};
-
     $(document).ready(function () {
         function checkForm() {
             var correct = true;
@@ -96,8 +94,8 @@
                     })
                     .fail(function (data) {
                         showToast('error', {
-                            heading: '{{ trans('notification.save_failed_title') }}',
-                            text: "{{ trans('notification.save_failed_text') }}",
+                            heading: saveFailedHeading,
+                            text: saveFailedText,
                             errors: data.responseJSON.errors
                         });
                     });

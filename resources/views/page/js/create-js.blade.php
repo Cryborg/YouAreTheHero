@@ -5,12 +5,12 @@
 
         if (selectedVal === '0') {
             newPage($this,
-                route('page.create', {'story': {{ $page->story_id }} }),
+                route('page.create', {'story':storyId }),
                 true
             );
         } else {
             newPage($this,
-                route('page.create', {'story': {{ $page->story_id }}, 'page': selectedVal}),
+                route('page.create', {'story': storyId, 'page': selectedVal}),
                 false
             );
         }
@@ -23,7 +23,7 @@
         $.ajax({
             'url': url,
             'data': {
-                'page_from': {{ $page->id }},
+                'page_from': pageId,
                 'link_text': $parent.find('#link_text').val()
             },
             'method': 'POST'
@@ -55,10 +55,7 @@
         {
             var $this = $(this);
 
-            if (!confirm('@lang('page.confirm_delete')'))
-            {
-                return false;
-            }
+            if (!confirm(confirmDeleteText)) return false;
 
             $.ajax({
                 url: route('page.delete', {page: $this.data('pageid')}),
@@ -71,15 +68,15 @@
                         });
 
                         showToast('success', {
-                            heading: "{{ trans('notification.deletion_success_title') }}",
-                            text: "{{ trans('notification.deletion_success_text') }}",
+                            heading: deletionSuccessTitle,
+                            text: deletionSuccessText,
                         });
                     }
                 })
                 .fail(function (data) {
                     showToast('error', {
-                        heading: "{{ trans('notification.deletion_failed_title') }}",
-                        text: "{{ trans('notification.deletion_failed_text') }}",
+                        heading: deletionSuccessText,
+                        text: deletionFailedText,
                         errors: data.responseJSON.errors
                     });
                 });
@@ -111,17 +108,15 @@
         // Display Summernote editor on the clicked div
         $(document).on('click', '.toggle-summernote:not(.summernote-open)', function () {
             let $this = $(this);
-            let $parent = $this.closest('.is-page');
-            let internalId = {{ $page->id }};
 
             // Destroy all other summernotes so there is only one open at a time
             $("[id^='content-editable-']:hidden").summernote('destroy');
             $('.toggle-summernote').addClass('clickable').removeClass('summernote-open');
 
             $this.removeClass('clickable');
-            $('#content-' + internalId).addClass('hidden');
-            $('#content-editable-' + internalId).removeClass('hidden');
-            $('#content-editable-' + internalId + ':visible').summernote(summernoteOptions);
+            $('#content-' + pageId).addClass('hidden');
+            $('#content-editable-' + pageId).removeClass('hidden');
+            $('#content-editable-' + pageId + ':visible').summernote(summernoteOptions);
 
             $this.addClass('summernote-open');
         });
@@ -129,7 +124,7 @@
         // Saves the page
         $(document).on('click', '.savePage', function (e) {
             let $this = $(this);
-            let currentPageId = {{ $page->id }};
+            let currentPageId = pageId;
 
             // Find parent page form
             let $form = $('.divAsForm');
@@ -161,8 +156,8 @@
 
                     $('#content-' + currentPageId).html(data.content);
                     showToast('success', {
-                        heading: "{{ trans('notification.save_success_title') }}",
-                        text: "{{ trans('notification.save_success_text') }}",
+                        heading: saveSuccessHeading,
+                        text: saveSuccessText,
                     });
                 })
                 .fail(function (data) {
@@ -178,8 +173,8 @@
                     }
 
                     showToast('error', {
-                        heading: '{{ trans('notification.save_failed_title') }}',
-                        text: "{{ trans('notification.save_failed_text') }}",
+                        heading: deletionSuccessText,
+                        text: deletionFailedText,
                         errors: data.responseJSON.errors
                     });
 
@@ -225,7 +220,7 @@
 
             if (Object.entries(data).length > 0 && data.constructor === Object) {
                 $.post({
-                    url: route('prerequisite.store', {{ $page->id }}),
+                    url: route('prerequisite.store', pageId),
                     data: data
                 })
                     .done(function (data) {
@@ -234,19 +229,19 @@
 
                             items.forEach(function (item) {
                                 // Adds the new action to the table
-                                $('#prerequisites_list-{{ $page->id }} tbody').append(
+                                $('#prerequisites_list-' + pageId + ' tbody').append(
                                     '<tr>' +
-                                    '<td>' + '{{ trans('item.item') }}' + '</td>' +
+                                    '<td>' + langItem + '</td>' +
                                     '<td>' + item.name + '</td>' +
                                     '<td>' + item.quantity + '</td>' +
-                                    '<td class="text-center">' + '<span class="icon-trash text-danger delete-prerequisite" data-prerequisite_id="' + item.prerequisite_id + '"></span>' + '</td>' +
+                                    '<td class="text-center">' + '<span class="icon-trash text-danger delete-prerequisite" data-prerequisite_id="' + item.prerequisite_id + '"></span></td>' +
                                     '</tr>'
                                 );
                             });
 
                             showToast('success', {
-                                heading: "{{ trans('notification.save_success_title') }}",
-                                text: "{{ trans('notification.save_success_text') }}",
+                                heading: saveSuccessHeading,
+                                text: saveSuccessText,
                             });
 
                             $('#modalCreatePrerequisite').modal('hide');
@@ -254,8 +249,8 @@
                     })
                     .fail(function (data) {
                         showToast('error', {
-                            heading: '{{ trans('notification.save_failed_title') }}',
-                            text: "{{ trans('notification.save_failed_text') }}",
+                            heading: deletionSuccessText,
+                            text: deletionFailedText,
                             errors: data.responseJSON.errors
                         });
                     })
@@ -293,7 +288,7 @@
         var pageFrom = $this.parent().data('page-from');
         var pageTo = $this.parent().data('page-to');
 
-        if (confirm('@lang('page.confirm_delete_link')')) {
+        if (confirm(confirmDeleteLinkText)) {
             $.ajax({
                 url: route('page.choice.delete', {'page': pageTo, 'page_from': pageFrom}),
                 method: 'DELETE'
@@ -302,14 +297,14 @@
                     tryDraw(data.graph);
 
                     showToast('success', {
-                        heading: "{{ trans('notification.deletion_success_title') }}",
-                        text: "{{ trans('notification.deletion_success_text') }}",
+                        heading: deletionSuccessTitle,
+                        text: deletionSuccessText,
                     });
                 })
                 .fail(function (data) {
                     showToast('error', {
-                        heading: "{{ trans('notification.deletion_failed_title') }}",
-                        text: "{{ trans('notification.deletion_failed_text') }}",
+                        heading: deletionFailedTitle,
+                        text: deletionFailedText,
                         errors: data.responseJSON.errors
                     });
                 });
@@ -322,15 +317,15 @@
         var serialized = $('#action_create').serialize();
 
         $.post({
-            url: route('page.item.store', {{ $page->id }}),
+            url: route('page.item.store', pageId),
             data: serialized
         })
             .done(function (data) {
                 if (data.success) {
                     // Show the notification
                     showToast('success', {
-                        heading: "{{ trans('notification.save_success_title') }}",
-                        text: "{{ trans('notification.save_success_text') }}",
+                        heading: saveSuccessHeading,
+                        text: saveSuccessText,
                     });
 
                     // Refresh the actions table
@@ -339,7 +334,7 @@
             })
             .fail(function (data) {
                 showToast('error', {
-                    heading: '{{ trans('notification.save_failed_title') }}',
+                    heading: deletionSuccessText,
                     text: "{{ trans('notification.new_action_not_added') }}",
                     errors: data.responseJSON.errors
                 });
@@ -353,7 +348,7 @@
     function displayActions()
     {
         $.get({
-            url: route('page.items.list', {page: {{ $page->id }} })
+            url: route('page.items.list', {page: pageId })
         })
             .done(function (html) {
                 $('.itemsOnPage').html(html);
@@ -365,7 +360,7 @@
         var $this = $(this);
 
         $.post({
-            url: route('riddle.store', {'page': {{ $page->id }}}),
+            url: route('riddle.store', {'page': pageId}),
             'data': {
                 'answer': $('#riddle_answer_text').val(),
                 'type': $('#answer_is_integer').is(':checked') ? 1 : 0,
@@ -378,27 +373,27 @@
                 if (data.success) {
                     // Show the notification
                     showToast('success', {
-                        heading: "{{ trans('notification.save_success_title') }}",
-                        text: "{{ trans('notification.save_success_text') }}",
+                        heading: saveSuccessHeading,
+                        text: saveSuccessText,
                     });
 
                     $('#riddle_table tbody').html('').append(
                         '<tr>' +
-                            '<td>' + '@lang('page.riddle_answer_label')' + '</td>' +
+                            '<td>' + langPageRiddleAnswerLabel + '</td>' +
                             '<td>' + data.riddle.answer + '</td>' +
                         '</tr>' +
                         (data.riddle.target_page_text != null ?
                         '<tr>' +
-                            '<td>' + '@lang('page.riddle_page_text_label')' + '</td>' +
+                            '<td>' + langPageRiddleTextLabel + '</td>' +
                             '<td>' + data.riddle.target_page_text + '</td>' +
                         '</tr>' +
                         '<tr>' +
-                            '<td>' + '@lang('page.riddle_target_page_id_label')' + '</td>' +
+                            '<td>' + langPageRiddleTargetPageIdLabel + '</td>' +
                             '<td class="font-italic">' + data.page_title + '</td>' +
                             '</tr>'
                             : '') +
                         '<tr>' +
-                            '<td>' + '@lang('page.earned_item')' + '</td>' +
+                            '<td>' + langPageEarnedItemLabel + '</td>' +
                             '<td class="font-italic">' + data.item_name + '</td>' +
                         '</tr>'
                     );
@@ -419,8 +414,8 @@
                     });
                 }
                 showToast('error', {
-                    heading: '{{ trans('notification.save_failed_title') }}',
-                    text: "{{ trans('notification.new_action_not_added') }}",
+                    heading: saveFailedHeading,
+                    text: saveFailedText,
                     errors: data.responseJSON.errors
                 });
             })
@@ -442,21 +437,21 @@
         }
 
         $.ajax({
-            url: route('page.item.delete', {page: {{ $page->id }}, item: itemId, verb: itemVerb}),
+            url: route('page.item.delete', {page: pageId, item: itemId, verb: itemVerb}),
             method: 'DELETE'
         })
             .done(function () {
                 displayActions();
 
                 showToast('success', {
-                    heading: "{{ trans('notification.deletion_success_title') }}",
-                    text: "{{ trans('notification.deletion_success_text') }}",
+                    heading: deletionSuccessTitle,
+                    text: deletionSuccessText,
                 });
             })
             .fail(function (data) {
                 showToast('error', {
-                    heading: "{{ trans('notification.deletion_failed_title') }}",
-                    text: "{{ trans('notification.deletion_failed_text') }}",
+                    heading: deletionFailedTitle,
+                    text: deletionFailedText,
                     errors: data.responseJSON.errors
                 });
             })
@@ -483,14 +478,14 @@
                 $this.parents('tr').remove();
 
                 showToast('success', {
-                    heading: "{{ trans('notification.deletion_success_title') }}",
-                    text: "{{ trans('notification.deletion_success_text') }}",
+                    heading: deletionSuccessTitle,
+                    text: deletionSuccessText,
                 });
             })
             .fail(function (data) {
                 showToast('error', {
-                    heading: "{{ trans('notification.deletion_failed_title') }}",
-                    text: "{{ trans('notification.deletion_failed_text') }}",
+                    heading: deletionFailedTitle,
+                    text: deletionFailedText,
                     errors: data.responseJSON.errors
                 });
             })

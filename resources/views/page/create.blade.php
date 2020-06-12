@@ -128,6 +128,19 @@
         var saveFailedText = "{!! trans('notification.save_failed_text') !!}";
 
         @include('page.js.dagred3-js', ['pages' => $page->story->pages, 'current' => $page])
+
+        var pageId = {{ $page->id }};
+        var confirmDeleteText = "@lang('page.confirm_delete')";
+        var confirmDeleteLinkText = "@lang('page.confirm_delete_link')";
+        var deletionSuccessTitle = "{{ trans('notification.deletion_success_title') }}";
+        var deletionSuccessText = "{{ trans('notification.deletion_success_text') }}";
+        var deletionFailedTitle = "{{ trans('notification.deletion_failed_title') }}";
+        var deletionFailedText = "{{ trans('notification.deletion_failed_text') }}";
+        var langPageRiddleTextLabel = "@lang('page.riddle_page_text_label')";
+        var langPageRiddleAnswerLabel = "@lang('page.riddle_answer_label')";
+        var langPageRiddleTargetPageIdLabel = "@lang('page.riddle_target_page_id_label')";
+        var langPageEarnedItemLabel = "@lang('page.earned_item')";
+        var langItem = "@lang('item.item')";
         @include('page.js.create-js')
 
         var routeItem = '{{ route('item.store') }}';
