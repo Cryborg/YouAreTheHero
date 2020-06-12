@@ -417,13 +417,13 @@ div.height-big {
     left: 5px;
 }
 
-a[data-toggle="popover"]:hover {
+a[data-toggle="popover"]:hover, a.clickable:hover {
     border-bottom: 1px dotted darkgrey;
 }
 
 .popup-menu {
     position: absolute;
     background-color: white;
-    top: 10px;
+    top: 20px;
     right: 10px;
 }

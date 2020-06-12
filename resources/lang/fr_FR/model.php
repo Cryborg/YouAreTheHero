@@ -19,7 +19,7 @@ return array (
   'page_layout_help' => 'Tu peux choisir l\'apparence de ta page parmi un choix de présentations différentes. Par défaut il s\'agit de celle de l\'histoire, mais pour certaines pages tu auras peut-être besoin d\'en changer pour mieux coller à ton ceontenu.',
   'page_is_first_help' => 'Coche cette case s\'il s\'agit de la première page de ton histoire.',
   'page_is_last_help' => 'Si tu coches cette case cela signifie que cette page est la dernière de ton histoire. Soit parce que le joueur est arrivé au bout, soit parce qu\'il est tombé dans une impasse ou a perdu un combat crucial. Quelque soit son sort, l\'histoire se termine ici pour son personnage !',
-  'page_is_checkpoint_help' => 'En cochant cette case tu permets aux joueurs de revenir sur cette page quand ils le veulent. Le titre devient alors obligatoire.',
+  'page_is_checkpoint_help' => 'En cochant cette case tu permets aux joueurs de revenir sur cette page quand ils le veulent.',
   'email' => 'Email',
   'username' => 'Nom d\'utilisateur',
   'password' => 'Mot de passe',

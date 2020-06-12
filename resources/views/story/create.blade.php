@@ -15,7 +15,7 @@
                     aria-controls="pills-options" aria-selected="false">{{ trans('story.create_tab2') }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="pills-sheet-tab" data-toggle="pill" href="#pills-sheet" role="tab"
+                <a class="nav-link @if ($story && !$story->story_options->has_stats) hidden @endif" id="pills-sheet-tab" data-toggle="pill" href="#pills-sheet" role="tab"
                     aria-controls="pills-sheet" aria-selected="false">{{ trans('story.create_tab3') }}</a>
             </li>
             <li class="nav-item">
@@ -135,15 +135,17 @@
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    @lang('story.inventory_slots')
+            @if ($story)
+                <div class="card">
+                    <div class="card-header">
+                        @lang('story.inventory_slots')
+                    </div>
+                    <div class="card-body">
+                        <p class="help-block">@lang('story.inventory_slots_help')</p>
+                        {!! Form::number('inventory_slots', $story->story_options->inventory_slots, ['class' => 'form-control', 'min' => 0, 'id' => 'inventory_slots']) !!}
+                    </div>
                 </div>
-                <div class="card-body">
-                    <p class="help-block">@lang('story.inventory_slots_help')</p>
-                    {!! Form::number('inventory_slots', $story->story_options->inventory_slots, ['class' => 'form-control', 'min' => 0, 'id' => 'inventory_slots']) !!}
-                </div>
-            </div>
+            @endif
 
 
 {{--            EN ATTENTE DES LANCERS DE DéS            --}}
@@ -152,7 +154,7 @@
 
 {{--            <div class="form-check ml-3">--}}
 {{--                <input class="form-check-input" type="radio" name="stat_attribution" id="stat_attribution_player" value="player"--}}
-{{--                    @if ($story->story_options->stat_attribution === 'player') checked @endif--}}
+{{--                    @if ($story && $story->story_options->stat_attribution === 'player') checked @endif--}}
 {{--                >--}}
 {{--                <label class="form-check-label" for="stat_attribution_player">--}}
 {{--                    {{ trans('story.stat_attribution_player') }}--}}
@@ -160,7 +162,7 @@
 {{--            </div>--}}
 {{--            <div class="form-check ml-3">--}}
 {{--                <input class="form-check-input" type="radio" name="stat_attribution" id="stat_attribution_dice" value="dice"--}}
-{{--                    @if ($story->story_options->stat_attribution === 'dice') checked @endif--}}
+{{--                    @if ($story && $story->story_options->stat_attribution === 'dice') checked @endif--}}
 {{--                >--}}
 {{--                <label class="form-check-label" for="stat_attribution_dice">--}}
 {{--                    {{ trans('story.stat_attribution_dice') }}--}}
@@ -244,7 +246,9 @@
 
 @push('footer-scripts')
     @if ($story)
-        @include('story.js.create-js')
-        @include('item.js.create_item_js', ['story' => $story, 'contexts' => $contexts])
+        <script type="text/javascript">
+            @include('story.js.create-js')
+            @include('item.js.create_item_js', ['story' => $story, 'contexts' => $contexts])
+        </script>
     @endif
 @endpush

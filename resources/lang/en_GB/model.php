@@ -19,7 +19,7 @@ return array (
   'page_layout_help' => 'You can choose the appearance of your page from a choice of different presentations. By default it is that of the story, but for some pages you may need to change it to better stick to your content.',
   'page_is_first_help' => 'Check this box if this is the first page of your story.',
   'page_is_last_help' => 'If you check this box it means that this page is the last of your story. Either because the player has reached the end, or because he has fallen into a dead-end, or has lost a crucial fight. Whatever his fate, the story ends here for his character!',
-  'page_is_checkpoint_help' => 'By checking this box you allow players to return to this page whenever they want. The title then becomes mandatory.',
+  'page_is_checkpoint_help' => 'By checking this box you allow players to return to this page whenever they want.',
   'email' => 'E-mail',
   'username' => 'Username',
   'password' => 'Password',

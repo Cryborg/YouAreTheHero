@@ -404,7 +404,7 @@ class StoryController extends Controller
         ]);
 
         $validated['is_published'] = $request->has('is_published');
-        $storyId                   = $validated['story_id'];
+        $storyId                   = $validated['story_id'] ?? null;
         $genres                    = $validated['genres'];
         unset($validated['genres'], $validated['story_id']);
 

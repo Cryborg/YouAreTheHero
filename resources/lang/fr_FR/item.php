@@ -17,7 +17,7 @@ return array (
   'effects_help_text' => 'Si l\'objet affecte une ou plusieurs des attributs du joueur, c\'est ici qu\'il faut l\'indiquer.',
   'options' => 'Options',
   'size' => 'Taille/poids',
-  'size_help' => 'Taille ou poids de l\'objet. Lorsque l\'option est sélectionnée dans les paramètres de l\'histoire, les objets prennent de la place, ce qui limite le nombre que le joueur peut transporter.',
+  'size_help' => 'Taille ou poids de l\'objet. Lorsque l\'option est sélectionnée dans les paramètres de l\'histoire, les objets prennent de la place, ce qui limite le nombre que le joueur peut transporter.<br>Peut être un nombre avec décimales.',
   'select_item' => 'Sélectionne un objet',
   'select_action' => 'Choisis une action',
   'throw_away' => 'Jeter',

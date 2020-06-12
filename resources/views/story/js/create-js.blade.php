@@ -1,4 +1,3 @@
-<script type="text/javascript">
     var storyId = {{ $story->id }};
 
     $(document).ready(function () {
@@ -127,6 +126,11 @@
         })
         .done(function (data) {
             if (data.success) {
+                if (value) {
+                    $('#pills-sheet-tab').removeClass('hidden');
+                } else {
+                    $('#pills-sheet-tab').addClass('hidden');
+                }
                 showToast('success', {
                     heading: "{{ trans('notification.save_success_title') }}",
                     text: "{{ trans('notification.save_success_text') }}"
@@ -140,4 +144,3 @@
             });
         });
     }
-</script>
