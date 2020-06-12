@@ -3,6 +3,7 @@
     <div class="col-lg-6 col-xs-12">
         <div class="row">
             <div class="col">
+                <textarea class="w-100" id="inputGraph" rows="5" style="display: none">{{ $graph }}</textarea>
                 @info({!! trans('page.current_page_help') !!})
 
                 <div class="divAsForm" data-route="{{ route('page.edit.post', ['page' => $page->id]) }}">

@@ -1,5 +1,3 @@
-<script type="text/javascript">
-    @include('page.js.dagred3-js', ['pages' => $page->story->pages, 'current' => $page])
 
     $(document).on('click', '#add_AddChoice', function () {
         var $this = $(this);
@@ -35,19 +33,7 @@
                     window.location.href = data.redirect;
                 }
 
-                // Show the link on the tree
-                if (newNode) {
-                    let nnode = g.setNode(data.page.id,  {
-                        labelType: "html",
-                        label: '<a href="' + route('page.edit', {'page': data.page.id}) + '">' + data.page.title + '</a>',
-                        class: "align-middle text-center",
-                        labelStyle: "margin-top: 4px;"
-                    });
-                }
-                g.setEdge({{ $page->id }}, data.page.id, {
-                    label: $parent.find('#link_text').val(),
-                });
-                render(svg.select("g"), g);
+                tryDraw(data.graph);
 
                 $('#modalAddChoice').modal('toggle');
             })
@@ -69,10 +55,13 @@
         {
             var $this = $(this);
 
-            if (!confirm('@lang('page.confirm_delete')')) return false;
+            if (!confirm('@lang('page.confirm_delete')'))
+            {
+                return false;
+            }
 
             $.ajax({
-                url: route('page.delete', {page: $this.data('pageid') }),
+                url: route('page.delete', {page: $this.data('pageid')}),
                 method: 'DELETE'
             })
                 .done(function (result) {
@@ -168,6 +157,8 @@
                 data: data
             })
                 .done(function (data) {
+                    tryDraw(data.graph);
+
                     $('#content-' + currentPageId).html(data.content);
                     showToast('success', {
                         heading: "{{ trans('notification.save_success_title') }}",
@@ -276,6 +267,7 @@
         });
 
         showHumanReadableDates();
+        tryDraw();
     });
 
     $(document).on('click', '.choice-text.icon-fountain-pen', function () {
@@ -306,10 +298,8 @@
                 url: route('page.choice.delete', {'page': pageTo, 'page_from': pageFrom}),
                 method: 'DELETE'
             })
-                .done(function (result) {
-                    // Delete the link on the tree
-                    g.removeEdge(pageFrom, pageTo);
-                    render(svg.select("g"), g);
+                .done(function (data) {
+                    tryDraw(data.graph);
 
                     showToast('success', {
                         heading: "{{ trans('notification.deletion_success_title') }}",
@@ -513,4 +503,3 @@
         $this = $(this);
         $('#' + $this.data('help')).slideToggle();
     });
-</script>

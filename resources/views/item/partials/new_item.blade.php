@@ -85,7 +85,7 @@
 <div class="row">
     <div class="col">
         <div class="form-group mb-4">
-            <button class="btn btn-primary" id="create_item_{{ $context }}" data-original-text="{{ trans('item.create_btn') }}">
+            <button class="btn btn-primary btnCreateItem" data-context="{{ $context }}" data-original-text="{{ trans('item.create_btn') }}">
                 {{ trans('item.create_btn') }}
             </button>
         </div>

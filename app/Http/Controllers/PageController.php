@@ -3,17 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Character;
-use App\Models\CharacterItem;
-use App\Models\Inventory;
 use App\Models\Item;
 use App\Models\Page;
-use App\Models\Choice;
 use App\Models\Story;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Str;
 
 class PageController extends Controller
 {
@@ -61,6 +59,7 @@ class PageController extends Controller
         return response()->json([
             'page'     => $page,
             'redirect' => $redirect,
+            'graph' => $this->buildGraph($page->story),
         ]);
     }
 
@@ -94,6 +93,8 @@ class PageController extends Controller
                 'contexts' => ['item_page', 'add_actions', 'prerequisites', 'riddle', 'story_creation', 'report'],
 
                 'placeholders' => $this->placeholders,
+
+                'graph' => $this->buildGraph($page->story),
             ]);
 
         return $view;
@@ -126,12 +127,15 @@ class PageController extends Controller
                 return response()->json([
                     'success' => true,
                     'content' => $page->present()->content,
+                    'graph' => $this->buildGraph($page->story)
                 ]);
             }
 
             \flash(trans('model.save_error'));
 
-            return response()->json(['success' => false]);
+            return response()->json([
+                'success' => false,
+            ]);
         }
 
         abort(JsonResponse::HTTP_NOT_FOUND);
@@ -247,6 +251,7 @@ class PageController extends Controller
                 'message'  => $message,
                 'page'     => $page->id,
                 'pageFrom' => $pageFrom->id,
+                'graph'    => $this->buildGraph($page->story),
             ]);
         }
 
@@ -331,5 +336,42 @@ class PageController extends Controller
     public function listItems(Page $page)
     {
         return View::make('page.partials.item_page_list', ['items' => $page->items]);
+    }
+
+    private function buildGraph(Story $story)
+    {
+        $graph = 'digraph{' .
+                 'node [labelType="html" labelStyle="margin-top: 4px;" class="align-middle text-center"];' .
+                 'edge [labelType="html" labelStyle="border: 1px solid white;color:white;background-color:black;padding:3px;font-size:.8em"];';
+
+        foreach ($story->pages as $page) {
+            $editLink = Str::replaceFirst(
+                '?',
+                route('page.edit', ['page' => $page]),
+                '<a href="?">' . addslashes($page->title) . '</a>'
+            );
+
+            $graph .= $page->id . ' [label="' . addslashes($editLink) . '"];';
+
+            if ($page->choices()->count() > 0) {
+                foreach ($page->choices as $choice) {
+                    $html = Str::replaceArray('?',
+                        [$choice->id, $page->id, addslashes($choice->pivot->link_text)],
+                        '<div
+                            data-page-to="?"
+                            data-page-from="?">
+                            <span class="choice-text icon-fountain-pen text-white clickable border-right border-light p-1 mr-2"></span>
+                            <span class="link-text">?</span>
+                            <span class="choice-text icon-trash clickable text-red border-left border-light p-1 ml-2"></span>
+                        </div>');
+                    $html = preg_replace('/\s+/', ' ', str_replace(array("\r", "\n"), '', $html));
+                    $graph .= $page->id . '->' . $choice->id . ' [label="' . addslashes($html) . '"];';
+                }
+            }
+        }
+
+        $graph .= '}';
+
+        return $graph;
     }
 }

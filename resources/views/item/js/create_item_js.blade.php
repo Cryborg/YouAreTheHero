@@ -1,8 +1,7 @@
-<script>
     function ajaxCreatePost(route, $this, data)
     {
         var commonData = {
-            'story_id': {{ $story->id }}
+            'story_id': storyId
         };
 
         $.post({
@@ -11,8 +10,8 @@
         })
             .done(function (data) {
                 showToast('success', {
-                    heading: "{{ trans('notification.save_success_title') }}",
-                    text: "{{ trans('notification.save_success_text') }}",
+                    heading: saveSuccessHeading,
+                    text: saveSuccessText,
                 });
 
                 // Refresh the items list
@@ -21,8 +20,8 @@
             })
             .fail(function (data) {
                 showToast('error', {
-                    heading: '{{ trans('notification.save_failed_title') }}',
-                    text: "{{ trans('notification.save_failed_text') }}",
+                    heading: saveFailedHeading,
+                    text: saveFailedText,
                     errors: data.responseJSON.errors
                 });
             })
@@ -32,11 +31,11 @@
             });
     }
 
-    @for ($i = 0, $iMax = count($contexts); $i < $iMax; $i++)
-    $(document).on('click', '#create_item_{{ $contexts[$i] }}', function () {
+    $(document).on('click', '.btnCreateItem', function () {
         var $this = $(this);
-        var route = '{{ route('item.store') }}';
+        var route = routeItem;
         var values = [];
+        var context = $this.data('context');
 
         $('input[name="stat_values[]"]:visible').each(function () {
             values.push({
@@ -46,18 +45,17 @@
         });
 
         ajaxCreatePost(route,  $this, {
-            'name': $('#item_name_{{ $contexts[$i] }}').val(),
-            'default_price': $('#item_price_{{ $contexts[$i] }}').val(),
-            'single_use': $('#single_use_{{ $contexts[$i] }}').is(':checked') ? 1 : 0,
-            'size': $('#item_size_{{ $contexts[$i] }}').val(),
+            'name': $('#item_name_' + context).val(),
+            'default_price': $('#item_price_' + context).val(),
+            'single_use': $('#single_use_' + context).is(':checked') ? 1 : 0,
+            'size': $('#item_size_' + context).val(),
             'effects': values
         })
     });
-    @endfor
 
     function showItemsList(context) {
         $.get({
-            url: route('items.html.list', {'story': {{ $story->id }}, 'context': context}),
+            url: route('items.html.list', {'story': storyId, 'context': context}),
         })
             .done(function (html) {
                 if (context === 'div') {
@@ -68,4 +66,3 @@
                 }
             });
     }
-</script>

@@ -120,6 +120,17 @@
 @endsection
 
 @push('footer-scripts')
-    @include('page.js.create-js')
-    @include('item.js.create_item_js', ['story' => $story, 'contexts' => $contexts])
+    <script type="text/javascript">
+        var storyId = {{ $story->id }};
+        var saveSuccessHeading = "{!! trans('notification.save_success_title') !!}";
+        var saveSuccessText = "{!! trans('notification.save_success_text') !!}";
+        var saveFailedHeading = "{!! trans('notification.save_failed_title') !!}";
+        var saveFailedText = "{!! trans('notification.save_failed_text') !!}";
+
+        @include('page.js.dagred3-js', ['pages' => $page->story->pages, 'current' => $page])
+        @include('page.js.create-js')
+
+        var routeItem = '{{ route('item.store') }}';
+        @include('item.js.create_item_js', ['story' => $story, 'contexts' => $contexts])
+    </script>
 @endpush

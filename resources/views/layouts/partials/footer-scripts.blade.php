@@ -1,4 +1,5 @@
 <script src="{{ asset('js/d3.v5.min.js') }}" charset="utf-8"></script>
+<script src="{{ asset('js/graphlib-dot.js') }}"></script>
 <script src="{{ asset('js/dagre-d3.js') }}"></script>
 
 <script type="text/javascript" src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
