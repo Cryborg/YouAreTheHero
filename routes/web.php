@@ -57,7 +57,7 @@ Route::post('/page/item/{page}/create', 'PageController@storeItem')->name('page.
 
 Route::delete('/page/{page}/delete', 'PageController@delete')->name('page.delete');
 Route::delete('/page/{page}/{page_from}/delete', 'PageController@deleteChoice')->name('page.choice.delete');
-Route::delete('/page/{page}/{item}/{verb}/item/delete', 'PageController@deleteItem')->name('page.item.delete');
+Route::delete('/page/{page}/{item}/item/delete', 'PageController@deleteItem')->name('page.item.delete');
 
 // Prerequisites
 Route::post('/prerequisite/store/{page}', 'PrerequisiteController@store')->name('prerequisite.store');

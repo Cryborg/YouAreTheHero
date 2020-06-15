@@ -20,6 +20,11 @@ class Item extends Model
         'size'       => 'float',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+    }
+
     /**
      * Get the pages
      *
@@ -58,5 +63,15 @@ class Item extends Model
     public function characters()
     {
         return $this->belongsToMany(Character::class);
+    }
+
+    public function sellingPrice()
+    {
+        // Use the price of the item
+        if ($this->pivot->price === -1) {
+            return $this->default_price;
+        }
+
+        return $this->pivot->price;
     }
 }

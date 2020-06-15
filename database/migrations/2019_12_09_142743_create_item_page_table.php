@@ -22,7 +22,6 @@ class CreateItemPageTable extends Migration
             $table->unsignedBigInteger('page_id');
             $table->foreign('page_id')->references('id')->on('pages');
 
-            $table->string('verb');
             $table->integer('quantity')->nullable();
             $table->integer('price')->nullable();
 

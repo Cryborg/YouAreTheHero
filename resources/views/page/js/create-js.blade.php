@@ -428,7 +428,6 @@
     $(document).on('click', '.deleteItemPage', function () {
         var $this = $(this);
         var itemId = $this.data('itemid');
-        var itemVerb = $this.data('itemverb');
         var loadingClass = 'fa fa-circle-o-notch fa-spin';
         var defaultClass = 'icon-trash text-danger';
 
@@ -437,7 +436,7 @@
         }
 
         $.ajax({
-            url: route('page.item.delete', {page: pageId, item: itemId, verb: itemVerb}),
+            url: route('page.item.delete', {page: pageId, item: itemId}),
             method: 'DELETE'
         })
             .done(function () {

@@ -3,15 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Laracasts\Presenter\PresentableTrait;
-use App\Presenters\ItemPagePresenter;
 
 class ItemPage extends Model
 {
     use PresentableTrait;
-
-    protected $presenter  = ItemPagePresenter::class;
 
     protected $guarded    = ['id'];
 

@@ -35,15 +35,10 @@
         <div class="row mt-3">
             <div class="col-xl-6 col-md-12">
                 @foreach ($items as $item)
-                    @switch($item->pivot->verb)
-                        @case ('buy')
-                        @case ('take')
-                        @case ('sell')
-                        @case ('give')
                         <div class="pick-item">
                             @include('story.partials.pick-item', [
                                 'item' => $item,
-                                'icon' => in_array($item->pivot->verb, ['sell','give']) ? 'icon-receive-money' : 'icon-pay-money',
+                                'icon' => 'icon-receive-money',
                             ])
                             @if ($item->effects)
                                 @foreach ($item->effects as $effect => $value)
@@ -55,8 +50,6 @@
                                 @endforeach
                             @endif
                         </div>
-                        @break
-                    @endswitch
                 @endforeach
             </div>
         </div>

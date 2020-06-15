@@ -27,21 +27,6 @@
 
                         <div class="card">
                             <div class="card-header">
-                                {!! Form::label('verb', trans('item_page.action'), ['class' => 'control-label mt-2']) !!}
-                            </div>
-                            <div class="card-body">
-                                <p class="help-block">{{ trans('item_page.action_help') }}</p>
-                                <select class="selectpicker" id="verb" name="verb"
-                                    data-header="@lang('item.select_action')">
-                                    @foreach ($actions as $key => $action)
-                                        <option value="{{ $key }}">{{ $action }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header">
                                 {!! Form::label('quantity', trans('item_page.quantity'), ['class' => 'control-label mt-2']) !!}
                             </div>
                             <div class="card-body">

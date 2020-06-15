@@ -15,20 +15,23 @@ class Page extends Model
     use PresentableTrait;
     use SoftDeletes;
 
-    protected $presenter    = PagePresenter::class;
+    protected $presenter  = PagePresenter::class;
 
-    protected $primaryKey   = 'id';
+    protected $primaryKey = 'id';
 
-    protected $keyType      = 'string';
+    protected $keyType    = 'string';
 
-    protected $guarded      = ['id'];
+    protected $guarded    = ['id'];
 
-    protected $touches      = ['story'];
+    protected $touches    = ['story'];
 
-    protected $casts        = [
-        'is_first'      => 'boolean',
-        'is_last'       => 'boolean',
-        'is_checkpoint' => 'boolean',
+    protected $casts      = [
+        'is_first'        => 'boolean',
+        'is_last'         => 'boolean',
+        'is_checkpoint'   => 'boolean',
+
+        'verbs_page'      => 'array',
+        'verbs_inventory' => 'array',
     ];
 
     /**
@@ -48,7 +51,7 @@ class Page extends Model
      */
     public function items()
     {
-        $query = $this->belongsToMany(Item::class)->withPivot(['id', 'verb', 'quantity', 'price', 'character_id'])
+        $query = $this->belongsToMany(Item::class)->withPivot(['id', 'quantity', 'price', 'character_id'])
             ->wherePivot('character_id', null);
 
         if (!empty(getSession('character_id'))) {
@@ -87,16 +90,11 @@ class Page extends Model
         $potentialPages = Page::where('story_id', $this->story_id)
 
             // Don't include the choices already bound to the page
-            ->whereNotIn('id', $this->choices
-                                    ->pluck('id')
-                                    ->toArray()
-            )
+            ->whereNotIn('id',
+                $this->choices->pluck('id')->toArray())
 
             // And of course don't include this page
-            ->whereNotIn('id', [$this->id])
-
-            ->orderBy('title', 'asc')
-            ->get();
+            ->whereNotIn('id', [$this->id])->orderBy('title', 'asc')->get();
 
         return $potentialPages;
     }
@@ -106,9 +104,7 @@ class Page extends Model
      */
     public function prerequisites()
     {
-        return Prerequisite::with('prerequisiteable')
-                           ->where('page_id', $this->id)
-                           ->get();
+        return Prerequisite::with('prerequisiteable')->where('page_id', $this->id)->get();
     }
 
     /**
@@ -129,14 +125,14 @@ class Page extends Model
         return $this->morphMany(Action::class, 'actionable');
     }
 
-    public function trigger()
-    {
-        return $this->morphMany(Action::class, 'trigger')->with('actionable');
-    }
-
     public function fields()
     {
         return $this->trigger()->where('actionable_type', 'field')->with('actionable');
+    }
+
+    public function trigger()
+    {
+        return $this->morphMany(Action::class, 'trigger')->with('actionable');
     }
 
     public function reports()

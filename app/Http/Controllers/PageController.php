@@ -286,10 +286,10 @@ class PageController extends Controller
             ]);
     }
 
-    public function deleteItem(Page $page, Item $item, string $verb)
+    public function deleteItem(Page $page, Item $item)
     {
         return response()->json([
-            'success' => $page->items()->wherePivot('verb', $verb)->detach($item->id),
+            'success' => $page->items()->detach($item->id),
         ]);
     }
 
@@ -298,7 +298,6 @@ class PageController extends Controller
         if ($request->ajax()) {
             $validated = $request->validate([
                 'item_id'  => 'required',
-                'verb'     => 'required',
                 'quantity' => 'required',
                 'price'    => '',
             ]);
@@ -306,13 +305,12 @@ class PageController extends Controller
             $validated['page_id'] = $page->id;
 
             try {
-                $attached = $page->items()->syncWithoutDetaching([
-                        $validated['item_id'] => [
-                            'verb'     => $validated['verb'],
-                            'quantity' => $validated['quantity'],
-                            'price'    => $validated['price'],
-                        ],
-                    ]);
+                $page->items()->syncWithoutDetaching([
+                    $validated['item_id'] => [
+                        'quantity' => $validated['quantity'],
+                        'price'    => $validated['price'],
+                    ],
+                ]);
 
                 return response()->json([
                     'success' => true,

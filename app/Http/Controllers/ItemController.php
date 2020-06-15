@@ -92,39 +92,25 @@ class ItemController extends Controller
             'page_id' => $page->id,
         ])->first();
 
-        // Perform the action
-        switch ($itemPage->verb) {
-            case 'buy':
-                $isOk = Action::buy($character, $item);
-                break;
-            case 'sell':
-                $isOk = Action::sell($character, $item);
-                break;
-            case 'give':
-                $isOk = Action::give($character, $item);
-                break;
-            case 'take':
-                if (isset($item)) {
-                    if (Action::hasRoomLeftInInventory($character, $item)) {
-                        $existingItem = $character->items()->where('items.id', $item->id)->first();
+        if (isset($item)) {
+            if (Action::hasRoomLeftInInventory($character, $item)) {
+                $existingItem = $character->items()->where('items.id', $item->id)->first();
 
-                        if ($existingItem) {
-                            $existingItem->pivot->quantity++;
-                            $existingItem->pivot->save();
-                        } else {
-                            $character->items()->attach([
-                                    $item->id => ['quantity' => $itemPage->quantity ?? 1],
-                                ]);
-                        }
-
-                        $isOk = true;
-                    } else {
-                        $message = trans('inventory.no_more_room');
-                    }
+                if ($existingItem) {
+                    $existingItem->pivot->quantity++;
+                    $existingItem->pivot->save();
+                } else {
+                    $character->items()->attach([
+                            $item->id => ['quantity' => $itemPage->quantity ?? 1],
+                        ]);
                 }
 
-                break;
+                $isOk = true;
+            } else {
+                $message = trans('inventory.no_more_room');
+            }
         }
+
 
         // Apply item effects, if applicable
         Action::effects($character, $item);
