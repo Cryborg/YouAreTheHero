@@ -15,7 +15,7 @@
                     aria-controls="pills-options" aria-selected="false">{{ trans('story.create_tab2') }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @if ($story && !$story->story_options->has_stats) hidden @endif" id="pills-sheet-tab" data-toggle="pill" href="#pills-sheet" role="tab"
+                <a class="nav-link @if ($story->story_options && !$story->story_options->has_stats) hidden @endif" id="pills-sheet-tab" data-toggle="pill" href="#pills-sheet" role="tab"
                     aria-controls="pills-sheet" aria-selected="false">{{ trans('story.create_tab3') }}</a>
             </li>
             <li class="nav-item">
@@ -142,32 +142,10 @@
                     </div>
                     <div class="card-body">
                         <p class="help-block">@lang('story.inventory_slots_help')</p>
-                        {!! Form::number('inventory_slots', $story->story_options->inventory_slots, ['class' => 'form-control', 'min' => 0, 'id' => 'inventory_slots']) !!}
+                        {!! Form::number('inventory_slots', $story->story_options ? $story->story_options->inventory_slots : -1, ['class' => 'form-control', 'min' => 0, 'id' => 'inventory_slots']) !!}
                     </div>
                 </div>
             @endif
-
-
-{{--            EN ATTENTE DES LANCERS DE DéS            --}}
-{{--            <label>{{ trans('field.attribution_label') }}</label>--}}
-{{--            <p class="help-block">{!! trans('story.stat_attribution_help') !!}</p>--}}
-
-{{--            <div class="form-check ml-3">--}}
-{{--                <input class="form-check-input" type="radio" name="stat_attribution" id="stat_attribution_player" value="player"--}}
-{{--                    @if ($story && $story->story_options->stat_attribution === 'player') checked @endif--}}
-{{--                >--}}
-{{--                <label class="form-check-label" for="stat_attribution_player">--}}
-{{--                    {{ trans('story.stat_attribution_player') }}--}}
-{{--                </label>--}}
-{{--            </div>--}}
-{{--            <div class="form-check ml-3">--}}
-{{--                <input class="form-check-input" type="radio" name="stat_attribution" id="stat_attribution_dice" value="dice"--}}
-{{--                    @if ($story && $story->story_options->stat_attribution === 'dice') checked @endif--}}
-{{--                >--}}
-{{--                <label class="form-check-label" for="stat_attribution_dice">--}}
-{{--                    {{ trans('story.stat_attribution_dice') }}--}}
-{{--                </label>--}}
-{{--            </div>--}}
         </div>
         <div class="tab-pane" id="pills-sheet" role="tabpanel" aria-labelledby="pills-tab-3">
             <div class="card">
