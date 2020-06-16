@@ -21,6 +21,7 @@ class CreateActionCharacterTable extends Migration
             $table->foreign('action_id')->references('id')->on('actions');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

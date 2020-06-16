@@ -8,10 +8,10 @@
                 <td>{!! $item->present()->price !!}</td>
             </tr>
             <tr>
-                <th scope="row">@lang('item.single_use')</th>
+                <th scope="row">@lang('item.is_unique')</th>
                 <td>
                     <label>
-                        {!! Form::checkbox('single_use', 1, $item->single_use,  ['id' => 'single_use', 'disabled' => true]) !!}
+                        {!! Form::checkbox('is_unique', 1, $item->is_unique,  ['id' => 'is_unique', 'disabled' => true]) !!}
                     </label>
                 </td>
             </tr>

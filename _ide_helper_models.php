@@ -70,7 +70,6 @@ namespace App\Models{
  * @property int $id
  * @property int $item_id
  * @property int $page_id
- * @property string $verb
  * @property int|null $quantity
  * @property int|null $price
  * @property int|null $character_id Only used when a character drops an item from his inventory.
@@ -86,7 +85,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage wherePageId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage whereQuantity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ItemPage whereVerb($value)
  */
 	class ItemPage extends \Eloquent {}
 }
@@ -239,7 +237,7 @@ namespace App\Models{
  * @property string|null $category
  * @property string $name
  * @property int $default_price
- * @property bool $single_use
+ * @property bool $is_unique
  * @property float $size How much room it takes in the inventory.
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -263,8 +261,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Item whereDefaultPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Item whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Item whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Item whereIsUnique($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Item whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Item whereSingleUse($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Item whereSize($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Item whereStoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Item whereUpdatedAt($value)
@@ -587,6 +585,7 @@ namespace App\Models{
  * @property string $content
  * @property string|null $layout
  * @property bool $is_checkpoint
+ * @property int $is_shop Whether the player can sell objects in this page.
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
@@ -617,6 +616,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereIsCheckpoint($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereIsFirst($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereIsLast($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereIsShop($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereLayout($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereStoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page whereTitle($value)

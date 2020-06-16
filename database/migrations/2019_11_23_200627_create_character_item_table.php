@@ -23,7 +23,10 @@ class CreateCharacterItemTable extends Migration
             $table->foreign('item_id')->references('id')->on('items');
 
             $table->unsignedInteger('quantity')->default(0);
-            $table->boolean('used')->default(false);
+            $table->boolean('taken')->default(false);
+            $table->boolean('is_used')->default(false);
+
+            $table->unique(['character_id', 'item_id']);
         });
     }
 

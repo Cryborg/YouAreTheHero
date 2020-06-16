@@ -43,10 +43,10 @@
             <h5 class="card-header">@lang('item.options')</h5>
             <div class="card-body">
                 <div class="card-text">
-                    <p class="help-block">{!! trans('item.single_use_help') !!}</p>
+                    <p class="help-block">{!! trans('item.is_unique_help') !!}</p>
                     <label>
-                        {!! Form::checkbox('single_use', 1, 0,  ['id' => 'single_use_' . $context]) !!}
-                        {{ trans('item.single_use') }}
+                        {!! Form::checkbox('is_unique', 1, 0,  ['id' => 'is_unique_' . $context]) !!}
+                        {{ trans('item.is_unique') }}
                     </label>
                 </div>
             </div>

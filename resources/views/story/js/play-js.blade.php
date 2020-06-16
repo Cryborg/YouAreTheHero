@@ -34,6 +34,20 @@ $(document).on('click', '.itemThrowAway', function () {
         });
 });
 
+$(document).on('click', '.itemUse', function () {
+    var itemId = $(this).closest('a.itemThrowAwayMenu').data('itemid');
+
+    $.get({
+        url: route('item.use', {'item': itemId})
+    })
+        .done(function (result) {
+            loadContent(routeContent);
+        })
+        .fail(function (result) {
+            console.log(result);
+        });
+});
+
 $('html').on('click', function () {
     $('.popup-menu').hide();
 });

@@ -15,9 +15,10 @@ class Item extends Model
     protected $guarded   = ['id'];
 
     protected $casts     = [
-        'effects'    => 'array',
-        'single_use' => 'boolean',
-        'size'       => 'float',
+        'effects'   => 'array',
+        'is_unique' => 'boolean',
+        'size'      => 'float',
+        'is_used'   => 'boolean',
     ];
 
     protected static function boot()

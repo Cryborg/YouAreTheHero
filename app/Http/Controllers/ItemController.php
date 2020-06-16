@@ -46,7 +46,7 @@ class ItemController extends Controller
             [
                 'name'          => 'required|min:2',
                 'default_price' => 'required',
-                'single_use'    => '',
+                'is_unique'    => '',
                 'story_id'      => 'required|exists:stories,id',
                 'size'          => 'required|min:0',
                 'effects'       => '',
@@ -115,16 +115,16 @@ class ItemController extends Controller
         // Apply item effects, if applicable
         Action::effects($character, $item);
 
-        // Check if the item used has the single_use flag,
+        // Check if the item used has the is_unique flag,
         // and in this case it must not be shown again
-        if ($item->single_use) {
-            $character->items()->syncWithoutDetaching([$item->id => ['used' => true]]);
+        if ($item->is_unique) {
+            $character->items()->syncWithoutDetaching([$item->id => ['taken' => true]]);
         }
 
         return response()->json([
             'result'    => $isOk,
             'money'     => $character->money,
-            'singleuse' => $item->single_use,
+            'singleuse' => $item->is_unique,
             'message'   => $message,
         ],
             200);
@@ -147,14 +147,36 @@ class ItemController extends Controller
 
     public function throwAway(Item $item)
     {
+        /** @var \App\Models\Character $character */
         $character = $item->story->currentCharacter();
 
-        if ($item->single_use) {
+        if ($item->is_unique) {
             $detached = $character->items()->detach($item);
 
             return response()->json([
                'refreshInventory' => $detached,
                'refreshContent' => $detached,
+            ]);
+        }
+    }
+
+    public function itemUse(Item $item)
+    {
+        /** @var \App\Models\Character $character */
+        $character = $item->story->currentCharacter();
+
+        if ($item->default_price > 0) {
+            $character->addMoney($item->default_price);
+        }
+
+        if ($item->is_unique) {
+            $success = $character->items()->updateExistingPivot($item, [
+                'is_used' => true
+            ]);
+
+            return response()->json([
+                'refreshInventory' => $success,
+                'refreshContent' => $success,
             ]);
         }
     }

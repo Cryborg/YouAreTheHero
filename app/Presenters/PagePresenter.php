@@ -13,8 +13,7 @@ class PagePresenter extends Presenter
         $characterId = getSession('character_id');
 
         if ($characterId) {
-            $character = Character::find($characterId)
-                                  ->first();
+            $character = optional(Character::find($characterId))->first();
 
             // List of all placeholders
             // FIXME: factorize this, for the moment it is set in PageController

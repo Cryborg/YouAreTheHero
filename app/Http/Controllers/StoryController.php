@@ -275,7 +275,7 @@ class StoryController extends Controller
         $character = Character::find(getSession('character_id'));
 
         return view('story.partials.inventory', [
-            'character' => $character,
+            'items' => $character->items,
         ]);
 
     }
@@ -473,7 +473,7 @@ class StoryController extends Controller
             $isFound = false;
 
             foreach ($character->items as $characterItem) {
-                if ($characterItem->id == $pageItem->id && $characterItem->single_use) {
+                if ($characterItem->id == $pageItem->id && $characterItem->is_unique) {
                     $isFound = true;
                 }
             }

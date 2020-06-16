@@ -8,7 +8,7 @@
                 <span class="mr-2">
                     <i>@lang('item.price'):</i> {!! $item->present()->price !!}
                 </span> <span class="mr-2">
-                    <i>@lang('item.single_use'):</i> @if ($item->single_use) @lang('common.yes') @else @lang('common.no') @endif
+                    <i>@lang('item.is_unique'):</i> @if ($item->is_unique) @lang('common.yes') @else @lang('common.no') @endif
                 </span> <span>
                     <i>@lang('item.size'):</i> {{ $item->size }}
                 </span>

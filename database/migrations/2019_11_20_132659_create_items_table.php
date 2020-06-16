@@ -22,7 +22,7 @@ class CreateItemsTable extends Migration
             $table->string('category', 20)->nullable();
             $table->string('name', 30);
             $table->unsignedInteger('default_price')->default(0);
-            $table->boolean('single_use')->default(false);
+            $table->boolean('is_unique')->default(false);
 
             $table->float('size')->default(1)
                   ->comment('How much room it takes in the inventory.');

@@ -74,7 +74,7 @@ class Character extends Model
 
     public function items(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Item::class)->withPivot('quantity');
+        return $this->belongsToMany(Item::class)->withPivot(['quantity', 'is_used']);
     }
 
     public function actions()
