@@ -17,11 +17,6 @@
         var routeChoices = '{{ route('page.choices', ['page' => $page->id]) }}';
         var routeContent = '{{ route('story.play', ['story' => $story->id, 'page' => $page->id]) }}';
 
-        var saveSuccessHeading = "{!! trans('notification.save_success_title') !!}";
-        var saveSuccessText = "{!! trans('notification.save_success_text') !!}";
-        var saveFailedHeading = "{!! trans('notification.save_failed_title') !!}";
-        var saveFailedText = "{!! trans('notification.save_failed_text') !!}";
-
         @include('story.js.play-js')
     </script>
 @endpush

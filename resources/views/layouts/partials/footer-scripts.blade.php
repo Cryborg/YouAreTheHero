@@ -20,6 +20,16 @@
 @endif
 
 <script type="text/javascript">
+    // Common translations
+    var saveSuccessHeading = "{!! trans('notification.save_success_title') !!}";
+    var saveSuccessText = "{!! trans('notification.save_success_text') !!}";
+    var saveFailedHeading = "{!! trans('notification.save_failed_title') !!}";
+    var saveFailedText = "{!! trans('notification.save_failed_text') !!}";
+    var deletionSuccessTitle = "{{ trans('notification.deletion_success_title') }}";
+    var deletionSuccessText = "{{ trans('notification.deletion_success_text') }}";
+    var deletionFailedTitle = "{{ trans('notification.deletion_failed_title') }}";
+    var deletionFailedText = "{{ trans('notification.deletion_failed_text') }}";
+
     var commonErrorText = "@lang('common.error')";
 
     @include('layouts.partials.common-js')
