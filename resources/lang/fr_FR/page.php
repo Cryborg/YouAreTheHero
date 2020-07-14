@@ -78,4 +78,6 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
   'report_modal_title' => 'Signaler une erreur sur cette page',
   'report_count' => 'Nombre de signalements',
   'report_button' => 'Signaler une erreur',
+  'report_error_type_help' => 'Type/raison du rapport.',
+  'report_comment_help' => 'Sois aussi précis que possible.',
 );
