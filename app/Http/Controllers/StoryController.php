@@ -275,9 +275,8 @@ class StoryController extends Controller
         $character = Character::find(getSession('character_id'));
 
         return view('story.partials.inventory', [
-            'items' => $character->items,
+            'items' => $character->items->sortBy('name'),
         ]);
-
     }
 
     /**
@@ -460,6 +459,9 @@ class StoryController extends Controller
     }
 
     /**
+     * Only show items that:
+     * - are not in the character item (if the item is unique)
+     *
      * @param \App\Models\Character $character
      * @param \App\Models\Page      $page
      *
@@ -467,9 +469,9 @@ class StoryController extends Controller
      */
     private function filterItems(Character $character, Page $page)
     {
-        $actions = [];
+        $items = [];
 
-        foreach ($page->items as $pageItem) {
+        foreach ($page->items as $index => $pageItem) {
             $isFound = false;
 
             foreach ($character->items as $characterItem) {
@@ -479,11 +481,15 @@ class StoryController extends Controller
             }
 
             if (!$isFound) {
-                $actions[] = $pageItem;
+                if ($pageItem->category) {
+                    $items[$pageItem->category][] = $pageItem;
+                } else {
+                    $items[trans('constants.no_category')][] = $pageItem;
+                }
             }
         }
 
-        return $actions;
+        return $items;
     }
 
     public function getReset(Story $story)

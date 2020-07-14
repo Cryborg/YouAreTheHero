@@ -16,16 +16,35 @@
                                         <span class="icon-play bg-primary rounded-circle display-6 text-white p-1 clickable mr-2"></span>
                                     </a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    @if (Auth::user()->hasBeganStory($story))
+                                @if (Auth::id() === $story->author->id)
+                                    <li class="nav-item dropdown">
                                         <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <span class="icon-menu-dots display-6 text-black clickable"></span>
                                         </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="{{ route('story.reset', ['story' => $story]) }}">@lang('story.reset')</a>
+
+                                        <div class="dropdown-menu dropdown-menu-right shadow-lg">
+                                            {{-- Edit story--}}
+                                            <a class="dropdown-item" href="{{ route('story.edit', ['story' => $story]) }}">
+                                                <span class="icon-settings mr-2"></span>
+                                                @lang('story.edit')
+                                            </a>
+
+                                            {{-- Resume page editing --}}
+                                            <a class="dropdown-item" href="{{ route('page.edit', ['page' => $story->getCurrentPage()->id]) }}">
+                                                <span class="icon-fountain-pen mr-2"></span>
+                                                @lang('story.resume_editing')
+                                            </a>
+
+                                            @if (Auth::user()->hasBeganStory($story))
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="{{ route('story.reset', ['story' => $story]) }}">
+                                                    <span class="icon-recycle text-red mr-2"></span>
+                                                    @lang('story.reset')
+                                                </a>
+                                            @endif
                                         </div>
-                                    @endif
-                                </li>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </nav>
@@ -34,7 +53,7 @@
                     <div class="card-text">
                         {!! $story->description !!}
                     </div>
-                    <span class="badge badge-success bottom-right p-1 pl-2 pr-2">{{ $story->wordsCount }} words</span>
+                    <span class="badge badge-success bottom-right p-1 pl-2 pr-2">@lang('story.words_count', ['count' => $story->wordsCount])</span>
                 </div>
                 <div class="card-footer">
                     <div class="row">

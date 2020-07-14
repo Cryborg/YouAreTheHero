@@ -42,13 +42,17 @@
         <div class="card w-100">
             <h5 class="card-header">@lang('item.options')</h5>
             <div class="card-body">
-                <div class="card-text">
-                    <p class="help-block">{!! trans('item.is_unique_help') !!}</p>
-                    <label>
-                        {!! Form::checkbox('is_unique', 1, 0,  ['id' => 'is_unique_' . $context]) !!}
-                        {{ trans('item.is_unique') }}
-                    </label>
-                </div>
+                <p class="help-block">{!! trans('item.category_help') !!}</p>
+                <label>
+                    {!! Form::text('item_category', null,  ['class' => 'form-control', 'placeholder' => trans('item.category'), 'id' => 'item_category_' . $context, 'autocomplete' => 'nope']) !!}
+                </label>
+            </div>
+            <div class="card-body">
+                <p class="help-block">{!! trans('item.is_unique_help') !!}</p>
+                <label>
+                    {!! Form::checkbox('is_unique', 1, 0,  ['id' => 'is_unique_' . $context]) !!}
+                    {{ trans('item.is_unique') }}
+                </label>
             </div>
             @if ($story->story_options && $story->story_options->has_stats)
                 <h5 class="card-header">@lang('item.effects')</h5>

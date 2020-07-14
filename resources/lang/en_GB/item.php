@@ -22,4 +22,6 @@ return array (
   'select_action' => 'Select an action',
   'throw_away' => 'Throw away',
   'use' => 'Use',
+  'category' => 'Category',
+  'category_help' => 'Optional category for this object.',
 );

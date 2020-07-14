@@ -34,22 +34,31 @@
     <div class="card-body">
         <div class="row mt-3">
             <div class="col-xl-6 col-md-12">
-                @foreach ($items as $item)
-                        <div class="pick-item">
-                            @include('story.partials.pick-item', [
-                                'item' => $item,
-                                'icon' => 'icon-receive-money',
-                            ])
-                            @if ($item->effects)
-                                @foreach ($item->effects as $effect => $value)
-                                    @include('story.partials.effects', [
-                                        'name' => $effect,
-                                        'value' => $value['quantity'],
-                                        'operator' => $value['operator'] === '+' ? 'add' : 'sub'
-                                    ])
-                                @endforeach
-                            @endif
+                @foreach ($items as $index => $categories)
+                    <div class="card card-no-padding">
+                        <div class="card-header">
+                            {{ $index }}
                         </div>
+                        @foreach ($categories as $item)
+                            <div class="card-body">
+                                <div class="pick-item">
+                                    @include('story.partials.pick-item', [
+                                        'item' => $item,
+                                        'icon' => 'icon-receive-money',
+                                    ])
+                                    @if ($item->effects)
+                                        @foreach ($item->effects as $effect => $value)
+                                            @include('story.partials.effects', [
+                                                'name' => $effect,
+                                                'value' => $value['quantity'],
+                                                'operator' => $value['operator'] === '+' ? 'add' : 'sub'
+                                            ])
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 @endforeach
             </div>
         </div>

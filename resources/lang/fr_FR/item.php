@@ -22,4 +22,6 @@ return array (
   'select_action' => 'Choisis une action',
   'throw_away' => 'Jeter',
   'use' => 'Utiliser',
+  'category_help' => 'Catégorie optionnelle pour cet objet.',
+  'category' => 'Catégorie',
 );

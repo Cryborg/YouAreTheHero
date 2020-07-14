@@ -42,4 +42,5 @@ return array (
   'author' => 'Auteur',
   'inventory_slots' => 'Place dans l\'inventaire',
   'inventory_slots_help' => 'Combien le personnage pourra porter ? Ce peut être un poids ou une taille, chaque objet ayant son propre attribut.<br>-1 désactive l\'option, l\'inventaire ne sera pas limité.',
+  'words_count' => ':count mots',
 );

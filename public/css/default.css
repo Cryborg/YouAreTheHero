@@ -427,3 +427,6 @@ a[data-toggle="popover"]:hover, a.clickable:hover {
     top: 20px;
     right: 10px;
 }
+.card.card-no-padding .card-body {
+    padding: 0;
+}

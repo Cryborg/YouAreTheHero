@@ -46,10 +46,11 @@ class ItemController extends Controller
             [
                 'name'          => 'required|min:2',
                 'default_price' => 'required',
-                'is_unique'    => '',
+                'is_unique'     => '',
                 'story_id'      => 'required|exists:stories,id',
                 'size'          => 'required|min:0',
                 'effects'       => '',
+                'category'      => '',
             ]);
 
         $effects = $validated['effects'] ?? [];
