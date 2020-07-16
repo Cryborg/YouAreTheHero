@@ -275,7 +275,7 @@ class StoryController extends Controller
         $character = Character::find(getSession('character_id'));
 
         return view('story.partials.inventory', [
-            'items' => $character->items->sortBy('name'),
+            'items' => $this->showItemsInInventory($character),
         ]);
     }
 
@@ -471,7 +471,7 @@ class StoryController extends Controller
     {
         $items = [];
 
-        foreach ($page->items as $index => $pageItem) {
+        foreach ($page->items as $pageItem) {
             $isFound = false;
 
             foreach ($character->items as $characterItem) {
@@ -486,6 +486,22 @@ class StoryController extends Controller
                 } else {
                     $items[trans('constants.no_category')][] = $pageItem;
                 }
+            }
+        }
+
+        return $items;
+    }
+
+    private function showItemsInInventory(Character $character)
+    {
+        $items = [];
+
+        foreach ($character->items as $characterItem)
+        {
+            if ($characterItem->category) {
+                $items[$characterItem->category][] = $characterItem;
+            } else {
+                $items[trans('constants.no_category')][] = $characterItem;
             }
         }
 
