@@ -266,11 +266,9 @@ class StoryController extends Controller
     /**
      * Get a character's inventory
      *
-     * @param \App\Models\Story $story
-     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function inventory(Story $story)
+    public function inventory()
     {
         $character = Character::find(getSession('character_id'));
 
