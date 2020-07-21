@@ -350,8 +350,8 @@ namespace App\Models{
  * App\Models\Choice
  *
  * @property string $id
- * @property \App\Models\Page|null $page_from
- * @property \App\Models\Page|null $page_to
+ * @property int|null $page_from
+ * @property int|null $page_to
  * @property string $link_text
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \App\Models\Page|null $pageFrom
