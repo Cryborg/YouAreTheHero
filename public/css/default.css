@@ -125,6 +125,10 @@ p:not(.help-block) {
     font-size: 1.25em;
 }
 
+.font-biggest {
+    font-size: 1.5em;
+}
+
 .help-block {
     font-size: .8em;
     font-style: italic;
@@ -423,10 +427,28 @@ a[data-toggle="popover"]:hover, a.clickable:hover {
 
 .popup-menu {
     position: absolute;
-    background-color: white;
+    background-color: #ffffff;
     top: 20px;
     right: 10px;
 }
 .card.card-no-padding .card-body {
     padding: 0;
+}
+
+/* HELP PAGE */
+.container-help div.example {
+    margin: .5em 0 .5em 0;
+    background-color: #f7f7f7;
+    border: 1px solid lightgrey;
+    padding: .5em;
+}
+
+.container-help h3, .container-help h4 {
+    margin-top: .8em;
+    margin-bottom: .5em;
+}
+/* END HELP PAGE */
+
+div.popover.show {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }

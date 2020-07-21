@@ -11,8 +11,12 @@
                 </button>
             </div>
             <div class="modal-body shadow-sm h-50">
+                {{-- FIX ME, I'm ugly! --}}
                 @if (in_array($context, ['prerequisites', 'item_page', 'riddles', 'add_choice', 'edit_choice', 'add_actions', 'report']))
                     @include($template, ['page' => $data['page']])
+                @endif
+                @if (in_array($context, ['help']))
+                    @include($template)
                 @endif
             </div>
             <div class="modal-body modal-body-preview h-50 ml-3 hidden">

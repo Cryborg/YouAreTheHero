@@ -4,6 +4,7 @@
         {{ trans('common.link_read') }}
     </a>
 </li>
+
 <li class="nav-item dropdown @if (in_array(Route::current()->getName(), ['story.create', 'page.edit', 'stories.list.draft'])) border-menu-active @endif">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="icon-fountain-pen mr-2"></span>
@@ -18,6 +19,7 @@
         </a>
     </div>
 </li>
+
 @can('isAdmin')
     <li class="nav-item @if (Route::is('admin*')) border-menu-active @endif">
         <a class="nav-link" href="{{ url('admin') }}">

@@ -46,4 +46,6 @@ return array (
   'none_selected' => 'No selection',
   'created_at' => 'Creation date',
   'created_by' => 'Created by',
+  'help' => 'Help',
+  'help_modal_title' => 'Help',
 );
