@@ -227,6 +227,8 @@ class StoryController extends Controller
         // Check if there are prerequisites, and that they are fulfilled
         foreach ($allChoices as $choice) {
             $fulfilled = false;
+
+            $choice->load('pageTo');
             $pageTo    = $choice->pageTo;
 
             if ($pageTo && $pageTo->prerequisites()->count() > 0) {
@@ -343,8 +345,7 @@ class StoryController extends Controller
         $key = 'choices_' . $page->id;
 
         return Cache::remember($key, Config::get('app.story.cache_ttl'), function () use ($page, $key) {
-            return Choice::with('pageTo')
-                         ->where('page_from', $page->id)
+            return Choice::where('page_from', $page->id)
                          ->get();
         }
         );

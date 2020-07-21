@@ -109,9 +109,17 @@ class Story extends Model
         }
 
         // Don't Fail here as we create the page later
-        return Page::where('story_id', $this->id)
-            ->where('is_first', true)
-            ->first();
+        $page = Page::where('story_id', $this->id)
+                    ->where('is_first', true)
+                    ->first();
+
+        if ($page) {
+            return $page;
+        }
+
+        return factory(Page::class)->create([
+            'story_id' => $this->id,
+        ]);
     }
 
     public function fields()
