@@ -33,7 +33,7 @@ Route::get('/story/create', 'StoryController@getCreate')->name('story.create');
 Route::post('/story/create', 'StoryController@store')->name('story.create.post');
 Route::get('/story/{story}/edit', 'StoryController@getEdit')->name('story.edit');
 
-Route::get('/story/{story}/inventory', 'StoryController@inventory')->name('story.inventory');
+Route::get('/story/inventory', 'StoryController@inventory')->name('story.inventory');
 Route::get('/story/{story}/sheet', 'StoryController@sheet')->name('story.sheet');
 Route::post('/story/{story}/page/create/{page?}', 'PageController@create')->name('page.create');
 Route::get('/story/{story}/{page?}', 'StoryController@getPlay')->name('story.play');
