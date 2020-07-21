@@ -227,8 +227,8 @@ class StoryController extends Controller
         // Check if there are prerequisites, and that they are fulfilled
         foreach ($allChoices as $choice) {
             $fulfilled = false;
-//            $choice->load('pageTo');
-            dd($choice);
+
+            $choice->load('pageTo');
             $pageTo    = $choice->pageTo;
 
             if ($pageTo && $pageTo->prerequisites()->count() > 0) {
