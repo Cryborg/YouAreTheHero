@@ -51,37 +51,51 @@
                     {{-- Left Side Of Navbar --}}
                     <ul class="navbar-nav mr-auto">
                         @auth
-{{--                            , ['active' => 3] --}}
                             @include('layouts.partials.nav')
                         @endauth
                     </ul>
 
                     {{-- Right Side Of Navbar --}}
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="#" id="navbarDropdownFlag" role="button" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    <img width="32" height="32" alt="{{ session('locale') }}"
-                                        src="{!! asset('img/flags/' . session('locale') . '.png') !!}"/>
+                    {{-- Help --}}
+                    @auth()
+                        <ul class="navbar-nav ml-auto mr-5 shadow">
+                            <li class="nav-item bg-success pl-2 pr-2">
+                                <a class="nav-link clickable text-white" data-target="#modalHelp" data-toggle="modal">
+                                    <span class="icon-help text-white mr-2 font-biggest"></span>
+                                    {{ trans('common.help') }}
                                 </a>
-                                <div id="flags" class="dropdown-menu" aria-labelledby="navbarDropdownFlag">
-                                    @foreach(config('app.languages') as $locale)
-                                        @if($locale != session('locale'))
-                                            <a class="dropdown-item" href="{{ route('language', $locale) }}">
-                                                <img width="32" height="32" alt="{{ session('locale') }}"
-                                                    src="{!! asset('img/flags/' . $locale . '.png') !!}"/>
-                                            </a>
-                                        @endif
-                                    @endforeach
-
-                                    <div role="separator" class="dropdown-divider"></div>
-
-                                    <a class="dropdown-item" href="{{ url('/translations') }}" target="_blank">
-                                        {{ trans('auth.translations') }}
-                                    </a>
-                                </div>
                             </li>
                         </ul>
+                    @endauth
+
+                    {{-- Languages / Translations --}}
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdownFlag" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img width="32" height="32" alt="{{ session('locale') }}"
+                                    src="{!! asset('img/flags/' . session('locale') . '.png') !!}"/>
+                            </a>
+                            <div id="flags" class="dropdown-menu" aria-labelledby="navbarDropdownFlag">
+                                @foreach(config('app.languages') as $locale)
+                                    @if($locale != session('locale'))
+                                        <a class="dropdown-item" href="{{ route('language', $locale) }}">
+                                            <img width="32" height="32" alt="{{ session('locale') }}"
+                                                src="{!! asset('img/flags/' . $locale . '.png') !!}"/>
+                                        </a>
+                                    @endif
+                                @endforeach
+
+                                <div role="separator" class="dropdown-divider"></div>
+
+                                <a class="dropdown-item" href="{{ url('/translations') }}" target="_blank">
+                                    {{ trans('auth.translations') }}
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    {{-- Player profile --}}
                     <ul class="navbar-nav">
                         {{-- Authentication Links --}}
                         @guest
@@ -144,6 +158,20 @@
                 @yield('content')
             </div>
         </main>
+
+        @auth()
+            <!-- Modal help -->
+            @include('page.partials.modal_model', [
+                'template' => 'layouts.partials.modal_help',
+                'context' => 'help',
+                'title' => trans('common.help_modal_title'),
+                'icon' => 'icon-help',
+                'big' => true,
+                'data' => [
+                    'id' => 'Help',
+                ]
+            ])
+        @endauth
     </div>
 
     @routes
