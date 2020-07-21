@@ -57,14 +57,16 @@
 
                     {{-- Right Side Of Navbar --}}
                     {{-- Help --}}
-                    <ul class="navbar-nav ml-auto mr-5 shadow">
-                        <li class="nav-item bg-success pl-2 pr-2">
-                            <a class="nav-link clickable text-white" data-target="#modalHelp" data-toggle="modal">
-                                <span class="icon-help text-white mr-2 font-biggest"></span>
-                                {{ trans('common.help') }}
-                            </a>
-                        </li>
-                    </ul>
+                    @auth()
+                        <ul class="navbar-nav ml-auto mr-5 shadow">
+                            <li class="nav-item bg-success pl-2 pr-2">
+                                <a class="nav-link clickable text-white" data-target="#modalHelp" data-toggle="modal">
+                                    <span class="icon-help text-white mr-2 font-biggest"></span>
+                                    {{ trans('common.help') }}
+                                </a>
+                            </li>
+                        </ul>
+                    @endauth
 
                     {{-- Languages / Translations --}}
                     <ul class="navbar-nav">
@@ -157,17 +159,19 @@
             </div>
         </main>
 
-        <!-- Modal help -->
-        @include('page.partials.modal_model', [
-            'template' => 'layouts.partials.modal_help',
-            'context' => 'help',
-            'title' => trans('common.help_modal_title'),
-            'icon' => 'icon-help',
-            'big' => true,
-            'data' => [
-                'id' => 'Help',
-            ]
-        ])
+        @auth()
+            <!-- Modal help -->
+            @include('page.partials.modal_model', [
+                'template' => 'layouts.partials.modal_help',
+                'context' => 'help',
+                'title' => trans('common.help_modal_title'),
+                'icon' => 'icon-help',
+                'big' => true,
+                'data' => [
+                    'id' => 'Help',
+                ]
+            ])
+        @endauth
     </div>
 
     @routes
