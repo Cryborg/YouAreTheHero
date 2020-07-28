@@ -366,6 +366,23 @@ class PageController extends Controller
                     $graph .= $page->id . '->' . $choice->id . ' [label="' . addslashes($html) . '"];';
                 }
             }
+
+            // If the page contains a riddle, and it links to another page
+            if (!empty($page->riddle)) {
+                if ($page->riddle->target_page_id) {
+                    $html = Str::replaceArray('?',
+                        [$page->riddle->target_page_id, $page->id, addslashes($page->riddle->target_page_text)],
+                        '<div
+                            data-page-to="?"
+                            data-page-from="?">
+                            <span class="choice-text icon-fountain-pen text-white clickable border-right border-light p-1 mr-2"></span>
+                            <span class="link-text">?</span>
+                            <span class="choice-text icon-trash clickable text-red border-left border-light p-1 ml-2"></span>
+                        </div>');
+                    $html = preg_replace('/\s+/', ' ', str_replace(array("\r", "\n"), '', $html));
+                    $graph .= $page->id . '->' . $page->riddle->target_page_id . ' [label="' . addslashes($html) . '" style="stroke: white; stroke-dasharray: 5;" arrowheadStyle="fill: white"];';
+                }
+            }
         }
 
         $graph .= '}';

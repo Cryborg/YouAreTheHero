@@ -12,8 +12,8 @@ class RiddleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Story  $story
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Story        $story
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -22,11 +22,11 @@ class RiddleController extends Controller
         $success = true;
 
         $validated = $request->validate([
-            'answer'        => 'required',
-            'item_id'       => 'present',
+            'answer'           => 'required',
+            'item_id'          => '',
             'target_page_id'   => 'required_with:target_page_text',
-            'target_page_text'   => 'required_with:target_page_id',
-            'type'          => 'required',
+            'target_page_text' => 'required_with:target_page_id',
+            'type'             => 'required',
         ]);
 
         $validated['type'] = $validated['type'] == 1 ? 'integer' : 'string';
@@ -40,10 +40,10 @@ class RiddleController extends Controller
         $page->riddle->load('page');
 
         return response()->json([
-            'success' => $success,
-            'riddle' => $page->riddle,
+            'success'    => $success,
+            'riddle'     => $page->riddle,
             'page_title' => optional($page->riddle->page)->title,
-            'item_name' => optional($page->riddle->item)->name
+            'item_name'  => optional($page->riddle->item)->name,
         ]);
     }
 }
