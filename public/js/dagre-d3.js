@@ -1041,7 +1041,7 @@
 
                 function translate(e) {
                     var edge = g.edge(e);
-                    return _.has(edge, "x") ? "translate(" + edge.x + "," + edge.y + ")" : "";
+                    return _.has(edge, "x") ? "translate(" + (edge.x + ((edge.x /100) * 5)) + "," + edge.y + ")" : "";
                 }
 
                 created.attr("transform", translate);

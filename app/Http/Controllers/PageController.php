@@ -371,16 +371,14 @@ class PageController extends Controller
             if (!empty($page->riddle)) {
                 if ($page->riddle->target_page_id) {
                     $html = Str::replaceArray('?',
-                        [$page->riddle->target_page_id, $page->id, addslashes($page->riddle->target_page_text)],
-                        '<div
-                            data-page-to="?"
-                            data-page-from="?">
-                            <span class="choice-text icon-fountain-pen text-white clickable border-right border-light p-1 mr-2"></span>
-                            <span class="link-text">?</span>
-                            <span class="choice-text icon-trash clickable text-red border-left border-light p-1 ml-2"></span>
+                        [addslashes($page->riddle->target_page_text)],
+                        '<div class="bg-white text-black">
+                            <span class="icon-jigsaw-piece border-right text-black border-light p-1 mr-2"></span>
+                            <span class="link-text mr-4">?</span>
                         </div>');
                     $html = preg_replace('/\s+/', ' ', str_replace(array("\r", "\n"), '', $html));
-                    $graph .= $page->id . '->' . $page->riddle->target_page_id . ' [label="' . addslashes($html) . '" style="stroke: white; stroke-dasharray: 5;" arrowheadStyle="fill: white"];';
+                    $graph .= $page->id . '->' . $page->riddle->target_page_id
+                              . ' [label="' . addslashes($html) . '" style="stroke: white; stroke-dasharray: 5;" arrowheadStyle="fill: white"];';
                 }
             }
         }
