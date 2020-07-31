@@ -5,26 +5,27 @@
 
         if (selectedVal === '0') {
             newPage($this,
-                route('page.create', {'story':storyId }),
-                true
+                route('page.create', {'story':storyId })
             );
         } else {
             newPage($this,
-                route('page.create', {'story': storyId, 'page': selectedVal}),
-                false
+                route('page.create', {'story': storyId, 'page': selectedVal})
             );
         }
     });
 
-    function newPage($this, url, newNode) {
+    function newPage($this, url, linkText) {
         let $parent = $this.closest('.modal');
+        let text = typeof linkText !== 'undefined'
+            ? linkText
+            : $parent.find('#link_text').val();
 
         // Create the page and display it
         $.ajax({
             'url': url,
             'data': {
                 'page_from': pageId,
-                'link_text': $parent.find('#link_text').val()
+                'link_text': text
             },
             'method': 'POST'
         })
@@ -36,6 +37,33 @@
                 tryDraw(data.graph);
 
                 $('#modalAddChoice').modal('toggle');
+            })
+            .always(function () {
+                $this.prop('disabled', false);
+            });
+    }
+
+    function newEmptyPage(linkText, $select) {
+        // Create the page and display it
+        $.ajax({
+            'url': route('page.create', {'story': storyId}),
+            'data': {
+                'link_text': linkText
+            },
+            'method': 'POST'
+        })
+            .done(function (data) {
+                tryDraw(data.graph);
+
+                // Rajouter la nouvelle page dans la liste déroulante
+                if (typeof $select !== undefined) {
+                    $select.append(new Option(linkText, data.page.id, true, true))
+                }
+
+                showToast('success', {
+                    heading: saveSuccessHeading,
+                    text: saveSuccessText,
+                });
             })
             .always(function () {
                 $this.prop('disabled', false);
@@ -258,6 +286,17 @@
                         $this.html($this.data('original-text'));
                         $this.prop('disabled', false);
                     });
+            }
+        });
+
+        $(document).on('click', '.createNewPage', function () {
+            var $this = $(this);
+            var text = $('#riddle_target_page_text').val();
+
+            if (text !== '') {
+                newEmptyPage(text, $('#riddle_page'));
+            } else {
+                $('#riddle_target_page_text').css('border-color', 'red');
             }
         });
 

@@ -72,6 +72,9 @@
                                     {!! Form::text('riddle_target_page_text', $page->riddle ? $page->riddle->target_page_text : '',  ['id' => 'riddle_target_page_text']) !!}
                                 </div>
                             </div>
+                            <div class="card-body">
+                                <a class="btn btn-primary text-white createNewPage"><span class="icon-add text-white mr-2"></span>@lang('page.add_new_page')</a>
+                            </div>
                         </div>
                     </div>
                 </div>

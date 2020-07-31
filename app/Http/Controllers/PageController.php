@@ -9,6 +9,7 @@ use App\Models\Story;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
@@ -38,9 +39,15 @@ class PageController extends Controller
         $redirect = null;
 
         if ($page === null) {
-            $page     = factory(Page::class)->create([
-                'story_id' => $story->id,
-            ]);
+            $newPage = [
+                'story_id' => $story->id
+            ];
+
+            if ($request->get('link_text')) {
+                $newPage['title'] = $request->get('link_text');
+            }
+
+            $page     = factory(Page::class)->create($newPage);
             $redirect = route('page.edit', ['page' => $page]);
         }
 
@@ -336,20 +343,30 @@ class PageController extends Controller
         return View::make('page.partials.item_page_list', ['items' => $page->items]);
     }
 
+    /**
+     * @param \App\Models\Story $story
+     *
+     * @return string
+     */
     private function buildGraph(Story $story)
     {
-        $graph = 'digraph{' .
-                 'node [labelType="html" labelStyle="margin-top: 4px;" class="align-middle text-center"];' .
-                 'edge [labelType="html" labelStyle="border: 1px solid white;color:white;background-color:black;padding:3px;font-size:.8em"];';
+        $graph = collect();
+        $graph->push(
+            'digraph{',
+            'node [labelType="html" labelStyle="margin-top: 4px;" class="align-middle text-center"];',
+            'edge [labelType="html" labelStyle="border: 1px solid white;color:white;background-color:black;padding:3px;font-size:.8em"];'
+        );
 
         foreach ($story->pages as $page) {
-            $editLink = Str::replaceFirst(
+            $editPageLink = Str::replaceFirst(
                 '?',
                 route('page.edit', ['page' => $page]),
                 '<a href="?">' . addslashes($page->title) . '</a>'
             );
 
-            $graph .= $page->id . ' [label="' . addslashes($editLink) . '"];';
+            $graph->push(
+                $page->id . ' [label="' . addslashes($editPageLink) . '"];'
+            );
 
             if ($page->choices()->count() > 0) {
                 foreach ($page->choices as $choice) {
@@ -363,28 +380,36 @@ class PageController extends Controller
                             <span class="choice-text icon-trash clickable text-red border-left border-light p-1 ml-2"></span>
                         </div>');
                     $html = preg_replace('/\s+/', ' ', str_replace(array("\r", "\n"), '', $html));
-                    $graph .= $page->id . '->' . $choice->id . ' [label="' . addslashes($html) . '"];';
+                    $graph->push(
+                        $page->id . '->' . $choice->id . ' [label="' . addslashes($html) . '"];' . "\n"
+                    );
                 }
             }
 
             // If the page contains a riddle, and it links to another page
             if (!empty($page->riddle)) {
+                Log::info($page->riddle);
                 if ($page->riddle->target_page_id) {
                     $html = Str::replaceArray('?',
                         [addslashes($page->riddle->target_page_text)],
                         '<div class="bg-white text-black">
-                            <span class="icon-jigsaw-piece border-right text-black border-light p-1 mr-2"></span>
-                            <span class="link-text mr-4">?</span>
+                            <span class="riddle-text icon-jigsaw-piece text-black border-right border-dark p-1 mr-2"></span>
+                            <span class="link-text">?</span>
+                            <span class="riddle-text icon-trash clickable text-red border-left border-dark p-1 ml-2"></span>
                         </div>');
                     $html = preg_replace('/\s+/', ' ', str_replace(array("\r", "\n"), '', $html));
-                    $graph .= $page->id . '->' . $page->riddle->target_page_id
-                              . ' [label="' . addslashes($html) . '" style="stroke: white; stroke-dasharray: 5;" arrowheadStyle="fill: white"];';
+                    $graph->push(
+                        $page->id . '->' . $page->riddle->target_page_id
+                              . ' [label="' . addslashes($html) . '" style="stroke: white; stroke-dasharray: 5;" arrowheadStyle="fill: white"];' . "\n"
+                    );
                 }
             }
         }
 
-        $graph .= '}';
+        $graph->push(
+            '}'
+        );
 
-        return $graph;
+        return $graph->implode("\n");
     }
 }

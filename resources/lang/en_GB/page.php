@@ -80,4 +80,5 @@ This links to the page with the title:<br><i>:choice_title</i>',
   'report_modal_title' => 'Report an error on this page',
   'report_comment_help' => 'Be as accurate as you can.',
   'report_error_type_help' => 'Choose the report type.',
+  'add_new_page' => 'Add new page',
 );
