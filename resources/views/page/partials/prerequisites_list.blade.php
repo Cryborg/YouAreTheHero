@@ -1,4 +1,9 @@
-<h3>{{ trans('page.prerequisite_title') }}</h3>
+<h3>
+    {{ trans('page.prerequisite_title') }}
+    <button class="btn btn-success shadow ml-2" data-target="#modalCreatePrerequisite" data-toggle="modal">
+        <span class="icon-add text-white"></span>
+    </button>
+</h3>
 <table class="table" id="prerequisites_list-{{ $page->id }}">
     <thead class="thead-lightblue">
         <th scope="col">{{ trans('page.required_type_label') }}</th>

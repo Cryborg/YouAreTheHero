@@ -456,3 +456,7 @@ div.popover.show {
 .text-black {
     color: #000 !important;
 }
+
+.nav-pills .nav-link:not(.active) .icon {
+    color: #3490dc !important;
+}

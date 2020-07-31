@@ -26,12 +26,12 @@ function tryDraw(graphData) {
     }
 
     if (oldInputGraphValue !== inputGraph.value) {
-        inputGraph.setAttribute("class", "");
+        //inputGraph.setAttribute("class", "");
         oldInputGraphValue = inputGraph.value;
         try {
             g = graphlibDot.read(inputGraph.value);
         } catch (e) {
-            inputGraph.setAttribute("class", "error");
+            //inputGraph.setAttribute("class", "error");
             throw e;
         }
 

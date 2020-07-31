@@ -81,4 +81,9 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
   'report_error_type_help' => 'Type/raison du rapport.',
   'report_comment_help' => 'Sois aussi précis que possible.',
   'add_new_page' => 'Créer une nouvelle page',
+  'tab_prerequisite' => 'Prérequis',
+  'tab_text' => 'Page',
+  'tab_bonus' => 'Bonus/malus',
+  'tab_items' => 'Objets',
+  'tab_riddle' => 'Enigme',
 );

@@ -532,7 +532,3 @@
             });
     });
 
-    $(document).on('click', '.show-help', function () {
-        $this = $(this);
-        $('#' + $this.data('help')).slideToggle();
-    });
