@@ -17,6 +17,12 @@
         <a class="dropdown-item" href="{{ route('stories.list.draft') }}">
             {{ trans('stories.link_stories_draft') }}
         </a>
+        @if (Route::is('page.edit'))
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ route('story.edit', ['story' => $page->story]) }}">
+                @lang('story.edit')
+            </a>
+        @endif
     </div>
 </li>
 

@@ -1,9 +1,5 @@
 @extends('base')
 
-@push('head')
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/input_number.css') }}"/>
-@endpush
-
 @section('title', $title)
 
 @section('content')

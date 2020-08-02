@@ -150,6 +150,8 @@ $(document).on('click', '#riddle_validate', function () {
                 if (data.pageResponse) {
                     $('.btn-toolbar').append(data.pageResponse);
                 }
+
+                $('.riddle_text').remove();
             } else {
                 $this.closest('.card').addClass('border-danger');
             }

@@ -114,19 +114,19 @@ p:not(.help-block) {
 }
 
 .font-smallest {
-    font-size: .5em;
+    font-size: .5em !important;
 }
 
 .font-smaller {
-    font-size: .75em;
+    font-size: .75em !important;
 }
 
 .font-bigger {
-    font-size: 1.25em;
+    font-size: 1.25em !important;
 }
 
 .font-biggest {
-    font-size: 1.5em;
+    font-size: 1.5em !important;
 }
 
 .help-block {
@@ -348,8 +348,8 @@ div.height-big {
     line-height: 3em;
 }
 
-.h-300px {
-    height: 300px;
+.h-200px {
+    height: 200px;
 }
 
 .h-600px {

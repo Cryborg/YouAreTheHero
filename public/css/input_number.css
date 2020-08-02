@@ -1,72 +1,117 @@
-.quantity {
-    position: relative;
+/* Theming */
+.t-neutral .spinner__button {
+    background: #e8e8e8;
+    color: #000;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button
-{
-    -webkit-appearance: none;
-    margin: 0;
+.t-neutral .spinner__button:hover,
+.t-neutral .spinner__button:focus,
+.t-neutral .spinner__button:active {
+    background: #dfdfdf;
 }
 
-input[type=number]
-{
+.t-neutral .spinner__input {
+    background: #fff;
+}
+
+/* Aggressive reset to remove the initial spinner */
+input[type="number"] {
     -moz-appearance: textfield;
 }
 
-.quantity input {
-    width: 50px;
-    height: 50px;
-    line-height: 1;
-    float: left;
-    display: block;
-    padding: 0;
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
     margin: 0;
-    padding-left: 20px;
-    border: 1px solid #8c8c8c;
 }
 
-.quantity input:focus {
-    outline: 0;
+input[type="number"]:hover::-webkit-inner-spin-button,
+input[type="number"]:hover::-webkit-outer-spin-button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
 }
 
-.quantity-nav {
-    float: left;
-    position: relative;
-    height: 42px;
+/* The component (also includes vertical) */
+.spinner {
+    margin: 0 0 2em 0;
 }
 
-.quantity-button {
-    position: relative;
-    background-color: white;
+.spinner:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.spinner__button {
     cursor: pointer;
-    border-left: 1px solid #eee;
-    width: 50px;
-    height: 50px;
+    display: block;
+    font-size: 1em;
+    font-weight: 700;
+    padding: .7em .5em .7em;
     text-align: center;
-    color: #333;
-    font-size: 13px;
-    font-family: "Trebuchet MS", Helvetica, sans-serif !important;
-    line-height: 1.7;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-    box-shadow: -1px 2px 5px 1px rgba(160, 160, 160, 0.7);
-    -webkit-transform: translateX(10%);
-    transform: translateX(10%);
+    text-decoration: none;
+    transition: background 0.4s ease;
+    border-color: white;
 }
 
-.quantity-button.quantity-up {
-    position: absolute;
-    height: 50%;
-    top: 0;
-    border-bottom: 1px solid #eee;
+.spinner__button--left {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
 }
 
-.quantity-button.quantity-down {
-    position: absolute;
-    bottom: -6px;
-    height: 50%;
+.spinner__button--right {
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.spinner__button--top {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.spinner__button--bottom {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.spinner--vertical .spinner__button {
+    width: 100%;
+}
+
+.spinner__input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: none;
+    border: none;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    box-sizing: border-box;
+    display: block;
+    font-size: 1em;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.spinner--horizontal .spinner__input {
+    padding: 1em 1em 1.05em 1em;
+}
+
+.spinner--vertical .spinner__input {
+    padding: .8em .5em .7em .5em;
+    width: 100%;
+}
+
+.spinner--horizontal .spinner__button {
+    float: left;
+    width: 25%;
+}
+
+.spinner--horizontal .spinner__input {
+    float: left;
+    width: 50%;
 }

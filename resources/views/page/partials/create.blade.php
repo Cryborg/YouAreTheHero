@@ -47,9 +47,6 @@
                         @lang('page.tab_riddle')
                     </a>
 
-{{--                    @if ($page->reports()->count() > 0)--}}
-{{--                        <a class="nav-item nav-link text-white" href="#p3" data-toggle="tab">@lang('page.reports')</a>--}}
-{{--                    @endif--}}
                 </nav>
                 <div class="tab-content">
 
@@ -95,8 +92,8 @@
                                 <div class="card-body">
                                     <div class="card-text">
                                         <p class="help-block">{{ trans('model.page_content_help') }}</p>
-                                        <div id="content-editable-{{ $page->id }}" class="false-input scrollable-content hidden h-300px">{!! $page->content ?? old('content') !!}</div>
-                                        <div id="content-{{ $page->id }}" class="false-input scrollable-content h-300px">{!! $page->present()->content ?? old('content') !!}</div>
+                                        <div id="content-editable-{{ $page->id }}" class="false-input scrollable-content hidden h-200px">{!! $page->content ?? old('content') !!}</div>
+                                        <div id="content-{{ $page->id }}" class="false-input scrollable-content h-200px">{!! $page->present()->content ?? old('content') !!}</div>
                                     </div>
                                 </div>
                             </div>
