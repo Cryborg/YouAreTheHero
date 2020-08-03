@@ -155,6 +155,7 @@ class PageController extends Controller
      * @param \App\Models\Page         $page
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function postRiddle(Request $request, Page $page): ?JsonResponse
     {
@@ -174,19 +175,19 @@ class PageController extends Controller
                     if ($page->riddle->item_id) {
                         $character = Character::find($storySession['character_id']);
                         $character->items()->attach([
-                                'item_id'  => $page->riddle->item_id,
-                                'quantity' => 1,
-                            ]);
+                            'item_id'  => $page->riddle->item_id,
+                            'quantity' => 1,
+                        ]);
                     }
                 }
 
                 // If it unlocks a new page
                 //FIXME: Moche, mettre ça dans un partial
                 if ($page->riddle && $page->riddle->target_page_id) {
-                    $pageResponse = '<div class="choices-links button-group"><a data-href="' . route('story.play',
-                            ['story' => $page->story->id, 'page' => $page->id]) . '">
-                        <button class="large button">' . $page->riddle->target_page_text . '</button>
-                    </a></div>';
+                    $pageResponse = '<div class="choices-links button-group">' .
+                        '<a data-href="' . route('story.play', ['story' => $page->story->id, 'page' => $page->riddle->target_page_id]) . '" data-page-id="' . $page->riddle->target_page_id . '">' .
+                        '<button class="large button">' . $page->riddle->target_page_text . '</button>' .
+                        '</a></div>';
                     $itemResponse = trans('page.riddle_already_solved');
                 }
 

@@ -90,6 +90,7 @@ $(document).on('click', '#add_PageReport', function () {
 $(document).on('click', 'a', function () {
     var $this = $(this);
     var href = $this.data('href');
+    pageId = $this.data('page-id');
 
     if (href !== undefined) {
         loadContent(href);

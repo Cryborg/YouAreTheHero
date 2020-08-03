@@ -114,16 +114,7 @@ class StoryController extends Controller
         // Check if there is an action bound to this page, and execute it
         $messages = $this->executeAction($page, $character);
 
-        // First display of the page
-        $view = view('story.play', $commonParams + [
-                'page'          => $page,
-                'items'         => $items,
-                'layout'        => $page->layout ?? $story->layout,
-                'character'     => $character,
-                'visitedPlaces' => $visitedPlaces,
-                'messages'      => $messages,
-            ]
-        );
+        $view = null;
 
         if (\Illuminate\Support\Facades\Request::ajax()) {
             $view = view('layouts.partials.page_content', $commonParams + [
@@ -131,6 +122,17 @@ class StoryController extends Controller
                 'items'     => $items,
                 'messages'  => $messages,
             ]);
+        } else {
+            // First display of the page
+            $view = view('story.play', $commonParams + [
+                    'page'          => $page,
+                    'items'         => $items,
+                    'layout'        => $page->layout ?? $story->layout,
+                    'character'     => $character,
+                    'visitedPlaces' => $visitedPlaces,
+                    'messages'      => $messages,
+                ]
+            );
         }
 
         return $view ?? view('errors.404');
