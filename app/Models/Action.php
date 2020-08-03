@@ -16,7 +16,7 @@ class Action extends Model
         return $this->morphTo();
     }
 
-    public function trigger()
+    public function triggers()
     {
         return $this->morphTo();
     }

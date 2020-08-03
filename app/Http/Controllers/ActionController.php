@@ -21,7 +21,7 @@ class ActionController extends Controller
             'quantity' => $request->get('quantity')
         ]);
 
-        $success = $page->trigger()->save($action);
+        $success = $page->triggers()->save($action);
 
         return response()->json([
             'success' => $success
@@ -39,7 +39,7 @@ class ActionController extends Controller
             'quantity' => $request->get('quantity')
         ]);
 
-        $success = $page->trigger()->save($action);
+        $success = $page->triggers()->save($action);
 
         return response()->json([
             'success' => $success,
@@ -54,7 +54,7 @@ class ActionController extends Controller
     public function listjs(Page $page)
     {
         return response()->json([
-           'actions' => $page->trigger
+           'actions' => $page->triggers
         ]);
     }
 

@@ -127,10 +127,10 @@ class Page extends Model
 
     public function fields()
     {
-        return $this->trigger()->where('actionable_type', 'field')->with('actionable');
+        return $this->triggers()->where('actionable_type', 'field')->with('actionable');
     }
 
-    public function trigger()
+    public function triggers()
     {
         return $this->morphMany(Action::class, 'trigger')->with('actionable');
     }

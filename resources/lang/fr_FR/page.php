@@ -8,7 +8,7 @@ return array (
 Choisis une page déjà existante pour que le joueur puisse y retourner.',
   'existing_page' => 'Choisis une page existante',
   'item_page_modal_title' => 'Ajout d\'un objet dans la page',
-  'current_page_actions_help' => 'Choisis les objets que tu veux ajouter à cette page et les actions à faire dessus.',
+  'current_page_actions_help' => 'Choisis les objets et/ou les points de compétences que tu veux donner ou enlever au joueur à l\'arrivée sur cette page.',
   'items_list' => 'Liste des objets',
   'concerned_item' => 'Objet concerné',
   'concerned_item_help' => 'Choisis d\'abord l\'objet concerné par l\'action que tu veux ajouter.',

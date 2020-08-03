@@ -147,7 +147,7 @@ class StoryController extends Controller
         // Will contain messages such as "You lost 1 gold coin" or "You gained 2 health points"
         $messages = [];
 
-        foreach ($page->trigger as $trigger)
+        foreach ($page->triggers as $trigger)
         {
             if ($trigger->actionable instanceof Field) {
                 $field = $character->fields->where('pivot.field_id', $trigger->actionable->id)->first();

@@ -8,7 +8,7 @@ return array (
 Click on an already existing page to link to it.',
   'existing_page' => 'Choose an existing page',
   'item_page_modal_title' => 'Put an item in the page',
-  'current_page_actions_help' => 'These are all the actions that can be done in this page.',
+  'current_page_actions_help' => 'Items or skill points the play will gain or lose when arriving on this page.',
   'items_list' => 'Items list',
   'concerned_item' => 'Item concerned',
   'concerned_item_help' => 'First choose the item concerned by the action you want to add.',

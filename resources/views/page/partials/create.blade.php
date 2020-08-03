@@ -1,4 +1,3 @@
-
 <div class="row is-page">
     {!! Form::hidden('page_from', $page->id, ['class' => 'is-page-from', 'data-page-from' => $page_from ?? 0]) !!}
     <div class="col-lg-6 col-xs-12">
@@ -16,7 +15,7 @@
                 <button class="btn btn-primary" data-target="#modalAddChoice" data-toggle="modal">
                     <span class="icon-choice text-white display-6 align-middle mr-3"></span>
                     <span class="align-middle">@lang('page.add_choice')</span>
-                    <span class="badge badge-warning rounded float-right shadow font-bigger ml-3">{{ $page->choices()->count() }}</span>
+                    <span class="badge badge-warning rounded float-right shadow ml-3">{{ $page->choices()->count() }}</span>
                 </button>
             </div>
         </div>
@@ -29,6 +28,9 @@
                     <a class="nav-item nav-link shadow mr-3" href="#page-1" data-toggle="tab">
                         <span class="icon icon-unlocking text-white display-6 align-middle mr-2"></span>
                         @lang('page.tab_prerequisite')
+                        @if ($page->prerequisites()->count() > 0)
+                            <span class="badge badge-warning rounded float-right shadow ml-3">{{ $page->prerequisites()->count() }}</span>
+                        @endif
                     </a>
                     <a class="nav-item nav-link shadow mr-3 active" href="#page-2" data-toggle="tab">
                         <span class="icon icon-fountain-pen text-white display-6 align-middle mr-2"></span>
@@ -37,14 +39,23 @@
                     <a class="nav-item nav-link shadow mr-3" href="#page-3" data-toggle="tab">
                         <span class="icon icon-unlocking text-white display-6 align-middle mr-2"></span>
                         @lang('page.tab_bonus')
+                        @if ($page->triggers->count() > 0)
+                            <span class="badge badge-warning rounded float-right shadow ml-3">{{ $page->triggers->count() }}</span>
+                        @endif
                     </a>
                     <a class="nav-item nav-link shadow mr-3" href="#page-4" data-toggle="tab">
                         <span class="icon icon-chest text-white display-6 align-middle mr-2"></span>
                         @lang('page.tab_items')
+                        @if ($page->items->count() > 0)
+                            <span class="badge badge-warning rounded float-right shadow ml-3">{{ $page->items->count() }}</span>
+                        @endif
                     </a>
                     <a class="nav-item nav-link shadow mr-3" href="#page-5" data-toggle="tab">
                         <span class="icon icon-jigsaw-piece text-white display-6 align-middle mr-2"></span>
                         @lang('page.tab_riddle')
+                        @if ($page->riddle)
+                            <span class="badge badge-warning rounded float-right shadow ml-3">1</span>
+                        @endif
                     </a>
 
                 </nav>
