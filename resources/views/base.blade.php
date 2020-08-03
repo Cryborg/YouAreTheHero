@@ -22,7 +22,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/icomoon.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/dagred3.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/default.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/input_number.css') }}"/>
 
     {{-- Scripts --}}
 {{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}

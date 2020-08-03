@@ -20,8 +20,8 @@
         <p class="help-block">{{ trans('character.stats_help') }}</p>
         <div class="row">
             <div class="col-2 text-center">
-                {{ trans('field.points_left_to_share') }}:
-                <div id="points_left">{{ $story->story_options->points_to_share }}</div>
+                @lang('field.points_left_to_share')
+                <div id="points_left" data-original-value="{{ $story->story_options->points_to_share }}">{{ $story->story_options->points_to_share }}</div>
             </div>
             <div class="col">
                 @foreach($story->fields as $field)
@@ -29,17 +29,14 @@
                         <div class="form-group row">
                             <div class="col-sm-3 col-lg-1">{{ $field->name }}</div>
                             <div class="col-sm-3 col-lg-1 quantity">
-                                {{ Form::number('stat_value', old('stat_value') ?? $field->min_value, [
-                                    'class' => 'form-control',
-                                    'min' => $field->min_value,
-                                    'max' => $field->max_value,
-                                    'data-field_id' => $field->id,
-                                    'onkeydown' => 'return false'
-                                ]) }}
+                                <input name="stat_value" type="number" value="{{ old('stat_value') ?? $field->min_value }}"
+                                    min="{{ $field->min_value }}" max="{{ $field->max_value }}" step="1"
+                                    data-field_id="{{ $field->id }}" data-original-value="{{ old('stat_value') ?? $field->min_value }}"
+                                    class="input-number w-100"/>
                             </div>
                             <small class="text-muted">({{ trans('field.range_text', [
-                            'min' => $field->min_value,
-                            'max' => $field->max_value
+                                'min' => $field->min_value,
+                                'max' => $field->max_value
                              ]) }})</small>
                         </div>
                     @endif

@@ -10,7 +10,7 @@ return array (
   'max_value' => 'Max value',
   'min_value' => 'Min value',
   'name' => 'Label',
-  'points_left_to_share' => 'Points left to attribute',
+  'points_left_to_share' => 'Points left to attribute:',
   'range_text' => 'from :min to :max',
   'sheet' => 'Character sheet',
   'short_name' => 'Short name',

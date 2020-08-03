@@ -40,11 +40,25 @@
         });
     });
 
-    function addPoints(amount) {
-        var points = parseInt($('#points_left').html());
-        var newPoints = points + amount;
-        $('#points_left').html(newPoints);
+    $(document).on('click', '.btn-attribute', function () {
+        console.log('change');
+        const $pointsLeftDiv = $('#points_left');
+        let pointsUsed = 0;
 
-        $('#save_character').attr('disabled', newPoints > 0);
-    }
+        $('.input-number:hidden').each(function() {
+            pointsUsed += parseInt($(this).data('original-value')) - parseInt($(this).val());
+            console.log(pointsUsed);
+        });
+
+        $pointsLeftDiv.html(parseInt($pointsLeftDiv.data('original-value')) + pointsUsed);
+
+        // Enables/disables decrement buttons
+        $('.btn-decrement').prop('disabled', parseInt($pointsLeftDiv.html()) <= parseInt($pointsLeftDiv.data('original_value')));
+
+        // Enables/disables increment buttons
+        $('.btn-increment').prop('disabled', parseInt($pointsLeftDiv.html()) <= 0);
+
+        // Enables/disables save button
+        $('#save_character').prop('disabled', parseInt($pointsLeftDiv.html()) != 0);
+    });
 </script>

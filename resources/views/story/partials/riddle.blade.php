@@ -15,14 +15,10 @@
                     @else
                         <div class="riddle_text">
                             @if ($page->riddle->type === 'integer')
-                                <div class="form-inline">
+                                <div class="form-inline row">
                                     @for ($i = 1, $iMax = strlen($page->riddle->answer); $i <= $iMax; $i++)
-                                        <div id="number-spinner-vertical-{{ $i }}" class="t-neutral">
-                                            <fieldset class="spinner spinner--vertical">
-                                                <button data-type="add" class="spinner__button spinner__button--top" title="Add 1" aria-controls="spinner-input-{{ $i }}">+</button>
-                                                <input type="number" class="spinner__input js-spinner-input-vertical font-bigger" id="spinner-input-{{ $i }}" value="1" step="1"  max="9" min="0" pattern="[0-9]*" role="alert" aria-live="assertlive" />
-                                                <button data-type="subtract" class="spinner__button spinner__button--bottom" title="Subtract 1" aria-controls="spinner-input-{{ $i }}">-</button>
-                                            </fieldset>
+                                        <div class="col-1">
+                                            <input class="input-spinner" type="number" value="1" min="0" max="9" step="1" />
                                         </div>
                                     @endfor
                                 </div>
@@ -39,23 +35,3 @@
         </div>
     </div>
 </div>
-
-@push('footer-scripts')
-    <script>
-        const spinnerInputLength = {{ strlen($page->riddle->answer) }};
-
-        @for ($i = 1, $iMax = strlen($page->riddle->answer); $i <= $iMax; $i++)
-            NumberSpinner('spinner-input-{{ $i }}', 'reverse');
-        @endfor
-
-        $(document).on('click', '.spinner__button', function () {
-            var answer = '';
-
-            $('.spinner__input').each(function (index) {
-                answer += $(this).val();
-            });
-
-            $('#riddle_answer').val(answer);
-        });
-    </script>
-@endpush

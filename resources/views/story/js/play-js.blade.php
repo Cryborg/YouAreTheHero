@@ -1,17 +1,23 @@
 function loadInventory() {
+    $('.inventory-block').html(loadingSpinner);
     $('.inventory-block').load(routeInventory);
 }
 
 function loadSheet() {
+    $('.sheet-block').html(loadingSpinner);
     $('.sheet-block').load(routeSheet);
 }
 
 function loadChoices() {
+    $('.choices-block').html(loadingSpinner);
     $('.choices-block').load(routeChoices);
 }
 
 function loadContent(route) {
-    $('#page_content').load(route);
+    $('#page_content').html($('#page_content').html() + loadingSpinner);
+    $('#page_content').load(route, null, function () {
+        loadInputSpinner();
+    });
 }
 
 $(document).on('click', '.itemThrowAwayMenu', function () {
@@ -135,6 +141,14 @@ $(document).on('click', '#riddle_validate', function () {
 
     // Toggle disabled state
     $this.prop('disabled', (i, v) => !v);
+
+    var answer = '';
+
+    $('.input-spinner:visible').each(function (index) {
+        answer += $(this).val();
+    });
+
+    $('#riddle_answer').val(answer);
 
     $.post({
         url: route('page.riddle.validate', {'page': pageId}),
