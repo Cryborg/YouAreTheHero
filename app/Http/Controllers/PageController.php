@@ -112,8 +112,9 @@ class PageController extends Controller
      * @param \App\Models\Page         $page
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException|\Laracasts\Presenter\Exceptions\PresenterException
      */
-    public function postEdit(Request $request, Page $page)
+    public function postEdit(Request $request, Page $page): ?JsonResponse
     {
         if ($request->ajax()) {
             $this->authorize('edit', $page);

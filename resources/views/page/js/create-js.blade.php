@@ -315,7 +315,7 @@
             url: route('page.choice', {pageFrom: pageFrom, pageTo: pageTo})
         })
             .done(function (result) {
-                $('#modalEditChoice #link_text').val(result.choice.link_text);
+                $('#modalEditChoice #edit_link_text').val(result.choice.link_text);
                 $('#modalEditChoice #hidden_choice_id').val(result.choice.id);
 
                 $('#modalEditChoice').modal('show');

@@ -2,7 +2,7 @@
     $(document).on('click', '#add_EditChoice', function ()
     {
         var choiceId = $('#modalEditChoice #hidden_choice_id').val();
-        var choiceText = $('#modalEditChoice #link_text').val();
+        var choiceText = $('#modalEditChoice #edit_link_text').val();
 
         if (choiceId !== '') {
             $.post({

@@ -142,26 +142,24 @@
 
                     </div>
 
-                    @if (!$page->is_first)
-                        <div class="tab-pane" id="page-3">
-                            <div class="w-100 text-white bg-info p-2 mb-3" id="actions_help">
-                                <div class="row">
-                                    <div class="col">
-                                        @info({!! trans('page.current_page_actions_help') !!})
+                    <div class="tab-pane" id="page-3">
+                        <div class="w-100 text-white bg-info p-2 mb-3" id="actions_help">
+                            <div class="row">
+                                <div class="col">
+                                    @info({!! trans('page.current_page_actions_help') !!})
 
-                                        <h3>
-                                            {{ trans('item.items_title') }}
-                                            <button class="btn btn-success shadow ml-2" data-target="#modalCreateActions" data-toggle="modal">
-                                                <span class="icon-add text-white"></span>
-                                            </button>
-                                        </h3>
-                                        @include('page.partials.actions_list', ['page' => $page])
-                                    </div>
+                                    <h3>
+                                        {{ trans('item.items_title') }}
+                                        <button class="btn btn-success shadow ml-2" data-target="#modalCreateActions" data-toggle="modal">
+                                            <span class="icon-add text-white"></span>
+                                        </button>
+                                    </h3>
+                                    @include('page.partials.actions_list', ['page' => $page])
                                 </div>
-                                <hr>
                             </div>
+                            <hr>
                         </div>
-                    @endif
+                    </div>
 
                     <div class="tab-pane" id="page-4">
                         <div class="w-100 text-white bg-info p-2 mb-3" id="item_page_help">
