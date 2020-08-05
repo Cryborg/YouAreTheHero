@@ -437,7 +437,7 @@ a[data-toggle="popover"]:hover, a.clickable:hover {
 
 /* HELP PAGE */
 .container-help div.example {
-    margin: .5em 0 .5em 0;
+    margin: .5em 0 .5em 1em;
     background-color: #f7f7f7;
     border: 1px solid lightgrey;
     padding: .5em;

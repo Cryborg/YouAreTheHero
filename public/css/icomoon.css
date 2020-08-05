@@ -121,3 +121,9 @@ button {
 .icon-hidden:before {
     content: "\e91d";
 }
+.icon-checkered-flag:before {
+    content: "\e920";
+}
+.icon-position-marker:before {
+    content: "\e91f";
+}

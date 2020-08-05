@@ -7,11 +7,6 @@
                     <span class="icon-save text-white display-6 align-middle mr-3"></span>
                     <span class="align-middle">@lang('common.save')</span>
                 </button>
-                <button class="btn btn-primary" data-target="#modalAllPages" data-toggle="modal">
-                    <span class="icon-papers text-white display-6 align-middle mr-3"></span>
-                    <span class="align-middle">@lang('story.list_all_pages')</span>
-                </button>
-
                 <button class="btn btn-primary" data-target="#modalAddChoice" data-toggle="modal">
                     <span class="icon-choice text-white display-6 align-middle mr-3"></span>
                     <span class="align-middle">@lang('page.add_choice')</span>
@@ -189,7 +184,13 @@
     </div>
 
     <div class="col-lg-6 col-xs-12 bg-primary pt-2">
-        <div class="tab-pane svg-container active" id="p1">
+        <div class="w-100 ">
+            <button class="btn btn-primary shadow float-right" data-target="#modalAllPages" data-toggle="modal">
+                <span class="align-middle">@lang('story.list_all_pages')</span>
+                <span class="icon-papers text-white display-6 align-middle ml-3"></span>
+            </button>
+        </div>
+        <div class="svg-container active" id="p1">
             <svg class="svg-content h-100 w-100"><g/></svg>
         </div>
     </div>

@@ -38,30 +38,5 @@ class AppServiceProvider extends ServiceProvider
            'page' => Page::class,
            'field' => Field::class,
         ]);
-
-        Blade::directive('info', function ($expression) {
-            return '<div class="alert alert-info d-flex flex-row">' .
-                        '<i class="icon-info mr-3 display-6 text-primary"></i>' .
-                           '<div>' .
-                                $expression .
-                           '</div>' .
-                    '</div>';
-        });
-        Blade::directive('warning', function ($expression) {
-            return '<div class="alert alert-warning d-flex flex-row">' .
-                        '<i class="icon-warning mr-3"></i>' .
-                           '<div>' .
-                                $expression .
-                           '</div>' .
-                    '</div>';
-        });
-        Blade::directive('danger', function ($expression) {
-            return '<div class="alert alert-danger d-flex flex-row">' .
-                        '<i class="glyphicon glyphicon-exclamation-sign mr-3"></i>' .
-                           '<div>' .
-                                $expression .
-                           '</div>' .
-                    '</div>';
-        });
     }
 }

@@ -103,7 +103,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $actionable
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $trigger
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $triggers
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Action newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Action newQuery()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Action onlyTrashed()
@@ -603,8 +603,8 @@ namespace App\Models{
  * @property-read int|null $reports_count
  * @property-read \App\Models\Riddle|null $riddle
  * @property-read \App\Models\Story $story
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Action[] $trigger
- * @property-read int|null $trigger_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Action[] $triggers
+ * @property-read int|null $triggers_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Page newQuery()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Page onlyTrashed()

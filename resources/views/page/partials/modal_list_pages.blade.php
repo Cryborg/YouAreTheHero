@@ -7,25 +7,25 @@
                 <div class="row no-gutters">
                     <div class="col-md-1 card-header text-center">
                         @if ($page->is_first)
-                            <div class="badge badge-primary" data-toggle="tooltip" title="@lang('model.is_first')">
-                                <span class="glyphicon glyphicon-play"></span>
+                            <div class="badge" data-toggle="tooltip" title="@lang('model.is_first')">
+                                <span class="icon-play text-black font-biggest"></span>
                             </div>
                         @endif
                         @if ($page->is_checkpoint)
-                            <div class="badge badge-success text-white" data-toggle="tooltip" title="@lang('model.is_checkpoint')">
-                                <span class="glyphicon glyphicon-map-marker"></span>
+                            <div class="badge" data-toggle="tooltip" title="@lang('model.is_checkpoint')">
+                                <span class="icon-position-marker text-black font-biggest"></span>
                             </div>
                         @endif
                         @if ($page->is_last)
-                            <div class="badge badge-success" data-toggle="tooltip" title="@lang('model.is_last')">
-                                <span class="glyphicon glyphicon-fast-forward"></span>
+                            <div class="badge" data-toggle="tooltip" title="@lang('model.is_last')">
+                                <span class="icon-checkered-flag text-black font-biggest"></span>
                             </div>
                         @endif
 
                         @if (!$page->is_first && $page->parents->count() === 0 && $page->choices->count() === 0)
                             <div>
-                                <div class="badge badge-danger">
-                                    <span class="icon-trash clickable text-white deletePage"
+                                <div class="badge">
+                                    <span class="icon-trash clickable text-red deletePage font-biggest"
                                         data-pageid="{{ $page->id }}"
                                         data-toggle="tooltip" title="@lang('common.delete')"
                                     ></span>

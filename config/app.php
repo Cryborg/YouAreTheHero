@@ -176,6 +176,7 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
+        App\Providers\BladeServiceProvider::class,
         App\Providers\BootstrapServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
