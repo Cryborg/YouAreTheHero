@@ -355,7 +355,7 @@ class PageController extends Controller
         $graph = collect();
         $graph->push(
             'digraph{',
-            'node [labelType="html" labelStyle="margin-top: 4px;" class="align-middle text-center"];',
+            'node [labelType="html" labelStyle="margin-top: 4px;" class="align-middle text-center" rx="10" ry="10"];',
             'edge [labelType="html" labelStyle="border: 1px solid white;color:white;background-color:black;padding:3px;font-size:.8em"];'
         );
 

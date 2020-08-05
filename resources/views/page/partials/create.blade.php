@@ -20,7 +20,7 @@
                 <textarea class="w-100 hidden" id="inputGraph" rows="5">{{ $graph }}</textarea>
 
                 <nav class="nav nav-pills mb-2">
-                    <a class="nav-item nav-link shadow mr-3" href="#page-1" data-toggle="tab">
+                    <a class="nav-item nav-link mr-3 @if ($page->is_first) disabled @else shadow @endif" href="#page-1" data-toggle="tab">
                         <span class="icon icon-unlocking text-white display-6 align-middle mr-2"></span>
                         @lang('page.tab_prerequisite')
                         @if ($page->prerequisites()->count() > 0)
