@@ -7,6 +7,19 @@
             <div class="card">
                 <div class="card-header">{{ trans('common.changelog') }}</div>
                     <fieldset>
+                        <legend>August 2020</legend>
+                        <ul>
+                            <li>Improvements:</li>
+                            <ul>
+                                <li>Many interfaces have been clarified/revamped</li>
+                                <li>Basic help pages</li>
+                                <li>Items can now have categories</li>
+                                <li>An interactive realtime diagram of the story is shown, for better overview and quick actions</li>
+                                <li>Room in inventory can be limited, items can have a weight</li>
+                            </ul>
+                        </ul>
+                    </fieldset>
+                    <fieldset>
                         <legend>May 2020</legend>
                         <ul>
                             <li>Improvements:</li>
