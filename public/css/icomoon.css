@@ -127,3 +127,6 @@ button {
 .icon-position-marker:before {
     content: "\e91f";
 }
+.icon-statistics:before {
+    content: "\e921";
+}

@@ -33,8 +33,8 @@
     </ul>
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            {{ Form::hidden('story_id', $story->id ?? null) }}
             {!! Form::model(\App\Models\Story::class, array('route' => array($route, $story ? $story->id : null))) !!}
+            {{ Form::hidden('story_id', $story->id ?? null) }}
             <div class="card">
                 <div class="card-header">
                     @lang('model.title')

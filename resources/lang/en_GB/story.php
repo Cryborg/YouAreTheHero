@@ -42,5 +42,7 @@ return array (
   'inventory_slots' => 'Inventory slots',
   'inventory_slots_help' => 'This is how much the character can carry. It can be a weight or a size, each item having its own.<br>-1 disabled this option, the inventory won\'t be limited.',
   'write' => 'Write',
-  'words_count' => ':count words',
+  'words_count' => ':count word|:count words',
+  'pages_count' => ':count page|:count pages',
+  'show_statistics' => 'Story statistics',
 );

@@ -1,8 +1,8 @@
-<div class="row">
-    @forelse ($stories as $story)
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-2">
-            <div class="card border border-dark h-100 shadow">
-                <div class="card-header p-0">
+<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-2 h-100">
+    <div class="card flip-card border border-dark h-100 shadow">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <div class="card-header p-0 h-25">
                     <nav class="navbar navbar-expand navbar-light bg-light navbar-right">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent{{ $story->id }}" aria-controls="navbarSupportedContent{{ $story->id }}" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -42,6 +42,13 @@
                                                     @lang('story.reset')
                                                 </a>
                                             @endif
+
+                                            {{-- Show story statistics --}}
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item menu-flip-card clickable">
+                                                <span class="icon-statistics text-black mr-2"></span>
+                                                @lang('story.show_statistics')
+                                            </a>
                                         </div>
                                     </li>
                                 @endif
@@ -49,13 +56,20 @@
                         </div>
                     </nav>
                 </div>
-                <div class="card-body">
+                <div class="card-body h-50">
                     <div class="card-text">
                         {!! $story->description !!}
                     </div>
-                    <span class="badge badge-success bottom-right p-1 pl-2 pr-2">@lang('story.words_count', ['count' => $story->wordsCount])</span>
                 </div>
-                <div class="card-footer">
+                <div class="card-footer h-25">
+                    <div class="row">
+                        <div class="col">
+                            <span class="badge badge-success bottom-right p-1 pl-2 pr-2">
+                                {{ trans_choice('story.words_count', $story->wordsCount) }} /
+                                {{ trans_choice('story.pages_count', $story->pages()->count()) }}
+                            </span>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col">
                             @foreach ($story->genres as $genre)
@@ -77,13 +91,12 @@
                     </div>
                 </div>
             </div>
+            <div class="flip-card-back">
+                <button type="button" class="close menu-flip-card text-white p-2">
+                    <span aria-hidden="true">×</span>
+                </button>
+                Bouh
+            </div>
         </div>
-    @empty
-        <p>Sorry, there is no story... yet! You can create yours by clicking the button below ;)</p>
-        <p>
-            <a href="{{ route('story.create') }}">
-                <button class="btn btn-primary">@lang('common.link_story_create')</button>
-            </a>
-        </p>
-    @endforelse
+    </div>
 </div>

@@ -95,7 +95,7 @@ $(function () {
 function showHumanReadableDates() {
     $('.moment_date').each(function (id, elt) {
         var originalDate = $(elt).html();
-        var momentDate = moment(originalDate).fromNow();
+        var momentDate = moment(originalDate, 'YYYY-MM-DD h:mm:ss').fromNow();
 
         if (momentDate) {
             $(elt)
