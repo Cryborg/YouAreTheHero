@@ -54,7 +54,7 @@
                         </div>
                     </nav>
                 </div>
-                <div class="card-body h-50">
+                <div class="card-body overflow-auto h-50">
                     <div class="card-text">
                         {!! $story->description !!}
                     </div>
