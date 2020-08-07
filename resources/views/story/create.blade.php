@@ -153,7 +153,7 @@
                     @lang('story.stats_label')
                 </div>
                 <div class="card-body">
-                    <p class="help-block">@lang('story.genres_help')</p>
+                    <p class="help-block">@lang('story.stats_help')</p>
 
                     <table id="stats_story" class="table mb-3 w-50 m-0">
                         <thead>

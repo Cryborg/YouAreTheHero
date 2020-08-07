@@ -49,4 +49,5 @@ return array (
   'unique_players' => 'Joueurs uniques',
   'games_finished' => 'Parties terminées',
   'games_reset' => 'Parties réinitialisées',
+  'stats_help' => 'Crée les compétences / statistiques que tu veux, ainsi que le minimum/maximum de points que le joueur pourra leur attribuer.',
 );

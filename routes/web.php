@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Home
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'StoriesController@list')->name('home');
 
 // Items
 Route::post('/item/create', 'ItemController@store')->name('item.store');

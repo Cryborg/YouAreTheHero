@@ -49,4 +49,5 @@ return array (
   'unique_players' => 'Unique players',
   'games_finished' => 'Finished games',
   'games_reset' => 'Reset games',
+  'stats_help' => 'Create the stats / abilities / whatever you want, and the minimum/maximum points the player can give to each.',
 );

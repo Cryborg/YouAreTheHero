@@ -61,4 +61,6 @@
         // Enables/disables save button
         $('#save_character').prop('disabled', parseInt($pointsLeftDiv.html()) != 0);
     });
+
+    loadInputSpinner();
 </script>
