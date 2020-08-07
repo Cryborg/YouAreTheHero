@@ -92,10 +92,14 @@ class Action
      * @param \App\Models\Character $character
      * @param \App\Models\Item      $item
      */
-    public static function effects(Character $character, Item $item): void
+    public static function effects(Character $character, Item $item)
     {
         $allEffects = $item->effects;
         $characterStats  = $character->fields;
+
+        if (empty($allEffects)) {
+            return;
+        }
 
         foreach ($allEffects as $context => $effects) {
             switch ($context) {

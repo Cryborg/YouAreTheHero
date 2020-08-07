@@ -7,7 +7,6 @@
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent{{ $story->id }}" aria-controls="navbarSupportedContent{{ $story->id }}" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-
                         {{ $story->title }}
                         <div class="collapse navbar-collapse" id="navbarSupportedContent{{ $story->id }}">
                             <ul class="navbar-nav ml-auto">
@@ -16,13 +15,11 @@
                                         <span class="icon-play bg-primary rounded-circle display-6 text-white p-1 clickable mr-2"></span>
                                     </a>
                                 </li>
-                                @if (Auth::id() === $story->author->id)
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="icon-menu-dots display-6 text-black clickable"></span>
-                                        </a>
-
-                                        <div class="dropdown-menu dropdown-menu-right shadow-lg">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="icon-menu-dots display-6 text-black clickable"></span> </a>
+                                    <div class="dropdown-menu dropdown-menu-right shadow-lg">
+                                        @if (Auth::id() === $story->author->id)
                                             {{-- Edit story--}}
                                             <a class="dropdown-item" href="{{ route('story.edit', ['story' => $story]) }}">
                                                 <span class="icon-settings mr-2"></span>
@@ -35,23 +32,24 @@
                                                 @lang('story.resume_editing')
                                             </a>
 
-                                            @if (Auth::user()->hasBeganStory($story))
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item" href="{{ route('story.reset', ['story' => $story]) }}">
-                                                    <span class="icon-recycle text-red mr-2"></span>
-                                                    @lang('story.reset')
-                                                </a>
-                                            @endif
-
-                                            {{-- Show story statistics --}}
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item menu-flip-card clickable">
-                                                <span class="icon-statistics text-black mr-2"></span>
-                                                @lang('story.show_statistics')
+                                        @endif
+
+                                        @if (Auth::user()->hasBeganStory($story))
+                                            <a class="dropdown-item" href="{{ route('story.reset', ['story' => $story]) }}">
+                                                <span class="icon-recycle text-red mr-2"></span>
+                                                @lang('story.reset')
                                             </a>
-                                        </div>
-                                    </li>
-                                @endif
+                                            <div class="dropdown-divider"></div>
+                                        @endif
+
+                                        {{-- Show story statistics --}}
+                                        <a class="dropdown-item menu-flip-card clickable">
+                                            <span class="icon-statistics text-black mr-2"></span>
+                                            @lang('story.show_statistics')
+                                        </a>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </nav>
@@ -66,7 +64,7 @@
                         <div class="col">
                             <span class="badge badge-success bottom-right p-1 pl-2 pr-2">
                                 {{ trans_choice('story.words_count', $story->wordsCount) }} /
-                                {{ trans_choice('story.pages_count', $story->pages()->count()) }}
+                                {{ trans_choice('story.pages_count', $story->pagesCount) }}
                             </span>
                         </div>
                     </div>
@@ -95,7 +93,43 @@
                 <button type="button" class="close menu-flip-card text-white p-2">
                     <span aria-hidden="true">×</span>
                 </button>
-                Bouh
+
+                <div class="flip-card-back-content">
+                    <h3>@lang('admin.statistics_title')</h3>
+
+                    <div class="row">
+                        <div class="col-8">
+                            @lang('story.games_played')
+                        </div>
+                        <div class="col">
+                            {{ $story->statistics['games_played'] }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            @lang('story.unique_players')
+                        </div>
+                        <div class="col">
+                            {{ $story->statistics['unique_players'] }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            @lang('story.games_reset')
+                        </div>
+                        <div class="col">
+                            {{ $story->statistics['games_reset'] }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            @lang('story.games_finished')
+                        </div>
+                        <div class="col">
+                            {{ $story->statistics['games_finished'] }}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

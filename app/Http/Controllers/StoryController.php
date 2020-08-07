@@ -80,6 +80,12 @@ class StoryController extends Controller
                    'page_id'  => $story->getCurrentPage()->id,
                ]);
 
+                // Log this new game
+                activity()
+                    ->useLog('new_game')
+                    ->performedOn($story)
+                    ->log('New game started');
+
                 return Redirect::route('story.play', [
                     'story' => $story->id,
                 ]);
@@ -94,6 +100,12 @@ class StoryController extends Controller
         // Get the last visited page
         if ($page === null || empty($page)) {
             $page = $story->getCurrentPage($character->page_id);
+
+            if ($page->is_last) {
+                // TODO: Reset the story for this player, because there is no point in
+                //       accessing a finished story on the last page
+
+            }
         }
 
         if ($page) {
@@ -133,6 +145,13 @@ class StoryController extends Controller
                     'messages'      => $messages,
                 ]
             );
+        }
+
+        if ($page->is_last) {
+            activity()
+                ->performedOn($story)
+                ->useLog('end_game')
+                ->log('finished');
         }
 
         return $view ?? view('errors.404');
@@ -263,6 +282,7 @@ class StoryController extends Controller
         if (!$currentPage->is_last && count($currentPage->filtered_choices) === 0) {
             activity()
                 ->performedOn($currentPage)
+                ->useLog('dead_end')
                 ->log('The player has nowhere to go!');
         }
     }
@@ -518,6 +538,11 @@ class StoryController extends Controller
 
             if ($deleted == true) {
                 Flash::success(trans('story.reset_successful_text'));
+
+                activity()
+                    ->performedOn($story)
+                    ->useLog('reset_game')
+                    ->log('reset');
             } else {
                 Flash::error(trans('story.reset_failed_text'));
             }

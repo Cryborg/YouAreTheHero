@@ -29,6 +29,10 @@
 }
 
 /* Style the back side */
+.flip-card-back-content {
+    padding: 1.5em;
+}
+
 .flip-card-back {
     background-color: dodgerblue;
     color: white;
