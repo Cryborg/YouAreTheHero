@@ -162,7 +162,7 @@
                                 <th>{{ trans('field.short_name') }}</th>
                                 <th>{{ trans('field.min_value') }}</th>
                                 <th>{{ trans('field.max_value') }}</th>
-                                <th class="text-center">{{ trans('field.hidden') }}</th>
+                                <th class="text-center">{{ trans('field.hidden_to_players') }}</th>
                                 <th class="text-center">{{ trans('common.actions') }}</th>
                             </tr>
                         </thead>
