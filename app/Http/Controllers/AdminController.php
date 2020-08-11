@@ -59,7 +59,7 @@ class AdminController extends Controller
 
         $data = [
             'title' => trans('admin.users_title'),
-            'users' => User::all(),
+            'users' => User::orderByDesc('created_at')->get(),
         ];
 
         return View::make('admin.users', $data);

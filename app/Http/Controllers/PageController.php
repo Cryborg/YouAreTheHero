@@ -350,12 +350,12 @@ class PageController extends Controller
      *
      * @return string
      */
-    private function buildGraph(Story $story)
+    private function buildGraph(Story $story, Page $currentPage = null)
     {
         $graph = collect();
         $graph->push(
             'digraph{',
-            'node [labelType="html" labelStyle="margin-top: 4px;" class="align-middle text-center" rx="10" ry="10"];',
+            'node [labelType="html" labelStyle="margin-top: 4px;" class="align-middle text-center" rx="10" ry="10" fill="red"];',
             'edge [labelType="html" labelStyle="border: 1px solid white;color:white;background-color:black;padding:3px;font-size:.8em"];'
         );
 
@@ -390,7 +390,6 @@ class PageController extends Controller
 
             // If the page contains a riddle, and it links to another page
             if (!empty($page->riddle)) {
-                Log::info($page->riddle);
                 if ($page->riddle->target_page_id) {
                     $html = Str::replaceArray('?',
                         [addslashes($page->riddle->target_page_text)],

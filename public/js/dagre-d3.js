@@ -1291,6 +1291,7 @@
                     .attr("ry", node.ry)
                     .attr("x", -bbox.width / 2)
                     .attr("y", -bbox.height / 2)
+                    .attr("fill", node.fill)
                     .attr("width", bbox.width)
                     .attr("height", bbox.height);
 

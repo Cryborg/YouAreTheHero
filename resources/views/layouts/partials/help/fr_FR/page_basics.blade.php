@@ -1,7 +1,7 @@
 <h3>Le titre</h3>
 
 <p>
-    Le titre de la page est important lors de la création de la page. Il permet de retrouver cette dernière dans l'arborescence de l'histoire,
+    Le titre est important lors de la création de la page. Il permet de retrouver cette dernière dans l'arborescence de l'histoire,
     de manière unique. Il peut être un simple numéro, comme pour un chapitre, ou une phrase complète. Il sera affiché en haut de la page
     lorsque le joueur arrivera dessus.
 </p>

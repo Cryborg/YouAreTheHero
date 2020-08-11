@@ -16,7 +16,8 @@
                     <th>{{ trans('auth.username') }}</th>
                     <th>{{ trans('auth.email') }}</th>
                     <th>{{ trans('stories.number_stories') }}</th>
-                    <th>{{ trans('stories.number_games') }}</th>
+{{--                    <th>{{ trans('stories.number_games') }}</th>--}}
+                    <th>{{ trans('common.created_at') }}</th>
                 </thead>
                 <tbody>
                     @foreach ($users as $user)
@@ -34,6 +35,7 @@
                             </td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->stories->where('is_published', true)->count() }} / {{ $user->stories->where('is_published', false)->count() }}</td>
+                            <td class="moment_date">{{ $user->created_at }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -41,3 +43,9 @@
         </div>
     </div>
 @endsection
+
+@push('footer-scripts')
+    <script>
+        showHumanReadableDates();
+    </script>
+@endpush
