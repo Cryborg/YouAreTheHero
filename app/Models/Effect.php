@@ -7,19 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Effect extends Model
 {
-    use SoftDeletes;
-
     protected $guarded = ['id'];
-
-    public static function boot()
-    {
-        parent::boot();
-
-        static::deleting(function ($effect) {
-            $effect->field->delete();
-            $effect->item->delete();
-        });
-    }
 
     public function item()
     {

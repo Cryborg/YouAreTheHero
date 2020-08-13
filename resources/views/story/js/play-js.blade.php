@@ -14,7 +14,7 @@ function loadChoices() {
 }
 
 function loadContent(route) {
-    $('#page_content').html($('#page_content').html() + loadingSpinner);
+    $('#page_content').html($('#page_content').html());
     $('#page_content').load(route, null, function () {
         loadInputSpinner();
     });
@@ -33,7 +33,8 @@ $(document).on('click', '.itemThrowAway', function () {
         url: route('item.throw_away', {'item': itemId})
     })
         .done(function (result) {
-            loadContent(routeContent);
+            loadContent(getContentRoute());
+            loadInventory();
         })
         .fail(function (result) {
             console.log(result);
@@ -47,12 +48,19 @@ $(document).on('click', '.itemUse', function () {
         url: route('item.use', {'item': itemId})
     })
         .done(function (result) {
-            loadContent(routeContent);
+            // loadContent(getContentRoute());
+            loadInventory();
+            loadChoices();
+            loadSheet();
         })
         .fail(function (result) {
             console.log(result);
         });
 });
+
+function getContentRoute() {
+    return route('story.play', {'story': $('#storyId').val(), 'page': $('#pageId').val()});
+}
 
 $('html').on('click', function () {
     $('.popup-menu').hide();
@@ -106,17 +114,20 @@ $(document).on('click', 'a', function () {
 // When the player clicks on an item
 $(document).on('click', '.pick-item button', function () {
     var $this = $(this);
+    pageId = $('#pageId').val();
 
     $.get({
         'url': route('item.take', {'page': pageId, 'item': $this.data('itemid')}),
     })
         .done(function (rst) {
             if (rst.result == true) {
+                // TODO: refresh this if necessary. Controller should return the info according
+                //       to what have been updated
                 loadInventory();
                 loadSheet();
                 loadChoices();
 
-                if (rst.singleuse === true) {
+                if (rst.is_unique === true) {
                     $this.closest('.pick-item').remove();
                 }
             } else {
@@ -126,6 +137,10 @@ $(document).on('click', '.pick-item button', function () {
                     });
                 }
             }
+        })
+        .always(function() {
+            $this.html($this.data('original-text'));
+            $this.prop('disabled', false);
         });
 });
 
@@ -137,18 +152,21 @@ $(function () {
 });
 
 $(document).on('click', '#riddle_validate', function () {
-    $this = $(this);
+    const $this = $(this);
 
     // Toggle disabled state
     $this.prop('disabled', (i, v) => !v);
 
-    var answer = '';
+    let answer = '';
 
+    // "integer" riddle
     $('.input-spinner:visible').each(function (index) {
         answer += $(this).val();
     });
 
-    $('#riddle_answer').val(answer);
+    if (answer !== '') {
+        $('#riddle_answer').val(answer);
+    }
 
     $.post({
         url: route('page.riddle.validate', {'page': pageId}),

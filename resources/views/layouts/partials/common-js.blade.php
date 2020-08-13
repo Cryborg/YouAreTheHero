@@ -18,11 +18,10 @@ $.ajaxSetup({
 
 // Put a spinner on buttons, but only if they have the 'original-text' data attribute.
 $(document).on('click', 'button', function(element) {
-    var $this = $(element.target);
+    const $this = $(element.target);
 
     if (typeof $this.data('original-text') != 'undefined') {
-        var loadingText = '<i class="fa fa-circle-o-notch fa-spin"></i> ' + $this.data('original-text');
-
+        const loadingText = '<div><div class="spinner-grow spinner-grow-sm text-success position-absolute" role="status"></div> <div class="invisible">' + $this.data('original-text') + '</div></div>';
         if ($this.html() !== loadingText) {
             $this.data('original-text', $this.html());
             $this.html(loadingText);

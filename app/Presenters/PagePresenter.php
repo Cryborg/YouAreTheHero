@@ -13,7 +13,7 @@ class PagePresenter extends Presenter
         $characterId = getSession('character_id');
 
         if ($characterId) {
-            $character = optional(Character::find($characterId))->first();
+            $character = Character::where('id', $characterId)->first();
 
             // List of all placeholders
             // FIXME: factorize this, for the moment it is set in PageController
@@ -34,9 +34,9 @@ class PagePresenter extends Presenter
             foreach ($this->entity->descriptions as $description)
             {
                 $replacementText = '<a tabindex="0" role="button" data-trigger="hover" data-placement="top" data-toggle="popover" title="'
-                                   . $description['keyword'] . '" data-content="' . $description['description']
-                                   . '"><span class="icon-eye text-lightgrey mr-1"></span>' . $description['keyword'] . '</a>';
-                $this->entity->content = str_replace('{{' . $description['keyword'] . '}}', $replacementText, $this->entity->content);
+                                   . $description->keyword . '" data-content="' . htmlentities($description->description)
+                                   . '"><span class="icon-eye text-lightgrey mr-1"></span>' . $description->keyword . '</a>';
+                $this->entity->content = str_replace('{{' . $description->keyword . '}}', $replacementText, $this->entity->content);
             }
         }
 

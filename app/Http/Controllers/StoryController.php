@@ -9,6 +9,7 @@ use App\Models\Inventory;
 use App\Models\Item;
 use App\Models\CharacterField;
 use App\Models\StoryGenre;
+use App\Repositories\ChoiceRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use \App\Models\Story;
@@ -73,7 +74,7 @@ class StoryController extends Controller
 
             // If no option needs to be set, create an unnamed character
             if ($storyOption->count() === 0 || $story->story_options->has_character == false) {
-                Character::create([
+                Auth::user()->characters()->create([
                    'name'     => 'Unnamed',
                    'user_id'  => Auth::id(),
                    'story_id' => $story->id,
@@ -110,7 +111,7 @@ class StoryController extends Controller
 
         if ($page) {
             if (!$page->is_last) {
-                $this->getFilteredChoicesFromPage($page, $character);
+                ChoiceRepository::getFilteredChoicesFromPage($page, $character);
             }
 
             $character->update(['page_id' => $page->id]);
@@ -127,6 +128,8 @@ class StoryController extends Controller
         $messages = $this->executeAction($page, $character);
 
         $view = null;
+
+        $page->load('descriptions');
 
         if (\Illuminate\Support\Facades\Request::ajax()) {
             $view = view('layouts.partials.page_content', $commonParams + [
@@ -197,7 +200,7 @@ class StoryController extends Controller
             if ($trigger->actionable instanceof Item) {
                 // If the character has something in his inventory
                 if ($character->items()->count() > 0) {
-                    foreach ($character->inventory as $inventory) {
+                    foreach ($character->items as $inventory) {
                         // If the character has the item in the inventory
                         if ($inventory->item == $trigger->actionable) {
                             if ($character->actions->where('pivot.action_id', $trigger->id)->count() === 0) {
@@ -231,63 +234,6 @@ class StoryController extends Controller
     }
 
     /**
-     * Get all the choices (links to the next page) based on page prerequisites.
-     *
-     * @param \App\Models\Page      $currentPage
-     * @param \App\Models\Character $character
-     *
-     * @return mixed
-     */
-    private function getFilteredChoicesFromPage(Page $currentPage, Character $character)
-    {
-        // Get all the choices (links to the next page(s)
-        $allChoices   = $this->getAllChoicesForPage($currentPage);
-        $finalChoices = [];
-        $unreachableChoices = [];
-
-        // Check if there are prerequisites, and that they are fulfilled
-        foreach ($allChoices as $choice) {
-            $fulfilled = false;
-
-            $choice->load('pageTo');
-            $pageTo    = $choice->pageTo;
-
-            if ($pageTo && $pageTo->prerequisites()->count() > 0) {
-                foreach ($pageTo->prerequisites() as $prerequisite) {
-                    switch (get_class($prerequisite->prerequisiteable)) {
-                        case CharacterField::class:
-                            $fulfilled = $this->isStatPrerequisitesFulfilled($prerequisite->prerequisiteable, $character);
-                            break;
-                        case Item::class:
-                            $fulfilled = $this->isItemPrerequisitesFulfilled($prerequisite->prerequisiteable, $character);
-                            break;
-                    }
-                }
-            }
-            else {
-                $fulfilled = true;
-            }
-
-            if ($fulfilled) {
-                $finalChoices[] = $choice;
-            } else {
-                $unreachableChoices[] = $choice;
-            }
-        }
-
-        $currentPage->filtered_choices = $finalChoices;
-        $currentPage->unreachable_choices = $unreachableChoices;
-
-        // Log if there is no choice, and the story is not finished
-        if (!$currentPage->is_last && count($currentPage->filtered_choices) === 0) {
-            activity()
-                ->performedOn($currentPage)
-                ->useLog('dead_end')
-                ->log('The player has nowhere to go!');
-        }
-    }
-
-    /**
      * Get a character's inventory
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -317,36 +263,6 @@ class StoryController extends Controller
     }
 
     /**
-     * @param array                 $prerequisites
-     * @param \App\Models\Character $character
-     *
-     * @return bool
-     */
-    private function isStatPrerequisitesFulfilled(CharacterField $prerequisites, Character $character): bool
-    {
-        $sheet = $character->fields;
-
-        foreach ($prerequisites as $name => $value) {
-            if (array_key_exists($name, $sheet) && $sheet[$name] >= $value) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private function isItemPrerequisitesFulfilled(Item $requiredItem, Character $character): bool
-    {
-        foreach ($character->items as $item) {
-            if ($item->id == $requiredItem->id) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
      * @param Character $character
      * @param Page      $page
      */
@@ -355,22 +271,6 @@ class StoryController extends Controller
         if ($page && $page->is_checkpoint) {
             $character->pages()->syncWithoutDetaching($page->id);
         }
-    }
-
-    /**
-     * @param Page $page
-     *
-     * @return mixed
-     */
-    private function getAllChoicesForPage(Page $page)
-    {
-        $key = 'choices_' . $page->id;
-
-        return Cache::remember($key, Config::get('app.story.cache_ttl'), function () use ($page, $key) {
-            return Choice::where('page_from', $page->id)
-                         ->get();
-        }
-        );
     }
 
     /**

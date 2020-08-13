@@ -1,3 +1,6 @@
+<input id="storyId" type="hidden" value="{{ $story->id }}">
+<input id="pageId" type="hidden" value="{{ $page->id }}">
+
 <div class="card">
     <h5 class="card-header text-center">
         @can('edit', $page)

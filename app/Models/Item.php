@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Laracasts\Presenter\PresentableTrait;
 use App\Presenters\ItemPresenter;
 
 class Item extends Model
 {
     use PresentableTrait;
+    use SoftDeletes;
 
     protected $presenter = ItemPresenter::class;
 

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Notifications\ResetPassword;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -38,14 +39,19 @@ class User extends Authenticatable
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function stories()
+    public function stories(): ?HasMany
     {
         return $this->hasMany(Story::class);
     }
 
-    public function hasBeganStory(Story $story)
+    public function characters(): ?HasMany
+    {
+        return $this->hasMany(Character::class);
+    }
+
+    public function hasBeganStory(Story $story): bool
     {
         return Character::where([
             'user_id' => $this->id,
@@ -54,12 +60,12 @@ class User extends Authenticatable
         ->count() > 0;
     }
 
-    public function sendPasswordResetNotification($token)
+    public function sendPasswordResetNotification($token): void
     {
         $this->notify(new ResetPassword($token));
     }
 
-    public function hasRole(string $role)
+    public function hasRole(string $role): bool
     {
         return $this->role === $role;
     }

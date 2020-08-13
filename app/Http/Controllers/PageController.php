@@ -6,6 +6,7 @@ use App\Models\Character;
 use App\Models\Item;
 use App\Models\Page;
 use App\Models\Story;
+use App\Repositories\ChoiceRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -187,7 +188,7 @@ class PageController extends Controller
                 if ($page->riddle && $page->riddle->target_page_id) {
                     $pageResponse = '<div class="choices-links button-group">' .
                         '<a data-href="' . route('story.play', ['story' => $page->story->id, 'page' => $page->riddle->target_page_id]) . '" data-page-id="' . $page->riddle->target_page_id . '">' .
-                        '<button class="large button">' . $page->riddle->target_page_text . '</button>' .
+                        '<button class="large button" data-original-text="' . $page->riddle->target_page_text . '">' . $page->riddle->target_page_text . '</button>' .
                         '</a></div>';
                     $itemResponse = trans('page.riddle_already_solved');
                 }
@@ -287,7 +288,7 @@ class PageController extends Controller
     {
         $character = $page->story->currentCharacter();
 
-        $this->getFilteredChoicesFromPage($page, $character);
+        ChoiceRepository::getFilteredChoicesFromPage($page, $character);
 
         return view('story.partials.choices',
             [

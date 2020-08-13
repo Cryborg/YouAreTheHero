@@ -125,7 +125,7 @@ class ItemController extends Controller
         return response()->json([
             'result'    => $isOk,
             'money'     => $character->money,
-            'singleuse' => $item->is_unique,
+            'is_unique' => $item->is_unique,
             'message'   => $message,
         ],
             200);
@@ -168,6 +168,17 @@ class ItemController extends Controller
 
         if ($item->default_price > 0) {
             $character->addMoney($item->default_price);
+        }
+
+        if ($item->single_use) {
+            $thisItem = $character->items()->where('item_id', $item->id)->first()->pivot;
+
+            if ($thisItem->quantity > 1) {
+                $thisItem->quantity--;
+                $thisItem->save();
+            } else {
+                $character->items()->detach($item);
+            }
         }
 
         if ($item->is_unique) {

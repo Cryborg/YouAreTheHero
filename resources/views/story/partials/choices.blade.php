@@ -1,4 +1,4 @@
-<div class="btn-toolbar" role="toolbar">
+<div class="btn-toolbar choices-block" role="toolbar">
     @if ($page->riddle && $page->riddle->isSolved())
         @if ($page->riddle->target_page_id)
             <a data-href="{{ route('story.play', ['story' => $page->story->id, 'page' => $page->riddle->target_page_id]) }}">
@@ -12,7 +12,7 @@
             <div class="choices-links button-group">
                 @foreach ($page->filtered_choices as $choice)
                     <a data-href="{{ route('story.play', ['story' => $page->story->id, 'page' => $choice->page_to]) }}" data-page-id="{{ $choice->page_to }}">
-                        <button class="large button">{!! $choice->link_text !!}</button>
+                        <button class="large button" data-original-text="{!! $choice->link_text !!}">{!! $choice->link_text !!}</button>
                     </a>
                 @endforeach
             </div>
@@ -32,7 +32,7 @@
                 </div>
                 @can('isAdmin')
                     <div class="choices-links button-group w-100">
-                        <a onclick="return confirm('{{ addslashes(trans('story.reset_story_confirm')) }}');" href="{{ route('story.reset', ['story' => $page->story]) }}" class="btn btn-danger card-link w-100 mb-1">{{ trans('story.reset') }}</a>
+                        <a onclick="return confirm('{{ addslashes(trans('story.reset_story_confirm')) }}');" href="{{ route('story.reset', ['story' => $page->story]) }}"><button class="btn btn-danger card-link w-100 mb-1" data-original-text="{{ trans('story.reset') }}">{{ trans('story.reset') }}</button></a>
                     </div>
                 @endcan
             @endif
@@ -60,6 +60,6 @@
         </div>
     </div>
     <div class="choices-links button-group w-100">
-        <a onclick="return confirm('{{ addslashes(trans('story.reset_story_confirm')) }}');" href="{{ route('story.reset', ['story' => $page->story]) }}" class="btn btn-danger card-link w-100 mb-1">{{ trans('story.reset') }}</a>
+        <a onclick="return confirm('{{ addslashes(trans('story.reset_story_confirm')) }}');" href="{{ route('story.reset', ['story' => $page->story]) }}"><button class="btn btn-danger card-link w-100 mb-1" data-original-text="{{ trans('story.reset') }}">{{ trans('story.reset') }}</button></a>
     </div>
 @endif
