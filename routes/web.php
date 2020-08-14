@@ -116,3 +116,7 @@ Route::delete('/action/{action}/delete', 'ActionController@delete')->name('actio
 Route::post('/report/{page}/create', 'ReportController@store')->name('report.store');
 Route::get('/reports/{story}/list', 'ReportController@index')->name('reports.list');
 Route::delete('/report/{report}/delete', 'ReportController@destroy')->name('report.delete');
+
+// Google Auth
+Route::get('/redirect', 'Auth\LoginController@redirectToProvider')->name('google.auth');
+Route::get('/callback', 'Auth\LoginController@handleProviderCallback');

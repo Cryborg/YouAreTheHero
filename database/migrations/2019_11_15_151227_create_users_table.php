@@ -20,11 +20,19 @@ class CreateUsersTable extends Migration
             $table->string('last_name', 30)->nullable();
             $table->string('username', 30)->unique();
             $table->string('email', 50)->unique();
-            $table->string('password', 100);
+            $table->string('password', 100)->nullable();
             $table->string('locale', 5)->default('fr_FR');
             $table->dateTime('email_verified_at')->nullable();
             $table->string('remember_token', 100)->nullable();
             $table->enum('role', ['admin', 'moderator', 'member', 'developer'])->default('member');
+
+            // Google Auth
+            $table->string('google_id');
+            $table->string('avatar')->nullable();
+            $table->string('avatar_original')->nullable();
+
+            $table->rememberToken();
+            $table->timestamps();
 
             $table->timestamps();
             $table->softDeletes();

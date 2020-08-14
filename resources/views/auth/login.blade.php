@@ -9,6 +9,14 @@
             <div class="card wip-bg">
                 <div class="card-header">{{ trans('home.login_title') }}</div>
 
+                <div class="card-body text-center">
+                    <a href="{{ route('google.auth') }}">
+                        <img src="{{ asset('img/btn_google_signin_dark_normal_web.png') }}">
+                    </a>
+                </div>
+
+                <hr>
+
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
