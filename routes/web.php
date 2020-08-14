@@ -96,6 +96,7 @@ Route::get('/admin/clear-view', function() {
 
 // User
 Route::get('/user/profile', 'UserController@getProfile')->name('user.profile');
+Route::get('/user/{user}/profile', 'UserController@getProfile')->name('user.profile.get');
 Route::post('/user/{user}/profile', 'UserController@store')->name('user.profile.post');
 
 // Riddle

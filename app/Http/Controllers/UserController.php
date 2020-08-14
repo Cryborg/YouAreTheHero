@@ -10,16 +10,20 @@ use Illuminate\Support\Facades\View;
 
 class UserController extends Controller
 {
-    public function getProfile(\Illuminate\Support\Facades\Request $request)
+    public function getProfile(\Illuminate\Support\Facades\Request $request, User $user = null)
     {
         $data = [
             'title' => trans('user.profile_title'),
-            'user' => auth()->user()
+            'user' => $user ?? auth()->user(),
         ];
 
-        $view = View::make('user.profile', $data);
+        $view = 'user.profile';
 
-        return $view;
+        if ($user !== null) {
+            $view = 'user.profile_readonly';
+        }
+
+        return View::make($view, $data);
     }
 
     public function store(Request $request, User $user)
