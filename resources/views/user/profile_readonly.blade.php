@@ -3,10 +3,10 @@
 @section('title', $title)
 
 @section('content')
-    <div class="row p-4">
-        <div class="col-lg-6">
-            <h1>{{ trans('user.profile_title') }}</h1>
+    <h1>{{ trans('user.profile_title') }}</h1>
 
+    <div class="row p-4">
+        <div class="col-sm-12 col-lg-6">
             <div class="row mb-4">
                 <div class="col text-center">
                     @if ($user->avatar)
@@ -34,6 +34,19 @@
                 <div class="col-sm-6">
                     {!! Form::text('username', old('email', $user->username), ['class' => 'form-control', 'readonly' => 'readonly']) !!}
                     {!! $errors->first('username', '<p class="help-block text-danger">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6">
+            <div class="card">
+                <div class="card-footer">
+                    @lang('common.stories_list')
+                </div>
+                <div class="card-body">
+                    @foreach ($user->stories as $story)
+                        <div>{{ $story->title }}</div>
+                    @endforeach
                 </div>
             </div>
         </div>

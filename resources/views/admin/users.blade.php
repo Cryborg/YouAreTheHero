@@ -30,7 +30,9 @@
                                 @endif
                             </td>
                             <td>
-                                {{ $user->username }}
+                                <a href="{{ route('user.profile.get', ['user' => $user->id]) }}">
+                                    {{ $user->username }}
+                                </a>
 
                                 @if ($user->hasRole('admin'))
                                     <span class="badge badge-primary">Admin</span>
