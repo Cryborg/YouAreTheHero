@@ -55,13 +55,14 @@
                         <p class="help-block">{!! trans('page.required_characteristic_help') !!}</p>
                         <select class="form-control custom-select" size="6" id="sheet" name="sheet">
                             <option value=""></option>
-                            @foreach(array_keys($page->story->sheet_config ?? []) as $charac)
-                                @foreach($page->prerequisites() ?? [] as $prerequisite)
-                                    @if ($prerequisite->prerequisiteable instanceof \App\Models\CharacterField)
-                                        <option value="{{ $charac }}" @if ($prerequisite->prerequisiteable->name == $charac) selected @endif
-                                        >{{ $charac }}</option>
-                                    @endif
-                                @endforeach
+                            @foreach($page->story->fields as $field)
+{{--                                @foreach($page->prerequisites() ?? [] as $prerequisite)--}}
+{{--                                    @if ($prerequisite->prerequisiteable instanceof \App\Models\CharacterField)--}}
+{{--                                        <option value="{{ $field->name }}" @if ($prerequisite->prerequisiteable->name == $field->name) selected @endif--}}
+                                        <option value="{{ $field->name }}"
+                                        >{{ $field->name }}</option>
+{{--                                    @endif--}}
+{{--                                @endforeach--}}
                             @endforeach
                         </select>
                     </div>

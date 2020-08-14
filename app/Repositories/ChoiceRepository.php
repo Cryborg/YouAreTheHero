@@ -5,8 +5,10 @@ namespace App\Repositories;
 use App\Models\Character;
 use App\Models\CharacterField;
 use App\Models\Choice;
+use App\Models\Field;
 use App\Models\Item;
 use App\Models\Page;
+use App\Models\Prerequisite;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 
@@ -40,8 +42,8 @@ class ChoiceRepository
                                   ->count() > 0) {
                 foreach ($pageTo->prerequisites() as $prerequisite) {
                     switch (get_class($prerequisite->prerequisiteable)) {
-                        case CharacterField::class:
-                            $fulfilled = $thisRepo->isStatPrerequisitesFulfilled($prerequisite->prerequisiteable, $character);
+                        case Field::class:
+                            $fulfilled = $thisRepo->isStatPrerequisitesFulfilled($prerequisite, $character);
                             break;
                         case Item::class:
                             $fulfilled = $thisRepo->isItemPrerequisitesFulfilled($prerequisite->prerequisiteable, $character);
@@ -88,17 +90,15 @@ class ChoiceRepository
     }
 
     /**
-     * @param \App\Models\CharacterField $prerequisites
+     * @param \App\Models\Prerequisite   $prerequisite
      * @param \App\Models\Character      $character
      *
      * @return bool
      */
-    private function isStatPrerequisitesFulfilled(CharacterField $prerequisites, Character $character): bool
+    private function isStatPrerequisitesFulfilled(Prerequisite $prerequisite, Character $character): bool
     {
-        $sheet = $character->fields;
-
-        foreach ($prerequisites as $name => $value) {
-            if (array_key_exists($name, $sheet) && $sheet[$name] >= $value) {
+        foreach ($character->fields as $field) {
+            if ($field->pivot->value >= $prerequisite->quantity) {
                 return true;
             }
         }

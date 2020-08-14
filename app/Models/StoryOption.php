@@ -11,7 +11,8 @@ class StoryOption extends Model
 
     protected $guarded = ['id'];
 
-    protected $casts = [
+    protected $casts   = [
         'has_character' => 'boolean',
+        'has_stats'     => 'boolean',
     ];
 }

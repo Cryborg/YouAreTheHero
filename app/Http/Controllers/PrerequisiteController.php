@@ -52,7 +52,7 @@ class PrerequisiteController extends Controller
                     ])->firstOrFail();
                     $addedPrerequisites['stats'][] = Prerequisite::updateOrCreate([
                         'page_id'   => $page->id,
-                        'prerequisiteable_type' => 'character_field',
+                        'prerequisiteable_type' => 'field',
                         'prerequisiteable_id' => $foundStat->id,
                     ], [
                         'quantity' => $value
