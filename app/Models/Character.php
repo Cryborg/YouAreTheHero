@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Laracasts\Presenter\PresentableTrait;
 use App\Presenters\CharacterPresenter;
 
@@ -54,6 +56,31 @@ class Character extends Model
         return false;
     }
 
+    public static function createNewForStory(Story $story)
+    {
+        $storyOption = $story->story_options();
+
+        // If no option needs to be set, create an unnamed character
+        if ($story->story_options->has_character === false || $storyOption->count() === 0) {
+            Auth::user()->characters()->create([
+               'name'     => 'Unnamed',
+               'user_id'  => Auth::id(),
+               'story_id' => $story->id,
+               'page_id'  => $story->getCurrentPage()->id,
+           ]);
+
+            // Log this new game
+            activity()
+                ->useLog('new_game')
+                ->performedOn($story)
+                ->log('New game started');
+
+            return Redirect::route('story.play', [
+                'story' => $story->id,
+            ]);
+        }
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -86,4 +113,6 @@ class Character extends Model
     {
         return $this->belongsTo(Story::class);
     }
+
+
 }

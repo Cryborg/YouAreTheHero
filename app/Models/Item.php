@@ -77,4 +77,35 @@ class Item extends Model
 
         return $this->pivot->price;
     }
+
+    public function use()
+    {
+        $success = false;
+
+        /** @var \App\Models\Character $character */
+        $character = $this->story->currentCharacter();
+
+        if ($this->default_price > 0) {
+            $character->addMoney($this->default_price);
+        }
+
+        if ($this->single_use) {
+            $thisItem = $character->items()->where('item_id', $this->id)->first()->pivot;
+
+            if ($thisItem->quantity > 1) {
+                $thisItem->quantity--;
+                $success = $thisItem->save();
+            } else {
+                $success = $character->items()->detach($this);
+            }
+        }
+
+        if ($this->is_unique) {
+            $success = $character->items()->updateExistingPivot($this, [
+                'is_used' => true
+            ]);
+        }
+
+        return $success;
+    }
 }

@@ -163,33 +163,11 @@ class ItemController extends Controller
 
     public function itemUse(Item $item)
     {
-        /** @var \App\Models\Character $character */
-        $character = $item->story->currentCharacter();
+        $success = $item->use();
 
-        if ($item->default_price > 0) {
-            $character->addMoney($item->default_price);
-        }
-
-        if ($item->single_use) {
-            $thisItem = $character->items()->where('item_id', $item->id)->first()->pivot;
-
-            if ($thisItem->quantity > 1) {
-                $thisItem->quantity--;
-                $thisItem->save();
-            } else {
-                $character->items()->detach($item);
-            }
-        }
-
-        if ($item->is_unique) {
-            $success = $character->items()->updateExistingPivot($item, [
-                'is_used' => true
-            ]);
-
-            return response()->json([
-                'refreshInventory' => $success,
-                'refreshContent' => $success,
-            ]);
-        }
+        return response()->json([
+            'refreshInventory' => $success,
+            'refreshContent' => $success,
+        ]);
     }
 }

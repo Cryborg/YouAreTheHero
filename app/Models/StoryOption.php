@@ -10,4 +10,8 @@ class StoryOption extends Model
     use SoftDeletes;
 
     protected $guarded = ['id'];
+
+    protected $casts = [
+        'has_character' => 'boolean',
+    ];
 }

@@ -70,27 +70,7 @@ class StoryController extends Controller
 
         // If the character does not exist, it is a new game
         if (!$character) {
-            $storyOption = $story->story_options();
-
-            // If no option needs to be set, create an unnamed character
-            if ($storyOption->count() === 0 || $story->story_options->has_character == false) {
-                Auth::user()->characters()->create([
-                   'name'     => 'Unnamed',
-                   'user_id'  => Auth::id(),
-                   'story_id' => $story->id,
-                   'page_id'  => $story->getCurrentPage()->id,
-               ]);
-
-                // Log this new game
-                activity()
-                    ->useLog('new_game')
-                    ->performedOn($story)
-                    ->log('New game started');
-
-                return Redirect::route('story.play', [
-                    'story' => $story->id,
-                ]);
-            }
+            Character::createNewForStory($story);
 
             return Redirect::route('character.create', [
                 'story' => $story->id,
@@ -200,13 +180,13 @@ class StoryController extends Controller
             if ($trigger->actionable instanceof Item) {
                 // If the character has something in his inventory
                 if ($character->items()->count() > 0) {
-                    foreach ($character->items as $inventory) {
+                    foreach ($character->items as $item) {
                         // If the character has the item in the inventory
-                        if ($inventory->item == $trigger->actionable) {
+                        if (get_class($item) === get_class($trigger->actionable) && $item->id === $trigger->actionable->id) {
+                            // Check if the action has already been done
                             if ($character->actions->where('pivot.action_id', $trigger->id)->count() === 0) {
-                                $inventory->quantity += $trigger->quantity;
 
-                                if ($inventory->save()) {
+                                if ($item->use()) {
                                     $messages[] = [
                                         'text' => $trigger->quantity > 0
                                             ? trans('common.you_earned_something', [
