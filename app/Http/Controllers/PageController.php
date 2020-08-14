@@ -206,7 +206,6 @@ class PageController extends Controller
                 'pageResponse'     => $pageResponse,
                 'solved'           => $page->riddle ? $page->riddle->isSolved() : 'bouh',
                 'refreshInventory' => $page->riddle && $page->riddle->item_id,
-                'refreshChoices'   => $page->riddle && $page->riddle->target_page_id,
             ]);
         }
 

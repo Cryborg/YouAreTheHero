@@ -9,6 +9,8 @@ function loadSheet() {
 }
 
 function loadChoices() {
+    let routeChoices = route('page.choices', {'page': $('#pageId').val()});
+
     $('.choices-block').html(loadingSpinner);
     $('.choices-block').load(routeChoices);
 }
@@ -16,6 +18,7 @@ function loadChoices() {
 function loadContent(route) {
     $('#page_content').html($('#page_content').html());
     $('#page_content').load(route, null, function () {
+        loadInventory();
         loadInputSpinner();
     });
 }

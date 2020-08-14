@@ -178,21 +178,17 @@ namespace App\Models{
  * @property int $page_id
  * @property string $keyword
  * @property string $description
- * @property string|null $created_at
- * @property string|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \App\Models\Page $page
  * @method static \Illuminate\Database\Eloquent\Builder|Description newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Description newQuery()
  * @method static \Illuminate\Database\Query\Builder|Description onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Description query()
- * @method static \Illuminate\Database\Eloquent\Builder|Description whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Description whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Description whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Description whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Description whereKeyword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Description wherePageId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Description whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|Description withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Description withoutTrashed()
  */
@@ -210,13 +206,12 @@ namespace App\Models{
  * @property int $quantity
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property string|null $deleted_at
  * @property-read \App\Models\Field $field
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[] $item
  * @property-read int|null $item_count
  * @method static \Illuminate\Database\Eloquent\Builder|Effect newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Effect newQuery()
- * @method static \Illuminate\Database\Query\Builder|Effect onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Effect query()
  * @method static \Illuminate\Database\Eloquent\Builder|Effect whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Effect whereDeletedAt($value)
@@ -226,8 +221,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Effect whereOperator($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Effect whereQuantity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Effect whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|Effect withTrashed()
- * @method static \Illuminate\Database\Query\Builder|Effect withoutTrashed()
  */
 	class Effect extends \Eloquent {}
 }
@@ -299,11 +292,12 @@ namespace App\Models{
  * @property string|null $category
  * @property string $name
  * @property int $default_price
+ * @property int $single_use
+ * @property float $size
  * @property bool $is_unique
- * @property float $size How much room it takes in the inventory.
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $deleted_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ItemPage[] $actions
  * @property-read int|null $actions_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Character[] $characters
@@ -317,6 +311,7 @@ namespace App\Models{
  * @property-read \App\Models\Story $story
  * @method static \Illuminate\Database\Eloquent\Builder|Item newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Item newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Item onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Item query()
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereCategory($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereCreatedAt($value)
@@ -325,9 +320,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereIsUnique($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Item whereSingleUse($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereSize($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereStoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Item withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Item withoutTrashed()
  */
 	class Item extends \Eloquent {}
 }
@@ -339,9 +337,10 @@ namespace App\Models{
  * @property int $id
  * @property int $item_id
  * @property int $page_id
- * @property int|null $quantity
+ * @property int $quantity
  * @property int|null $price
- * @property int|null $character_id Only used when a character drops an item from his inventory.
+ * @property string|null $deleted_at
+ * @property int|null $character_id
  * @property-read \App\Models\Character|null $character
  * @property-read \App\Models\Item $item
  * @property-read \App\Models\Page $page
@@ -349,6 +348,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ItemPage newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ItemPage query()
  * @method static \Illuminate\Database\Eloquent\Builder|ItemPage whereCharacterId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ItemPage whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ItemPage whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ItemPage whereItemId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ItemPage wherePageId($value)
@@ -370,7 +370,6 @@ namespace App\Models{
  * @property string $content
  * @property string|null $layout
  * @property bool $is_checkpoint
- * @property int $is_shop Whether the player can sell objects in this page.
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
@@ -401,7 +400,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Page whereIsCheckpoint($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Page whereIsFirst($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Page whereIsLast($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Page whereIsShop($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Page whereLayout($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Page whereStoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Page whereTitle($value)
@@ -487,8 +485,6 @@ namespace App\Models{
  * @property string|null $target_page_text Text of the link giving the access to another page, if the riddle leads to somewhere else
  * @property int|null $target_page_id
  * @property int|null $item_id
- * @property string|null $created_at
- * @property string|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Character[] $character
  * @property-read int|null $character_count
@@ -501,7 +497,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Query\Builder|Riddle onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Riddle query()
  * @method static \Illuminate\Database\Eloquent\Builder|Riddle whereAnswer($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Riddle whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Riddle whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Riddle whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Riddle whereItemId($value)
@@ -510,7 +505,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Riddle whereTargetPageText($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Riddle whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Riddle whereType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Riddle whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|Riddle withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Riddle withoutTrashed()
  */
@@ -590,11 +584,11 @@ namespace App\Models{
  *
  * @property int $id
  * @property int $story_id
- * @property int $has_character Do we have to create a character for this story?
+ * @property bool $has_character Do we have to create a character for this story?
  * @property int $has_stats Do we show the stats creation page?
  * @property string $stat_attribution "player" means the player gives :points_to_share: points manually to his character. "dice" means it is done by throwing dice.
  * @property int $points_to_share Points to share amongst character stats
- * @property int $inventory_slots How much (virtual) slots there are in the inventory.
+ * @property int $inventory_slots
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
@@ -635,6 +629,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Character[] $characters
+ * @property-read int|null $characters_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Story[] $stories

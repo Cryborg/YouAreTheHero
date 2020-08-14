@@ -89,13 +89,11 @@ class StoryController extends Controller
             }
         }
 
-        if ($page) {
-            if (!$page->is_last) {
-                ChoiceRepository::getFilteredChoicesFromPage($page, $character);
-            }
-
-            $character->update(['page_id' => $page->id]);
+        if (!$page->is_last) {
+            ChoiceRepository::getFilteredChoicesFromPage($page, $character);
         }
+
+        $character->update(['page_id' => $page->id]);
 
         setSession('character_id', $character->id);
         $this->saveCheckpoint($character, $page);

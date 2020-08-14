@@ -49,6 +49,7 @@
 
             // Refreshes some partials if the appropriate JSON response is true
             if (request.responseJSON) {
+                console.log(request.responseJSON);
                 if (request.responseJSON.refreshInventory) {
                     loadInventory();
                 }
@@ -61,7 +62,6 @@
             }
         })
     ;
-
 
     $(document).on('hide.bs.modal', function (event) {
         $(this).find('button').prop('disabled', false);

@@ -41,13 +41,11 @@
     });
 
     $(document).on('click', '.btn-attribute', function () {
-        console.log('change');
         const $pointsLeftDiv = $('#points_left');
         let pointsUsed = 0;
 
         $('.input-number:hidden').each(function() {
             pointsUsed += parseInt($(this).data('original-value')) - parseInt($(this).val());
-            console.log(pointsUsed);
         });
 
         $pointsLeftDiv.html(parseInt($pointsLeftDiv.data('original-value')) + pointsUsed);

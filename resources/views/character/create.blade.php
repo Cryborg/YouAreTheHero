@@ -19,22 +19,28 @@
         {!! Form::label('stats', trans('character.stats_label'), ['class' => 'control-label']) !!}
         <p class="help-block">{{ trans('character.stats_help') }}</p>
         <div class="row">
-            <div class="col-2 text-center">
+            <div class="col-lg-2 col-sm-6 text-center">
                 @lang('field.points_left_to_share')
                 <div id="points_left" data-original-value="{{ $story->story_options->points_to_share }}">{{ $story->story_options->points_to_share }}</div>
             </div>
-            <div class="col">
+            <div class="col-lg-10 col-sm-6">
                 @foreach($story->fields as $field)
                     @if ($field->hidden === false)
                         <div class="form-group row">
-                            <div class="col-sm-3 col-lg-1">{{ $field->name }}</div>
+                            <div class="col-sm-3 col-lg-1">
+                                {{ $field->name }}
+                                <small class="text-muted d-inline d-md-none">({{ trans('field.range_text', [
+                                'min' => $field->min_value,
+                                'max' => $field->max_value
+                             ]) }})</small>
+                            </div>
                             <div class="col-sm-3 col-lg-1 quantity">
                                 <input name="stat_value" type="number" value="{{ old('stat_value') ?? $field->min_value }}"
                                     min="{{ $field->min_value }}" max="{{ $field->max_value }}" step="1"
                                     data-field_id="{{ $field->id }}" data-original-value="{{ old('stat_value') ?? $field->min_value }}"
                                     class="input-number w-100"/>
                             </div>
-                            <small class="text-muted">({{ trans('field.range_text', [
+                            <small class="text-muted d-none d-md-block">({{ trans('field.range_text', [
                                 'min' => $field->min_value,
                                 'max' => $field->max_value
                              ]) }})</small>
@@ -45,10 +51,14 @@
         </div>
     @endif
 
-    <button id="save_character" class="btn btn-success submit-btn mb-1 w-50"
-        type="submit" data-original-text="{{ trans('story.create_submit') }}"
-        @if ($story->fields->count() > 0) disabled @endif
-        >{{ trans('story.create_submit') }}</button>
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <button id="save_character" class="btn btn-success submit-btn mb-1 w-100"
+                type="submit" data-original-text="{{ trans('story.create_submit') }}"
+                @if ($story->fields->count() > 0) disabled @endif
+            >{{ trans('story.create_submit') }}</button>
+        </div>
+    </div>
     {!! Form::close() !!}
 @endsection
 
