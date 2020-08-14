@@ -22,7 +22,13 @@
                 <tbody>
                     @foreach ($users as $user)
                         <tr>
-                            <td>{{ $user->id }}</td>
+                            <td>
+                                @if ($user->google_id)
+                                    <img src="{{ asset('img/btn_google_dark_normal_ios.svg') }}">
+                                @else
+                                    {{ $user->id }}
+                                @endif
+                            </td>
                             <td>
                                 {{ $user->username }}
 

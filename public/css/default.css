@@ -460,3 +460,16 @@ div.popover.show {
 .nav-pills .nav-link:not(.active) .icon {
     color: #3490dc !important;
 }
+
+.profile-picture {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+
+    object-fit: cover;
+}
+
+.profile-picture.border-5 {
+    border-width:5px !important;
+}
