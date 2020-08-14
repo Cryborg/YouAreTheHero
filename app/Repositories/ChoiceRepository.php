@@ -98,7 +98,7 @@ class ChoiceRepository
     private function isStatPrerequisitesFulfilled(Prerequisite $prerequisite, Character $character): bool
     {
         foreach ($character->fields as $field) {
-            if ($field->pivot->value >= $prerequisite->quantity) {
+            if ($field->name === $prerequisite->prerequisiteable->name && $field->pivot->value >= $prerequisite->quantity) {
                 return true;
             }
         }
