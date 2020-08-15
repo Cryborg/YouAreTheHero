@@ -9,6 +9,7 @@ use App\Models\Field;
 use App\Models\Item;
 use App\Models\Page;
 use App\Models\Prerequisite;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 
@@ -66,10 +67,12 @@ class ChoiceRepository
 
         // Log if there is no choice, and the story is not finished
         if (!$currentPage->is_last && count($currentPage->filtered_choices) === 0) {
-            activity()
-                ->performedOn($currentPage)
-                ->useLog('dead_end')
-                ->log('The player has nowhere to go!');
+            if (!Auth::user()->hasRole('admin')) {
+                activity()
+                    ->performedOn($currentPage)
+                    ->useLog('dead_end')
+                    ->log('The player has nowhere to go!');
+            }
         }
     }
 

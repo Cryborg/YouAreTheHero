@@ -129,10 +129,12 @@ class StoryController extends Controller
         }
 
         if ($page->is_last) {
-            activity()
-                ->performedOn($story)
-                ->useLog('end_game')
-                ->log('finished');
+            if (!Auth::user()->hasRole('admin')) {
+                activity()
+                    ->performedOn($story)
+                    ->useLog('end_game')
+                    ->log('finished');
+            }
         }
 
         return $view ?? view('errors.404');
@@ -417,10 +419,12 @@ class StoryController extends Controller
             if ($deleted == true) {
                 Flash::success(trans('story.reset_successful_text'));
 
-                activity()
-                    ->performedOn($story)
-                    ->useLog('reset_game')
-                    ->log('reset');
+                if (!Auth::user()->hasRole('admin')) {
+                    activity()
+                        ->performedOn($story)
+                        ->useLog('reset_game')
+                        ->log('reset');
+                }
             } else {
                 Flash::error(trans('story.reset_failed_text'));
             }

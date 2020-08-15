@@ -70,10 +70,12 @@ class Character extends Model
            ]);
 
             // Log this new game
-            activity()
-                ->useLog('new_game')
-                ->performedOn($story)
-                ->log('New game started');
+            if (!Auth::user()->hasRole('admin')) {
+                activity()
+                    ->useLog('new_game')
+                    ->performedOn($story)
+                    ->log('New game started');
+            }
 
             return Redirect::route('story.play', [
                 'story' => $story->id,
