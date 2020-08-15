@@ -112,10 +112,6 @@ class ItemController extends Controller
             }
         }
 
-
-        // Apply item effects, if applicable
-        Action::applyEffects($character, $item);
-
         // Check if the item used has the is_unique flag,
         // and in this case it must not be shown again
         if ($item->is_unique) {
