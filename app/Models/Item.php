@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Classes\Action;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Log;
 use Laracasts\Presenter\PresentableTrait;
 use App\Presenters\ItemPresenter;
 
@@ -85,10 +87,12 @@ class Item extends Model
         /** @var \App\Models\Character $character */
         $character = $this->story->currentCharacter();
 
-        if ($this->default_price > 0) {
-            $character->addMoney($this->default_price);
-        }
+//        if ($this->default_price > 0) {
+//            $character->addMoney($this->default_price);
+//        }
 
+        // If this is flagged Single Use, check if it is the last item in the player's inventory
+        // Then subtract one, or remove it
         if ($this->single_use) {
             $thisItem = $character->items()->where('item_id', $this->id)->first()->pivot;
 
@@ -100,11 +104,15 @@ class Item extends Model
             }
         }
 
+        // If the item is unique, flag it so it can't be used anymore
         if ($this->is_unique) {
             $success = $character->items()->updateExistingPivot($this, [
                 'is_used' => true
             ]);
         }
+
+        // Apply the effects, if any
+        Action::applyEffects($character, $this);
 
         return $success;
     }
