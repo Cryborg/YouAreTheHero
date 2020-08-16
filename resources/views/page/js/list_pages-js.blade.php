@@ -1,6 +1,7 @@
 <script>
     $(document).on('show.bs.modal', '#modalAllPages', function (event)
     {
+        // Remove the previous content
         $('#modalAllPages .modal-body:not(.modal-body-preview)').html('');
 
         $.get({

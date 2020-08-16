@@ -24,7 +24,7 @@ class BladeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::directive('info', function ($expression) {
+        Blade::directive('info', static function ($expression) {
             return '<div class="alert alert-info d-flex flex-row">' .
                '<i class="icon-info mr-3 display-6 text-primary"></i>' .
                '<div>' .
@@ -32,7 +32,7 @@ class BladeServiceProvider extends ServiceProvider
                '</div>' .
            '</div>';
         });
-        Blade::directive('warning', function ($expression) {
+        Blade::directive('warning', static function ($expression) {
             return '<div class="alert alert-warning d-flex flex-row">' .
                '<i class="icon-warning mr-3"></i>' .
                '<div>' .
@@ -40,7 +40,7 @@ class BladeServiceProvider extends ServiceProvider
                '</div>' .
            '</div>';
         });
-        Blade::directive('danger', function ($expression) {
+        Blade::directive('danger', static function ($expression) {
             return '<div class="alert alert-danger d-flex flex-row">' .
                '<i class="glyphicon glyphicon-exclamation-sign mr-3"></i>' .
                '<div>' .
@@ -48,7 +48,7 @@ class BladeServiceProvider extends ServiceProvider
                '</div>' .
            '</div>';
         });
-        Blade::directive('editorbutton', function ($expression) {
+        Blade::directive('editorbutton', static function ($expression) {
             return '<button class="note-btn btn btn-light btn-sm btn-outline-secondary">' .
                $expression .
            '</button>';

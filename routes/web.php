@@ -43,6 +43,7 @@ Route::post('/story/ajax_post_children_pages', 'StoryController@postChildrenPage
 Route::post('/story/{story}/options', 'StoryOptionController@update')->name('story.options.post');
 Route::delete('/story/{story}/delete', 'StoryController@delete')->name('story.delete');
 
+Route::get('/story/{story}/items/list', 'ItemController@list')->name('items.list');
 
 // Page
 Route::get('/page/{page}/edit', 'PageController@getEdit')->name('page.edit');

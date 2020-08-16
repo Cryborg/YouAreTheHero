@@ -166,4 +166,20 @@ class ItemController extends Controller
             'refreshContent' => $success,
         ]);
     }
+
+    /**
+     * List all items for a given story
+     *
+     * @param \App\Models\Story $story
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function list(Story $story)
+    {
+        $view = View::make('page.partials.modal_list_items', [
+            'items' => $story->items
+        ]);
+
+        return $view;
+    }
 }

@@ -621,7 +621,7 @@ namespace App\Models{
  * @property string|null $last_name
  * @property string $username
  * @property string $email
- * @property string $password
+ * @property string|null $password
  * @property string $locale
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string|null $remember_token
@@ -629,7 +629,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $deleted_at
- * @property int|null $google_id
+ * @property string|null $google_id
  * @property string|null $avatar
  * @property string|null $avatar_original
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Character[] $characters

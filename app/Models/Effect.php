@@ -9,9 +9,9 @@ class Effect extends Model
 {
     protected $guarded = ['id'];
 
-    public function item()
+    public function items()
     {
-        return $this->hasMany(Item::class);
+        return $this->belongsToMany(Item::class);
     }
 
     public function field()

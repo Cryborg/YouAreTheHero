@@ -42,6 +42,12 @@
     @endpush
 @endif
 
+@if ($context === 'list_items')
+    @push('footer-scripts')
+        @include('page.js.list_items-js')
+    @endpush
+@endif
+
 @if ($context === 'descriptions')
     @push('footer-scripts')
         @include('page.js.descriptions-js')

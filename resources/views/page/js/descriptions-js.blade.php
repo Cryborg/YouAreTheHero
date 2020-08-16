@@ -48,8 +48,6 @@
         var $this = $(this);
         var id = $this.closest('.card').data('description-id');
 
-        console.log('#description_' + id);
-        console.log($('#description').html());
         $('#keyword').val($('#keyword_' + id).html());
         $('#modalDescriptions .summernote').summernote('code', $('#description_' + id).html())
     });

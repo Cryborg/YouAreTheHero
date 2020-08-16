@@ -18,12 +18,50 @@ class Item extends Model
 
     protected $guarded   = ['id'];
 
+    protected $with = ['effects'];
+
     protected $casts     = [
         'effects'   => 'array',
         'is_unique' => 'boolean',
         'size'      => 'float',
         'is_used'   => 'boolean',
     ];
+
+    public function getIsUniqueAttribute($value)
+    {
+        if ($value === 1) {
+            return trans('common.yes');
+        }
+
+        return trans('common.no');
+    }
+
+    public function setIsUniqueAttribute($value): int
+    {
+        if ($value === trans('common.yes')) {
+            return 1;
+        }
+
+        return 0;
+    }
+
+    public function getSingleUseAttribute($value)
+    {
+        if ($value === 1) {
+            return trans('common.yes');
+        }
+
+        return trans('common.no');
+    }
+
+    public function setSingleUseAttribute($value): int
+    {
+        if ($value === trans('common.yes')) {
+            return 1;
+        }
+
+        return 0;
+    }
 
     protected static function boot()
     {
@@ -37,7 +75,7 @@ class Item extends Model
      */
     public function pages()
     {
-        return $this->belongsToMany(Page::class, 'actions');
+        return $this->belongsToMany(Page::class);
     }
 
     /**
@@ -63,6 +101,23 @@ class Item extends Model
     public function effects()
     {
         return $this->hasMany(Effect::class)->with('field');
+    }
+
+    /**
+     * Don't know why I have to do this.... @foreach($item->effects) did not work
+     * in modal_list_items.blade.php...
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function effects_list()
+    {
+        $allEffects = collect();
+
+        $this->effects()->each(static function ($effect) use ($allEffects) {
+            $allEffects->push($effect);
+        });
+
+        return $allEffects;
     }
 
     public function characters()

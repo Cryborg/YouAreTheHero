@@ -23,4 +23,9 @@ class Field extends Model
     {
         return $this->belongsTo(Story::class);
     }
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
 }

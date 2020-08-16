@@ -63,6 +63,19 @@
         ]
     ])
 
+    <!-- Modal list all items -->
+    @include('page.partials.modal_model', [
+        'template' => 'page.partials.modal_list_items',
+        'context' => 'list_items',
+        'title' => trans('story.all_items_modal_title'),
+        'icon' => 'icon-chest',
+        'big' => true,
+        'data' => [
+            'story' => $story,
+            'id' => 'AllItems',
+        ]
+    ])
+
     <!-- Modal insert popover -->
     @include('page.partials.modal_model', [
         'template' => 'page.partials.modal_descriptions',
