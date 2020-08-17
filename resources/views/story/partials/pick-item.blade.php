@@ -4,5 +4,10 @@
             @lang('item_page.take')
         </button>
     </div>
-    <span class="form-control" aria-label="Item price" aria-describedby="basic-addon1">{{ $item->name }}</span>
+    <span class="form-control">{{ $item->name }}</span>
+    @if ($item->effects_list()->count() > 0)
+        <div class="form-control">
+            @include('page.partials.badge_fields')
+        </div>
+    @endif
 </div>

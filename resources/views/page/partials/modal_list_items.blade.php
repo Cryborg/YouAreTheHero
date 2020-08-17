@@ -56,9 +56,7 @@
                         </div>
                         <div class="form-control">
                             @if ($item->effects_list()->count() > 0)
-                                @foreach ($item->effects_list() as $effect)
-                                    @include('page.partials.badge_field', ['effect' => $effect])
-                                @endforeach
+                                @include('page.partials.badge_fields', ['item' => $item])
                             @endif
                         </div>
                     </div>
