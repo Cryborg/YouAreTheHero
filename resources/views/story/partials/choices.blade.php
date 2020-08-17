@@ -43,7 +43,9 @@
         @if (count($page->unreachable_choices) > 0)
             <div class="choices-links button-group">
                 @foreach ($page->unreachable_choices as $choice)
-                    <button class="large button" disabled>{!! $choice->link_text !!}</button>
+                    @if (!$choice->hidden)
+                        <button class="large button" disabled>{!! $choice->link_text !!}</button>
+                    @endif
                 @endforeach
             </div>
         @endif

@@ -13,7 +13,7 @@ class CreateChoicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('choices', function (Blueprint $table) {
+        Schema::create('choices', static function (Blueprint $table) {
             $table->bigIncrements('id');
 
             $table->unsignedBigInteger('page_from')->nullable();
@@ -23,6 +23,8 @@ class CreateChoicesTable extends Migration
             $table->foreign('page_to')->references('id')->on('pages');
 
             $table->text('link_text');
+
+            $table->boolean('hidden')->default(0);
 
             $table->index(['page_from']);
 
