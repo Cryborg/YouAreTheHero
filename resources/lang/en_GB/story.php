@@ -43,7 +43,7 @@ return array (
   'all_items_modal_title' => 'Items list',
   'list_all_items_help' => 'Click on the item you want to edit.',
   'inventory_slots' => 'Inventory slots',
-  'inventory_slots_help' => 'This is how much the character can carry. It can be a weight or a size, each item having its own.<br>-1 disabled this option, the inventory won\'t be limited.',
+  'inventory_slots_help' => 'How much the character can carry. It can be a weight or a size, each item having its own.<br>-1 disables this option, the inventory won\'t be limited.',
   'write' => 'Write',
   'words_count' => ':count word|:count words',
   'show_statistics' => 'Story statistics',
