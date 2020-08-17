@@ -120,10 +120,11 @@ $(document).on('click', '.pick-item button', function () {
     pageId = $('#pageId').val();
 
     $.get({
-        'url': route('item.take', {'page': pageId, 'item': $this.data('itemid')}),
+        'url': route('item.take', {'item': $this.data('itemid')}),
     })
         .done(function (rst) {
-            if (rst.result == true) {
+            console.log(rst);
+            if (rst.success == true) {
                 // TODO: refresh this if necessary. Controller should return the info according
                 //       to what have been updated
                 loadInventory();

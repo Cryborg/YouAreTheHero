@@ -81,50 +81,18 @@ class ItemController extends Controller
         ]);
     }
 
-    public function take(Page $page, Item $item): JsonResponse
+    /**
+     * @param \App\Models\Item $item
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function take(Item $item): JsonResponse
     {
-        $isOk    = false;
-        $message = null;
+        $success = $item->take();
 
-        $character = $page->story->currentCharacter();
-
-        $itemPage = ItemPage::where([
-            'item_id' => $item->id,
-            'page_id' => $page->id,
-        ])->first();
-
-        if (isset($item)) {
-            if (Action::hasRoomLeftInInventory($character, $item)) {
-                $existingItem = $character->items()->where('items.id', $item->id)->first();
-
-                if ($existingItem) {
-                    $existingItem->pivot->quantity++;
-                    $existingItem->pivot->save();
-                } else {
-                    $character->items()->attach([
-                            $item->id => ['quantity' => $itemPage->quantity ?? 1],
-                        ]);
-                }
-
-                $isOk = true;
-            } else {
-                $message = trans('inventory.no_more_room');
-            }
-        }
-
-        // Check if the item used has the is_unique flag,
-        // and in this case it must not be shown again
-        if ($item->is_unique) {
-            $character->items()->syncWithoutDetaching([$item->id => ['taken' => true]]);
-        }
-
-        return response()->json([
-            'result'    => $isOk,
-            'money'     => $character->money,
-            'is_unique' => $item->is_unique,
-            'message'   => $message,
-        ],
-            200);
+        return response()->json($success + [
+            'is_unique' => (bool) $item->getRawOriginal('is_unique'),
+        ], 200);
     }
 
     /**
@@ -142,6 +110,11 @@ class ItemController extends Controller
         return View::make('page.js.partials.item_list_' . $validated['context'], ['items' => $story->items->sortBy('name')]);
     }
 
+    /**
+     * @param \App\Models\Item $item
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function throwAway(Item $item)
     {
         /** @var \App\Models\Character $character */
@@ -157,6 +130,11 @@ class ItemController extends Controller
         }
     }
 
+    /**
+     * @param \App\Models\Item $item
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function itemUse(Item $item)
     {
         $success = $item->use();

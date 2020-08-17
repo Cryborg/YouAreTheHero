@@ -100,7 +100,7 @@ class StoryController extends Controller
 
         $visitedPlaces = $character->pages;
 
-        $items = $this->filterItems($character, $page);
+        $items = $this->showItems($character, $page);
 
         // Check if there is an action bound to this page, and execute it
         $messages = $this->executeAction($page, $character);
@@ -111,25 +111,26 @@ class StoryController extends Controller
 
         if (\Illuminate\Support\Facades\Request::ajax()) {
             $view = view('layouts.partials.page_content', $commonParams + [
-                'page'      => $page,
-                'items'     => $items,
-                'messages'  => $messages,
-            ]);
+                                                            'page'     => $page,
+                                                            'items'    => $items,
+                                                            'messages' => $messages,
+                                                        ]);
         } else {
             // First display of the page
             $view = view('story.play', $commonParams + [
-                    'page'          => $page,
-                    'items'         => $items,
-                    'layout'        => $page->layout ?? $story->layout,
-                    'character'     => $character,
-                    'visitedPlaces' => $visitedPlaces,
-                    'messages'      => $messages,
-                ]
+                                         'page'          => $page,
+                                         'items'         => $items,
+                                         'layout'        => $page->layout ?? $story->layout,
+                                         'character'     => $character,
+                                         'visitedPlaces' => $visitedPlaces,
+                                         'messages'      => $messages,
+                                     ]
             );
         }
 
         if ($page->is_last) {
-            if (!Auth::user()->hasRole('admin')) {
+            if (!Auth::user()
+                     ->hasRole('admin')) {
                 activity()
                     ->performedOn($story)
                     ->useLog('end_game')
@@ -141,34 +142,93 @@ class StoryController extends Controller
     }
 
     /**
+     * @param Character $character
+     * @param Page      $page
+     */
+    private function saveCheckpoint(Character $character, $page): void
+    {
+        if ($page && $page->is_checkpoint) {
+            $character->pages()
+                      ->syncWithoutDetaching($page->id);
+        }
+    }
+
+    /**
+     * Only show items on the page that:
+     * - are not in the character inventory (if the item is unique)
+     *
+     * @param \App\Models\Character $character
+     * @param \App\Models\Page      $page
+     *
+     * @return array
+     */
+    private function showItems(Character $character, Page $page)
+    {
+        $items = [];
+
+        foreach ($page->items as $pageItem)
+        {
+            $canBeShown = false;
+
+            foreach ($character->items as $characterItem)
+            {
+                // If the character owns the item
+                if ($characterItem->id === $pageItem->id)
+                {
+                    // If it is unique, don't show it
+                    $canBeShown = (bool) $pageItem->getRawOriginal('is_unique') === false;
+
+                    continue;
+                }
+            }
+
+            if ($canBeShown) {
+                if ($pageItem->category) {
+                    $items[$pageItem->category][] = $pageItem;
+                } else {
+                    $items[trans('constants.no_category')][] = $pageItem;
+                }
+            }
+        }
+
+        return $items;
+    }
+
+    /**
      * @param \App\Models\Page      $page
      * @param \App\Models\Character $character
+     *
+     * @return array
      */
-    private function executeAction(Page $page, Character $character)
+    private function executeAction(Page $page, Character $character): array
     {
         // Will contain messages such as "You lost 1 gold coin" or "You gained 2 health points"
         $messages = [];
 
-        foreach ($page->triggers as $trigger)
-        {
+        foreach ($page->triggers as $trigger) {
+            // If this is a Field
             if ($trigger->actionable instanceof Field) {
-                $field = $character->fields->where('pivot.field_id', $trigger->actionable->id)->first();
+                $field = $character->fields->where('pivot.field_id', $trigger->actionable->id)
+                                           ->first();
 
                 // Check if the action has already been done
                 // Don't do it again if it is the case
-                if ($character->actions->where('pivot.action_id', $trigger->id)->count() === 0) {
+                if ($character->actions->where('pivot.action_id', $trigger->id)
+                                       ->count() === 0) {
                     $field->pivot->value += $trigger->quantity;
-                    if ($field->pivot->save())
-                    {
+                    if ($field->pivot->save()) {
+                        $character->actions()
+                                  ->syncWithoutDetaching($trigger->id);
+
                         $messages[] = [
                             'text' => $trigger->quantity > 0
                                 ? trans('common.you_earned_something', [
                                     'quantity' => $trigger->quantity,
-                                    'item'     => $trigger->actionable->name
+                                    'item'     => $trigger->actionable->name,
                                 ])
                                 : trans('common.you_lost_something', [
                                     'quantity' => $trigger->quantity * -1,
-                                    'item'     => $trigger->actionable->name
+                                    'item'     => $trigger->actionable->name,
                                 ]),
                             'type' => $trigger->quantity > 0 ? 'success' : 'warning',
                         ];
@@ -177,37 +237,36 @@ class StoryController extends Controller
             }
 
             // If this is an item
-            if ($trigger->actionable instanceof Item) {
-                // If the character has something in his inventory
-                if ($character->items()->count() > 0) {
-                    foreach ($character->items as $item) {
-                        // If the character has the item in the inventory
-                        if (get_class($item) === get_class($trigger->actionable) && $item->id === $trigger->actionable->id) {
-                            // Check if the action has already been done
-                            if ($character->actions->where('pivot.action_id', $trigger->id)->count() === 0) {
+            if ($trigger->actionable instanceof Item)
+            {
+                $item = $trigger->actionable;
 
-                                if ($item->use()) {
-                                    $messages[] = [
-                                        'text' => $trigger->quantity > 0
-                                            ? trans('common.you_earned_something', [
-                                                     'quantity' => $trigger->quantity,
-                                                     'item'     => $trigger->actionable->name
-                                                 ])
-                                            : trans('common.you_lost_something', [
-                                                  'quantity' => $trigger->quantity * -1,
-                                                  'item'     => $trigger->actionable->name
-                                              ]),
-                                        'type' => $trigger->quantity > 0 ? 'success' : 'warning',
-                                    ];
-                                }
-                            }
+                // Check if the action has already been done
+                if ($character->actions->where('pivot.action_id', $trigger->id)->count() === 0)
+                {
+                    if ($character->actions()->syncWithoutDetaching($trigger->id))
+                    {
+                        if ($trigger->quantity > 0) {
+                            $item->take();
+                        } else {
+                            $item->throwAway();
                         }
+
+                        $messages[] = [
+                            'text' => $trigger->quantity > 0
+                                ? trans('common.you_earned_something', [
+                                    'quantity' => $trigger->quantity,
+                                    'item'     => $item->name,
+                                ])
+                                : trans('common.you_lost_something', [
+                                    'quantity' => $trigger->quantity * -1,
+                                    'item'     => $item->name,
+                                ]),
+                            'type' => $trigger->quantity > 0 ? 'success' : 'warning',
+                        ];
                     }
                 }
-
             }
-
-            $character->actions()->syncWithoutDetaching($trigger->id);
         }
 
         return $messages;
@@ -227,6 +286,21 @@ class StoryController extends Controller
         ]);
     }
 
+    private function showItemsInInventory(Character $character)
+    {
+        $items = [];
+
+        foreach ($character->items as $characterItem) {
+            if ($characterItem->category) {
+                $items[$characterItem->category][] = $characterItem;
+            } else {
+                $items[trans('constants.no_category')][] = $characterItem;
+            }
+        }
+
+        return $items;
+    }
+
     /**
      * @param \App\Models\Story $story
      *
@@ -237,71 +311,22 @@ class StoryController extends Controller
         $character = $story->currentCharacter();
 
         return view('story.partials.sheet', [
-            'fields' => $character->fields,
-            'show_hidden_fields' => Auth::id() === $story->user->id
+            'fields'             => $character->fields,
+            'show_hidden_fields' => Auth::id() === $story->user->id,
         ]);
-    }
-
-    /**
-     * @param Character $character
-     * @param Page      $page
-     */
-    private function saveCheckpoint(Character $character, $page): void
-    {
-        if ($page && $page->is_checkpoint) {
-            $character->pages()->syncWithoutDetaching($page->id);
-        }
-    }
-
-    /**
-     * @param $itemId
-     *
-     * @return mixed
-     */
-    private function getItem($itemId)
-    {
-        return Cache::remember('item_' . $itemId, Config::get('app.story.cache_ttl'), function () use ($itemId) {
-            return Item::where('id', $itemId)
-                       ->first();
-        }
-        );
-    }
-
-    /**
-     * @param null $story
-     *
-     * @return \Illuminate\Contracts\View\View
-     */
-    public function getCreate($story = null)
-    {
-        $data = [
-            'title'   => trans('story.create_title'),
-            'locales' => getLanguages(),
-            'layouts' => [
-                'play1' => 'Premier layout',
-            ],
-            'story'   => $story,
-            'route'   => 'story.create.post',
-            'genres'  => Genre::all(),
-            'contexts' => ['story_creation'],
-        ];
-
-        $view = View::make('story.create', $data);
-
-        return $view;
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'story_id'     => '',
-            'title'        => 'required',
-            'description'  => 'required',
-            'locale'       => 'required',
-            'layout'       => 'required',
-            'is_published' => 'boolean',
-            'genres'       => 'required|array|between:1,5',
-        ]);
+                                            'story_id'     => '',
+                                            'title'        => 'required',
+                                            'description'  => 'required',
+                                            'locale'       => 'required',
+                                            'layout'       => 'required',
+                                            'is_published' => 'boolean',
+                                            'genres'       => 'required|array|between:1,5',
+                                        ]);
 
         $validated['is_published'] = $request->has('is_published');
         $storyId                   = $validated['story_id'] ?? null;
@@ -314,26 +339,26 @@ class StoryController extends Controller
                               ->firstOrFail();
 
                 $story->update($validated);
-            }
-            else {
+            } else {
                 $story = Story::create($validated);
-                $story->story_options()->create();
+                $story->story_options()
+                      ->create();
             }
 
             // Create the first page with dummy data
             factory(Page::class)->create([
-                'story_id' => $story->id,
-                'is_first' => true,
-            ]);
+                                             'story_id' => $story->id,
+                                             'is_first' => true,
+                                         ]);
 
             StoryGenre::where('story_id', $story->id)
                       ->delete();
 
             foreach ($genres as $genre) {
                 StoryGenre::create([
-                    'story_id' => $story->id,
-                    'genre_id' => (int) $genre,
-                ]);
+                                       'story_id' => $story->id,
+                                       'genre_id' => (int) $genre,
+                                   ]);
             }
 
             \flash(trans('model.save_successful'));
@@ -360,53 +385,27 @@ class StoryController extends Controller
     }
 
     /**
-     * Only show items that:
-     * - are not in the character item (if the item is unique)
+     * @param null $story
      *
-     * @param \App\Models\Character $character
-     * @param \App\Models\Page      $page
-     *
-     * @return array
+     * @return \Illuminate\Contracts\View\View
      */
-    private function filterItems(Character $character, Page $page)
+    public function getCreate($story = null)
     {
-        $items = [];
+        $data = [
+            'title'    => trans('story.create_title'),
+            'locales'  => getLanguages(),
+            'layouts'  => [
+                'play1' => 'Premier layout',
+            ],
+            'story'    => $story,
+            'route'    => 'story.create.post',
+            'genres'   => Genre::all(),
+            'contexts' => ['story_creation'],
+        ];
 
-        foreach ($page->items as $pageItem) {
-            $isFound = false;
+        $view = View::make('story.create', $data);
 
-            foreach ($character->items as $characterItem) {
-                if ($characterItem->id == $pageItem->id && $characterItem->is_unique) {
-                    $isFound = true;
-                }
-            }
-
-            if (!$isFound) {
-                if ($pageItem->category) {
-                    $items[$pageItem->category][] = $pageItem;
-                } else {
-                    $items[trans('constants.no_category')][] = $pageItem;
-                }
-            }
-        }
-
-        return $items;
-    }
-
-    private function showItemsInInventory(Character $character)
-    {
-        $items = [];
-
-        foreach ($character->items as $characterItem)
-        {
-            if ($characterItem->category) {
-                $items[$characterItem->category][] = $characterItem;
-            } else {
-                $items[trans('constants.no_category')][] = $characterItem;
-            }
-        }
-
-        return $items;
+        return $view;
     }
 
     public function getReset(Story $story)
@@ -419,7 +418,8 @@ class StoryController extends Controller
             if ($deleted == true) {
                 Flash::success(trans('story.reset_successful_text'));
 
-                if (!Auth::user()->hasRole('admin')) {
+                if (!Auth::user()
+                         ->hasRole('admin')) {
                     activity()
                         ->performedOn($story)
                         ->useLog('reset_game')
@@ -449,5 +449,19 @@ class StoryController extends Controller
         }
 
         return response()->json(['success' => $success]);
+    }
+
+    /**
+     * @param $itemId
+     *
+     * @return mixed
+     */
+    private function getItem($itemId)
+    {
+        return Cache::remember('item_' . $itemId, Config::get('app.story.cache_ttl'), function () use ($itemId) {
+            return Item::where('id', $itemId)
+                       ->first();
+        }
+        );
     }
 }

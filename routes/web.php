@@ -17,7 +17,7 @@ Route::get('/', 'StoriesController@list')->name('home');
 
 // Items
 Route::post('/item/create', 'ItemController@store')->name('item.store');
-Route::get('/item/{page}/{item}/take', 'ItemController@take')->name('item.take');
+Route::get('/item/{item}/take', 'ItemController@take')->name('item.take');
 Route::get('/items/{story}/html_list', 'ItemController@htmlList')->name('items.html.list');
 Route::get('/item/{item}/throw', 'ItemController@throwAway')->name('item.throw_away');
 Route::get('/item/{item}/use', 'ItemController@itemUse')->name('item.use');

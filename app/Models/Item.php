@@ -135,6 +135,11 @@ class Item extends Model
         return $this->pivot->price;
     }
 
+    /**
+     * Use an item and apply all attached effects
+     *
+     * @return false|int
+     */
     public function use()
     {
         $success = false;
@@ -170,5 +175,61 @@ class Item extends Model
         Action::applyEffects($character, $this);
 
         return $success;
+    }
+
+    /**
+     * Take an item and put it in the inventory
+     *
+     * @return array
+     */
+    public function take()
+    {
+        $isOk    = false;
+        $message = null;
+
+        $character = $this->story->currentCharacter();
+
+        if (Action::hasRoomLeftInInventory($character, $this)) {
+            $characterItem = $character->items()->where('items.id', $this->id)->first();
+
+            if ($characterItem) {
+                // The character already has this item. Increment
+                $characterItem->pivot->quantity++;
+
+                // Check if the item used has the is_unique flag,
+                // and in this case it must not be shown again
+                if ($characterItem->is_unique) {
+                    $characterItem->pivot->taken = true;
+                }
+
+                $characterItem->pivot->save();
+            } else {
+                // The character does not have this item. Attach it
+                $character->items()->attach($this->id);
+            }
+
+            $isOk = true;
+        } else {
+            $message = trans('inventory.no_more_room');
+        }
+
+        return [
+            'success' => $isOk,
+            'message' => $message
+        ];
+    }
+
+    /**
+     * Flag an item as 'used'. This means it does not appear in the inventory anymore,
+     * nor is it put on the page again
+     */
+    public function throwAway()
+    {
+        $character = $this->story->currentCharacter();
+
+        $characterItem = $character->items()->where('items.id', $this->id)->first();
+
+        $characterItem->pivot->is_used = true;
+        $characterItem->pivot->save();
     }
 }

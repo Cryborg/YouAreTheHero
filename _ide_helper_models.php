@@ -152,6 +152,7 @@ namespace App\Models{
  * @property int|null $page_from
  * @property int|null $page_to
  * @property string $link_text
+ * @property int $hidden
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \App\Models\Page|null $pageFrom
  * @property-read \App\Models\Page|null $pageTo
@@ -160,6 +161,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Query\Builder|Choice onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Choice query()
  * @method static \Illuminate\Database\Eloquent\Builder|Choice whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Choice whereHidden($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Choice whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Choice whereLinkText($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Choice wherePageFrom($value)
@@ -208,8 +210,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $deleted_at
  * @property-read \App\Models\Field $field
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[] $item
- * @property-read int|null $item_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[] $items
+ * @property-read int|null $items_count
  * @method static \Illuminate\Database\Eloquent\Builder|Effect newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Effect newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Effect query()
@@ -241,6 +243,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[] $items
+ * @property-read int|null $items_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Prerequisite[] $prerequisites
  * @property-read int|null $prerequisites_count
  * @property-read \App\Models\Story $story

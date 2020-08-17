@@ -11,7 +11,7 @@
             {!! Form::label('name', trans('character.name_label'), ['class' => 'control-label']) !!}
             <p class="help-block">{{ trans('character.name_help') }}</p>
             {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
-            <div class="alert alert-error hidden">{{ trans('character.name_error') }}</div>
+            <div class="alert alert-danger hidden">{{ trans('character.name_error') }}</div>
         </div>
     @endif
 
