@@ -168,7 +168,7 @@ class StoryController extends Controller
 
         foreach ($page->items as $pageItem)
         {
-            $canBeShown = false;
+            $canBeShown = true;
 
             foreach ($character->items as $characterItem)
             {

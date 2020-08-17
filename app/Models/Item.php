@@ -196,12 +196,6 @@ class Item extends Model
                 // The character already has this item. Increment
                 $characterItem->pivot->quantity++;
 
-                // Check if the item used has the is_unique flag,
-                // and in this case it must not be shown again
-                if ($characterItem->is_unique) {
-                    $characterItem->pivot->taken = true;
-                }
-
                 $characterItem->pivot->save();
             } else {
                 // The character does not have this item. Attach it
@@ -220,16 +214,12 @@ class Item extends Model
     }
 
     /**
-     * Flag an item as 'used'. This means it does not appear in the inventory anymore,
-     * nor is it put on the page again
+     * Remove the item from the inventory.
      */
     public function throwAway()
     {
         $character = $this->story->currentCharacter();
 
-        $characterItem = $character->items()->where('items.id', $this->id)->first();
-
-        $characterItem->pivot->is_used = true;
-        $characterItem->pivot->save();
+        $character->items()->detach($this);
     }
 }

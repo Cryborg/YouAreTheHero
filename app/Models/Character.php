@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -22,7 +24,7 @@ class Character extends Model
     {
         parent::boot();
 
-        static::deleting(function ($character) { // before delete() method call this
+        static::deleting(static function ($character) { // before delete() method call this
             $character->items()->detach();
             $character->riddles()->detach();
             $character->fields()->detach();
@@ -84,34 +86,34 @@ class Character extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function pages(): \Illuminate\Database\Eloquent\Relations\belongsToMany
+    public function pages(): belongsToMany
     {
         return $this->belongsToMany(Page::class);
     }
 
-    public function fields(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function fields(): BelongsToMany
     {
         return $this->belongsToMany(Field::class)->withPivot('value');
     }
 
-    public function riddles()
+    public function riddles(): BelongsToMany
     {
         return $this->belongsToMany(Riddle::class);
     }
 
-    public function items(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function items(): BelongsToMany
     {
         return $this->belongsToMany(Item::class)->withPivot(['quantity', 'is_used']);
     }
 
-    public function actions()
+    public function actions(): BelongsToMany
     {
         return $this->belongsToMany(Action::class);
     }
 
-    public function story()
+    public function story(): BelongsTo
     {
         return $this->belongsTo(Story::class);
     }
