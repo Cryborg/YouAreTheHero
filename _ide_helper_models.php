@@ -114,6 +114,7 @@ namespace App\Models{
 /**
  * App\Models\CharacterItem
  *
+ * @property-read \App\Models\Item|null $item
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem query()

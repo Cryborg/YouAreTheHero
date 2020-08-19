@@ -23,18 +23,16 @@ class CreateUsersTable extends Migration
             $table->string('password', 100)->nullable();
             $table->string('locale', 5)->default('fr_FR');
             $table->dateTime('email_verified_at')->nullable();
-            $table->string('remember_token', 100)->nullable();
             $table->enum('role', ['admin', 'moderator', 'member', 'developer'])->default('member');
 
             // Google Auth
-            $table->string('google_id');
+            $table->string('google_id')->nullable();
             $table->string('avatar')->nullable();
             $table->string('avatar_original')->nullable();
 
             $table->rememberToken();
             $table->timestamps();
 
-            $table->timestamps();
             $table->softDeletes();
         });
     }

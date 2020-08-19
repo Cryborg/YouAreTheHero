@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\Action;
-use App\Models\ItemPage;
 use App\Models\Effect;
 use App\Models\Item;
-use App\Models\Page;
 use App\Models\Story;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 
@@ -131,28 +127,13 @@ class ItemController extends Controller
     }
 
     /**
-     * @param \App\Models\Item $item
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function itemUse(Item $item)
-    {
-        $success = $item->use();
-
-        return response()->json([
-            'refreshInventory' => $success,
-            'refreshContent' => $success,
-        ]);
-    }
-
-    /**
      * List all items for a given story
      *
      * @param \App\Models\Story $story
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function list(Story $story)
+    public function list(Story $story): \Illuminate\Contracts\View\View
     {
         $view = View::make('page.partials.modal_list_items', [
             'items' => $story->items

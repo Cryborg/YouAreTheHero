@@ -24,18 +24,7 @@ class Action
         }
 
         // Add the item to the character inventory
-        // or increase the quantity if it already exists
-        $item = $character->items->where('item_id', $item->id)
-                                 ->first();
-        $item->pivot->quantity++;
-        $item->save();
-//        $inventory = Inventory::firstOrNew([
-//            'character_id' => $character->id,
-//            'item_id' => $item->id,
-//        ]);
-//
-//        ++$inventory->quantity;
-//        $inventory->save();
+        $character->items()->attach($item);
 
         return true;
     }
@@ -48,7 +37,7 @@ class Action
      *
      * @return bool
      */
-    public static function hasRoomLeftInInventory(Character $character, Item $item)
+    public static function hasRoomLeftInInventory(Character $character, Item $item): bool
     {
         $options = $character->story->story_options;
 
@@ -124,8 +113,10 @@ class Action
      *
      * @param \App\Models\Character $character
      * @param \App\Models\Item      $item
+     *
+     * @return bool
      */
-    public static function applyEffects(Character $character, Item $item): void
+    public static function applyEffects(Character $character, Item $item): bool
     {
         $item->effects()->each(static function ($effect) use ($character)
         {
@@ -150,8 +141,10 @@ class Action
                     }
                 }
 
-                $field->pivot->save();
+                return $field->pivot->save();
             });
         });
+
+        return true;
     }
 }

@@ -34,6 +34,20 @@ class DatabaseSeeder extends Seeder
         $this->call(StoryGenreTableSeeder::class);
         $this->call(StoryOptionsTableSeeder::class);
         $this->call(DescriptionsTableSeeder::class);
+        $this->call(CharactersTableSeeder::class);
+        $this->call(ActionsTableSeeder::class);
+        $this->call(ActionCharacterTableSeeder::class);
+        $this->call(ActivityLogTableSeeder::class);
+        $this->call(CharacterFieldTableSeeder::class);
+        $this->call(CharacterItemTableSeeder::class);
+        $this->call(CharacterPageTableSeeder::class);
+        $this->call(CharacterRiddleTableSeeder::class);
+        $this->call(EffectsTableSeeder::class);
+        $this->call(ItemPageTableSeeder::class);
+        $this->call(LtmTranslationsTableSeeder::class);
+        $this->call(MigrationsTableSeeder::class);
+        $this->call(PasswordResetsTableSeeder::class);
+        $this->call(ReportsTableSeeder::class);
     }
 }
 

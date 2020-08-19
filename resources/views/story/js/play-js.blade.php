@@ -46,9 +46,10 @@ $(document).on('click', '.itemThrowAway', function () {
 
 $(document).on('click', '.itemUse', function () {
     var itemId = $(this).closest('a.itemThrowAwayMenu').data('itemid');
+    var characterId = $(this).closest('a.itemThrowAwayMenu').data('characterid');
 
     $.get({
-        url: route('item.use', {'item': itemId})
+        url: route('item.use', {'character': characterId, 'item': itemId})
     })
         .done(function (result) {
             // loadContent(getContentRoute());
@@ -123,7 +124,6 @@ $(document).on('click', '.pick-item button', function () {
         'url': route('item.take', {'item': $this.data('itemid')}),
     })
         .done(function (rst) {
-            console.log(rst);
             if (rst.success == true) {
                 // TODO: refresh this if necessary. Controller should return the info according
                 //       to what have been updated

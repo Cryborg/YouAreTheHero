@@ -85,12 +85,9 @@ class Character extends Model
         }
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function pages(): belongsToMany
+    public function actions(): BelongsToMany
     {
-        return $this->belongsToMany(Page::class);
+        return $this->belongsToMany(Action::class);
     }
 
     public function fields(): BelongsToMany
@@ -98,25 +95,23 @@ class Character extends Model
         return $this->belongsToMany(Field::class)->withPivot('value');
     }
 
+    public function items(): BelongsToMany
+    {
+        return $this->belongsToMany(Item::class)->withPivot(['id', 'quantity', 'is_used']);
+    }
+
+    public function pages(): belongsToMany
+    {
+        return $this->belongsToMany(Page::class);
+    }
+
     public function riddles(): BelongsToMany
     {
         return $this->belongsToMany(Riddle::class);
-    }
-
-    public function items(): BelongsToMany
-    {
-        return $this->belongsToMany(Item::class)->withPivot(['quantity', 'is_used']);
-    }
-
-    public function actions(): BelongsToMany
-    {
-        return $this->belongsToMany(Action::class);
     }
 
     public function story(): BelongsTo
     {
         return $this->belongsTo(Story::class);
     }
-
-
 }

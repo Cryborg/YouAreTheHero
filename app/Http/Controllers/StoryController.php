@@ -2,27 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\Action;
+use App\Models\Character;
 use App\Models\Field;
 use App\Models\Genre;
-use App\Models\Inventory;
 use App\Models\Item;
-use App\Models\CharacterField;
+use App\Models\Page;
+use App\Models\Story;
 use App\Models\StoryGenre;
 use App\Repositories\ChoiceRepository;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use \App\Models\Story;
-use \App\Models\Character;
-use \App\Models\Page;
-use \App\Models\Choice;
+use App\Repositories\PageRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
-use App\Repositories\PageRepository;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
@@ -283,6 +278,7 @@ class StoryController extends Controller
 
         return view('story.partials.inventory', [
             'items' => $this->showItemsInInventory($character),
+            'character' => $character
         ]);
     }
 

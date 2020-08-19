@@ -4,7 +4,12 @@ namespace App\Models;
 
 use App\Classes\Action;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Laracasts\Presenter\PresentableTrait;
 use App\Presenters\ItemPresenter;
@@ -73,7 +78,7 @@ class Item extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function pages()
+    public function pages(): BelongsToMany
     {
         return $this->belongsToMany(Page::class);
     }
@@ -83,22 +88,22 @@ class Item extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function actions()
+    public function actions(): BelongsToMany
     {
         return $this->belongsToMany(ItemPage::class);
     }
 
-    public function story()
+    public function story(): BelongsTo
     {
         return $this->belongsTo(Story::class);
     }
 
-    public function prerequisites()
+    public function prerequisites(): MorphMany
     {
         return $this->morphMany(Prerequisite::class, 'prerequisiteable');
     }
 
-    public function effects()
+    public function effects(): HasMany
     {
         return $this->hasMany(Effect::class)->with('field');
     }
@@ -109,7 +114,7 @@ class Item extends Model
      *
      * @return \Illuminate\Support\Collection
      */
-    public function effects_list()
+    public function effects_list(): Collection
     {
         $allEffects = collect();
 
@@ -120,7 +125,7 @@ class Item extends Model
         return $allEffects;
     }
 
-    public function characters()
+    public function characters(): BelongsToMany
     {
         return $this->belongsToMany(Character::class);
     }
@@ -136,53 +141,11 @@ class Item extends Model
     }
 
     /**
-     * Use an item and apply all attached effects
-     *
-     * @return false|int
-     */
-    public function use()
-    {
-        $success = false;
-
-        /** @var \App\Models\Character $character */
-        $character = $this->story->currentCharacter();
-
-//        if ($this->default_price > 0) {
-//            $character->addMoney($this->default_price);
-//        }
-
-        // If this is flagged Single Use, check if it is the last item in the player's inventory
-        // Then subtract one, or remove it
-        if ($this->single_use) {
-            $thisItem = $character->items()->where('item_id', $this->id)->first()->pivot;
-
-            if ($thisItem->quantity > 1) {
-                $thisItem->quantity--;
-                $success = $thisItem->save();
-            } else {
-                $success = $character->items()->detach($this);
-            }
-        }
-
-        // If the item is unique, flag it so it can't be used anymore
-        if ($this->is_unique) {
-            $success = $character->items()->updateExistingPivot($this, [
-                'is_used' => true
-            ]);
-        }
-
-        // Apply the effects, if any
-        Action::applyEffects($character, $this);
-
-        return $success;
-    }
-
-    /**
      * Take an item and put it in the inventory
      *
      * @return array
      */
-    public function take()
+    public function take(): array
     {
         $isOk    = false;
         $message = null;
@@ -190,17 +153,8 @@ class Item extends Model
         $character = $this->story->currentCharacter();
 
         if (Action::hasRoomLeftInInventory($character, $this)) {
-            $characterItem = $character->items()->where('items.id', $this->id)->first();
-
-            if ($characterItem) {
-                // The character already has this item. Increment
-                $characterItem->pivot->quantity++;
-
-                $characterItem->pivot->save();
-            } else {
-                // The character does not have this item. Attach it
-                $character->items()->attach($this->id);
-            }
+            // The character does not have this item. Attach it
+            $character->items()->attach($this->id);
 
             $isOk = true;
         } else {
@@ -216,7 +170,7 @@ class Item extends Model
     /**
      * Remove the item from the inventory.
      */
-    public function throwAway()
+    public function throwAway(): void
     {
         $character = $this->story->currentCharacter();
 

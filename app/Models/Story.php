@@ -137,6 +137,9 @@ class Story extends Model
         return $this->hasOne(\App\Models\User::class, 'id', 'user_id');
     }
 
+    /**
+     * @return \App\Models\Character|null
+     */
     public function currentCharacter()
     {
         return Character::where('user_id', Auth::id())
