@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Choice;
-use App\Models\Description;
 use App\Models\Page;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\View;
 
 class ChoiceController extends Controller
 {
@@ -21,6 +17,10 @@ class ChoiceController extends Controller
 
     public function update(Request $request, Choice $choice)
     {
-        $choice->update(['link_text' => $request->get('link_text')]);
+        $success = $choice->update($request->all());
+
+        return response()->json([
+            'success' => $success
+        ]);
     }
 }

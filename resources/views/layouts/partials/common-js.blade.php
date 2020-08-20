@@ -1,14 +1,5 @@
 moment.locale('fr');
 
-// Load emojis
-$.ajax({
-    url: 'https://api.github.com/emojis',
-    async: false
-}).then(function(data) {
-    window.emojis = Object.keys(data);
-    window.emojiUrls = data;
-});
-
 // Global ajax options
 $.ajaxSetup({
     headers: {

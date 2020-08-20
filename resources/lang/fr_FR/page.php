@@ -86,4 +86,5 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
   'tab_bonus' => 'Bonus/malus',
   'tab_items' => 'Objets',
   'tab_riddle' => 'Enigme',
+  'hide_unavailable_choice' => 'Cache le lien vers cette page si les conditions ci-dessus ne sont pas remplies.',
 );

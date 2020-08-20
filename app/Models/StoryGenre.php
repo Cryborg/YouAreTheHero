@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class StoryGenre extends Model
 {
-    use SoftDeletes;
-    
     protected $table = 'story_genre';
     protected $guarded = ['id'];
 

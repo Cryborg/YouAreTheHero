@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Presenters\PagePresenter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laracasts\Presenter\PresentableTrait;
@@ -14,6 +13,12 @@ class Page extends Model
 {
     use PresentableTrait;
     use SoftDeletes;
+
+    public const ENDING_BAD     = 'bad';
+
+    public const ENDING_GOOD    = 'good';
+
+    public const ENDING_NEUTRAL = 'neutral';
 
     protected $presenter  = PagePresenter::class;
 
@@ -26,9 +31,9 @@ class Page extends Model
     protected $touches    = ['story'];
 
     protected $casts      = [
-        'is_first'        => 'boolean',
-        'is_last'         => 'boolean',
-        'is_checkpoint'   => 'boolean',
+        'is_first'      => 'boolean',
+        'is_last'       => 'boolean',
+        'is_checkpoint' => 'boolean',
 
         'verbs_page'      => 'array',
         'verbs_inventory' => 'array',
@@ -51,8 +56,14 @@ class Page extends Model
      */
     public function items()
     {
-        $query = $this->belongsToMany(Item::class)->withPivot(['id', 'quantity', 'price', 'character_id'])
-            ->wherePivot('character_id', null);
+        $query = $this->belongsToMany(Item::class)
+                      ->withPivot([
+                                      'id',
+                                      'quantity',
+                                      'price',
+                                      'character_id',
+                                  ])
+                      ->wherePivot('character_id', null);
 
         if (!empty(getSession('character_id'))) {
             $query->orWherePivot('character_id', getSession('character_id'));
@@ -68,7 +79,8 @@ class Page extends Model
      */
     public function choices()
     {
-        return $this->belongsToMany(Page::class, 'choices', 'page_from', 'page_to', 'id')->withPivot('link_text');
+        return $this->belongsToMany(Page::class, 'choices', 'page_from', 'page_to', 'id')
+                    ->withPivot('link_text');
     }
 
     /**
@@ -76,7 +88,8 @@ class Page extends Model
      */
     public function parents()
     {
-        return $this->belongsToMany(Page::class, 'choices', 'page_to', 'page_from', 'id')->withPivot('link_text');
+        return $this->belongsToMany(Page::class, 'choices', 'page_to', 'page_from', 'id')
+                    ->withPivot('link_text');
     }
 
     /**
@@ -90,11 +103,14 @@ class Page extends Model
         $potentialPages = Page::where('story_id', $this->story_id)
 
             // Don't include the choices already bound to the page
-            ->whereNotIn('id',
-                $this->choices->pluck('id')->toArray())
+                              ->whereNotIn('id',
+                                           $this->choices->pluck('id')
+                                                         ->toArray())
 
             // And of course don't include this page
-            ->whereNotIn('id', [$this->id])->orderBy('title', 'asc')->get();
+                              ->whereNotIn('id', [$this->id])
+                              ->orderBy('title', 'asc')
+                              ->get();
 
         return $potentialPages;
     }
@@ -104,7 +120,9 @@ class Page extends Model
      */
     public function prerequisites()
     {
-        return Prerequisite::with('prerequisiteable')->where('page_id', $this->id)->get();
+        return Prerequisite::with('prerequisiteable')
+                           ->where('page_id', $this->id)
+                           ->get();
     }
 
     /**
@@ -127,12 +145,15 @@ class Page extends Model
 
     public function fields()
     {
-        return $this->triggers()->where('actionable_type', 'field')->with('actionable');
+        return $this->triggers()
+                    ->where('actionable_type', 'field')
+                    ->with('actionable');
     }
 
     public function triggers()
     {
-        return $this->morphMany(Action::class, 'trigger')->with('actionable');
+        return $this->morphMany(Action::class, 'trigger')
+                    ->with('actionable');
     }
 
     public function reports()

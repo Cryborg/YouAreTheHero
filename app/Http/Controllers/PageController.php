@@ -161,9 +161,8 @@ class PageController extends Controller
      */
     public function postRiddle(Request $request, Page $page): ?JsonResponse
     {
-        if ($request->ajax()) {
-            $this->authorize('edit', $page);
-
+        if ($request->ajax())
+        {
             $answerIsCorrect = strtolower(trim($request->post('answer'))) === strtolower(trim($page->riddle->answer));
             $storySession    = Session::get('story');
             $itemResponse    = null;
@@ -360,10 +359,22 @@ class PageController extends Controller
         );
 
         foreach ($story->pages as $page) {
+            $icon = '';
+
+            if ($page->is_last) {
+                if ($page->ending_type === Page::ENDING_BAD) {
+                    $icon = '<span class="icon-skull text-red font-biggest mr-2"></span>';
+                }
+
+                if ($page->ending_type === Page::ENDING_GOOD) {
+                    $icon = '<span class="icon-thumb-up text-green font-biggest mr-2"></span>';
+                }
+            }
+
             $editPageLink = Str::replaceFirst(
                 '?',
                 route('page.edit', ['page' => $page]),
-                '<a href="?">' . addslashes($page->title) . '</a>'
+                '<a href="?">' . $icon . addslashes($page->title) . '</a>'
             );
 
             $graph->push(

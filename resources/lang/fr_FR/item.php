@@ -10,6 +10,8 @@ return [
     'verb'              => 'Action',
     'single_use'        => 'Utilisation unique',
     'effects'           => 'Effets',
+    'category_help'     => 'Catégorie optionnelle pour cet objet.',
+    'category'          => 'Catégorie',
     'create_btn'        => 'Créer un objet',
     'new_item_title'    => 'Nouvel objet',
     'price_help'        => 'Prix par défaut de l\'objet.<br>Il pourra ensuite être monnayé à un autre prix selon la configuration de la page.',
@@ -21,6 +23,7 @@ return [
     'select_item'       => 'Sélectionne un objet',
     'select_action'     => 'Choisis une action',
     'is_unique'         => 'Objet unique',
+    'is_unique_help'    => 'Indique si l\'objet disparaît une fois utilisé.',
     'throw_away'        => 'Jeter',
     'use'               => 'Utiliser',
 ];

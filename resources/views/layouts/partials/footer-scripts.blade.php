@@ -173,25 +173,6 @@
             showOutput: false
         },
         focus: true,
-        hint: {
-            match: /:([\-+\w]+)$/,
-            search: function (keyword, callback) {
-                callback($.grep(emojis, function (item) {
-                    return item.indexOf(keyword)  === 0;
-                }));
-            },
-            template: function (item) {
-                var content = emojiUrls[item];
-                return '<img src="' + content + '" width="20" /> :' + item + ':';
-            },
-            content: function (item) {
-                var url = emojiUrls[item];
-                if (url) {
-                    return $('<img />').attr('src', url).css('width', 20)[0];
-                }
-                return '';
-            }
-        },
         callbacks: {
             onBlur: function(e) {
                 var p = e.target.parentNode.parentNode

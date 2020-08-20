@@ -31,6 +31,6 @@ class StoryPolicy
      */
     public function view(User $user, Story $story)
     {
-        return $user->id == $story->user_id;
+        return $user->id == $story->user_id || $user->can('isAdmin');
     }
 }

@@ -5,12 +5,10 @@ namespace App\Models;
 use App\Classes\Action;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class CharacterItem extends Model
 {
-    //protected $fillable = ['character_id', 'item_id'];
-
+    // FIXME: why do I have to do that ??? item.use looks for character_items.......
     protected $table = 'character_item';
 
     public $timestamps = false;
@@ -28,8 +26,6 @@ class CharacterItem extends Model
      */
     public function use()
     {
-        $success = false;
-
         $character = $this->item->story->currentCharacter();
 
         // If this is flagged Single Use, remove it

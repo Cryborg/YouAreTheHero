@@ -36,3 +36,8 @@
         @lang('page.show_after_create')
     </label>
 </div>
+
+<div class="form-check">
+    <input type="checkbox" class="form-check-input" id="hide_choice" value="1">
+    <label class="form-check-label" for="hide_choice">@lang('page.hide_unavailable_choice')</label>
+</div>

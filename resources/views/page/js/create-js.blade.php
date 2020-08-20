@@ -18,13 +18,15 @@ function newPage($this, url, linkText) {
     let text = typeof linkText !== 'undefined'
         ? linkText
         : $parent.find('#link_text').val();
+    let hideChoice = $parent.find('#hide_choice').is(':checked') ? 1 : 0;
 
     // Create the page and display it
     $.ajax({
         'url': url,
         'data': {
             'page_from': pageId,
-            'link_text': text
+            'link_text': text,
+            'hidden': hideChoice
         },
         'method': 'POST'
     })
@@ -42,12 +44,13 @@ function newPage($this, url, linkText) {
         });
 }
 
-function newEmptyPage(linkText, $select) {
+function newEmptyPage(linkText, hideChoice, $select) {
     // Create the page and display it
     $.ajax({
         'url': route('page.create', {'story': storyId}),
         'data': {
-            'link_text': linkText
+            'link_text': linkText,
+            'hidden': hideChoice
         },
         'method': 'POST'
     })
@@ -289,9 +292,10 @@ $(document).ready(function () {
     $(document).on('click', '.createNewPage', function () {
         var $this = $(this);
         var text = $('#riddle_target_page_text').val();
+        let hideChoice = $('#hide_choice').is(':checked') ? 1 : 0;
 
         if (text !== '') {
-            newEmptyPage(text, $('#riddle_page'));
+            newEmptyPage(text, hideChoice, $('#riddle_page'));
         } else {
             $('#riddle_target_page_text').css('border-color', 'red');
         }
@@ -528,3 +532,27 @@ $(document).on('click', '.delete-prerequisite', function () {
         });
 });
 
+$(document).on('change', '#hideChoice', function () {
+    const $this = $(this);
+    let choiceId = $this.data('choiceid');
+
+    $.post({
+        url: route('choice.update', choiceId),
+        data: {
+            'hidden': $this.is(':checked') ? 1 : 0
+        }
+    })
+        .done(function (result) {
+            showToast('success', {
+                heading: "{{ trans('notification.save_success_title') }}",
+                text: "{{ trans('notification.save_success_text') }}",
+            });
+        })
+        .fail(function (data) {
+            showToast('error', {
+                heading: "{{ trans('notification.deletion_failed_title') }}",
+                text: "{{ trans('notification.deletion_failed_text') }}",
+                errors: data.responseJSON.errors
+            });
+        });
+});

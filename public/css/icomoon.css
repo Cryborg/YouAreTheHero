@@ -130,3 +130,12 @@ button {
 .icon-statistics:before {
     content: "\e921";
 }
+.icon-skull:before {
+    content: "\e922";
+}
+.icon-trophy:before {
+    content: "\e923";
+}
+.icon-thumb-up:before {
+    content: "\e924";
+}

@@ -340,6 +340,10 @@ th.icon-expand:before, th.icon-contract:before {
     color: red !important;
 }
 
+.text-green {
+    color: #01c401 !important;
+}
+
 .hidden {
     display: none !important;
 }

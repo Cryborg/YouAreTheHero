@@ -65,7 +65,13 @@ class StoryController extends Controller
 
         // If the character does not exist, it is a new game
         if (!$character) {
-            Character::createNewForStory($story);
+            $character = Character::createNewForStory($story);
+
+            if ($character && ($story->story_options->has_character === false || $story->story_options->count() === 0)) {
+                return Redirect::route('story.play', [
+                    'story' => $story->id,
+                ]);
+            }
 
             return Redirect::route('character.create', [
                 'story' => $story->id,

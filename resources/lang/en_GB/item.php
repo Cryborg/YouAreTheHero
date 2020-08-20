@@ -1,12 +1,15 @@
 <?php
 
 return [
+    'category'          => 'Category',
+    'category_help'     => 'Optional category for this object.',
     'create_btn'        => 'Create an item',
     'item'              => 'Object',
     'items_title'       => 'Objects',
     'effects'           => 'Effects',
     'effects_help_text' => 'If the item affects one or more of the character stats, specify it here.',
     'is_unique'         => 'Unique item',
+    'is_unique_help'    => 'Indicates if the item disappears upon use.',
     'name'              => 'Name',
     'new_item_title'    => 'New item',
     'price_help'        => 'Default price of the item. <br> It can then be given another price depending on the configuration of the page the item appears in.',

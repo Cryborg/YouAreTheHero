@@ -86,4 +86,5 @@ This links to the page with the title:<br><i>:choice_title</i>',
   'tab_prerequisite' => 'Prerequisites',
   'tab_riddle' => 'Riddle',
   'tab_text' => 'Main text',
+  'hide_unavailable_choice' => 'Hide the link to this page when the requirements above are not met.',
 );
