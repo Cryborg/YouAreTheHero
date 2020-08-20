@@ -4,6 +4,8 @@ namespace App\Classes;
 
 use App\Models\Character;
 use App\Models\Item;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 class Action
 {
@@ -146,5 +148,19 @@ class Action
         });
 
         return true;
+    }
+
+    public static function stutter($text): string
+    {
+        $stuttering = '';
+
+        for ($i = 1; $i <= Arr::random([1,2]); $i++)
+        {
+            $stuttering .= Str::substr($text, 0, 1) . '...';
+        }
+
+        $stuttering .= $text;
+
+        return $stuttering;
     }
 }

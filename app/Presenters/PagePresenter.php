@@ -2,6 +2,7 @@
 
 namespace App\Presenters;
 
+use App\Classes\Action;
 use App\Models\Character;
 use Illuminate\Support\Facades\Auth;
 use Laracasts\Presenter\Presenter;
@@ -10,23 +11,46 @@ class PagePresenter extends Presenter
 {
     public function content()
     {
+        $characterName = null;
         $characterId = getSession('character_id');
 
-        if ($characterId) {
+        if (empty($characterId)) {
+            $characterName = 'NomDuPersonnage';
+        } else {
             $character = Character::where('id', $characterId)->first();
 
-            // List of all placeholders
-            // FIXME: factorize this, for the moment it is set in PageController
-            $placeholders = [
-                'character_name' => $character->name,
-            ];
-            $content      = null;
-
-            foreach ($placeholders as $key => $placeholder) {
-                $content = str_replace('[[' . $key . ']]', $placeholder, $this->entity->content);
+            if ($character) {
+                $characterName = $character->name;
             }
+        }
 
-            $this->entity->content = $content;
+        // List of all placeholders
+        // FIXME: factorize this, for the moment it is set in PageController
+        $placeholders = [
+            'character_name' => $characterName,
+        ];
+        $content = null;
+
+        foreach ($placeholders as $key => $placeholder) {
+            $content = str_replace('[[' . $key . ']]', $placeholder, $this->entity->content);
+        }
+
+        $this->entity->content = $content;
+
+        // Methods to run on a part of the text.
+        //  For example : stutter[Bouh] will display something like 'B...B...Bouh'
+        $methods = [
+            'stutter'
+        ];
+        $content = null;
+
+        foreach ($methods as $method) {
+            $pattern = $method . '\[([^\]]*)\]';
+            preg_match_all('/' . $pattern . '/', $this->entity->content, $matches, PREG_SET_ORDER);
+
+            foreach ($matches as $match) {
+                $this->entity->content = str_replace($match[0], Action::$method($match[1]), $this->entity->content);
+            }
         }
 
         // Check if there are some other placeholders, such as Descriptions
