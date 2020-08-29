@@ -24,6 +24,7 @@ class CharacterController extends Controller
         $data = [
             'title' => trans('character.create_title'),
             'story' => $story,
+            'has_visible_fields' => $story->fields()->where('hidden', false)->count() > 0
         ];
 
         $view = View::make('character.create', $data);

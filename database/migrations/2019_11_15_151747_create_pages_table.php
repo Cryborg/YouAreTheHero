@@ -38,6 +38,7 @@ class CreatePagesTable extends Migration
                   ->default(false)
                   ->comment('Whether the player can sell objects in this page.');
             $table->string('ending_type')
+                  ->nullable()
                   ->default(Constants::ENDING_TYPE_GOOD)
                   ->comment('If is_last, type of the ending, wether it is good, bad, a death, etc');
 
