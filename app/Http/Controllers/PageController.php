@@ -157,7 +157,6 @@ class PageController extends Controller
      * @param \App\Models\Page         $page
      *
      * @return \Illuminate\Http\JsonResponse
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function postRiddle(Request $request, Page $page): ?JsonResponse
     {
@@ -167,6 +166,7 @@ class PageController extends Controller
             $storySession    = Session::get('story');
             $itemResponse    = null;
             $pageResponse    = null;
+            $character       = Character::find($storySession['character_id']);
 
             if ($answerIsCorrect) {
                 // If the player earns an item
@@ -174,7 +174,6 @@ class PageController extends Controller
                     $itemResponse = trans('page.riddle_item_earned', ['item_name' => $page->riddle->item->name]);
 
                     if ($page->riddle->item_id) {
-                        $character = Character::find($storySession['character_id']);
                         $character->items()->attach([
                             'item_id'  => $page->riddle->item_id,
                             'quantity' => 1,
@@ -205,6 +204,7 @@ class PageController extends Controller
                 'pageResponse'     => $pageResponse,
                 'solved'           => $page->riddle ? $page->riddle->isSolved($character) : false,
                 'refreshInventory' => $page->riddle && $page->riddle->item_id,
+                'refreshChoices'   => $page->riddle && $page->riddle->target_page_id,
             ]);
         }
 
@@ -291,6 +291,7 @@ class PageController extends Controller
         return view('story.partials.choices',
             [
                 'page' => $page,
+                'character' => $character,
             ]);
     }
 

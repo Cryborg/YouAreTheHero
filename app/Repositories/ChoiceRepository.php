@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Character;
-use App\Models\CharacterField;
 use App\Models\Choice;
 use App\Models\Field;
 use App\Models\Item;
@@ -39,9 +38,10 @@ class ChoiceRepository
             $choice->load('pageTo');
             $pageTo = $choice->pageTo;
 
-            if ($pageTo && $pageTo->prerequisites()
-                                  ->count() > 0) {
-                foreach ($pageTo->prerequisites() as $prerequisite) {
+            if ($pageTo && $pageTo->prerequisites()->count() > 0)
+            {
+                foreach ($pageTo->prerequisites() as $prerequisite)
+                {
                     switch (get_class($prerequisite->prerequisiteable)) {
                         case Field::class:
                             $fulfilled = $thisRepo->isStatPrerequisitesFulfilled($prerequisite, $character);
@@ -67,7 +67,8 @@ class ChoiceRepository
 
         // Log if there is no choice, and the story is not finished
         if (!$currentPage->is_last && count($currentPage->filtered_choices) === 0) {
-            if (!Auth::user()->hasRole('admin')) {
+            if (!Auth::user()
+                     ->hasRole('admin')) {
                 activity()
                     ->performedOn($currentPage)
                     ->useLog('dead_end')
@@ -93,8 +94,8 @@ class ChoiceRepository
     }
 
     /**
-     * @param \App\Models\Prerequisite   $prerequisite
-     * @param \App\Models\Character      $character
+     * @param \App\Models\Prerequisite $prerequisite
+     * @param \App\Models\Character    $character
      *
      * @return bool
      */

@@ -52,16 +52,11 @@ class StoryController extends Controller
         $page_id = getSession('page_id');
 
         if (!empty($page_id)) {
-            $page = Page::where('id', $page_id)->first();
+            $page = Page::where('id', $page_id)
+                        ->first();
         }
 
         setSession('story_id', $story->id);
-
-        // Params that are always returned to the view
-        $commonParams = [
-            'story' => $story,
-            'title' => $story->title,
-        ];
 
         // If the character does not exist, it is a new game
         if (!$character) {
@@ -108,24 +103,33 @@ class StoryController extends Controller
 
         $view = null;
 
+        // Params that are always returned to the view
+        $commonParams = [
+            'story' => $story,
+            'title' => $story->title,
+            'character' => $character,
+        ];
+
         $page->load('descriptions');
 
         if (\Illuminate\Support\Facades\Request::ajax()) {
-            $view = view('layouts.partials.page_content', $commonParams + [
-                                                            'page'     => $page,
-                                                            'items'    => $items,
-                                                            'messages' => $messages,
-                                                        ]);
+            $view = view('layouts.partials.page_content',
+                         $commonParams + [
+                             'page'     => $page,
+                             'items'    => $items,
+                             'messages' => $messages,
+                         ]);
         } else {
             // First display of the page
-            $view = view('story.play', $commonParams + [
-                                         'page'          => $page,
-                                         'items'         => $items,
-                                         'layout'        => $page->layout ?? $story->layout,
-                                         'character'     => $character,
-                                         'visitedPlaces' => $visitedPlaces,
-                                         'messages'      => $messages,
-                                     ]
+            $view = view('story.play',
+                         $commonParams + [
+                             'page'          => $page,
+                             'items'         => $items,
+                             'layout'        => $page->layout ?? $story->layout,
+                             'character'     => $character,
+                             'visitedPlaces' => $visitedPlaces,
+                             'messages'      => $messages,
+                         ]
             );
         }
 
@@ -167,15 +171,12 @@ class StoryController extends Controller
     {
         $items = [];
 
-        foreach ($page->items as $pageItem)
-        {
+        foreach ($page->items as $pageItem) {
             $canBeShown = true;
 
-            foreach ($character->items as $characterItem)
-            {
+            foreach ($character->items as $characterItem) {
                 // If the character owns the item
-                if ($characterItem->id === $pageItem->id)
-                {
+                if ($characterItem->id === $pageItem->id) {
                     // If it is unique, don't show it
                     $canBeShown = (bool) $pageItem->getRawOriginal('is_unique') === false;
 
@@ -216,37 +217,46 @@ class StoryController extends Controller
                 // Don't do it again if it is the case
                 if ($character->actions->where('pivot.action_id', $trigger->id)
                                        ->count() === 0) {
-                    $field->pivot->value += $trigger->quantity;
-                    if ($field->pivot->save()) {
-                        $character->actions()
-                                  ->syncWithoutDetaching($trigger->id);
 
-                        $messages[] = [
-                            'text' => $trigger->quantity > 0
-                                ? trans('common.you_earned_something', [
-                                    'quantity' => $trigger->quantity,
-                                    'item'     => $trigger->actionable->name,
-                                ])
-                                : trans('common.you_lost_something', [
-                                    'quantity' => $trigger->quantity * -1,
-                                    'item'     => $trigger->actionable->name,
-                                ]),
-                            'type' => $trigger->quantity > 0 ? 'success' : 'warning',
-                        ];
+                    if (!$field) {
+                        $character->fields()->attach($trigger->actionable->id, ['value' => $trigger->quantity]);
+                        $saved = true;
+                    } else {
+                        $field->pivot->value += $trigger->quantity;
+                        $saved = $field->pivot->save();
+                    }
+
+                    if ($saved) {
+                        $character->actions()->syncWithoutDetaching($trigger->id);
+
+                        // Don't show any message to the player if the Field is hidden
+                        if ($trigger->hidden === false) {
+                            $messages[] = [
+                                'text' => $trigger->quantity > 0
+                                    ? trans('common.you_earned_something', [
+                                        'quantity' => $trigger->quantity,
+                                        'item'     => $trigger->actionable->name,
+                                    ])
+                                    : trans('common.you_lost_something', [
+                                        'quantity' => $trigger->quantity * -1,
+                                        'item'     => $trigger->actionable->name,
+                                    ]),
+                                'type' => $trigger->quantity > 0 ? 'success' : 'warning',
+                            ];
+                        }
                     }
                 }
             }
 
             // If this is an item
-            if ($trigger->actionable instanceof Item)
-            {
+            if ($trigger->actionable instanceof Item) {
                 $item = $trigger->actionable;
 
                 // Check if the action has already been done
-                if ($character->actions->where('pivot.action_id', $trigger->id)->count() === 0)
-                {
-                    if ($character->actions()->syncWithoutDetaching($trigger->id))
-                    {
+                if ($character->actions->where('pivot.action_id', $trigger->id)
+                                       ->count() === 0) {
+                    if ($character->actions()
+                                  ->syncWithoutDetaching($trigger->id)) {
                         if ($trigger->quantity > 0) {
                             $item->take();
                         } else {
@@ -283,8 +293,8 @@ class StoryController extends Controller
         $character = Character::find(getSession('character_id'));
 
         return view('story.partials.inventory', [
-            'items' => $this->showItemsInInventory($character),
-            'character' => $character
+            'items'     => $this->showItemsInInventory($character),
+            'character' => $character,
         ]);
     }
 
