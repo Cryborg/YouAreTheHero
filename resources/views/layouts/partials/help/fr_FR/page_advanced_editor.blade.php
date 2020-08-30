@@ -22,15 +22,17 @@
 
 <p>
     Pour l'instant il n'y a qu'une seule commande, stutter[] (bégayer) :
-
-    <div class="example text-monospace">
-        # Editeur<br>
-        Bonjour stutter[Monsieur], stutter[comment] allez-vous ?<br>
-        <br>
-        # Résultat<br>
-        Bonjour M...Monsieur, c...c...comment allez-vous ?
-    </div>
 </p>
+
+<div class="example text-monospace">
+    # Editeur<br>
+    Bonjour stutter[Monsieur], stutter[comment] allez-vous ?<br>
+    <br>
+    # Résultat<br>
+    Bonjour M...Monsieur, c...c...comment allez-vous ?
+</div>
+
+
 <h3>Insérer des descriptions</h3>
 
 <p>
