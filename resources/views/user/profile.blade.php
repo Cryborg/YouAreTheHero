@@ -48,6 +48,14 @@
                     {{ trans('auth.forgot_password') }}
                 </a>
 
+                <div class="form-group row mt-5">
+                    <label class="pl-3">
+                        {!! Form::checkbox('optin_system', 1, old('optin_system', $user->optin_system) ?? 0,  ['id' => 'optin_system']) !!}
+                        @lang('user.optin_system')
+                    </label>
+                </div>
+
+
                 {!! Form::submit(trans('common.save'), ['class' => 'form-control btn btn-primary']) !!}
             {!! Form::close() !!}
         </div>

@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('locale', 5)->default('fr_FR');
             $table->dateTime('email_verified_at')->nullable();
             $table->enum('role', ['admin', 'moderator', 'member', 'developer'])->default('member');
+            $table->boolean('optin_system')->default(false);
 
             // Google Auth
             $table->string('google_id')->nullable();

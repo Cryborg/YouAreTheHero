@@ -33,7 +33,8 @@ class UserController extends Controller
             'last_name' => '',
             'username' => 'required',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            'password' => 'confirmed|min:8'
+            'password' => 'confirmed|min:8',
+            'optin_system' => ''
         ]);
 
         if ($validator->fails())
@@ -41,7 +42,9 @@ class UserController extends Controller
             return Redirect::to(route('user.profile'))->withErrors($validator);
         }
 
-        $user->update($validator->validate());
+        $update = $validator->validate();
+        $update['optin_system'] = $request->has('optin_system') ? 1 : 0;
+        $user->update($update);
 
         return Redirect::to(route('user.profile'));
     }

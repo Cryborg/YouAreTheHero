@@ -8,7 +8,11 @@
 
 @section('content')
     {{-- Published stories --}}
-    <h1>{{ trans('stories.list_published_title') }}</h1>
+    <div class="row">
+        <div class="col">
+            <h1>{{ trans('stories.list_published_title') }}</h1>
+        </div>
+    </div>
 
     <div class="row" style="height: 300px">
         @forelse ($stories as $story)
@@ -29,7 +33,11 @@
     </div>
 
     {{-- Unpublished stories --}}
-    <h1 class="mt-4">{{ trans('stories.list_wip_title') }}</h1>
+    <div class="row">
+        <div class="col">
+            <h1 class="mt-4">{{ trans('stories.list_wip_title') }}</h1>
+        </div>
+    </div>
 
     <div class="row" style="height: 300px">
         @forelse ($stories as $story)

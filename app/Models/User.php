@@ -17,7 +17,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'username', 'email', 'password',
+        'first_name',
+        'last_name',
+        'username',
+        'email',
+        'password',
+        'optin_system',
     ];
 
     /**
@@ -26,7 +31,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -36,6 +42,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'optin_system'      => 'boolean',
     ];
 
     /**
@@ -54,10 +61,9 @@ class User extends Authenticatable
     public function hasBeganStory(Story $story): bool
     {
         return Character::where([
-            'user_id' => $this->id,
-            'story_id' => $story->id,
-        ])
-        ->count() > 0;
+                'user_id'  => $this->id,
+                'story_id' => $story->id,
+            ])->count() > 0;
     }
 
     public function sendPasswordResetNotification($token): void
