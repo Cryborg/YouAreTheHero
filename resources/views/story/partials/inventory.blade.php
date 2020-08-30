@@ -14,7 +14,9 @@
                             data-itemid="{{ $item->id }}" data-characterid="{{ $character->id }}">
                             {{ $item->name }}
                             <div class="popup-menu border border-dark w-75 shadow" style="display:none" data-popupid="popup-{{ $item->pivot->id }}">
-                                <div class="highlight-hover p-2 clickable itemUse">@lang('item.use')</div>
+                                @if ($item->effects()->count() > 0)
+                                    <div class="highlight-hover p-2 clickable itemUse">@lang('item.use')</div>
+                                @endif
                                 <div class="highlight-hover p-2 clickable itemThrowAway">@lang('item.throw_away')</div>
                             </div>
                         </a>
