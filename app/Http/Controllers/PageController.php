@@ -193,7 +193,7 @@ class PageController extends Controller
                 }
 
                 // Flag the riddle as answered for this character
-                $page->riddle->character()->attach($storySession['character_id'],
+                $page->riddle->characters()->attach($storySession['character_id'],
                     [
                         'riddle_id' => $page->riddle->id,
                     ]);
@@ -203,7 +203,7 @@ class PageController extends Controller
                 'success'          => $answerIsCorrect,
                 'itemResponse'     => $itemResponse,
                 'pageResponse'     => $pageResponse,
-                'solved'           => $page->riddle ? $page->riddle->isSolved() : 'bouh',
+                'solved'           => $page->riddle ? $page->riddle->isSolved($character) : false,
                 'refreshInventory' => $page->riddle && $page->riddle->item_id,
             ]);
         }

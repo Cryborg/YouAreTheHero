@@ -24,23 +24,24 @@ class Riddle extends Model
         return $this->belongsTo(Item::class);
     }
 
-    public function character()
+    public function characters()
     {
         return $this->belongsToMany(Character::class);
-    }
-
-    public function isSolved()
-    {
-        if ($this->isRiddleSolved === null) {
-            $this->isRiddleSolved = $this->character()->count() > 0;
-        }
-
-        return $this->isRiddleSolved;
     }
 
     public function prerequisites()
     {
         return $this->morphMany(Prerequisite::class, 'prerequisiteable');
+    }
+
+
+    public function isSolved(Character $character)
+    {
+        if ($this->isRiddleSolved === null) {
+            $this->isRiddleSolved = $this->characters()->where('character_id', $character->id)->count() > 0;
+        }
+
+        return $this->isRiddleSolved;
     }
 
 }

@@ -1,5 +1,5 @@
 <div class="btn-toolbar choices-block" role="toolbar">
-    @if ($page->riddle && $page->riddle->isSolved())
+    @if ($page->riddle && $page->riddle->isSolved($character))
         @if ($page->riddle->target_page_id)
             <a data-href="{{ route('story.play', ['story' => $page->story->id, 'page' => $page->riddle->target_page_id]) }}">
                 <button class="large button">{!! $page->riddle->target_page_text !!}</button>

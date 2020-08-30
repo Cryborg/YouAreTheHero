@@ -10,7 +10,7 @@
             </h5>
             <div class="card-body">
                 <p class="card-text riddle-block"></p>
-                    @if ($page->riddle->isSolved())
+                    @if ($page->riddle->isSolved($character))
                         @lang('page.riddle_already_solved')
                     @else
                         <div class="riddle_text">
