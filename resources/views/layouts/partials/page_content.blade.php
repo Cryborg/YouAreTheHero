@@ -72,6 +72,17 @@
         @endif
     </div>
     <div class="card-body">
-        @include('story.partials.choices', ['page' => $page, 'story' => $story])
+        <div class="btn-toolbar choices-block" role="toolbar">
+        </div>
     </div>
+
+    @if ($page->is_last)
+        <div class="card-body">
+            <div class="choices-links button-group w-100">
+                <a onclick="return confirm('{{ addslashes(trans('story.reset_story_confirm')) }}');" href="{{ route('story.reset', ['story' => $page->story]) }}">
+                    <button class="btn btn-danger card-link w-100 mb-1" data-original-text="{{ trans('story.reset') }}">{{ trans('story.reset') }}</button>
+                </a>
+            </div>
+        </div>
+    @endif
 </div>
