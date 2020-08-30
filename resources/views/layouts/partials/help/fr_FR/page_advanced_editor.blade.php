@@ -5,7 +5,7 @@
     dans les paramètres de l'histoire. Ensuite, en cliquant sur le bouton @editorbutton(Variables) de l'éditeur, sélectionne Nom du personnage pour insérer
     "[[character_name]]" dans ton texte, à l'endroit où le nom doit être écrit. Ainsi, le texte suivant :
 </p>
-<div class="example">
+<div class="example text-monospace">
     Bonjour [[character_name]] !
 </div>
 <div>
@@ -18,6 +18,19 @@
     si le joueur a choisi de nommer son personnage <b>{{ Auth::user()->username }}</b> bien sûr :)
 </div>
 
+<h3>Insérer une commande</h3>
+
+<p>
+    Pour l'instant il n'y a qu'une seule commande, stutter[] (bégayer) :
+
+    <div class="example text-monospace">
+        # Editeur<br>
+        Bonjour stutter[Monsieur], stutter[comment] allez-vous ?<br>
+        <br>
+        # Résultat<br>
+        Bonjour M...Monsieur, c...c...comment allez-vous ?
+    </div>
+</p>
 <h3>Insérer des descriptions</h3>
 
 <p>
