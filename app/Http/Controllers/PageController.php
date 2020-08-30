@@ -126,6 +126,7 @@ class PageController extends Controller
                 'layout'        => 'sometimes|required',
                 'is_first'      => 'required',
                 'is_last'       => 'required',
+                'ending_type'   => 'required_with:is_last',
                 'is_checkpoint' => 'required',
             ]);
 

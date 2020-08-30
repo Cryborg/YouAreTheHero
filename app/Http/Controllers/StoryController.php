@@ -134,12 +134,11 @@ class StoryController extends Controller
         }
 
         if ($page->is_last) {
-            if (!Auth::user()
-                     ->hasRole('admin')) {
+            if (!Auth::user()->hasRole('admin')) {
                 activity()
                     ->performedOn($story)
                     ->useLog('end_game')
-                    ->log('finished');
+                    ->log($page->ending_type);
             }
         }
 

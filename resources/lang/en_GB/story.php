@@ -53,4 +53,10 @@ return array (
   'games_finished' => 'Finished games',
   'games_reset' => 'Reset games',
   'stats_help' => 'Create the stats / abilities / whatever you want, and the minimum/maximum points the player can give to each.',
+  'ending_type_bad' => 'Bad',
+  'ending_type_death' => 'Death',
+  'ending_type_good' => 'Good',
+  'ending_type_bad_help' => 'Choose this if the character ends the story in a bad way. For example if he/she lost a decisive battle, a limb or is imprisoned.',
+  'ending_type_death_help' => 'Choose this if the character died.',
+  'ending_type_good_help' => 'Choose this if this is a happy ending.',
 );

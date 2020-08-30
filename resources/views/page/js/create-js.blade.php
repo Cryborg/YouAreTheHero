@@ -162,12 +162,14 @@ $(document).ready(function () {
         $('#content-' + currentPageId).removeClass('hidden');
         $('.toggle-summernote').addClass('clickable').removeClass('summernote-open');
 
-        var data = {
+        let isLast = $('#is_last-' + currentPageId).is(":checked") ? 1 : 0;
+        let data = {
             'title': $('#title-' + currentPageId).val(),
             'content': $('#content-editable-' + currentPageId).html(),
             'layout': $('#layout-' + currentPageId).val(),
             'is_first': $('#is_first-' + currentPageId).is(":checked") ? 1 : 0,
-            'is_last': $('#is_last-' + currentPageId).is(":checked") ? 1 : 0,
+            'is_last': isLast,
+            'ending_type': isLast ? $('[name="ending_type"]:checked').val() : null,
             'is_checkpoint': $('#is_checkpoint-' + currentPageId).is(":checked") ? 1 : 0,
         };
 
@@ -555,4 +557,10 @@ $(document).on('change', '#hideChoice', function () {
                 errors: data.responseJSON.errors
             });
         });
+});
+
+$(document).on('click', "[name='is_last']", function () {
+    let $this = $(this);
+
+    $('.ending_types_list').slideToggle();
 });
