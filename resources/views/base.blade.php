@@ -56,9 +56,16 @@
                     </ul>
 
                     {{-- Right Side Of Navbar --}}
+                    {{-- Discord --}}
+                    <ul class="navbar-nav ml-auto mr-5">
+                        <a href="https://discord.com/channels/749977538931064965/749977538931064968" target="_blank" class="nav-link clickable text-white" style="width: 150px">
+                            <img src="{{ asset('img/discord.png') }}" class="w-100 shadow">
+                        </a>
+                    </ul>
+
                     {{-- Help --}}
                     @auth()
-                        <ul class="navbar-nav ml-auto mr-5 shadow">
+                        <ul class="navbar-nav mr-5 shadow">
                             <li class="nav-item bg-success pl-2 pr-2">
                                 <a class="nav-link clickable text-white" data-target="#modalHelp" data-toggle="modal">
                                     <span class="icon-help text-white mr-2 font-biggest"></span>

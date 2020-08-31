@@ -50,10 +50,6 @@
         </div>
     </div>
 
-    <div class="fixed-bottom btn mb-5" style="width: 250px">
-        <a href="https://discord.com/channels/749977538931064965/749977538931064968" target="_blank">
-            <img src="{{ asset('img/discord.png') }}" class="w-100 h-100"></a>
-    </div>
     <div class="fixed-bottom btn btn-danger report-btn" data-toggle="modal" data-target="#modalPageReport">@lang('page.report_button')</div>
 
     <!-- Modal add choice -->
