@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\Constants;
 use App\Models\Story;
 use Illuminate\Http\Request;
 
@@ -37,6 +38,18 @@ class StoryOptionController extends Controller
             case 'inventory_slots':
                 $option = 'inventory_slots';
                 $value = $request->get('value');
+                break;
+            case 'genre_male':
+                $option = 'character_genre';
+                $value = Constants::GENRE_MALE;
+                break;
+            case 'genre_female':
+                $option = 'character_genre';
+                $value = Constants::GENRE_FEMALE;
+                break;
+            case 'genre_both':
+                $option = 'character_genre';
+                $value = Constants::GENRE_BOTH;
                 break;
         }
 

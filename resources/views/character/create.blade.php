@@ -7,11 +7,31 @@
 
     @if ($story->story_options && $story->story_options->has_character)
         {!! Form::open(['url' => route('character.create', ['story' => $story->id]), 'method' => 'post']) !!}
+
         <div class="form-group">
             {!! Form::label('name', trans('character.name_label'), ['class' => 'control-label']) !!}
             <p class="help-block">{{ trans('character.name_help') }}</p>
-            {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
-            <div class="alert alert-danger hidden">{{ trans('character.name_error') }}</div>
+
+            <div class="col-sm-3 my-1">
+                <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            @include('partials.description', [
+                                'link_text' => '<span class="icon-male font-biggest"></span>',
+                                'content' => trans('user.genre_' . $story->story_options->character_genre . '_help'),
+                                'icon' => false
+                            ])
+                        </div>
+                    </div>
+                    {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
+                    <div class="alert alert-danger hidden">{{ trans('character.name_error') }}</div>
+                </div>
+            </div>
+
+
+
+
         </div>
     @endif
 

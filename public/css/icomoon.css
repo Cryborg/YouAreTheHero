@@ -139,3 +139,12 @@ button {
 .icon-thumb-up:before {
     content: "\e924";
 }
+.icon-male:before {
+    content: "\e925";
+}
+.icon-female:before {
+    content: "\e926";
+}
+.icon-forbidden:before {
+    content: "\e927";
+}

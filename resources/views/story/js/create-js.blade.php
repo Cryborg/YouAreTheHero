@@ -103,16 +103,16 @@
         });
 
         $(document).on('click', '#pills-options .form-check-input', function () {
-            var $this = $(this);
-            var id = $this.attr('id');
-            var value = $('#' + id).is(':checked');
+            const $this = $(this);
+            const id = $this.attr('id');
+            const value = $('#' + id).is(':checked');
 
             saveOption(id, value);
         });
     });
 
     $(document).on('blur', '#inventory_slots', function () {
-        var $this = $(this);
+        const $this = $(this);
 
         saveOption('inventory_slots', $this.val());
     });
