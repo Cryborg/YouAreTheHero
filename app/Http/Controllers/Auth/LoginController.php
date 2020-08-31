@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
@@ -54,9 +56,9 @@ class LoginController extends Controller
     /**
      * Obtain the user information from Google.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback(): RedirectResponse
     {
         try {
             $user = Socialite::driver('google')->user();
@@ -81,6 +83,20 @@ class LoginController extends Controller
             $newUser->save();
             auth()->login($newUser, true);
         }
+
+        activity()
+            ->performedOn($user)
+            ->useLog('login')
+            ->log('google');
+
         return redirect()->to('/');
+    }
+
+    function authenticated(Request $request, $user)
+    {
+        activity()
+            ->performedOn($user)
+            ->useLog('login')
+            ->log('email');
     }
 }
