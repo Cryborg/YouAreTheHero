@@ -14,7 +14,6 @@
 
         var routeInventory = '{{ route('story.inventory', ['story' => $story->id]) }}';
         var routeSheet = '{{ route('story.sheet', ['story' => $story->id]) }}';
-        var routeContent = '{{ route('story.play', ['story' => $story->id, 'page' => $page->id]) }}';
 
         @include('story.js.play-js')
     </script>

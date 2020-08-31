@@ -18,7 +18,7 @@ function loadChoices() {
 function loadContent(route) {
     $('#page_content').html($('#page_content').html());
     $('#page_content').load(route, null, function () {
-        loadInventory();
+        refreshData();
         loadInputSpinner();
     });
 }
@@ -37,7 +37,6 @@ $(document).on('click', '.itemThrowAway', function () {
     })
         .done(function (result) {
             loadContent(getContentRoute());
-            loadInventory();
         })
         .fail(function (result) {
             console.log(result);
@@ -52,10 +51,7 @@ $(document).on('click', '.itemUse', function () {
         url: route('item.use', {'character': characterId, 'item': itemId})
     })
         .done(function (result) {
-            // loadContent(getContentRoute());
-            loadInventory();
-            loadChoices();
-            loadSheet();
+            refreshData();
         })
         .fail(function (result) {
             console.log(result);
@@ -127,9 +123,7 @@ $(document).on('click', '.pick-item button', function () {
             if (rst.success == true) {
                 // TODO: refresh this if necessary. Controller should return the info according
                 //       to what have been updated
-                loadInventory();
-                loadSheet();
-                loadChoices();
+                refreshData();
 
                 if (rst.is_unique === true) {
                     $this.closest('.pick-item').remove();
@@ -150,9 +144,7 @@ $(document).on('click', '.pick-item button', function () {
 
 
 $(function () {
-    loadInventory();
-    loadSheet();
-    loadChoices();
+    refreshData();
 });
 
 $(document).on('click', '#riddle_validate', function () {
@@ -205,3 +197,10 @@ $(document).on('click', '#riddle_validate', function () {
             }, 3000);
         });
 });
+
+function refreshData()
+{
+    loadInventory();
+    loadSheet();
+    loadChoices();
+}

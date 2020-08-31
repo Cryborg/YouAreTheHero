@@ -115,9 +115,9 @@ class StoryController extends Controller
         if (\Illuminate\Support\Facades\Request::ajax()) {
             $view = view('layouts.partials.page_content',
                          $commonParams + [
-                             'page'     => $page,
-                             'items'    => $items,
-                             'messages' => $messages,
+                             'page'             => $page,
+                             'items'            => $items,
+                             'messages'         => $messages,
                          ]);
         } else {
             // First display of the page
