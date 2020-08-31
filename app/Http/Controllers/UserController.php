@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PendingStory;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
@@ -28,6 +30,8 @@ class UserController extends Controller
 
     public function store(Request $request, User $user)
     {
+        Mail::to('cryborg@gmail.com')->send(new PendingStory($user));
+
         $validator = Validator::make($request->all(), [
             'first_name' => '',
             'last_name' => '',

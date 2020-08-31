@@ -122,3 +122,5 @@ Route::delete('/report/{report}/delete', 'ReportController@destroy')->name('repo
 // Google Auth
 Route::get('/redirect', 'Auth\LoginController@redirectToProvider')->name('google.auth');
 Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::get('/mail/{user}/{mailable}', 'MailController@preview')->name('mail.preview');
