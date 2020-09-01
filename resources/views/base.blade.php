@@ -58,7 +58,7 @@
                     {{-- Right Side Of Navbar --}}
                     {{-- Discord --}}
                     <ul class="navbar-nav ml-auto mr-5">
-                        <a href="https://discord.com/channels/749977538931064965/749977538931064968" target="_blank" class="nav-link clickable text-white" style="width: 150px">
+                        <a href="https://discord.gg/zc9TePC" target="_blank" class="nav-link clickable text-white" style="width: 150px">
                             <img src="{{ asset('img/discord.png') }}" class="w-100 shadow">
                         </a>
                     </ul>
