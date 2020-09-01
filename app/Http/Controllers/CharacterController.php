@@ -43,8 +43,8 @@ class CharacterController extends Controller
                 'user_id'  => Auth::id(),
                 'story_id' => $story->id,
                 'page_id'  => $page->id,
-            ]
-            );
+                'genre'    => $request->get('genre'),
+            ]);
 
             if ($fields) {
                 foreach ($story->fields as $storyField) {

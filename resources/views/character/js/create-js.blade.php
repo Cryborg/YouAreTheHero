@@ -2,6 +2,7 @@ $('.submit-btn').on('click touchstart keydown', function () {
     var $this = $(this);
     var characterName = $('#name').val();
     var stats = [];
+    var genre = $("[name='character_genre']:checked").val();
 
     $('input[name=stat_value]').each(function () {
         stats.push({
@@ -23,7 +24,8 @@ $('.submit-btn').on('click touchstart keydown', function () {
         url: route('character.create.post', {'story': {{ $story->id }} }),
         data: {
             'name': characterName,
-            'stats': stats
+            'stats': stats,
+            'genre': genre
         }
     })
     .done(function (result) {

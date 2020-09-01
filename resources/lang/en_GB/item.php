@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'appears_in_pages'  => 'Appears in',
     'category'          => 'Category',
     'category_help'     => 'Optional category for this object.',
     'create_btn'        => 'Create an item',

@@ -21,7 +21,7 @@ class CreateStoryOptionTable extends Migration
 
             $table->boolean('has_character')->default(false)
                 ->comment('Do we have to create a character for this story?');
-            $table->enum('character_genre', ['male', 'female', 'both', 'none'])->default('male');
+            $table->enum('character_genre', ['male', 'female', 'both'])->nullable()->default(null);
             $table->boolean('has_stats')->default(false)
                 ->comment('Do we show the stats creation page?');
             $table->enum('stat_attribution', ['player', 'dice'])->default('player')

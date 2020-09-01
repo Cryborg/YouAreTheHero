@@ -81,6 +81,8 @@ class PageController extends Controller
     {
         $this->authorize('view', $page);
 
+        setSession('story_id', $page->story->id);
+
         $view = View::make('page.create',
             [
                 'title'   => $page->story->title,

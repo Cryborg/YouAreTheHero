@@ -26,7 +26,8 @@ class Action
         }
 
         // Add the item to the character inventory
-        $character->items()->attach($item);
+        $character->items()
+                  ->attach($item);
 
         return true;
     }
@@ -90,7 +91,7 @@ class Action
         // Remove the item from the inventory
         try {
             $inventory = Inventory::where([
-                                              'item_id'      => $item->id,
+                                              'item_id' => $item->id,
                                               'character_id' => $character->id,
                                           ])
                                   ->first();
@@ -120,32 +121,30 @@ class Action
      */
     public static function applyEffects(Character $character, Item $item): bool
     {
-        $item->effects()->each(static function ($effect) use ($character)
-        {
-            $character->fields()->each(static function ($field) use ($effect)
-            {
-                if ($field->id === $effect->field_id)
-                {
-                    switch ($effect['operator'])
-                    {
-                        case '+':
-                            $field->pivot->value += $effect->quantity;
-                            break;
-                        case '-':
-                            $field->pivot->value -= $effect->quantity;
-                            break;
-                        case '*':
-                            $field->pivot->value *= $effect->quantity;
-                            break;
-                        case '/':
-                            $field->pivot->value /= $effect->quantity;
-                            break;
-                    }
-                }
+        $item->effects()
+             ->each(static function ($effect) use ($character) {
+                 $character->fields()
+                           ->each(static function ($field) use ($effect) {
+                               if ($field->id === $effect->field_id) {
+                                   switch ($effect['operator']) {
+                                       case '+':
+                                           $field->pivot->value += $effect->quantity;
+                                           break;
+                                       case '-':
+                                           $field->pivot->value -= $effect->quantity;
+                                           break;
+                                       case '*':
+                                           $field->pivot->value *= $effect->quantity;
+                                           break;
+                                       case '/':
+                                           $field->pivot->value /= $effect->quantity;
+                                           break;
+                                   }
+                               }
 
-                return $field->pivot->save();
-            });
-        });
+                               return $field->pivot->save();
+                           });
+             });
 
         return true;
     }
@@ -154,13 +153,41 @@ class Action
     {
         $stuttering = '';
 
-        for ($i = 1; $i <= Arr::random([1,2]); $i++)
-        {
+        for ($i = 1; $i <= Arr::random([
+                                           1,
+                                           2,
+                                       ]); $i++) {
             $stuttering .= Str::substr($text, 0, 1) . '...';
         }
 
         $stuttering .= $text;
 
         return $stuttering;
+    }
+
+    public static function genre($text): string
+    {
+        $characterId = getSession('character_id');
+        $character   = Character::where('id', $characterId)
+                                ->first();
+        $genre       = Constants::GENRE_FEMALE;
+        $split       = explode('|', $text);
+
+        if ($character !== null) {
+            $genre = $character->genre;
+        }
+
+        if (count($split) !== 2) {
+            return '!!genre[' . $text . ']!!';
+        }
+
+        switch ($genre) {
+            case Constants::GENRE_MALE:
+                return $split[0];
+            case Constants::GENRE_FEMALE:
+                return $split[1];
+            default:
+                return $text;
+        }
     }
 }

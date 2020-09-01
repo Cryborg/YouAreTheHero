@@ -18,6 +18,8 @@ class CreateCharactersTable extends Migration
 
             $table->string('name');
 
+            $table->enum('genre', ['male', 'female'])->nullable()->default(null);
+
             // User owning the character
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

@@ -13,25 +13,45 @@
             <p class="help-block">{{ trans('character.name_help') }}</p>
 
             <div class="col-sm-3 my-1">
-                <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            @include('partials.description', [
-                                'link_text' => '<span class="icon-male font-biggest"></span>',
-                                'content' => trans('user.genre_' . $story->story_options->character_genre . '_help'),
-                                'icon' => false
-                            ])
+                @if ($story->story_options && in_array($story->story_options->character_genre, [\App\Classes\Constants::GENRE_MALE, \App\Classes\Constants::GENRE_FEMALE]))
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                @include('partials.description', [
+                                    'link_text' => '<span class="icon-' . $story->story_options->character_genre . ' font-biggest"></span>',
+                                    'content' => trans('character.genre_' . $story->story_options->character_genre . '_help'),
+                                    'icon' => false
+                                ])
+                            </div>
                         </div>
+                        {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
+                        <div class="alert alert-danger hidden">{{ trans('character.name_error') }}</div>
                     </div>
+                @elseif ($story->story_options && $story->story_options->character_genre === \App\Classes\Constants::GENRE_BOTH)
                     {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
                     <div class="alert alert-danger hidden">{{ trans('character.name_error') }}</div>
-                </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <label class="ml-4">
+                                {!! Form::radio('character_genre', 'male', true) !!}
+                                @lang('character.genre_male')
+                                <span class="text-muted font-smaller ml-3">
+                                    @lang('character.genre_male_help')
+                                </span>
+                            </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label class="ml-4">
+                                {!! Form::radio('character_genre', 'female') !!}
+                                @lang('character.genre_female')
+                                <span class="text-muted font-smaller ml-3">
+                                    @lang('character.genre_female_help')
+                                </span>
+                            </label>
+                        </li>
+                    </ul>
+                @endif
             </div>
-
-
-
-
         </div>
     @endif
 

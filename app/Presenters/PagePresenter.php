@@ -4,7 +4,6 @@ namespace App\Presenters;
 
 use App\Classes\Action;
 use App\Models\Character;
-use Illuminate\Support\Facades\Auth;
 use Laracasts\Presenter\Presenter;
 
 class PagePresenter extends Presenter
@@ -40,7 +39,8 @@ class PagePresenter extends Presenter
         // Methods to run on a part of the text.
         //  For example : stutter[Bouh] will display something like 'B...B...Bouh'
         $methods = [
-            'stutter'
+            'stutter',
+            'genre'
         ];
         $content = null;
 
