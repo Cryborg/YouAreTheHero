@@ -8,7 +8,7 @@ $.ajaxSetup({
 });
 
 // Put a spinner on buttons, but only if they have the 'original-text' data attribute.
-$(document).on('click', 'button', function(element) {
+$(document).on('click touchstart keydown', 'button', function(element) {
     const $this = $(element.target);
 
     if (typeof $this.data('original-text') != 'undefined') {

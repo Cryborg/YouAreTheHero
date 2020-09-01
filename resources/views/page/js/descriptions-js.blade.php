@@ -17,7 +17,7 @@
         displayDescriptionsList();
     });
 
-    $(document).on('click', '#save_description', function () {
+    $(document).on('click touchstart keydown', '#save_description', function () {
         var $this = $(this);
 
         $.post({
@@ -44,7 +44,7 @@
             });
     });
 
-    $(document).on('click', '.editDescription', function () {
+    $(document).on('click touchstart keydown', '.editDescription', function () {
         var $this = $(this);
         var id = $this.closest('.card').data('description-id');
 
@@ -52,7 +52,7 @@
         $('#modalDescriptions .summernote').summernote('code', $('#description_' + id).html())
     });
 
-    $(document).on('click', '.deleteDescription', function () {
+    $(document).on('click touchstart keydown', '.deleteDescription', function () {
         var $this = $(this);
 
         if (!confirm('@lang('description.confirm_delete')')) return false;

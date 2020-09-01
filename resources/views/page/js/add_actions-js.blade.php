@@ -1,5 +1,5 @@
 <script>
-    $(document).on('click', '#modalCreateActions .addActionsField', function ()
+    $(document).on('click touchstart keydown', '#modalCreateActions .addActionsField', function ()
     {
         var fieldId = $('#modalCreateActions #actions_field_id option:selected').val();
 
@@ -28,7 +28,7 @@
         }
     });
 
-    $(document).on('click', '#modalCreateActions .addActionsItem', function ()
+    $(document).on('click touchstart keydown', '#modalCreateActions .addActionsItem', function ()
     {
         var itemId = $('#modalCreateActions #add_actions_item_id option:selected').val();
 
@@ -57,7 +57,7 @@
         }
     });
 
-    $(document).on('click', '.deleteAction', function () {
+    $(document).on('click touchstart keydown', '.deleteAction', function () {
         var $this = $(this);
         var actionId = $this.data('actionid');
 

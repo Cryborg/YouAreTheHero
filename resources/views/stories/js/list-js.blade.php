@@ -3,7 +3,7 @@
         showHumanReadableDates();
     });
 
-    $(document).on('click', '.deleteStory', function () {
+    $(document).on('click touchstart keydown', '.deleteStory', function () {
         var $this = $(this);
         var storyId = $this.data('storyid');
 

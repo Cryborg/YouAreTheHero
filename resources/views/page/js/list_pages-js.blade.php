@@ -19,7 +19,7 @@
         $('.modal-preview-content').html('');
     });
 
-    $(document).on('click', '.button-preview', function (event) {
+    $(document).on('click touchstart keydown', '.button-preview', function (event) {
         event.stopImmediatePropagation();
 
         var $this = $(this);

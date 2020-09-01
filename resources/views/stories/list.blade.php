@@ -62,7 +62,7 @@
     @include('stories.js.list-js')
 
     <script>
-        $(document).on('click', '.menu-flip-card',
+        $(document).on('click touchstart keydown', '.menu-flip-card',
             function(){
                 $(this).closest('.flip-card').toggleClass('flipped')
             }

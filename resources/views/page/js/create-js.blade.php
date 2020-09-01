@@ -1,4 +1,4 @@
-$(document).on('click', '#add_AddChoice', function () {
+$(document).on('click touchstart keydown', '#add_AddChoice', function () {
     const $this = $(this);
     const selectedVal = $('.childrenSelect option:selected').val();
 
@@ -80,7 +80,7 @@ $(document).ready(function () {
     });
 
     // Delete a page from the "list all pages" popup
-    $(document).on('click', '.deletePage', function () {
+    $(document).on('click touchstart keydown', '.deletePage', function () {
         var $this = $(this);
 
         if (!confirm(confirmDeleteText)) return false;
@@ -119,7 +119,7 @@ $(document).ready(function () {
         $("p.help-block").hide();
     }
 
-    $(document).on('click', '.toggle-help', function () {
+    $(document).on('click touchstart keydown', '.toggle-help', function () {
         var $pBlocks = $('p.help-block');
         var done = false;
 
@@ -134,7 +134,7 @@ $(document).ready(function () {
     });
 
     // Display Summernote editor on the clicked div
-    $(document).on('click', '.toggle-summernote:not(.summernote-open)', function () {
+    $(document).on('click touchstart keydown', '.toggle-summernote:not(.summernote-open)', function () {
         let $this = $(this);
 
         // Destroy all other summernotes so there is only one open at a time
@@ -150,7 +150,7 @@ $(document).ready(function () {
     });
 
     // Saves the page
-    $(document).on('click', '.savePage', function (e) {
+    $(document).on('click touchstart keydown', '.savePage', function (e) {
         let $this = $(this);
         let currentPageId = pageId;
 
@@ -215,7 +215,7 @@ $(document).ready(function () {
             });
     });
 
-    $(document).on('click', '#add_CreatePrerequisite', function () {
+    $(document).on('click touchstart keydown', '#add_CreatePrerequisite', function () {
         var $this = $(this);
         let $parent = $this.closest('.modal');
         var data = {};
@@ -291,7 +291,7 @@ $(document).ready(function () {
         }
     });
 
-    $(document).on('click', '.createNewPage', function () {
+    $(document).on('click touchstart keydown', '.createNewPage', function () {
         var $this = $(this);
         var text = $('#riddle_target_page_text').val();
         let hideChoice = $('#hide_choice').is(':checked') ? 1 : 0;
@@ -307,7 +307,7 @@ $(document).ready(function () {
     tryDraw();
 });
 
-$(document).on('click', '.choice-text.icon-fountain-pen', function () {
+$(document).on('click touchstart keydown', '.choice-text.icon-fountain-pen', function () {
     var $this = $(this);
     var pageFrom = $this.parent().data('page-from');
     var pageTo = $this.parent().data('page-to');
@@ -325,7 +325,7 @@ $(document).on('click', '.choice-text.icon-fountain-pen', function () {
         });
 });
 
-$(document).on('click', '.choice-text.icon-trash', function () {
+$(document).on('click touchstart keydown', '.choice-text.icon-trash', function () {
     var $this = $(this);
     var pageFrom = $this.parent().data('page-from');
     var pageTo = $this.parent().data('page-to');
@@ -354,7 +354,7 @@ $(document).on('click', '.choice-text.icon-trash', function () {
 });
 
 // When the author validates the new action on the modal
-$(document).on('click', '#add_CreateItemPage', function () {
+$(document).on('click touchstart keydown', '#add_CreateItemPage', function () {
     var $this = $(this);
     var serialized = $('#action_create').serialize();
 
@@ -397,7 +397,7 @@ function displayActions() {
 }
 
 // When tu author creates a new riddle
-$(document).on('click', '#add_CreateRiddle', function () {
+$(document).on('click touchstart keydown', '#add_CreateRiddle', function () {
     var $this = $(this);
 
     $.post({
@@ -466,7 +466,7 @@ $(document).on('click', '#add_CreateRiddle', function () {
         });
 });
 
-$(document).on('click', '.deleteItemPage', function () {
+$(document).on('click touchstart keydown', '.deleteItemPage', function () {
     var $this = $(this);
     var itemId = $this.data('itemid');
     var loadingClass = 'fa fa-circle-o-notch fa-spin';
@@ -500,7 +500,7 @@ $(document).on('click', '.deleteItemPage', function () {
         });
 });
 
-$(document).on('click', '.delete-prerequisite', function () {
+$(document).on('click touchstart keydown', '.delete-prerequisite', function () {
     var $this = $(this);
     var prerequisiteId = $this.data('prerequisite_id');
     var loadingClass = 'fa fa-circle-o-notch fa-spin';
@@ -559,7 +559,7 @@ $(document).on('change', '#hideChoice', function () {
         });
 });
 
-$(document).on('click', "[name='is_last']", function () {
+$(document).on('click touchstart keydown', "[name='is_last']", function () {
     let $this = $(this);
 
     $('.ending_types_list').slideToggle();

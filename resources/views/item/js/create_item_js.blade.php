@@ -31,7 +31,7 @@
             });
     }
 
-    $(document).on('click', '.btnCreateItem', function () {
+    $(document).on('click touchstart keydown', '.btnCreateItem', function () {
         var $this = $(this);
         var route = routeItem;
         var values = [];

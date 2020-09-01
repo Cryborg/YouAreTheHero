@@ -1,5 +1,5 @@
 <script>
-    $(document).on('click', '#add_EditChoice', function ()
+    $(document).on('click touchstart keydown', '#add_EditChoice', function ()
     {
         var choiceId = $('#modalEditChoice #hidden_choice_id').val();
         var choiceText = $('#modalEditChoice #edit_link_text').val();

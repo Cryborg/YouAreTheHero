@@ -23,13 +23,13 @@ function loadContent(route) {
     });
 }
 
-$(document).on('click', '.itemThrowAwayMenu', function () {
+$(document).on('click touchstart keydown', '.itemThrowAwayMenu', function () {
     var $this = $(this);
     var popupId = $this.data('id');
     $('[data-popupid="' + popupId + '"').show();
 });
 
-$(document).on('click', '.itemThrowAway', function () {
+$(document).on('click touchstart keydown', '.itemThrowAway', function () {
     var itemId = $(this).closest('a.itemThrowAwayMenu').data('itemid');
 
     $.get({
@@ -43,7 +43,7 @@ $(document).on('click', '.itemThrowAway', function () {
         });
 });
 
-$(document).on('click', '.itemUse', function () {
+$(document).on('click touchstart keydown', '.itemUse', function () {
     var itemId = $(this).closest('a.itemThrowAwayMenu').data('itemid');
     var characterId = $(this).closest('a.itemThrowAwayMenu').data('characterid');
 
@@ -67,7 +67,7 @@ $('html').on('click', function () {
 });
 
 
-$(document).on('click', '#add_PageReport', function () {
+$(document).on('click touchstart keydown', '#add_PageReport', function () {
     var $this = $(this);
     var type = $('#modalPageReport #report_error_type option:selected').val();
     var comment = $('#modalPageReport #report_comment').val();
@@ -101,7 +101,7 @@ $(document).on('click', '#add_PageReport', function () {
 });
 
 // Ajax links
-$(document).on('click', 'a', function () {
+$(document).on('click touchstart keydown', 'a', function () {
     var $this = $(this);
     var href = $this.data('href');
     pageId = $this.data('page-id');
@@ -112,7 +112,7 @@ $(document).on('click', 'a', function () {
 });
 
 // When the player clicks on an item
-$(document).on('click', '.pick-item button', function () {
+$(document).on('click touchstart keydown', '.pick-item button', function () {
     var $this = $(this);
     pageId = $('#pageId').val();
 
@@ -147,7 +147,7 @@ $(function () {
     refreshData();
 });
 
-$(document).on('click', '#riddle_validate', function () {
+$(document).on('click touchstart keydown', '#riddle_validate', function () {
     const $this = $(this);
 
     // Toggle disabled state

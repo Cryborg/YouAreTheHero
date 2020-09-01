@@ -19,7 +19,7 @@
         }
 
         // Delete a character_field
-        $(document).on('click', '.deleteCharacterField', function () {
+        $(document).on('click touchstart keydown', '.deleteCharacterField', function () {
             var $this = $(this);
             var id = $this.data('field_id');
             var loadingClass = 'fa fa-circle-o-notch fa-spin';
@@ -55,7 +55,7 @@
                 });
         });
 
-        $(document).on('click', '.addField', function () {
+        $(document).on('click touchstart keydown', '.addField', function () {
             if (checkForm()) {
                 $.post({
                     url: route('field.store', {'story': storyId}),
@@ -102,7 +102,7 @@
             }
         });
 
-        $(document).on('click', '#pills-options .form-check-input', function () {
+        $(document).on('click touchstart keydown', '#pills-options .form-check-input', function () {
             const $this = $(this);
             const id = $this.attr('id');
             const value = $('#' + id).is(':checked');
