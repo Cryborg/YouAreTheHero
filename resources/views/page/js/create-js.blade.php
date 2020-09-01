@@ -262,6 +262,7 @@ $(document).ready(function () {
                             $('#prerequisites_list-' + pageId + ' tbody').append(
                                 '<tr>' +
                                 '<td>' + langItem + '</td>' +
+                                '<td>' + item.category + '</td>' +
                                 '<td>' + item.name + '</td>' +
                                 '<td>' + item.quantity + '</td>' +
                                 '<td class="text-center">' + '<span class="icon-trash text-danger delete-prerequisite" data-prerequisite_id="' + item.prerequisite_id + '"></span></td>' +

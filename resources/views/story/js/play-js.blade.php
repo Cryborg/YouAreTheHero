@@ -16,7 +16,7 @@ function loadChoices() {
 }
 
 function loadContent(route) {
-    $('#page_content').html($('#page_content').html());
+    // $('#page_content').html($('#page_content').html());
     $('#page_content').load(route, null, function () {
         refreshData();
         loadInputSpinner();
@@ -104,7 +104,6 @@ $(document).on('click touchstart keydown', '#add_PageReport', function () {
 $(document).on('click touchstart keydown', 'a', function () {
     var $this = $(this);
     var href = $this.data('href');
-    pageId = $this.data('page-id');
 
     if (href !== undefined) {
         loadContent(href);
@@ -113,8 +112,7 @@ $(document).on('click touchstart keydown', 'a', function () {
 
 // When the player clicks on an item
 $(document).on('click touchstart keydown', '.pick-item button', function () {
-    var $this = $(this);
-    pageId = $('#pageId').val();
+    const $this = $(this);
 
     $.get({
         'url': route('item.take', {'item': $this.data('itemid')}),
@@ -140,11 +138,6 @@ $(document).on('click touchstart keydown', '.pick-item button', function () {
             $this.html($this.data('original-text'));
             $this.prop('disabled', false);
         });
-});
-
-
-$(function () {
-    refreshData();
 });
 
 $(document).on('click touchstart keydown', '#riddle_validate', function () {
@@ -200,7 +193,12 @@ $(document).on('click touchstart keydown', '#riddle_validate', function () {
 
 function refreshData()
 {
+    console.log('refreshing');
     loadInventory();
     loadSheet();
     loadChoices();
 }
+
+$(function () {
+    refreshData();
+});
