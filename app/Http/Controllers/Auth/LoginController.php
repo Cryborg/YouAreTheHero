@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
@@ -86,7 +87,7 @@ class LoginController extends Controller
         }
 
         activity()
-            ->performedOn($user)
+            ->performedOn(Auth::user())
             ->useLog('login')
             ->log('google');
 
