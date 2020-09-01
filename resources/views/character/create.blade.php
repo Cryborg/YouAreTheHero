@@ -83,5 +83,7 @@
 @endsection
 
 @push('footer-scripts')
-    @include('character.js.create-js')
+    <script type="text/javascript">
+        @include('character.js.create-js')
+    </script>
 @endpush
