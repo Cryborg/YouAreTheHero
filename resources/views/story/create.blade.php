@@ -106,17 +106,17 @@
                         </label>
                         <div class="form-check">
                             <input type="radio" class="form-check-input" name="character_genre"
-                                value="male" id="genre_male" @if ($story->story_options->character_genre === \App\Classes\Constants::GENRE_MALE) checked @endif>
+                                value="male" id="genre_male" @if ($story && $story->story_options && $story->story_options->character_genre === \App\Classes\Constants::GENRE_MALE) checked @endif>
                             <label for="genre_male" class="form-check-label">@lang('user.genre_male')</label>
                         </div>
                         <div class="form-check">
                             <input type="radio" class="form-check-input" name="character_genre"
-                                value="female" id="genre_female" @if ($story->story_options->character_genre === \App\Classes\Constants::GENRE_FEMALE) checked @endif>
+                                value="female" id="genre_female" @if ($story && $story->story_options && $story->story_options->character_genre === \App\Classes\Constants::GENRE_FEMALE) checked @endif>
                             <label for="genre_female" class="form-check-label">@lang('user.genre_female')</label>
                         </div>
                         <div class="form-check">
                             <input type="radio" class="form-check-input" name="character_genre"
-                                value="both" id="genre_both" @if ($story->story_options->character_genre === \App\Classes\Constants::GENRE_BOTH) checked @endif>
+                                value="both" id="genre_both" @if ($story && $story->story_options && $story->story_options->character_genre === \App\Classes\Constants::GENRE_BOTH) checked @endif>
                             <label for="genre_both" class="form-check-label">@lang('user.genre_both')</label>
                         </div>
                     </div>
