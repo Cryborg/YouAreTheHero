@@ -62,7 +62,7 @@ function getContentRoute() {
     return route('story.play', {'story': $('#storyId').val(), 'page': $('#pageId').val()});
 }
 
-$('html').on('click', function () {
+$('html').on('click touchstart keydown', function () {
     $('.popup-menu').hide();
 });
 

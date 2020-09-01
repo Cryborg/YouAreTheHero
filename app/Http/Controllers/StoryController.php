@@ -452,7 +452,7 @@ class StoryController extends Controller
 
         Session::remove('story');
 
-        return Redirect::route('stories.list');
+        return Redirect::route('story.play', $story);
     }
 
     public function delete(Story $story)

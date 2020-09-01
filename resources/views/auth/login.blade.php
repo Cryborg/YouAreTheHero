@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 shadow">
             <div class="card wip-bg">
                 <div class="card-header">{{ trans('home.login_title') }}</div>
 
@@ -88,9 +88,9 @@
                 </div>
             </div>
         </div>
-        <div class="col">
-            @include('stories.partials.story_card', ['story' => $tutoStory, 'anonymous' => true])
-        </div>
+{{--        <div class="col">--}}
+{{--            @include('stories.partials.story_card', ['story' => $tutoStory, 'anonymous' => true])--}}
+{{--        </div>--}}
     </div>
 </div>
 @endsection

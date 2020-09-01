@@ -10,7 +10,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent{{ $story->id }}">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                @if ($anonymous === true)
+                                @if ($anonymous ?? false === true)
                                     <a class="nav-link" href="{{ route('story.play.anonymous', ['story' => $story]) }}" title="@lang('story.start_playing')">
                                 @else
                                     <a class="nav-link" href="{{ route('story.play', ['story' => $story]) }}" title="@lang('story.start_playing')">

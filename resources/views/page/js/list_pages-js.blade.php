@@ -14,7 +14,7 @@
             });
     });
 
-    $('[data-dismiss="modal-preview"]').on('click', function () {
+    $('[data-dismiss="modal-preview"]').on('click touchstart keydown', function () {
         $('.modal-body-preview').addClass('hidden');
         $('.modal-preview-content').html('');
     });

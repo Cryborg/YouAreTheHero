@@ -1,4 +1,4 @@
-$('.submit-btn').on('click', function () {
+$('.submit-btn').on('click touchstart keydown', function () {
     var $this = $(this);
     var characterName = $('#name').val();
     var stats = [];

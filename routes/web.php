@@ -36,7 +36,7 @@ Route::get('/story/{story}/edit', 'StoryController@getEdit')->name('story.edit')
 Route::get('/story/{story}/inventory', 'StoryController@inventory')->name('story.inventory');
 Route::get('/story/{story}/sheet', 'StoryController@sheet')->name('story.sheet');
 Route::post('/story/{story}/page/create/{page?}', 'PageController@create')->name('page.create');
-Route::get('/story/{story}/anonymous', 'StoryController@getPlayAnonymous')->name('story.play.anonymous');
+//Route::get('/story/{story}/anonymous', 'StoryController@getPlayAnonymous')->name('story.play.anonymous');
 Route::get('/story/{story}/{page?}', 'StoryController@getPlay')->name('story.play');
 
 Route::post('/story/ajax_post_children_pages', 'StoryController@postChildrenPagesAjax')->name('story.ajax_postchildrenpages');

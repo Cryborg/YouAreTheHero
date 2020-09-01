@@ -1,4 +1,6 @@
-@extends('base')@section('title', $title)
+@extends('base')
+
+@section('title', $title)
 
 @section('content')
     <h1>{{ $story ? trans('story.edit_title') : trans('story.create_title') }}</h1>
@@ -120,112 +122,113 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                @lang('field.sheet')
-            </div>
-            <div class="card-body">
-                <p class="help-block">@lang('story.has_stats_help')</p>
-                <div class="form-group form-check ml-3">
-                    <input class="form-check-input" type="checkbox" value="1" id="has_stats" name="has_stats" @if ($story && $story->story_options && $story->story_options->has_stats) checked @endif
-                    > <label class="form-check-label" for="has_stats">
-                        {{ trans('story.has_stats_label') }}
-                    </label>
-                </div>
-            </div>
-        </div>
-        @if ($story)
             <div class="card">
                 <div class="card-header">
-                    @lang('story.inventory_slots')
+                    @lang('field.sheet')
                 </div>
                 <div class="card-body">
-                    <p class="help-block">@lang('story.inventory_slots_help')</p>
-                    {!! Form::number('inventory_slots', $story->story_options ? $story->story_options->inventory_slots : -1, ['class' => 'form-control', 'min' => 0, 'id' => 'inventory_slots']) !!}
+                    <p class="help-block">@lang('story.has_stats_help')</p>
+                    <div class="form-group form-check ml-3">
+                        <input class="form-check-input" type="checkbox" value="1" id="has_stats" name="has_stats" @if ($story && $story->story_options && $story->story_options->has_stats) checked @endif
+                        > <label class="form-check-label" for="has_stats">
+                            {{ trans('story.has_stats_label') }}
+                        </label>
+                    </div>
                 </div>
             </div>
-        @endif
-    </div>
-    <div class="tab-pane" id="pills-sheet" role="tabpanel" aria-labelledby="pills-tab-3">
-        <div class="card">
-            <div class="card-header">
-                @lang('story.stats_label')
-            </div>
-            <div class="card-body">
-                <p class="help-block">@lang('story.stats_help')</p>
-                <table id="stats_story" class="table mb-3 w-50 m-0">
-                    <thead>
-                        <tr>
-                            <th>{{ trans('field.name') }}</th>
-                            <th>{{ trans('field.short_name') }}</th>
-                            <th>{{ trans('field.min_value') }}</th>
-                            <th>{{ trans('field.max_value') }}</th>
-                            <th class="text-center">{{ trans('field.hidden_to_players') }}</th>
-                            <th class="text-center">{{ trans('common.actions') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($story->fields ?? [] as $stat)
+            @if ($story)
+                <div class="card">
+                    <div class="card-header">
+                        @lang('story.inventory_slots')
+                    </div>
+                    <div class="card-body">
+                        <p class="help-block">@lang('story.inventory_slots_help')</p>
+                        {!! Form::number('inventory_slots', $story->story_options ? $story->story_options->inventory_slots : -1, ['class' => 'form-control', 'min' => 0, 'id' => 'inventory_slots']) !!}
+                    </div>
+                </div>
+            @endif
+        </div>
+        <div class="tab-pane" id="pills-sheet" role="tabpanel" aria-labelledby="pills-tab-3">
+            <div class="card">
+                <div class="card-header">
+                    @lang('story.stats_label')
+                </div>
+                <div class="card-body">
+                    <p class="help-block">@lang('story.stats_help')</p>
+                    <table id="stats_story" class="table mb-3 w-50 m-0">
+                        <thead>
                             <tr>
-                                <td>{{ $stat->name }}</td>
-                                <td>{{ $stat->short_name }}</td>
-                                <td>{{ $stat->min_value }}</td>
-                                <td>{{ $stat->max_value }}</td>
-                                <td class="text-center">
-                                    <input type="checkbox" @if ($stat->hidden) checked @endif disabled></td>
-                                <td class="text-center">
-                                    <span class="icon-trash text-danger deleteCharacterField" data-field_id="{{ $stat->id }}"></span>
-                                </td>
+                                <th>{{ trans('field.name') }}</th>
+                                <th>{{ trans('field.short_name') }}</th>
+                                <th>{{ trans('field.min_value') }}</th>
+                                <th>{{ trans('field.max_value') }}</th>
+                                <th class="text-center">{{ trans('field.hidden_to_players') }}</th>
+                                <th class="text-center">{{ trans('common.actions') }}</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>
-                                <input class="new_field form-control" type="text" id="name" maxlength="15" autocomplete="nope" required>
-                            </th>
-                            <th>
-                                <input class="new_field form-control" type="text" id="short_name" maxlength="5" autocomplete="nope" required>
-                            </th>
-                            <th><input class="new_field form-control" type="number" id="min_value" value="1" required>
-                            </th>
-                            <th><input class="new_field form-control" type="number" id="max_value" value="10" required>
-                            </th>
-                            <th class="text-center pl-4">
-                                <input class="new_field" type="checkbox" id="hidden_field" value="1"></th>
-                            <th class="text-center">
-                                <span class="btn btn-primary addField">Add</span>
-                                <span class="glyphicon glyphicon-plus-sign"></span>
-                            </th>
-                        </tr>
-                    </tfoot>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach($story->fields ?? [] as $stat)
+                                <tr>
+                                    <td>{{ $stat->name }}</td>
+                                    <td>{{ $stat->short_name }}</td>
+                                    <td>{{ $stat->min_value }}</td>
+                                    <td>{{ $stat->max_value }}</td>
+                                    <td class="text-center">
+                                        <input type="checkbox" @if ($stat->hidden) checked @endif disabled></td>
+                                    <td class="text-center">
+                                        <span class="icon-trash text-danger deleteCharacterField" data-field_id="{{ $stat->id }}"></span>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    <input class="new_field form-control" type="text" id="name" maxlength="15" autocomplete="nope" required>
+                                </th>
+                                <th>
+                                    <input class="new_field form-control" type="text" id="short_name" maxlength="5" autocomplete="nope" required>
+                                </th>
+                                <th>
+                                    <input class="new_field form-control" type="number" id="min_value" value="1" required>
+                                </th>
+                                <th>
+                                    <input class="new_field form-control" type="number" id="max_value" value="10" required>
+                                </th>
+                                <th class="text-center pl-4">
+                                    <input class="new_field" type="checkbox" id="hidden_field" value="1"></th>
+                                <th class="text-center">
+                                    <span class="btn btn-primary addField">Add</span>
+                                    <span class="glyphicon glyphicon-plus-sign"></span>
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-
-    @isset($story)
-        <div class="tab-pane" id="pills-items" role="tabpanel" aria-labelledby="pills-tab-4">
-            <div class="row">
-                <div class="col">
-                    @include('item.partials.new_item', ['story' => $story, 'context' => 'story_creation'])
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <h5 class="card-header">
-                            @lang('story.existing_items')
-                        </h5>
-                        <div class="card-body">
-                            <div class="card-text itemListDiv">
-                                @include('page.js.partials.item_list_div', ['items' => $story->items])
+        @isset($story)
+            <div class="tab-pane" id="pills-items" role="tabpanel" aria-labelledby="pills-tab-4">
+                <div class="row">
+                    <div class="col">
+                        @include('item.partials.new_item', ['story' => $story, 'context' => 'story_creation'])
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <h5 class="card-header">
+                                @lang('story.existing_items')
+                            </h5>
+                            <div class="card-body">
+                                <div class="card-text itemListDiv">
+                                    @include('page.js.partials.item_list_div', ['items' => $story->items])
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        @endisset</div>
+        @endisset
+    </div>
 @endsection
 
 @push('footer-scripts')
