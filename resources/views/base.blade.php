@@ -153,7 +153,7 @@
                                                 {{ trans('user.profile_title') }}
                                             </a>
                                             <div role="separator" class="dropdown-divider"></div>
-                                            <a class="dropdown-item"
+                                            <a class="dropdown-item" href=""
                                                onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
                                                 {{ trans('auth.logout') }}
@@ -161,7 +161,7 @@
                                         </div>
                                     </li>
                                 @else
-                                    <a class="dropdown-item"
+                                    <a class="dropdown-item" href=""
                                         onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
                                         {{ trans('auth.logout') }}

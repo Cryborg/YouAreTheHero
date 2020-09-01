@@ -24,7 +24,9 @@
                         <tr>
                             <td>
                                 @if ($user->google_id)
-                                    <img src="{{ asset('img/btn_google_dark_normal_ios.svg') }}">
+                                    <img src="{{ $user->avatar }}" width="25px" height="25px"
+                                        class="profile-picture profile-picture-sm border border-primary border-1"
+                                        title="#{{ $user->id }}">
                                 @else
                                     {{ $user->id }}
                                 @endif

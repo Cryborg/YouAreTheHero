@@ -467,13 +467,24 @@ div.popover.show {
 
 .profile-picture {
     display: inline-block;
-    width: 150px;
-    height: 150px;
     border-radius: 50%;
 
     object-fit: cover;
 }
 
+.profile-picture-sm {
+    width: 30px;
+    height: 30px;
+}
+
+.profile-picture-lg {
+    width: 150px;
+    height: 150px;
+}
+
+.profile-picture.border-1 {
+    border-width:1px !important;
+}
 .profile-picture.border-5 {
     border-width:5px !important;
 }

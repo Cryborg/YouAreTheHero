@@ -10,7 +10,7 @@
             <div class="row mb-4">
                 <div class="col text-center">
                     @if ($user->avatar)
-                        <img src="{{ $user->avatar }}" class="profile-picture border border-primary border-5">
+                        <img src="{{ $user->avatar }}" class="profile-picture profile-picture-lg border border-primary border-5">
                     @endif
                 </div>
             </div>
