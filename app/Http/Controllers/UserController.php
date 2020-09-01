@@ -30,8 +30,6 @@ class UserController extends Controller
 
     public function store(Request $request, User $user)
     {
-        Mail::to('cryborg@gmail.com')->send(new PendingStory($user));
-
         $validator = Validator::make($request->all(), [
             'first_name' => '',
             'last_name' => '',

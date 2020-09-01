@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\DefaultMessage;
+use App\Mail\PendingStory;
+use App\Mail\SiteUpdate;
 use App\Models\Story;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 
 class AdminController extends Controller
