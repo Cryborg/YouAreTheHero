@@ -158,7 +158,7 @@ $(document).on('click touchstart keydown', '#riddle_validate', function () {
     }
 
     $.post({
-        url: route('page.riddle.validate', {'page': pageId}),
+        url: route('page.riddle.validate', {'page': $('#pageId').val()}),
         data: {
             'answer': $('#riddle_answer').val()
         }
