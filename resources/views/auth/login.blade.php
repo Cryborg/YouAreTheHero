@@ -88,6 +88,9 @@
                 </div>
             </div>
         </div>
+        <div class="col">
+            @include('stories.partials.story_card', ['story' => $tutoStory, 'anonymous' => true])
+        </div>
     </div>
 </div>
 @endsection

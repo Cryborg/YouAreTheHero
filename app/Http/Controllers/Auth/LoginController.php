@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Story;
 use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\RedirectResponse;
@@ -98,5 +99,12 @@ class LoginController extends Controller
             ->performedOn($user)
             ->useLog('login')
             ->log('email');
+    }
+
+    public function showLoginForm()
+    {
+        return view('auth.login', [
+            'tutoStory' => Story::where('id', 23)->first()
+        ]);
     }
 }

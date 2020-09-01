@@ -17,7 +17,9 @@
     <div class="row" style="height: 300px">
         @forelse ($stories as $story)
             @if ($story->is_published)
-                @include('stories.partials.story_card', ['stories' => $stories])
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-2 h-100">
+                    @include('stories.partials.story_card', ['story' => $story])
+                </div>
             @endif
         @empty
             <p>Sorry, there is no story... yet! You can create yours by clicking the button below ;)</p>
@@ -42,7 +44,9 @@
     <div class="row" style="height: 300px">
         @forelse ($stories as $story)
             @if (!$story->is_published)
-                @include('stories.partials.story_card', ['stories' => $stories])
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-2 h-100">
+                    @include('stories.partials.story_card', ['story' => $story])
+                </div>
             @endif
         @empty
             <p>Sorry, there is no story... yet! You can create yours by clicking the button below ;)</p>

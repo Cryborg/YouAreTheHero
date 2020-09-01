@@ -9,6 +9,7 @@ use App\Models\Item;
 use App\Models\Page;
 use App\Models\Story;
 use App\Models\StoryGenre;
+use App\Models\User;
 use App\Repositories\ChoiceRepository;
 use App\Repositories\PageRepository;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,14 @@ class StoryController extends Controller
         $this->middleware('auth');
 
         $this->page = $page;
+    }
+
+    public function getPlayAnonymous(Story $story, Page $page = null)
+    {
+        $newUser = factory(User::class)->create();
+        Auth::setUser($newUser);
+
+        $this->getPlay($story, $page);
     }
 
     /**
