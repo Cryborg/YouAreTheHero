@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('email', 50)->unique();
             $table->string('password', 100)->nullable();
             $table->string('locale', 5)->default('fr_FR');
-            $table->dateTime('email_verified_at')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->enum('role', ['admin', 'moderator', 'member', 'developer'])->default('member');
             $table->boolean('optin_system')->default(false);
 
@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->nullable();
             $table->string('avatar_original')->nullable();
 
+            $table->timestamp('valid_from')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

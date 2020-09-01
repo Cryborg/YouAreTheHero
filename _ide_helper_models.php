@@ -388,7 +388,7 @@ namespace App\Models{
  * @property string|null $layout
  * @property bool $is_checkpoint
  * @property int $is_shop Whether the player can sell objects in this page.
- * @property string $ending_type If is_last, type of the ending, wether it is good, bad, a death, etc
+ * @property string|null $ending_type If is_last, type of the ending, wether it is good, bad, a death, etc
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
@@ -509,8 +509,8 @@ namespace App\Models{
  * @property string|null $created_at
  * @property string|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Character[] $character
- * @property-read int|null $character_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Character[] $characters
+ * @property-read int|null $characters_count
  * @property-read \App\Models\Item|null $item
  * @property-read \App\Models\Page|null $page
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Prerequisite[] $prerequisites
@@ -589,16 +589,11 @@ namespace App\Models{
  *
  * @property int $story_id
  * @property int $genre_id
- * @property \Illuminate\Support\Carbon|null $deleted_at
  * @method static \Illuminate\Database\Eloquent\Builder|StoryGenre newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|StoryGenre newQuery()
- * @method static \Illuminate\Database\Query\Builder|StoryGenre onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|StoryGenre query()
- * @method static \Illuminate\Database\Eloquent\Builder|StoryGenre whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StoryGenre whereGenreId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StoryGenre whereStoryId($value)
- * @method static \Illuminate\Database\Query\Builder|StoryGenre withTrashed()
- * @method static \Illuminate\Database\Query\Builder|StoryGenre withoutTrashed()
  */
 	class StoryGenre extends \Eloquent {}
 }
@@ -610,10 +605,11 @@ namespace App\Models{
  * @property int $id
  * @property int $story_id
  * @property bool $has_character Do we have to create a character for this story?
+ * @property string $character_genre
  * @property bool $has_stats Do we show the stats creation page?
  * @property string $stat_attribution "player" means the player gives :points_to_share: points manually to his character. "dice" means it is done by throwing dice.
- * @property int $points_to_share Points to share amongst character stats
- * @property int $inventory_slots How much (virtual) slots there are in the inventory.
+ * @property int $points_to_share Points to share between character stats
+ * @property int $inventory_slots How many (virtual) slots there are in the inventory.
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
@@ -621,6 +617,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption newQuery()
  * @method static \Illuminate\Database\Query\Builder|StoryOption onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption query()
+ * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereCharacterGenre($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereHasCharacter($value)
@@ -650,9 +647,11 @@ namespace App\Models{
  * @property string $locale
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $role
+ * @property bool $optin_system
  * @property string|null $google_id
  * @property string|null $avatar
  * @property string|null $avatar_original
+ * @property string|null $valid_from
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -677,12 +676,14 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereLastName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereOptinSystem($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRole($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUsername($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereValidFrom($value)
  */
-	class User extends \Eloquent {}
+	class User extends \Eloquent implements \Illuminate\Contracts\Translation\HasLocalePreference {}
 }
 

@@ -40,7 +40,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url('/') }}" title="@lang('common.link_home')">
+                <a class="navbar-brand" @if (Auth::check() && Auth::user()->role !== 'temp') href="{{ url('/') }}" title="@lang('common.link_home')" @endif>
                     <img src="{{ asset('img/minibot.jpg') }}" width="64" height="64" style="margin-top: -12px">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -51,7 +51,9 @@
                     {{-- Left Side Of Navbar --}}
                     <ul class="navbar-nav mr-auto">
                         @auth
-                            @include('layouts.partials.nav')
+                            @if (Auth::check() && Auth::user()->role !== 'temp')
+                                @include('layouts.partials.nav')
+                            @endif
                         @endauth
                     </ul>
 
@@ -65,14 +67,16 @@
 
                     {{-- Help --}}
                     @auth()
-                        <ul class="navbar-nav mr-5 shadow">
-                            <li class="nav-item bg-success pl-2 pr-2">
-                                <a class="nav-link clickable text-white" data-target="#modalHelp" data-toggle="modal">
-                                    <span class="icon-help text-white mr-2 font-biggest"></span>
-                                    {{ trans('common.help') }}
-                                </a>
-                            </li>
-                        </ul>
+                        @if (Auth::check() && Auth::user()->role !== 'temp')
+                            <ul class="navbar-nav mr-5 shadow">
+                                <li class="nav-item bg-success pl-2 pr-2">
+                                    <a class="nav-link clickable text-white" data-target="#modalHelp" data-toggle="modal">
+                                        <span class="icon-help text-white mr-2 font-biggest"></span>
+                                        {{ trans('common.help') }}
+                                    </a>
+                                </li>
+                            </ul>
+                        @endif
                     @endauth
 
                     {{-- Languages / Translations --}}
@@ -93,11 +97,13 @@
                                     @endif
                                 @endforeach
 
-                                <div role="separator" class="dropdown-divider"></div>
+                                @can('isAdmin')
+                                    <div role="separator" class="dropdown-divider"></div>
 
-                                <a class="dropdown-item" href="{{ url('/translations') }}" target="_blank">
-                                    {{ trans('auth.translations') }}
-                                </a>
+                                    <a class="dropdown-item" href="{{ url('/translations') }}" target="_blank">
+                                        {{ trans('auth.translations') }}
+                                    </a>
+                                @endcan
                             </div>
                         </li>
                     </ul>
@@ -132,27 +138,35 @@
                                     </div>
                                 </li>
                             @else
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->username }}
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+
+                                @if (Auth::check() && Auth::user()->role !== 'temp')
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            {{ Auth::user()->username }}
+                                        </a>
+
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('user.profile') }}">
+                                                {{ trans('user.profile_title') }}
+                                            </a>
+                                            <div role="separator" class="dropdown-divider"></div>
+                                            <a class="dropdown-item"
+                                               onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                                {{ trans('auth.logout') }}
+                                            </a>
+                                        </div>
+                                    </li>
+                                @else
+                                    <a class="dropdown-item"
+                                        onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                        {{ trans('auth.logout') }}
                                     </a>
-
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('user.profile') }}">
-                                            {{ trans('user.profile_title') }}
-                                        </a>
-                                        <div role="separator" class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                           onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                            {{ trans('auth.logout') }}
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                </li>
+                                @endif
                             @endif
                         @endguest
                     </ul>

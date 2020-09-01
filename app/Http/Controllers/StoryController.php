@@ -30,17 +30,19 @@ class StoryController extends Controller
 
     public function __construct(PageRepository $page)
     {
-        $this->middleware('auth');
-
         $this->page = $page;
     }
 
     public function getPlayAnonymous(Story $story, Page $page = null)
     {
-        $newUser = factory(User::class)->create();
-        Auth::setUser($newUser);
+        // Create a fake, temporary user
+        $newUser = factory(User::class)->state('temporary')->create();
 
-        $this->getPlay($story, $page);
+        // Log the newly created user
+        Auth::login($newUser);
+
+        // Go to the tuto story
+        return Redirect::route('story.play', ['story' => 23]);
     }
 
     /**

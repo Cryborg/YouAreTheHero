@@ -185,9 +185,9 @@ class PageController extends Controller
                 // If it unlocks a new page
                 //FIXME: Moche, mettre ça dans un partial
                 if ($page->riddle && $page->riddle->target_page_id) {
-                    $pageResponse = '<div class="choices-links button-group">' .
+                    $pageResponse = '<div class="choices-links button-group w-100">' .
                         '<a data-href="' . route('story.play', ['story' => $page->story->id, 'page' => $page->riddle->target_page_id]) . '" data-page-id="' . $page->riddle->target_page_id . '">' .
-                        '<button class="large button" data-original-text="' . $page->riddle->target_page_text . '">' . $page->riddle->target_page_text . '</button>' .
+                        '<button class="large button w-100" data-original-text="' . $page->riddle->target_page_text . '">' . $page->riddle->target_page_text . '</button>' .
                         '</a></div>';
                     $itemResponse = trans('page.riddle_already_solved');
                 }

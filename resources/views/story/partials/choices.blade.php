@@ -1,7 +1,7 @@
 
 @if ($page->riddle && $page->riddle->isSolved($character))
     @if ($page->riddle->target_page_id)
-        <div class="choices-links button-group">
+        <div class="choices-links button-group w-100">
             <div class="col-md-3 col-xs-12">
                 <a data-href="{{ route('story.play', ['story' => $page->story->id, 'page' => $page->riddle->target_page_id]) }}">
                     <button class="large button w-100">{!! $page->riddle->target_page_text !!}</button>
