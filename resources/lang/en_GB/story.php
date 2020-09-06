@@ -34,7 +34,7 @@ return array (
   'last_update' => 'Last update',
   'number_pages' => 'Number of pages',
   'reset_story_confirm' => 'Are you sure you want to reset the story?',
-  'create_tab4' => '4. Items creation',
+  'create_tab4' => '4. Manage items',
   'existing_items' => 'Existing items',
   'popovers_modal_title' => 'Descriptions',
   'play' => 'Start',

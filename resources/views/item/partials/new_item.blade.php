@@ -63,6 +63,7 @@
                         <table class="w-100">
                             <thead>
                                 <th>{{ trans('field.attribute') }}</th>
+                                <th>{{ trans('field.operator') }}</th>
                                 <th>{{ trans('field.gain_or_loss') }}</th>
                             </thead>
                             <tbody>
@@ -75,7 +76,15 @@
 
                                             {{ $field->name }}
                                         </td>
-                                        <td><input name="stat_values[]" data-id="{{ $field->id }}" class="mb-1" type="number"></td>
+                                        <td>
+                                            <select class="mb-1 effect_operator w-50">
+                                                <option value="+">+</option>
+                                                <option value="-">-</option>
+                                                <option value="/">/</option>
+                                                <option value="*">*</option>
+                                            </select>
+                                        </td>
+                                        <td><input data-id="{{ $field->id }}" class="mb-1" name="stat_values[]" type="number"></td>
                                     </tr>
                                 @endforeach
                             </tbody>

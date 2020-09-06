@@ -62,7 +62,7 @@ class ItemController extends Controller
                     'item_id'  => $item->id,
                 ],
                     [
-                        'operator' => '+',
+                        'operator' => $effect['operator'] ?? '+',
                         'quantity' => $effect['value'],
                     ]);
             }

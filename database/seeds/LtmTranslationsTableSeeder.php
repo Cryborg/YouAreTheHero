@@ -12,12 +12,12 @@ class LtmTranslationsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('ltm_translations')->delete();
-        
+
         \DB::table('ltm_translations')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'status' => 0,
@@ -28,7 +28,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:53',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'status' => 0,
@@ -39,7 +39,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:53',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'status' => 0,
@@ -50,7 +50,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'status' => 0,
@@ -61,7 +61,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'status' => 0,
@@ -72,7 +72,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'status' => 0,
@@ -83,7 +83,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'status' => 0,
@@ -94,7 +94,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'status' => 0,
@@ -105,7 +105,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'status' => 0,
@@ -116,7 +116,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
                 'status' => 0,
@@ -127,7 +127,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
                 'status' => 0,
@@ -138,7 +138,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 12,
                 'status' => 0,
@@ -149,7 +149,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 13,
                 'status' => 0,
@@ -160,7 +160,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 14,
                 'status' => 0,
@@ -171,7 +171,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 15,
                 'status' => 0,
@@ -182,7 +182,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            15 => 
+            15 =>
             array (
                 'id' => 16,
                 'status' => 0,
@@ -193,7 +193,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            16 => 
+            16 =>
             array (
                 'id' => 17,
                 'status' => 0,
@@ -204,7 +204,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            17 => 
+            17 =>
             array (
                 'id' => 18,
                 'status' => 0,
@@ -215,7 +215,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            18 => 
+            18 =>
             array (
                 'id' => 19,
                 'status' => 0,
@@ -226,7 +226,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            19 => 
+            19 =>
             array (
                 'id' => 20,
                 'status' => 0,
@@ -237,7 +237,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            20 => 
+            20 =>
             array (
                 'id' => 21,
                 'status' => 0,
@@ -248,7 +248,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            21 => 
+            21 =>
             array (
                 'id' => 22,
                 'status' => 0,
@@ -259,7 +259,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            22 => 
+            22 =>
             array (
                 'id' => 23,
                 'status' => 0,
@@ -270,7 +270,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            23 => 
+            23 =>
             array (
                 'id' => 24,
                 'status' => 0,
@@ -281,7 +281,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            24 => 
+            24 =>
             array (
                 'id' => 25,
                 'status' => 0,
@@ -292,7 +292,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            25 => 
+            25 =>
             array (
                 'id' => 26,
                 'status' => 0,
@@ -303,7 +303,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            26 => 
+            26 =>
             array (
                 'id' => 27,
                 'status' => 0,
@@ -314,7 +314,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            27 => 
+            27 =>
             array (
                 'id' => 28,
                 'status' => 0,
@@ -325,7 +325,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            28 => 
+            28 =>
             array (
                 'id' => 29,
                 'status' => 0,
@@ -336,7 +336,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            29 => 
+            29 =>
             array (
                 'id' => 30,
                 'status' => 0,
@@ -347,7 +347,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            30 => 
+            30 =>
             array (
                 'id' => 31,
                 'status' => 0,
@@ -358,7 +358,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            31 => 
+            31 =>
             array (
                 'id' => 32,
                 'status' => 0,
@@ -369,7 +369,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            32 => 
+            32 =>
             array (
                 'id' => 33,
                 'status' => 0,
@@ -380,7 +380,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            33 => 
+            33 =>
             array (
                 'id' => 34,
                 'status' => 0,
@@ -391,7 +391,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            34 => 
+            34 =>
             array (
                 'id' => 35,
                 'status' => 0,
@@ -402,7 +402,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            35 => 
+            35 =>
             array (
                 'id' => 36,
                 'status' => 0,
@@ -413,7 +413,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            36 => 
+            36 =>
             array (
                 'id' => 37,
                 'status' => 0,
@@ -424,7 +424,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            37 => 
+            37 =>
             array (
                 'id' => 38,
                 'status' => 0,
@@ -435,7 +435,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            38 => 
+            38 =>
             array (
                 'id' => 39,
                 'status' => 0,
@@ -446,7 +446,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            39 => 
+            39 =>
             array (
                 'id' => 40,
                 'status' => 0,
@@ -457,7 +457,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            40 => 
+            40 =>
             array (
                 'id' => 41,
                 'status' => 0,
@@ -468,7 +468,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            41 => 
+            41 =>
             array (
                 'id' => 42,
                 'status' => 0,
@@ -479,7 +479,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            42 => 
+            42 =>
             array (
                 'id' => 43,
                 'status' => 0,
@@ -490,7 +490,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            43 => 
+            43 =>
             array (
                 'id' => 44,
                 'status' => 0,
@@ -501,7 +501,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            44 => 
+            44 =>
             array (
                 'id' => 45,
                 'status' => 0,
@@ -512,7 +512,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            45 => 
+            45 =>
             array (
                 'id' => 46,
                 'status' => 0,
@@ -523,7 +523,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            46 => 
+            46 =>
             array (
                 'id' => 47,
                 'status' => 0,
@@ -534,7 +534,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            47 => 
+            47 =>
             array (
                 'id' => 48,
                 'status' => 0,
@@ -545,7 +545,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            48 => 
+            48 =>
             array (
                 'id' => 49,
                 'status' => 0,
@@ -556,7 +556,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            49 => 
+            49 =>
             array (
                 'id' => 50,
                 'status' => 0,
@@ -567,7 +567,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            50 => 
+            50 =>
             array (
                 'id' => 51,
                 'status' => 0,
@@ -578,7 +578,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            51 => 
+            51 =>
             array (
                 'id' => 52,
                 'status' => 0,
@@ -589,7 +589,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            52 => 
+            52 =>
             array (
                 'id' => 53,
                 'status' => 0,
@@ -600,7 +600,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            53 => 
+            53 =>
             array (
                 'id' => 54,
                 'status' => 0,
@@ -611,7 +611,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            54 => 
+            54 =>
             array (
                 'id' => 55,
                 'status' => 0,
@@ -622,7 +622,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            55 => 
+            55 =>
             array (
                 'id' => 56,
                 'status' => 0,
@@ -633,7 +633,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            56 => 
+            56 =>
             array (
                 'id' => 57,
                 'status' => 0,
@@ -644,7 +644,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            57 => 
+            57 =>
             array (
                 'id' => 58,
                 'status' => 0,
@@ -655,7 +655,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            58 => 
+            58 =>
             array (
                 'id' => 59,
                 'status' => 0,
@@ -666,7 +666,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            59 => 
+            59 =>
             array (
                 'id' => 60,
                 'status' => 0,
@@ -677,7 +677,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            60 => 
+            60 =>
             array (
                 'id' => 61,
                 'status' => 0,
@@ -688,7 +688,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            61 => 
+            61 =>
             array (
                 'id' => 62,
                 'status' => 0,
@@ -699,7 +699,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            62 => 
+            62 =>
             array (
                 'id' => 63,
                 'status' => 0,
@@ -710,7 +710,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            63 => 
+            63 =>
             array (
                 'id' => 64,
                 'status' => 0,
@@ -721,7 +721,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            64 => 
+            64 =>
             array (
                 'id' => 65,
                 'status' => 0,
@@ -732,7 +732,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            65 => 
+            65 =>
             array (
                 'id' => 66,
                 'status' => 0,
@@ -743,7 +743,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            66 => 
+            66 =>
             array (
                 'id' => 67,
                 'status' => 0,
@@ -754,7 +754,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            67 => 
+            67 =>
             array (
                 'id' => 68,
                 'status' => 0,
@@ -765,7 +765,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            68 => 
+            68 =>
             array (
                 'id' => 69,
                 'status' => 0,
@@ -776,7 +776,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            69 => 
+            69 =>
             array (
                 'id' => 70,
                 'status' => 0,
@@ -787,7 +787,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            70 => 
+            70 =>
             array (
                 'id' => 71,
                 'status' => 0,
@@ -798,7 +798,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            71 => 
+            71 =>
             array (
                 'id' => 72,
                 'status' => 0,
@@ -809,7 +809,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            72 => 
+            72 =>
             array (
                 'id' => 73,
                 'status' => 0,
@@ -820,7 +820,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            73 => 
+            73 =>
             array (
                 'id' => 74,
                 'status' => 0,
@@ -831,7 +831,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            74 => 
+            74 =>
             array (
                 'id' => 75,
                 'status' => 0,
@@ -842,7 +842,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            75 => 
+            75 =>
             array (
                 'id' => 76,
                 'status' => 0,
@@ -853,7 +853,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            76 => 
+            76 =>
             array (
                 'id' => 77,
                 'status' => 0,
@@ -864,7 +864,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            77 => 
+            77 =>
             array (
                 'id' => 78,
                 'status' => 0,
@@ -875,7 +875,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            78 => 
+            78 =>
             array (
                 'id' => 79,
                 'status' => 0,
@@ -886,7 +886,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            79 => 
+            79 =>
             array (
                 'id' => 80,
                 'status' => 0,
@@ -897,7 +897,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            80 => 
+            80 =>
             array (
                 'id' => 81,
                 'status' => 0,
@@ -908,7 +908,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            81 => 
+            81 =>
             array (
                 'id' => 82,
                 'status' => 0,
@@ -919,7 +919,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            82 => 
+            82 =>
             array (
                 'id' => 83,
                 'status' => 0,
@@ -930,7 +930,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            83 => 
+            83 =>
             array (
                 'id' => 84,
                 'status' => 0,
@@ -941,7 +941,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            84 => 
+            84 =>
             array (
                 'id' => 85,
                 'status' => 0,
@@ -952,7 +952,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            85 => 
+            85 =>
             array (
                 'id' => 86,
                 'status' => 0,
@@ -963,7 +963,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            86 => 
+            86 =>
             array (
                 'id' => 87,
                 'status' => 0,
@@ -974,7 +974,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            87 => 
+            87 =>
             array (
                 'id' => 88,
                 'status' => 0,
@@ -985,7 +985,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            88 => 
+            88 =>
             array (
                 'id' => 89,
                 'status' => 0,
@@ -996,7 +996,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            89 => 
+            89 =>
             array (
                 'id' => 90,
                 'status' => 0,
@@ -1007,7 +1007,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            90 => 
+            90 =>
             array (
                 'id' => 91,
                 'status' => 0,
@@ -1018,7 +1018,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            91 => 
+            91 =>
             array (
                 'id' => 92,
                 'status' => 0,
@@ -1029,7 +1029,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            92 => 
+            92 =>
             array (
                 'id' => 93,
                 'status' => 0,
@@ -1040,7 +1040,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            93 => 
+            93 =>
             array (
                 'id' => 94,
                 'status' => 0,
@@ -1051,7 +1051,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            94 => 
+            94 =>
             array (
                 'id' => 95,
                 'status' => 0,
@@ -1062,7 +1062,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            95 => 
+            95 =>
             array (
                 'id' => 96,
                 'status' => 0,
@@ -1073,7 +1073,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            96 => 
+            96 =>
             array (
                 'id' => 97,
                 'status' => 0,
@@ -1084,7 +1084,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            97 => 
+            97 =>
             array (
                 'id' => 98,
                 'status' => 0,
@@ -1095,7 +1095,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            98 => 
+            98 =>
             array (
                 'id' => 99,
                 'status' => 0,
@@ -1106,7 +1106,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            99 => 
+            99 =>
             array (
                 'id' => 100,
                 'status' => 0,
@@ -1117,7 +1117,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            100 => 
+            100 =>
             array (
                 'id' => 101,
                 'status' => 0,
@@ -1128,7 +1128,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            101 => 
+            101 =>
             array (
                 'id' => 102,
                 'status' => 0,
@@ -1139,7 +1139,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            102 => 
+            102 =>
             array (
                 'id' => 103,
                 'status' => 0,
@@ -1150,7 +1150,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            103 => 
+            103 =>
             array (
                 'id' => 104,
                 'status' => 0,
@@ -1161,7 +1161,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            104 => 
+            104 =>
             array (
                 'id' => 105,
                 'status' => 0,
@@ -1172,7 +1172,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            105 => 
+            105 =>
             array (
                 'id' => 106,
                 'status' => 0,
@@ -1183,7 +1183,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            106 => 
+            106 =>
             array (
                 'id' => 107,
                 'status' => 0,
@@ -1194,7 +1194,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            107 => 
+            107 =>
             array (
                 'id' => 108,
                 'status' => 1,
@@ -1205,7 +1205,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            108 => 
+            108 =>
             array (
                 'id' => 109,
                 'status' => 0,
@@ -1216,7 +1216,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            109 => 
+            109 =>
             array (
                 'id' => 110,
                 'status' => 0,
@@ -1227,7 +1227,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            110 => 
+            110 =>
             array (
                 'id' => 111,
                 'status' => 0,
@@ -1238,7 +1238,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            111 => 
+            111 =>
             array (
                 'id' => 112,
                 'status' => 0,
@@ -1249,7 +1249,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            112 => 
+            112 =>
             array (
                 'id' => 113,
                 'status' => 0,
@@ -1260,7 +1260,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            113 => 
+            113 =>
             array (
                 'id' => 114,
                 'status' => 0,
@@ -1271,7 +1271,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            114 => 
+            114 =>
             array (
                 'id' => 115,
                 'status' => 0,
@@ -1282,7 +1282,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            115 => 
+            115 =>
             array (
                 'id' => 116,
                 'status' => 0,
@@ -1293,7 +1293,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            116 => 
+            116 =>
             array (
                 'id' => 117,
                 'status' => 0,
@@ -1304,7 +1304,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            117 => 
+            117 =>
             array (
                 'id' => 118,
                 'status' => 1,
@@ -1315,7 +1315,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            118 => 
+            118 =>
             array (
                 'id' => 119,
                 'status' => 0,
@@ -1326,7 +1326,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            119 => 
+            119 =>
             array (
                 'id' => 120,
                 'status' => 0,
@@ -1337,7 +1337,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            120 => 
+            120 =>
             array (
                 'id' => 121,
                 'status' => 0,
@@ -1348,7 +1348,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            121 => 
+            121 =>
             array (
                 'id' => 122,
                 'status' => 0,
@@ -1359,7 +1359,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            122 => 
+            122 =>
             array (
                 'id' => 123,
                 'status' => 0,
@@ -1370,7 +1370,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            123 => 
+            123 =>
             array (
                 'id' => 124,
                 'status' => 0,
@@ -1381,7 +1381,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            124 => 
+            124 =>
             array (
                 'id' => 125,
                 'status' => 0,
@@ -1392,7 +1392,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            125 => 
+            125 =>
             array (
                 'id' => 126,
                 'status' => 0,
@@ -1403,7 +1403,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            126 => 
+            126 =>
             array (
                 'id' => 127,
                 'status' => 0,
@@ -1414,7 +1414,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            127 => 
+            127 =>
             array (
                 'id' => 128,
                 'status' => 0,
@@ -1425,7 +1425,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            128 => 
+            128 =>
             array (
                 'id' => 129,
                 'status' => 0,
@@ -1436,7 +1436,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            129 => 
+            129 =>
             array (
                 'id' => 130,
                 'status' => 0,
@@ -1447,7 +1447,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            130 => 
+            130 =>
             array (
                 'id' => 131,
                 'status' => 0,
@@ -1458,7 +1458,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            131 => 
+            131 =>
             array (
                 'id' => 132,
                 'status' => 0,
@@ -1469,7 +1469,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            132 => 
+            132 =>
             array (
                 'id' => 133,
                 'status' => 0,
@@ -1480,7 +1480,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            133 => 
+            133 =>
             array (
                 'id' => 134,
                 'status' => 0,
@@ -1491,7 +1491,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            134 => 
+            134 =>
             array (
                 'id' => 135,
                 'status' => 0,
@@ -1502,7 +1502,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            135 => 
+            135 =>
             array (
                 'id' => 136,
                 'status' => 0,
@@ -1513,7 +1513,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            136 => 
+            136 =>
             array (
                 'id' => 137,
                 'status' => 0,
@@ -1524,7 +1524,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            137 => 
+            137 =>
             array (
                 'id' => 138,
                 'status' => 0,
@@ -1535,7 +1535,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            138 => 
+            138 =>
             array (
                 'id' => 139,
                 'status' => 0,
@@ -1546,7 +1546,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            139 => 
+            139 =>
             array (
                 'id' => 140,
                 'status' => 0,
@@ -1557,7 +1557,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            140 => 
+            140 =>
             array (
                 'id' => 141,
                 'status' => 0,
@@ -1568,7 +1568,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            141 => 
+            141 =>
             array (
                 'id' => 142,
                 'status' => 0,
@@ -1579,7 +1579,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            142 => 
+            142 =>
             array (
                 'id' => 143,
                 'status' => 0,
@@ -1590,7 +1590,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            143 => 
+            143 =>
             array (
                 'id' => 144,
                 'status' => 0,
@@ -1601,7 +1601,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            144 => 
+            144 =>
             array (
                 'id' => 145,
                 'status' => 0,
@@ -1612,7 +1612,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            145 => 
+            145 =>
             array (
                 'id' => 146,
                 'status' => 0,
@@ -1623,7 +1623,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            146 => 
+            146 =>
             array (
                 'id' => 147,
                 'status' => 0,
@@ -1634,7 +1634,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            147 => 
+            147 =>
             array (
                 'id' => 148,
                 'status' => 0,
@@ -1645,7 +1645,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            148 => 
+            148 =>
             array (
                 'id' => 149,
                 'status' => 0,
@@ -1656,7 +1656,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            149 => 
+            149 =>
             array (
                 'id' => 150,
                 'status' => 0,
@@ -1667,7 +1667,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            150 => 
+            150 =>
             array (
                 'id' => 151,
                 'status' => 0,
@@ -1678,7 +1678,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            151 => 
+            151 =>
             array (
                 'id' => 152,
                 'status' => 0,
@@ -1689,7 +1689,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            152 => 
+            152 =>
             array (
                 'id' => 153,
                 'status' => 0,
@@ -1700,7 +1700,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            153 => 
+            153 =>
             array (
                 'id' => 154,
                 'status' => 0,
@@ -1711,7 +1711,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            154 => 
+            154 =>
             array (
                 'id' => 155,
                 'status' => 0,
@@ -1722,7 +1722,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            155 => 
+            155 =>
             array (
                 'id' => 156,
                 'status' => 0,
@@ -1733,7 +1733,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            156 => 
+            156 =>
             array (
                 'id' => 157,
                 'status' => 0,
@@ -1744,7 +1744,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            157 => 
+            157 =>
             array (
                 'id' => 158,
                 'status' => 0,
@@ -1755,7 +1755,7 @@ class LtmTranslationsTableSeeder extends Seeder
                 'created_at' => '2020-06-05 18:48:46',
                 'updated_at' => '2020-08-16 20:10:54',
             ),
-            158 => 
+            158 =>
             array (
                 'id' => 159,
                 'status' => 0,
@@ -1766,7 +1766,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        159 => 
+        159 =>
         array (
             'id' => 160,
             'status' => 0,
@@ -1777,7 +1777,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        160 => 
+        160 =>
         array (
             'id' => 161,
             'status' => 0,
@@ -1788,7 +1788,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        161 => 
+        161 =>
         array (
             'id' => 162,
             'status' => 0,
@@ -1799,7 +1799,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        162 => 
+        162 =>
         array (
             'id' => 163,
             'status' => 0,
@@ -1810,7 +1810,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        163 => 
+        163 =>
         array (
             'id' => 164,
             'status' => 0,
@@ -1821,7 +1821,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        164 => 
+        164 =>
         array (
             'id' => 165,
             'status' => 0,
@@ -1832,7 +1832,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        165 => 
+        165 =>
         array (
             'id' => 166,
             'status' => 0,
@@ -1843,7 +1843,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        166 => 
+        166 =>
         array (
             'id' => 167,
             'status' => 0,
@@ -1854,7 +1854,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        167 => 
+        167 =>
         array (
             'id' => 168,
             'status' => 0,
@@ -1865,7 +1865,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        168 => 
+        168 =>
         array (
             'id' => 169,
             'status' => 0,
@@ -1876,7 +1876,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        169 => 
+        169 =>
         array (
             'id' => 170,
             'status' => 0,
@@ -1887,7 +1887,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        170 => 
+        170 =>
         array (
             'id' => 171,
             'status' => 0,
@@ -1898,7 +1898,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        171 => 
+        171 =>
         array (
             'id' => 172,
             'status' => 1,
@@ -1909,7 +1909,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        172 => 
+        172 =>
         array (
             'id' => 173,
             'status' => 0,
@@ -1920,7 +1920,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        173 => 
+        173 =>
         array (
             'id' => 174,
             'status' => 0,
@@ -1931,7 +1931,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        174 => 
+        174 =>
         array (
             'id' => 175,
             'status' => 0,
@@ -1942,7 +1942,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        175 => 
+        175 =>
         array (
             'id' => 176,
             'status' => 0,
@@ -1953,7 +1953,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        176 => 
+        176 =>
         array (
             'id' => 177,
             'status' => 0,
@@ -1964,7 +1964,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        177 => 
+        177 =>
         array (
             'id' => 178,
             'status' => 0,
@@ -1975,7 +1975,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:54',
         ),
-        178 => 
+        178 =>
         array (
             'id' => 179,
             'status' => 0,
@@ -1986,7 +1986,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        179 => 
+        179 =>
         array (
             'id' => 180,
             'status' => 0,
@@ -1997,7 +1997,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        180 => 
+        180 =>
         array (
             'id' => 181,
             'status' => 0,
@@ -2008,7 +2008,7 @@ class LtmTranslationsTableSeeder extends Seeder
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        181 => 
+        181 =>
         array (
             'id' => 182,
             'status' => 0,
@@ -2020,7 +2020,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        182 => 
+        182 =>
         array (
             'id' => 183,
             'status' => 0,
@@ -2031,7 +2031,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        183 => 
+        183 =>
         array (
             'id' => 184,
             'status' => 0,
@@ -2042,7 +2042,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        184 => 
+        184 =>
         array (
             'id' => 185,
             'status' => 1,
@@ -2053,7 +2053,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        185 => 
+        185 =>
         array (
             'id' => 186,
             'status' => 0,
@@ -2064,7 +2064,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        186 => 
+        186 =>
         array (
             'id' => 187,
             'status' => 0,
@@ -2075,7 +2075,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        187 => 
+        187 =>
         array (
             'id' => 188,
             'status' => 0,
@@ -2086,7 +2086,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        188 => 
+        188 =>
         array (
             'id' => 189,
             'status' => 0,
@@ -2097,7 +2097,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        189 => 
+        189 =>
         array (
             'id' => 190,
             'status' => 0,
@@ -2108,7 +2108,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        190 => 
+        190 =>
         array (
             'id' => 191,
             'status' => 0,
@@ -2119,7 +2119,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        191 => 
+        191 =>
         array (
             'id' => 192,
             'status' => 0,
@@ -2130,7 +2130,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        192 => 
+        192 =>
         array (
             'id' => 193,
             'status' => 0,
@@ -2141,7 +2141,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        193 => 
+        193 =>
         array (
             'id' => 194,
             'status' => 0,
@@ -2152,7 +2152,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        194 => 
+        194 =>
         array (
             'id' => 195,
             'status' => 0,
@@ -2163,7 +2163,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        195 => 
+        195 =>
         array (
             'id' => 196,
             'status' => 0,
@@ -2174,7 +2174,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        196 => 
+        196 =>
         array (
             'id' => 197,
             'status' => 0,
@@ -2185,7 +2185,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        197 => 
+        197 =>
         array (
             'id' => 198,
             'status' => 0,
@@ -2196,7 +2196,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        198 => 
+        198 =>
         array (
             'id' => 199,
             'status' => 0,
@@ -2207,7 +2207,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        199 => 
+        199 =>
         array (
             'id' => 200,
             'status' => 0,
@@ -2218,7 +2218,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:46',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        200 => 
+        200 =>
         array (
             'id' => 201,
             'status' => 0,
@@ -2229,7 +2229,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        201 => 
+        201 =>
         array (
             'id' => 202,
             'status' => 0,
@@ -2240,7 +2240,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        202 => 
+        202 =>
         array (
             'id' => 203,
             'status' => 0,
@@ -2251,7 +2251,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        203 => 
+        203 =>
         array (
             'id' => 204,
             'status' => 0,
@@ -2262,7 +2262,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        204 => 
+        204 =>
         array (
             'id' => 205,
             'status' => 0,
@@ -2273,7 +2273,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        205 => 
+        205 =>
         array (
             'id' => 206,
             'status' => 0,
@@ -2284,7 +2284,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        206 => 
+        206 =>
         array (
             'id' => 207,
             'status' => 0,
@@ -2295,7 +2295,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        207 => 
+        207 =>
         array (
             'id' => 208,
             'status' => 0,
@@ -2306,7 +2306,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        208 => 
+        208 =>
         array (
             'id' => 209,
             'status' => 0,
@@ -2317,7 +2317,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        209 => 
+        209 =>
         array (
             'id' => 210,
             'status' => 0,
@@ -2328,7 +2328,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        210 => 
+        210 =>
         array (
             'id' => 211,
             'status' => 0,
@@ -2339,7 +2339,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        211 => 
+        211 =>
         array (
             'id' => 212,
             'status' => 0,
@@ -2350,7 +2350,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        212 => 
+        212 =>
         array (
             'id' => 213,
             'status' => 0,
@@ -2361,7 +2361,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        213 => 
+        213 =>
         array (
             'id' => 214,
             'status' => 0,
@@ -2372,7 +2372,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        214 => 
+        214 =>
         array (
             'id' => 215,
             'status' => 0,
@@ -2383,7 +2383,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        215 => 
+        215 =>
         array (
             'id' => 216,
             'status' => 0,
@@ -2394,7 +2394,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        216 => 
+        216 =>
         array (
             'id' => 217,
             'status' => 0,
@@ -2405,7 +2405,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        217 => 
+        217 =>
         array (
             'id' => 218,
             'status' => 0,
@@ -2416,7 +2416,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        218 => 
+        218 =>
         array (
             'id' => 219,
             'status' => 0,
@@ -2427,7 +2427,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        219 => 
+        219 =>
         array (
             'id' => 220,
             'status' => 0,
@@ -2438,7 +2438,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        220 => 
+        220 =>
         array (
             'id' => 221,
             'status' => 0,
@@ -2449,7 +2449,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        221 => 
+        221 =>
         array (
             'id' => 222,
             'status' => 0,
@@ -2460,7 +2460,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        222 => 
+        222 =>
         array (
             'id' => 223,
             'status' => 0,
@@ -2471,7 +2471,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        223 => 
+        223 =>
         array (
             'id' => 224,
             'status' => 0,
@@ -2482,7 +2482,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        224 => 
+        224 =>
         array (
             'id' => 225,
             'status' => 0,
@@ -2493,7 +2493,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        225 => 
+        225 =>
         array (
             'id' => 226,
             'status' => 0,
@@ -2504,7 +2504,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        226 => 
+        226 =>
         array (
             'id' => 227,
             'status' => 0,
@@ -2515,7 +2515,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        227 => 
+        227 =>
         array (
             'id' => 228,
             'status' => 0,
@@ -2526,7 +2526,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        228 => 
+        228 =>
         array (
             'id' => 229,
             'status' => 0,
@@ -2537,7 +2537,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        229 => 
+        229 =>
         array (
             'id' => 230,
             'status' => 0,
@@ -2548,7 +2548,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        230 => 
+        230 =>
         array (
             'id' => 231,
             'status' => 0,
@@ -2559,7 +2559,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        231 => 
+        231 =>
         array (
             'id' => 232,
             'status' => 0,
@@ -2570,7 +2570,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        232 => 
+        232 =>
         array (
             'id' => 233,
             'status' => 0,
@@ -2581,7 +2581,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        233 => 
+        233 =>
         array (
             'id' => 234,
             'status' => 0,
@@ -2592,7 +2592,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        234 => 
+        234 =>
         array (
             'id' => 235,
             'status' => 0,
@@ -2603,7 +2603,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        235 => 
+        235 =>
         array (
             'id' => 236,
             'status' => 0,
@@ -2614,7 +2614,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        236 => 
+        236 =>
         array (
             'id' => 237,
             'status' => 0,
@@ -2625,7 +2625,7 @@ Click on an already existing page to link to it.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        237 => 
+        237 =>
         array (
             'id' => 238,
             'status' => 0,
@@ -2637,7 +2637,7 @@ This links to the page with the title:<br><i>:choice_title</i>',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        238 => 
+        238 =>
         array (
             'id' => 239,
             'status' => 0,
@@ -2648,7 +2648,7 @@ This links to the page with the title:<br><i>:choice_title</i>',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        239 => 
+        239 =>
         array (
             'id' => 240,
             'status' => 0,
@@ -2659,7 +2659,7 @@ This links to the page with the title:<br><i>:choice_title</i>',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        240 => 
+        240 =>
         array (
             'id' => 241,
             'status' => 0,
@@ -2670,7 +2670,7 @@ This links to the page with the title:<br><i>:choice_title</i>',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        241 => 
+        241 =>
         array (
             'id' => 242,
             'status' => 0,
@@ -2681,7 +2681,7 @@ This links to the page with the title:<br><i>:choice_title</i>',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        242 => 
+        242 =>
         array (
             'id' => 243,
             'status' => 0,
@@ -2692,7 +2692,7 @@ This links to the page with the title:<br><i>:choice_title</i>',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        243 => 
+        243 =>
         array (
             'id' => 244,
             'status' => 0,
@@ -2703,7 +2703,7 @@ This links to the page with the title:<br><i>:choice_title</i>',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        244 => 
+        244 =>
         array (
             'id' => 245,
             'status' => 0,
@@ -2714,7 +2714,7 @@ This links to the page with the title:<br><i>:choice_title</i>',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        245 => 
+        245 =>
         array (
             'id' => 246,
             'status' => 0,
@@ -2725,7 +2725,7 @@ This links to the page with the title:<br><i>:choice_title</i>',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        246 => 
+        246 =>
         array (
             'id' => 247,
             'status' => 0,
@@ -2736,7 +2736,7 @@ This links to the page with the title:<br><i>:choice_title</i>',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        247 => 
+        247 =>
         array (
             'id' => 248,
             'status' => 0,
@@ -2747,7 +2747,7 @@ This links to the page with the title:<br><i>:choice_title</i>',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        248 => 
+        248 =>
         array (
             'id' => 249,
             'status' => 0,
@@ -2758,7 +2758,7 @@ This links to the page with the title:<br><i>:choice_title</i>',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        249 => 
+        249 =>
         array (
             'id' => 250,
             'status' => 0,
@@ -2769,7 +2769,7 @@ This links to the page with the title:<br><i>:choice_title</i>',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        250 => 
+        250 =>
         array (
             'id' => 251,
             'status' => 0,
@@ -2780,7 +2780,7 @@ This links to the page with the title:<br><i>:choice_title</i>',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        251 => 
+        251 =>
         array (
             'id' => 252,
             'status' => 0,
@@ -2791,7 +2791,7 @@ This links to the page with the title:<br><i>:choice_title</i>',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        252 => 
+        252 =>
         array (
             'id' => 253,
             'status' => 0,
@@ -2802,7 +2802,7 @@ This links to the page with the title:<br><i>:choice_title</i>',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        253 => 
+        253 =>
         array (
             'id' => 254,
             'status' => 0,
@@ -2813,7 +2813,7 @@ This links to the page with the title:<br><i>:choice_title</i>',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        254 => 
+        254 =>
         array (
             'id' => 255,
             'status' => 0,
@@ -2825,7 +2825,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        255 => 
+        255 =>
         array (
             'id' => 256,
             'status' => 0,
@@ -2836,7 +2836,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        256 => 
+        256 =>
         array (
             'id' => 257,
             'status' => 0,
@@ -2847,7 +2847,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        257 => 
+        257 =>
         array (
             'id' => 258,
             'status' => 0,
@@ -2858,7 +2858,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        258 => 
+        258 =>
         array (
             'id' => 259,
             'status' => 1,
@@ -2869,7 +2869,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-06-05 18:48:47',
         ),
-        259 => 
+        259 =>
         array (
             'id' => 260,
             'status' => 0,
@@ -2880,7 +2880,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        260 => 
+        260 =>
         array (
             'id' => 261,
             'status' => 0,
@@ -2891,7 +2891,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        261 => 
+        261 =>
         array (
             'id' => 262,
             'status' => 0,
@@ -2902,7 +2902,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        262 => 
+        262 =>
         array (
             'id' => 263,
             'status' => 0,
@@ -2913,7 +2913,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        263 => 
+        263 =>
         array (
             'id' => 264,
             'status' => 0,
@@ -2924,7 +2924,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        264 => 
+        264 =>
         array (
             'id' => 265,
             'status' => 0,
@@ -2935,7 +2935,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        265 => 
+        265 =>
         array (
             'id' => 266,
             'status' => 0,
@@ -2946,7 +2946,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        266 => 
+        266 =>
         array (
             'id' => 267,
             'status' => 0,
@@ -2957,7 +2957,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        267 => 
+        267 =>
         array (
             'id' => 268,
             'status' => 0,
@@ -2968,7 +2968,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        268 => 
+        268 =>
         array (
             'id' => 269,
             'status' => 0,
@@ -2979,7 +2979,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        269 => 
+        269 =>
         array (
             'id' => 270,
             'status' => 0,
@@ -2990,7 +2990,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        270 => 
+        270 =>
         array (
             'id' => 271,
             'status' => 0,
@@ -3001,7 +3001,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:55',
         ),
-        271 => 
+        271 =>
         array (
             'id' => 272,
             'status' => 0,
@@ -3012,7 +3012,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            272 => 
+            272 =>
             array (
                 'id' => 273,
                 'status' => 0,
@@ -3023,7 +3023,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            273 => 
+            273 =>
             array (
                 'id' => 274,
                 'status' => 0,
@@ -3034,7 +3034,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            274 => 
+            274 =>
             array (
                 'id' => 275,
                 'status' => 0,
@@ -3045,7 +3045,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            275 => 
+            275 =>
             array (
                 'id' => 276,
                 'status' => 0,
@@ -3056,7 +3056,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            276 => 
+            276 =>
             array (
                 'id' => 277,
                 'status' => 0,
@@ -3067,7 +3067,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            277 => 
+            277 =>
             array (
                 'id' => 278,
                 'status' => 0,
@@ -3078,7 +3078,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            278 => 
+            278 =>
             array (
                 'id' => 279,
                 'status' => 0,
@@ -3089,7 +3089,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            279 => 
+            279 =>
             array (
                 'id' => 280,
                 'status' => 0,
@@ -3100,7 +3100,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            280 => 
+            280 =>
             array (
                 'id' => 281,
                 'status' => 0,
@@ -3111,7 +3111,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            281 => 
+            281 =>
             array (
                 'id' => 282,
                 'status' => 0,
@@ -3122,7 +3122,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            282 => 
+            282 =>
             array (
                 'id' => 283,
                 'status' => 0,
@@ -3133,7 +3133,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            283 => 
+            283 =>
             array (
                 'id' => 284,
                 'status' => 0,
@@ -3144,7 +3144,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            284 => 
+            284 =>
             array (
                 'id' => 285,
                 'status' => 0,
@@ -3155,7 +3155,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            285 => 
+            285 =>
             array (
                 'id' => 286,
                 'status' => 0,
@@ -3166,7 +3166,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            286 => 
+            286 =>
             array (
                 'id' => 287,
                 'status' => 0,
@@ -3177,7 +3177,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            287 => 
+            287 =>
             array (
                 'id' => 288,
                 'status' => 0,
@@ -3188,7 +3188,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            288 => 
+            288 =>
             array (
                 'id' => 289,
                 'status' => 0,
@@ -3199,7 +3199,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            289 => 
+            289 =>
             array (
                 'id' => 290,
                 'status' => 0,
@@ -3210,7 +3210,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            290 => 
+            290 =>
             array (
                 'id' => 291,
                 'status' => 0,
@@ -3221,7 +3221,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            291 => 
+            291 =>
             array (
                 'id' => 292,
                 'status' => 0,
@@ -3232,7 +3232,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            292 => 
+            292 =>
             array (
                 'id' => 293,
                 'status' => 0,
@@ -3243,7 +3243,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            293 => 
+            293 =>
             array (
                 'id' => 294,
                 'status' => 0,
@@ -3254,7 +3254,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            294 => 
+            294 =>
             array (
                 'id' => 295,
                 'status' => 0,
@@ -3265,7 +3265,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            295 => 
+            295 =>
             array (
                 'id' => 296,
                 'status' => 0,
@@ -3276,7 +3276,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            296 => 
+            296 =>
             array (
                 'id' => 297,
                 'status' => 0,
@@ -3287,7 +3287,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            297 => 
+            297 =>
             array (
                 'id' => 298,
                 'status' => 0,
@@ -3298,7 +3298,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            298 => 
+            298 =>
             array (
                 'id' => 299,
                 'status' => 0,
@@ -3309,7 +3309,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            299 => 
+            299 =>
             array (
                 'id' => 300,
                 'status' => 0,
@@ -3320,7 +3320,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            300 => 
+            300 =>
             array (
                 'id' => 301,
                 'status' => 0,
@@ -3331,7 +3331,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            301 => 
+            301 =>
             array (
                 'id' => 302,
                 'status' => 0,
@@ -3342,7 +3342,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            302 => 
+            302 =>
             array (
                 'id' => 303,
                 'status' => 0,
@@ -3353,7 +3353,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            303 => 
+            303 =>
             array (
                 'id' => 304,
                 'status' => 0,
@@ -3364,7 +3364,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            304 => 
+            304 =>
             array (
                 'id' => 305,
                 'status' => 0,
@@ -3375,7 +3375,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            305 => 
+            305 =>
             array (
                 'id' => 306,
                 'status' => 0,
@@ -3386,7 +3386,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            306 => 
+            306 =>
             array (
                 'id' => 307,
                 'status' => 0,
@@ -3397,7 +3397,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            307 => 
+            307 =>
             array (
                 'id' => 308,
                 'status' => 0,
@@ -3408,7 +3408,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            308 => 
+            308 =>
             array (
                 'id' => 309,
                 'status' => 0,
@@ -3419,7 +3419,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            309 => 
+            309 =>
             array (
                 'id' => 310,
                 'status' => 0,
@@ -3430,7 +3430,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            310 => 
+            310 =>
             array (
                 'id' => 311,
                 'status' => 0,
@@ -3441,7 +3441,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            311 => 
+            311 =>
             array (
                 'id' => 312,
                 'status' => 0,
@@ -3452,7 +3452,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            312 => 
+            312 =>
             array (
                 'id' => 313,
                 'status' => 0,
@@ -3463,7 +3463,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            313 => 
+            313 =>
             array (
                 'id' => 314,
                 'status' => 0,
@@ -3474,7 +3474,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            314 => 
+            314 =>
             array (
                 'id' => 315,
                 'status' => 0,
@@ -3485,7 +3485,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            315 => 
+            315 =>
             array (
                 'id' => 316,
                 'status' => 0,
@@ -3496,7 +3496,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            316 => 
+            316 =>
             array (
                 'id' => 317,
                 'status' => 0,
@@ -3507,7 +3507,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            317 => 
+            317 =>
             array (
                 'id' => 318,
                 'status' => 0,
@@ -3518,7 +3518,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            318 => 
+            318 =>
             array (
                 'id' => 319,
                 'status' => 0,
@@ -3529,7 +3529,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            319 => 
+            319 =>
             array (
                 'id' => 320,
                 'status' => 0,
@@ -3540,7 +3540,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            320 => 
+            320 =>
             array (
                 'id' => 321,
                 'status' => 0,
@@ -3551,7 +3551,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            321 => 
+            321 =>
             array (
                 'id' => 322,
                 'status' => 0,
@@ -3562,7 +3562,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            322 => 
+            322 =>
             array (
                 'id' => 323,
                 'status' => 0,
@@ -3573,7 +3573,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            323 => 
+            323 =>
             array (
                 'id' => 324,
                 'status' => 0,
@@ -3584,7 +3584,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            324 => 
+            324 =>
             array (
                 'id' => 325,
                 'status' => 0,
@@ -3595,7 +3595,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            325 => 
+            325 =>
             array (
                 'id' => 326,
                 'status' => 0,
@@ -3606,7 +3606,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            326 => 
+            326 =>
             array (
                 'id' => 327,
                 'status' => 0,
@@ -3617,7 +3617,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            327 => 
+            327 =>
             array (
                 'id' => 328,
                 'status' => 0,
@@ -3628,7 +3628,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            328 => 
+            328 =>
             array (
                 'id' => 329,
                 'status' => 0,
@@ -3639,7 +3639,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            329 => 
+            329 =>
             array (
                 'id' => 330,
                 'status' => 0,
@@ -3650,7 +3650,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            330 => 
+            330 =>
             array (
                 'id' => 331,
                 'status' => 0,
@@ -3661,7 +3661,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            331 => 
+            331 =>
             array (
                 'id' => 332,
                 'status' => 0,
@@ -3672,7 +3672,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            332 => 
+            332 =>
             array (
                 'id' => 333,
                 'status' => 0,
@@ -3683,7 +3683,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            333 => 
+            333 =>
             array (
                 'id' => 334,
                 'status' => 0,
@@ -3694,7 +3694,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            334 => 
+            334 =>
             array (
                 'id' => 335,
                 'status' => 0,
@@ -3705,7 +3705,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            335 => 
+            335 =>
             array (
                 'id' => 336,
                 'status' => 0,
@@ -3716,7 +3716,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            336 => 
+            336 =>
             array (
                 'id' => 337,
                 'status' => 0,
@@ -3727,7 +3727,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            337 => 
+            337 =>
             array (
                 'id' => 338,
                 'status' => 0,
@@ -3738,7 +3738,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            338 => 
+            338 =>
             array (
                 'id' => 339,
                 'status' => 0,
@@ -3749,7 +3749,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            339 => 
+            339 =>
             array (
                 'id' => 340,
                 'status' => 0,
@@ -3760,7 +3760,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            340 => 
+            340 =>
             array (
                 'id' => 341,
                 'status' => 0,
@@ -3771,7 +3771,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            341 => 
+            341 =>
             array (
                 'id' => 342,
                 'status' => 0,
@@ -3782,7 +3782,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            342 => 
+            342 =>
             array (
                 'id' => 343,
                 'status' => 0,
@@ -3793,7 +3793,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            343 => 
+            343 =>
             array (
                 'id' => 344,
                 'status' => 0,
@@ -3804,7 +3804,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            344 => 
+            344 =>
             array (
                 'id' => 345,
                 'status' => 0,
@@ -3815,7 +3815,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            345 => 
+            345 =>
             array (
                 'id' => 346,
                 'status' => 0,
@@ -3826,7 +3826,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            346 => 
+            346 =>
             array (
                 'id' => 347,
                 'status' => 0,
@@ -3837,7 +3837,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            347 => 
+            347 =>
             array (
                 'id' => 348,
                 'status' => 0,
@@ -3848,7 +3848,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            348 => 
+            348 =>
             array (
                 'id' => 349,
                 'status' => 0,
@@ -3859,7 +3859,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            349 => 
+            349 =>
             array (
                 'id' => 350,
                 'status' => 0,
@@ -3870,7 +3870,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            350 => 
+            350 =>
             array (
                 'id' => 351,
                 'status' => 0,
@@ -3881,7 +3881,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            351 => 
+            351 =>
             array (
                 'id' => 352,
                 'status' => 0,
@@ -3892,7 +3892,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            352 => 
+            352 =>
             array (
                 'id' => 353,
                 'status' => 0,
@@ -3903,7 +3903,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            353 => 
+            353 =>
             array (
                 'id' => 354,
                 'status' => 0,
@@ -3914,7 +3914,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            354 => 
+            354 =>
             array (
                 'id' => 355,
                 'status' => 0,
@@ -3925,7 +3925,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            355 => 
+            355 =>
             array (
                 'id' => 356,
                 'status' => 0,
@@ -3936,7 +3936,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            356 => 
+            356 =>
             array (
                 'id' => 357,
                 'status' => 0,
@@ -3947,7 +3947,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            357 => 
+            357 =>
             array (
                 'id' => 358,
                 'status' => 0,
@@ -3958,7 +3958,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            358 => 
+            358 =>
             array (
                 'id' => 359,
                 'status' => 0,
@@ -3969,7 +3969,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            359 => 
+            359 =>
             array (
                 'id' => 360,
                 'status' => 0,
@@ -3980,7 +3980,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            360 => 
+            360 =>
             array (
                 'id' => 361,
                 'status' => 0,
@@ -3991,7 +3991,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            361 => 
+            361 =>
             array (
                 'id' => 362,
                 'status' => 0,
@@ -4002,7 +4002,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            362 => 
+            362 =>
             array (
                 'id' => 363,
                 'status' => 0,
@@ -4013,7 +4013,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            363 => 
+            363 =>
             array (
                 'id' => 364,
                 'status' => 0,
@@ -4024,7 +4024,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            364 => 
+            364 =>
             array (
                 'id' => 365,
                 'status' => 0,
@@ -4035,7 +4035,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            365 => 
+            365 =>
             array (
                 'id' => 366,
                 'status' => 0,
@@ -4046,7 +4046,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            366 => 
+            366 =>
             array (
                 'id' => 367,
                 'status' => 0,
@@ -4057,7 +4057,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            367 => 
+            367 =>
             array (
                 'id' => 368,
                 'status' => 0,
@@ -4068,7 +4068,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            368 => 
+            368 =>
             array (
                 'id' => 369,
                 'status' => 0,
@@ -4079,7 +4079,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            369 => 
+            369 =>
             array (
                 'id' => 370,
                 'status' => 0,
@@ -4090,7 +4090,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            370 => 
+            370 =>
             array (
                 'id' => 371,
                 'status' => 0,
@@ -4101,7 +4101,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            371 => 
+            371 =>
             array (
                 'id' => 372,
                 'status' => 0,
@@ -4112,7 +4112,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            372 => 
+            372 =>
             array (
                 'id' => 373,
                 'status' => 0,
@@ -4123,7 +4123,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            373 => 
+            373 =>
             array (
                 'id' => 374,
                 'status' => 0,
@@ -4134,7 +4134,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            374 => 
+            374 =>
             array (
                 'id' => 375,
                 'status' => 0,
@@ -4145,7 +4145,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            375 => 
+            375 =>
             array (
                 'id' => 376,
                 'status' => 0,
@@ -4156,7 +4156,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            376 => 
+            376 =>
             array (
                 'id' => 377,
                 'status' => 0,
@@ -4167,7 +4167,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            377 => 
+            377 =>
             array (
                 'id' => 378,
                 'status' => 0,
@@ -4178,7 +4178,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            378 => 
+            378 =>
             array (
                 'id' => 379,
                 'status' => 0,
@@ -4189,7 +4189,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            379 => 
+            379 =>
             array (
                 'id' => 380,
                 'status' => 0,
@@ -4200,7 +4200,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            380 => 
+            380 =>
             array (
                 'id' => 381,
                 'status' => 0,
@@ -4211,7 +4211,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            381 => 
+            381 =>
             array (
                 'id' => 382,
                 'status' => 0,
@@ -4222,7 +4222,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            382 => 
+            382 =>
             array (
                 'id' => 383,
                 'status' => 0,
@@ -4233,7 +4233,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            383 => 
+            383 =>
             array (
                 'id' => 384,
                 'status' => 0,
@@ -4244,7 +4244,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            384 => 
+            384 =>
             array (
                 'id' => 385,
                 'status' => 0,
@@ -4255,7 +4255,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            385 => 
+            385 =>
             array (
                 'id' => 386,
                 'status' => 0,
@@ -4266,7 +4266,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            386 => 
+            386 =>
             array (
                 'id' => 387,
                 'status' => 0,
@@ -4277,7 +4277,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            387 => 
+            387 =>
             array (
                 'id' => 388,
                 'status' => 0,
@@ -4288,7 +4288,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            388 => 
+            388 =>
             array (
                 'id' => 389,
                 'status' => 0,
@@ -4299,7 +4299,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            389 => 
+            389 =>
             array (
                 'id' => 390,
                 'status' => 0,
@@ -4310,7 +4310,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            390 => 
+            390 =>
             array (
                 'id' => 391,
                 'status' => 0,
@@ -4321,7 +4321,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            391 => 
+            391 =>
             array (
                 'id' => 392,
                 'status' => 0,
@@ -4332,7 +4332,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            392 => 
+            392 =>
             array (
                 'id' => 393,
                 'status' => 0,
@@ -4343,7 +4343,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            393 => 
+            393 =>
             array (
                 'id' => 394,
                 'status' => 0,
@@ -4354,7 +4354,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            394 => 
+            394 =>
             array (
                 'id' => 395,
                 'status' => 0,
@@ -4365,7 +4365,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            395 => 
+            395 =>
             array (
                 'id' => 396,
                 'status' => 0,
@@ -4376,7 +4376,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            396 => 
+            396 =>
             array (
                 'id' => 397,
                 'status' => 0,
@@ -4387,7 +4387,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:55',
             ),
-            397 => 
+            397 =>
             array (
                 'id' => 398,
                 'status' => 0,
@@ -4398,7 +4398,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            398 => 
+            398 =>
             array (
                 'id' => 399,
                 'status' => 0,
@@ -4409,7 +4409,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            399 => 
+            399 =>
             array (
                 'id' => 400,
                 'status' => 0,
@@ -4420,7 +4420,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            400 => 
+            400 =>
             array (
                 'id' => 401,
                 'status' => 0,
@@ -4431,7 +4431,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            401 => 
+            401 =>
             array (
                 'id' => 402,
                 'status' => 0,
@@ -4442,7 +4442,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            402 => 
+            402 =>
             array (
                 'id' => 403,
                 'status' => 0,
@@ -4453,7 +4453,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            403 => 
+            403 =>
             array (
                 'id' => 404,
                 'status' => 0,
@@ -4464,7 +4464,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            404 => 
+            404 =>
             array (
                 'id' => 405,
                 'status' => 0,
@@ -4475,7 +4475,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            405 => 
+            405 =>
             array (
                 'id' => 406,
                 'status' => 0,
@@ -4486,7 +4486,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            406 => 
+            406 =>
             array (
                 'id' => 407,
                 'status' => 1,
@@ -4497,7 +4497,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            407 => 
+            407 =>
             array (
                 'id' => 408,
                 'status' => 0,
@@ -4508,7 +4508,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            408 => 
+            408 =>
             array (
                 'id' => 409,
                 'status' => 0,
@@ -4519,7 +4519,7 @@ If you choose \'Dice\', the player will have to throw dice and their stats will 
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            409 => 
+            409 =>
             array (
                 'id' => 410,
                 'status' => 0,
@@ -4531,7 +4531,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            410 => 
+            410 =>
             array (
                 'id' => 411,
                 'status' => 0,
@@ -4542,7 +4542,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            411 => 
+            411 =>
             array (
                 'id' => 412,
                 'status' => 0,
@@ -4553,7 +4553,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            412 => 
+            412 =>
             array (
                 'id' => 413,
                 'status' => 0,
@@ -4564,7 +4564,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            413 => 
+            413 =>
             array (
                 'id' => 414,
                 'status' => 0,
@@ -4575,7 +4575,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            414 => 
+            414 =>
             array (
                 'id' => 415,
                 'status' => 0,
@@ -4586,7 +4586,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            415 => 
+            415 =>
             array (
                 'id' => 416,
                 'status' => 0,
@@ -4597,7 +4597,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            416 => 
+            416 =>
             array (
                 'id' => 417,
                 'status' => 0,
@@ -4608,7 +4608,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            417 => 
+            417 =>
             array (
                 'id' => 418,
                 'status' => 0,
@@ -4619,7 +4619,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            418 => 
+            418 =>
             array (
                 'id' => 419,
                 'status' => 0,
@@ -4630,7 +4630,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            419 => 
+            419 =>
             array (
                 'id' => 420,
                 'status' => 0,
@@ -4641,7 +4641,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            420 => 
+            420 =>
             array (
                 'id' => 421,
                 'status' => 0,
@@ -4652,7 +4652,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            421 => 
+            421 =>
             array (
                 'id' => 422,
                 'status' => 0,
@@ -4663,7 +4663,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            422 => 
+            422 =>
             array (
                 'id' => 423,
                 'status' => 0,
@@ -4674,7 +4674,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            423 => 
+            423 =>
             array (
                 'id' => 424,
                 'status' => 0,
@@ -4685,7 +4685,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            424 => 
+            424 =>
             array (
                 'id' => 425,
                 'status' => 0,
@@ -4696,7 +4696,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            425 => 
+            425 =>
             array (
                 'id' => 426,
                 'status' => 0,
@@ -4707,7 +4707,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            426 => 
+            426 =>
             array (
                 'id' => 427,
                 'status' => 0,
@@ -4718,7 +4718,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            427 => 
+            427 =>
             array (
                 'id' => 428,
                 'status' => 0,
@@ -4729,7 +4729,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            428 => 
+            428 =>
             array (
                 'id' => 429,
                 'status' => 0,
@@ -4740,7 +4740,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            429 => 
+            429 =>
             array (
                 'id' => 430,
                 'status' => 0,
@@ -4751,7 +4751,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            430 => 
+            430 =>
             array (
                 'id' => 431,
                 'status' => 0,
@@ -4762,7 +4762,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            431 => 
+            431 =>
             array (
                 'id' => 432,
                 'status' => 0,
@@ -4773,7 +4773,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            432 => 
+            432 =>
             array (
                 'id' => 433,
                 'status' => 0,
@@ -4784,7 +4784,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            433 => 
+            433 =>
             array (
                 'id' => 434,
                 'status' => 0,
@@ -4795,7 +4795,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            434 => 
+            434 =>
             array (
                 'id' => 435,
                 'status' => 0,
@@ -4806,7 +4806,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            435 => 
+            435 =>
             array (
                 'id' => 436,
                 'status' => 0,
@@ -4817,7 +4817,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            436 => 
+            436 =>
             array (
                 'id' => 437,
                 'status' => 0,
@@ -4828,7 +4828,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            437 => 
+            437 =>
             array (
                 'id' => 438,
                 'status' => 0,
@@ -4839,7 +4839,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            438 => 
+            438 =>
             array (
                 'id' => 439,
                 'status' => 0,
@@ -4850,7 +4850,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            439 => 
+            439 =>
             array (
                 'id' => 440,
                 'status' => 0,
@@ -4861,7 +4861,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            440 => 
+            440 =>
             array (
                 'id' => 441,
                 'status' => 0,
@@ -4872,7 +4872,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            441 => 
+            441 =>
             array (
                 'id' => 442,
                 'status' => 0,
@@ -4883,7 +4883,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            442 => 
+            442 =>
             array (
                 'id' => 443,
                 'status' => 0,
@@ -4894,7 +4894,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            443 => 
+            443 =>
             array (
                 'id' => 444,
                 'status' => 0,
@@ -4905,7 +4905,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            444 => 
+            444 =>
             array (
                 'id' => 445,
                 'status' => 0,
@@ -4916,7 +4916,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            445 => 
+            445 =>
             array (
                 'id' => 446,
                 'status' => 0,
@@ -4927,7 +4927,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            446 => 
+            446 =>
             array (
                 'id' => 447,
                 'status' => 0,
@@ -4938,7 +4938,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            447 => 
+            447 =>
             array (
                 'id' => 448,
                 'status' => 0,
@@ -4949,7 +4949,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            448 => 
+            448 =>
             array (
                 'id' => 449,
                 'status' => 0,
@@ -4960,7 +4960,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            449 => 
+            449 =>
             array (
                 'id' => 450,
                 'status' => 0,
@@ -4971,7 +4971,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            450 => 
+            450 =>
             array (
                 'id' => 451,
                 'status' => 0,
@@ -4982,7 +4982,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            451 => 
+            451 =>
             array (
                 'id' => 452,
                 'status' => 0,
@@ -4993,7 +4993,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            452 => 
+            452 =>
             array (
                 'id' => 453,
                 'status' => 0,
@@ -5004,7 +5004,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            453 => 
+            453 =>
             array (
                 'id' => 454,
                 'status' => 0,
@@ -5015,7 +5015,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            454 => 
+            454 =>
             array (
                 'id' => 455,
                 'status' => 0,
@@ -5026,7 +5026,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            455 => 
+            455 =>
             array (
                 'id' => 456,
                 'status' => 0,
@@ -5037,7 +5037,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            456 => 
+            456 =>
             array (
                 'id' => 457,
                 'status' => 0,
@@ -5048,7 +5048,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            457 => 
+            457 =>
             array (
                 'id' => 458,
                 'status' => 0,
@@ -5059,7 +5059,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            458 => 
+            458 =>
             array (
                 'id' => 459,
                 'status' => 0,
@@ -5070,7 +5070,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            459 => 
+            459 =>
             array (
                 'id' => 460,
                 'status' => 0,
@@ -5081,7 +5081,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            460 => 
+            460 =>
             array (
                 'id' => 461,
                 'status' => 0,
@@ -5092,7 +5092,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:47',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            461 => 
+            461 =>
             array (
                 'id' => 462,
                 'status' => 0,
@@ -5103,7 +5103,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:56',
         ),
-        462 => 
+        462 =>
         array (
             'id' => 463,
             'status' => 0,
@@ -5114,7 +5114,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:56',
         ),
-        463 => 
+        463 =>
         array (
             'id' => 464,
             'status' => 0,
@@ -5125,7 +5125,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:56',
         ),
-        464 => 
+        464 =>
         array (
             'id' => 465,
             'status' => 0,
@@ -5136,7 +5136,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:56',
         ),
-        465 => 
+        465 =>
         array (
             'id' => 466,
             'status' => 0,
@@ -5147,7 +5147,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:56',
         ),
-        466 => 
+        466 =>
         array (
             'id' => 467,
             'status' => 0,
@@ -5158,7 +5158,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:56',
         ),
-        467 => 
+        467 =>
         array (
             'id' => 468,
             'status' => 0,
@@ -5169,7 +5169,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:56',
         ),
-        468 => 
+        468 =>
         array (
             'id' => 469,
             'status' => 0,
@@ -5180,7 +5180,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:56',
         ),
-        469 => 
+        469 =>
         array (
             'id' => 470,
             'status' => 0,
@@ -5191,7 +5191,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
             'created_at' => '2020-06-05 18:48:47',
             'updated_at' => '2020-08-16 20:10:56',
         ),
-        470 => 
+        470 =>
         array (
             'id' => 471,
             'status' => 0,
@@ -5202,7 +5202,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
         'created_at' => '2020-06-05 18:48:47',
         'updated_at' => '2020-08-16 20:10:56',
     ),
-    471 => 
+    471 =>
     array (
         'id' => 472,
         'status' => 0,
@@ -5213,7 +5213,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
         'created_at' => '2020-06-05 18:48:47',
         'updated_at' => '2020-08-16 20:10:56',
     ),
-    472 => 
+    472 =>
     array (
         'id' => 473,
         'status' => 0,
@@ -5224,7 +5224,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
         'created_at' => '2020-06-05 18:48:47',
         'updated_at' => '2020-08-16 20:10:56',
     ),
-    473 => 
+    473 =>
     array (
         'id' => 474,
         'status' => 0,
@@ -5235,7 +5235,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
         'created_at' => '2020-06-05 18:48:47',
         'updated_at' => '2020-08-16 20:10:56',
     ),
-    474 => 
+    474 =>
     array (
         'id' => 475,
         'status' => 1,
@@ -5246,7 +5246,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
         'created_at' => '2020-06-05 18:48:47',
         'updated_at' => '2020-08-16 20:10:56',
     ),
-    475 => 
+    475 =>
     array (
         'id' => 476,
         'status' => 0,
@@ -5257,7 +5257,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
         'created_at' => '2020-06-05 18:48:47',
         'updated_at' => '2020-08-16 20:10:56',
     ),
-    476 => 
+    476 =>
     array (
         'id' => 477,
         'status' => 0,
@@ -5268,7 +5268,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
         'created_at' => '2020-06-05 18:48:47',
         'updated_at' => '2020-08-16 20:10:56',
     ),
-    477 => 
+    477 =>
     array (
         'id' => 478,
         'status' => 0,
@@ -5279,7 +5279,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
         'created_at' => '2020-06-05 18:48:47',
         'updated_at' => '2020-08-16 20:10:56',
     ),
-    478 => 
+    478 =>
     array (
         'id' => 479,
         'status' => 0,
@@ -5290,7 +5290,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
         'created_at' => '2020-06-05 18:48:47',
         'updated_at' => '2020-08-16 20:10:56',
     ),
-    479 => 
+    479 =>
     array (
         'id' => 480,
         'status' => 0,
@@ -5301,7 +5301,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
         'created_at' => '2020-06-05 18:48:47',
         'updated_at' => '2020-08-16 20:10:56',
     ),
-    480 => 
+    480 =>
     array (
         'id' => 481,
         'status' => 0,
@@ -5312,7 +5312,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
         'created_at' => '2020-06-05 18:48:47',
         'updated_at' => '2020-08-16 20:10:56',
     ),
-    481 => 
+    481 =>
     array (
         'id' => 482,
         'status' => 0,
@@ -5323,7 +5323,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
         'created_at' => '2020-06-05 18:48:47',
         'updated_at' => '2020-08-16 20:10:56',
     ),
-    482 => 
+    482 =>
     array (
         'id' => 483,
         'status' => 0,
@@ -5334,7 +5334,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
         'created_at' => '2020-06-05 18:48:47',
         'updated_at' => '2020-08-16 20:10:56',
     ),
-    483 => 
+    483 =>
     array (
         'id' => 484,
         'status' => 0,
@@ -5345,7 +5345,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
         'created_at' => '2020-06-05 18:48:47',
         'updated_at' => '2020-08-16 20:10:56',
     ),
-    484 => 
+    484 =>
     array (
         'id' => 485,
         'status' => 0,
@@ -5356,7 +5356,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
         'created_at' => '2020-06-05 18:48:47',
         'updated_at' => '2020-08-16 20:10:56',
     ),
-    485 => 
+    485 =>
     array (
         'id' => 486,
         'status' => 0,
@@ -5367,7 +5367,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
         'created_at' => '2020-06-05 18:48:47',
         'updated_at' => '2020-08-16 20:10:56',
     ),
-    486 => 
+    486 =>
     array (
         'id' => 487,
         'status' => 0,
@@ -5378,7 +5378,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
         'created_at' => '2020-06-05 18:48:47',
         'updated_at' => '2020-08-16 20:10:56',
     ),
-    487 => 
+    487 =>
     array (
         'id' => 488,
         'status' => 0,
@@ -5389,7 +5389,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
         'created_at' => '2020-06-05 18:48:47',
         'updated_at' => '2020-08-16 20:10:56',
     ),
-    488 => 
+    488 =>
     array (
         'id' => 489,
         'status' => 0,
@@ -5400,7 +5400,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
         'created_at' => '2020-06-05 18:48:48',
         'updated_at' => '2020-08-16 20:10:56',
     ),
-    489 => 
+    489 =>
     array (
         'id' => 490,
         'status' => 0,
@@ -5411,7 +5411,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
             'created_at' => '2020-06-05 18:48:48',
             'updated_at' => '2020-08-16 20:10:56',
         ),
-        490 => 
+        490 =>
         array (
             'id' => 491,
             'status' => 0,
@@ -5422,7 +5422,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
             'created_at' => '2020-06-05 18:48:48',
             'updated_at' => '2020-08-16 20:10:56',
         ),
-        491 => 
+        491 =>
         array (
             'id' => 492,
             'status' => 0,
@@ -5433,7 +5433,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
             'created_at' => '2020-06-05 18:48:48',
             'updated_at' => '2020-08-16 20:10:56',
         ),
-        492 => 
+        492 =>
         array (
             'id' => 493,
             'status' => 0,
@@ -5445,7 +5445,7 @@ dans ton navigateur : [:actionURL](:actionURL)',
             'created_at' => '2020-06-05 18:48:48',
             'updated_at' => '2020-08-16 20:10:56',
         ),
-        493 => 
+        493 =>
         array (
             'id' => 494,
             'status' => 0,
@@ -5456,7 +5456,7 @@ dans ton navigateur : [:actionURL](:actionURL)',
             'created_at' => '2020-06-05 18:48:48',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        494 => 
+        494 =>
         array (
             'id' => 495,
             'status' => 0,
@@ -5467,7 +5467,7 @@ dans ton navigateur : [:actionURL](:actionURL)',
             'created_at' => '2020-06-05 18:48:48',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        495 => 
+        495 =>
         array (
             'id' => 496,
             'status' => 0,
@@ -5478,7 +5478,7 @@ dans ton navigateur : [:actionURL](:actionURL)',
             'created_at' => '2020-06-05 18:48:48',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        496 => 
+        496 =>
         array (
             'id' => 497,
             'status' => 0,
@@ -5490,7 +5490,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
             'created_at' => '2020-06-05 18:48:48',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        497 => 
+        497 =>
         array (
             'id' => 498,
             'status' => 0,
@@ -5501,7 +5501,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
             'created_at' => '2020-06-05 18:48:48',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        498 => 
+        498 =>
         array (
             'id' => 499,
             'status' => 0,
@@ -5512,7 +5512,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
             'created_at' => '2020-06-05 18:48:48',
             'updated_at' => '2020-06-05 18:54:26',
         ),
-        499 => 
+        499 =>
         array (
             'id' => 500,
             'status' => 1,
@@ -5525,7 +5525,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
         ),
     ));
         \DB::table('ltm_translations')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 501,
                 'status' => 0,
@@ -5536,7 +5536,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 502,
                 'status' => 0,
@@ -5547,7 +5547,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 503,
                 'status' => 0,
@@ -5558,7 +5558,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 504,
                 'status' => 0,
@@ -5569,7 +5569,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 505,
                 'status' => 0,
@@ -5580,7 +5580,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 506,
                 'status' => 0,
@@ -5591,7 +5591,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 507,
                 'status' => 0,
@@ -5602,7 +5602,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 508,
                 'status' => 0,
@@ -5613,7 +5613,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 509,
                 'status' => 0,
@@ -5624,7 +5624,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 510,
                 'status' => 0,
@@ -5635,7 +5635,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 511,
                 'status' => 0,
@@ -5646,7 +5646,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 512,
                 'status' => 0,
@@ -5657,7 +5657,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 513,
                 'status' => 0,
@@ -5668,7 +5668,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 514,
                 'status' => 0,
@@ -5679,7 +5679,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 515,
                 'status' => 0,
@@ -5690,7 +5690,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            15 => 
+            15 =>
             array (
                 'id' => 516,
                 'status' => 0,
@@ -5701,7 +5701,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            16 => 
+            16 =>
             array (
                 'id' => 517,
                 'status' => 0,
@@ -5712,7 +5712,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            17 => 
+            17 =>
             array (
                 'id' => 518,
                 'status' => 0,
@@ -5723,7 +5723,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            18 => 
+            18 =>
             array (
                 'id' => 519,
                 'status' => 0,
@@ -5734,7 +5734,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            19 => 
+            19 =>
             array (
                 'id' => 520,
                 'status' => 0,
@@ -5745,7 +5745,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            20 => 
+            20 =>
             array (
                 'id' => 521,
                 'status' => 0,
@@ -5756,7 +5756,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            21 => 
+            21 =>
             array (
                 'id' => 522,
                 'status' => 0,
@@ -5767,7 +5767,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            22 => 
+            22 =>
             array (
                 'id' => 523,
                 'status' => 0,
@@ -5778,7 +5778,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            23 => 
+            23 =>
             array (
                 'id' => 524,
                 'status' => 0,
@@ -5789,7 +5789,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            24 => 
+            24 =>
             array (
                 'id' => 525,
                 'status' => 0,
@@ -5800,7 +5800,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            25 => 
+            25 =>
             array (
                 'id' => 526,
                 'status' => 0,
@@ -5811,7 +5811,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            26 => 
+            26 =>
             array (
                 'id' => 527,
                 'status' => 0,
@@ -5822,7 +5822,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            27 => 
+            27 =>
             array (
                 'id' => 528,
                 'status' => 0,
@@ -5833,7 +5833,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            28 => 
+            28 =>
             array (
                 'id' => 529,
                 'status' => 0,
@@ -5844,7 +5844,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            29 => 
+            29 =>
             array (
                 'id' => 530,
                 'status' => 0,
@@ -5855,7 +5855,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            30 => 
+            30 =>
             array (
                 'id' => 531,
                 'status' => 0,
@@ -5866,7 +5866,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            31 => 
+            31 =>
             array (
                 'id' => 532,
                 'status' => 0,
@@ -5877,7 +5877,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            32 => 
+            32 =>
             array (
                 'id' => 533,
                 'status' => 0,
@@ -5888,7 +5888,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            33 => 
+            33 =>
             array (
                 'id' => 534,
                 'status' => 0,
@@ -5899,7 +5899,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            34 => 
+            34 =>
             array (
                 'id' => 535,
                 'status' => 0,
@@ -5910,7 +5910,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            35 => 
+            35 =>
             array (
                 'id' => 536,
                 'status' => 0,
@@ -5921,7 +5921,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            36 => 
+            36 =>
             array (
                 'id' => 537,
                 'status' => 0,
@@ -5932,7 +5932,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            37 => 
+            37 =>
             array (
                 'id' => 538,
                 'status' => 0,
@@ -5943,7 +5943,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            38 => 
+            38 =>
             array (
                 'id' => 539,
                 'status' => 0,
@@ -5954,7 +5954,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            39 => 
+            39 =>
             array (
                 'id' => 540,
                 'status' => 0,
@@ -5965,7 +5965,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            40 => 
+            40 =>
             array (
                 'id' => 541,
                 'status' => 0,
@@ -5976,7 +5976,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            41 => 
+            41 =>
             array (
                 'id' => 542,
                 'status' => 0,
@@ -5987,7 +5987,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            42 => 
+            42 =>
             array (
                 'id' => 543,
                 'status' => 0,
@@ -5998,7 +5998,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            43 => 
+            43 =>
             array (
                 'id' => 544,
                 'status' => 0,
@@ -6009,7 +6009,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            44 => 
+            44 =>
             array (
                 'id' => 545,
                 'status' => 0,
@@ -6020,7 +6020,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            45 => 
+            45 =>
             array (
                 'id' => 546,
                 'status' => 0,
@@ -6031,7 +6031,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            46 => 
+            46 =>
             array (
                 'id' => 547,
                 'status' => 0,
@@ -6042,7 +6042,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            47 => 
+            47 =>
             array (
                 'id' => 548,
                 'status' => 0,
@@ -6053,7 +6053,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            48 => 
+            48 =>
             array (
                 'id' => 549,
                 'status' => 0,
@@ -6064,7 +6064,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            49 => 
+            49 =>
             array (
                 'id' => 550,
                 'status' => 0,
@@ -6075,7 +6075,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            50 => 
+            50 =>
             array (
                 'id' => 551,
                 'status' => 0,
@@ -6086,7 +6086,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            51 => 
+            51 =>
             array (
                 'id' => 552,
                 'status' => 0,
@@ -6097,7 +6097,7 @@ Choisis une page déjà existante pour que le joueur puisse y retourner.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            52 => 
+            52 =>
             array (
                 'id' => 553,
                 'status' => 0,
@@ -6109,7 +6109,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            53 => 
+            53 =>
             array (
                 'id' => 554,
                 'status' => 0,
@@ -6120,7 +6120,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            54 => 
+            54 =>
             array (
                 'id' => 555,
                 'status' => 0,
@@ -6131,7 +6131,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            55 => 
+            55 =>
             array (
                 'id' => 556,
                 'status' => 0,
@@ -6142,7 +6142,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            56 => 
+            56 =>
             array (
                 'id' => 557,
                 'status' => 0,
@@ -6153,7 +6153,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            57 => 
+            57 =>
             array (
                 'id' => 558,
                 'status' => 0,
@@ -6164,7 +6164,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            58 => 
+            58 =>
             array (
                 'id' => 559,
                 'status' => 0,
@@ -6175,7 +6175,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:54:26',
             ),
-            59 => 
+            59 =>
             array (
                 'id' => 560,
                 'status' => 0,
@@ -6186,7 +6186,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            60 => 
+            60 =>
             array (
                 'id' => 561,
                 'status' => 0,
@@ -6197,7 +6197,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            61 => 
+            61 =>
             array (
                 'id' => 562,
                 'status' => 0,
@@ -6208,7 +6208,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            62 => 
+            62 =>
             array (
                 'id' => 563,
                 'status' => 0,
@@ -6219,7 +6219,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            63 => 
+            63 =>
             array (
                 'id' => 564,
                 'status' => 0,
@@ -6230,7 +6230,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            64 => 
+            64 =>
             array (
                 'id' => 565,
                 'status' => 0,
@@ -6241,7 +6241,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            65 => 
+            65 =>
             array (
                 'id' => 566,
                 'status' => 0,
@@ -6252,7 +6252,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            66 => 
+            66 =>
             array (
                 'id' => 567,
                 'status' => 0,
@@ -6263,7 +6263,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            67 => 
+            67 =>
             array (
                 'id' => 568,
                 'status' => 0,
@@ -6274,7 +6274,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            68 => 
+            68 =>
             array (
                 'id' => 569,
                 'status' => 0,
@@ -6285,7 +6285,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            69 => 
+            69 =>
             array (
                 'id' => 570,
                 'status' => 0,
@@ -6296,7 +6296,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            70 => 
+            70 =>
             array (
                 'id' => 571,
                 'status' => 0,
@@ -6307,7 +6307,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            71 => 
+            71 =>
             array (
                 'id' => 572,
                 'status' => 0,
@@ -6318,7 +6318,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            72 => 
+            72 =>
             array (
                 'id' => 573,
                 'status' => 0,
@@ -6329,7 +6329,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            73 => 
+            73 =>
             array (
                 'id' => 574,
                 'status' => 0,
@@ -6340,7 +6340,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            74 => 
+            74 =>
             array (
                 'id' => 575,
                 'status' => 0,
@@ -6351,7 +6351,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            75 => 
+            75 =>
             array (
                 'id' => 576,
                 'status' => 0,
@@ -6362,7 +6362,7 @@ Le lien lui-même mène vers la page dont le titre est :<br><i>:choice_title</i>
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            76 => 
+            76 =>
             array (
                 'id' => 577,
                 'status' => 0,
@@ -6374,7 +6374,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            77 => 
+            77 =>
             array (
                 'id' => 578,
                 'status' => 0,
@@ -6385,7 +6385,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            78 => 
+            78 =>
             array (
                 'id' => 579,
                 'status' => 0,
@@ -6396,7 +6396,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            79 => 
+            79 =>
             array (
                 'id' => 580,
                 'status' => 0,
@@ -6407,7 +6407,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            80 => 
+            80 =>
             array (
                 'id' => 581,
                 'status' => 1,
@@ -6418,7 +6418,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-06-05 18:48:48',
             ),
-            81 => 
+            81 =>
             array (
                 'id' => 582,
                 'status' => 0,
@@ -6429,7 +6429,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            82 => 
+            82 =>
             array (
                 'id' => 583,
                 'status' => 0,
@@ -6440,7 +6440,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            83 => 
+            83 =>
             array (
                 'id' => 584,
                 'status' => 0,
@@ -6451,7 +6451,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            84 => 
+            84 =>
             array (
                 'id' => 585,
                 'status' => 0,
@@ -6462,7 +6462,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            85 => 
+            85 =>
             array (
                 'id' => 586,
                 'status' => 0,
@@ -6473,7 +6473,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            86 => 
+            86 =>
             array (
                 'id' => 587,
                 'status' => 0,
@@ -6484,7 +6484,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            87 => 
+            87 =>
             array (
                 'id' => 588,
                 'status' => 0,
@@ -6495,7 +6495,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            88 => 
+            88 =>
             array (
                 'id' => 589,
                 'status' => 0,
@@ -6506,7 +6506,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            89 => 
+            89 =>
             array (
                 'id' => 590,
                 'status' => 0,
@@ -6517,7 +6517,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            90 => 
+            90 =>
             array (
                 'id' => 591,
                 'status' => 0,
@@ -6528,7 +6528,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            91 => 
+            91 =>
             array (
                 'id' => 592,
                 'status' => 0,
@@ -6539,7 +6539,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            92 => 
+            92 =>
             array (
                 'id' => 593,
                 'status' => 0,
@@ -6550,7 +6550,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            93 => 
+            93 =>
             array (
                 'id' => 594,
                 'status' => 0,
@@ -6561,7 +6561,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                 'created_at' => '2020-06-05 18:48:48',
                 'updated_at' => '2020-08-16 20:10:56',
             ),
-            94 => 
+            94 =>
             array (
                 'id' => 595,
                 'status' => 0,
@@ -6572,7 +6572,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                95 => 
+                95 =>
                 array (
                     'id' => 596,
                     'status' => 0,
@@ -6583,7 +6583,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                96 => 
+                96 =>
                 array (
                     'id' => 597,
                     'status' => 0,
@@ -6594,7 +6594,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                97 => 
+                97 =>
                 array (
                     'id' => 598,
                     'status' => 0,
@@ -6605,7 +6605,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                98 => 
+                98 =>
                 array (
                     'id' => 599,
                     'status' => 0,
@@ -6616,7 +6616,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                99 => 
+                99 =>
                 array (
                     'id' => 600,
                     'status' => 0,
@@ -6627,7 +6627,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                100 => 
+                100 =>
                 array (
                     'id' => 601,
                     'status' => 0,
@@ -6638,7 +6638,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                101 => 
+                101 =>
                 array (
                     'id' => 602,
                     'status' => 0,
@@ -6649,7 +6649,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                102 => 
+                102 =>
                 array (
                     'id' => 603,
                     'status' => 0,
@@ -6660,7 +6660,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                103 => 
+                103 =>
                 array (
                     'id' => 604,
                     'status' => 0,
@@ -6671,7 +6671,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                104 => 
+                104 =>
                 array (
                     'id' => 605,
                     'status' => 0,
@@ -6682,7 +6682,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                105 => 
+                105 =>
                 array (
                     'id' => 606,
                     'status' => 0,
@@ -6693,7 +6693,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                106 => 
+                106 =>
                 array (
                     'id' => 607,
                     'status' => 0,
@@ -6704,7 +6704,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                107 => 
+                107 =>
                 array (
                     'id' => 608,
                     'status' => 0,
@@ -6715,7 +6715,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                108 => 
+                108 =>
                 array (
                     'id' => 609,
                     'status' => 0,
@@ -6726,7 +6726,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                109 => 
+                109 =>
                 array (
                     'id' => 610,
                     'status' => 0,
@@ -6737,7 +6737,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                110 => 
+                110 =>
                 array (
                     'id' => 611,
                     'status' => 0,
@@ -6748,7 +6748,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                111 => 
+                111 =>
                 array (
                     'id' => 612,
                     'status' => 0,
@@ -6759,7 +6759,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                112 => 
+                112 =>
                 array (
                     'id' => 613,
                     'status' => 0,
@@ -6770,7 +6770,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                113 => 
+                113 =>
                 array (
                     'id' => 614,
                     'status' => 0,
@@ -6781,7 +6781,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                114 => 
+                114 =>
                 array (
                     'id' => 615,
                     'status' => 0,
@@ -6792,7 +6792,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                115 => 
+                115 =>
                 array (
                     'id' => 616,
                     'status' => 0,
@@ -6803,7 +6803,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                116 => 
+                116 =>
                 array (
                     'id' => 617,
                     'status' => 0,
@@ -6814,7 +6814,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                117 => 
+                117 =>
                 array (
                     'id' => 618,
                     'status' => 0,
@@ -6825,18 +6825,18 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                118 => 
+                118 =>
                 array (
                     'id' => 619,
                     'status' => 0,
                     'locale' => 'fr_FR',
                     'group' => 'story',
                     'key' => 'create_tab4',
-                    'value' => '4. Créations d\'objets',
+                    'value' => '4. Gesion des objets',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                119 => 
+                119 =>
                 array (
                     'id' => 620,
                     'status' => 0,
@@ -6847,7 +6847,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                120 => 
+                120 =>
                 array (
                     'id' => 621,
                     'status' => 0,
@@ -6858,7 +6858,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                121 => 
+                121 =>
                 array (
                     'id' => 622,
                     'status' => 0,
@@ -6869,7 +6869,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                122 => 
+                122 =>
                 array (
                     'id' => 623,
                     'status' => 0,
@@ -6880,7 +6880,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                123 => 
+                123 =>
                 array (
                     'id' => 624,
                     'status' => 0,
@@ -6891,7 +6891,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                124 => 
+                124 =>
                 array (
                     'id' => 625,
                     'status' => 0,
@@ -6902,7 +6902,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                125 => 
+                125 =>
                 array (
                     'id' => 626,
                     'status' => 0,
@@ -6913,7 +6913,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                126 => 
+                126 =>
                 array (
                     'id' => 627,
                     'status' => 0,
@@ -6924,7 +6924,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                127 => 
+                127 =>
                 array (
                     'id' => 628,
                     'status' => 0,
@@ -6935,7 +6935,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                128 => 
+                128 =>
                 array (
                     'id' => 629,
                     'status' => 0,
@@ -6946,7 +6946,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                129 => 
+                129 =>
                 array (
                     'id' => 630,
                     'status' => 0,
@@ -6957,7 +6957,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                130 => 
+                130 =>
                 array (
                     'id' => 631,
                     'status' => 0,
@@ -6968,7 +6968,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                131 => 
+                131 =>
                 array (
                     'id' => 632,
                     'status' => 0,
@@ -6979,7 +6979,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                132 => 
+                132 =>
                 array (
                     'id' => 633,
                     'status' => 0,
@@ -6990,7 +6990,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                133 => 
+                133 =>
                 array (
                     'id' => 634,
                     'status' => 0,
@@ -7001,7 +7001,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                134 => 
+                134 =>
                 array (
                     'id' => 635,
                     'status' => 0,
@@ -7012,7 +7012,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                135 => 
+                135 =>
                 array (
                     'id' => 636,
                     'status' => 0,
@@ -7023,7 +7023,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                136 => 
+                136 =>
                 array (
                     'id' => 637,
                     'status' => 0,
@@ -7034,7 +7034,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                137 => 
+                137 =>
                 array (
                     'id' => 638,
                     'status' => 0,
@@ -7045,7 +7045,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                138 => 
+                138 =>
                 array (
                     'id' => 639,
                     'status' => 0,
@@ -7056,7 +7056,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                139 => 
+                139 =>
                 array (
                     'id' => 640,
                     'status' => 0,
@@ -7067,7 +7067,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                140 => 
+                140 =>
                 array (
                     'id' => 641,
                     'status' => 0,
@@ -7078,7 +7078,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                141 => 
+                141 =>
                 array (
                     'id' => 642,
                     'status' => 0,
@@ -7089,7 +7089,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                142 => 
+                142 =>
                 array (
                     'id' => 643,
                     'status' => 0,
@@ -7100,7 +7100,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                143 => 
+                143 =>
                 array (
                     'id' => 644,
                     'status' => 0,
@@ -7111,7 +7111,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                144 => 
+                144 =>
                 array (
                     'id' => 645,
                     'status' => 0,
@@ -7122,7 +7122,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                145 => 
+                145 =>
                 array (
                     'id' => 646,
                     'status' => 0,
@@ -7133,7 +7133,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                146 => 
+                146 =>
                 array (
                     'id' => 647,
                     'status' => 0,
@@ -7144,7 +7144,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                147 => 
+                147 =>
                 array (
                     'id' => 648,
                     'status' => 0,
@@ -7155,7 +7155,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                148 => 
+                148 =>
                 array (
                     'id' => 649,
                     'status' => 0,
@@ -7166,7 +7166,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                149 => 
+                149 =>
                 array (
                     'id' => 650,
                     'status' => 0,
@@ -7177,7 +7177,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                150 => 
+                150 =>
                 array (
                     'id' => 651,
                     'status' => 0,
@@ -7188,7 +7188,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                151 => 
+                151 =>
                 array (
                     'id' => 652,
                     'status' => 0,
@@ -7199,7 +7199,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                152 => 
+                152 =>
                 array (
                     'id' => 653,
                     'status' => 0,
@@ -7210,7 +7210,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                153 => 
+                153 =>
                 array (
                     'id' => 654,
                     'status' => 0,
@@ -7221,7 +7221,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                154 => 
+                154 =>
                 array (
                     'id' => 655,
                     'status' => 0,
@@ -7232,7 +7232,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                155 => 
+                155 =>
                 array (
                     'id' => 656,
                     'status' => 0,
@@ -7243,7 +7243,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                156 => 
+                156 =>
                 array (
                     'id' => 657,
                     'status' => 0,
@@ -7254,7 +7254,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                157 => 
+                157 =>
                 array (
                     'id' => 658,
                     'status' => 0,
@@ -7265,7 +7265,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                158 => 
+                158 =>
                 array (
                     'id' => 659,
                     'status' => 0,
@@ -7276,7 +7276,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                159 => 
+                159 =>
                 array (
                     'id' => 660,
                     'status' => 0,
@@ -7287,7 +7287,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                160 => 
+                160 =>
                 array (
                     'id' => 661,
                     'status' => 0,
@@ -7298,7 +7298,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                161 => 
+                161 =>
                 array (
                     'id' => 662,
                     'status' => 0,
@@ -7309,7 +7309,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                162 => 
+                162 =>
                 array (
                     'id' => 663,
                     'status' => 0,
@@ -7320,7 +7320,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                163 => 
+                163 =>
                 array (
                     'id' => 664,
                     'status' => 0,
@@ -7331,7 +7331,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                164 => 
+                164 =>
                 array (
                     'id' => 665,
                     'status' => 0,
@@ -7342,7 +7342,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                165 => 
+                165 =>
                 array (
                     'id' => 666,
                     'status' => 0,
@@ -7353,7 +7353,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                166 => 
+                166 =>
                 array (
                     'id' => 667,
                     'status' => 0,
@@ -7364,7 +7364,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                167 => 
+                167 =>
                 array (
                     'id' => 668,
                     'status' => 0,
@@ -7375,7 +7375,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                168 => 
+                168 =>
                 array (
                     'id' => 669,
                     'status' => 0,
@@ -7386,7 +7386,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                169 => 
+                169 =>
                 array (
                     'id' => 670,
                     'status' => 0,
@@ -7397,7 +7397,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                170 => 
+                170 =>
                 array (
                     'id' => 671,
                     'status' => 0,
@@ -7408,7 +7408,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                171 => 
+                171 =>
                 array (
                     'id' => 672,
                     'status' => 0,
@@ -7419,7 +7419,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                172 => 
+                172 =>
                 array (
                     'id' => 673,
                     'status' => 0,
@@ -7430,7 +7430,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                173 => 
+                173 =>
                 array (
                     'id' => 674,
                     'status' => 0,
@@ -7441,7 +7441,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                174 => 
+                174 =>
                 array (
                     'id' => 675,
                     'status' => 0,
@@ -7452,7 +7452,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                175 => 
+                175 =>
                 array (
                     'id' => 676,
                     'status' => 0,
@@ -7463,7 +7463,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                176 => 
+                176 =>
                 array (
                     'id' => 677,
                     'status' => 0,
@@ -7474,7 +7474,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                177 => 
+                177 =>
                 array (
                     'id' => 678,
                     'status' => 0,
@@ -7485,7 +7485,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                178 => 
+                178 =>
                 array (
                     'id' => 679,
                     'status' => 0,
@@ -7496,7 +7496,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                179 => 
+                179 =>
                 array (
                     'id' => 680,
                     'status' => 0,
@@ -7507,7 +7507,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                180 => 
+                180 =>
                 array (
                     'id' => 681,
                     'status' => 0,
@@ -7518,7 +7518,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                181 => 
+                181 =>
                 array (
                     'id' => 682,
                     'status' => 0,
@@ -7529,7 +7529,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                182 => 
+                182 =>
                 array (
                     'id' => 683,
                     'status' => 0,
@@ -7540,7 +7540,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                183 => 
+                183 =>
                 array (
                     'id' => 684,
                     'status' => 0,
@@ -7551,7 +7551,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                184 => 
+                184 =>
                 array (
                     'id' => 685,
                     'status' => 0,
@@ -7562,7 +7562,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                185 => 
+                185 =>
                 array (
                     'id' => 686,
                     'status' => 0,
@@ -7573,7 +7573,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                186 => 
+                186 =>
                 array (
                     'id' => 687,
                     'status' => 0,
@@ -7584,7 +7584,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                187 => 
+                187 =>
                 array (
                     'id' => 688,
                     'status' => 0,
@@ -7595,7 +7595,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                188 => 
+                188 =>
                 array (
                     'id' => 689,
                     'status' => 0,
@@ -7606,7 +7606,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                189 => 
+                189 =>
                 array (
                     'id' => 690,
                     'status' => 0,
@@ -7617,7 +7617,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                190 => 
+                190 =>
                 array (
                     'id' => 691,
                     'status' => 0,
@@ -7628,7 +7628,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                191 => 
+                191 =>
                 array (
                     'id' => 692,
                     'status' => 0,
@@ -7639,7 +7639,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                192 => 
+                192 =>
                 array (
                     'id' => 693,
                     'status' => 0,
@@ -7650,7 +7650,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                193 => 
+                193 =>
                 array (
                     'id' => 694,
                     'status' => 0,
@@ -7661,7 +7661,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                194 => 
+                194 =>
                 array (
                     'id' => 695,
                     'status' => 0,
@@ -7672,7 +7672,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                195 => 
+                195 =>
                 array (
                     'id' => 696,
                     'status' => 0,
@@ -7683,7 +7683,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                196 => 
+                196 =>
                 array (
                     'id' => 697,
                     'status' => 0,
@@ -7694,7 +7694,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                197 => 
+                197 =>
                 array (
                     'id' => 698,
                     'status' => 0,
@@ -7705,7 +7705,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                198 => 
+                198 =>
                 array (
                     'id' => 699,
                     'status' => 0,
@@ -7716,7 +7716,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                199 => 
+                199 =>
                 array (
                     'id' => 700,
                     'status' => 0,
@@ -7727,7 +7727,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                200 => 
+                200 =>
                 array (
                     'id' => 701,
                     'status' => 0,
@@ -7738,7 +7738,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                201 => 
+                201 =>
                 array (
                     'id' => 702,
                     'status' => 0,
@@ -7749,7 +7749,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                202 => 
+                202 =>
                 array (
                     'id' => 703,
                     'status' => 0,
@@ -7760,7 +7760,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                203 => 
+                203 =>
                 array (
                     'id' => 704,
                     'status' => 0,
@@ -7771,7 +7771,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                204 => 
+                204 =>
                 array (
                     'id' => 705,
                     'status' => 0,
@@ -7782,7 +7782,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                205 => 
+                205 =>
                 array (
                     'id' => 706,
                     'status' => 0,
@@ -7793,7 +7793,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                206 => 
+                206 =>
                 array (
                     'id' => 707,
                     'status' => 0,
@@ -7804,7 +7804,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                207 => 
+                207 =>
                 array (
                     'id' => 708,
                     'status' => 0,
@@ -7815,7 +7815,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                208 => 
+                208 =>
                 array (
                     'id' => 709,
                     'status' => 0,
@@ -7826,7 +7826,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                209 => 
+                209 =>
                 array (
                     'id' => 710,
                     'status' => 0,
@@ -7837,7 +7837,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                210 => 
+                210 =>
                 array (
                     'id' => 711,
                     'status' => 0,
@@ -7848,7 +7848,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                211 => 
+                211 =>
                 array (
                     'id' => 712,
                     'status' => 0,
@@ -7859,7 +7859,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                212 => 
+                212 =>
                 array (
                     'id' => 713,
                     'status' => 0,
@@ -7870,7 +7870,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                213 => 
+                213 =>
                 array (
                     'id' => 714,
                     'status' => 0,
@@ -7881,7 +7881,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                214 => 
+                214 =>
                 array (
                     'id' => 715,
                     'status' => 0,
@@ -7892,7 +7892,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                215 => 
+                215 =>
                 array (
                     'id' => 716,
                     'status' => 0,
@@ -7903,7 +7903,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                216 => 
+                216 =>
                 array (
                     'id' => 717,
                     'status' => 0,
@@ -7914,7 +7914,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                217 => 
+                217 =>
                 array (
                     'id' => 718,
                     'status' => 0,
@@ -7925,7 +7925,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                218 => 
+                218 =>
                 array (
                     'id' => 719,
                     'status' => 0,
@@ -7936,7 +7936,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                219 => 
+                219 =>
                 array (
                     'id' => 720,
                     'status' => 0,
@@ -7947,7 +7947,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                220 => 
+                220 =>
                 array (
                     'id' => 721,
                     'status' => 0,
@@ -7958,7 +7958,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                221 => 
+                221 =>
                 array (
                     'id' => 722,
                     'status' => 0,
@@ -7969,7 +7969,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                222 => 
+                222 =>
                 array (
                     'id' => 723,
                     'status' => 0,
@@ -7980,7 +7980,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                223 => 
+                223 =>
                 array (
                     'id' => 724,
                     'status' => 0,
@@ -7991,7 +7991,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                224 => 
+                224 =>
                 array (
                     'id' => 725,
                     'status' => 0,
@@ -8002,7 +8002,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                225 => 
+                225 =>
                 array (
                     'id' => 726,
                     'status' => 0,
@@ -8013,7 +8013,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                226 => 
+                226 =>
                 array (
                     'id' => 727,
                     'status' => 0,
@@ -8024,7 +8024,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                227 => 
+                227 =>
                 array (
                     'id' => 728,
                     'status' => 0,
@@ -8035,7 +8035,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                228 => 
+                228 =>
                 array (
                     'id' => 729,
                     'status' => 0,
@@ -8046,7 +8046,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                229 => 
+                229 =>
                 array (
                     'id' => 730,
                     'status' => 0,
@@ -8057,7 +8057,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                230 => 
+                230 =>
                 array (
                     'id' => 731,
                     'status' => 0,
@@ -8068,7 +8068,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                231 => 
+                231 =>
                 array (
                     'id' => 732,
                     'status' => 0,
@@ -8079,7 +8079,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                232 => 
+                232 =>
                 array (
                     'id' => 733,
                     'status' => 0,
@@ -8090,7 +8090,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                233 => 
+                233 =>
                 array (
                     'id' => 734,
                     'status' => 0,
@@ -8101,7 +8101,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                234 => 
+                234 =>
                 array (
                     'id' => 735,
                     'status' => 0,
@@ -8112,7 +8112,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                235 => 
+                235 =>
                 array (
                     'id' => 736,
                     'status' => 0,
@@ -8123,7 +8123,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                236 => 
+                236 =>
                 array (
                     'id' => 737,
                     'status' => 0,
@@ -8134,7 +8134,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                237 => 
+                237 =>
                 array (
                     'id' => 738,
                     'status' => 0,
@@ -8145,7 +8145,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                238 => 
+                238 =>
                 array (
                     'id' => 739,
                     'status' => 0,
@@ -8156,7 +8156,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                239 => 
+                239 =>
                 array (
                     'id' => 740,
                     'status' => 0,
@@ -8167,7 +8167,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                240 => 
+                240 =>
                 array (
                     'id' => 741,
                     'status' => 0,
@@ -8178,7 +8178,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                241 => 
+                241 =>
                 array (
                     'id' => 742,
                     'status' => 0,
@@ -8189,7 +8189,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                242 => 
+                242 =>
                 array (
                     'id' => 743,
                     'status' => 0,
@@ -8200,7 +8200,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                243 => 
+                243 =>
                 array (
                     'id' => 744,
                     'status' => 0,
@@ -8211,7 +8211,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:48',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                244 => 
+                244 =>
                 array (
                     'id' => 745,
                     'status' => 0,
@@ -8222,7 +8222,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:48:55',
                     'updated_at' => '2020-06-05 18:54:26',
                 ),
-                245 => 
+                245 =>
                 array (
                     'id' => 746,
                     'status' => 0,
@@ -8233,7 +8233,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:49:16',
                     'updated_at' => '2020-06-05 18:54:26',
                 ),
-                246 => 
+                246 =>
                 array (
                     'id' => 747,
                     'status' => 0,
@@ -8244,7 +8244,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:53:25',
                     'updated_at' => '2020-06-05 18:54:26',
                 ),
-                247 => 
+                247 =>
                 array (
                     'id' => 748,
                     'status' => 0,
@@ -8255,7 +8255,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-06-05 18:53:33',
                     'updated_at' => '2020-06-05 18:54:26',
                 ),
-                248 => 
+                248 =>
                 array (
                     'id' => 749,
                     'status' => 1,
@@ -8266,7 +8266,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:54',
                     'updated_at' => '2020-08-16 20:10:54',
                 ),
-                249 => 
+                249 =>
                 array (
                     'id' => 750,
                     'status' => 1,
@@ -8277,7 +8277,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:54',
                     'updated_at' => '2020-08-16 20:10:54',
                 ),
-                250 => 
+                250 =>
                 array (
                     'id' => 751,
                     'status' => 1,
@@ -8288,7 +8288,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:54',
                     'updated_at' => '2020-08-16 20:10:54',
                 ),
-                251 => 
+                251 =>
                 array (
                     'id' => 752,
                     'status' => 1,
@@ -8299,7 +8299,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:54',
                     'updated_at' => '2020-08-16 20:10:54',
                 ),
-                252 => 
+                252 =>
                 array (
                     'id' => 753,
                     'status' => 1,
@@ -8310,7 +8310,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:54',
                     'updated_at' => '2020-08-16 20:10:54',
                 ),
-                253 => 
+                253 =>
                 array (
                     'id' => 754,
                     'status' => 1,
@@ -8321,7 +8321,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:54',
                     'updated_at' => '2020-08-16 20:10:54',
                 ),
-                254 => 
+                254 =>
                 array (
                     'id' => 755,
                     'status' => 1,
@@ -8332,7 +8332,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:54',
                     'updated_at' => '2020-08-16 20:10:54',
                 ),
-                255 => 
+                255 =>
                 array (
                     'id' => 756,
                     'status' => 1,
@@ -8343,7 +8343,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:54',
                     'updated_at' => '2020-08-16 20:10:54',
                 ),
-                256 => 
+                256 =>
                 array (
                     'id' => 757,
                     'status' => 1,
@@ -8354,7 +8354,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:54',
                     'updated_at' => '2020-08-16 20:10:54',
                 ),
-                257 => 
+                257 =>
                 array (
                     'id' => 758,
                     'status' => 1,
@@ -8365,7 +8365,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:54',
                     'updated_at' => '2020-08-16 20:10:54',
                 ),
-                258 => 
+                258 =>
                 array (
                     'id' => 759,
                     'status' => 1,
@@ -8376,7 +8376,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:54',
                     'updated_at' => '2020-08-16 20:10:54',
                 ),
-                259 => 
+                259 =>
                 array (
                     'id' => 760,
                     'status' => 1,
@@ -8387,7 +8387,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:54',
                     'updated_at' => '2020-08-16 20:10:54',
                 ),
-                260 => 
+                260 =>
                 array (
                     'id' => 761,
                     'status' => 1,
@@ -8398,7 +8398,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                261 => 
+                261 =>
                 array (
                     'id' => 762,
                     'status' => 1,
@@ -8409,7 +8409,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                262 => 
+                262 =>
                 array (
                     'id' => 763,
                     'status' => 1,
@@ -8420,7 +8420,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                263 => 
+                263 =>
                 array (
                     'id' => 764,
                     'status' => 1,
@@ -8431,7 +8431,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                264 => 
+                264 =>
                 array (
                     'id' => 765,
                     'status' => 1,
@@ -8442,7 +8442,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                265 => 
+                265 =>
                 array (
                     'id' => 766,
                     'status' => 1,
@@ -8453,7 +8453,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                266 => 
+                266 =>
                 array (
                     'id' => 767,
                     'status' => 1,
@@ -8464,7 +8464,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                267 => 
+                267 =>
                 array (
                     'id' => 768,
                     'status' => 1,
@@ -8475,7 +8475,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                268 => 
+                268 =>
                 array (
                     'id' => 769,
                     'status' => 1,
@@ -8486,7 +8486,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                269 => 
+                269 =>
                 array (
                     'id' => 770,
                     'status' => 1,
@@ -8497,7 +8497,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                270 => 
+                270 =>
                 array (
                     'id' => 771,
                     'status' => 1,
@@ -8508,7 +8508,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                271 => 
+                271 =>
                 array (
                     'id' => 772,
                     'status' => 1,
@@ -8519,7 +8519,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                272 => 
+                272 =>
                 array (
                     'id' => 773,
                     'status' => 1,
@@ -8530,7 +8530,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                273 => 
+                273 =>
                 array (
                     'id' => 774,
                     'status' => 1,
@@ -8541,7 +8541,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                274 => 
+                274 =>
                 array (
                     'id' => 775,
                     'status' => 1,
@@ -8552,7 +8552,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                275 => 
+                275 =>
                 array (
                     'id' => 776,
                     'status' => 1,
@@ -8563,7 +8563,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                276 => 
+                276 =>
                 array (
                     'id' => 777,
                     'status' => 1,
@@ -8574,7 +8574,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                277 => 
+                277 =>
                 array (
                     'id' => 778,
                     'status' => 1,
@@ -8585,7 +8585,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                278 => 
+                278 =>
                 array (
                     'id' => 779,
                     'status' => 1,
@@ -8596,7 +8596,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                279 => 
+                279 =>
                 array (
                     'id' => 780,
                     'status' => 1,
@@ -8607,7 +8607,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                280 => 
+                280 =>
                 array (
                     'id' => 781,
                     'status' => 1,
@@ -8618,7 +8618,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                281 => 
+                281 =>
                 array (
                     'id' => 782,
                     'status' => 1,
@@ -8629,7 +8629,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                282 => 
+                282 =>
                 array (
                     'id' => 783,
                     'status' => 1,
@@ -8640,7 +8640,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                283 => 
+                283 =>
                 array (
                     'id' => 784,
                     'status' => 1,
@@ -8651,7 +8651,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                284 => 
+                284 =>
                 array (
                     'id' => 785,
                     'status' => 1,
@@ -8662,7 +8662,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                285 => 
+                285 =>
                 array (
                     'id' => 786,
                     'status' => 1,
@@ -8673,7 +8673,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                286 => 
+                286 =>
                 array (
                     'id' => 787,
                     'status' => 1,
@@ -8684,7 +8684,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                287 => 
+                287 =>
                 array (
                     'id' => 788,
                     'status' => 1,
@@ -8695,7 +8695,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                288 => 
+                288 =>
                 array (
                     'id' => 789,
                     'status' => 1,
@@ -8706,7 +8706,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                289 => 
+                289 =>
                 array (
                     'id' => 790,
                     'status' => 1,
@@ -8717,7 +8717,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                290 => 
+                290 =>
                 array (
                     'id' => 791,
                     'status' => 1,
@@ -8728,7 +8728,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                291 => 
+                291 =>
                 array (
                     'id' => 792,
                     'status' => 1,
@@ -8739,7 +8739,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                292 => 
+                292 =>
                 array (
                     'id' => 793,
                     'status' => 1,
@@ -8750,7 +8750,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                293 => 
+                293 =>
                 array (
                     'id' => 794,
                     'status' => 1,
@@ -8761,7 +8761,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                294 => 
+                294 =>
                 array (
                     'id' => 795,
                     'status' => 1,
@@ -8772,7 +8772,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                295 => 
+                295 =>
                 array (
                     'id' => 796,
                     'status' => 1,
@@ -8783,7 +8783,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:55',
                     'updated_at' => '2020-08-16 20:10:55',
                 ),
-                296 => 
+                296 =>
                 array (
                     'id' => 797,
                     'status' => 1,
@@ -8794,7 +8794,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                297 => 
+                297 =>
                 array (
                     'id' => 798,
                     'status' => 1,
@@ -8805,7 +8805,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                298 => 
+                298 =>
                 array (
                     'id' => 799,
                     'status' => 1,
@@ -8816,7 +8816,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                299 => 
+                299 =>
                 array (
                     'id' => 800,
                     'status' => 1,
@@ -8827,7 +8827,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                300 => 
+                300 =>
                 array (
                     'id' => 801,
                     'status' => 1,
@@ -8838,7 +8838,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                301 => 
+                301 =>
                 array (
                     'id' => 802,
                     'status' => 1,
@@ -8849,7 +8849,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                302 => 
+                302 =>
                 array (
                     'id' => 803,
                     'status' => 1,
@@ -8860,7 +8860,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                303 => 
+                303 =>
                 array (
                     'id' => 804,
                     'status' => 1,
@@ -8871,7 +8871,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                304 => 
+                304 =>
                 array (
                     'id' => 805,
                     'status' => 1,
@@ -8882,7 +8882,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                305 => 
+                305 =>
                 array (
                     'id' => 806,
                     'status' => 1,
@@ -8893,7 +8893,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                306 => 
+                306 =>
                 array (
                     'id' => 807,
                     'status' => 1,
@@ -8904,7 +8904,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                307 => 
+                307 =>
                 array (
                     'id' => 808,
                     'status' => 1,
@@ -8915,7 +8915,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                308 => 
+                308 =>
                 array (
                     'id' => 809,
                     'status' => 1,
@@ -8926,7 +8926,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                309 => 
+                309 =>
                 array (
                     'id' => 810,
                     'status' => 1,
@@ -8937,7 +8937,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                310 => 
+                310 =>
                 array (
                     'id' => 811,
                     'status' => 1,
@@ -8948,7 +8948,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                311 => 
+                311 =>
                 array (
                     'id' => 812,
                     'status' => 1,
@@ -8959,7 +8959,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                312 => 
+                312 =>
                 array (
                     'id' => 813,
                     'status' => 1,
@@ -8970,7 +8970,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                313 => 
+                313 =>
                 array (
                     'id' => 814,
                     'status' => 1,
@@ -8981,7 +8981,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                314 => 
+                314 =>
                 array (
                     'id' => 815,
                     'status' => 1,
@@ -8992,7 +8992,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                315 => 
+                315 =>
                 array (
                     'id' => 816,
                     'status' => 1,
@@ -9003,7 +9003,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                316 => 
+                316 =>
                 array (
                     'id' => 817,
                     'status' => 1,
@@ -9014,7 +9014,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                317 => 
+                317 =>
                 array (
                     'id' => 818,
                     'status' => 1,
@@ -9025,7 +9025,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                318 => 
+                318 =>
                 array (
                     'id' => 819,
                     'status' => 1,
@@ -9036,7 +9036,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                319 => 
+                319 =>
                 array (
                     'id' => 820,
                     'status' => 1,
@@ -9047,7 +9047,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:56',
                     'updated_at' => '2020-08-16 20:10:56',
                 ),
-                320 => 
+                320 =>
                 array (
                     'id' => 821,
                     'status' => 1,
@@ -9058,7 +9058,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:57',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                321 => 
+                321 =>
                 array (
                     'id' => 822,
                     'status' => 1,
@@ -9069,7 +9069,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:57',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                322 => 
+                322 =>
                 array (
                     'id' => 823,
                     'status' => 1,
@@ -9080,7 +9080,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:57',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                323 => 
+                323 =>
                 array (
                     'id' => 824,
                     'status' => 1,
@@ -9091,7 +9091,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:57',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                324 => 
+                324 =>
                 array (
                     'id' => 825,
                     'status' => 1,
@@ -9102,7 +9102,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:57',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                325 => 
+                325 =>
                 array (
                     'id' => 826,
                     'status' => 1,
@@ -9113,7 +9113,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:57',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                326 => 
+                326 =>
                 array (
                     'id' => 827,
                     'status' => 1,
@@ -9124,7 +9124,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:57',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                327 => 
+                327 =>
                 array (
                     'id' => 828,
                     'status' => 1,
@@ -9135,7 +9135,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:57',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                328 => 
+                328 =>
                 array (
                     'id' => 829,
                     'status' => 1,
@@ -9146,7 +9146,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:57',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                329 => 
+                329 =>
                 array (
                     'id' => 830,
                     'status' => 1,
@@ -9157,7 +9157,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:57',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                330 => 
+                330 =>
                 array (
                     'id' => 831,
                     'status' => 1,
@@ -9168,7 +9168,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:57',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                331 => 
+                331 =>
                 array (
                     'id' => 832,
                     'status' => 1,
@@ -9179,7 +9179,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'created_at' => '2020-08-16 20:10:57',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
-                332 => 
+                332 =>
                 array (
                     'id' => 833,
                     'status' => 1,
@@ -9191,7 +9191,7 @@ Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
                     'updated_at' => '2020-08-16 20:10:57',
                 ),
             ));
-        
-        
+
+
     }
 }

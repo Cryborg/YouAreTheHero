@@ -40,6 +40,7 @@
         $('input[name="stat_values[]"]:visible').each(function () {
             values.push({
                 'id': $(this).data('id'),
+                'operator': $(this).closest('tr').find('.effect_operator option:selected').val(),
                 'value': $(this).val()
             });
         });
