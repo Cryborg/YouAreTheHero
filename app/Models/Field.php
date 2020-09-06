@@ -28,4 +28,14 @@ class Field extends Model
     {
         return $this->hasMany(Item::class);
     }
+
+    /**
+     * So we can know wether the field is used or not
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function effects()
+    {
+        return $this->belongsToMany(Effect::class);
+    }
 }

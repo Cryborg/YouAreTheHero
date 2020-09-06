@@ -19,6 +19,9 @@ Auth::routes();
 Route::get('/redirect', 'Auth\LoginController@redirectToProvider')->name('google.auth');
 Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
 
+// Language
+Route::get('language/{lang}', 'HomeController@language')->name('language');
+
 Route::middleware('guest')->group(static function () {
 // Anonymous user for tuto
     Route::get('/story/{story}/anonymous', 'StoryController@getPlayAnonymous')
@@ -35,6 +38,7 @@ Route::middleware('auth')->group(static function () {
     Route::get('/items/{story}/html_list', 'ItemController@htmlList')->name('items.html.list');
     Route::get('/item/{item}/throw', 'ItemController@throwAway')->name('item.throw_away');
     Route::get('/item/{character}/{item}/use', 'CharacterItemController@itemUse')->name('item.use');
+    Route::delete('/item/{item}/delete', 'ItemController@delete')->name('item.delete');
 
 // Stories
     Route::get('/stories/draft', 'StoriesController@listDraft')->name('stories.list.draft');
@@ -58,6 +62,7 @@ Route::middleware('auth')->group(static function () {
     Route::delete('/story/{story}/delete', 'StoryController@delete')->name('story.delete');
 
     Route::get('/story/{story}/items/list', 'ItemController@list')->name('items.list');
+    Route::get('/story/{story}/errors/list', 'StoryController@errors')->name('story.errors');
 
 // Page
     Route::get('/page/{page}/edit', 'PageController@getEdit')->name('page.edit');
@@ -82,9 +87,6 @@ Route::middleware('auth')->group(static function () {
 // Character
     Route::get('/character/create/{story}', 'CharacterController@getCreate')->name('character.create');
     Route::post('/character/create/{story}', 'CharacterController@store')->name('character.create.post');
-
-// Language
-    Route::get('language/{lang}', 'HomeController@language')->name('language');
 
 // Field
     Route::post('/field/{story}/create', 'FieldController@store')->name('field.store');

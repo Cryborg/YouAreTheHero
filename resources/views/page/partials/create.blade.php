@@ -12,6 +12,12 @@
                     <span class="align-middle">@lang('page.add_choice')</span>
                     <span class="badge badge-warning rounded float-right shadow ml-3">{{ $page->choices()->count() }}</span>
                 </button>
+                @if ($showErrorsButton)
+                    <button class="btn btn-danger float-right" data-target="#modalStoryErrors" data-toggle="modal">
+                        <span class="align-middle">@lang('story.has_errors')</span>
+                        <span class="icon-skull text-white display-6 align-middle ml-3"></span>
+                    </button>
+                @endif
             </div>
         </div>
         <div class="row">

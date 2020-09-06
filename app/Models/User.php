@@ -45,6 +45,7 @@ class User extends Authenticatable implements HasLocalePreference
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'valid_from'        => 'datetime',
         'optin_system'      => 'boolean',
     ];
 
@@ -64,9 +65,10 @@ class User extends Authenticatable implements HasLocalePreference
     public function hasBeganStory(Story $story): bool
     {
         return Character::where([
-                'user_id'  => $this->id,
-                'story_id' => $story->id,
-            ])->count() > 0;
+                                    'user_id'  => $this->id,
+                                    'story_id' => $story->id,
+                                ])
+                        ->count() > 0;
     }
 
     public function sendPasswordResetNotification($token): void

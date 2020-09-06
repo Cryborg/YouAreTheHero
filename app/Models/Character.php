@@ -64,22 +64,24 @@ class Character extends Model
 
         // If no option needs to be set, create an unnamed character
         if ($story->story_options->has_character === false || $storyOption->count() === 0) {
-            $newCharacter = Auth::user()->characters()->create([
+            Auth::user()->characters()->create([
                'name'     => 'Unnamed',
                'user_id'  => Auth::id(),
                'story_id' => $story->id,
                'page_id'  => $story->getCurrentPage()->id,
-           ]);
+            ]);
 
             // Log this new game
             if (!Auth::user()->hasRole('admin')) {
                 activity()
-                    ->useLog('new_game')
                     ->performedOn($story)
+                    ->useLog('new_game')
                     ->log('New game started');
             }
 
-            return $newCharacter;
+            return Redirect::route('story.play', [
+                'story' => $story->id,
+            ]);
         }
 
         return null;

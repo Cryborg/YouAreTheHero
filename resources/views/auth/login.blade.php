@@ -4,18 +4,22 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8 shadow">
-            <div class="card wip-bg">
-                <div class="card-header">{{ trans('home.login_title') }}</div>
-
-                <div class="card-body text-center">
-                    <a href="{{ route('google.auth') }}">
-                        <img src="{{ asset('img/btn_google_signin_dark_normal_web.png') }}">
-                    </a>
+    <div class="row mb-5">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header">
+                    @lang('common.quick_overview')
                 </div>
-
-                <hr>
+                <div class="card-body">
+                    {!! trans('home.text')  !!}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header">{{ trans('home.login_title') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -83,8 +87,14 @@
                     </form>
                 </div>
 
+                <div class="card-body text-center">
+                    <a href="{{ route('google.auth') }}">
+                        <img src="{{ asset('img/btn_google_signin_dark_normal_web.png') }}">
+                    </a>
+                </div>
+
                 <div class="card-footer text-center text-muted">
-                    {!! trans('auth.users_count', ['count' => \App\Models\User::count()]) !!}
+                    {!! trans('auth.users_count', ['count' => \App\Models\User::whereNotIn('role', ['temp'])->count()]) !!}
                 </div>
             </div>
         </div>

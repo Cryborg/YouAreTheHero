@@ -1,9 +1,9 @@
 <?php
 
 return array (
+  'home_title' => 'Login',
   'login_title' => 'Login',
   'register_title' => 'Register',
+  'text' => '<p>You want to write interactive stories but you don\'t know anything about programming and you don\'t want to learn? Welcome! You will finally be able to express your artistic fiber :)</p><p>Create an exciting story with branches, manage the inventory and character sheet, add effects to objects, secret passages... All this simply by clicking on buttons!</p><p>If you want a preview of what you can do, I advise you to try the little story without story that will show you what you can do with the creation interface.</p>',
   'welcome' => 'Welcome!',
-  'text' => '<p class = \'indent\'> You are about to start a new adventure! Create your own interactive adventures, play those created by other players, the only limit is that of your imagination! </p> <p class = \'indent\'> What this alpha version allows you: </ p > <ul> <li> Create your own stories, or play other players\' </li> <li> Several choices possible on each page </li> <li> Inventory </li> <li> Fully customizable character sheet  </li> <li> Conditions for certain choices (whether it is an object, a stat or a given amount of money) </li> </ul> <p class = \'indent \'> And, for future versions: </p> <ul> <li> Fights </li> <li> Forum </li> <li> Mini-games </li> <li> Support for multiple interactive stories rules </li> </ul>',
-  'home_title' => 'Login',
 );

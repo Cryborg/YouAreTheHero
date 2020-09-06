@@ -4,6 +4,7 @@ return [
     'appears_in_pages'  => 'Apparaît dans',
     'category'          => 'Catégorie',
     'category_help'     => 'Catégorie optionnelle pour cet objet.',
+    'confirm_delete'    => 'Es-tu sûr(e) de vouloir supprimer cet objet de ton histoire ?',
     'create_btn'        => 'Créer un objet',
     'effects'           => 'Effets',
     'effects_help_text' => 'Si l\'objet affecte une ou plusieurs des attributs du joueur, c\'est ici qu\'il faut l\'indiquer.',
@@ -27,6 +28,7 @@ return [
     'size_help'         => 'Taille ou poids de l\'objet. Lorsque l\'option est sélectionnée dans les paramètres de l\'histoire, les objets prennent de la place, ce qui limite le nombre que le joueur peut transporter.',
     'stat'              => 'Compétence',
     'throw_away'        => 'Jeter',
+    'unused_items_label'=> 'Objets non utilisés',
     'use'               => 'Utiliser',
     'verb'              => 'Action',
 ];

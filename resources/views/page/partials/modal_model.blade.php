@@ -11,8 +11,8 @@
                 </button>
             </div>
             <div class="modal-body shadow-sm h-50">
-                {{-- FIX ME, I'm ugly! --}}
-                @if (in_array($context, ['prerequisites', 'item_page', 'riddles', 'add_choice', 'edit_choice', 'add_actions', 'report']))
+                {{-- FIXME, I'm ugly!--}}
+                @if (in_array($context, ['prerequisites', 'item_page', 'riddles', 'add_choice', 'edit_choice', 'add_actions', 'report', 'story_errors']))
                     @include($template, ['page' => $data['page']])
                 @endif
                 @if (in_array($context, ['help']))
@@ -63,5 +63,11 @@
 @if ($context === 'add_actions')
     @push('footer-scripts')
         @include('page.js.add_actions-js')
+    @endpush
+@endif
+
+@if ($context === 'story_errors')
+    @push('footer-scripts')
+        @include('page.js.story_errors-js')
     @endpush
 @endif

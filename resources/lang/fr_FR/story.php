@@ -59,4 +59,5 @@ return array (
   'ending_type_bad_help' => 'Si le personnage termine mal l\'histoire : s\'il est emprisonné, qu\'il perd un combat ou un membre,...',
   'ending_type_death_help' => 'Si le personnage meurt.',
   'ending_type_good_help' => 'S\'il s\'agit d\'une fin heureuse.',
+  'has_errors' => 'Problèmes trouvés',
 );

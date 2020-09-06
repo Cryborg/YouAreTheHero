@@ -22,9 +22,9 @@ class ItemController extends Controller
     public function delete(Request $request, Item $item)
     {
         if ($request->ajax()) {
-            $deleted = $item->delete();
-
-            return json_encode(['success' => $deleted]);
+            return response()->json([
+                'success' => $item->delete()
+            ]);
         }
 
         abort(JsonResponse::HTTP_NOT_FOUND);

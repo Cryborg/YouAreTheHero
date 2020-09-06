@@ -34,45 +34,53 @@ class CharacterController extends Controller
 
     public function store(Request $request, Story $story)
     {
-        if (request()->ajax()) {
-            $page = $story->getCurrentPage();
-            $fields = $request->get('stats');
+        $page = $story->getCurrentPage();
+        $fields = $request->get('stats');
 
-            $character = Character::create([
-                'name'     => $request->get('name'),
-                'user_id'  => Auth::id(),
-                'story_id' => $story->id,
-                'page_id'  => $page->id,
-                'genre'    => $request->get('genre'),
-            ]);
+        $character = Character::create([
+            'name'     => $request->get('name'),
+            'user_id'  => Auth::id(),
+            'story_id' => $story->id,
+            'page_id'  => $page->id,
+            'genre'    => $request->get('genre'),
+        ]);
 
-            if ($fields) {
-                foreach ($story->fields as $storyField) {
-                    if ($storyField->hidden) {
+        if ($fields) {
+            foreach ($story->fields as $storyField) {
+                if ($storyField->hidden) {
+                    $character->fields()
+                              ->attach($storyField->id, [
+                                  'character_id' => $character->id,
+                                  'value' => $storyField->min_value
+                              ]);
+                }
+                foreach ($fields as $field) {
+                    if ($field['field_id'] == $storyField->id) {
                         $character->fields()
-                                  ->attach($storyField->id, [
-                                      'character_id' => $character->id,
-                                      'value' => $storyField->min_value
-                                  ]);
-                    }
-                    foreach ($fields as $field) {
-                        if ($field['field_id'] == $storyField->id) {
-                            $character->fields()
-                                      ->attach(
-                                          $field['field_id'],
-                                          [
-                                              'character_id' => $character->id,
-                                              'value'        => $field['value'],
-                                          ]
-                                      );
-                        }
+                                  ->attach(
+                                      $field['field_id'],
+                                      [
+                                          'character_id' => $character->id,
+                                          'value'        => $field['value'],
+                                      ]
+                                  );
                     }
                 }
             }
+        }
 
+        // Log this new game
+        if (!Auth::user()->hasRole('admin')) {
+            activity()
+                ->performedOn($story)
+                ->useLog('new_game')
+                ->log('New game started');
+        }
+
+        if (request()->ajax()) {
             return response()->json(['success' => true]);
         }
 
-        abort(JsonResponse::HTTP_NOT_FOUND);
+        return redirect()->route('story.play', ['story' => $story]);
     }
 }

@@ -2,7 +2,7 @@
     title="" data-content="{{ $content }}"
     data-original-title="{!! htmlentities($link_text) !!}">
     @if ($icon !== false)
-        <span class="icon-eye text-lightgrey mr-1"></span>
+        <span class="icon-hidden text-lightgrey mr-1"></span>
     @endif
     {!! $link_text !!}
 </a>

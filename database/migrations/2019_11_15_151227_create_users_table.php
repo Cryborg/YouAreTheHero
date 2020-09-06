@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->nullable();
             $table->string('avatar_original')->nullable();
 
-            $table->timestamp('valid_from')->nullable();
+            $table->timestamp('valid_from')->nullable()->default(null);
             $table->rememberToken();
             $table->timestamps();
 

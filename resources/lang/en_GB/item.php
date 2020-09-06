@@ -4,6 +4,7 @@ return [
     'appears_in_pages'  => 'Appears in',
     'category'          => 'Category',
     'category_help'     => 'Optional category for this object.',
+    'confirm_delete'    => 'Are you sure you want to remove this item from your story?',
     'create_btn'        => 'Create an item',
     'effects'           => 'Effects',
     'effects_help_text' => 'If the item affects one or more of the character stats, specify it here.',
@@ -27,6 +28,7 @@ return [
     'size_help'         => 'This is the size or weight of the object, it will affect the room left in the inventory if the option is set for this story.',
     'stat'              => 'Skill',
     'throw_away'        => 'Throw away',
+    'unused_items_label'=> 'Unused items',
     'use'               => 'Use',
     'verb'              => 'Action',
 ];

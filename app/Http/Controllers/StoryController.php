@@ -71,13 +71,7 @@ class StoryController extends Controller
 
         // If the character does not exist, it is a new game
         if (!$character) {
-            $character = Character::createNewForStory($story);
-
-            if ($character && ($story->story_options->has_character === false || $story->story_options->count() === 0)) {
-                return Redirect::route('story.play', [
-                    'story' => $story->id,
-                ]);
-            }
+            Character::createNewForStory($story);
 
             return Redirect::route('character.create', [
                 'story' => $story->id,
@@ -414,15 +408,15 @@ class StoryController extends Controller
     public function getCreate($story = null)
     {
         $data = [
-            'title'    => trans('story.create_title'),
-            'locales'  => getLanguages(),
-            'layouts'  => [
+            'title'            => trans('story.create_title'),
+            'locales'          => getLanguages(),
+            'layouts'          => [
                 'play1' => 'Premier layout',
             ],
-            'story'    => $story,
-            'route'    => 'story.create.post',
-            'genres'   => Genre::all(),
-            'contexts' => ['story_creation'],
+            'story'            => $story,
+            'route'            => 'story.create.post',
+            'genres'           => Genre::all(),
+            'contexts'         => ['story_creation'],
         ];
 
         $view = View::make('story.create', $data);
@@ -485,5 +479,22 @@ class StoryController extends Controller
                        ->first();
         }
         );
+    }
+
+    public function errors(Story $story)
+    {
+        $errors = PageController::getErrors($story);
+
+        return View::make('story.errors', [
+            'story'       => $story,
+            'deadEnds'    => $errors['deadEnds'],
+            'orphans'     => $errors['orphans'],
+            'unusedItems' => $errors['unusedItems'],
+            'unusedFields'=> $errors['unusedFields'],
+            'hasErrors'   => $errors['deadEnds']->count() > 0
+                                  || $errors['orphans']->count() > 0
+                                  || $errors['unusedItems']->count() > 0
+                                  || $errors['unusedFields']->count() > 0,
+        ]);
     }
 }

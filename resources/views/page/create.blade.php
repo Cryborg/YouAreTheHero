@@ -36,6 +36,19 @@
         ]
     ])
 
+    <!-- Modal story errors -->
+    @include('page.partials.modal_model', [
+        'template' => 'page.partials.modal_story_errors',
+        'context' => 'story_errors',
+        'title' => trans('page.story_errors_modal_title'),
+        'icon' => 'icon-skull',
+        'big' => false,
+        'data' => [
+            'page' => $page,
+            'id' => 'StoryErrors',
+        ]
+    ])
+
     <!-- Modal edit choice -->
     @include('page.partials.modal_model', [
         'template' => 'page.partials.modal_edit_choice',
@@ -139,7 +152,9 @@
         @include('page.js.dagred3-js', ['pages' => $page->story->pages, 'current' => $page])
 
         var pageId = {{ $page->id }};
-        var confirmDeleteText = "@lang('page.confirm_delete')";
+        var confirmDeleteFieldText = "@lang('field.confirm_delete')";
+        var confirmDeleteItemText = "@lang('item.confirm_delete')";
+        var confirmDeletePageText = "@lang('page.confirm_delete')";
         var confirmDeleteLinkText = "@lang('page.confirm_delete_link')";
         var langPageRiddleTextLabel = "@lang('page.riddle_page_text_label')";
         var langPageRiddleAnswerLabel = "@lang('page.riddle_answer_label')";

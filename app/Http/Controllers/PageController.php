@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Character;
 use App\Models\Item;
 use App\Models\Page;
+use App\Models\Riddle;
 use App\Models\Story;
 use App\Repositories\ChoiceRepository;
 use Illuminate\Http\JsonResponse;
@@ -65,9 +66,9 @@ class PageController extends Controller
         }
 
         return response()->json([
-            'page'     => $page,
-            'redirect' => $redirect,
-            'graph' => $this->buildGraph($page->story),
+            'page'             => $page,
+            'redirect'         => $redirect,
+            'graph'            => $this->buildGraph($page->story),
         ]);
     }
 
@@ -80,6 +81,8 @@ class PageController extends Controller
     public function getEdit(Page $page): \Illuminate\Contracts\View\View
     {
         $this->authorize('view', $page);
+
+        $errors = self::getErrors($page->story);
 
         setSession('story_id', $page->story->id);
 
@@ -105,6 +108,8 @@ class PageController extends Controller
                 'placeholders' => $this->placeholders,
 
                 'graph' => $this->buildGraph($page->story),
+
+                'showErrorsButton' => $errors['showErrorsButton'],
             ]);
 
         return $view;
@@ -427,5 +432,75 @@ class PageController extends Controller
         );
 
         return $graph->implode("\n");
+    }
+
+    public static function getErrors(Story $story)
+    {
+        /*************************
+         *         Pages
+         ************************/
+        $deadEnds = collect();
+        $orphans = collect();
+        $emptyRiddles = collect();
+
+        $story->pages->each(static function ($page) use ($deadEnds, $orphans) {
+            // Orphans : they have no direct parent
+            if (!$page->is_first && $page->parents->count() === 0) {
+                // But they can be linked to from a riddle
+                $isLinked = Riddle::where('target_page_id', $page->id)->count() > 0;
+
+                if (!$isLinked) {
+                    $orphans->push($page);
+                }
+            }
+
+            // Dead ends
+            if (!$page->is_last && $page->choices->count() === 0) {
+                if (($page->riddle && $page->riddle->target_page_id === null) || !$page->riddle) {
+                    $deadEnds->push($page);
+                }
+            }
+
+            // Empty riddles (after a page or item delete)
+            if ($page->riddle && ($page->riddle->target_page_id === null && $page->riddle->item_id === null)) {
+                $emptyRiddles->push($page->riddle);
+            }
+        });
+
+        /*************************
+         *         Items
+         ************************/
+        $unusedItems = collect();
+
+        $story->items()->each(static function ($item) use ($unusedItems) {
+            // Unused items
+            if ($item->pages->count() === 0 && $item->actions->count() === 0) {
+                $unusedItems->push($item);
+            }
+        });
+
+        /*************************
+         *         Fields
+         ************************/
+        $unusedFields = collect();
+
+        $story->fields()->each(static function ($field) use ($unusedFields) {
+            // Unused fields
+            if (
+                (!$field->actions || ($field->actions && $field->actions->count() === 0))  // Unused in actions
+                && $field->prerequisites->count() === 0                                    // Unused in prerequisites
+            ) {
+                $unusedFields->push($field);
+            }
+        });
+
+        return [
+            'deadEnds'         => $deadEnds,
+            'orphans'          => $orphans,
+            'unusedItems'      => $unusedItems,
+            'unusedFields'     => $unusedFields,
+            'emptyRiddles'     => $emptyRiddles,
+            'showErrorsButton' => $deadEnds->count() > 0 || $orphans->count() > 0 || $unusedItems->count() > 0 || $unusedFields->count() > 0,
+        ];
     }
 }

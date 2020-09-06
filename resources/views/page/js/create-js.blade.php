@@ -83,7 +83,7 @@ $(document).ready(function () {
     $(document).on('click touchstart keydown', '.deletePage', function () {
         var $this = $(this);
 
-        if (!confirm(confirmDeleteText)) return false;
+        if (!confirm(confirmDeletePageText)) return false;
 
         $.ajax({
             url: route('page.delete', {page: $this.data('pageid')}),

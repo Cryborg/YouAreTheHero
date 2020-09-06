@@ -66,7 +66,7 @@ class ChoiceRepository
         $currentPage->unreachable_choices = $unreachableChoices;
 
         // Log if there is no choice, and the story is not finished
-        if (!$currentPage->is_last && count($currentPage->filtered_choices) === 0) {
+        if (!$currentPage->is_last && count($currentPage->filtered_choices) === 0 && count($currentPage->unreachable_choices) === 0) {
             if (!Auth::user()
                      ->hasRole('admin')) {
                 activity()

@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Log;
 use Laracasts\Presenter\PresentableTrait;
 use App\Presenters\ItemPresenter;
 
@@ -23,7 +22,7 @@ class Item extends Model
 
     protected $guarded   = ['id'];
 
-    protected $with = ['effects'];
+    protected $with      = ['effects'];
 
     protected $casts     = [
         'effects'   => 'array',
@@ -31,6 +30,11 @@ class Item extends Model
         'size'      => 'float',
         'is_used'   => 'boolean',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+    }
 
     public function getIsUniqueAttribute($value)
     {
@@ -68,11 +72,6 @@ class Item extends Model
         return 0;
     }
 
-    protected static function boot()
-    {
-        parent::boot();
-    }
-
     /**
      * Get the pages
      *
@@ -85,12 +84,10 @@ class Item extends Model
 
     /**
      * Get actions that contain this item
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function actions(): BelongsToMany
+    public function actions()
     {
-        return $this->belongsToMany(ItemPage::class);
+        return $this->morphMany(\App\Models\Action::class, 'actionable');
     }
 
     public function story(): BelongsTo
@@ -103,14 +100,9 @@ class Item extends Model
         return $this->morphMany(Prerequisite::class, 'prerequisiteable');
     }
 
-    public function effects(): HasMany
-    {
-        return $this->hasMany(Effect::class)->with('field');
-    }
-
     /**
-     * Don't know why I have to do this.... @foreach($item->effects) did not work
-     * in modal_list_items.blade.php...
+     * FIXME: Don't know why I have to do this.... @foreach($item->effects) did not work
+     *        in modal_list_items.blade.php...
      *
      * @return \Illuminate\Support\Collection
      */
@@ -118,11 +110,18 @@ class Item extends Model
     {
         $allEffects = collect();
 
-        $this->effects()->each(static function ($effect) use ($allEffects) {
-            $allEffects->push($effect);
-        });
+        $this->effects()
+             ->each(static function ($effect) use ($allEffects) {
+                 $allEffects->push($effect);
+             });
 
         return $allEffects;
+    }
+
+    public function effects(): HasMany
+    {
+        return $this->hasMany(Effect::class)
+                    ->with('field');
     }
 
     public function characters(): BelongsToMany
@@ -154,7 +153,8 @@ class Item extends Model
 
         if (Action::hasRoomLeftInInventory($character, $this)) {
             // The character does not have this item. Attach it
-            $character->items()->attach($this->id);
+            $character->items()
+                      ->attach($this->id);
 
             $isOk = true;
         } else {
@@ -163,7 +163,7 @@ class Item extends Model
 
         return [
             'success' => $isOk,
-            'message' => $message
+            'message' => $message,
         ];
     }
 
@@ -174,6 +174,7 @@ class Item extends Model
     {
         $character = $this->story->currentCharacter();
 
-        $character->items()->detach($this);
+        $character->items()
+                  ->detach($this);
     }
 }
