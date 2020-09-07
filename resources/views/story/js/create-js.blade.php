@@ -117,6 +117,12 @@
         saveOption('inventory_slots', $this.val());
     });
 
+    $(document).on('blur', '#points_to_share', function () {
+        const $this = $(this);
+
+        saveOption('points_to_share', $this.val());
+    });
+
     function saveOption(id, value) {
         $.post({
             url: route('story.options.post', {'story': storyId}),

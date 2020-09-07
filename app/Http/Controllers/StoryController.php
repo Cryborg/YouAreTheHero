@@ -335,14 +335,14 @@ class StoryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-                                            'story_id'     => '',
-                                            'title'        => 'required',
-                                            'description'  => 'required',
-                                            'locale'       => 'required',
-                                            'layout'       => 'required',
-                                            'is_published' => 'boolean',
-                                            'genres'       => 'required|array|between:1,5',
-                                        ]);
+            'story_id'     => '',
+            'title'        => 'required',
+            'description'  => 'required',
+            'locale'       => 'required',
+            'layout'       => 'required',
+            'is_published' => 'boolean',
+            'genres'       => 'required|array|between:1,5',
+        ]);
 
         $validated['is_published'] = $request->has('is_published');
         $storyId                   = $validated['story_id'] ?? null;

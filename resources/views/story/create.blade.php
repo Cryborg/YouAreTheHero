@@ -134,6 +134,10 @@
                             {{ trans('story.has_stats_label') }}
                         </label>
                     </div>
+                    <div class="form-group ml-3">
+                        <label>@lang('story.points_to_share')</label>
+                        <input type="number" value="10" min="1" max="99" id="points_to_share">
+                    </div>
                 </div>
             </div>
             @if ($story)

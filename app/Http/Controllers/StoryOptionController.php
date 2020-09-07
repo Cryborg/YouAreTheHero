@@ -51,6 +51,10 @@ class StoryOptionController extends Controller
                 $option = 'character_genre';
                 $value = Constants::GENRE_BOTH;
                 break;
+            case 'points_to_share':
+                $option = 'points_to_share';
+                $value = $request->get('value') ?? 10;
+                break;
         }
 
         $success = $story->story_options()->updateOrCreate(['story_id' => $story->id], [
