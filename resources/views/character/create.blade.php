@@ -6,8 +6,6 @@
     <h2 class="mb-3">{{ $story->title }}</h2>
 
     @if ($story->story_options && $story->story_options->has_character)
-        {!! Form::open(['url' => route('character.create', ['story' => $story->id]), 'method' => 'post']) !!}
-
         <div class="form-group">
             {!! Form::label('name', trans('character.name_label'), ['class' => 'control-label']) !!}
             <p class="help-block">{{ trans('character.name_help') }}</p>
@@ -94,12 +92,11 @@
     <div class="row">
         <div class="col-sm-12 col-md-6">
             <button id="save_character" class="btn btn-success submit-btn mb-1 w-100"
-                type="submit" data-original-text="{{ trans('story.create_submit') }}"
+                data-original-text="{{ trans('story.create_submit') }}"
                 @if ($has_visible_fields && $story->fields->count() > 0) disabled @endif
             >{{ trans('story.create_submit') }}</button>
         </div>
     </div>
-    {!! Form::close() !!}
 @endsection
 
 @push('footer-scripts')

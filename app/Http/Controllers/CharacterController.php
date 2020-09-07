@@ -35,14 +35,14 @@ class CharacterController extends Controller
     public function store(Request $request, Story $story)
     {
         $page = $story->getCurrentPage();
-        $fields = $request->get('stats');
+        $fields = $request->post('stats');
 
         $character = Character::create([
-            'name'     => $request->get('name'),
+            'name'     => $request->post('name'),
             'user_id'  => Auth::id(),
             'story_id' => $story->id,
             'page_id'  => $page->id,
-            'genre'    => $request->get('genre'),
+            'genre'    => $request->post('genre'),
         ]);
 
         if ($fields) {

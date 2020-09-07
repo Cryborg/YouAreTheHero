@@ -45,7 +45,7 @@ Route::middleware('auth')->group(static function () {
     Route::get('/stories', 'StoriesController@list')->name('stories.list');
 
 // Story
-    Route::get('/story/{story}/reset', 'StoryController@getReset')->name('story.reset');
+    Route::get('/story/{story}/reset/{play?}', 'StoryController@getReset')->name('story.reset');
 
     Route::get('/story/create', 'StoryController@getCreate')->name('story.create');
     Route::post('/story/create', 'StoryController@store')->name('story.create.post');

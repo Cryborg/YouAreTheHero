@@ -30,14 +30,11 @@ $('.submit-btn').on('click touchstart keydown', function () {
     })
     .done(function (result) {
         if (result.success) {
-            window.location.href = '/';
-            window.location.href = '{{ route('story.play', ['story' => $story->id]) }}';
+            //window.location.href = '/';
+            window.location.href = route('story.play', {'story': {{ $story->id }} });
         }
     })
     .fail(function () {
-
-    })
-    .always(function () {
         resetLoader($this);
     });
 });

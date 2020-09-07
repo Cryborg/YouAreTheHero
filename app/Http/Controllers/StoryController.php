@@ -424,12 +424,15 @@ class StoryController extends Controller
         return $view;
     }
 
-    public function getReset(Story $story)
+    public function getReset(Story $story, string $play = null)
     {
         $character = $story->currentCharacter();
 
         if ($character !== null) {
             $deleted = $character->delete();
+            Cache::forget('character_' . $character->id);
+            setSession('character_id', null);
+            setSession('story_id', null);
 
             if ($deleted == true) {
                 Flash::success(trans('story.reset_successful_text'));
@@ -448,7 +451,11 @@ class StoryController extends Controller
 
         Session::remove('story');
 
-        return Redirect::route('story.play', $story);
+        if ($play !== null) {
+            return Redirect::route('story.play', $story);
+        }
+
+        return Redirect::route('stories.list');
     }
 
     public function delete(Story $story)
