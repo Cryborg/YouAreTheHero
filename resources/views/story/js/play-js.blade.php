@@ -193,7 +193,6 @@ $(document).on('click touchstart keydown', '#riddle_validate', function () {
 
 function refreshData()
 {
-    console.log('refreshing');
     loadInventory();
     loadSheet();
     loadChoices();

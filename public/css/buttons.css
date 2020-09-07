@@ -11,7 +11,7 @@
 .button{
     display: inline-block;
     *display: inline;
-    zoom: 1;
+    transform: scale(1);
     padding: 6px 20px;
     margin: 0;
     cursor: pointer;
@@ -181,7 +181,7 @@
 .button-group li{
     display: inline-block;
     *display: inline;
-    zoom: 1;
+    transform: scale(1);
 }
 .button-group{
     font-size: 0; /* Inline block elements gap - fix */
