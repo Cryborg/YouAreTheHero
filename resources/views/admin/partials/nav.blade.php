@@ -23,11 +23,11 @@
         </li>
         <li class="list-group-item">
             <span class="glyphicon glyphicon-remove mr-2"></span>
-            <a href="{{ route('admin.clear.cache') }}" class="stretched-link" target="_blank">{{ trans('admin.clear_cache') }}</a>
+            <a href="{{ route('admin.clear.cache') }}" class="stretched-link">{{ trans('admin.clear_cache') }}</a>
         </li>
         <li class="list-group-item">
             <span class="glyphicon glyphicon-remove mr-2"></span>
-            <a href="{{ route('admin.clear.view') }}" class="stretched-link" target="_blank">{{ trans('admin.clear_view') }}</a>
+            <a href="{{ route('admin.clear.view') }}" class="stretched-link">{{ trans('admin.clear_view') }}</a>
         </li>
     </ul>
 </div>
