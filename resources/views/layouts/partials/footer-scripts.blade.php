@@ -13,6 +13,7 @@
 <script type="text/javascript" src="{{ asset('js/summernote-cleaner.js') }}"></script>
 <script type="text/javascript" src="{{ asset('vendor/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/bootstrap-input-spinner.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/common.js') }}"></script>
 
 @if (Config::get('app.locale') !== 'en_GB')
     <script type="text/javascript" src="{{ asset('lang/' . Config::get('app.locale') . '/moment-lang.js') }}"></script>

@@ -47,7 +47,7 @@ class StoryOptionController extends Controller
                 $option = 'character_genre';
                 $value = Constants::GENRE_FEMALE;
                 break;
-            case 'genre_both':
+            case 'genres_both':
                 $option = 'character_genre';
                 $value = Constants::GENRE_BOTH;
                 break;
@@ -57,7 +57,7 @@ class StoryOptionController extends Controller
                 break;
         }
 
-        $success = $story->story_options()->updateOrCreate(['story_id' => $story->id], [
+        $success = $story->story_options->updateOrCreate(['story_id' => $story->id], [
             $option => $value
         ]);
 

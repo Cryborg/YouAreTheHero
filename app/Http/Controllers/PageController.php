@@ -443,7 +443,7 @@ class PageController extends Controller
         $orphans = collect();
         $emptyRiddles = collect();
 
-        $story->pages->each(static function ($page) use ($deadEnds, $orphans) {
+        $story->pages->each(static function ($page) use ($deadEnds, $orphans, $emptyRiddles) {
             // Orphans : they have no direct parent
             if (!$page->is_first && $page->parents->count() === 0) {
                 // But they can be linked to from a riddle

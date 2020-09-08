@@ -10,7 +10,7 @@
                     </div>
                     <div class="card-body">
                         @foreach($deadEnds as $deadEnd)
-                            <div class="row">
+                            <div class="row mb-1">
                                 <div class="col">
                                     <a class="btn btn-danger text-center w-15" role="button">
                                         <span class="icon-trash text-white deleteDeadEnd" data-pageid="{{ $deadEnd->id }}"></span>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="card-body">
                         @foreach($orphans as $orphan)
-                            <div class="row">
+                            <div class="row mb-1">
                                 <div class="col">
                                     <a class="btn btn-danger text-center w-15" role="button">
                                         <span class="icon-trash text-white deleteDeadEnd" data-pageid="{{ $orphan->id }}"></span>
@@ -72,7 +72,7 @@
                     </div>
                     <div class="card-body">
                         @foreach($unusedItems as $item)
-                            <div class="row">
+                            <div class="row mb-1">
                                 <div class="col">
                                     <a class="btn btn-danger text-center w-15 mr-3" role="button">
                                         <span class="icon-trash text-white deleteItem" data-itemid="{{ $item->id }}"></span>
@@ -100,7 +100,7 @@
                     </div>
                     <div class="card-body">
                         @foreach($unusedFields as $field)
-                            <div class="row">
+                            <div class="row mb-1">
                                 <div class="col">
                                     <a class="btn btn-danger text-center w-15 mr-3" role="button">
                                         <span class="icon-trash text-white deleteField" data-fieldid="{{ $field->id }}"></span>
@@ -124,7 +124,7 @@
                     </div>
                     <div class="card-body">
                         @foreach($emptyRiddles as $riddle)
-                            <div class="row">
+                            <div class="row mb-1">
                                 <div class="col">
                                     <a class="btn btn-danger text-center w-15 mr-3" role="button">
                                         <span class="icon-trash text-white deleteRiddle" data-riddleid="{{ $riddle->id }}"></span>

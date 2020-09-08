@@ -498,9 +498,11 @@ class StoryController extends Controller
             'orphans'     => $errors['orphans'],
             'unusedItems' => $errors['unusedItems'],
             'unusedFields'=> $errors['unusedFields'],
+            'emptyRiddles'=> $errors['emptyRiddles'],
             'hasErrors'   => $errors['deadEnds']->count() > 0
                                   || $errors['orphans']->count() > 0
                                   || $errors['unusedItems']->count() > 0
+                                  || $errors['emptyRiddles']->count() > 0
                                   || $errors['unusedFields']->count() > 0,
         ]);
     }

@@ -116,8 +116,8 @@
                         </div>
                         <div class="form-check">
                             <input type="radio" class="form-check-input" name="character_genre"
-                                value="both" id="genre_both" @if ($story && $story->story_options && $story->story_options->character_genre === \App\Classes\Constants::GENRE_BOTH) checked @endif>
-                            <label for="genre_both" class="form-check-label">@lang('story.genre_both')</label>
+                                value="both" id="genres_both" @if ($story && $story->story_options && $story->story_options->character_genre === \App\Classes\Constants::GENRE_BOTH) checked @endif>
+                            <label for="genres_both" class="form-check-label">@lang('story.genres_both')</label>
                         </div>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                     </div>
                     <div class="form-group ml-3">
                         <label>@lang('story.points_to_share')</label>
-                        <input type="number" value="10" min="1" max="99" id="points_to_share">
+                        <input type="number" value="@if ($story && $story->story_options){{ $story->story_options->points_to_share }}@else 10 @endif" min="1" max="99" id="points_to_share">
                     </div>
                 </div>
             </div>

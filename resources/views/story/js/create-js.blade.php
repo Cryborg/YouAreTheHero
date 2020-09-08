@@ -111,17 +111,17 @@
         });
     });
 
-    $(document).on('blur', '#inventory_slots', function () {
+    $("#inventory_slots").debounce("change", function() {
         const $this = $(this);
 
         saveOption('inventory_slots', $this.val());
-    });
+    }, 1000);
 
-    $(document).on('blur', '#points_to_share', function () {
+    $("#points_to_share").debounce("change", function() {
         const $this = $(this);
 
         saveOption('points_to_share', $this.val());
-    });
+    }, 1000);
 
     function saveOption(id, value) {
         $.post({
