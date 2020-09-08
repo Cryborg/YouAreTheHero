@@ -61,6 +61,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $name
+ * @property string|null $genre
  * @property int $user_id
  * @property int $story_id
  * @property int $page_id
@@ -85,6 +86,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Character query()
  * @method static \Illuminate\Database\Eloquent\Builder|Character whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Character whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Character whereGenre($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Character whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Character whereMoney($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Character whereName($value)
@@ -258,6 +260,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Effect[] $effects
+ * @property-read int|null $effects_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[] $items
  * @property-read int|null $items_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Prerequisite[] $prerequisites
@@ -317,7 +321,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ItemPage[] $actions
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Action[] $actions
  * @property-read int|null $actions_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Character[] $characters
  * @property-read int|null $characters_count
@@ -605,11 +609,11 @@ namespace App\Models{
  * @property int $id
  * @property int $story_id
  * @property bool $has_character Do we have to create a character for this story?
- * @property string $character_genre
+ * @property string|null $character_genre
  * @property bool $has_stats Do we show the stats creation page?
  * @property string $stat_attribution "player" means the player gives :points_to_share: points manually to his character. "dice" means it is done by throwing dice.
- * @property int $points_to_share Points to share between character stats
- * @property int $inventory_slots How many (virtual) slots there are in the inventory.
+ * @property int $points_to_share Points to share amongst character stats
+ * @property int $inventory_slots How much (virtual) slots there are in the inventory.
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
@@ -647,15 +651,14 @@ namespace App\Models{
  * @property string $locale
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $role
- * @property bool $optin_system
  * @property string|null $google_id
  * @property string|null $avatar
  * @property string|null $avatar_original
- * @property string|null $valid_from
+ * @property \Illuminate\Support\Carbon|null $valid_from
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $deleted_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Character[] $characters
  * @property-read int|null $characters_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
@@ -664,6 +667,7 @@ namespace App\Models{
  * @property-read int|null $stories_count
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
+ * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAvatar($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAvatarOriginal($value)
@@ -676,13 +680,14 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereLastName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereLocale($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereOptinSystem($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRole($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUsername($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereValidFrom($value)
+ * @method static \Illuminate\Database\Query\Builder|User withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
  */
 	class User extends \Eloquent implements \Illuminate\Contracts\Translation\HasLocalePreference {}
 }

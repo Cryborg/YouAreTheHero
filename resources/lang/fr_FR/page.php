@@ -81,6 +81,7 @@ return array (
     'show_new_page_help' => 'Coche cette case pour modifier la page nouvelle créée.',
     'siblings_label' => 'Pages soeurs',
     'siblings_label_help' => 'Ces pages ont une ou plusieurs pages parentes en commun avec la page en cours d\'édition.',
+    'story_errors_modal_title' => 'Liste des anomalies',
     'tab_bonus' => 'Bonus/malus',
     'tab_items' => 'Objets',
     'tab_prerequisite' => 'Prérequis',

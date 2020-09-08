@@ -9,6 +9,19 @@
             });
     });
 
+    $(document).on("hidden.bs.modal", '#modalStoryErrors', function () {
+        $.get({
+            url: route('story.has_errors', {story: {{ $data['page']->story->id }}})
+        })
+            .done(function (res) {
+                if (res.has_errors) {
+                    $('.showStoryErrors').show();
+                } else {
+                    $('.showStoryErrors').hide();
+                }
+            });
+    });
+
     // Delete a page from the "Story errors" popin
     $(document).on('click touchstart keydown', '.deleteDeadEnd, .deleteItem, .deleteField', function () {
         const $this = $(this);

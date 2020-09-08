@@ -54,6 +54,7 @@ Route::middleware('auth')->group(static function () {
     Route::get('/story/{story}/inventory', 'StoryController@inventory')->name('story.inventory');
     Route::get('/story/{story}/sheet', 'StoryController@sheet')->name('story.sheet');
     Route::post('/story/{story}/page/create/{page?}', 'PageController@create')->name('page.create');
+    Route::get('/story/{story}/has_errors', 'StoryController@hasErrors')->name('story.has_errors');
     Route::get('/story/{story}/{page?}', 'StoryController@getPlay')->name('story.play');
 
     Route::post('/story/ajax_post_children_pages', 'StoryController@postChildrenPagesAjax')->name('story.ajax_postchildrenpages');

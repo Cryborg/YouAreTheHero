@@ -434,6 +434,15 @@ class PageController extends Controller
         return $graph->implode("\n");
     }
 
+    public static function hasErrors(Story $story)
+    {
+        $errors = self::getErrors($story);
+
+        return response()->json([
+            'has_errors' => $errors['showErrorsButton']
+        ]);
+    }
+
     public static function getErrors(Story $story)
     {
         /*************************
@@ -470,29 +479,12 @@ class PageController extends Controller
         /*************************
          *         Items
          ************************/
-        $unusedItems = collect();
-
-        $story->items()->each(static function ($item) use ($unusedItems) {
-            // Unused items
-            if ($item->pages->count() === 0 && $item->actions->count() === 0) {
-                $unusedItems->push($item);
-            }
-        });
+        $unusedItems = $story->getUnusedItems();
 
         /*************************
          *         Fields
          ************************/
-        $unusedFields = collect();
-
-        $story->fields()->each(static function ($field) use ($unusedFields) {
-            // Unused fields
-            if (
-                (!$field->actions || ($field->actions && $field->actions->count() === 0))  // Unused in actions
-                && $field->prerequisites->count() === 0                                    // Unused in prerequisites
-            ) {
-                $unusedFields->push($field);
-            }
-        });
+        $unusedFields = $story->getUnusedFields();
 
         return [
             'deadEnds'         => $deadEnds,

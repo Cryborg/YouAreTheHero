@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\PageController;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
@@ -120,6 +121,37 @@ class Story extends Model
         return factory(Page::class)->create([
             'story_id' => $this->id,
         ]);
+    }
+
+    public function getUnusedItems()
+    {
+        $unusedItems = collect();
+
+        $this->items->each(static function (Item $item) use ($unusedItems) {
+            // Unused items
+            if (!$item->isUsed()) {
+                $unusedItems->push($item);
+            }
+        });
+
+        return $unusedItems;
+    }
+
+    public function getUnusedFields()
+    {
+        $unusedFields = collect();
+
+        $this->fields->each(static function ($field) use ($unusedFields) {
+            // Unused fields
+            if (
+                (!$field->actions || ($field->actions && $field->actions->count() === 0))  // Unused in actions
+                && $field->prerequisites->count() === 0                                    // Unused in prerequisites
+            ) {
+                $unusedFields->push($field);
+            }
+        });
+
+        return $unusedFields;
     }
 
     public function fields()

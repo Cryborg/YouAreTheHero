@@ -72,6 +72,11 @@ class Item extends Model
         return 0;
     }
 
+    public function isUsed()
+    {
+        return !($this->pages->count() === 0 && $this->actions->count() === 0);
+    }
+
     /**
      * Get the pages
      *

@@ -81,6 +81,7 @@ return array (
   'show_new_page_help' => 'Check this if you want to edit the newly created page.',
   'siblings_label' => 'SIbling pages',
   'siblings_label_help' => 'These pages have at least one parent in common with the current page.',
+  'story_errors_modal_title' => 'Errors list',
   'tab_bonus' => 'Bonuses/maluses',
   'tab_items' => 'Items',
   'tab_prerequisite' => 'Prerequisites',

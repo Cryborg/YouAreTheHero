@@ -488,6 +488,11 @@ class StoryController extends Controller
         );
     }
 
+    public function hasErrors(Story $story)
+    {
+        return PageController::hasErrors($story);
+    }
+
     public function errors(Story $story)
     {
         $errors = PageController::getErrors($story);
