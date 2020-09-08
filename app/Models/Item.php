@@ -25,10 +25,11 @@ class Item extends Model
     protected $with      = ['effects'];
 
     protected $casts     = [
-        'effects'   => 'array',
-        'is_unique' => 'boolean',
-        'size'      => 'float',
-        'is_used'   => 'boolean',
+        'effects'      => 'array',
+        'is_unique'    => 'boolean',
+        'is_throwable' => 'boolean',
+        'size'         => 'float',
+        'is_used'      => 'boolean',
     ];
 
     protected static function boot()

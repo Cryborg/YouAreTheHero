@@ -24,6 +24,7 @@ class CreateItemsTable extends Migration
             $table->unsignedInteger('default_price')->default(0);
             $table->boolean('single_use')->default(false);
             $table->boolean('is_unique')->default(false);
+            $table->boolean('is_throwable')->default(true);
 
             $table->float('size')->default(1)
                   ->comment('How much room it takes in the inventory.');
