@@ -15,10 +15,15 @@
     <div class="row">
         <div class="col mb-4">
             Languages:
-            @foreach ($storiesLocales as $locale)
-                @if ($language !== $locale->locale)
-                    <a class="btn btn-sm btn-grey"
-                        href="{{ route('stories.list', ['language' => $locale->locale]) }}">@lang('common.' . $locale->locale)</a>
+            @foreach ($storiesLocales as $storyLocale)
+                @if ($selectedLanguage !== $storyLocale->locale)
+                    @if ($selectedLanguage === $user->locale)
+                        <a class="btn btn-sm btn-grey"
+                            href="{{ route('stories.list', ['language' => $storyLocale->locale]) }}">@lang('common.' . $storyLocale->locale)</a>
+                    @else
+                        <a class="btn btn-sm btn-grey"
+                            href="{{ route('stories.list') }}">@lang('common.' . $storyLocale->locale)</a>
+                    @endif
                 @endif
             @endforeach
         </div>

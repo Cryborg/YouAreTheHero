@@ -59,7 +59,9 @@ class StoriesController extends Controller
             $query->where('locale', $selectedLanguage);
         } else {
             // By default look for stories in the same language as the user's
-            $query->where('locale', Auth::user()->locale);
+            $userLocale = Auth::user()->locale;
+            $selectedLanguage = $userLocale;
+            $query->where('locale', $userLocale);
         }
 
         $stories = $query->get();
@@ -86,9 +88,10 @@ class StoriesController extends Controller
         $storiesLocales = Story::distinct('locale')->get('locale');
 
         return View::make('stories.list', [
+            'user' => Auth::user(),
             'stories' => $stories,
             'storiesLocales' => $storiesLocales,
-            'language' => !empty($selectedLanguage) ? $selectedLanguage : null
+            'selectedLanguage' => !empty($selectedLanguage) ? $selectedLanguage : null
         ]);
     }
 
