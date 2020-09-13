@@ -53,6 +53,9 @@ class StoriesController extends Controller
                 ->orWhere('is_published', true);
         }
 
+        // By default look for stories in the same language as the user's
+        $query->where('locale', Auth::user()->locale);
+
         $stories = $query->get();
 
         // Count words in the whole story. Cache this later

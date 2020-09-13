@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -28,6 +30,11 @@ class HomeController extends Controller
     {
         $locale = in_array($locale, config('app.languages')) ? $locale : config('app.fallback_locale');
         session(['locale' => $locale]);
+
+        $user = Auth::user();
+        if ($user) {
+            $user->update(['locale' => $locale]);
+        }
         return back();
     }
 
