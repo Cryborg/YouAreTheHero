@@ -10,6 +10,8 @@ return [
     'effects_help_text' => 'Si l\'objet affecte une ou plusieurs des attributs du joueur, c\'est ici qu\'il faut l\'indiquer.',
     'field'             => 'Stat',
     'hidden'            => 'Caché',
+    'is_throwable'      => 'Jetable',
+    'is_throwable_help' => 'Coche cette case si tu veux empêcher le joueur de pouvoir se débarrasser de l\'objet.',
     'is_unique'         => 'Objet unique',
     'is_unique_help'    => 'Indique si l\'objet disparaît une fois utilisé.',
     'item'              => 'Objet',

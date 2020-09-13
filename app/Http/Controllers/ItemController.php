@@ -43,6 +43,7 @@ class ItemController extends Controller
                 'name'          => 'required|min:2',
                 'default_price' => 'required',
                 'is_unique'     => '',
+                'is_throwable'  => '',
                 'story_id'      => 'required|exists:stories,id',
                 'size'          => 'required|min:0',
                 'effects'       => '',
@@ -53,7 +54,7 @@ class ItemController extends Controller
         unset($validated['effects']);
 
         // Create the new item
-        $item = Item::create($validated);
+        $item = Item::updateOrCreate($validated);
 
         foreach ($effects as $effect) {
             if ($effect['value'] != '') {

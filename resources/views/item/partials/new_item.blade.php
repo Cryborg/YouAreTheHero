@@ -54,6 +54,13 @@
                     {{ trans('item.is_unique') }}
                 </label>
             </div>
+            <div class="card-body">
+                <p class="help-block">{!! trans('item.is_throwable_help') !!}</p>
+                <label>
+                    {!! Form::checkbox('is_throwable', 1, 1,  ['id' => 'is_throwable_' . $context]) !!}
+                    {{ trans('item.is_throwable') }}
+                </label>
+            </div>
             @if ($story->story_options && $story->story_options->has_stats)
                 <h5 class="card-header">@lang('item.effects')</h5>
                 <div class="card-body">

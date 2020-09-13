@@ -49,6 +49,7 @@
             'name': $('#item_name_' + context).val(),
             'default_price': $('#item_price_' + context).val(),
             'is_unique': $('#is_unique_' + context).is(':checked') ? 1 : 0,
+            'is_throwable': $('#is_throwable_' + context).is(':checked') ? 1 : 0,
             'size': $('#item_size_' + context).val(),
             'effects': values,
             'category': $('#item_category_' + context).val()

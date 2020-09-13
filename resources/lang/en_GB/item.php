@@ -10,6 +10,8 @@ return [
     'effects_help_text' => 'If the item affects one or more of the character stats, specify it here.',
     'field'             => 'Field',
     'hidden'            => 'Hidden',
+    'is_throwable'      => 'Is throwable',
+    'is_throwable_help' => 'Wether or not you allow the player to throw away the item.',
     'is_unique'         => 'Unique item',
     'is_unique_help'    => 'Indicates if the item disappears upon use.',
     'item'              => 'Object',
