@@ -7,6 +7,23 @@
 @endpush
 
 @section('content')
+    <div class="row">
+        <div class="col border-bottom mb-2">
+            <h5>{{ trans('stories.filters_title') }}</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-4">
+            Languages:
+            @foreach ($storiesLocales as $locale)
+                @if ($language !== $locale->locale)
+                    <a class="btn btn-sm btn-grey"
+                        href="{{ route('stories.list', ['language' => $locale->locale]) }}">@lang('common.' . $locale->locale)</a>
+                @endif
+            @endforeach
+        </div>
+    </div>
+
     {{-- Published stories --}}
     <div class="row">
         <div class="col">

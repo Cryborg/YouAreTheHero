@@ -37,6 +37,8 @@ class StoriesController extends Controller
      */
     public function list(Request $request)
     {
+        $selectedLanguage = $request->get('language');
+
         $query = Story::select()
             ->orderByDesc('updated_at')
             ->with(['pages']);
@@ -53,8 +55,12 @@ class StoriesController extends Controller
                 ->orWhere('is_published', true);
         }
 
-        // By default look for stories in the same language as the user's
-        $query->where('locale', Auth::user()->locale);
+        if ($selectedLanguage) {
+            $query->where('locale', $selectedLanguage);
+        } else {
+            // By default look for stories in the same language as the user's
+            $query->where('locale', Auth::user()->locale);
+        }
 
         $stories = $query->get();
 
@@ -76,8 +82,13 @@ class StoriesController extends Controller
             ];
         });
 
+        // List stories in other languages
+        $storiesLocales = Story::distinct('locale')->get('locale');
+
         return View::make('stories.list', [
-            'stories' => $stories
+            'stories' => $stories,
+            'storiesLocales' => $storiesLocales,
+            'language' => !empty($selectedLanguage) ? $selectedLanguage : null
         ]);
     }
 
