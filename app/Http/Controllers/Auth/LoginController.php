@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
@@ -107,5 +108,20 @@ class LoginController extends Controller
         return view('auth.login', [
             'tutoStory' => Story::where('id', 23)->first()
         ]);
+    }
+
+    public function logout(Request $request)
+    {
+        $locale =  Session::get('locale');
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return $this->loggedOut($request, $locale) ?: redirect('/');
+    }
+
+    protected function loggedOut(Request $request, $locale)
+    {
+        Session::put('locale',$locale);
     }
 }

@@ -418,6 +418,7 @@ class StoryController extends Controller
             'contexts'         => ['story_creation'],
         ];
 
+        // Translate story genres and sort them alphabetically
         $genres = Genre::all();
         $orderdGenres = collect();
         $genres->each(static function ($genre) use ($orderdGenres) {
