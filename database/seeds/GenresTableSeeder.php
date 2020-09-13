@@ -12,68 +12,80 @@ class GenresTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('genres')->delete();
-        
+
         \DB::table('genres')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
-                'label' => 'Comédie',
+                'label' => 'writing_genre_humor',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
-                'label' => 'Drame',
+                'label' => 'writing_genre_drama',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
-                'label' => 'Thriller',
+                'label' => 'writing_genre_thriller',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
-                'label' => 'Science-fiction',
+                'label' => 'writing_genre_science_fiction',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
-                'label' => 'Fantastique',
+                'label' => 'writing_genre_fantastic',
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
-                'label' => 'Horreur',
+                'label' => 'writing_genre_horror',
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
-                'label' => 'Policier',
+                'label' => 'writing_genre_detective',
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
-                'label' => 'Fantasy',
+                'label' => 'writing_genre_fantasy',
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
-                'label' => 'Aventure',
+                'label' => 'writing_genre_adventure',
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
-                'label' => 'Conte',
+                'label' => 'writing_genre_tale',
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
-                'label' => 'Historique',
+                'label' => 'writing_genre_historical',
+            ),
+            11 => array (
+                'id' => 12,
+                'label' => 'writing_genre_short_story',
+            ),
+            12 => array (
+                'id' => 13,
+                'label' => 'writing_genre_tutorial',
+            ),
+            13 => array (
+                'id' => 14,
+                'label' => 'writing_genre_romance',
             ),
         ));
-        
-        
+
+
     }
 }

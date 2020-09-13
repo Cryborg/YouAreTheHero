@@ -415,9 +415,20 @@ class StoryController extends Controller
             ],
             'story'            => $story,
             'route'            => 'story.create.post',
-            'genres'           => Genre::all(),
             'contexts'         => ['story_creation'],
         ];
+
+        $genres = Genre::all();
+        $orderdGenres = collect();
+        $genres->each(static function ($genre) use ($orderdGenres) {
+            $orderdGenres->push(collect([
+                    'id' => $genre->id,
+                    'label' => trans('story.writing_genre_' . $genre->label),
+                ])
+            );
+        });
+
+        $data['genres'] = $orderdGenres->sortBy('label');
 
         $view = View::make('story.create', $data);
 

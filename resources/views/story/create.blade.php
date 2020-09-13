@@ -79,9 +79,9 @@
                     <p class="help-block">@lang('story.genres_help')</p>
                     <select class="selectpicker" title="{{ trans('story.select_genres_placeholder') }}" data-size="6" id="genres" name="genres[]" multiple required data-live-search="true" data-max-options="5">
                         @foreach($genres as $genre)
-                            <option value="{{ $genre->id }}" @foreach ($story->genres ?? [] as $storyGenre)@if ($storyGenre->id == $genre->id) selected @endif
+                            <option value="{{ $genre['id'] }}" @foreach ($story->genres ?? [] as $storyGenre)@if ($storyGenre->id == $genre['id']) selected @endif
                                 @endforeach
-                            >{{ $genre->label }}</option>
+                            >{{ $genre['label'] }}</option>
                         @endforeach
                     </select>
                 </div>
