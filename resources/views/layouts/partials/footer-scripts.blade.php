@@ -51,14 +51,17 @@
             // Refreshes some partials if the appropriate JSON response is true
             if (request.responseJSON) {
                 console.log(request.responseJSON);
-                if (request.responseJSON.refreshInventory) {
+                if (request.responseJSON.refreshInventory === true) {
                     loadInventory();
                 }
-                if (request.responseJSON.refreshChoices) {
+                if (request.responseJSON.refreshChoices === true) {
                     loadChoices();
                 }
-                if (request.responseJSON.refreshSheet) {
+                if (request.responseJSON.refreshSheet === true) {
                     loadSheet();
+                }
+                if (request.responseJSON.refreshPurse === true) {
+                    loadPurse();
                 }
             }
         })

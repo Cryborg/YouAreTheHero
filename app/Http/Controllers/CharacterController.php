@@ -83,4 +83,11 @@ class CharacterController extends Controller
 
         return redirect()->route('story.play', ['story' => $story]);
     }
+
+    public function purse(Character $character)
+    {
+        return view('story.partials.purse', [
+            'character' => $character,
+        ]);
+    }
 }

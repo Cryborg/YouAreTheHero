@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Effect;
 use App\Models\Item;
+use App\Models\Page;
 use App\Models\Story;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -80,15 +81,18 @@ class ItemController extends Controller
 
     /**
      * @param \App\Models\Item $item
+     * @param \App\Models\Page $page
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function take(Item $item): JsonResponse
+    public function take(Item $item, Page $page): JsonResponse
     {
-        $success = $item->take();
+        $success = $item->take($page);
 
         return response()->json($success + [
             'is_unique' => (bool) $item->getRawOriginal('is_unique'),
+            'refreshPurse' => $success['success'],
+            'refreshInventory' => $success['success'],
         ], 200);
     }
 

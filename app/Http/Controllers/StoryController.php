@@ -262,7 +262,7 @@ class StoryController extends Controller
                     if ($character->actions()
                                   ->syncWithoutDetaching($trigger->id)) {
                         if ($trigger->quantity > 0) {
-                            $item->take();
+                            $item->take($page);
                         } else {
                             $item->throwAway();
                         }

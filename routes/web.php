@@ -34,7 +34,7 @@ Route::middleware('auth')->group(static function () {
 
 // Items
     Route::post('/item/create', 'ItemController@store')->name('item.store');
-    Route::get('/item/{item}/take', 'ItemController@take')->name('item.take');
+    Route::get('/item/{item}/{page}/take', 'ItemController@take')->name('item.take');
     Route::get('/items/{story}/html_list', 'ItemController@htmlList')->name('items.html.list');
     Route::get('/item/{item}/throw', 'ItemController@throwAway')->name('item.throw_away');
     Route::get('/item/{character}/{item}/use', 'CharacterItemController@itemUse')->name('item.use');
@@ -86,6 +86,7 @@ Route::middleware('auth')->group(static function () {
     Route::delete('/prerequisite/{prerequisite}/delete', 'PrerequisiteController@delete')->name('prerequisite.delete');
 
 // Character
+    Route::get('/character/{character}/purse', 'CharacterController@purse')->name('character.purse');
     Route::get('/character/create/{story}', 'CharacterController@getCreate')->name('character.create');
     Route::post('/character/create/{story}', 'CharacterController@store')->name('character.create.post');
 

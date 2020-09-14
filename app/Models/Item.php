@@ -150,15 +150,31 @@ class Item extends Model
      *
      * @return array
      */
-    public function take(): array
+    public function take(Page $page): array
     {
         $isOk    = false;
         $message = null;
 
         $character = $this->story->currentCharacter();
 
+        // Check if there is enough room in the character's inventory
         if (Action::hasRoomLeftInInventory($character, $this)) {
-            // The character does not have this item. Attach it
+            // Check if the item must be bought
+            $item = $page->items()->wherePivot('item_id', $this->id)->first();
+
+            if ($item->pivot->price > 0) {
+                if ($character->money >= $item->pivot->price) {
+                    $character->money -= $item->pivot->price;
+                    $character->save();
+                } else {
+                    return [
+                        'success' => false,
+                        'message' => trans('character.not_enough_money'),
+                    ];
+                }
+            }
+
+            // Add the item to the inventory
             $character->items()
                       ->attach($this->id);
 

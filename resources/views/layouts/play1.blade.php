@@ -8,7 +8,7 @@
                     <span class="icon-backpack display-5 mr-2"></span>
                     @lang('common.inventory')
                 </div>
-                <div class="card-header">
+                <div class="card-header purse-block">
                     @lang('common.money')@lang(':') {{ $character->money }}
                 </div>
                 <div class="card-header">

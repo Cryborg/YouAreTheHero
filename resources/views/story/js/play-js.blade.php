@@ -1,3 +1,8 @@
+function loadPurse() {
+    $('.purse-block').html(loadingSpinner);
+    $('.purse-block').load(routePurse);
+}
+
 function loadInventory() {
     $('.inventory-block').html(loadingSpinner);
     $('.inventory-block').load(routeInventory);
@@ -115,13 +120,13 @@ $(document).on('click touchstart keydown', '.pick-item button', function () {
     const $this = $(this);
 
     $.get({
-        'url': route('item.take', {'item': $this.data('itemid')}),
+        'url': route('item.take', {'page': $('#pageId').val(), 'item': $this.data('itemid')}),
     })
         .done(function (rst) {
             if (rst.success == true) {
                 // TODO: refresh this if necessary. Controller should return the info according
                 //       to what have been updated
-                refreshData();
+                //refreshData();
 
                 if (rst.is_unique === true) {
                     $this.closest('.pick-item').remove();
