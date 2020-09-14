@@ -2,7 +2,7 @@
     Les choix sont des liens en fin de page, vers lesquels le joueur sera redirigé lorsqu'il cliquera dessus.
 </p>
 <p>
-    Tout en bas de la page se trouve le bouton <button class="btn btn-primary text-white"><span class="icon-choice mr-2 text-white"></span>Ajoute un nouveau choix</button>. En cliquant dessus tu ouvres une popup assez minimaliste.
+    En haut de la page se trouve le bouton <button class="btn btn-primary text-white"><span class="icon-choice mr-2 text-white"></span>Ajoute un nouveau choix</button>. En cliquant dessus tu ouvres une popup assez minimaliste.
 </p>
 
 <h4>Vers une nouvelle page</h4>
