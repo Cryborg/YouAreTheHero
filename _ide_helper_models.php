@@ -317,6 +317,7 @@ namespace App\Models{
  * @property int $default_price
  * @property int $single_use
  * @property bool $is_unique
+ * @property bool $is_throwable
  * @property float $size How much room it takes in the inventory.
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -341,6 +342,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereDefaultPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Item whereIsThrowable($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereIsUnique($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereSingleUse($value)

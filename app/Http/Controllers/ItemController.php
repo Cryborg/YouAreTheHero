@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CharacterItem;
 use App\Models\Effect;
 use App\Models\Item;
 use App\Models\Page;
@@ -112,23 +113,18 @@ class ItemController extends Controller
     }
 
     /**
-     * @param \App\Models\Item $item
+     * @param CharacterItem $characterItem
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function throwAway(Item $item)
+    public function throwAway(CharacterItem $characterItem)
     {
-        /** @var \App\Models\Character $character */
-        $character = $item->story->currentCharacter();
+        $success = $characterItem->delete();
 
-        if ($item->is_unique) {
-            $detached = $character->items()->detach($item);
-
-            return response()->json([
-               'refreshInventory' => $detached,
-               'refreshContent' => $detached,
-            ]);
-        }
+        return response()->json([
+           'refreshInventory' => $success,
+           'refreshContent' => $success,
+        ]);
     }
 
     /**

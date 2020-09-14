@@ -23,7 +23,6 @@ function loadChoices() {
 function loadContent(route) {
     // $('#page_content').html($('#page_content').html());
     $('#page_content').load(route, null, function () {
-        refreshData();
         loadInputSpinner();
     });
 }
@@ -38,7 +37,7 @@ $(document).on('click touchstart keydown', '.itemThrowAway', function () {
     var itemId = $(this).closest('a.itemThrowAwayMenu').data('itemid');
 
     $.get({
-        url: route('item.throw_away', {'item': itemId})
+        url: route('item.throw_away', {'character_item': itemId})
     })
         .done(function (result) {
             loadContent(getContentRoute());

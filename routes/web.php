@@ -36,7 +36,7 @@ Route::middleware('auth')->group(static function () {
     Route::post('/item/create', 'ItemController@store')->name('item.store');
     Route::get('/item/{item}/{page}/take', 'ItemController@take')->name('item.take');
     Route::get('/items/{story}/html_list', 'ItemController@htmlList')->name('items.html.list');
-    Route::get('/item/{item}/throw', 'ItemController@throwAway')->name('item.throw_away');
+    Route::get('/item/{character_item}/throw', 'ItemController@throwAway')->name('item.throw_away');
     Route::get('/item/{character}/{item}/use', 'CharacterItemController@itemUse')->name('item.use');
     Route::delete('/item/{item}/delete', 'ItemController@delete')->name('item.delete');
 

@@ -11,7 +11,7 @@
                             {{ $item->pivot->quantity }} *
                         @endif
                         <a class="clickable itemThrowAwayMenu" data-id="popup-{{ $item->pivot->id }}"
-                            data-itemid="{{ $item->id }}" data-characterid="{{ $character->id }}">
+                            data-itemid="{{ $item->pivot->id }}" data-characterid="{{ $character->id }}">
                             {{ $item->name }}
                             @if ($item->is_throwable || $item->effects()->count() > 0)
                                 <div class="popup-menu border border-dark w-75 shadow" style="display:none" data-popupid="popup-{{ $item->pivot->id }}">
