@@ -63,15 +63,14 @@ class StoryController extends Controller
         $page_id = getSession('page_id');
 
         if (!empty($page_id)) {
-            $page = Page::where('id', $page_id)
-                        ->first();
+            $page = Page::where('id', $page_id)->first();
         }
 
         setSession('story_id', $story->id);
 
         // If the character does not exist, it is a new game
         if (!$character) {
-            Character::createNewForStory($story);
+            $character = Character::createNewForStory($story);
 
             if ($story->story_options->has_character) {
                 return Redirect::route('character.create', [

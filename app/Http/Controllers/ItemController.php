@@ -42,21 +42,27 @@ class ItemController extends Controller
     {
         $validated = Validator::validate($request->all(),
             [
-                'name'          => 'required|min:2',
-                'default_price' => 'required',
-                'is_unique'     => '',
-                'is_throwable'  => '',
-                'story_id'      => 'required|exists:stories,id',
-                'size'          => 'required|min:0',
-                'effects'       => '',
+                'id'            => '',
                 'category'      => '',
+                'default_price' => 'required',
+                'effects'       => '',
+                'is_throwable'  => '',
+                'is_unique'     => '',
+                'name'          => 'required|min:2',
+                'single_use'    => '',
+                'size'          => 'required|min:0',
+                'story_id'      => 'required|exists:stories,id',
             ]);
 
         $effects = $validated['effects'] ?? [];
         unset($validated['effects']);
 
         // Create the new item
-        $item = Item::updateOrCreate($validated);
+        if (!empty($validated['id'])) {
+            $item = Item::updateOrCreate(['id' => $validated['id']], $validated);
+        } else {
+            $item = Item::updateOrCreate($validated);
+        }
 
         foreach ($effects as $effect) {
             if ($effect['value'] != '') {
@@ -94,6 +100,7 @@ class ItemController extends Controller
             'is_unique' => (bool) $item->getRawOriginal('is_unique'),
             'refreshPurse' => $success['success'],
             'refreshInventory' => $success['success'],
+            'refreshChoices' => $success['success'],
         ], 200);
     }
 
@@ -138,6 +145,15 @@ class ItemController extends Controller
     {
         $view = View::make('page.partials.modal_list_items', [
             'items' => $story->items
+        ]);
+
+        return $view;
+    }
+
+    public function details(Item $item)
+    {
+        $view = View::make('item.partials.edit_item', [
+            'item' => $item
         ]);
 
         return $view;

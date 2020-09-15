@@ -39,6 +39,7 @@ Route::middleware('auth')->group(static function () {
     Route::get('/item/{character_item}/throw', 'ItemController@throwAway')->name('item.throw_away');
     Route::get('/item/{character}/{item}/use', 'CharacterItemController@itemUse')->name('item.use');
     Route::delete('/item/{item}/delete', 'ItemController@delete')->name('item.delete');
+    Route::get('/item/{item}/details', 'ItemController@details')->name('item.details');
 
 // Stories
     Route::get('/stories/draft', 'StoriesController@listDraft')->name('stories.list.draft');

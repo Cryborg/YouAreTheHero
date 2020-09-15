@@ -75,7 +75,12 @@ class Item extends Model
 
     public function isUsed()
     {
-        return !($this->pages->count() === 0 && $this->actions->count() === 0);
+        $notInPages = $this->pages()->count() === 0;
+        $notInActions = $this->actions()->count() === 0;
+        $notInPrerequisites = $this->prerequisites()->count() === 0;
+        $notInRiddles = $this->riddles()->count() === 0;
+
+        return !($notInPages && $notInActions && $notInPrerequisites && $notInRiddles);
     }
 
     /**
@@ -104,6 +109,11 @@ class Item extends Model
     public function prerequisites(): MorphMany
     {
         return $this->morphMany(Prerequisite::class, 'prerequisiteable');
+    }
+
+    public function riddles()
+    {
+        return $this->belongsTo(Riddle::class);
     }
 
     /**
@@ -147,6 +157,8 @@ class Item extends Model
 
     /**
      * Take an item and put it in the inventory
+     *
+     * @param \App\Models\Page $page
      *
      * @return array
      */

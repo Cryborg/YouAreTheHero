@@ -28,9 +28,7 @@
                                     <select multiple="" class="form-control custom-select itemSelectList" data-size="6" id="prerequisite_item_id" name="prerequisite_item_id">
                                         <option value=""></option>
                                         @foreach ($page->story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
-                                            <option value="{{ $itemId }}" @foreach($page->prerequisites() ?? [] as $prerequisite)@foreach ($prerequisite->items ?? [] as $item)@if ($item->id == $itemId) selected @endif
-                                                @endforeach
-                                                @endforeach
+                                            <option value="{{ $itemId }}" @foreach($page->prerequisites() ?? [] as $prerequisite)@foreach ($prerequisite->items ?? [] as $item)@if ($item->id == $itemId) selected @endif @endforeach @endforeach
                                             >{{ $itemName }}</option>
                                         @endforeach
                                     </select>
@@ -46,6 +44,12 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">@lang('item.details')</div>
+                            <div class="card-body item-details"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             @if ($story->story_options && $story->story_options->has_stats)
@@ -56,13 +60,8 @@
                         <select class="form-control custom-select" size="6" id="sheet" name="sheet">
                             <option value=""></option>
                             @foreach($page->story->fields as $field)
-{{--                                @foreach($page->prerequisites() ?? [] as $prerequisite)--}}
-{{--                                    @if ($prerequisite->prerequisiteable instanceof \App\Models\CharacterField)--}}
-{{--                                        <option value="{{ $field->name }}" @if ($prerequisite->prerequisiteable->name == $field->name) selected @endif--}}
-                                        <option value="{{ $field->name }}"
-                                        >{{ $field->name }}</option>
-{{--                                    @endif--}}
-{{--                                @endforeach--}}
+                                <option value="{{ $field->name }}"
+                                >{{ $field->name }}</option>
                             @endforeach
                         </select>
                     </div>

@@ -1,29 +1,34 @@
 function loadPurse() {
-    $('.purse-block').html(loadingSpinner);
-    $('.purse-block').load(routePurse);
+    var $block = $('.purse-block');
+    $block.html(loadingSpinner);
+    $block.load(routePurse);
 }
 
 function loadInventory() {
-    $('.inventory-block').html(loadingSpinner);
-    $('.inventory-block').load(routeInventory);
+    var $block = $('.inventory-block');
+    $block.html(loadingSpinner);
+    $block.load(routeInventory);
 }
 
 function loadSheet() {
-    $('.sheet-block').html(loadingSpinner);
-    $('.sheet-block').load(routeSheet);
+    var $block = $('.sheet-block');
+    $block.html(loadingSpinner);
+    $block.load(routeSheet);
 }
 
 function loadChoices() {
+    var $block = $('.choices-block');
     let routeChoices = route('page.choices', {'page': $('#pageId').val()});
 
-    $('.choices-block').html(loadingSpinner);
-    $('.choices-block').load(routeChoices);
+    $block.html(loadingSpinner);
+    $block.load(routeChoices);
 }
 
 function loadContent(route) {
     // $('#page_content').html($('#page_content').html());
     $('#page_content').load(route, null, function () {
         loadInputSpinner();
+        refreshData();
     });
 }
 

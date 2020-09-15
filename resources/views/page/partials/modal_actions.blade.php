@@ -48,11 +48,9 @@
                     <div class="col">
                         <div class="card">
                             <div class="card-header">
-                                @lang('actions.existing_bonuses')
+                                @lang('item.details')
                             </div>
-                            <div class="card-body">
-                                <p class="help-block">@lang('actions.bonuses_help')</p>
-                                @include('page.partials.actions_list', ['page' => $page])
+                            <div class="card-body item-details">
                             </div>
                         </div>
                     </div>

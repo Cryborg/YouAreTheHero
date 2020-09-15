@@ -64,7 +64,7 @@ class Character extends Model
 
         // If no option needs to be set, create an unnamed character
         if ($story->story_options->has_character === false || $storyOption->count() === 0) {
-            Auth::user()->characters()->create([
+            $character = Auth::user()->characters()->create([
                'name'     => 'Unnamed',
                'user_id'  => Auth::id(),
                'story_id' => $story->id,
@@ -79,9 +79,10 @@ class Character extends Model
                     ->log('New game started');
             }
 
-            return Redirect::route('story.play', [
-                'story' => $story->id,
-            ]);
+            return $character;
+//            return Redirect::route('story.play', [
+//                'story' => $story->id,
+//            ]);
         }
 
         return null;
