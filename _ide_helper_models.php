@@ -332,6 +332,7 @@ namespace App\Models{
  * @property-read int|null $pages_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Prerequisite[] $prerequisites
  * @property-read int|null $prerequisites_count
+ * @property-read \App\Models\Riddle $riddles
  * @property-read \App\Models\Story $story
  * @method static \Illuminate\Database\Eloquent\Builder|Item newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Item newQuery()
