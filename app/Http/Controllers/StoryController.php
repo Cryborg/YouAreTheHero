@@ -73,9 +73,11 @@ class StoryController extends Controller
         if (!$character) {
             Character::createNewForStory($story);
 
-            return Redirect::route('character.create', [
-                'story' => $story->id,
-            ]);
+            if ($story->story_options->has_character) {
+                return Redirect::route('character.create', [
+                    'story' => $story->id,
+                ]);
+            }
         }
 
         // The character exists, let's go back to the previous save point
@@ -113,6 +115,7 @@ class StoryController extends Controller
             'story' => $story,
             'title' => $story->title,
             'character' => $character,
+            'refreshChoices' => true,
         ];
 
         $page->load('descriptions');
