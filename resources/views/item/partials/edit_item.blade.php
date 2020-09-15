@@ -1,5 +1,3 @@
-<p class="help-block">@lang('item.details_help')</p>
-
 <input type="hidden" value="{{ $item->id }}" id="item_id_edit">
 
 <div class="form-group row">

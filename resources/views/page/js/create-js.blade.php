@@ -223,7 +223,7 @@ $(document).ready(function () {
         // If the "item" tab is selected
         if ($('#tr-pre-1').hasClass('active')) {
             data = {
-                'items': $('#prerequisite_item_id').val(),
+                'item': $('#prerequisite_item_id').val(),
                 'quantity': $('#prerequisite_quantity').val()
             };
         }
@@ -377,8 +377,8 @@ $(document).on('click touchstart keydown', '#add_CreateItemPage', function () {
         })
         .fail(function (data) {
             showToast('error', {
-                heading: deletionSuccessText,
-                text: "{{ trans('notification.new_action_not_added') }}",
+                heading: saveFailedHeading,
+                text: saveFailedText,
                 errors: data.responseJSON.errors
             });
         })

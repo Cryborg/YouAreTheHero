@@ -21,26 +21,24 @@ class PrerequisiteController extends Controller
             $addedPrerequisites = ['items' => [], 'stats' => []];
 
             // Item case
-            if ($request->get('items')) {
+            if ($request->get('item')) {
                 $quantity = $request->get('quantity');
 
-                foreach ($request->get('items') as $itemId) {
-                    $prerequisite = Prerequisite::updateOrCreate([
-                        'page_id'   => $page->id,
-                        'prerequisiteable_type' => 'item',
-                        'prerequisiteable_id' => $itemId,
-                    ], [
-                        'quantity' => $quantity
-                    ]);
+                $prerequisite = Prerequisite::updateOrCreate([
+                    'page_id'   => $page->id,
+                    'prerequisiteable_type' => 'item',
+                    'prerequisiteable_id' => $request->get('item'),
+                ], [
+                    'quantity' => $quantity
+                ]);
 
-                    $addedPrerequisites['items'][] = array_merge(
-                        Item::findOrFail($itemId)->toArray(),
-                        [
-                            'quantity' => $quantity,
-                            'prerequisite_id' => $prerequisite->id,
-                        ]
-                    );
-                }
+                $addedPrerequisites['items'][] = array_merge(
+                    Item::findOrFail($request->get('item'))->toArray(),
+                    [
+                        'quantity' => $quantity,
+                        'prerequisite_id' => $prerequisite->id,
+                    ]
+                );
             }
 
             // Stat case

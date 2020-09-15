@@ -112,11 +112,7 @@ class ItemController extends Controller
      */
     public function htmlList(Request $request, Story $story)
     {
-        $validated = $request->validate([
-            'context' => 'required|in:div,select'
-        ]);
-
-        return View::make('page.js.partials.item_list_' . $validated['context'], ['items' => $story->items->sortBy('name')]);
+        return View::make('page.js.partials.item_list_div', ['items' => $story->items->sortBy('name')]);
     }
 
     /**

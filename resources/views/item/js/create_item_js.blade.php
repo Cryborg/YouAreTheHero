@@ -15,8 +15,8 @@ function ajaxCreatePost(route, $this, data)
             });
 
             // Refresh the items list
-            if ($('.itemListDiv').length > 0) showItemsList('div');
-            if ($('.selectpicker.itemSelectList').length > 0) showItemsList('select');
+            if ($('.itemListDiv').length > 0) showItemsList();
+            if ($('.selectpicker.itemSelectList').length > 0) showItemsList();
         })
         .fail(function (data) {
             showToast('error', {
@@ -65,17 +65,12 @@ $(document).on('click touchstart keydown', '.btnCreateItem', function () {
     })
 });
 
-function showItemsList(context) {
+function showItemsList() {
     $.get({
-        url: route('items.html.list', {'story': storyId, 'context': context}),
+        url: route('items.html.list', {'story': storyId}),
     })
         .done(function (html) {
-            if (context === 'div') {
-                $('.itemListDiv').html(html);
-            } else {
-                $('.dropdown.itemSelectList').html(html);
-                $('.selectpicker').selectpicker();
-            }
+            $('.itemListDiv').html(html);
         });
 }
 

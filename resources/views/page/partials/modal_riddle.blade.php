@@ -32,13 +32,10 @@
                             <div class="card-body">
                                 <div class="card-title">
                                     <p class="help-block">{!! trans('page.riddle_item_help') !!}</p>
-                                        <select class="form-control custom-select itemSelectList" id="riddle_item" size="6">
-                                        <option></option>
-                                        @foreach ($items = $page->story->items->sortBy('name')->pluck('name', 'id')->toArray() as $id => $item)
-                                            <option value="{{ $id }}"
-                                                @if ($page->riddle && $page->riddle->item_id == $id) selected @endif
-                                            >{{ $item }}</option>
-                                        @endforeach
+                                    @include('page.partials.select_item', [
+                                        'items' => $page->story->items->sortBy('name')->pluck('name', 'id')->toArray(),
+                                        'selectId' => 'riddle_item',
+                                    ])
                                     </select>
                                 </div>
                             </div>

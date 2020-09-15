@@ -26,11 +26,10 @@
                             <div class="card-body">
                                 <p class="help-block">@lang('actions.item_help')</p>
 
-                                <select class="form-control custom-select itemSelectList" size="6" id="{{ $context }}_item_id" name="{{ $context }}_item_id">
-                                    @foreach ($page->story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [] as $itemId => $itemName)
-                                        <option value="{{ $itemId }}">{{ $itemName }}</option>
-                                    @endforeach
-                                </select>
+                                @include('page.partials.select_item', [
+                                    'items' => $page->story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [],
+                                    'selectId' => $context . '_item_id',
+                                ])
                             </div>
                             <div class="card-header">
                                 @lang('actions.quantity')

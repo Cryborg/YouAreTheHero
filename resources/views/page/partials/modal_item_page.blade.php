@@ -20,7 +20,10 @@
                             <div class="card-body">
                                 <p class="help-block">{{ trans('page.concerned_item_help') }}</p>
                                 <div>
-                                    @include('page.js.partials.item_list_select', ['items' => $story->items])
+                                    @include('page.partials.select_item', [
+                                        'items' => $story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [],
+                                        'selectId' => 'item_id',
+                                    ])
                                 </div>
                             </div>
                         </div>
