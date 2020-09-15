@@ -6,6 +6,7 @@ return [
     'category_help'     => 'Optional category for this object.',
     'confirm_delete'    => 'Are you sure you want to remove this item from your story?',
     'create_btn'        => 'Create an item',
+    'details'           => 'Item details',
     'effects'           => 'Effects',
     'effects_help_text' => 'If the item affects one or more of the character stats, specify it here.',
     'field'             => 'Field',
