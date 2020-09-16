@@ -8,19 +8,6 @@
     {{-- Current page --}}
     @include('page.partials.create')
 
-    <!-- Modal add choice -->
-    @include('page.partials.modal_model', [
-        'template' => 'page.partials.modal_actions',
-        'context' => 'add_actions',
-        'title' => trans('page.add_actions_modal_title'),
-        'icon' => 'icon-choice',
-        'big' => true,
-        'data' => [
-            'page' => $page,
-            'id' => 'CreateActions'
-        ]
-    ])
-
 
     <!-- Modal add choice -->
     @include('page.partials.modal_model', [
@@ -116,31 +103,17 @@
         ]
     ])
 
-    <!-- Modal add item on page -->
-    @include('page.partials.modal_model', [
-        'template' => 'page.partials.modal_item_page',
-        'context' => 'item_page',
-        'title' => trans('page.item_page_modal_title'),
-        'icon' => 'icon-chest',
-        'big' => true,
-        'data' => [
-            'page' => $page,
-            'id' => 'CreateItemPage',
-            'btn_add_text' => trans('item_page.add_item_page')
-        ]
-    ])
-
     <!-- Modal new Prerequisite -->
     @include('page.partials.modal_model', [
         'template' => 'page.partials.modal_prerequisites',
         'context' => 'prerequisites',
         'title' => trans('page.prerequisite_modal_title'),
-        'icon' => 'icon-unlocking',
+        'icon' => '',
         'big' => true,
         'data' => [
             'page' => $page,
-            'id' => 'CreatePrerequisite',
-            'btn_add_text' => trans('item_page.add_prerequisite')
+            'id' => 'Meta',
+            'btn_add_text' => trans('common.add')
         ]
     ])
 @endsection
@@ -162,6 +135,8 @@
         var langPageEarnedItemLabel = "@lang('page.earned_item')";
         var langItem = "@lang('item.item')";
         @include('page.js.create-js')
+        @include('page.js.partials.create.bindings')
+        @include('page.js.partials.create.refresh')
 
         var routeItem = '{{ route('item.store') }}';
         @include('item.js.create_item_js', ['story' => $story, 'contexts' => $contexts])

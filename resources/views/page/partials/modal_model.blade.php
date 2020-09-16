@@ -60,12 +60,6 @@
     @endpush
 @endif
 
-@if ($context === 'add_actions')
-    @push('footer-scripts')
-        @include('page.js.add_actions-js')
-    @endpush
-@endif
-
 @if ($context === 'story_errors')
     @push('footer-scripts')
         @include('page.js.story_errors-js')

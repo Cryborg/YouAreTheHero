@@ -83,6 +83,7 @@ Route::middleware('auth')->group(static function () {
     Route::delete('/page/{page}/{item}/item/delete', 'PageController@deleteItem')->name('page.item.delete');
 
 // Prerequisites
+    Route::get('/prerequisite/{page}/list', 'PrerequisiteController@list')->name('prerequisites.list');
     Route::post('/prerequisite/store/{page}', 'PrerequisiteController@store')->name('prerequisite.store');
     Route::delete('/prerequisite/{prerequisite}/delete', 'PrerequisiteController@delete')->name('prerequisite.delete');
 
@@ -126,8 +127,9 @@ Route::middleware('auth')->group(static function () {
 
 // Actions
     Route::post('/action/{page}/field/{field}/create', 'ActionController@createField')->name('action.field.create');
-    Route::post('/action/{page}/item/{item}/create', 'ActionController@createItem')->name('action.item.create');
+    Route::post('/action/{page}/item/create', 'ActionController@createItem')->name('action.item.create');
     Route::get('/actions/{page}', 'ActionController@listjs')->name('action.listjs');
+    Route::get('/actions/{page}/list', 'ActionController@list')->name('actions.list');
     Route::delete('/action/{action}/delete', 'ActionController@delete')->name('action.delete');
 
 // Reports

@@ -8,5 +8,13 @@
         </tr>
     </thead>
     <tbody>
+        @foreach ($page->triggers as $trigger)
+            <tr>
+            <td>@if ($trigger->actionable_type === 'item') @lang('actions.item') @else @lang('actions.field') @endif</td>
+            <td>{{ $trigger->actionable->name }}</td>
+            <td>{{ $trigger->quantity }}</td>
+            <td><span class="icon-trash text-red clickable deleteAction" data-actionid="{{ $trigger->id }}"></span></td>
+            </tr>
+        @endforeach
     </tbody>
 </table>

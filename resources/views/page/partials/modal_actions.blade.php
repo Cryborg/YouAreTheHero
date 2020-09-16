@@ -27,7 +27,7 @@
                                 <p class="help-block">@lang('actions.item_help')</p>
 
                                 @include('page.partials.select_item', [
-                                    'items' => $page->story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [],
+                                    'items' => $page->story->items->sortBy('name')->pluck('name', 'id')->toArray(),
                                     'selectId' => $context . '_item_id',
                                 ])
                             </div>

@@ -62,7 +62,13 @@
                                     <div class="col">
                                         @info({!! trans('page.current_page_prerequisites_help') !!})
 
-                                        @include('page.partials.prerequisites_list', ['page' => $page])
+                                        <h3>
+                                            {{ trans('page.prerequisite_title') }}
+                                            <button class="btn btn-success shadow ml-2" id="showPrerequisites">
+                                                <span class="icon-add text-white"></span>
+                                            </button>
+                                        </h3>
+                                        <div class="prerequisites_list"></div>
                                     </div>
                                 </div>
                                 <hr>
@@ -174,11 +180,12 @@
                                     @info({!! trans('page.current_page_actions_help') !!})
                                     <h3>
                                         {{ trans('item.items_title') }}
-                                        <button class="btn btn-success shadow ml-2" data-target="#modalCreateActions" data-toggle="modal">
+                                        <button class="btn btn-success shadow ml-2" id="showActions">
                                             <span class="icon-add text-white"></span>
                                         </button>
                                     </h3>
-                                    @include('page.partials.actions_list', ['page' => $page])
+
+                                    <div class="actions_list"></div>
                                 </div>
                             </div>
                             <hr>
@@ -189,13 +196,12 @@
                             @info({!! trans('page.current_page_item_page_help') !!})
                             <h3>
                                 @lang('page.item_page_modal_title')
-                                <button class="btn btn-success shadow ml-2" data-target="#modalCreateItemPage" data-toggle="modal">
+                                <button class="btn btn-success shadow ml-2" id="showItems">
                                     <span class="icon-add text-white"></span>
                                 </button>
                             </h3>
-                            <div class="itemsOnPage">
-                                @include('page.partials.item_page_list', ['items' => $page->items])
-                            </div>
+
+                            <div class="items_list"></div>
                         </div>
                     </div>
                     <div class="tab-pane" id="page-5">

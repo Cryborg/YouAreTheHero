@@ -7,6 +7,7 @@ use App\Models\Field;
 use App\Models\Item;
 use App\Models\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class ActionController extends Controller
 {
@@ -28,12 +29,12 @@ class ActionController extends Controller
         ]);
     }
 
-    public function createItem(Request $request, Page $page, Item $item)
+    public function createItem(Request $request, Page $page)
     {
         $action = Action::updateOrCreate([
             'trigger_id' => $page->id,
             'trigger_type' => 'page',
-            'actionable_id' => $item->id,
+            'actionable_id' => $request->get('item'),
             'actionable_type' => 'item',
         ], [
             'quantity' => $request->get('quantity')
@@ -63,5 +64,19 @@ class ActionController extends Controller
         return response()->json([
             'success' => $action->delete()
         ]);
+    }
+
+    /**
+     * @param \App\Models\Page $page
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function list(Page $page)
+    {
+        $view = View::make('page.partials.actions_list', [
+            'page' => $page
+        ]);
+
+        return $view;
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Item;use App\Models\Page;
 use App\Models\Prerequisite;
 use App\Models\CharacterField;use App\Models\Field;use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class PrerequisiteController extends Controller
 {
@@ -98,12 +99,16 @@ class PrerequisiteController extends Controller
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Page $page
+     * @param \App\Models\Page         $page
      *
-     * @return false|string
+     * @return \Illuminate\Contracts\View\View
      */
     public function list(Request $request, Page $page)
     {
-        return response()->json($page->actions);
+        $view = View::make('page.partials.prerequisites_list', [
+            'page' => $page
+        ]);
+
+        return $view;
     }
 }

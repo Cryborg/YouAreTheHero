@@ -314,7 +314,7 @@ class PageController extends Controller
     {
         if ($request->ajax()) {
             $validated = $request->validate([
-                'item_id'  => 'required',
+                'item'  => 'required',
                 'quantity' => 'required',
                 'price'    => '',
             ]);
@@ -323,7 +323,7 @@ class PageController extends Controller
 
             try {
                 $page->items()->syncWithoutDetaching([
-                    $validated['item_id'] => [
+                    $validated['item'] => [
                         'quantity' => $validated['quantity'],
                         'price'    => $validated['price'],
                     ],

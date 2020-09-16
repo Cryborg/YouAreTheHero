@@ -224,7 +224,7 @@
                             </h5>
                             <div class="card-body">
                                 <div class="card-text itemListDiv">
-                                    @include('page.js.partials.item_list_div', ['items' => $story->items])
+                                    @include('page.js.partials.create.item_list_div', ['items' => $story->items])
                                 </div>
                             </div>
                         </div>

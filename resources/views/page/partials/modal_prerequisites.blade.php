@@ -5,7 +5,7 @@
                 {{ trans('page.required_item') }}
             </a>
             @if ($story->story_options && $story->story_options->has_stats)
-                <a class="nav-item nav-link" href="#tr-pre-2" data-toggle="tab">
+                <a class="nav-item nav-link" href="#tr-pre-2" data-toggle="tab" id="tr-pre-2-link">
                     {{ trans('page.required_characteristic') }}
                 </a>
             @endif
@@ -19,7 +19,7 @@
                     <div class="col-4">
                         <div class="card">
                             <h5 class="card-header">
-                                {!! Form::label('prerequisite_item_id', trans('page.required_item'), ['class' => 'sr-only']) !!}
+                                {!! Form::label('item_id', trans('page.required_item'), ['class' => 'sr-only']) !!}
                                 @lang('page.required_item')
                             </h5>
                             <div class="card-body">
@@ -28,16 +28,25 @@
 
                                     @include('page.partials.select_item', [
                                         'items' => $page->story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [],
-                                        'selectId' => 'prerequisite_item_id',
+                                        'selectId' => 'item_id',
                                     ])
                                 </div>
                             </div>
                             <h5 class="card-header">
-                                {!! Form::label('prerequisite_quantity', trans('item.quantity')) !!}
+                                {!! Form::label('quantity', trans('item.quantity')) !!}
                             </h5>
                             <div class="card-body">
                                 <div class="card-text">
-                                    {!! Form::number('prerequisite_quantity', old('prerequisite_quantity') ?? 1, ['class' => 'form-control']) !!}
+                                    {!! Form::number('quantity', old('quantity') ?? 1, ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                            <div id="price_field">
+                                <div class="card-header">
+                                    {!! Form::label('price', trans('item_page.price'), ['class' => 'control-label mt-2']) !!}
+                                </div>
+                                <div class="card-body">
+                                    <p class="help-block">{{ trans('item_page.price_help') }}</p>
+                                    {!! Form::number('price', 1, ['class' => 'form-control']) !!}
                                 </div>
                             </div>
                         </div>
