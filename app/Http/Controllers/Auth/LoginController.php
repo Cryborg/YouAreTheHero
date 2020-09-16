@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
@@ -105,8 +106,10 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
+        $tutoId = App::getLocale() === 'fr_FR' ? 23 : 28;
+
         return view('auth.login', [
-            'tutoStory' => Story::where('id', 23)->first()
+            'tutoStory' => Story::where('id', $tutoId)->first()
         ]);
     }
 

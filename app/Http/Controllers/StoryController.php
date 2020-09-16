@@ -12,6 +12,7 @@ use App\Models\StoryGenre;
 use App\Models\User;
 use App\Repositories\ChoiceRepository;
 use App\Repositories\PageRepository;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
@@ -41,8 +42,11 @@ class StoryController extends Controller
         // Log the newly created user
         Auth::login($newUser);
 
+        // FIXME!
+        $tutoId = App::getLocale() === 'fr_FR' ? 23 : 28;
+
         // Go to the tuto story
-        return Redirect::route('story.play', ['story' => 23]);
+        return Redirect::route('story.play', ['story' => $tutoId]);
     }
 
     /**
