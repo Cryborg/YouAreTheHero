@@ -99,7 +99,7 @@ class ItemController extends Controller
         $success = $item->take($page);
 
         return response()->json($success + [
-            'is_unique' => (bool) $item->getRawOriginal('is_unique'),
+            'is_unique' => (bool) $item->is_unique,
             'refreshPurse' => $success['success'],
             'refreshInventory' => $success['success'],
             'refreshChoices' => $success['success'],
@@ -139,10 +139,20 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function list(Story $story): \Illuminate\Contracts\View\View
+    public function modalList(Story $story): \Illuminate\Contracts\View\View
     {
         $view = View::make('page.partials.modal_list_items', [
             'items' => $story->items
+        ]);
+
+        return $view;
+    }
+
+    public function list(Request $request, Story $story): \Illuminate\Contracts\View\View
+    {
+        $view = View::make('page.partials.select_item', [
+            'items' => $story->items->sortBy('name')->pluck('name', 'id')->toArray(),
+            'selectId' => $request->get('selectId'),
         ]);
 
         return $view;

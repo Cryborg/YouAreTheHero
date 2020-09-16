@@ -103,11 +103,11 @@
         ]
     ])
 
-    <!-- Modal new Prerequisite -->
+    <!-- Modal meta (prerequisites, actions, items) -->
     @include('page.partials.modal_model', [
-        'template' => 'page.partials.modal_prerequisites',
+        'template' => 'page.partials.modal_meta',
         'context' => 'prerequisites',
-        'title' => trans('page.prerequisite_modal_title'),
+        'title' => '',
         'icon' => '',
         'big' => true,
         'data' => [

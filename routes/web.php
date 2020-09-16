@@ -64,6 +64,7 @@ Route::middleware('auth')->group(static function () {
     Route::delete('/story/{story}/delete', 'StoryController@delete')->name('story.delete');
 
     Route::get('/story/{story}/items/list', 'ItemController@list')->name('items.list');
+    Route::get('/story/{story}/items/modal', 'ItemController@modalList')->name('items.modal.list');
     Route::get('/story/{story}/errors/list', 'StoryController@errors')->name('story.errors');
 
 // Page

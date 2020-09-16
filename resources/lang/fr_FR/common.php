@@ -41,7 +41,7 @@ return array (
   'price' => 'Prix : :price',
   'quantity' => 'Quantité : :quantity',
   'quick_overview' => 'Présentation rapide',
-  'save' => 'Enregistrer',
+  'save' => 'Sauvegarder',
   'stories_list' => 'Liste des histoires',
   'title_pages' => 'Pages',
   'title_stories' => 'Histoires',

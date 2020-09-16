@@ -26,10 +26,7 @@
                                 <div class="card-text">
                                     <p class="help-block">{!! trans('page.required_item_help') !!}</p>
 
-                                    @include('page.partials.select_item', [
-                                        'items' => $page->story->items->sortBy('name')->pluck('name', 'id')->toArray() ?? [],
-                                        'selectId' => 'item_id',
-                                    ])
+                                    <div class="items_select_list"></div>
                                 </div>
                             </div>
                             <h5 class="card-header">
@@ -53,7 +50,10 @@
                     </div>
                     <div class="col">
                         <div class="card">
-                            <div class="card-header">@lang('item.details')</div>
+                            <div class="card-header">
+                                @lang('item.details')
+                                <button type="submit" class="btn btn-primary btnCreateItem float-right" disabled data-context="edit">@lang('common.save')</button>
+                            </div>
                             <div class="card-body item-details"></div>
                         </div>
                     </div>

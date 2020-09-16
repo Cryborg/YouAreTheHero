@@ -68,6 +68,7 @@ showHumanReadableDates();
 refreshPrerequisitesList();
 refreshActionsList();
 refreshItemsList();
+refreshModalItemsList();
 
 // Draw the graphical tree
 tryDraw();

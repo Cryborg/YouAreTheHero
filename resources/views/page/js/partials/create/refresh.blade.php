@@ -39,3 +39,8 @@ function refreshItemsList() {
         }
     });
 }
+
+function refreshModalItemsList()
+{
+    $('.items_select_list').load(route('items.list', {story: storyId, selectId: 'item_id'}));
+}

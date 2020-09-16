@@ -184,7 +184,7 @@ class StoryController extends Controller
                 // If the character owns the item
                 if ($characterItem->id === $pageItem->id) {
                     // If it is unique, don't show it
-                    $canBeShown = (bool) $pageItem->getRawOriginal('is_unique') === false;
+                    $canBeShown = (bool) $pageItem->is_unique === false;
 
                     continue;
                 }

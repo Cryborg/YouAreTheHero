@@ -5,7 +5,7 @@
         $('#modalAllItems .modal-body').html('');
 
         $.get({
-            url: route('items.list', {story: {{ $data['story']->id }}})
+            url: route('items.modal.list', {story: {{ $data['story']->id }}})
         })
             .done(function (html) {
                 $('#modalAllItems .modal-body').html(html);

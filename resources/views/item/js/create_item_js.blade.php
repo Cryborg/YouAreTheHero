@@ -9,9 +9,7 @@ function ajaxCreatePost(route, $this, data)
         data: {...data, ...commonData}
     })
         .done(function (data) {
-            // Refresh the items list
-            if ($('.itemListDiv').length > 0) showItemsList();
-            if ($('.selectpicker.itemSelectList').length > 0) showItemsList();
+            refreshModalItemsList();
         })
         .always(function () {
             $this.html($this.data('original-text'));
@@ -53,15 +51,6 @@ $(document).on('click touchstart keydown', '.btnCreateItem', function () {
     })
 });
 
-function showItemsList() {
-    $.get({
-        url: route('items.html.list', {'story': storyId}),
-    })
-        .done(function (html) {
-            $('.itemListDiv').html(html);
-        });
-}
-
 $(document).on('click touchstart keydown', '.itemSelectList', function () {
     var $this = $(this);
 
@@ -69,6 +58,7 @@ $(document).on('click touchstart keydown', '.itemSelectList', function () {
         url: route('item.details', {'item': $this.children(":selected").val()}),
     })
         .done(function (html) {
+            $('.btnCreateItem').prop('disabled', false);
             $this.closest('.modal-content').find('.item-details').html(html);
         });
 });

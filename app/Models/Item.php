@@ -26,51 +26,15 @@ class Item extends Model
 
     protected $casts     = [
         'effects'      => 'array',
-        'is_unique'    => 'boolean',
         'is_throwable' => 'boolean',
-        'size'         => 'float',
+        'is_unique'    => 'boolean',
         'is_used'      => 'boolean',
+        'size'         => 'float',
     ];
 
     protected static function boot()
     {
         parent::boot();
-    }
-
-    public function getIsUniqueAttribute($value)
-    {
-        if ($value === 1) {
-            return trans('common.yes');
-        }
-
-        return trans('common.no');
-    }
-
-    public function setIsUniqueAttribute($value): int
-    {
-        if ($value === trans('common.yes')) {
-            return 1;
-        }
-
-        return 0;
-    }
-
-    public function getSingleUseAttribute($value)
-    {
-        if ($value === 1) {
-            return trans('common.yes');
-        }
-
-        return trans('common.no');
-    }
-
-    public function setSingleUseAttribute($value): int
-    {
-        if ($value === trans('common.yes')) {
-            return 1;
-        }
-
-        return 0;
     }
 
     public function isUsed()
@@ -212,5 +176,30 @@ class Item extends Model
 
         $character->items()
                   ->detach($this);
+    }
+
+    public function single_use_as_text()
+    {
+        return $this->booleanToText($this->single_use);
+    }
+
+    public function is_unique_as_text()
+    {
+        return $this->booleanToText($this->is_unique);
+    }
+
+    public function is_throwable_as_text()
+    {
+        return $this->booleanToText($this->is_throwable);
+    }
+
+    private function booleanToText($value)
+    {
+        switch ($value) {
+            case true:
+                return trans('common.yes');
+            case false:
+                return trans('common.no');
+        }
     }
 }

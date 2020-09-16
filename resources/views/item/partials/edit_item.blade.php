@@ -21,7 +21,7 @@
 <div class="form-group row">
     <label for="item_size_edit" class="col-sm-4 col-form-label">@lang('item.size')</label>
     <div class="col-sm-8">
-        <input type="number" class="form-control" id="item_size_edit" placeholder="@lang('item.size')" value="{{ $item->size }}">
+        <input type="number" class="form-control" id="item_size_edit" placeholder="@lang('item.size')" value="{{ $item->size }}" step="0.1">
     </div>
 </div>
 <div class="form-group row">
@@ -39,10 +39,5 @@
             <input class="form-check-input" type="checkbox" id="is_throwable_edit" @if ($item->is_throwable) checked @endif>
             <label class="form-check-label" for="is_throwable_edit">@lang('item.is_throwable')</label>
         </div>
-    </div>
-</div>
-<div class="form-group row">
-    <div class="col-sm-10">
-        <button type="submit" class="btn btn-primary btnCreateItem" data-context="edit">@lang('common.save')</button>
     </div>
 </div>
