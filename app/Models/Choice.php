@@ -15,6 +15,10 @@ class Choice extends Model
 
     public $timestamps = false;
 
+    protected $casts = [
+        'hidden' => 'boolean',
+    ];
+
     /**
      * Get the page.
      */
