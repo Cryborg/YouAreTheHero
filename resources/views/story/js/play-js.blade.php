@@ -39,7 +39,7 @@ $(document).on('click touchstart keydown', '.itemThrowAwayMenu', function () {
 });
 
 $(document).on('click touchstart keydown', '.itemThrowAway', function () {
-    var itemId = $(this).closest('a.itemThrowAwayMenu').data('itemid');
+    var itemId = $(this).closest('a.itemThrowAwayMenu').data('characteritemid');
 
     $.get({
         url: route('item.throw_away', {'character_item': itemId})
