@@ -10,7 +10,11 @@
         @foreach ($page->prerequisites() ?? [] as $prerequisite)
             <tr>
                 <td>{{ trans('item.' . $prerequisite->prerequisiteable_type) }}</td>
-                <td>{{ $prerequisite->prerequisiteable->category }}</td>
+                <td>
+                    @if ($prerequisite->prerequisiteable_type === 'item')
+                        {{ $prerequisite->prerequisiteable->category }}
+                    @endif
+                </td>
                 <td>
                     @if ($prerequisite->prerequisiteable->hidden)
                         <span class="icon-eye text-lightgrey" title="@lang('item.hidden')"></span>

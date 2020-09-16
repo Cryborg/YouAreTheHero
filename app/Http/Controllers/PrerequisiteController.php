@@ -20,60 +20,16 @@ class PrerequisiteController extends Controller
     public function store(Request $request, Page $page)
     {
         if ($request->ajax()) {
-            $addedPrerequisites = ['items' => [], 'stats' => []];
-
-            // Item case
-            if ($request->get('item')) {
-                $quantity = $request->get('quantity');
-
-                $prerequisite = Prerequisite::updateOrCreate([
-                    'page_id'   => $page->id,
-                    'prerequisiteable_type' => 'item',
-                    'prerequisiteable_id' => $request->get('item'),
-                ], [
-                    'quantity' => $quantity
-                ]);
-
-                $addedPrerequisites['items'][] = array_merge(
-                    Item::findOrFail($request->get('item'))->toArray(),
-                    [
-                        'quantity' => $quantity,
-                        'prerequisite_id' => $prerequisite->id,
-                    ]
-                );
-            }
-
-            // Stat case
-            if ($request->get('stats')) {
-                foreach ($request->get('stats') as $stat => $value) {
-                    $foundStat = Field::where([
-                        'story_id' => $page->story->id,
-                        'name' => $stat
-                    ])->firstOrFail();
-                    $addedPrerequisites['stats'][] = Prerequisite::updateOrCreate([
-                        'page_id'   => $page->id,
-                        'prerequisiteable_type' => 'field',
-                        'prerequisiteable_id' => $foundStat->id,
-                    ], [
-                        'quantity' => $value
-                    ]);
-                }
-            }
-
-            // Money case
-            if ($request->get('money')) {
-                Prerequisite::updateOrCreate([
-                    'page_id'   => $page->id,
-                    'prerequisiteable_type' => 'money',
-                    'prerequisiteable_id' => 0,
-                ], [
-                    'quantity' => $request->get('money')
-                ]);
-            }
+            Prerequisite::updateOrCreate([
+                'page_id'   => $page->id,
+                'prerequisiteable_type' => $request->get('type'),
+                'prerequisiteable_id' => $request->get('item'),
+            ], [
+                'quantity' => $request->get('quantity')
+            ]);
 
             return response()->json([
                 'success' => true,
-                'prerequisites' => $addedPrerequisites,
                 'type' => 'save',
             ]);
         }
