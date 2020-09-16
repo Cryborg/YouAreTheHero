@@ -348,17 +348,21 @@ $(document).on('click touchstart keydown', '#add_Meta', function () {
             'item': $('#item_id').val(),
             'quantity': $('#quantity').val(),
             'price':  $('#price').val(),
+            'type': 'item',
         };
     }
 
     // If the "stats" tab is selected
-    if ($('#tr-pre-2').hasClass('active')) {
+    if ($('#tr-pre-2-link').hasClass('active')) {
         if ($('#sheet option:selected').val() !== '') {
             var key = $('#sheet option:selected').text();
             var value = $('#level').val();
 
-            data['stats'] = {};
-            data['stats'][key] = value;
+            data = {
+                'item': $('#sheet option:selected').val(),
+                'quantity': value,
+                'type': 'field'
+            }
         }
     }
 
@@ -368,6 +372,7 @@ $(document).on('click touchstart keydown', '#add_Meta', function () {
 
         if (money !== '' && money > 0) {
             data['money'] = money;
+            data['type'] = 'money';
         }
     }
 

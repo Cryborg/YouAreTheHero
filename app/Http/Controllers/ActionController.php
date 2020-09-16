@@ -36,7 +36,7 @@ class ActionController extends Controller
             'trigger_id' => $page->id,
             'trigger_type' => 'page',
             'actionable_id' => $request->get('item'),
-            'actionable_type' => 'item',
+            'actionable_type' => $request->get('type'),
         ], [
             'quantity' => $request->get('quantity')
         ]);

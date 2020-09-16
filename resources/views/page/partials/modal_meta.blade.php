@@ -67,7 +67,7 @@
                         <select class="form-control custom-select" size="6" id="sheet" name="sheet">
                             <option value=""></option>
                             @foreach($page->story->fields as $field)
-                                <option value="{{ $field->name }}"
+                                <option value="{{ $field->id }}"
                                 >{{ $field->name }}</option>
                             @endforeach
                         </select>
