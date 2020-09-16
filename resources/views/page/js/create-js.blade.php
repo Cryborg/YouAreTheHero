@@ -46,11 +46,6 @@ function newEmptyPage(linkText, hideChoice, $select) {
             if (typeof $select !== undefined) {
                 $select.append(new Option(linkText, data.page.id, true, true))
             }
-
-            showToast('success', {
-                heading: saveSuccessHeading,
-                text: saveSuccessText,
-            });
         })
         .always(function () {
             $this.prop('disabled', false);

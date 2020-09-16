@@ -1,6 +1,12 @@
 $(document).on('click touchstart keydown', '.deleteAction', function () {
     var $this = $(this);
     var actionId = $this.data('actionid');
+    var loadingClass = 'spinner-grow text-danger';
+    var defaultClass = $this.attr('class');
+
+    if (!$this.hasClass('spinner-grow')) {
+        $this.attr('class', loadingClass);
+    }
 
     if (actionId) {
         $.ajax({
@@ -8,20 +14,10 @@ $(document).on('click touchstart keydown', '.deleteAction', function () {
             method: 'DELETE'
         })
             .done(function (result) {
-                // Remove the line from all the tables. Saves one ajax call.
-                $('[data-actionid="' + actionId + '"]').closest('tr').remove();
-
-                showToast('success', {
-                    heading: "{{ trans('notification.save_success_title') }}",
-                    text: "{{ trans('notification.save_success_text') }}",
-                });
+                refreshActionsList();
             })
             .fail(function (data) {
-                showToast('error', {
-                    heading: "{{ trans('notification.deletion_failed_title') }}",
-                    text: "{{ trans('notification.deletion_failed_text') }}",
-                    errors: data.responseJSON.errors
-                });
+                $this.attr('class', defaultClass);
             });
     }
 });
@@ -50,20 +46,7 @@ $(document).on('change', '#hideChoice', function () {
         data: {
             'hidden': $this.is(':checked') ? 1 : 0
         }
-    })
-        .done(function (result) {
-            showToast('success', {
-                heading: "{{ trans('notification.save_success_title') }}",
-                text: "{{ trans('notification.save_success_text') }}",
-            });
-        })
-        .fail(function (data) {
-            showToast('error', {
-                heading: "{{ trans('notification.deletion_failed_title') }}",
-                text: "{{ trans('notification.deletion_failed_text') }}",
-                errors: data.responseJSON.errors
-            });
-        });
+    });
 });
 
 $(document).on('click touchstart keydown', "[name='is_last']", function () {
@@ -73,13 +56,13 @@ $(document).on('click touchstart keydown', "[name='is_last']", function () {
 });
 
 
-$(document).on('click touchstart keydown', '.delete-prerequisite', function () {
+$(document).on('click touchstart keydown', '.deletePrerequisite', function () {
     var $this = $(this);
     var prerequisiteId = $this.data('prerequisite_id');
-    var loadingClass = 'fa fa-circle-o-notch fa-spin';
-    var defaultClass = 'icon-trash text-danger';
+    var loadingClass = 'spinner-grow text-danger';
+    var defaultClass = $this.attr('class');
 
-    if (!$this.hasClass('fa-spin')) {
+    if (!$this.hasClass('spinner-grow')) {
         $this.attr('class', loadingClass);
     }
 
@@ -88,21 +71,9 @@ $(document).on('click touchstart keydown', '.delete-prerequisite', function () {
         method: 'DELETE'
     })
         .done(function () {
-            $this.parents('tr').remove();
-
-            showToast('success', {
-                heading: deletionSuccessTitle,
-                text: deletionSuccessText,
-            });
+            refreshPrerequisitesList();
         })
         .fail(function (data) {
-            showToast('error', {
-                heading: deletionFailedTitle,
-                text: deletionFailedText,
-                errors: data.responseJSON.errors
-            });
-        })
-        .always(function () {
             $this.attr('class', defaultClass);
         });
 });
@@ -111,10 +82,10 @@ $(document).on('click touchstart keydown', '.delete-prerequisite', function () {
 $(document).on('click touchstart keydown', '.deleteItemPage', function () {
     var $this = $(this);
     var itemId = $this.data('itemid');
-    var loadingClass = 'fa fa-circle-o-notch fa-spin';
-    var defaultClass = 'icon-trash text-danger';
+    var loadingClass = 'spinner-grow text-danger';
+    var defaultClass = $this.attr('class');
 
-    if (!$this.hasClass('fa-spin')) {
+    if (!$this.hasClass('spinner-grow')) {
         $this.attr('class', loadingClass);
     }
 
@@ -123,21 +94,9 @@ $(document).on('click touchstart keydown', '.deleteItemPage', function () {
         method: 'DELETE'
     })
         .done(function () {
-            displayActions();
-
-            showToast('success', {
-                heading: deletionSuccessTitle,
-                text: deletionSuccessText,
-            });
+            refreshItemsList();
         })
         .fail(function (data) {
-            showToast('error', {
-                heading: deletionFailedTitle,
-                text: deletionFailedText,
-                errors: data.responseJSON.errors
-            });
-        })
-        .always(function () {
             $this.attr('class', defaultClass);
         });
 });
@@ -158,12 +117,6 @@ $(document).on('click touchstart keydown', '#add_CreateRiddle', function () {
     })
         .done(function (data) {
             if (data.success) {
-                // Show the notification
-                showToast('success', {
-                    heading: saveSuccessHeading,
-                    text: saveSuccessText,
-                });
-
                 $('#riddle_table tbody').html('').append(
                     '<tr>' +
                     '<td>' + langPageRiddleAnswerLabel + '</td>' +
@@ -200,11 +153,6 @@ $(document).on('click touchstart keydown', '#add_CreateRiddle', function () {
                         .removeClass('hidden');
                 });
             }
-            showToast('error', {
-                heading: saveFailedHeading,
-                text: saveFailedText,
-                errors: data.responseJSON.errors
-            });
         })
         .always(function () {
             $this.html($this.data('original-text'));
@@ -243,18 +191,6 @@ $(document).on('click touchstart keydown', '.choice-text.icon-trash', function (
         })
             .done(function (data) {
                 tryDraw(data.graph);
-
-                showToast('success', {
-                    heading: deletionSuccessTitle,
-                    text: deletionSuccessText,
-                });
-            })
-            .fail(function (data) {
-                showToast('error', {
-                    heading: deletionFailedTitle,
-                    text: deletionFailedText,
-                    errors: data.responseJSON.errors
-                });
             });
     }
 });
@@ -280,19 +216,7 @@ $(document).on('click touchstart keydown', '.deletePage', function () {
                 $this.closest('div.col-12').slideUp(1000, function () {
                     $(this).remove();
                 });
-
-                showToast('success', {
-                    heading: deletionSuccessTitle,
-                    text: deletionSuccessText,
-                });
             }
-        })
-        .fail(function (data) {
-            showToast('error', {
-                heading: deletionSuccessText,
-                text: deletionFailedText,
-                errors: data.responseJSON.errors
-            });
         });
 });
 
@@ -377,10 +301,6 @@ $(document).on('click touchstart keydown', '.savePage', function (e) {
             tryDraw(data.graph);
 
             $('#content-' + currentPageId).html(data.content);
-            showToast('success', {
-                heading: saveSuccessHeading,
-                text: saveSuccessText,
-            });
         })
         .fail(function (data) {
             if (data.status === 422) {
@@ -393,13 +313,6 @@ $(document).on('click touchstart keydown', '.savePage', function (e) {
                         .removeClass('hidden');
                 });
             }
-
-            showToast('error', {
-                heading: deletionSuccessText,
-                text: deletionFailedText,
-                errors: data.responseJSON.errors
-            });
-
         })
         .always(function () {
             $this.html($this.data('original-text'));
@@ -465,22 +378,10 @@ $(document).on('click touchstart keydown', '#add_Meta', function () {
         })
             .done(function (data) {
                 if (data.success) {
-                    showToast('success', {
-                        heading: saveSuccessHeading,
-                        text: saveSuccessText,
-                    });
-
                     $('#modalMeta').modal('hide');
 
                     callback();
                 }
-            })
-            .fail(function (data) {
-                showToast('error', {
-                    heading: saveFailedHeading,
-                    text: saveFailedText,
-                    errors: data.responseJSON.errors
-                });
             })
             .always(function () {
                 $this.html($this.data('original-text'));
@@ -507,25 +408,13 @@ $(document).on('click touchstart keydown', '#modalCreateActions .addActionsField
 
     if (fieldId !== '') {
         $.post({
-            url: route('action.field.create', {page: {{ $page->id }}, field: fieldId}),
-        data: {
-            quantity: $('#modalCreateActions #actions_field_qty').val()
-        }
-    })
-    .done(function (result) {
-            refreshActionsList();
-
-            showToast('success', {
-                heading: "{{ trans('notification.save_success_title') }}",
-                text: "{{ trans('notification.save_success_text') }}",
-            });
+            url: route('action.field.create', {page: pageId, field: fieldId}),
+            data: {
+                quantity: $('#modalCreateActions #actions_field_qty').val()
+            }
         })
-            .fail(function (data) {
-                showToast('error', {
-                    heading: "{{ trans('notification.deletion_failed_title') }}",
-                    text: "{{ trans('notification.deletion_failed_text') }}",
-                    errors: data.responseJSON.errors
-                });
-            });
+        .done(function (result) {
+            refreshActionsList();
+        });
     }
 });

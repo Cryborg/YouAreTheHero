@@ -12,9 +12,6 @@
                         @foreach($deadEnds as $deadEnd)
                             <div class="row mb-1">
                                 <div class="col">
-                                    <a class="btn btn-danger text-center w-15" role="button">
-                                        <span class="icon-trash text-white deleteDeadEnd" data-pageid="{{ $deadEnd->id }}"></span>
-                                    </a>
                                     <a href="{{ route('page.edit', $deadEnd) }}" class="btn btn-light text-left w-75" role="button">
                                         <span class="icon-fountain-pen text-black  mr-3" data-pageid="{{ $deadEnd->id }}"></span>
                                         {{ $deadEnd->title }}
@@ -44,7 +41,7 @@
                             <div class="row mb-1">
                                 <div class="col">
                                     <a class="btn btn-danger text-center w-15" role="button">
-                                        <span class="icon-trash text-white deleteDeadEnd" data-pageid="{{ $orphan->id }}"></span>
+                                        <span class="icon-trash text-white deleteOrphan" data-pageid="{{ $orphan->id }}"></span>
                                     </a>
                                     <a href="{{ route('page.edit', $orphan) }}" class="btn btn-light text-left w-75" role="button">
                                         <span class="icon-fountain-pen text-black  mr-3" data-pageid="{{ $orphan->id }}"></span>

@@ -25,7 +25,8 @@ class ActionController extends Controller
         $success = $page->triggers()->save($action);
 
         return response()->json([
-            'success' => $success
+            'success' => $success,
+            'type'    => 'save',
         ]);
     }
 
@@ -48,7 +49,8 @@ class ActionController extends Controller
                 'type' => trans('actions.' . $action->actionable_type),
                 'name' => $action->actionable->name,
                 'quantity' => $action->quantity
-            ]
+            ],
+            'type' => 'save',
         ]);
     }
 
@@ -62,7 +64,8 @@ class ActionController extends Controller
     function delete(Action $action)
     {
         return response()->json([
-            'success' => $action->delete()
+            'success' => $action->delete(),
+            'type' => 'delete',
         ]);
     }
 

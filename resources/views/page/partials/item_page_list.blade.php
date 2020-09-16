@@ -12,7 +12,7 @@
                 <td>{{ $item->pivot->quantity }}</td>
                 <td>{{ $item->pivot->price }}</td>
                 <td class="text-center">
-                    <span class="icon-trash text-danger deleteItemPage" data-itemid="{{ $item->id }}" title="{{ trans('common.delete') }}"></span>
+                    <span class="icon-trash clickable text-danger deleteItemPage" data-itemid="{{ $item->id }}" title="{{ trans('common.delete') }}"></span>
                 </td>
             </tr>
         @endforeach

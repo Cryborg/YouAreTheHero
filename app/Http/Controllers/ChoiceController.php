@@ -20,7 +20,8 @@ class ChoiceController extends Controller
         $success = $choice->update($request->all());
 
         return response()->json([
-            'success' => $success
+            'success' => $success,
+            'type'    => 'save',
         ]);
     }
 }

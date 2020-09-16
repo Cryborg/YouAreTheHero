@@ -23,14 +23,14 @@
     });
 
     // Delete a page from the "Story errors" popin
-    $(document).on('click touchstart keydown', '.deleteDeadEnd, .deleteItem, .deleteField', function () {
+    $(document).on('click touchstart keydown', '.deleteOrphan, .deleteItem, .deleteField', function () {
         const $this = $(this);
         let confirmText = '';
         let routeName = '';
         let param = '';
         let dataAttribute = '';
 
-        if ($this.hasClass('deleteDeadEnd')) {
+        if ($this.hasClass('deleteOrphan')) {
             confirmText = confirmDeletePageText;
             routeName = 'page.delete';
             param = 'page';
@@ -62,19 +62,7 @@
                     $('#modalStoryErrors').trigger('show.bs.modal');
 
                     tryDraw();
-
-                    showToast('success', {
-                        heading: deletionSuccessTitle,
-                        text: deletionSuccessText,
-                    });
                 }
-            })
-            .fail(function (data) {
-                showToast('error', {
-                    heading: deletionSuccessText,
-                    text: deletionFailedText,
-                    errors: data.responseJSON.errors
-                });
             });
     });
 </script>

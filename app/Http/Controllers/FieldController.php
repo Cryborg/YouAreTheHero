@@ -44,7 +44,8 @@ class FieldController extends Controller
     {
         if ($request->ajax()) {
             return response()->json([
-                'success' => $field->delete()
+                'success' => $field->delete(),
+                'type'    => 'delete',
             ]);
         }
 

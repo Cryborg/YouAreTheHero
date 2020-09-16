@@ -9,21 +9,9 @@ function ajaxCreatePost(route, $this, data)
         data: {...data, ...commonData}
     })
         .done(function (data) {
-            showToast('success', {
-                heading: saveSuccessHeading,
-                text: saveSuccessText,
-            });
-
             // Refresh the items list
             if ($('.itemListDiv').length > 0) showItemsList();
             if ($('.selectpicker.itemSelectList').length > 0) showItemsList();
-        })
-        .fail(function (data) {
-            showToast('error', {
-                heading: saveFailedHeading,
-                text: saveFailedText,
-                errors: data.responseJSON.errors
-            });
         })
         .always(function () {
             $this.html($this.data('original-text'));

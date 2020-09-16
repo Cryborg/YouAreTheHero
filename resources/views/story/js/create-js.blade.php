@@ -22,8 +22,8 @@
         $(document).on('click touchstart keydown', '.deleteCharacterField', function () {
             var $this = $(this);
             var id = $this.data('field_id');
-            var loadingClass = 'fa fa-circle-o-notch fa-spin';
-            var defaultClass = 'icon-trash text-danger';
+            var loadingClass = 'spinner-grow text-danger';
+            var defaultClass = $this.attr('class');
 
             if (!$this.hasClass('fa-spin')) {
                 $this.attr('class', loadingClass);
@@ -36,19 +36,7 @@
                 .done(function (result) {
                     if (result.success) {
                         $this.closest('tr').remove();
-
-                        showToast('success', {
-                            heading: "{{ trans('notification.save_success_title') }}",
-                            text: "{{ trans('notification.save_success_text') }}",
-                        });
                     }
-                })
-                .fail(function (data) {
-                    showToast('error', {
-                        heading: "{{ trans('notification.deletion_failed_title') }}",
-                        text: "{{ trans('notification.deletion_failed_text') }}",
-                        errors: data.responseJSON.errors
-                    });
                 })
                 .always(function () {
                     $this.attr('class', defaultClass);
@@ -81,23 +69,11 @@
                                 '</tr>';
                             $('#stats_story').append(html);
 
-                            showToast('success', {
-                                heading: "{{ trans('notification.save_success_title') }}",
-                                text: "{{ trans('notification.save_success_text') }}",
-                            });
-
                             $('#name, #short_name').val('');
                             $('#min_value').val('1');
                             $('#max_value').val('10');
                             $('#name').focus();
                         }
-                    })
-                    .fail(function (data) {
-                        showToast('error', {
-                            heading: saveFailedHeading,
-                            text: saveFailedText,
-                            errors: data.responseJSON.errors
-                        });
                     });
             }
         });
@@ -135,16 +111,6 @@
                 } else {
                     $('#pills-sheet-tab').addClass('hidden');
                 }
-                showToast('success', {
-                    heading: "{{ trans('notification.save_success_title') }}",
-                    text: "{{ trans('notification.save_success_text') }}"
-                });
             }
-        })
-        .fail(function (data) {
-            showToast('error', {
-                heading: "{{ trans('notification.save_failed_title') }}",
-                text: "{{ trans('notification.save_failed_text') }}"
-            });
         });
     }

@@ -63,6 +63,7 @@ class StoryOptionController extends Controller
 
         return response()->json([
             'success' => $success,
+            'type'    => 'save',
         ]);
     }
 }

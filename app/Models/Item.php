@@ -182,6 +182,7 @@ class Item extends Model
                     return [
                         'success' => false,
                         'message' => trans('character.not_enough_money'),
+                        'type'    => 'save',
                     ];
                 }
             }
@@ -198,6 +199,7 @@ class Item extends Model
         return [
             'success' => $isOk,
             'message' => $message,
+            'type'    => 'save',
         ];
     }
 

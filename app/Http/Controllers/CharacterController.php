@@ -78,7 +78,10 @@ class CharacterController extends Controller
         }
 
         if (request()->ajax()) {
-            return response()->json(['success' => true]);
+            return response()->json([
+                'success' => true,
+                'type'    => 'save',
+            ]);
         }
 
         return redirect()->route('story.play', ['story' => $story]);

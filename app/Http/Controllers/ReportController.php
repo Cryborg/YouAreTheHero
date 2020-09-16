@@ -49,6 +49,7 @@ class ReportController extends Controller
 
         return response()->json([
             'success' => $page->reports()->create($validated),
+            'type'    => 'save',
         ]);
     }
 
@@ -88,7 +89,8 @@ class ReportController extends Controller
     public function destroy(Report $report)
     {
         return response()->json([
-            'success' => $report->delete()
+            'success' => $report->delete(),
+            'type'    => 'delete',
         ]);
     }
 }

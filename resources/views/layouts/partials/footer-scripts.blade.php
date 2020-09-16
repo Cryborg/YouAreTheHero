@@ -63,6 +63,38 @@
                 if (request.responseJSON.refreshPurse === true) {
                     loadPurse();
                 }
+
+                // Shows an informational toast
+                switch (request.responseJSON.type) {
+                    case 'save':
+                        if (request.responseJSON.success) {
+                            showToast('success', {
+                                heading: saveSuccessHeading,
+                                text: saveSuccessText,
+                            });
+                        } else {
+                            showToast('error', {
+                                heading: "{{ trans('notification.deletion_failed_title') }}",
+                                text: "{{ trans('notification.deletion_failed_text') }}",
+                                errors: data.responseJSON.errors
+                            });
+                        }
+                        break;
+                    case 'delete':
+                        if (request.responseJSON.success) {
+                            showToast('success', {
+                                heading: deletionSuccessTitle,
+                                text: deletionSuccessText,
+                            });
+                        } else {
+                            showToast('error', {
+                                heading: deletionFailedTitle,
+                                text: deletionFailedText,
+                                errors: data.responseJSON.errors
+                            });
+                        }
+                        break;
+                }
             }
         })
     ;
@@ -104,7 +136,7 @@
                     toggle: 'dropdown'
                 },
                 click: function() {
-                    // Cursor position must be saved because is lost when dropdown is opened.
+                    // Cursor position must be saved because it is lost when dropdown is opened.
                     context.invoke('editor.saveRange');
                 }
             }),

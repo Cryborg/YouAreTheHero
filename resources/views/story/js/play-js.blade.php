@@ -87,26 +87,7 @@ $(document).on('click touchstart keydown', '#add_PageReport', function () {
             'error_type': type,
             'comment': comment
         }
-    })
-        .done(function (data) {
-            if (data.success) {
-                showToast('success', {
-                    heading: saveSuccessHeading,
-                    text: saveSuccessText,
-                });
-            } else {
-                showToast('error', {
-                    heading: saveFailedHeading,
-                    text: saveFailedText,
-                });
-            }
-        })
-        .fail(function (data) {
-            showToast('error', {
-                heading: saveFailedHeading,
-                text: saveFailedText,
-            });
-        });
+    });
 });
 
 // Ajax links
@@ -134,12 +115,6 @@ $(document).on('click touchstart keydown', '.pick-item button', function () {
 
                 if (rst.is_unique === true) {
                     $this.closest('.pick-item').remove();
-                }
-            } else {
-                if (rst.message) {
-                    showToast('error', {
-                        text: rst.message
-                    });
                 }
             }
         })

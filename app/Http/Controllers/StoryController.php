@@ -485,7 +485,10 @@ class StoryController extends Controller
             DB::rollBack();
         }
 
-        return response()->json(['success' => $success]);
+        return response()->json([
+            'success' => $success,
+            'type' => 'delete',
+        ]);
     }
 
     /**

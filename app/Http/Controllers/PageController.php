@@ -144,7 +144,8 @@ class PageController extends Controller
                 return response()->json([
                     'success' => true,
                     'content' => $page->present()->content,
-                    'graph' => $this->buildGraph($page->story)
+                    'graph'   => $this->buildGraph($page->story),
+                    'type'    => 'save',
                 ]);
             }
 
@@ -152,6 +153,7 @@ class PageController extends Controller
 
             return response()->json([
                 'success' => false,
+                'type'    => 'save',
             ]);
         }
 
@@ -307,6 +309,7 @@ class PageController extends Controller
     {
         return response()->json([
             'success' => $page->items()->detach($item->id),
+            'type'    => 'delete',
         ]);
     }
 
@@ -331,11 +334,13 @@ class PageController extends Controller
 
                 return response()->json([
                     'success' => true,
+                    'type'    => 'save',
                 ]);
             } catch (\Exception $e) {
                 return response()->json([
                     'success' => false,
                     'message' => $e->getMessage(),
+                    'type'    => 'save',
                 ]);
             }
         }

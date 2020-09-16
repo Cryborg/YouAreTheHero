@@ -25,7 +25,8 @@ class ItemController extends Controller
     {
         if ($request->ajax()) {
             return response()->json([
-                'success' => $item->delete()
+                'success' => $item->delete(),
+                'type' => 'delete',
             ]);
         }
 
@@ -83,6 +84,7 @@ class ItemController extends Controller
         return response()->json([
             'success' => $item instanceof Item,
             'item'    => $item->toArray(),
+            'type'    => 'save',
         ]);
     }
 

@@ -27,25 +27,23 @@
                     <a class="nav-item nav-link mr-3 @if ($page->is_first) disabled @else shadow @endif" href="#page-1" data-toggle="tab">
                         <span class="icon icon-unlocking text-white display-6 align-middle mr-2"></span>
                         @lang('page.tab_prerequisite')
-                        @if ($page->prerequisites()->count() > 0)
-                            <span class="badge badge-warning rounded float-right shadow ml-3">{{ $page->prerequisites()->count() }}</span>
-                        @endif
-                    </a> <a class="nav-item nav-link shadow mr-3 active" href="#page-2" data-toggle="tab">
+                        <span class="badge badge-warning rounded float-right shadow ml-3 badge_prerequisites_count" @if ($page->prerequisites()->count() === 0) style="display:none" @endif>{{ $page->prerequisites()->count() }}</span>
+                    </a>
+                    <a class="nav-item nav-link shadow mr-3 active" href="#page-2" data-toggle="tab">
                         <span class="icon icon-fountain-pen text-white display-6 align-middle mr-2"></span>
                         @lang('page.tab_text')
-                    </a> <a class="nav-item nav-link shadow mr-3" href="#page-3" data-toggle="tab">
+                    </a>
+                    <a class="nav-item nav-link shadow mr-3" href="#page-3" data-toggle="tab">
                         <span class="icon icon-unlocking text-white display-6 align-middle mr-2"></span>
                         @lang('page.tab_bonus')
-                        @if ($page->triggers->count() > 0)
-                            <span class="badge badge-warning rounded float-right shadow ml-3">{{ $page->triggers->count() }}</span>
-                        @endif
-                    </a> <a class="nav-item nav-link shadow mr-3" href="#page-4" data-toggle="tab">
+                        <span class="badge badge-warning rounded float-right shadow ml-3 badge_triggers_count" @if ($page->triggers->count() === 0) style="display:none" @endif>{{ $page->triggers->count() }}</span>
+                    </a>
+                    <a class="nav-item nav-link shadow mr-3" href="#page-4" data-toggle="tab">
                         <span class="icon icon-chest text-white display-6 align-middle mr-2"></span>
                         @lang('page.tab_items')
-                        @if ($page->items->count() > 0)
-                            <span class="badge badge-warning rounded float-right shadow ml-3">{{ $page->items->count() }}</span>
-                        @endif
-                    </a> <a class="nav-item nav-link shadow mr-3" href="#page-5" data-toggle="tab">
+                        <span class="badge badge-warning rounded float-right shadow ml-3 badge_items_count" @if ($page->items->count() === 0) style="display:none" @endif>{{ $page->items->count() }}</span>
+                    </a>
+                    <a class="nav-item nav-link shadow mr-3" href="#page-5" data-toggle="tab">
                         <span class="icon icon-jigsaw-piece text-white display-6 align-middle mr-2"></span>
                         @lang('page.tab_riddle')
                         @if ($page->riddle)
@@ -61,7 +59,6 @@
                                 <div class="row">
                                     <div class="col">
                                         @info({!! trans('page.current_page_prerequisites_help') !!})
-
                                         <h3>
                                             {{ trans('page.prerequisite_title') }}
                                             <button class="btn btn-success shadow ml-2" id="showPrerequisites">
@@ -134,8 +131,7 @@
                                                         @lang('story.ending_type_good')
                                                         <span class="text-muted font-smaller ml-3">
                                                             @lang('story.ending_type_good_help')
-                                                        </span>
-                                                    </label>
+                                                        </span> </label>
                                                 </li>
                                                 <li class="list-group-item">
                                                     <label class="ml-4">
@@ -143,8 +139,7 @@
                                                         @lang('story.ending_type_bad')
                                                         <span class="text-muted font-smaller ml-3">
                                                             @lang('story.ending_type_bad_help')
-                                                        </span>
-                                                    </label>
+                                                        </span> </label>
                                                 </li>
                                                 <li class="list-group-item">
                                                     <label class="ml-4">
@@ -152,8 +147,7 @@
                                                         @lang('story.ending_type_death')
                                                         <span class="text-muted font-smaller ml-3">
                                                             @lang('story.ending_type_death_help')
-                                                        </span>
-                                                    </label>
+                                                        </span> </label>
                                                 </li>
                                             </ul>
                                         </li>
@@ -184,7 +178,6 @@
                                             <span class="icon-add text-white"></span>
                                         </button>
                                     </h3>
-
                                     <div class="actions_list"></div>
                                 </div>
                             </div>
@@ -200,7 +193,6 @@
                                     <span class="icon-add text-white"></span>
                                 </button>
                             </h3>
-
                             <div class="items_list"></div>
                         </div>
                     </div>

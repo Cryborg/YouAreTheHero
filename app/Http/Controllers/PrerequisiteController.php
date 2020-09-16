@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ItemPage;
-use App\Models\Item;use App\Models\Page;
+use App\Models\Item;
+use App\Models\Page;
 use App\Models\Prerequisite;
-use App\Models\CharacterField;use App\Models\Field;use Illuminate\Http\JsonResponse;
+use App\Models\Field;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -73,6 +74,7 @@ class PrerequisiteController extends Controller
             return response()->json([
                 'success' => true,
                 'prerequisites' => $addedPrerequisites,
+                'type' => 'save',
             ]);
         }
 
@@ -81,9 +83,9 @@ class PrerequisiteController extends Controller
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\ItemPage     $action
+     * @param \App\Models\Prerequisite $prerequisite
      *
-     * @return false|string
+     * @return \Illuminate\Http\JsonResponse
      * @throws \Exception
      */
     public function delete(Request $request, Prerequisite $prerequisite)
@@ -91,7 +93,10 @@ class PrerequisiteController extends Controller
         if ($request->ajax()) {
             $deleted = $prerequisite->delete();
 
-            return response()->json(['success' => $deleted]);
+            return response()->json([
+                'success' => $deleted,
+                'type' => 'delete'
+            ]);
         }
 
         abort(JsonResponse::HTTP_NOT_FOUND);
@@ -101,9 +106,9 @@ class PrerequisiteController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Page         $page
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function list(Request $request, Page $page)
+    public function list(Page $page)
     {
         $view = View::make('page.partials.prerequisites_list', [
             'page' => $page
