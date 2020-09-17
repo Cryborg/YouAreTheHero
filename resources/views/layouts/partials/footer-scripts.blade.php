@@ -42,6 +42,11 @@
         lazyLoad: 'nearby',
     } ).mount();
 
+    $(document).on('click touchstart keydown', 'img.preview', function () {
+        $('.modal-body').html('<img src="' + $(this).prop('src') + '" class="w-100">');
+        $('#modalImage').modal();
+    });
+
     $(document)
         // Global settings for AJAX requests
         .ajaxComplete(function (event, request, settings) {

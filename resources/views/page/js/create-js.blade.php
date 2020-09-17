@@ -99,5 +99,3 @@ $(document).on('show.bs.modal', '#modalMeta', function (event) {
         $('#price_field').hide();
     }
 });
-
-
