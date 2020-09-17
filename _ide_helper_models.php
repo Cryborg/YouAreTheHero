@@ -167,7 +167,7 @@ namespace App\Models{
  * @property int|null $page_from
  * @property int|null $page_to
  * @property string $link_text
- * @property int $hidden
+ * @property bool $hidden
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \App\Models\Page|null $pageFrom
  * @property-read \App\Models\Page|null $pageTo

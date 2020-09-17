@@ -14,6 +14,7 @@
 <script type="text/javascript" src="{{ asset('vendor/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/bootstrap-input-spinner.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/common.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/splide/dist/js/splide.min.js') }}"></script>
 
 @if (Config::get('app.locale') !== 'en_GB')
     <script type="text/javascript" src="{{ asset('lang/' . Config::get('app.locale') . '/moment-lang.js') }}"></script>
@@ -35,7 +36,13 @@
 
     @include('layouts.partials.common-js')
 
+    // Image slider on the login page
+    new Splide('.splide', {
+        type   : 'loop'
+    } ).mount();
+
     $(document)
+        // Global settings for AJAX requests
         .ajaxComplete(function (event, request, settings) {
             // If the session has expired
             if (request.status === 419) {
