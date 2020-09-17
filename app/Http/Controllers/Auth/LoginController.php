@@ -106,6 +106,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
+        //FIXME!
         $tutoId = App::getLocale() === 'fr_FR' ? 23 : 28;
 
         return view('auth.login', [
@@ -125,6 +126,6 @@ class LoginController extends Controller
 
     protected function loggedOut(Request $request, $locale)
     {
-        Session::put('locale',$locale);
+        Session::put('locale', $locale);
     }
 }

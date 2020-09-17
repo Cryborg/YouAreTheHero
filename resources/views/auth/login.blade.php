@@ -11,7 +11,12 @@
                     @lang('common.quick_overview')
                 </div>
                 <div class="card-body">
-                    {!! trans('home.text')  !!}
+                    <div class="row p-3">
+                        <div class="col text-justify pr-4">{!! trans('home.text')  !!}</div>
+                        <div class="col-6">
+                            <img src="{{ asset('img/screenshots/creation_interface.png') }}" class="w-100 shadow">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
