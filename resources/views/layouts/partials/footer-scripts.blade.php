@@ -38,7 +38,8 @@
 
     // Image slider on the login page
     new Splide('.splide', {
-        type   : 'loop'
+        type   : 'loop',
+        lazyLoad: 'nearby',
     } ).mount();
 
     $(document)

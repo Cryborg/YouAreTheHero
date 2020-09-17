@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <div class="row p-3">
                             <div class="col text-justify pr-4">{!! trans('home.text')  !!}</div>
-                            <div class="col-6">
+                            <div class="col-lg-6 col-sm-12">
                                 <div id="splide" class="splide w-100 shadow">
                                     <div class="splide__track">
                                         <ul class="splide__list">
@@ -111,7 +111,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col mt-5 mt-md-0">
                 @include('stories.partials.story_card', ['story' => $tutoStory, 'anonymous' => true])
             </div>
         </div>
