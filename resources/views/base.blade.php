@@ -24,6 +24,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/default.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('js/splide/dist/css/splide.min.css') }}">
 
+    @livewireStyles
+
     {{-- Scripts --}}
 {{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}
 

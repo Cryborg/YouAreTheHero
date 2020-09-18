@@ -1,15 +1,3 @@
-function loadPurse() {
-    var $block = $('.purse-block');
-    $block.html(loadingSpinner);
-    $block.load(routePurse);
-}
-
-function loadInventory() {
-    var $block = $('.inventory-block');
-    $block.html(loadingSpinner);
-    $block.load(routeInventory);
-}
-
 function loadSheet() {
     var $block = $('.sheet-block');
     $block.html(loadingSpinner);
@@ -109,9 +97,7 @@ $(document).on('click touchstart keydown', '.pick-item button', function () {
     })
         .done(function (rst) {
             if (rst.success == true) {
-                // TODO: refresh this if necessary. Controller should return the info according
-                //       to what have been updated
-                //refreshData();
+                Livewire.emit('money_change');
 
                 if (rst.is_unique === true) {
                     $this.closest('.pick-item').remove();
@@ -177,7 +163,6 @@ $(document).on('click touchstart keydown', '#riddle_validate', function () {
 
 function refreshData()
 {
-    loadInventory();
     loadSheet();
     loadChoices();
 }

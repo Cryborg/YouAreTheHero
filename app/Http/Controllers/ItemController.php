@@ -100,7 +100,6 @@ class ItemController extends Controller
 
         return response()->json($success + [
             'is_unique' => (bool) $item->is_unique,
-            'refreshPurse' => $success['success'],
             'refreshInventory' => $success['success'],
             'refreshChoices' => $success['success'],
         ], 200);
