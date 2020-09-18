@@ -42,9 +42,17 @@
         lazyLoad: 'nearby',
     } ).mount();
 
+    var modalSplide = null;
+
     $(document).on('click touchstart keydown', 'img.preview', function () {
-        $('.modal-body').html('<img src="' + $(this).prop('src') + '" class="w-100">');
         $('#modalImage').modal();
+
+        if (modalSplide === null) {
+            modalSplide = new Splide('#modal-splide', {
+                type: 'loop',
+                lazyLoad: 'nearby',
+            }).mount();
+        }
     });
 
     $(document)

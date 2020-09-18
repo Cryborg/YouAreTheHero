@@ -12,13 +12,13 @@
                         <div class="row p-3">
                             <div class="col text-justify pr-4">{!! trans('home.text')  !!}</div>
                             <div class="col-lg-6 col-sm-12">
-                                <div id="splide" class="splide w-100 shadow">
+                                <div class="splide w-100 shadow">
                                     <div class="splide__track">
                                         <ul class="splide__list">
                                             <li class="splide__slide">
                                                 <div class="splide__slide__container">
                                                     <img src="{{ asset('img/screenshots/creation_interface.png') }}"
-                                                        class="w-100 preview">
+                                                        class="w-100 preview" data-toggle="modal" data-target="#modalImage">
                                                 </div>
                                                 <div class="text-center pb-4">@lang('home.page_creation_interface_text')</div>
                                             </li>
