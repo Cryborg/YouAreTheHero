@@ -1,17 +1,16 @@
 @foreach ($items as $category => $catItem)
-    @if (count($items) > 1)
-        <h5>{{ $category }}</h5>
-    @endif
-    <ul>
+    <div class="card">
+        @if (count($items) > 1)
+            <div class="card-header">{{ $category }}</div>
+        @endif
         @foreach ($catItem as $item)
             @if (!$item->pivot->is_used)
-                <div data-toggle="popover" data-trigger="hover" data-content="">
-                    <li>
+                <div class="card-body">
+                    <div data-toggle="popover" data-trigger="hover" data-content="">
                         @if ($item->pivot->quantity > 1)
                             {{ $item->pivot->quantity }} *
                         @endif
-                        <a class="clickable itemThrowAwayMenu" data-id="popup-{{ $item->pivot->id }}"
-                            data-itemid="{{ $item->id }}" data-characterid="{{ $character->id }}" data-characteritemid="{{ $item->pivot->id }}">
+                        <a class="clickable itemThrowAwayMenu" data-id="popup-{{ $item->pivot->id }}" data-itemid="{{ $item->id }}" data-characterid="{{ $character->id }}" data-characteritemid="{{ $item->pivot->id }}">
                             {{ $item->name }}
                             @if ($item->is_throwable || $item->effects()->count() > 0)
                                 <div class="popup-menu border border-dark w-75 shadow" style="display:none" data-popupid="popup-{{ $item->pivot->id }}">
@@ -24,9 +23,9 @@
                                 </div>
                             @endif
                         </a>
-                    </li>
+                    </div>
                 </div>
             @endif
         @endforeach
-    </ul>
+    </div>
 @endforeach
