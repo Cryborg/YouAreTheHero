@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -64,36 +65,26 @@ class LoginController extends Controller
      */
     public function handleProviderCallback(): RedirectResponse
     {
-        try {
-            $user = Socialite::driver('google')->user();
-        } catch (\Exception $e) {
-            return redirect('/login');
-        }
+        $googleUser = Socialite::driver('google')->user();
 
         // check if they're an existing user
-        $existingUser = User::where('email', $user->email)
-                            ->first();
-        if ($existingUser) {
-            // log them in
-            auth()->login($existingUser, true);
-        } else {
-            // create a new user
-            $newUser                  = new User();
-            $newUser->username        = $user->name;
-            $newUser->email           = $user->email;
-            $newUser->google_id       = $user->id;
-            $newUser->avatar          = $user->avatar;
-            $newUser->avatar_original = $user->avatar_original;
-            $newUser->save();
-            auth()->login($newUser, true);
-        }
+        $user = User::firstOrCreate([
+            'google_id'       => $googleUser->id
+        ], [
+            'username'        => $googleUser->name,
+            'email'           => $googleUser->email,
+            'avatar'          => $googleUser->avatar,
+            'avatar_original' => $googleUser->avatar_original,
+        ]);
+
+        Auth::login($user, true);
 
         activity()
-            ->performedOn(Auth::user())
+            ->performedOn($user)
             ->useLog('login')
             ->log('google');
 
-        return redirect()->to('/');
+        return Redirect::to('/');
     }
 
     function authenticated(Request $request, $user)
