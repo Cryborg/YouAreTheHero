@@ -8,15 +8,14 @@
                     <span class="icon-backpack display-5 mr-2"></span>
                     @lang('common.inventory')
                 </div>
-                <div class="card-header">
-                    <livewire:purse :character="$character">
+                <div class="card-header purse-block">
+                    @lang('common.money')@lang(':') {{ $character->money }}
                 </div>
                 <div class="card-header">
                     @lang('common.inventory')
                 </div>
-                <div class="card-body">
-{{--                    @yield('inventory')--}}
-                    <livewire:inventory :items="$inventory">
+                <div class="card-body inventory-block">
+                    @yield('inventory')
                 </div>
             </div>
         </div>

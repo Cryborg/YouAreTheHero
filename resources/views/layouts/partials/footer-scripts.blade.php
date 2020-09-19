@@ -37,12 +37,10 @@
     @include('layouts.partials.common-js')
 
     // Image slider on the login page
-    if ($('.splide').length > 0) {
-        new Splide('.splide', {
-            type: 'loop',
-            lazyLoad: 'nearby',
-        }).mount();
-    }
+    new Splide('.splide', {
+        type   : 'loop',
+        lazyLoad: 'nearby',
+    } ).mount();
 
     var modalSplide = null;
 
@@ -75,13 +73,16 @@
             if (request.responseJSON) {
                 console.log(request.responseJSON);
                 if (request.responseJSON.refreshInventory === true) {
-                    Livewire.emit('inventory_change');
+                    loadInventory();
                 }
                 if (request.responseJSON.refreshChoices === true) {
                     loadChoices();
                 }
                 if (request.responseJSON.refreshSheet === true) {
                     loadSheet();
+                }
+                if (request.responseJSON.refreshPurse === true) {
+                    loadPurse();
                 }
 
                 // Shows an informational toast
@@ -263,5 +264,3 @@
 
     var loadingSpinner = '<div class="d-flex justify-content-center w-100"><div class="spinner-grow text-success" role="status"></div></div>';
 </script>
-
-@livewireScripts

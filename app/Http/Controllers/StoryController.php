@@ -115,27 +115,31 @@ class StoryController extends Controller
 
         // Params that are always returned to the view
         $commonParams = [
-            'character'      => $character,
-            'inventory'      => $character->items,
-            'items'          => $items,
-            'messages'       => $messages,
-            'page'           => $page,
+            'story' => $story,
+            'title' => $story->title,
+            'character' => $character,
             'refreshChoices' => true,
-            'story'          => $story,
-            'title'          => $story->title,
         ];
 
         $page->load('descriptions');
 
         if (\Illuminate\Support\Facades\Request::ajax()) {
             $view = view('layouts.partials.page_content',
-                         $commonParams);
+                         $commonParams + [
+                             'page'             => $page,
+                             'items'            => $items,
+                             'messages'         => $messages,
+                         ]);
         } else {
             // First display of the page
             $view = view('story.play',
                          $commonParams + [
+                             'page'          => $page,
+                             'items'         => $items,
                              'layout'        => $page->layout ?? $story->layout,
+                             'character'     => $character,
                              'visitedPlaces' => $visitedPlaces,
+                             'messages'      => $messages,
                          ]
             );
         }

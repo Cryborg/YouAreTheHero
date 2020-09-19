@@ -19,7 +19,6 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.0",
-        "livewire/livewire": "^2.2",
         "snapappointments/bootstrap-select": "^1.13",
         "spatie/laravel-activitylog": "^3.14",
         "tightenco/ziggy": "^0.8",
