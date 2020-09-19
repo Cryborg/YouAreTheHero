@@ -37,10 +37,12 @@
     @include('layouts.partials.common-js')
 
     // Image slider on the login page
-    new Splide('.splide', {
-        type   : 'loop',
-        lazyLoad: 'nearby',
-    } ).mount();
+    if ($('.splide').length > 0) {
+        new Splide('.splide', {
+            type: 'loop',
+            lazyLoad: 'nearby',
+        }).mount();
+    }
 
     var modalSplide = null;
 
