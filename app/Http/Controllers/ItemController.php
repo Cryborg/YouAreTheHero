@@ -129,6 +129,7 @@ class ItemController extends Controller
         return response()->json([
            'refreshInventory' => $success,
            'refreshContent' => $success,
+           'refreshChoices' => $success,
         ]);
     }
 

@@ -37,13 +37,7 @@ $(document).on('click touchstart keydown', '.itemThrowAway', function () {
 
     $.get({
         url: route('item.throw_away', {'character_item': itemId})
-    })
-        .done(function (result) {
-            loadContent(getContentRoute());
-        })
-        .fail(function (result) {
-            console.log(result);
-        });
+    });
 });
 
 $(document).on('click touchstart keydown', '.itemUse', function () {
@@ -52,13 +46,7 @@ $(document).on('click touchstart keydown', '.itemUse', function () {
 
     $.get({
         url: route('item.use', {'character': characterId, 'item': itemId})
-    })
-        .done(function (result) {
-            refreshData();
-        })
-        .fail(function (result) {
-            console.log(result);
-        });
+    });
 });
 
 function getContentRoute() {

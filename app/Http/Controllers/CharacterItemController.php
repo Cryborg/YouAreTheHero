@@ -29,6 +29,7 @@ class CharacterItemController extends Controller
         return response()->json([
             'refreshInventory' => $success,
             'refreshContent' => $success,
+            'refreshSheet' => $success,
         ]);
     }
 }
