@@ -429,6 +429,7 @@ a[data-toggle="popover"]:hover, a.clickable:hover {
     top: 20px;
     right: 10px;
 }
+
 .card.card-no-padding .card-body {
     padding: 0;
 }
@@ -445,6 +446,7 @@ a[data-toggle="popover"]:hover, a.clickable:hover {
     margin-top: .8em;
     margin-bottom: .5em;
 }
+
 /* END HELP PAGE */
 
 div.popover.show {
@@ -477,15 +479,17 @@ div.popover.show {
 }
 
 .profile-picture.border-1 {
-    border-width:1px !important;
+    border-width: 1px !important;
 }
+
 .profile-picture.border-5 {
-    border-width:5px !important;
+    border-width: 5px !important;
 }
 
 .btn-sm.btn-grey {
     background-color: #e2e6ea;
 }
+
 .btn-sm.btn-grey:hover {
     background-color: #ced4d7;
 }

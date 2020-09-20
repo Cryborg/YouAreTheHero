@@ -32,14 +32,8 @@ function loadContent(route) {
     });
 }
 
-$(document).on('click touchstart keydown', '.itemThrowAwayMenu', function () {
-    var $this = $(this);
-    var popupId = $this.data('id');
-    $('[data-popupid="' + popupId + '"').show();
-});
-
 $(document).on('click touchstart keydown', '.itemThrowAway', function () {
-    var itemId = $(this).closest('a.itemThrowAwayMenu').data('characteritemid');
+    var itemId = $(this).data('characteritemid');
 
     $.get({
         url: route('item.throw_away', {'character_item': itemId})
@@ -53,8 +47,8 @@ $(document).on('click touchstart keydown', '.itemThrowAway', function () {
 });
 
 $(document).on('click touchstart keydown', '.itemUse', function () {
-    var itemId = $(this).closest('a.itemThrowAwayMenu').data('itemid');
-    var characterId = $(this).closest('a.itemThrowAwayMenu').data('characterid');
+    var itemId = $(this).data('itemid');
+    var characterId = $(this).data('characterid');
 
     $.get({
         url: route('item.use', {'character': characterId, 'item': itemId})

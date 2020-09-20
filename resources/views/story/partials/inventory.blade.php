@@ -6,23 +6,31 @@
         @foreach ($catItem as $item)
             @if (!$item->pivot->is_used)
                 <div class="card-body">
-                    <div data-toggle="popover" data-trigger="hover" data-content="">
-                        @if ($item->pivot->quantity > 1)
-                            {{ $item->pivot->quantity }} *
-                        @endif
-                        <a class="clickable itemThrowAwayMenu" data-id="popup-{{ $item->pivot->id }}" data-itemid="{{ $item->id }}" data-characterid="{{ $character->id }}" data-characteritemid="{{ $item->pivot->id }}">
+                    @if ($item->pivot->quantity > 1)
+                        {{ $item->pivot->quantity }} *
+                    @endif
+                    <div class="collapse navbar-collapse show">
+                        <span class="p-2 float-left" data-id="popup-{{ $item->pivot->id }}">
                             {{ $item->name }}
-                            @if ($item->is_throwable || $item->effects()->count() > 0)
-                                <div class="popup-menu border border-dark w-75 shadow" style="display:none" data-popupid="popup-{{ $item->pivot->id }}">
+                        </span>
+                        <ul class="navbar-nav ml-auto float-right">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="icon-menu-dots display-6 text-black clickable"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right shadow-lg">
                                     @if ($item->effects()->count() > 0)
-                                        <div class="highlight-hover p-2 clickable itemUse">@lang('item.use')</div>
+                                        <a class="clickable dropdown-item itemUse"
+                                            data-itemid="{{ $item->id }}" data-characterid="{{ $character->id }}">@lang('item.use')</a>
                                     @endif
                                     @if ($item->is_throwable)
-                                        <div class="highlight-hover p-2 clickable itemThrowAway">@lang('item.throw_away')</div>
+                                        <a class="clickable dropdown-item itemThrowAway"
+                                            data-characteritemid="{{ $item->pivot->id }}">@lang('item.throw_away')</a>
                                     @endif
                                 </div>
-                            @endif
-                        </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             @endif
