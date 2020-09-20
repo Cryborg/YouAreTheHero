@@ -39,6 +39,7 @@
 <body>
     @include('flash::message')
     <div id="app">
+        {{-- Upper navigation bar --}}
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" @if (Auth::check() && Auth::user()->role !== 'temp') href="{{ url('/') }}" title="@lang('common.link_home')" @endif>
@@ -175,7 +176,8 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        {{--  --}}
+        <main>
             <div class="@if($fluid ?? true) container-fluid @else container @endif">
                 @yield('content')
             </div>

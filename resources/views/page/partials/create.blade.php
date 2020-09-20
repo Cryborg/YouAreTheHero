@@ -1,7 +1,7 @@
-<div class="row is-page">
+<div class="row is-page pt-5">
     {!! Form::hidden('page_from', $page->id, ['class' => 'is-page-from', 'data-page-from' => $page_from ?? 0]) !!}
-    <div class="col-lg-6 col-xs-12">
-        <div class="row mb-3">
+    <div class="col-lg-6 col-xs-12 pt-5">
+        <div class="row">
             <div class="col shadow p-2">
                 <button class="btn btn-primary bg-success savePage">
                     <span class="icon-save text-white display-6 align-middle mr-3"></span>
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col mt-3">
                 <textarea class="w-100 hidden" id="inputGraph" rows="5">{{ $graph }}</textarea>
                 <nav class="nav nav-pills mb-2">
                     <a class="nav-item nav-link mr-3 @if ($page->is_first) disabled @else shadow @endif" href="#page-1" data-toggle="tab">
@@ -205,7 +205,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-6 col-xs-12 bg-primary pt-2">
+    <div class="col-lg-6 col-xs-12 pt-5 bg-primary">
         <div class="w-100 ">
             <button class="btn btn-primary shadow float-left" data-target="#modalAllItems" data-toggle="modal">
                 <span class="icon-chest text-white display-6 align-middle mr-3"></span>

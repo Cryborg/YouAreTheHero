@@ -1,9 +1,10 @@
 @extends('base')
 
 @section('content')
-    <div class="row h-100">
-        <div class="col-lg-2 col-xs-12">
-            <div class="card card-no-padding">
+    <div class="row vh-100">
+        {{-- Left sidebar --}}
+        <nav class="col-lg-2 col-xs-12 shadow pt-5 bg-white">
+            <div class="card no-padding pt-5">
                 <div class="card-header">
                     <span class="icon-backpack display-5 mr-2"></span>
                     @lang('common.inventory')
@@ -11,39 +12,44 @@
                 <div class="card-header purse-block">
                     @lang('common.money')@lang(':') {{ $character->money }}
                 </div>
-                <div class="card-header">
-                    @lang('common.inventory')
-                </div>
-                <div class="card-body inventory-block">
+                <div class="card-body no-padding inventory-block">
                     @yield('inventory')
                 </div>
             </div>
+        </nav>
+
+        {{-- Main content --}}
+        <div class="col col-xs-12 shadow pt-5 bg-lightgrey">
+            <div class="pt-5" id="page_content">
+                @include('layouts.partials.page_content', ['page' => $page])
+            </div>
         </div>
-        <div class="col col-xs-12" id="page_content">
-            @include('layouts.partials.page_content', ['page' => $page])
-        </div>
-        <div class="col-lg-3 col-xs-12">
-            @isset($page->story->story_options->has_stats)
-                <div class="card">
-                    <h5 class="card-header">
-                        <span class="icon-ninja-heroic-stance display-5 mr-2"></span>
-                        @lang('field.sheet')
-                    </h5>
-                    <div class="card-body">
-                        <div class="card-text sheet-block">
-                            @yield('sheet', '-')
+
+        {{-- Right sidebar --}}
+        <div class="col-lg-3 col-xs-12 shadow pt-5 bg-white">
+            <div class="pt-5">
+                @isset($page->story->story_options->has_stats)
+                    <div class="card">
+                        <h5 class="card-header">
+                            <span class="icon-ninja-heroic-stance display-5 mr-2"></span>
+                            @lang('field.sheet')
+                        </h5>
+                        <div class="card-body">
+                            <div class="card-text sheet-block">
+                                @yield('sheet', '-')
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endisset
-            <div class="card">
-                <h5 class="card-header">
-                    <span class="icon-treasure-map display-5 mr-2"></span>
-                    @lang('story.map')
-                </h5>
-                <div class="card-body">
-                    <div class="card-text map-block">
-                        @yield('map')
+                @endisset
+                <div class="card">
+                    <h5 class="card-header">
+                        <span class="icon-treasure-map display-5 mr-2"></span>
+                        @lang('story.map')
+                    </h5>
+                    <div class="card-body">
+                        <div class="card-text map-block">
+                            @yield('map')
+                        </div>
                     </div>
                 </div>
             </div>

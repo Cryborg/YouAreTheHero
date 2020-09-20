@@ -1,7 +1,7 @@
 <input id="storyId" type="hidden" value="{{ $story->id }}">
 <input id="pageId" type="hidden" value="{{ $page->id }}">
 
-<div class="card">
+<div class="card shadow">
     <h5 class="card-header text-center">
         @can('edit', $page)
             <a href="{{ route('page.edit', ['page' => $page]) }}" target="_blank" class="pull-left">

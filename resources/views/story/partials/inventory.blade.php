@@ -1,7 +1,7 @@
 @foreach ($items as $category => $catItem)
-    <div class="card">
+    <div class="card card-no-padding">
         @if (count($items) > 1)
-            <div class="card-header">{{ $category }}</div>
+            <div class="card-header bg-inventory-category">{{ $category }}</div>
         @endif
         @foreach ($catItem as $item)
             @if (!$item->pivot->is_used)
