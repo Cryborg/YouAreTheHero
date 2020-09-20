@@ -3,8 +3,8 @@
 @section('content')
     <div class="container">
         <div class="row mb-5">
-            <div class="col">
-                <div class="card shadow">
+            <div class="col mt-5">
+                <div class="card mt-5 shadow">
                     <div class="card-header">
                         @lang('common.quick_overview')
                     </div>
