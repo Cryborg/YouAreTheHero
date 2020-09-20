@@ -40,8 +40,8 @@
                         @foreach($orphans as $orphan)
                             <div class="row mb-1">
                                 <div class="col">
-                                    <a class="btn btn-danger text-center w-15" role="button">
-                                        <span class="icon-trash text-white deleteOrphan" data-pageid="{{ $orphan->id }}"></span>
+                                    <a class="btn border-danger border-2 text-center w-15" role="button">
+                                        <span class="icon-trash text-red deleteOrphan" data-pageid="{{ $orphan->id }}"></span>
                                     </a>
                                     <a href="{{ route('page.edit', $orphan) }}" class="btn btn-light text-left w-75" role="button">
                                         <span class="icon-fountain-pen text-black  mr-3" data-pageid="{{ $orphan->id }}"></span>
@@ -71,8 +71,8 @@
                         @foreach($unusedItems as $item)
                             <div class="row mb-1">
                                 <div class="col">
-                                    <a class="btn btn-danger text-center w-15 mr-3" role="button">
-                                        <span class="icon-trash text-white deleteItem" data-itemid="{{ $item->id }}"></span>
+                                    <a class="btn border-danger border-2 text-center w-15 mr-3" role="button">
+                                        <span class="icon-trash text-red deleteItem" data-itemid="{{ $item->id }}"></span>
                                     </a>
                                     {{ $item->name }}
                                 </div>
@@ -99,8 +99,8 @@
                         @foreach($unusedFields as $field)
                             <div class="row mb-1">
                                 <div class="col">
-                                    <a class="btn btn-danger text-center w-15 mr-3" role="button">
-                                        <span class="icon-trash text-white deleteField" data-fieldid="{{ $field->id }}"></span>
+                                    <a class="btn border-danger border-2 text-center w-15 mr-3" role="button">
+                                        <span class="icon-trash text-red deleteField" data-fieldid="{{ $field->id }}"></span>
                                     </a>
                                     {{ $field->name }}
                                 </div>
@@ -123,8 +123,8 @@
                         @foreach($emptyRiddles as $riddle)
                             <div class="row mb-1">
                                 <div class="col">
-                                    <a class="btn btn-danger text-center w-15 mr-3" role="button">
-                                        <span class="icon-trash text-white deleteRiddle" data-riddleid="{{ $riddle->id }}"></span>
+                                    <a class="btn border-danger border-2 text-center w-15 mr-3" role="button">
+                                        <span class="icon-trash text-red deleteRiddle" data-riddleid="{{ $riddle->id }}"></span>
                                     </a>
                                     <a class="btn btn-light text-left w-75" role="button">
                                         <span class="icon-eye text-black mr-3" data-pageid="{{ $riddle->id }}"></span>

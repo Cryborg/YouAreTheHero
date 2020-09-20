@@ -30,8 +30,8 @@
                             </div>
                             @if ($story->is_published === false)
                                 <div class="btn-group" role="group">
-                                    <a class="btn bg-danger">
-                                        <span class="icon-trash text-white deleteStory" data-storyid="{{ $story->id }}"></span>
+                                    <a class="btn border-danger border-2">
+                                        <span class="icon-trash text-red deleteStory" data-storyid="{{ $story->id }}"></span>
                                     </a>
                                 </div>
                             @endif
