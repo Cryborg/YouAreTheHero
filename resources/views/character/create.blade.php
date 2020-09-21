@@ -3,7 +3,7 @@
 @section('title', $title)
 
 @section('content')
-    <h2 class="mb-3">{{ $story->title }}</h2>
+    <h2 class="mb-5">{{ $story->title }}</h2>
 
     @if ($story->story_options && $story->story_options->has_character)
         <div class="form-group">

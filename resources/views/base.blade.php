@@ -177,8 +177,8 @@
         </nav>
 
         {{--  --}}
-        <main>
-            <div class="@if($fluid ?? true) container-fluid @else container @endif">
+        <main class="pt-5">
+            <div class="@if($fluid ?? true) container-fluid @else container @endif pt-5">
                 @yield('content')
             </div>
         </main>

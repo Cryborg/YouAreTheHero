@@ -1,6 +1,6 @@
-<div class="row is-page pt-5">
+<div class="row is-page">
     {!! Form::hidden('page_from', $page->id, ['class' => 'is-page-from', 'data-page-from' => $page_from ?? 0]) !!}
-    <div class="col-lg-6 col-xs-12 pt-5">
+    <div class="col-lg-6 col-xs-12">
         <div class="row">
             <div class="col shadow p-2">
                 <button class="btn btn-primary bg-success savePage">
