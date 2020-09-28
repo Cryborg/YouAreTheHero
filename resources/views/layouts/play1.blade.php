@@ -3,8 +3,8 @@
 @section('content')
     <div class="row vh-100">
         {{-- Left sidebar --}}
-        <nav class="col-lg-2 col-xs-12 shadow pt-5 bg-white">
-            <div class="card no-padding pt-5">
+        <nav class="col-lg-2 col-xs-12 shadow bg-white">
+            <div class="card no-padding">
                 <div class="card-header">
                     <span class="icon-backpack display-5 mr-2"></span>
                     @lang('common.inventory')
@@ -19,37 +19,35 @@
         </nav>
 
         {{-- Main content --}}
-        <div class="col col-xs-12 shadow pt-5 bg-lightgrey">
-            <div class="pt-5" id="page_content">
+        <div class="col col-xs-12 shadow bg-lightgrey">
+            <div id="page_content">
                 @include('layouts.partials.page_content', ['page' => $page])
             </div>
         </div>
 
         {{-- Right sidebar --}}
-        <div class="col-lg-3 col-xs-12 shadow pt-5 bg-white">
-            <div class="pt-5">
-                @isset($page->story->story_options->has_stats)
-                    <div class="card">
-                        <h5 class="card-header">
-                            <span class="icon-ninja-heroic-stance display-5 mr-2"></span>
-                            @lang('field.sheet')
-                        </h5>
-                        <div class="card-body">
-                            <div class="card-text sheet-block">
-                                @yield('sheet', '-')
-                            </div>
-                        </div>
-                    </div>
-                @endisset
+        <div class="col-lg-3 col-xs-12 shadow bg-white">
+            @isset($page->story->story_options->has_stats)
                 <div class="card">
                     <h5 class="card-header">
-                        <span class="icon-treasure-map display-5 mr-2"></span>
-                        @lang('story.map')
+                        <span class="icon-ninja-heroic-stance display-5 mr-2"></span>
+                        @lang('field.sheet')
                     </h5>
                     <div class="card-body">
-                        <div class="card-text map-block">
-                            @yield('map')
+                        <div class="card-text sheet-block">
+                            @yield('sheet', '-')
                         </div>
+                    </div>
+                </div>
+            @endisset
+            <div class="card">
+                <h5 class="card-header">
+                    <span class="icon-treasure-map display-5 mr-2"></span>
+                    @lang('story.map')
+                </h5>
+                <div class="card-body">
+                    <div class="card-text map-block">
+                        @yield('map')
                     </div>
                 </div>
             </div>
