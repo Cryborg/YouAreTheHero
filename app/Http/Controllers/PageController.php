@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Character;
 use App\Models\Item;
+use App\Models\ItemPage;
 use App\Models\Page;
 use App\Models\Riddle;
 use App\Models\Story;
@@ -307,10 +308,22 @@ class PageController extends Controller
 
     public function deleteItem(Page $page, Item $item)
     {
-        return response()->json([
-            'success' => $page->items()->detach($item->id),
-            'type'    => 'delete',
-        ]);
+        try {
+            $itemPage = ItemPage::where('item_id', $item->id)
+                ->where('page_id', $page->id)
+                ->first();
+
+            return response()->json([
+                'success' => $itemPage->delete(),
+                'type'    => 'delete',
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage(),
+                'type'    => 'delete',
+            ]);
+        }
     }
 
     public function storeItem(Request $request, Page $page)
@@ -322,14 +335,12 @@ class PageController extends Controller
                 'price'    => '',
             ]);
 
-            $validated['page_id'] = $page->id;
-
             try {
-                $page->items()->syncWithoutDetaching([
-                    $validated['item'] => [
-                        'quantity' => $validated['quantity'],
-                        'price'    => $validated['price'],
-                    ],
+                ItemPage::create([
+                    'item_id'   => $validated['item'],
+                    'page_id'   => $page->id,
+                    'quantity'  => $validated['quantity'],
+                    'price'     => $validated['price'],
                 ]);
 
                 return response()->json([

@@ -77,7 +77,7 @@ Route::middleware('auth')->group(static function () {
     Route::post('/page/choice/{choice}','ChoiceController@update')->name('choice.update');
     Route::post('/page/{page}/edit', 'PageController@postEdit')->name('page.edit.post');
     Route::post('/page/{page}/riddle', 'PageController@postRiddle')->name('page.riddle.validate');
-    Route::post('/page/item/{page}/create', 'PageController@storeItem')->name('page.item.store');
+    Route::post('/page/{page}/item/create', 'PageController@storeItem')->name('page.item.store');
 
     Route::delete('/page/{page}/delete', 'PageController@delete')->name('page.delete');
     Route::delete('/page/{page}/{page_from}/delete', 'PageController@deleteChoice')->name('page.choice.delete');

@@ -77,7 +77,6 @@
         "post-install-cmd": [
             "php artisan vendor:publish --tag=public --force",
             "php artisan telescope:publish",
-            "php artisan ziggy:generate",
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",
             "@php artisan ide-helper:models -N",
