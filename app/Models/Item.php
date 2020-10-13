@@ -136,11 +136,13 @@ class Item extends Model
         // Check if there is enough room in the character's inventory
         if (Action::hasRoomLeftInInventory($character, $this)) {
             // Check if the item must be bought
-            $item = $page->items()->wherePivot('item_id', $this->id)->first();
+            $itemPage = ItemPage::where('item_id', $this->id)
+                ->where('page_id', $page->id)
+                ->first();
 
-            if ($item->pivot->price > 0) {
-                if ($character->money >= $item->pivot->price) {
-                    $character->money -= $item->pivot->price;
+            if ($itemPage->price > 0) {
+                if ($character->money >= $itemPage->price) {
+                    $character->money -= $itemPage->price;
                     $character->save();
                 } else {
                     return [
