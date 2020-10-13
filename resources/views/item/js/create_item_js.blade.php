@@ -9,7 +9,9 @@ function ajaxCreatePost(route, $this, data)
         data: {...data, ...commonData}
     })
         .done(function (data) {
-            refreshModalItemsList();
+            if (typeof window.refreshModalItemsList === "function") {
+                refreshModalItemsList();
+            }
         })
         .always(function () {
             $this.html($this.data('original-text'));
