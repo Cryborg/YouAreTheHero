@@ -8,7 +8,7 @@ return array (
     'add_new_riddle' => 'Add a riddle',
     'add_prerequisite' => 'Add the condition',
     'add_riddle' => 'Add a riddle',
-    'buy' => 'Buy',
+    'buy' => 'Buy (:price)',
     'give' => 'Give',
     'new_action_successfully_added' => 'The action has been added to the page',
     'price' => 'Price',

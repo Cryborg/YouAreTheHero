@@ -1,7 +1,11 @@
 <div class="input-group">
     <div class="input-group-prepend">
         <button class="btn btn-outline-secondary bg-light" data-original-text="@lang('item_page.take')" type="button" data-itemid="{{ $item->id }}">
-            @lang('item_page.take')
+            @if ($item->pivot->price > 0)
+                @lang('item_page.buy', ['price' => $item->pivot->price])
+            @else
+                @lang('item_page.take')
+            @endif
         </button>
     </div>
     <span class="form-control">{{ $item->name }}</span>
