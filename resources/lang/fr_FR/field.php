@@ -15,7 +15,6 @@ return array (
   'points_left_to_share' => 'Points restant à attribuer :',
   'range_text' => 'de :min à :max',
   'sheet' => 'Fiche de perso',
-  'short_name' => 'Libellé court',
   'stat_attribution_help' => 'En choisissant \'Joueur\', tu permets au joueur de distribuer comme il le veut le nombre de points que tu auras spécifié. Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
   'unused_fields' => 'Attributs non utilisés',
 );

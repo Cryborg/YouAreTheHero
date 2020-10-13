@@ -20,7 +20,6 @@ class CreateFieldTable extends Migration
             $table->foreign('story_id')->references('id')->on('stories');
 
             $table->string('name', 15);
-            $table->string('short_name', 5);
             $table->boolean('hidden')->default(false);
             $table->integer('min_value');
             $table->integer('max_value');

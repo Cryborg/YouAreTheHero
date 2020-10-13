@@ -19,7 +19,6 @@ class FieldController extends Controller
         if ($request->ajax()) {
             $validated = $request->validate([
                 'name'          => 'required',
-                'short_name'    => 'required|max:5',
                 'hidden'        => 'required|in:0,1',
                 'min_value'     => 'required',
                 'max_value'     => 'required|gte:min_value',

@@ -163,7 +163,6 @@
                         <thead>
                             <tr>
                                 <th>{{ trans('field.name') }}</th>
-                                <th>{{ trans('field.short_name') }}</th>
                                 <th>{{ trans('field.min_value') }}</th>
                                 <th>{{ trans('field.max_value') }}</th>
                                 <th class="text-center">{{ trans('field.hidden_to_players') }}</th>
@@ -174,7 +173,6 @@
                             @foreach($story->fields ?? [] as $stat)
                                 <tr>
                                     <td>{{ $stat->name }}</td>
-                                    <td>{{ $stat->short_name }}</td>
                                     <td>{{ $stat->min_value }}</td>
                                     <td>{{ $stat->max_value }}</td>
                                     <td class="text-center">
@@ -189,9 +187,6 @@
                             <tr>
                                 <th>
                                     <input class="new_field form-control" type="text" id="name" maxlength="15" autocomplete="nope" required>
-                                </th>
-                                <th>
-                                    <input class="new_field form-control" type="text" id="short_name" maxlength="5" autocomplete="nope" required>
                                 </th>
                                 <th>
                                     <input class="new_field form-control" type="number" id="min_value" value="1" required>
