@@ -58,7 +58,7 @@ return array (
   'select_genres_placeholder' => 'Choose one or more genres',
   'show_statistics' => 'Story statistics',
   'start_playing' => 'Start the story',
-  'stats_help' => 'Create the stats / abilities / whatever you want, and the minimum/maximum points the player can give to each.',
+  'stats_help' => 'Create the stats / abilities / whatever you want, and the minimum/maximum points the player can give to each.<br>You cann choose to hide it to the player to use it as a variable for example.',
   'stats_label' => 'Available character stats',
   'title' => 'Title',
   'tree' => 'Page tree',

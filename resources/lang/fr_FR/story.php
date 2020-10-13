@@ -58,7 +58,7 @@ return array (
   'select_genres_placeholder' => 'Choisis un ou plusieurs genres',
   'show_statistics' => 'Statistiques de l\'histoire',
   'start_playing' => 'Commencer l\'histoire',
-  'stats_help' => 'Crée les compétences / statistiques que tu veux, ainsi que le minimum/maximum de points que le joueur pourra leur attribuer.',
+  'stats_help' => 'Crée les compétences / statistiques que tu veux, ainsi que le minimum/maximum de points que le joueur pourra leur attribuer.<br>Tu peux choisir de ne pas l\'afficher au joueur, pour t\'en servir par exemple comme variable.',
   'stats_label' => 'Stats disponibles',
   'title' => 'Titre',
   'tree' => 'Arborescence des pages',
