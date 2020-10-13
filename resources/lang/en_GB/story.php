@@ -42,8 +42,6 @@ return array (
   'last_update' => 'Last update',
   'list_all_items' => 'List all items',
   'list_all_items_help' => 'Click on the item you want to edit.',
-  'list_all_pages' => 'List all pages',
-  'list_all_pages_help' => 'Click on the page you want to edit. You can sort the list and look for words or sentences in the title and/or the content of the page to filter the results.',
   'map' => 'Checkpoints',
   'number_pages' => 'Number of pages',
   'pages_count' => ':count page|:count pages',

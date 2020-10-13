@@ -211,10 +211,6 @@
                 <span class="icon-chest text-white display-6 align-middle mr-3"></span>
                 <span class="align-middle">@lang('story.list_all_items')</span>
             </button>
-            <button class="btn btn-primary shadow float-right" data-target="#modalAllPages" data-toggle="modal">
-                <span class="align-middle">@lang('story.list_all_pages')</span>
-                <span class="icon-papers text-white display-6 align-middle ml-3"></span>
-            </button>
         </div>
         <div class="svg-container active" id="p1">
             <svg class="svg-content h-100 w-100">

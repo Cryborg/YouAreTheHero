@@ -42,8 +42,6 @@ return array (
   'last_update' => 'Dernière mise à jour',
   'list_all_items' => 'Voir tous les objets',
   'list_all_items_help' => 'Clique sur l\'objet à modifier.',
-  'list_all_pages' => 'Voir toutes les pages',
-  'list_all_pages_help' => 'Clique sur la page à éditer. Tu peux trier la liste et affiner ta recherche en tapant des mots ou phrases contenues dans les titres ou les textes des pages.',
   'map' => 'Points de sauvegarde',
   'number_pages' => 'Nombre de pages',
   'pages_count' => ':count page|:count pages',
