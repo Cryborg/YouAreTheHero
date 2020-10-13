@@ -263,29 +263,30 @@ class StoryController extends Controller
                 $item = $trigger->actionable;
 
                 // Check if the action has already been done
-                if ($character->actions->where('pivot.action_id', $trigger->id)
-                                       ->count() === 0) {
-                    if ($character->actions()
-                                  ->syncWithoutDetaching($trigger->id)) {
-                        if ($trigger->quantity > 0) {
-                            $item->take($page);
-                        } else {
-                            $item->throwAway();
-                        }
+                $nbActionsDone = $character->actions->where('pivot.action_id', $trigger->id)
+                                                    ->count();
 
-                        $messages[] = [
-                            'text' => $trigger->quantity > 0
-                                ? trans('common.you_earned_something', [
-                                    'quantity' => $trigger->quantity,
-                                    'item'     => $item->name,
-                                ])
-                                : trans('common.you_lost_something', [
-                                    'quantity' => $trigger->quantity * -1,
-                                    'item'     => $item->name,
-                                ]),
-                            'type' => $trigger->quantity > 0 ? 'success' : 'warning',
-                        ];
+                if ($nbActionsDone === 0) {
+                    $character->actions()->syncWithoutDetaching($trigger->id);
+
+                    if ($trigger->quantity > 0) {
+                        $item->take($page);
+                    } else {
+                        $item->throwAway();
                     }
+
+                    $messages[] = [
+                        'text' => $trigger->quantity > 0
+                            ? trans('common.you_earned_something', [
+                                'quantity' => $trigger->quantity,
+                                'item'     => $item->name,
+                            ])
+                            : trans('common.you_lost_something', [
+                                'quantity' => $trigger->quantity * -1,
+                                'item'     => $item->name,
+                            ]),
+                        'type' => $trigger->quantity > 0 ? 'success' : 'warning',
+                    ];
                 }
             }
         }

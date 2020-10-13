@@ -135,27 +135,29 @@ class Item extends Model
 
         // Check if there is enough room in the character's inventory
         if (Action::hasRoomLeftInInventory($character, $this)) {
-            // Check if the item must be bought
             $itemPage = ItemPage::where('item_id', $this->id)
                 ->where('page_id', $page->id)
                 ->first();
 
-            if ($itemPage->price > 0) {
-                if ($character->money >= $itemPage->price) {
-                    $character->money -= $itemPage->price;
-                    $character->save();
-                } else {
-                    return [
-                        'success' => false,
-                        'message' => trans('character.not_enough_money'),
-                        'type'    => 'save',
-                    ];
+            // If the character has the object in his inventory
+            if ($itemPage instanceof ItemPage) {
+                if ($itemPage->price > 0) {
+                    if ($character->money >= $itemPage->price) {
+                        $character->money -= $itemPage->price;
+                        $character->save();
+                    } else {
+                        return [
+                            'success' => false,
+                            'message' => trans('character.not_enough_money'),
+                            'type'    => 'save',
+                        ];
+                    }
                 }
+
             }
 
             // Add the item to the inventory
-            $character->items()
-                      ->attach($this->id);
+            $character->items()->attach($this->id);
 
             $isOk = true;
         } else {
