@@ -13,24 +13,26 @@
                         <span class="p-2 float-left" data-id="popup-{{ $item->pivot->id }}">
                             {{ $item->name }}
                         </span>
-                        <ul class="navbar-nav ml-auto float-right">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="icon-menu-dots display-6 text-black clickable"></span>
-                                </a>
+                        @if ($item->is_throwable || $item->effects()->count() > 0)
+                            <ul class="navbar-nav ml-auto float-right">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="icon-menu-dots display-6 text-black clickable"></span>
+                                    </a>
 
-                                <div class="dropdown-menu dropdown-menu-right shadow-lg">
-                                    @if ($item->effects()->count() > 0)
-                                        <a class="clickable dropdown-item itemUse"
-                                            data-itemid="{{ $item->id }}" data-characterid="{{ $character->id }}">@lang('item.use')</a>
-                                    @endif
-                                    @if ($item->is_throwable)
-                                        <a class="clickable dropdown-item itemThrowAway"
-                                            data-characteritemid="{{ $item->pivot->id }}">@lang('item.throw_away')</a>
-                                    @endif
-                                </div>
-                            </li>
-                        </ul>
+                                    <div class="dropdown-menu dropdown-menu-right shadow-lg">
+                                        @if ($item->effects()->count() > 0)
+                                            <a class="clickable dropdown-item itemUse"
+                                                data-itemid="{{ $item->id }}" data-characterid="{{ $character->id }}">@lang('item.use')</a>
+                                        @endif
+                                        @if ($item->is_throwable)
+                                            <a class="clickable dropdown-item itemThrowAway"
+                                                data-characteritemid="{{ $item->pivot->id }}">@lang('item.throw_away')</a>
+                                        @endif
+                                    </div>
+                                </li>
+                            </ul>
+                        @endif
                     </div>
                 </div>
             @endif
