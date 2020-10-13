@@ -251,7 +251,6 @@ namespace App\Models{
  * @property int $id
  * @property int $story_id
  * @property string $name
- * @property string $short_name
  * @property bool $hidden
  * @property int $min_value
  * @property int $max_value
@@ -279,7 +278,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Field whereMinValue($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Field whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Field whereOrder($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Field whereShortName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Field whereStartValue($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Field whereStoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Field whereUpdatedAt($value)
