@@ -91,10 +91,6 @@ $(document).on('click touchstart keydown', '.pick-item button', function () {
     })
         .done(function (rst) {
             if (rst.success == true) {
-                // TODO: refresh this if necessary. Controller should return the info according
-                //       to what have been updated
-                //refreshData();
-
                 if (rst.is_unique === true) {
                     $this.closest('.pick-item').remove();
                 }

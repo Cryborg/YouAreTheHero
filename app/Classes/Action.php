@@ -149,6 +149,11 @@ class Action
         return true;
     }
 
+    /**
+     * @param $text
+     *
+     * @return string
+     */
     public static function stutter($text): string
     {
         $stuttering = '';
@@ -165,6 +170,11 @@ class Action
         return $stuttering;
     }
 
+    /**
+     * @param $text
+     *
+     * @return string
+     */
     public static function genre($text): string
     {
         $characterId = getSession('character_id');
@@ -177,6 +187,7 @@ class Action
             $genre = $character->genre;
         }
 
+        // There must be 2 values, no more, no less
         if (count($split) !== 2) {
             return '!!genre[' . $text . ']!!';
         }

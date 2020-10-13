@@ -60,6 +60,8 @@
     $(document)
         // Global settings for AJAX requests
         .ajaxComplete(function (event, request, settings) {
+            let data = request.responseJSON;
+
             // If the session has expired
             if (request.status === 419) {
                 alert('You have been inactive for the last minutes, please refresh the page to reconnect.');
@@ -72,48 +74,48 @@
             });
 
             // Refreshes some partials if the appropriate JSON response is true
-            if (request.responseJSON) {
-                console.log(request.responseJSON);
-                if (request.responseJSON.refreshInventory === true) {
+            if (data) {
+                console.log(data);
+                if (data.refreshInventory === true) {
                     loadInventory();
                 }
-                if (request.responseJSON.refreshChoices === true) {
+                if (data.refreshChoices === true) {
                     loadChoices();
                 }
-                if (request.responseJSON.refreshSheet === true) {
+                if (data.refreshSheet === true) {
                     loadSheet();
                 }
-                if (request.responseJSON.refreshPurse === true) {
+                if (data.refreshPurse === true) {
                     loadPurse();
                 }
 
                 // Shows an informational toast
-                switch (request.responseJSON.type) {
+                switch (data.type) {
                     case 'save':
-                        if (request.responseJSON.success) {
+                        if (data.success) {
                             showToast('success', {
                                 heading: saveSuccessHeading,
-                                text: saveSuccessText,
+                                text: data.message || saveSuccessText,
                             });
                         } else {
                             showToast('error', {
-                                heading: "{{ trans('notification.deletion_failed_title') }}",
-                                text: "{{ trans('notification.deletion_failed_text') }}",
-                                errors: data.responseJSON.errors
+                                heading: saveFailedHeading,
+                                text: data.message || saveFailedText,
+                                errors: data.errors
                             });
                         }
                         break;
                     case 'delete':
-                        if (request.responseJSON.success) {
+                        if (data.success) {
                             showToast('success', {
                                 heading: deletionSuccessTitle,
-                                text: deletionSuccessText,
+                                text: data.message || deletionSuccessText,
                             });
                         } else {
                             showToast('error', {
                                 heading: deletionFailedTitle,
-                                text: deletionFailedText,
-                                errors: data.responseJSON.errors
+                                text: data.message || deletionFailedText,
+                                errors: data.errors
                             });
                         }
                         break;

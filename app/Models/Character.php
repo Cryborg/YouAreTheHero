@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Laracasts\Presenter\PresentableTrait;
 use App\Presenters\CharacterPresenter;
 
@@ -24,7 +23,7 @@ class Character extends Model
     {
         parent::boot();
 
-        static::deleting(static function ($character) { // before delete() method call this
+        static::deleting(static function ($character) {
             $character->items()->detach();
             $character->riddles()->detach();
             $character->fields()->detach();
@@ -80,9 +79,6 @@ class Character extends Model
             }
 
             return $character;
-//            return Redirect::route('story.play', [
-//                'story' => $story->id,
-//            ]);
         }
 
         return null;
