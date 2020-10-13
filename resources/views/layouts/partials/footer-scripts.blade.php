@@ -201,6 +201,7 @@
 
     var summernoteOptions = {
         lang: 'fr-FR',
+        height: 300,
         maximumImageFileSize: 524288, // 512k
         toolbar: [
             ['style', ['style']],
