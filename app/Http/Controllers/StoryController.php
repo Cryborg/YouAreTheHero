@@ -437,6 +437,7 @@ class StoryController extends Controller
         });
 
         $data['genres'] = $orderdGenres->sortBy('label');
+        $data['max_points_to_share'] = $story->maxPointsToShare();
 
         $view = View::make('story.create', $data);
 

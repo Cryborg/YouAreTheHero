@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\PageController;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
@@ -181,5 +180,16 @@ class Story extends Model
     public function reports()
     {
         return $this->hasManyThrough(Report::class, Page::class);
+    }
+
+    public function maxPointsToShare(): int
+    {
+        $max = 0;
+
+        $this->fields()->each(static function ($field) use (&$max) {
+            $max += $field->max_value - $field->min_value;
+        });
+
+        return $max;
     }
 }

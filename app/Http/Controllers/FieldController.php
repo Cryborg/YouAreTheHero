@@ -30,9 +30,18 @@ class FieldController extends Controller
 
             $field = Field::create($validated);
 
+            // Determine the maximum points that can be shared
+            $max = $story->maxPointsToShare();
+
+            if ($story->story_options->points_to_share > $max) {
+                $story->story_options->points_to_share = $max;
+                $story->story_options->save();
+            }
+
             return response()->json([
                 'success'   => $field instanceof Field,
                 'field' => $field->toArray(),
+                'max' => $max,
             ]);
         }
 
@@ -45,6 +54,7 @@ class FieldController extends Controller
             return response()->json([
                 'success' => $field->delete(),
                 'type'    => 'delete',
+                'max'     => $field->story->maxPointsToShare(),
             ]);
         }
 

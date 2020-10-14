@@ -14,7 +14,7 @@
                 <a class="nav-link" id="pills-options-tab" data-toggle="pill" href="#pills-options" role="tab" aria-controls="pills-options" aria-selected="false">{{ trans('story.create_tab2') }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @if ($story->story_options && !$story->story_options->has_stats) hidden @endif" id="pills-sheet-tab" data-toggle="pill" href="#pills-sheet" role="tab" aria-controls="pills-sheet" aria-selected="false">{{ trans('story.create_tab3') }}</a>
+                <a class="nav-link" id="pills-sheet-tab" data-toggle="pill" href="#pills-sheet" role="tab" aria-controls="pills-sheet" aria-selected="false">{{ trans('story.create_tab3') }}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="pills-items-tab" data-toggle="pill" href="#pills-items" role="tab" aria-controls="pills-sheet" aria-selected="false">{{ trans('story.create_tab4') }}</a>
@@ -30,7 +30,7 @@
     </ul>
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            {!! Form::model(\App\Models\Story::class, array('route' => array($route, $story ? $story->id : null))) !!}
+            {!! Form::model(\App\Models\Story::class, array('route' => array($route, $story ?? null))) !!}
             {{ Form::hidden('story_id', $story->id ?? null) }}
             <div class="card">
                 <div class="card-header">
@@ -134,10 +134,6 @@
                             {{ trans('story.has_stats_label') }}
                         </label>
                     </div>
-                    <div class="form-group ml-3">
-                        <label>@lang('story.points_to_share')</label>
-                        <input type="number" value="@if ($story && $story->story_options){{ $story->story_options->points_to_share }}@else 10 @endif" min="1" max="99" id="points_to_share">
-                    </div>
                 </div>
             </div>
             @if ($story)
@@ -157,6 +153,11 @@
                 <div class="card-header">
                     @lang('story.stats_label')
                 </div>
+                <div class="form-group ml-3">
+                    <label>@lang('story.points_to_share')</label>
+                    <input type="number" value="@if ($story && $story->story_options){{ $story->story_options->points_to_share }}@else 10 @endif" min="1" max="{{ $max_points_to_share }}" id="points_to_share" limit-to-max>
+                </div>
+
                 <div class="card-body">
                     <p class="help-block">@lang('story.stats_help')</p>
                     <table id="stats_story" class="table mb-3 w-50 m-0">
