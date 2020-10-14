@@ -509,3 +509,17 @@ div.popover.show {
 .bg-inventory-category {
     background-color: aliceblue !important;
 }
+
+.grow div {
+    max-width: 0;
+    -webkit-transition: max-width 1s;
+    transition: max-width .7s;
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.grow:hover div {
+    max-width: 11rem;
+
+}

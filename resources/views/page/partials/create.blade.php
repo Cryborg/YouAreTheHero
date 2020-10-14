@@ -2,26 +2,26 @@
     {!! Form::hidden('page_from', $page->id, ['class' => 'is-page-from', 'data-page-from' => $page_from ?? 0]) !!}
     <div class="col-lg-6 col-xs-12">
         <div class="row">
-            <div class="col shadow p-2">
-                <button class="btn btn-primary bg-success savePage">
-                    <span class="icon-save text-white display-6 align-middle mr-3"></span>
-                    <span class="align-middle">@lang('common.save')</span>
+            <div class="col shadow-sm p-3">
+                <button class="btn btn-light savePage grow shadow">
+                    <span class="icon-save display-6 align-middle"></span>
+                    <div class="align-middle">@lang('common.save')</div>
                 </button>
-                <button class="btn btn-primary" data-target="#modalAddChoice" data-toggle="modal">
-                    <span class="icon-choice text-white display-6 align-middle mr-3"></span>
-                    <span class="align-middle">@lang('page.add_choice')</span>
+                <button class="btn btn-light grow shadow" data-target="#modalAddChoice" data-toggle="modal">
+                    <span class="icon-choice display-6 align-middle"></span>
+                    <div class="align-middle">@lang('page.add_choice')</div>
                     <span class="badge badge-warning rounded float-right shadow ml-3">{{ $page->choices()->count() }}</span>
                 </button>
                 <a target="_blank" href="{{ route('story.play', [$story]) }}">
-                <button class="btn btn-outline-dark">
-                    <span class="icon-play display-6 align-middle mr-3"></span>
-                    <span class="align-middle">@lang('story.preview')</span>
-                </button>
+                    <button class="btn btn-light grow shadow">
+                        <span class="icon-play display-6 align-middle"></span>
+                        <div class="align-middle">@lang('story.preview')</div>
+                    </button>
                 </a>
                 @if ($showErrorsButton)
-                    <button class="btn btn-danger float-right showStoryErrors" data-target="#modalStoryErrors" data-toggle="modal">
-                        <span class="align-middle">@lang('story.has_errors')</span>
-                        <span class="icon-skull text-white display-6 align-middle ml-3"></span>
+                    <button class="btn btn-danger float-right shadow showStoryErrors grow" data-target="#modalStoryErrors" data-toggle="modal">
+                        <div class="align-middle">@lang('story.has_errors')</div>
+                        <span class="icon-skull text-white display-6 align-middle"></span>
                     </button>
                 @endif
             </div>

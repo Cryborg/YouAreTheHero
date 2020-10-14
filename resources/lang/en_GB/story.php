@@ -48,7 +48,7 @@ return array (
   'play' => 'Start',
   'points_to_share' => 'Points to share',
   'popovers_modal_title' => 'Descriptions',
-  'preview' => 'Prévisualiser l\'histoire',
+  'preview' => 'Preview story',
   'reset' => 'Reset adventure',
   'reset_failed_text' => 'Unable to reset the adventure :(',
   'reset_story_confirm' => 'Are you sure you want to reset the story?',
