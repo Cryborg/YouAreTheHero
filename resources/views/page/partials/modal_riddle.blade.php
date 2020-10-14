@@ -28,6 +28,7 @@
                         <div class="card">
                             <h5 class="card-header">
                                 {!! Form::label('riddle_item', trans('page.riddle_item_label', ['class' => 'control-label'])) !!}
+                                <span class="badge badge-light text-muted">@lang('common.optional')</span>
                             </h5>
                             <div class="card-body">
                                 <div class="card-title">
@@ -45,6 +46,7 @@
                         <div class="card">
                             <h5 class="card-header">
                                 {!! Form::label('riddle_page', trans('page.riddle_page_label', ['class' => 'control-label'])) !!}
+                                <span class="badge badge-light text-muted">@lang('common.optional')</span>
                             </h5>
                             <div class="card-body">
                                 <div class="card-text">

@@ -23,7 +23,7 @@ class RiddleController extends Controller
     {
         $success = true;
 
-        $validated = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'answer'           => 'required',
             'item_id'          => '',
             'target_page_id'   => 'required_with:target_page_text',
@@ -31,20 +31,21 @@ class RiddleController extends Controller
             'type'             => 'required',
         ]);
 
-        if ($validated->fails()) {
+        if ($validator->fails()) {
             $messages = collect();
 
-            collect($validated->messages()->toArray())->each(static function ($message) use (&$messages) {
+            collect($validator->messages()->toArray())->each(static function ($message) use (&$messages) {
                 $messages->push($message[0]);
             });
 
-            $errors = $validated->getMessageBag()->toArray();
+            $errors = $validator->getMessageBag()->toArray();
             $errors['type'] = 'save';
             $errors['success'] = false;
             $errors['message'] = $messages->join('<br>');
 
             return Response::json($errors, 200);
         }
+        $validated = $validator->getData();
 
         $validated['type'] = $validated['type'] == 1 ? 'integer' : 'string';
 

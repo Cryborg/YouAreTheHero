@@ -139,13 +139,13 @@ $(document).on('click touchstart keydown', '#add_CreateRiddle', function () {
                 );
 
                 // Closes the modal
-                $('#modalCreateItemPage').modal('hide');
+                $('#modalCreateRiddle').modal('hide');
             }
         })
         .fail(function (data) {
             if (data.status === 422) {
                 $.each(data.responseJSON.errors, function (i, error) {
-                    $('#modalCreateItemPage')
+                    $('#modalCreateRiddle')
                         .find('[name="' + i + '"]')
                         .addClass('input-invalid')
                         .next()
