@@ -254,13 +254,13 @@ $(document).on('click touchstart keydown', '.toggle-summernote:not(.summernote-o
     let $this = $(this);
 
     // Destroy all other summernotes so there is only one open at a time
-    $("[id^='content-editable-']:hidden").summernote('destroy');
+    $('#content-editable:hidden').summernote('destroy');
     $('.toggle-summernote').addClass('clickable').removeClass('summernote-open');
 
     $this.removeClass('clickable');
-    $('#content-' + pageId).addClass('hidden');
-    $('#content-editable-' + pageId).removeClass('hidden');
-    $('#content-editable-' + pageId + ':visible').summernote(summernoteOptions);
+    $('#content').addClass('hidden');
+    $('#content-editable').removeClass('hidden');
+    $('#content-editable:visible').summernote(summernoteOptions);
 
     $this.addClass('summernote-open');
 });
@@ -268,29 +268,28 @@ $(document).on('click touchstart keydown', '.toggle-summernote:not(.summernote-o
 // Saves the page
 $(document).on('click touchstart keydown', '.savePage', function (e) {
     let $this = $(this);
-    let currentPageId = pageId;
 
     // Find parent page form
     let $form = $('.divAsForm');
 
-    $('#content-editable-' + currentPageId + ':hidden').summernote('destroy');
-    $('#content-editable-' + currentPageId + ':visible').addClass('hidden');
-    $('#content-' + currentPageId).removeClass('hidden');
+    $('#content-editable:hidden').summernote('destroy');
+    $('#content-editable:visible').addClass('hidden');
+    $('#content').removeClass('hidden');
     $('.toggle-summernote').addClass('clickable').removeClass('summernote-open');
 
-    let isLast = $('#is_last-' + currentPageId).is(":checked") ? 1 : 0;
+    let isLast = $('#is_last').is(":checked") ? 1 : 0;
     let data = {
-        'title': $('#title-' + currentPageId).val(),
-        'content': $('#content-editable-' + currentPageId).html(),
-        'layout': $('#layout-' + currentPageId).val(),
-        'is_first': $('#is_first-' + currentPageId).is(":checked") ? 1 : 0,
+        'title': $('#title').val(),
+        'content': $('#content-editable').html(),
+        'layout': $('#layout').val(),
+        'is_first': $('#is_first').is(":checked") ? 1 : 0,
         'is_last': isLast,
         'ending_type': isLast ? $('[name="ending_type"]:checked').val() : null,
-        'is_checkpoint': $('#is_checkpoint-' + currentPageId).is(":checked") ? 1 : 0,
+        'is_checkpoint': $('#is_checkpoint').is(":checked") ? 1 : 0,
     };
 
-    if ($('#linktext-' + currentPageId).length > 0) {
-        data.link_text = $('#linktext-' + currentPageId).val();
+    if ($('#linktext').length > 0) {
+        data.link_text = $('#linktext').val();
     }
 
     $.post({
@@ -300,7 +299,7 @@ $(document).on('click touchstart keydown', '.savePage', function (e) {
         .done(function (data) {
             tryDraw(data.graph);
 
-            $('#content-' + currentPageId).html(data.content);
+            $('#content').html(data.content);
         })
         .fail(function (data) {
             if (data.status === 422) {

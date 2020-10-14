@@ -91,7 +91,7 @@
                                 <div class="card-body">
                                     <div class="card-text">
                                         <p class="help-block">{{ trans('model.page_title_help') }}</p>
-                                        {!! Form::text('title', $page->title ?? old('title'), ['id' => 'title-' . $page->id, 'class' => 'form-control']) !!}
+                                        {!! Form::text('title', $page->title ?? old('title'), ['id' => 'title', 'class' => 'form-control']) !!}
                                     </div>
                                 </div>
                             </div>
@@ -102,20 +102,20 @@
                                 <div class="card-body">
                                     <div class="card-text">
                                         <p class="help-block">{{ trans('model.page_content_help') }}</p>
-                                        <div id="content-editable-{{ $page->id }}" class="false-input scrollable-content hidden h-200px">{!! $page->content ?? old('content') !!}</div>
-                                        <div id="content-{{ $page->id }}" class="false-input scrollable-content h-200px">{!! $page->present()->content ?? old('content') !!}</div>
+                                        <div id="content-editable" class="false-input scrollable-content hidden h-200px">{!! $page->content ?? old('content') !!}</div>
+                                        <div id="content" class="false-input scrollable-content h-200px">{!! $page->present()->content ?? old('content') !!}</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group hidden">
-                                {!! Form::label('layout-' . $page->id, trans('model.layout'), ['class' => 'control-label']) !!}
+                                {!! Form::label('layout', trans('model.layout'), ['class' => 'control-label']) !!}
                                 <p class="help-block">{{ trans('model.page_layout_help') }}</p>
                                 {!! Form::select('layout', $layouts , $page->layout ?? old('layout') , ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group form-check hidden">
                                 <p class="help-block">{{ trans('model.page_is_first_help') }}</p>
                                 <label>
-                                    {!! Form::checkbox('is_first', 1, $page->is_first or false, ['id' => 'is_first-' . $page->id]) !!}
+                                    {!! Form::checkbox('is_first', 1, $page->is_first or false, ['id' => 'is_first']) !!}
                                     @lang('model.is_first')
                                 </label>
                             </div>
@@ -125,7 +125,7 @@
                                         <p class="help-block">{{ trans('model.page_is_last_help') }}</p>
                                         <li class="list-group-item">
                                             <label>
-                                                {!! Form::checkbox('is_last', 1, $page->is_last, ['id' => 'is_last-' . $page->id]) !!}
+                                                {!! Form::checkbox('is_last', 1, $page->is_last, ['id' => 'is_last']) !!}
                                                 @lang('model.is_last')
                                             </label>
                                         </li>
@@ -165,7 +165,7 @@
                                     <li class="list-group-item">
                                         <p class="help-block">{{ trans('model.page_is_checkpoint_help') }}</p>
                                         <label>
-                                            {!! Form::checkbox('is_checkpoint', 1, $page->is_checkpoint or false, ['id' => 'is_checkpoint-' . $page->id]) !!}
+                                            {!! Form::checkbox('is_checkpoint', 1, $page->is_checkpoint or false, ['id' => 'is_checkpoint']) !!}
                                             @lang('model.is_checkpoint')
                                         </label>
                                     </li>
