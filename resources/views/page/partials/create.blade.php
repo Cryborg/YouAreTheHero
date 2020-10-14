@@ -12,6 +12,12 @@
                     <span class="align-middle">@lang('page.add_choice')</span>
                     <span class="badge badge-warning rounded float-right shadow ml-3">{{ $page->choices()->count() }}</span>
                 </button>
+                <a target="_blank" href="{{ route('story.play', [$story]) }}">
+                <button class="btn btn-outline-dark">
+                    <span class="icon-play display-6 align-middle mr-3"></span>
+                    <span class="align-middle">@lang('story.preview')</span>
+                </button>
+                </a>
                 @if ($showErrorsButton)
                     <button class="btn btn-danger float-right showStoryErrors" data-target="#modalStoryErrors" data-toggle="modal">
                         <span class="align-middle">@lang('story.has_errors')</span>
@@ -205,7 +211,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-6 col-xs-12 pt-5 bg-primary">
+    <div class="col-lg-6 col-xs-12 pt-2 bg-primary">
         <div class="w-100 ">
             <button class="btn btn-primary shadow float-left" data-target="#modalAllItems" data-toggle="modal">
                 <span class="icon-chest text-white display-6 align-middle mr-3"></span>

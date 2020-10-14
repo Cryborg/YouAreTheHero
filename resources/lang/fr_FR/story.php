@@ -48,6 +48,7 @@ return array (
   'play' => 'Commencer',
   'points_to_share' => 'Points à attribuer',
   'popovers_modal_title' => 'Descriptions',
+  'preview' => 'Preview story',
   'reset' => 'Réinitialiser l\'aventure',
   'reset_failed_text' => 'Impossible de réinitialiser l\'aventure :(',
   'reset_story_confirm' => 'Es-tu sûr(e) de vouloir réinitialiser l\'aventure ?',
