@@ -54,3 +54,8 @@ function getSession(string $key = null)
 
     return [];
 }
+
+function unsetSession()
+{
+    Session::remove('story');
+}

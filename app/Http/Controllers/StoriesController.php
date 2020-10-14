@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Story;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 use Spatie\Activitylog\Models\Activity;
 
@@ -19,8 +18,7 @@ class StoriesController extends Controller
 
     public function listDraft()
     {
-        // Delete old story session
-        Session::remove('story');
+        unsetSession();
 
         return view('stories.list_drafts', [
             'stories' => Auth::user()->stories
@@ -37,6 +35,8 @@ class StoriesController extends Controller
      */
     public function list(Request $request)
     {
+        unsetSession();
+
         $selectedLanguage = $request->get('language');
 
         $query = Story::select()

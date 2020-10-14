@@ -75,7 +75,6 @@
 
             // Refreshes some partials if the appropriate JSON response is true
             if (data) {
-                console.log(data);
                 if (data.refreshInventory === true) {
                     loadInventory();
                 }
