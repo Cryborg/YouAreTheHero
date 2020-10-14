@@ -2,21 +2,24 @@
 <input id="pageId" type="hidden" value="{{ $page->id }}">
 
 <div class="card shadow">
-    <h5 class="card-header text-center">
-        @can('edit', $page)
-            <a href="{{ route('page.edit', ['page' => $page]) }}" target="_blank" class="pull-left">
-                <button>
-                    <span class="icon-fountain-pen display-6"></span>
-                </button>
-            </a>
-        @endcan
+    <h5 class="card-header">
+        <div class="text-center">
+            @can('edit', $page)
+                <a href="{{ route('page.edit', ['page' => $page]) }}" target="_blank" class="pull-left">
+                    <button>
+                        <span class="icon-fountain-pen display-6"></span>
+                    </button>
+                </a>
+            @endcan
 
-        @can('debug')
-            <span class="badge badge-warning"><span class="font-smaller">#</span>{{ $page->id }}</span>
-        @endcan
+            @can('debug')
+                <span class="badge badge-warning"><span class="font-smaller">#</span>{{ $page->id }}</span>
+            @endcan
 
-        {{ $page->title }}
+            {{ $page->title }}
+        </div>
     </h5>
+
     @if ($messages)
         <div class="card-body">
             <div class="card-text">
@@ -79,9 +82,7 @@
     @if ($page->is_last)
         <div class="card-body">
             <div class="choices-links button-group w-100">
-                <a onclick="return confirm('{{ addslashes(trans('story.reset_story_confirm')) }}');" href="{{ route('story.reset', ['story' => $page->story]) }}">
-                    <button class="btn btn-danger card-link w-100 mb-1" data-original-text="{{ trans('story.reset') }}">{{ trans('story.reset') }}</button>
-                </a>
+                <x-reset-button :page="$page" />
             </div>
         </div>
     @endif

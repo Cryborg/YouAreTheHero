@@ -4,6 +4,12 @@
     <div class="row vh-100">
         {{-- Left sidebar --}}
         <nav class="col-lg-2 col-xs-12 shadow bg-white">
+            @can('edit', $page)
+                <span class="w-20">
+                    <x-reset-button :page="$page" />
+                </span>
+            @endcan
+
             <div class="card no-padding">
                 <div class="card-header">
                     <span class="icon-backpack display-5 mr-2"></span>
