@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
-use App\Models\Story;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
 
 class RiddleController extends Controller
 {
@@ -13,21 +14,37 @@ class RiddleController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Story        $story
+     * @param \App\Models\Page         $page
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
-    public function store(Request $request, Page $page)
+    public function store(Request $request, Page $page): JsonResponse
     {
         $success = true;
 
-        $validated = $request->validate([
+        $validated = Validator::make($request->all(), [
             'answer'           => 'required',
             'item_id'          => '',
             'target_page_id'   => 'required_with:target_page_text',
             'target_page_text' => 'required_with:target_page_id',
             'type'             => 'required',
         ]);
+
+        if ($validated->fails()) {
+            $messages = collect();
+
+            collect($validated->messages()->toArray())->each(static function ($message) use (&$messages) {
+                $messages->push($message[0]);
+            });
+
+            $errors = $validated->getMessageBag()->toArray();
+            $errors['type'] = 'save';
+            $errors['success'] = false;
+            $errors['message'] = $messages->join('<br>');
+
+            return Response::json($errors, 200);
+        }
 
         $validated['type'] = $validated['type'] == 1 ? 'integer' : 'string';
 
@@ -44,6 +61,7 @@ class RiddleController extends Controller
             'riddle'     => $page->riddle,
             'page_title' => optional($page->riddle->page)->title,
             'item_name'  => optional($page->riddle->item)->name,
+            'type'       => 'save',
         ]);
     }
 }
