@@ -5,7 +5,7 @@
         {{-- Left sidebar --}}
         <nav class="col-lg-2 col-xs-12 shadow bg-white">
             @can('edit', $page)
-                <span class="w-20" title="@lang('common.only_visible_author')">
+                <span class="w-20" title="@lang('field.hidden_to_players')">
                     <x-reset-button :page="$page" />
                 </span>
             @endcan
