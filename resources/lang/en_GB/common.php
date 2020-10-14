@@ -36,6 +36,7 @@ return array (
   'money' => 'Purse',
   'no' => 'No',
   'none_selected' => 'No selection',
+  'only_visible_author' => 'Only you can see this, not the readers.',
   'optional' => 'Optional',
   'oui' => 'Yes',
   'price' => 'Price: :price',

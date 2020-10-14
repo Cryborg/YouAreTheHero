@@ -36,6 +36,7 @@ return array (
   'money' => 'Bourse',
   'no' => 'Non',
   'none_selected' => 'Aucune sélection',
+  'only_visible_author' => 'Toi seul peut voir ceci, les lecteurs ne le verront pas.',
   'optional' => 'Optionnel',
   'oui' => 'Oui',
   'price' => 'Prix : :price',
