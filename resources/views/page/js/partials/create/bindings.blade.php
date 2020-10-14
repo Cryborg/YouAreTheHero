@@ -236,8 +236,8 @@ $(document).on('click touchstart keydown', '#add_AddChoice', function () {
 });
 
 $(document).on('click touchstart keydown', '.toggle-help', function () {
-    var $pBlocks = $('p.help-block');
-    var done = false;
+    let $pBlocks = $('p.help-block');
+    let done = false;
 
     // Toggle display
     $pBlocks.slideToggle(function () {
