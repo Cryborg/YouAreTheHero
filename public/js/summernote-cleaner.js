@@ -12,7 +12,7 @@
     $.extend(true, $.summernote.lang, {
         'en-US': {
             cleaner: {
-                tooltip: 'Cleaner',
+                tooltip: 'Clean the code when pasting from word processor',
                 not: 'Text has been Cleaned!!!',
                 limitText: 'Text',
                 limitHTML: 'HTML'

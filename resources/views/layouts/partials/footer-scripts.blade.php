@@ -147,32 +147,31 @@
     }
 
     $('input, select, textarea').on('keypress', function () {
-        var $this = $(this);
+        const $this = $(this);
         if ($this.hasClass('input-invalid')) {
             $this.next().hide();
             $this.removeClass('input-invalid');
         }
     });
 
-
-    var PlaceholdersButton = function (context) {
-        var ui = $.summernote.ui;
-        var placeholders = {
+    const PlaceholdersButton = function (context) {
+        const ui = $.summernote.ui;
+        const placeholders = {
             @foreach($placeholders ?? [] as $key => $placeholder)
-                '{{ $key }}': '{{ $placeholder }}',
+                '{{ $key }}':'{{ $placeholder }}',
             @endforeach
         };
 
         // create button
-        var buttonGroup = ui.buttonGroup([
+        const buttonGroup = ui.buttonGroup([
             ui.button({
                 className: 'dropdown-toggle',
                 contents: '<i class="fa fa-cog"/> {{ trans('page.variables_label') }}',
-                tooltip: 'hello',
+                tooltip: 'Insert variables into text',
                 data: {
                     toggle: 'dropdown'
                 },
-                click: function() {
+                click: function () {
                     // Cursor position must be saved because it is lost when dropdown is opened.
                     context.invoke('editor.saveRange');
                 }
@@ -183,7 +182,7 @@
                 callback: function ($dropdown) {
                     $dropdown.find('a.dropdown-item').each(function () {
                         $(this).html(placeholders[$(this).data('value')]);
-                        $(this).click(function(e) {
+                        $(this).click(function (e) {
                             // We restore cursor position and text is inserted in correct pos.
                             context.invoke('editor.restoreRange');
                             context.invoke('editor.focus');
@@ -194,16 +193,17 @@
                 }
             })
         ]);
+
         return buttonGroup.render();   // return button as jquery object
     };
 
-    var PopoverButton = function (context) {
+    const PopoverButton = function (context) {
         var $this = $(this);
         var ui = $.summernote.ui;
         var button = ui.button({
             contents: '<span data-target="#modalDescriptions" data-toggle="modal">@lang('description.descriptions_button_label')</span>',
-            tooltip: 'Highlight text with red color',
-            click: function() {
+            tooltip: 'Add inline descriptions',
+            click: function () {
                 $('.savePage').addClass('disabled');
             }
         });
@@ -211,7 +211,7 @@
         return button.render();
     };
 
-    var summernoteOptions = {
+    const summernoteOptions = {
         lang: 'fr-FR',
         height: 300,
         maximumImageFileSize: 524288, // 512k
@@ -224,7 +224,7 @@
             ['table', ['table']],
             ['insert', ['link', 'picture']],
             ['view', ['fullscreen', 'codeview']],
-            ['custom', ['placeholders', 'popovers']],
+            ['custom', ['cleaner','placeholders', 'popovers']],
         ],
         buttons: {
             placeholders: PlaceholdersButton,
@@ -232,12 +232,12 @@
         },
         spellcheck: false,
         cleaner: {
-            action: 'paste', // both|button|paste 'button' only cleans via toolbar button, 'paste' only clean when pasting content, both does both options.
+            action: 'button', // both|button|paste 'button' only cleans via toolbar button, 'paste' only clean when pasting content, 'both' does both options.
             newline: '<br>', // Summernote's default is to use '<p><br></p>'
             notStyle: 'position:absolute;top:0;left:0;right:0', // Position of Notification
-            icon: '<i class="note-icon">[Your Button]</i>',
+            icon: '<i class="note-icon">Clean</i>',
             keepHtml: true, // Remove all Html formats
-            keepOnlyTags: ['<p>', '<br>', '<ul>', '<li>', '<b>', '<strong>','<i>', '<a>', '<img>'], // If keepHtml is true, remove all tags except these
+            keepOnlyTags: ['<p>', '<br>', '<ul>', '<li>', '<b>', '<strong>', '<i>', '<a>', '<img>'], // If keepHtml is true, remove all tags except these
             keepClasses: false, // Remove Classes
             badTags: ['style', 'script', 'applet', 'embed', 'noframes', 'noscript', 'html'], // Remove full tags with contents
             badAttributes: ['style', 'start'], // Remove attributes from remaining tags
@@ -248,18 +248,18 @@
         },
         focus: true,
         callbacks: {
-            onBlur: function(e) {
+            onBlur: function (e) {
                 var p = e.target.parentNode.parentNode
 
-                // Don't trigger if we click in the Summernote toolbar
-                if (! (e.relatedTarget && $.contains(p, e.relatedTarget))) {
+                // Only trigger if we don't click in the Summernote toolbar
+                if (!(e.relatedTarget && $.contains(p, e.relatedTarget))) {
                     $('.savePage').trigger('click');
                 }
             }
         }
     };
 
-    var summernoteOptionsLight = {
+    const summernoteOptionsLight = {
         lang: 'fr-FR',
         maximumImageFileSize: 524288, // 512k
         toolbar: [
@@ -279,5 +279,5 @@
         });
     }
 
-    var loadingSpinner = '<div class="d-flex justify-content-center w-100"><div class="spinner-grow text-success" role="status"></div></div>';
+    const loadingSpinner = '<div class="d-flex justify-content-center w-100"><div class="spinner-grow text-success" role="status"></div></div>';
 </script>

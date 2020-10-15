@@ -30,6 +30,7 @@ class CharacterItemController extends Controller
             'refreshInventory' => $success,
             'refreshContent' => $success,
             'refreshSheet' => $success,
+            'refreshChoices' => $success,
         ]);
     }
 }

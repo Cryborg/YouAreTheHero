@@ -76,7 +76,7 @@ class StoryController extends Controller
         if (!$character) {
             $character = Character::createNewForStory($story);
 
-            if ($story->story_options->has_character) {
+            if ($story->story_options && $story->story_options->has_character) {
                 return Redirect::route('character.create', [
                     'story' => $story->id,
                 ]);
