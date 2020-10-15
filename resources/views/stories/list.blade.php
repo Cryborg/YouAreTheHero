@@ -36,10 +36,10 @@
         </div>
     </div>
 
-    <div class="row" style="height: 300px">
+    <div class="row">
         @forelse ($stories as $story)
             @if ($story->is_published)
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-2 h-100">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-2" style="height: 300px">
                     @include('stories.partials.story_card', ['story' => $story])
                 </div>
             @endif
@@ -63,10 +63,10 @@
         </div>
     </div>
 
-    <div class="row" style="height: 300px">
+    <div class="row">
         @forelse ($stories as $story)
             @if (!$story->is_published)
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-2 h-100">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-2" style="height: 300px">
                     @include('stories.partials.story_card', ['story' => $story])
                 </div>
             @endif
