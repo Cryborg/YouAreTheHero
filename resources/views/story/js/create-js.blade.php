@@ -1,6 +1,6 @@
     $(document).ready(function () {
         function checkForm() {
-            var correct = true;
+            let correct = true;
 
             // No field can be empty
             $('input.new_field').each(function () {
@@ -14,6 +14,22 @@
 
             // Min value should be less than max value, or equal
             if ($('#max_value').val() < $('#min_value').val()) correct = false;
+
+            return correct;
+        }
+
+        function checkPerson() {
+            let correct = true;
+
+            // No field can be empty
+            $('input.new_person').each(function () {
+                if ($(this).val() === '') {
+                    correct = false;
+                    $(this).addClass('input-invalid');
+                } else {
+                    $(this).removeClass('input-invalid');
+                }
+            });
 
             return correct;
         }
@@ -38,6 +54,31 @@
                         $this.closest('tr').remove();
 
                         checkPointsToShare(result.max);
+                    }
+                })
+                .always(function () {
+                    $this.attr('class', defaultClass);
+                });
+        });
+
+        // Delete a character_field
+        $(document).on('click touchstart keydown', '.deletePerson', function () {
+            const $this = $(this);
+            const id = $this.data('person_id');
+            const loadingClass = 'spinner-grow text-danger';
+            const defaultClass = $this.attr('class');
+
+            if (!$this.hasClass('fa-spin')) {
+                $this.attr('class', loadingClass);
+            }
+
+            $.get({
+                url: route('story.person.delete', {story: storyId, person: id}),
+                method: 'DELETE'
+            })
+                .done(function (result) {
+                    if (result.success) {
+                        $this.closest('tr').remove();
                     }
                 })
                 .always(function () {
@@ -80,6 +121,34 @@
                             $('#min_value').val('1');
                             $('#max_value').val('10');
                             $('#name').val('').focus();
+                        }
+
+                        checkPointsToShare(result.max);
+                    });
+            }
+        });
+
+        $(document).on('click touchstart keydown', '.addPerson', function () {
+            if (checkPerson()) {
+                $.post({
+                    url: route('story.person.store', {'story': storyId}),
+                    data: {
+                        'first_name': $('#first_name').val(),
+                        'last_name': $('#last_name').val(),
+                        'role': $('#role').val(),
+                    }
+                })
+                    .done(function (result) {
+                        if (result.success) {
+                            var html = '<tr>' +
+                                '<td><div>' + result.person.first_name + '</div></td>' +
+                                '<td><div>' + result.person.last_name + '</div></td>' +
+                                '<td><div>' + result.person.role + '</div></td>' +
+                                '<td class="text-center"><div><span class="icon-trash text-danger deletePerson" data-person_id="' + result.person.id + '"></span></div></td>' +
+                                '</tr>';
+                            $('#people_story').append(html);
+
+                            $('#first_name').val('').focus();
                         }
 
                         checkPointsToShare(result.max);

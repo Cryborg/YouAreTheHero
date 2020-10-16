@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Person;
 use App\Models\Story;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
@@ -27,24 +28,34 @@ class PersonController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(Request $request, Story $story)
     {
-        //
+        if ($request->ajax()) {
+            $validated = $request->validate([
+                'first_name'      => 'required',
+                'last_name'    => 'required',
+                'role' => 'required',
+            ]);
+
+            // Next number
+            $nextOrder = $story->people()->max('order');
+            $validated['order'] = $nextOrder + 1;
+
+            $person = $story->people()->create($validated);
+
+            return Response::json([
+                'success' => $person instanceof Person,
+                'person' => $person->toArray()
+            ]);
+        }
+
+        abort(JsonResponse::HTTP_NOT_FOUND);
     }
 
     /**
@@ -84,11 +95,23 @@ class PersonController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Person  $person
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Story        $story
+     * @param \App\Models\Person       $person
+     *
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
-    public function destroy(Person $person)
+    public function destroy(Request $request, Story $story, Person $person)
     {
-        //
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => $person->delete(),
+                'type'    => 'delete',
+            ]);
+        }
+
+        abort(JsonResponse::HTTP_NOT_FOUND);
+
     }
 }

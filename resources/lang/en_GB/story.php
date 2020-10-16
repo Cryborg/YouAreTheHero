@@ -11,7 +11,7 @@ return array (
   'create_submit' => 'Save',
   'create_tab1' => '1. Create the story',
   'create_tab2' => '2. Options',
-  'create_tab3' => '3. Character sheet',
+  'create_tab3' => '3. Characters',
   'create_tab4' => '4. Manage items',
   'create_title' => 'New story',
   'edit' => 'Edit story',

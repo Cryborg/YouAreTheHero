@@ -11,7 +11,7 @@ return array (
   'create_submit' => 'Enregistrer',
   'create_tab1' => '1. Création de l\'histoire',
   'create_tab2' => '2. Options',
-  'create_tab3' => '3. Fiche de perso',
+  'create_tab3' => '3. Personnages',
   'create_tab4' => '4. Gestion des objets',
   'create_title' => 'Nouvelle histoire',
   'edit' => 'Modifier les paramètres de l\'histoire',

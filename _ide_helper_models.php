@@ -442,9 +442,25 @@ namespace App\Models{
 /**
  * App\Models\Person
  *
+ * @property int $id
+ * @property int $story_id
+ * @property int $order
+ * @property string|null $first_name
+ * @property string|null $last_name
+ * @property string|null $role
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Person newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Person newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Person query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereLastName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereOrder($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereRole($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereStoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Person whereUpdatedAt($value)
  */
 	class Person extends \Eloquent {}
 }
@@ -577,6 +593,8 @@ namespace App\Models{
  * @property-read int|null $items_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[] $pages
  * @property-read int|null $pages_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Person[] $people
+ * @property-read int|null $people_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Report[] $reports
  * @property-read int|null $reports_count
  * @property-read \App\Models\StoryOption|null $story_options

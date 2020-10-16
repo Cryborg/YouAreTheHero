@@ -158,61 +158,116 @@
             @endif
         </div>
         <div class="tab-pane" id="pills-sheet" role="tabpanel" aria-labelledby="pills-tab-3">
-            <div class="card">
-                <div class="card-header">
-                    @lang('story.stats_label')
-                </div>
-                <div class="form-group ml-3">
-                    <label>@lang('story.points_to_share')</label>
-                    <input type="number" value="@if ($story && $story->story_options){{ $story->story_options->points_to_share }}@else 10 @endif" min="1" max="{{ $max_points_to_share }}" id="points_to_share" limit-to-max>
-                </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            @lang('story.stats_label')
+                        </div>
+                        <div class="form-group ml-3">
+                            <label>@lang('story.points_to_share')</label>
+                            <input type="number" value="@if ($story && $story->story_options){{ $story->story_options->points_to_share }}@else 10 @endif" min="1" max="{{ $max_points_to_share }}" id="points_to_share" limit-to-max>
+                        </div>
 
-                <div class="card-body">
-                    <p class="help-block">@lang('story.stats_help')</p>
-                    <table id="stats_story" class="table mb-3 w-50 m-0">
-                        <thead>
-                            <tr>
-                                <th>{{ trans('field.name') }}</th>
-                                <th>{{ trans('field.min_value') }}</th>
-                                <th>{{ trans('field.max_value') }}</th>
-                                <th class="text-center">{{ trans('field.hidden_to_players') }}</th>
-                                <th class="text-center">{{ trans('common.actions') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($story->fields ?? [] as $stat)
-                                <tr>
-                                    <td>{{ $stat->name }}</td>
-                                    <td>{{ $stat->min_value }}</td>
-                                    <td>{{ $stat->max_value }}</td>
-                                    <td class="text-center">
-                                        <input type="checkbox" @if ($stat->hidden) checked @endif disabled></td>
-                                    <td class="text-center">
-                                        <span class="icon-trash text-danger deleteCharacterField" data-field_id="{{ $stat->id }}"></span>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>
-                                    <input class="new_field form-control" type="text" id="name" maxlength="15" autocomplete="nope" required>
-                                </th>
-                                <th>
-                                    <input class="new_field form-control" type="number" id="min_value" value="1" required>
-                                </th>
-                                <th>
-                                    <input class="new_field form-control" type="number" id="max_value" value="10" required>
-                                </th>
-                                <th class="text-center pl-4">
-                                    <input class="new_field" type="checkbox" id="hidden_field" value="1"></th>
-                                <th class="text-center">
-                                    <span class="btn btn-primary addField">Add</span>
-                                    <span class="glyphicon glyphicon-plus-sign"></span>
-                                </th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                        <div class="card-body">
+                            <p class="help-block">@lang('story.stats_help')</p>
+                            <table id="stats_story" class="table mb-3 m-0">
+                                <thead>
+                                    <tr>
+                                        <th>{{ trans('field.name') }}</th>
+                                        <th>{{ trans('field.min_value') }}</th>
+                                        <th>{{ trans('field.max_value') }}</th>
+                                        <th class="text-center">{{ trans('field.hidden_to_players') }}</th>
+                                        <th class="text-center">{{ trans('common.actions') }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($story->fields ?? [] as $stat)
+                                        <tr>
+                                            <td>{{ $stat->name }}</td>
+                                            <td>{{ $stat->min_value }}</td>
+                                            <td>{{ $stat->max_value }}</td>
+                                            <td class="text-center">
+                                                <input type="checkbox" @if ($stat->hidden) checked @endif disabled></td>
+                                            <td class="text-center">
+                                                <span class="icon-trash text-danger deleteCharacterField" data-field_id="{{ $stat->id }}"></span>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>
+                                            <input class="new_field form-control" type="text" id="name" maxlength="15" autocomplete="nope" required>
+                                        </th>
+                                        <th>
+                                            <input class="new_field form-control" type="number" id="min_value" value="1" required>
+                                        </th>
+                                        <th>
+                                            <input class="new_field form-control" type="number" id="max_value" value="10" required>
+                                        </th>
+                                        <th class="text-center pl-4">
+                                            <input class="new_field" type="checkbox" id="hidden_field" value="1"></th>
+                                        <th class="text-center">
+                                            <span class="btn btn-primary addField">Add</span>
+                                            <span class="glyphicon glyphicon-plus-sign"></span>
+                                        </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">@lang('people.people')</div>
+                        <div class="card-body">
+                            <table id="people_story" class="table mb-3 m-0">
+                                <thead>
+                                    <tr>
+                                        <th>{{ trans('people.first_name') }}</th>
+                                        <th>{{ trans('people.last_name') }}</th>
+                                        <th>{{ trans('people.role') }}</th>
+                                        <th class="text-center">{{ trans('common.actions') }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($story->people as $person)
+                                        <tr>
+                                            <td>
+                                                <div>{{ $person->first_name }}</div>
+                                            </td>
+                                            <td>
+                                                <div>{{ $person->last_name }}</div>
+                                            </td>
+                                            <td>
+                                                <div>{{ $person->role }}</div>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="icon-trash text-red clickable deletePerson" data-person_id="{{ $person->id }}"></span>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="form-control" id="first_name">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" id="last_name">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" id="role">
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="btn btn-primary addPerson">Add</span>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

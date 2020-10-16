@@ -145,5 +145,7 @@ Route::middleware('auth')->group(static function () {
 
 // Persons
     Route::get('/story/{story}/people/list', 'PersonController@index')->name('story.people.list');
+    Route::post('/story/{story}/person/store', 'PersonController@store')->name('story.person.store');
+    Route::delete('/story/{story}/person/{person}/delete', 'PersonController@destroy')->name('story.person.delete');
 });
 

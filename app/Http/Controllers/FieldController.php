@@ -22,8 +22,7 @@ class FieldController extends Controller
                 'hidden'        => 'required|in:0,1',
                 'min_value'     => 'required',
                 'max_value'     => 'required|gte:min_value',
-            ]
-            );
+            ]);
 
             $validated['story_id'] = $story->id;
             $validated['start_value'] = $validated['min_value'];
