@@ -91,5 +91,6 @@ return array (
   'tree_help' => 'Here you\'ll find the pages architecture. The "center" is the current page and its siblings. Its parents and children are shown too, to allow a quick navigation in through your story.',
   'unused_fields_help' => 'These fields are not used anywhere.',
   'unused_items_help' => 'These items are not used anywhere.',
-  'variables_label' => 'Variables',
+  'wysiwyg_people_label' => 'Characters',
+  'wysiwyg_variables_label' => 'Variables',
 );

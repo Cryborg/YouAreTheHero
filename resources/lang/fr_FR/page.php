@@ -91,5 +91,6 @@ return array (
     'tree_help' => 'L\'arborescence de la page en cours est présentée ici, avec ses pages sœurs, parentes et enfants.',
     'unused_fields_help' => 'Ces attributs ne sont pas utilisés.',
     'unused_items_help' => 'Ces objets ne sont utilisés nulle part.',
-    'variables_label' => 'Variables',
+    'wysiwyg_people_label' => 'Personnages',
+    'wysiwyg_variables_label' => 'Variables',
 );

@@ -24,11 +24,6 @@ class PageController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
-        // List of placeholders in the Summernote editor
-        $this->placeholders = [
-            'character_name' => trans('character.name_label'),
-        ];
     }
 
     /**
@@ -86,6 +81,18 @@ class PageController extends Controller
         $errors = self::getErrors($page->story);
 
         setSession('story_id', $page->story->id);
+        // List of placeholders in the Summernote editor
+        $placeholders = [
+            'character_name' => trans('character.name_label'),
+        ];
+
+        $page->story->people()->each(static function ($person) use (&$placeholders) {
+            $placeholders[$person->role] = [
+                'Prénom' => ['person.' . $person->order . '.firstname', $person->first_name],
+                'Nom' => ['person.' . $person->order . '.firstname', $person->last_name],
+                'Nom complet' => ['person.' . $person->order . '.fullname', $person->first_name . ' ' . $person->last_name],
+            ];
+        });
 
         $view = View::make('page.create',
             [
@@ -106,7 +113,7 @@ class PageController extends Controller
 
                 'contexts' => ['item_page', 'add_actions', 'prerequisites', 'riddle', 'story_creation', 'report'],
 
-                'placeholders' => $this->placeholders,
+                'placeholders' => $placeholders,
 
                 'graph' => $this->buildGraph($page->story),
 

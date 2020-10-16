@@ -3,7 +3,7 @@
 <div class="ml-4 justify-content-end">
     <p>
         Il permet également d'insérer des variables, comme le nom du personnage par exemple. Pour cela, il faut que l'option soit sélectionnée
-        dans les paramètres de l'histoire. Ensuite, en cliquant sur le bouton @editorbutton(Variables) de l'éditeur, sélectionne Nom du personnage pour insérer
+        dans les paramètres de l'histoire. Ensuite, en cliquant sur le bouton @editorbutton(Variables) de l'éditeur, sélectionne "Personnage principal" pour insérer
         "[[character_name]]" dans ton texte, à l'endroit où le nom doit être écrit. Ainsi, le texte suivant :
     </p>
     <div class="example text-monospace">

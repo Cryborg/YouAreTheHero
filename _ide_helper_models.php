@@ -293,11 +293,13 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $label
+ * @property bool $hidden
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Story[] $stories
  * @property-read int|null $stories_count
  * @method static \Illuminate\Database\Eloquent\Builder|Genre newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Genre newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Genre query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Genre whereHidden($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Genre whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Genre whereLabel($value)
  */
@@ -434,6 +436,17 @@ namespace App\Models{
  * @method static \Illuminate\Database\Query\Builder|Page withoutTrashed()
  */
 	class Page extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Person
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Person newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Person newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Person query()
+ */
+	class Person extends \Eloquent {}
 }
 
 namespace App\Models{

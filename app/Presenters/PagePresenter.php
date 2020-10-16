@@ -4,6 +4,7 @@ namespace App\Presenters;
 
 use App\Classes\Action;
 use App\Models\Character;
+use App\Models\Story;
 use Laracasts\Presenter\Presenter;
 
 class PagePresenter extends Presenter
@@ -12,6 +13,8 @@ class PagePresenter extends Presenter
     {
         $characterName = null;
         $characterId = getSession('character_id');
+        $storyId = getSession('story_id');
+        $story = Story::where('id', $storyId)->first();
 
         if (empty($characterId)) {
             $characterName = 'NomDuPersonnage';
@@ -28,13 +31,17 @@ class PagePresenter extends Presenter
         $placeholders = [
             'character_name' => $characterName,
         ];
-        $content = null;
+
+        $story->people()->each(static function ($person) use (&$placeholders) {
+            $placeholders['person.' . $person->order . '.firstname'] = $person->first_name;
+            $placeholders['person.' . $person->order . '.lastname'] = $person->last_name;
+            $placeholders['person.' . $person->order . '.fullname'] = $person->first_name . ' ' . $person->last_name;
+            $placeholders['person.' . $person->order . '.role'] = $person->role;
+        });
 
         foreach ($placeholders as $key => $placeholder) {
-            $content = str_replace('[[' . $key . ']]', $placeholder, $this->entity->content);
+            $this->entity->content = str_replace('[[' . $key . ']]', $placeholder, $this->entity->content);
         }
-
-        $this->entity->content = $content;
 
         // Methods to run on a part of the text.
         //  For example : stutter[Bouh] will display something like 'B...B...Bouh'
@@ -42,7 +49,6 @@ class PagePresenter extends Presenter
             'stutter',
             'genre'
         ];
-        $content = null;
 
         foreach ($methods as $method) {
             $pattern = $method . '\[([^\]]*)\]';

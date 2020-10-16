@@ -3,7 +3,7 @@
 <div class="ml-4 justify-content-end">
     <p>
         You can insert some variables, like the name of the character created by the player. When editing the page content,
-        click on the @editorbutton({{ trans('page.variables_label') }}) button and select @lang('character.name_label').
+        click on the @editorbutton({{ trans('page.wysiwyg_variables_label') }}) button and select @lang('character.name_label').
     </p>
     <p>
         <img src="{{ asset('img/screenshots/editor_variables.png') }}" class="shadow img-fluid mb-4">

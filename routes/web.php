@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PersonController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -141,5 +142,8 @@ Route::middleware('auth')->group(static function () {
 // Mails
     Route::get('/mail/{user}/{mailable}/preview', 'MailController@preview')->name('mail.preview');
     Route::post('/mail/{user}/{mailable}/send', 'MailController@send')->name('mail.send');
+
+// Persons
+    Route::get('/story/{story}/people/list', 'PersonController@index')->name('story.people.list');
 });
 

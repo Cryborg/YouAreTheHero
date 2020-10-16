@@ -156,17 +156,13 @@
 
     const PlaceholdersButton = function (context) {
         const ui = $.summernote.ui;
-        const placeholders = {
-            @foreach($placeholders ?? [] as $key => $placeholder)
-                '{{ $key }}':'{{ $placeholder }}',
-            @endforeach
-        };
+        const content = "{!! includeAsJsString('story.js.partials.placeholders', ['placeholders' => $placeholders ?? []]) !!}";
 
         // create button
         const buttonGroup = ui.buttonGroup([
             ui.button({
                 className: 'dropdown-toggle',
-                contents: '<i class="fa fa-cog"/> {{ trans('page.variables_label') }}',
+                contents: '<i class="fa fa-cog"/> {{ trans('page.wysiwyg_people_label') }}',
                 tooltip: 'Insert variables into text',
                 data: {
                     toggle: 'dropdown'
@@ -177,20 +173,15 @@
                 }
             }),
             ui.dropdown({
-                className: 'drodown-style',
-                items: ['character_name'],
+                contents: content,
                 callback: function ($dropdown) {
-                    $dropdown.find('a.dropdown-item').each(function () {
-                        $(this).html(placeholders[$(this).data('value')]);
-                        $(this).click(function (e) {
-                            // We restore cursor position and text is inserted in correct pos.
-                            context.invoke('editor.restoreRange');
-                            context.invoke('editor.focus');
-                            context.invoke("editor.insertText", '[[' + $(this).data('value') + ']]');
-                            e.preventDefault();
-                        });
+                    $dropdown.find(".clickable").click(function () {
+                        // We restore cursor position and text is inserted in correct pos.
+                        context.invoke('editor.restoreRange');
+                        context.invoke('editor.focus');
+                        context.invoke("editor.insertText", '[[' + $(this).data('value') + ']]');
                     });
-                }
+                },
             })
         ]);
 
@@ -211,6 +202,35 @@
         return button.render();
     };
 
+    const ExampleButton = function (context) {
+        var ui = $.summernote.ui;
+        var pdfButton = ui.buttonGroup([
+            ui.button({
+                className: "dropdown-toggle",
+                contents:
+                    '<span class="fa fa-file-pdf-o"></span> <span class="caret"></span>',
+                tooltip: "Your tooltip",
+                data: {
+                    toggle: "dropdown",
+                },
+            }),
+            ui.dropdown({
+                className: "drop-default summernote-list",
+                contents:
+                    '<div class="btn-group">' +
+                    '<button type="button" class="btn btn-default btn-sm" title="PDF 1"><i class="fa fa-file-pdf-o"></i>PDF 1</button>' +
+                    '<button type="button" class="btn btn-default btn-sm" title="PDF 2"><i class="fa fa-file-pdf-o"></i>PDF 2</button></div>',
+                callback: function ($dropdown) {
+                    $dropdown.find(".btn").click(function () {
+                        context.invoke("editor.insertText", "text");
+                    });
+                },
+            }),
+        ]);
+
+        return pdfButton.render(); // jquery object
+    };
+
     const summernoteOptions = {
         lang: 'fr-FR',
         height: 300,
@@ -224,11 +244,12 @@
             ['table', ['table']],
             ['insert', ['link', 'picture']],
             ['view', ['fullscreen', 'codeview']],
-            ['custom', ['cleaner','placeholders', 'popovers']],
+            ['custom', ['cleaner','placeholders', 'popovers', 'example']],
         ],
         buttons: {
             placeholders: PlaceholdersButton,
-            popovers: PopoverButton
+            popovers: PopoverButton,
+            example: ExampleButton
         },
         spellcheck: false,
         cleaner: {
