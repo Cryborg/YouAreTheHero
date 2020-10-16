@@ -36,6 +36,7 @@ class CharacterController extends Controller
     {
         $page = $story->getCurrentPage();
         $fields = $request->post('stats');
+        $people = $request->post('people');
 
         $character = Character::create([
             'name'     => $request->post('name'),
@@ -43,7 +44,20 @@ class CharacterController extends Controller
             'story_id' => $story->id,
             'page_id'  => $page->id,
             'genre'    => $request->post('genre'),
+            'people'   => '',
         ]);
+
+        // Customizable people
+        if ($people) {
+            foreach ($people as $person) {
+                $character->people()->syncWithoutDetaching([
+                    $person['id'] => [
+                        'first_name' => $person['first_name'],
+                        'last_name'  => $person['last_name'],
+                    ]
+                ]);
+            }
+        }
 
         if ($fields) {
             foreach ($story->fields as $storyField) {

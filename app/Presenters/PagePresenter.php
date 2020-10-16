@@ -4,6 +4,8 @@ namespace App\Presenters;
 
 use App\Classes\Action;
 use App\Models\Character;
+use App\Models\CharacterPerson;
+use App\Models\Person;
 use App\Models\Story;
 use Laracasts\Presenter\Presenter;
 
@@ -15,6 +17,7 @@ class PagePresenter extends Presenter
         $characterId = getSession('character_id');
         $storyId = getSession('story_id');
         $story = Story::where('id', $storyId)->first();
+        $character = null;
 
         if (empty($characterId)) {
             $characterName = 'NomDuPersonnage';
@@ -32,9 +35,9 @@ class PagePresenter extends Presenter
             'character_name' => $characterName,
         ];
 
-        $story->people()->each(static function ($person) use (&$placeholders) {
-            $placeholders['person.' . $person->order . '.firstname'] = $person->first_name;
-            $placeholders['person.' . $person->order . '.lastname'] = $person->last_name;
+        $story->people()->each(function ($person) use (&$placeholders, $character) {
+            $placeholders['person.' . $person->order . '.firstname'] = $this->getPersonName($person, $character)->first_name;
+            $placeholders['person.' . $person->order . '.lastname'] = $this->getPersonName($person, $character)->last_name;
             $placeholders['person.' . $person->order . '.fullname'] = $person->first_name . ' ' . $person->last_name;
             $placeholders['person.' . $person->order . '.role'] = $person->role;
         });
@@ -71,6 +74,22 @@ class PagePresenter extends Presenter
         }
 
         return $this->entity->content;
+    }
+
+    public function getPersonName(Person $person, $character = null)
+    {
+        if ($character !== null) {
+            $character->load('people');
+            $customPerson = CharacterPerson::where('person_id', $person->id)
+                ->where('character_id', $character->id)
+                ->first();
+
+            if ($customPerson) {
+                return $customPerson;
+            }
+        }
+
+        return $person;
     }
 
     public function short_content()

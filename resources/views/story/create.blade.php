@@ -222,6 +222,8 @@
                     <div class="card">
                         <div class="card-header">@lang('people.people')</div>
                         <div class="card-body">
+                            <p class="help-block">@lang('people.help')</p>
+
                             <table id="people_story" class="table mb-3 m-0">
                                 <thead>
                                     <tr>

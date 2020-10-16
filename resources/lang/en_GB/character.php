@@ -12,5 +12,5 @@ return [
     'name_label'        => 'Character name',
     'not_enough_money'  => 'You do not have enough money',
     'stats_help'        => 'Here you can define your character stats.',
-    'stats_label'       => 'Character sheet',
+    'stats_label'       => 'Main character',
 ];

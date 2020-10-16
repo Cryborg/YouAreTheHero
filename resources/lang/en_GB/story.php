@@ -45,6 +45,7 @@ return array (
   'map' => 'Checkpoints',
   'number_pages' => 'Number of pages',
   'pages_count' => ':count page|:count pages',
+  'people_help' => 'If you want you can rename the characters on this list.',
   'play' => 'Start',
   'points_to_share' => 'Points to share',
   'popovers_modal_title' => 'Descriptions',

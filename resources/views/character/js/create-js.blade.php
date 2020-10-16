@@ -1,14 +1,27 @@
+const storyId = $('#storyId').val();
+
 $('.submit-btn').on('click touchstart keydown', function () {
-    var $this = $(this);
-    var characterName = $('#name').val();
-    var stats = [];
-    var genre = $("[name='character_genre']:checked").val();
+    const $this = $(this);
+    const characterName = $('#name').val();
+    const stats = [];
+    const genre = $("[name='character_genre']:checked").val();
+    const people = [];
 
     $('input[name=stat_value]').each(function () {
         stats.push({
             'field_id': $(this).data('field_id'),
             'value': $(this).val()
         });
+    });
+
+    $('.row_person').each(function () {
+        const $this = $(this);
+
+        people.push({
+            'id': $this.data('personid'),
+            'first_name': $this.find('.first_name').val(),
+            'last_name': $this.find('.last_name').val(),
+        })
     });
 
     if (characterName === '') {
@@ -21,17 +34,17 @@ $('.submit-btn').on('click touchstart keydown', function () {
     }
 
     $.post({
-        url: route('character.create.post', {'story': {{ $story->id }} }),
+        url: route('character.create.post', {'story': storyId }),
         data: {
             'name': characterName,
             'stats': stats,
-            'genre': genre
+            'genre': genre,
+            'people': people
         }
     })
     .done(function (result) {
         if (result.success) {
-            //window.location.href = '/';
-            window.location.href = route('story.play', {'story': {{ $story->id }} });
+            window.location.href = route('story.play', {'story': storyId });
         }
     })
     .fail(function () {

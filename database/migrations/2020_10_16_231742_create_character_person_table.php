@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePeopleTable extends Migration
+class CreateCharacterPersonTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreatePeopleTable extends Migration
      */
     public function up()
     {
-        Schema::create('people', function (Blueprint $table) {
+        Schema::create('character_person', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('story_id')->constrained();
-            $table->integer('order');
+            $table->foreignId('character_id')->constrained();
+            $table->foreignId('person_id')->constrained();
 
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->string('role');
-
-            $table->unique(['story_id', 'order']);
 
             $table->timestamps();
         });
@@ -36,6 +33,6 @@ class CreatePeopleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('people');
+        Schema::dropIfExists('character_person');
     }
 }

@@ -104,6 +104,11 @@ class Character extends Model
         return $this->belongsToMany(Page::class);
     }
 
+    public function people(): belongsToMany
+    {
+        return $this->belongsToMany(Person::class);
+    }
+
     public function riddles(): BelongsToMany
     {
         return $this->belongsToMany(Riddle::class);
