@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Genre extends Model
 {
@@ -10,7 +11,11 @@ class Genre extends Model
 
     public $timestamps = false;
 
-    public function stories()
+    public $casts = [
+        'hidden' => 'boolean'
+    ];
+
+    public function stories(): BelongsToMany
     {
         return $this->belongsToMany(Story::class, 'story_genre');
     }

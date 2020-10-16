@@ -429,14 +429,12 @@ class StoryController extends Controller
         $genres = Genre::all();
         $orderdGenres = collect();
         $genres->each(static function ($genre) use ($orderdGenres) {
-            $orderdGenres->push(collect([
-                    'id' => $genre->id,
-                    'label' => trans('story.writing_genre_' . $genre->label),
-                ])
-            );
+            $genre->label = trans('story.writing_genre_' . $genre->label);
+            $orderdGenres->push($genre);
         });
 
-        $data['genres'] = $orderdGenres->sortBy('label');
+        $data['genres'] = $orderdGenres->where('hidden', false)->sortBy('label');
+        $data['audiences'] = $orderdGenres->where('hidden', true)->sortBy('id');
         $data['max_points_to_share'] = $story ? $story->maxPointsToShare() : 10;
 
         $view = View::make('story.create', $data);

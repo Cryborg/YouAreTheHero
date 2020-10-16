@@ -4,6 +4,7 @@ return array (
   ':' => ' :',
   'actions' => 'Actions',
   'add' => 'Ajouter',
+  'audience' => 'Public visé',
   'author' => 'Auteur',
   'btn_validate' => 'Valider',
   'cannot_delete' => 'Impossible de supprimer une page ayant des choix',

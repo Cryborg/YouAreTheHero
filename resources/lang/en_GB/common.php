@@ -4,6 +4,7 @@ return array (
   ':' => ':',
   'actions' => 'Actions',
   'add' => 'Add',
+  'audience' => 'Audience',
   'author' => 'Author',
   'btn_validate' => 'Validate',
   'cannot_delete' => 'You cannot delete a page if it is linked to another',

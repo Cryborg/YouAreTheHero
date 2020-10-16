@@ -16,6 +16,7 @@ class CreateGenresTable extends Migration
         Schema::create('genres', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('label', 20);
+            $table->boolean('hidden')->default(false);
         });
     }
 
