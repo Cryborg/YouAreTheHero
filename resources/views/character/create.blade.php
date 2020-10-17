@@ -110,43 +110,45 @@
                 </div>
             @endif
 
-            <div class="row">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header">
-                            @lang('people.people')
-                        </div>
-                        <div class="card-body">
-                            <p class="help-block">{{ trans('story.people_help') }}</p>
+            @if ($story->people->count() > 0)
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                @lang('people.people')
+                            </div>
+                            <div class="card-body">
+                                <p class="help-block">{{ trans('story.people_help') }}</p>
 
-                            <table id="people_story" class="table mb-3 m-0">
-                                <thead>
-                                    <tr>
-                                        <th>{{ trans('people.role') }}</th>
-                                        <th>{{ trans('people.first_name') }}</th>
-                                        <th>{{ trans('people.last_name') }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($story->people as $person)
-                                        <tr class="row_person" data-personid="{{ $person->id }}">
-                                            <td>
-                                                <div>{{ $person->role }}</div>
-                                            </td>
-                                            <td>
-                                                <input type="text" class="form-control first_name" value="{{ $person->first_name }}">
-                                            </td>
-                                            <td>
-                                                <input type="text" class="form-control last_name" value="{{ $person->last_name }}">
-                                            </td>
+                                <table id="people_story" class="table mb-3 m-0">
+                                    <thead>
+                                        <tr>
+                                            <th>{{ trans('people.role') }}</th>
+                                            <th>{{ trans('people.first_name') }}</th>
+                                            <th>{{ trans('people.last_name') }}</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($story->people as $person)
+                                            <tr class="row_person" data-personid="{{ $person->id }}">
+                                                <td>
+                                                    <div>{{ $person->role }}</div>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control first_name" value="{{ $person->first_name }}">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control last_name" value="{{ $person->last_name }}">
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endif
 
             <div class="row">
                 <div class="col">
