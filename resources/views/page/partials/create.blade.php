@@ -30,7 +30,8 @@
             <div class="col mt-3">
                 <textarea class="w-100 hidden" id="inputGraph" rows="5">{{ $graph }}</textarea>
                 <nav class="nav nav-pills mb-2">
-                    <a class="nav-item nav-link mr-3 @if ($page->is_first) disabled @else shadow @endif" href="#page-1" data-toggle="tab">
+                    <a class="nav-item nav-link mr-3 @if ($page->is_first) disabled @else shadow @endif" href="#page-1" data-toggle="tab"
+                        title="@lang('page.current_page_prerequisites_help')">
                         <span class="icon icon-unlocking text-white display-6 align-middle mr-2"></span>
                         @lang('page.tab_prerequisite')
                         <span class="badge badge-warning rounded float-right shadow ml-3 badge_prerequisites_count" @if ($page->prerequisites()->count() === 0) style="display:none" @endif>{{ $page->prerequisites()->count() }}</span>
@@ -39,17 +40,20 @@
                         <span class="icon icon-fountain-pen text-white display-6 align-middle mr-2"></span>
                         @lang('page.tab_text')
                     </a>
-                    <a class="nav-item nav-link shadow mr-3" href="#page-3" data-toggle="tab">
+                    <a class="nav-item nav-link shadow mr-3" href="#page-3" data-toggle="tab"
+                        title="@lang('page.current_page_actions_help')">
                         <span class="icon icon-unlocking text-white display-6 align-middle mr-2"></span>
                         @lang('page.tab_bonus')
                         <span class="badge badge-warning rounded float-right shadow ml-3 badge_triggers_count" @if ($page->triggers->count() === 0) style="display:none" @endif>{{ $page->triggers->count() }}</span>
                     </a>
-                    <a class="nav-item nav-link shadow mr-3" href="#page-4" data-toggle="tab">
+                    <a class="nav-item nav-link shadow mr-3" href="#page-4" data-toggle="tab"
+                        title="@lang('page.current_page_item_page_help')">
                         <span class="icon icon-chest text-white display-6 align-middle mr-2"></span>
                         @lang('page.tab_items')
                         <span class="badge badge-warning rounded float-right shadow ml-3 badge_items_count" @if ($page->items->count() === 0) style="display:none" @endif>{{ $page->items->count() }}</span>
                     </a>
-                    <a class="nav-item nav-link shadow mr-3" href="#page-5" data-toggle="tab">
+                    <a class="nav-item nav-link shadow mr-3" href="#page-5" data-toggle="tab"
+                        title="@lang('page.current_page_riddles_help')">
                         <span class="icon icon-jigsaw-piece text-white display-6 align-middle mr-2"></span>
                         @lang('page.tab_riddle')
                         @if ($page->riddle)
