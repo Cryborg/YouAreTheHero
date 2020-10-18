@@ -12,17 +12,17 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="{{ route('story.create') }}">
-            <span class="icon-add mr-3 display-6"></span>
+            <span class="icon-add mr-2"></span>
             {{ trans('common.link_story_create') }}
         </a>
         <a class="dropdown-item" href="{{ route('stories.list.draft') }}">
-            <span class="icon-papers mr-3 display-6"></span>
+            <span class="icon-papers mr-2"></span>
             {{ trans('stories.link_stories_draft') }}
         </a>
         @if (Route::is('page.edit'))
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{ route('story.edit', ['story' => $page->story]) }}">
-                <span class="icon-fountain-pen mr-3 display-6"></span>
+                <span class="icon-fountain-pen mr-2"></span>
                 @lang('story.edit')
             </a>
         @endif
