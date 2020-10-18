@@ -265,60 +265,6 @@ $(document).on('click touchstart keydown', '.toggle-summernote:not(.summernote-o
     $this.addClass('summernote-open');
 });
 
-// Saves the page
-$(document).on('click touchstart keydown', '.savePage', function (e) {
-    let $this = $(this);
-
-    // Find parent page form
-    let $form = $('.divAsForm');
-
-    $('#content-editable:hidden').summernote('destroy');
-    $('#content-editable:visible').addClass('hidden');
-    $('#content').removeClass('hidden');
-    $('.toggle-summernote').addClass('clickable').removeClass('summernote-open');
-
-    let isLast = $('#is_last').is(":checked") ? 1 : 0;
-    let data = {
-        'title': $('#title').val(),
-        'content': $('#content-editable').html(),
-        'layout': $('#layout').val(),
-        'is_first': $('#is_first').is(":checked") ? 1 : 0,
-        'is_last': isLast,
-        'ending_type': isLast ? $('[name="ending_type"]:checked').val() : null,
-        'is_checkpoint': $('#is_checkpoint').is(":checked") ? 1 : 0,
-    };
-
-    if ($('#linktext').length > 0) {
-        data.link_text = $('#linktext').val();
-    }
-
-    $.post({
-        url: $form.data('route'),
-        data: data
-    })
-        .done(function (data) {
-            tryDraw(data.graph);
-
-            $('#content').html(data.content);
-        })
-        .fail(function (data) {
-            if (data.status === 422) {
-                $.each(data.responseJSON.errors, function (i, error) {
-                    $form
-                        .find('[name="' + i + '"]')
-                        .addClass('input-invalid')
-                        .next()
-                        .append(error[0])
-                        .removeClass('hidden');
-                });
-            }
-        })
-        .always(function () {
-            $this.html($this.data('original-text'));
-            $this.prop('disabled', false);
-        });
-});
-
 $(document).on('click touchstart keydown', '#add_Meta', function () {
     var $this = $(this);
     var data = {};

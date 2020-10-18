@@ -3,17 +3,13 @@
     <div class="col-lg-6 col-xs-12">
         <div class="row">
             <div class="col shadow-sm p-3">
-                <button class="btn btn-light savePage grow shadow">
-                    <span class="icon-save display-6 align-middle"></span>
-                    <div class="align-middle">@lang('common.save')</div>
-                </button>
-                <button class="btn btn-light grow shadow" data-target="#modalAddChoice" data-toggle="modal">
+                <button class="btn btn-light shadow grow" data-target="#modalAddChoice" data-toggle="modal">
                     <span class="icon-choice display-6 align-middle"></span>
                     <div class="align-middle">@lang('page.add_choice')</div>
                     <span class="badge badge-warning rounded float-right shadow ml-3">{{ $page->choices()->count() }}</span>
                 </button>
                 <a target="_blank" href="{{ route('story.play', [$story]) }}">
-                    <button class="btn btn-light grow shadow">
+                    <button class="btn btn-light shadow grow">
                         <span class="icon-play display-6 align-middle"></span>
                         <div class="align-middle">@lang('story.preview')</div>
                     </button>

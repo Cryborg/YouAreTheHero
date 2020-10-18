@@ -193,10 +193,7 @@
         var ui = $.summernote.ui;
         var button = ui.button({
             contents: '<span data-target="#modalDescriptions" data-toggle="modal">@lang('description.descriptions_button_label')</span>',
-            tooltip: 'Add inline descriptions',
-            click: function () {
-                $('.savePage').addClass('disabled');
-            }
+            tooltip: 'Add inline descriptions'
         });
 
         return button.render();
@@ -274,7 +271,7 @@
 
                 // Only trigger if we don't click in the Summernote toolbar
                 if (!(e.relatedTarget && $.contains(p, e.relatedTarget))) {
-                    $('.savePage').trigger('click');
+                    savePage();
                 }
             }
         }
