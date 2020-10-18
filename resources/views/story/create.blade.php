@@ -182,18 +182,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($story->fields ?? [] as $stat)
-                                        <tr>
-                                            <td>{{ $stat->name }}</td>
-                                            <td>{{ $stat->min_value }}</td>
-                                            <td>{{ $stat->max_value }}</td>
-                                            <td class="text-center">
-                                                <input type="checkbox" @if ($stat->hidden) checked @endif disabled></td>
-                                            <td class="text-center">
-                                                <span class="icon-trash text-danger deleteCharacterField" data-field_id="{{ $stat->id }}"></span>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                    @include('story.partials.body_fields', $story)
                                 </tbody>
                                 <tfoot>
                                     <tr>

@@ -37,7 +37,7 @@
         // Delete a character_field
         $(document).on('click touchstart keydown', '.deleteCharacterField', function () {
             var $this = $(this);
-            var id = $this.data('field_id');
+            var id = $this.closest('tr').data('fieldid');
             var loadingClass = 'spinner-grow text-danger';
             var defaultClass = $this.attr('class');
 
@@ -61,7 +61,39 @@
                 });
         });
 
-        // Delete a character_field
+        // Edit a character_field
+        $(document).on('click touchstart keydown', '.editCharacterField', function () {
+            const $this = $(this);
+            const $parent = $this.closest('tr');
+            const id = $parent.data('fieldid');
+            const loadingClass = 'spinner-grow';
+            const defaultClass = $this.attr('class');
+
+            if (!$this.hasClass('fa-spin')) {
+                $this.attr('class', loadingClass);
+            }
+
+            $.post({
+                url: route('field.store', {story: storyId}),
+                data: {
+                    'id': id,
+                    'name': $parent.find('.fieldName').val(),
+                    'min_value': $parent.find('.fieldMinValue').val(),
+                    'max_value': $parent.find('.fieldMaxValue').val(),
+                    'hidden': $parent.find('.fieldHidden').is(':checked') ? 1 : 0,
+                }
+            })
+                .done(function (result) {
+                    if (result.success) {
+                        checkPointsToShare(result.max);
+                    }
+                })
+                .always(function () {
+                    $this.attr('class', defaultClass);
+                });
+        });
+
+        // Delete a person
         $(document).on('click touchstart keydown', '.deletePerson', function () {
             const $this = $(this);
             const id = $this.data('person_id');

@@ -18,6 +18,7 @@ class FieldController extends Controller
     {
         if ($request->ajax()) {
             $validated = $request->validate([
+                'id'            => '',
                 'name'          => 'required',
                 'hidden'        => 'required|in:0,1',
                 'min_value'     => 'required',
@@ -27,7 +28,11 @@ class FieldController extends Controller
             $validated['story_id'] = $story->id;
             $validated['start_value'] = $validated['min_value'];
 
-            $field = Field::create($validated);
+            if (isset($validated['id'])) {
+                $field = Field::updateOrCreate(['id' => $validated['id']], $validated);
+            } else {
+                $field = Field::create($validated);
+            }
 
             // Determine the maximum points that can be shared
             $max = $story->maxPointsToShare();
