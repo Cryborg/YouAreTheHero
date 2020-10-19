@@ -98,6 +98,8 @@ trait TextModifiers
      *
      * @param \App\Models\Person $person
      * @param null               $character
+     *
+     * @return \App\Models\Person|\App\Models\CharacterPerson
      */
     private function getPersonName(Person $person, $character = null)
     {

@@ -402,7 +402,7 @@ class StoryController extends Controller
      */
     public function getEdit(Story $story)
     {
-        $this->authorize('view', $story);
+        $this->authorize('edit', $story);
 
         return $this->getCreate($story);
     }

@@ -76,7 +76,7 @@ class PageController extends Controller
      */
     public function getEdit(Page $page): \Illuminate\Contracts\View\View
     {
-        $this->authorize('view', $page);
+        $this->authorize('edit', $page);
 
         $errors = self::getErrors($page->story);
 
