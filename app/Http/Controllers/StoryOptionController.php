@@ -18,7 +18,9 @@ class StoryOptionController extends Controller
      */
     public function update(Request $request, Story $story)
     {
-        $option = $value = null;
+        $option = null;
+        $value = null;
+        $updateGenre = false;
 
         switch ($request->get('option'))
         {
@@ -42,14 +44,17 @@ class StoryOptionController extends Controller
             case 'genre_male':
                 $option = 'character_genre';
                 $value = Constants::GENRE_MALE;
+                $updateGenre = true;
                 break;
             case 'genre_female':
                 $option = 'character_genre';
                 $value = Constants::GENRE_FEMALE;
+                $updateGenre = true;
                 break;
             case 'genres_both':
                 $option = 'character_genre';
                 $value = Constants::GENRE_BOTH;
+                $updateGenre = true;
                 break;
             case 'points_to_share':
                 $option = 'points_to_share';
@@ -57,9 +62,15 @@ class StoryOptionController extends Controller
                 break;
         }
 
-        $success = $story->story_options->updateOrCreate(['story_id' => $story->id], [
+        $updates = [
             $option => $value
-        ]);
+        ];
+
+        if ($updateGenre) {
+            $updates['has_character'] = true;
+        }
+
+        $success = $story->story_options->updateOrCreate(['story_id' => $story->id], $updates);
 
         return response()->json([
             'success' => $success,
