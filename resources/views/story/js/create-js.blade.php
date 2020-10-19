@@ -180,7 +180,8 @@
                                 '</tr>';
                             $('#people_story').append(html);
 
-                            $('#first_name').val('').focus();
+                            $('#first_name, #last_name, #role').val('');
+                            $('#first_name').focus();
                         }
 
                         checkPointsToShare(result.max);
