@@ -201,7 +201,7 @@ $(document).on('change', '.childrenSelect', function () {
     $('#show_new_page').attr('checked', $this.val() == 0);
 });
 
-// Delete a page from the "list all pages" popup
+// Delete a page from the "story errors list" popup
 $(document).on('click touchstart keydown', '.deletePage', function () {
     var $this = $(this);
 

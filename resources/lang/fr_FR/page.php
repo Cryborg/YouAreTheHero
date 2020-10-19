@@ -20,7 +20,7 @@ return array (
     'current_page_prerequisites_help' => 'Liste des prérequis pour arriver sur cette page.',
     'current_page_riddles_help' => 'Ici se trouvent les détails de l\'énigme de cette page. Elle doit être résolue pour que le joueur gagne l\'objet et/ou accède à la page indiquée.',
     'dead_ends' => 'Impasses',
-    'dead_ends_help' => 'Ces pages n\'ont pas d\'issue, le joueur sera bloqué.',
+    'dead_ends_help' => 'Ces pages n\'ont pas d\'issue, le joueur sera bloqué. Si le bouton de suppression apparaît, c\'est qu\'en plus il n\'a pas de parent.',
     'delete_lone_page' => 'La page cible n\'a plus de lien avec aucune autre. Veux-tu la supprimer ?',
     'descriptions_help' => 'Tu peux ajouter des descriptions dans ton texte. Le ou les mots que tu auras choisis, une fois survolés par la souris, montreront la description qui leur est associée.',
     'earned_item' => 'Objet obtenu',

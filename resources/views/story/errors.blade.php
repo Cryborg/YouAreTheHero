@@ -12,8 +12,15 @@
                         @foreach($deadEnds as $deadEnd)
                             <div class="row mb-1">
                                 <div class="col">
+                                    <!-- If it is a dead end AND it is flagged as is_first then it is a lone page -->
+                                    @if ($deadEnd->is_first)
+                                        <a class="btn border-danger border-2 text-center mr-3" role="button">
+                                            <span class="icon-trash text-red deletePage" data-pageid="{{ $deadEnd->id }}"></span>
+                                        </a>
+                                    @endif
+
                                     <a href="{{ route('page.edit', $deadEnd) }}" class="btn btn-light text-left w-75" role="button">
-                                        <span class="icon-fountain-pen text-black  mr-3" data-pageid="{{ $deadEnd->id }}"></span>
+                                        <span class="icon-fountain-pen text-black mr-3" data-pageid="{{ $deadEnd->id }}"></span>
                                         {{ $deadEnd->title }}
                                     </a>
                                 </div>

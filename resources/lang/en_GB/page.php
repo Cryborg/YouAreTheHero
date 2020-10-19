@@ -20,7 +20,7 @@ return array (
   'current_page_prerequisites_help' => 'This is a list of all the conditions that grant access to this page.',
   'current_page_riddles_help' => 'Here are the details about the riddle on this page. It must be solved in order to gain an item and/or access to a page.',
   'dead_ends' => 'Dead ends',
-  'dead_ends_help' => 'These are the pages that have choice, the player is going to be stuck there.',
+  'dead_ends_help' => 'These are the pages that have choice, the player is going to be stuck there. If the delete button appears, it means it has no parent either.',
   'delete_lone_page' => 'The target page is not linked to any other page, do you want to delete it?',
   'descriptions_help' => 'There you can add inline descriptions to your text. The word(s) you choose will be hoverable, and the description you wrote will pop open.',
   'earned_item' => 'Gained item',
