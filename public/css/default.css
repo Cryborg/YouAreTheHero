@@ -207,7 +207,7 @@ div.jq-toast-wrap {
     width: 500px;
 }
 
-#stats_story td {
+#stats_story td, #stats_story tfoot th {
     padding-left: 2em;
     font-size: .8em;
 }

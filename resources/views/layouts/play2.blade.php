@@ -5,7 +5,7 @@
         <div class="col col-xs-12">
             <div class="row">
                 <div class="col">
-                    <div class="title">{{ $page->title }}</div>
+                    <div class="title">{{ $page->present()->title }}</div>
                 </div>
             </div>
             <div class="row">

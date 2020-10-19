@@ -3,7 +3,7 @@
         <div class="card border">
             <h5 class="card-header">
                 @if ($page->riddle && $page->riddle->title)
-                    {{ $page->riddle->title }}
+                    {{ $page->riddle->present()->title }}
                 @else
                     @lang('page.riddle_header')
                 @endif

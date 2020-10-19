@@ -16,7 +16,7 @@
                 <span class="badge badge-warning"><span class="font-smaller">#</span>{{ $page->id }}</span>
             @endcan
 
-            {{ $page->title }}
+            {{ $page->present()->title }}
         </div>
     </h5>
 

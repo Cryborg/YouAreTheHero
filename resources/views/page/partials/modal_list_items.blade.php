@@ -78,7 +78,7 @@
                         </div>
                         <div class="form-control">
                             @foreach ($item->pages as $page)
-                                <a href="{{ route('page.edit', ['page' => $page]) }}">{{ $page->title }}</a>
+                                <a href="{{ route('page.edit', ['page' => $page]) }}">{{ $page->present()->title }}</a>
                             @endforeach
                         </div>
                     </div>

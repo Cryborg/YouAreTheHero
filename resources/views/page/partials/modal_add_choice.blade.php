@@ -21,7 +21,7 @@
                 <option value="0" selected>{{ trans('page.existing_page') }}</option>
                 @foreach ($page->getPotentialChildren() as $existingPage)
                     @if ($existingPage->id !== $page->id)
-                        <option value="{{ $existingPage->id }}">{{ $existingPage->title }}</option>
+                        <option value="{{ $existingPage->id }}">{{ $existingPage->present()->title }}</option>
                     @endif
                 @endforeach
             </select>

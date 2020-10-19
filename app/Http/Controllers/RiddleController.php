@@ -60,7 +60,7 @@ class RiddleController extends Controller
         return response()->json([
             'success'    => $success,
             'riddle'     => $page->riddle,
-            'page_title' => optional($page->riddle->page)->title,
+            'page_title' => optional($page->riddle->page)->present()->title,
             'item_name'  => optional($page->riddle->item)->name,
             'type'       => 'save',
         ]);

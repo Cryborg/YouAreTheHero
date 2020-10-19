@@ -56,7 +56,7 @@
                                         @foreach ($story->pages as $existingPage)
                                             @if ($page->id !== $existingPage->id)
                                                 <option value="{{ $existingPage->id }}" @if ($page->riddle) @if ($existingPage->id == $page->riddle->target_page_id) selected @endif @endif
-                                                >{{ $existingPage->title }}
+                                                >{{ $existingPage->present()->title }}
                                                 </option>
                                             @endif
                                         @endforeach

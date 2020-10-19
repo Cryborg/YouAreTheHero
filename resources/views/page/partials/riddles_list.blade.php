@@ -18,7 +18,7 @@
         </tr>
         <tr>
             <td>@lang('page.riddle_target_page_id_label')</td>
-            <td class="font-italic">{{ $page->riddle->page->title ?? '-' }}</td>
+            <td class="font-italic">{{ $page->riddle->page->present()->title ?? '-' }}</td>
         </tr>
         <tr>
             <td>@lang('page.earned_item')</td>

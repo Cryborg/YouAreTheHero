@@ -24,7 +24,7 @@
                         <tr>
                             <td>
                                 <a href="{{ route('page.edit', ['page' => $report->page->id ]) }}" target="_blank">
-                                    {{ $report->page->title }}
+                                    {{ $report->page->present()->title }}
                                 </a>
                             </td>
                             <td>@lang('page.report_error_type_' . $report->error_type)</td>

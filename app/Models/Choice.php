@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
+use App\Presenters\ChoicePresenter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laracasts\Presenter\PresentableTrait;
 
 class Choice extends Model
 {
     use SoftDeletes;
+    use PresentableTrait;
+
+    protected $presenter  = ChoicePresenter::class;
 
     protected $guarded = ['id'];
 

@@ -21,7 +21,7 @@
 
                                     <a href="{{ route('page.edit', $deadEnd) }}" class="btn btn-light text-left w-75" role="button">
                                         <span class="icon-fountain-pen text-black mr-3" data-pageid="{{ $deadEnd->id }}"></span>
-                                        {{ $deadEnd->title }}
+                                        {{ $deadEnd->present()->title }}
                                     </a>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
                                     </a>
                                     <a href="{{ route('page.edit', $orphan) }}" class="btn btn-light text-left w-75" role="button">
                                         <span class="icon-fountain-pen text-black  mr-3" data-pageid="{{ $orphan->id }}"></span>
-                                        {{ $orphan->title }}
+                                        {{ $orphan->present()->title }}
                                     </a>
                                 </div>
                             </div>
@@ -135,7 +135,7 @@
                                     </a>
                                     <a class="btn btn-light text-left w-75" role="button">
                                         <span class="icon-eye text-black mr-3" data-pageid="{{ $riddle->id }}"></span>
-                                        {{ $riddle->page->title }}
+                                        {{ $riddle->page->present()->title }}
                                     </a>
                                 </div>
                             </div>
