@@ -17,7 +17,7 @@ class CreateStoryOptionTable extends Migration
             $table->bigIncrements('id');
 
             $table->unsignedBigInteger('story_id');
-            $table->foreign('story_id')->references('id')->on('stories');
+            $table->foreignId('story_id')->constrained();
 
             $table->boolean('has_character')->default(false)
                 ->comment('Do we have to create a character for this story?');
@@ -30,6 +30,8 @@ class CreateStoryOptionTable extends Migration
                 ->comment('Points to share between character stats');
             $table->integer('inventory_slots')->default(-1)
                 ->comment('How many (virtual) slots there are in the inventory.');
+            $table->string('currency_name')->default('or');
+
 
             $table->timestamps();
             $table->softDeletes();

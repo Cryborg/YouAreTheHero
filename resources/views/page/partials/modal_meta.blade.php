@@ -4,7 +4,7 @@
             <a class="nav-item nav-link active" href="#tr-pre-1" data-toggle="tab">
                 {{ trans('page.required_item') }}
             </a>
-            @if ($story->story_options && $story->story_options->has_stats)
+            @if ($story->options && $story->options->has_stats)
                 <a class="nav-item nav-link" href="#tr-pre-2" data-toggle="tab" id="tr-pre-2-link">
                     {{ trans('page.required_characteristic') }}
                 </a>
@@ -59,7 +59,7 @@
                     </div>
                 </div>
             </div>
-            @if ($story->story_options && $story->story_options->has_stats)
+            @if ($story->options && $story->options->has_stats)
                 <div class="tab-pane" id="tr-pre-2">
                     <div class="form-group mb-4">
                         {!! Form::label('sheet', trans('page.required_characteristic'), ['class' => 'sr-only']) !!}

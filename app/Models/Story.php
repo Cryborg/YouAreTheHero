@@ -163,7 +163,7 @@ class Story extends Model
         return $this->hasMany(Person::class);
     }
 
-    public function story_options()
+    public function options()
     {
         return $this->hasOne(StoryOption::class);
     }

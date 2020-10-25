@@ -102,60 +102,73 @@
             {!! Form::close() !!}
         </div>
         <div class="tab-pane" id="pills-options" role="tabpanel" aria-labelledby="pills-options-tab">
-            <div class="card">
-                <div class="card-header">
-                    @lang('character.character_label')
-                </div>
-                <div class="card-body">
-                    <p class="help-block">@lang('story.has_character_help')</p>
-                    <div class="form-group form-check ml-3">
-                        <input class="form-check-input" type="checkbox" value="1" id="has_character" name="has_character" @if ($story && $story->story_options && $story->story_options->has_character) checked @endif
-                        > <label class="form-check-label" for="has_character">
-                            {{ trans('story.has_character_label') }}
-                        </label>
-                        <div class="form-check">
-                            <input type="radio" class="form-check-input" name="character_genre"
-                                value="male" id="genre_male" @if ($story && $story->story_options && $story->story_options->character_genre === \App\Classes\Constants::GENRE_MALE) checked @endif>
-                            <label for="genre_male" class="form-check-label">@lang('character.genre_male')</label>
+            <div class="row">
+                <div class="col-md-12 col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            @lang('character.character_label')
                         </div>
-                        <div class="form-check">
-                            <input type="radio" class="form-check-input" name="character_genre"
-                                value="female" id="genre_female" @if ($story && $story->story_options && $story->story_options->character_genre === \App\Classes\Constants::GENRE_FEMALE) checked @endif>
-                            <label for="genre_female" class="form-check-label">@lang('character.genre_female')</label>
+                        <div class="card-body">
+                            <p class="help-block">@lang('story.has_character_help')</p>
+                            <div class="form-group form-check ml-3">
+                                <input class="form-check-input" type="checkbox" value="1" id="has_character" name="has_character" @if ($story && $story->options && $story->options->has_character) checked @endif
+                                > <label class="form-check-label" for="has_character">
+                                    {{ trans('story.has_character_label') }}
+                                </label>
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" name="character_genre"
+                                        value="male" id="genre_male" @if ($story && $story->options && $story->options->character_genre === \App\Classes\Constants::GENRE_MALE) checked @endif>
+                                    <label for="genre_male" class="form-check-label">@lang('character.genre_male')</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" name="character_genre"
+                                        value="female" id="genre_female" @if ($story && $story->options && $story->options->character_genre === \App\Classes\Constants::GENRE_FEMALE) checked @endif>
+                                    <label for="genre_female" class="form-check-label">@lang('character.genre_female')</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" name="character_genre"
+                                        value="both" id="genres_both" @if ($story && $story->options && $story->options->character_genre === \App\Classes\Constants::GENRE_BOTH) checked @endif>
+                                    <label for="genres_both" class="form-check-label">@lang('story.genres_both')</label>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-check">
-                            <input type="radio" class="form-check-input" name="character_genre"
-                                value="both" id="genres_both" @if ($story && $story->story_options && $story->story_options->character_genre === \App\Classes\Constants::GENRE_BOTH) checked @endif>
-                            <label for="genres_both" class="form-check-label">@lang('story.genres_both')</label>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            @lang('field.sheet')
+                        </div>
+                        <div class="card-body">
+                            <p class="help-block">@lang('story.has_stats_help')</p>
+                            <div class="form-group form-check ml-3">
+                                <input class="form-check-input" type="checkbox" value="1" id="has_stats" name="has_stats" @if ($story && $story->options && $story->options->has_stats) checked @endif
+                                > <label class="form-check-label" for="has_stats">
+                                    {{ trans('story.has_stats_label') }}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    @if ($story)
+                        <div class="card">
+                            <div class="card-header">
+                                @lang('story.inventory_slots')
+                            </div>
+                            <div class="card-body">
+                                <p class="help-block">@lang('story.inventory_slots_help')</p>
+                                {!! Form::number('inventory_slots', $story->options ? $story->options->inventory_slots : -1, ['class' => 'form-control', 'min' => 0, 'id' => 'inventory_slots']) !!}
+                            </div>
+                        </div>
+                    @endif
+                    <div class="card">
+                        <div class="card-header">
+                            @lang('story.currency_name')
+                        </div>
+                        <div class="card-body">
+                            <p class="help-block">@lang('story.currency_name_help')</p>
+                            <input class="form-control" type="text" id="currency_name" maxlength="15" autocomplete="nope" value="@lang('story.currency_name_default')">
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    @lang('field.sheet')
-                </div>
-                <div class="card-body">
-                    <p class="help-block">@lang('story.has_stats_help')</p>
-                    <div class="form-group form-check ml-3">
-                        <input class="form-check-input" type="checkbox" value="1" id="has_stats" name="has_stats" @if ($story && $story->story_options && $story->story_options->has_stats) checked @endif
-                        > <label class="form-check-label" for="has_stats">
-                            {{ trans('story.has_stats_label') }}
-                        </label>
-                    </div>
-                </div>
-            </div>
-            @if ($story)
-                <div class="card">
-                    <div class="card-header">
-                        @lang('story.inventory_slots')
-                    </div>
-                    <div class="card-body">
-                        <p class="help-block">@lang('story.inventory_slots_help')</p>
-                        {!! Form::number('inventory_slots', $story->story_options ? $story->story_options->inventory_slots : -1, ['class' => 'form-control', 'min' => 0, 'id' => 'inventory_slots']) !!}
-                    </div>
-                </div>
-            @endif
         </div>
         <div class="tab-pane" id="pills-sheet" role="tabpanel" aria-labelledby="pills-tab-3">
             <div class="row">
@@ -166,7 +179,7 @@
                         </div>
                         <div class="form-group ml-3">
                             <label>@lang('story.points_to_share')</label>
-                            <input type="number" value="@if ($story && $story->story_options){{ $story->story_options->points_to_share }}@else 10 @endif" min="1" max="{{ $max_points_to_share }}" id="points_to_share" limit-to-max>
+                            <input type="number" value="@if ($story && $story->options){{ $story->options->points_to_share }}@else 10 @endif" min="1" max="{{ $max_points_to_share }}" id="points_to_share" limit-to-max>
                         </div>
 
                         <div class="card-body">

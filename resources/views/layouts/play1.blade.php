@@ -33,7 +33,7 @@
 
         {{-- Right sidebar --}}
         <div class="col-lg-3 col-xs-12 shadow bg-white">
-            @isset($page->story->story_options->has_stats)
+            @isset($page->story->options->has_stats)
                 <div class="card">
                     <h5 class="card-header">
                         <span class="icon-ninja-heroic-stance display-5 mr-2"></span>

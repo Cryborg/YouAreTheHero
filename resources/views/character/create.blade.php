@@ -9,7 +9,7 @@
         <div class="col-md-12 col-xl-6">
             <h2 class="mb-5">{{ $story->title }}</h2>
 
-            @if ($story->story_options && $story->story_options->has_character)
+            @if ($story->options && $story->options->has_character)
                 <div class="form-group">
                     <div class="card">
                         <div class="card-header">
@@ -19,13 +19,13 @@
                             <p class="help-block">{{ trans('character.name_help') }}</p>
 
                             <div class="col my-1">
-                                @if ($story->story_options && in_array($story->story_options->character_genre, [\App\Classes\Constants::GENRE_MALE, \App\Classes\Constants::GENRE_FEMALE]))
+                                @if ($story->options && in_array($story->options->character_genre, [\App\Classes\Constants::GENRE_MALE, \App\Classes\Constants::GENRE_FEMALE]))
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
                                                 @include('partials.description', [
-                                                    'link_text' => '<span class="icon-' . $story->story_options->character_genre . ' font-biggest"></span>',
-                                                    'content' => trans('character.genre_' . $story->story_options->character_genre . '_help'),
+                                                    'link_text' => '<span class="icon-' . $story->options->character_genre . ' font-biggest"></span>',
+                                                    'content' => trans('character.genre_' . $story->options->character_genre . '_help'),
                                                     'icon' => false
                                                 ])
                                             </div>
@@ -33,7 +33,7 @@
                                         {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
                                         <div class="alert alert-danger hidden">{{ trans('character.name_error') }}</div>
                                     </div>
-                                @elseif ($story->story_options && $story->story_options->character_genre === \App\Classes\Constants::GENRE_BOTH)
+                                @elseif ($story->options && $story->options->character_genre === \App\Classes\Constants::GENRE_BOTH)
                                     {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
                                     <div class="alert alert-danger hidden">{{ trans('character.name_error') }}</div>
                                     <ul class="list-group">
@@ -63,7 +63,7 @@
                 </div>
             @endif
 
-            @if ($has_visible_fields && $story->story_options && $story->story_options->has_stats)
+            @if ($has_visible_fields && $story->options && $story->options->has_stats)
                 <div class="card">
                     <div class="card-header">
                         {!! Form::label('stats', trans('character.stats_label'), ['class' => 'control-label']) !!}
@@ -74,7 +74,7 @@
                         <div class="row">
                             <div class="col-4 text-center">
                                 @lang('field.points_left_to_share')
-                                <div id="points_left" data-original-value="{{ $story->story_options->points_to_share }}">{{ $story->story_options->points_to_share }}</div>
+                                <div id="points_left" data-original-value="{{ $story->options->points_to_share }}">{{ $story->options->points_to_share }}</div>
                             </div>
                             <div class="col-8">
                                 @foreach($story->fields as $field)

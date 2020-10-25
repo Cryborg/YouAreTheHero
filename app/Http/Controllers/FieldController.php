@@ -37,9 +37,9 @@ class FieldController extends Controller
             // Determine the maximum points that can be shared
             $max = $story->maxPointsToShare();
 
-            if ($story->story_options->points_to_share > $max) {
-                $story->story_options->points_to_share = $max;
-                $story->story_options->save();
+            if ($story->options->points_to_share > $max) {
+                $story->options->points_to_share = $max;
+                $story->options->save();
             }
 
             return response()->json([

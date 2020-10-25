@@ -158,11 +158,17 @@ $(document).on('click touchstart keydown', '#pills-options .form-check-input', f
     saveOption(id, value);
 });
 
+$("#currency_name").debounce("change", function() {
+    const $this = $(this);
+
+    saveOption('currency_name', $this.val());
+}, 500);
+
 $("#inventory_slots").debounce("change", function() {
     const $this = $(this);
 
     saveOption('inventory_slots', $this.val());
-}, 1000);
+}, 500);
 
 $("#points_to_share").debounce("change", function() {
     const $this = $(this);

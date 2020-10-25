@@ -42,7 +42,7 @@ class Action
      */
     public static function hasRoomLeftInInventory(Character $character, Item $item): bool
     {
-        $options = $character->story->story_options;
+        $options = $character->story->options;
 
         if ($options) {
             if ($options->inventory_slots > -1) {

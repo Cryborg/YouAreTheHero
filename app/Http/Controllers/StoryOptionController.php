@@ -70,7 +70,7 @@ class StoryOptionController extends Controller
             $updates['has_character'] = true;
         }
 
-        $success = $story->story_options->updateOrCreate(['story_id' => $story->id], $updates);
+        $success = $story->options->updateOrCreate(['story_id' => $story->id], $updates);
 
         return response()->json([
             'success' => $success,

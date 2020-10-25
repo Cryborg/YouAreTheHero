@@ -76,7 +76,7 @@ class StoryController extends Controller
         if (!$character) {
             $character = Character::createNewForStory($story);
 
-            if ($story->story_options && $story->story_options->has_character) {
+            if ($story->options && $story->options->has_character) {
                 return Redirect::route('character.create', [
                     'story' => $story->id,
                 ]);
@@ -348,6 +348,7 @@ class StoryController extends Controller
             'locale'       => 'required',
             'layout'       => 'required',
             'is_published' => 'boolean',
+            'currency_name'=> '',
             'genres'       => 'required|array|between:1,5',
         ]);
 
@@ -362,26 +363,26 @@ class StoryController extends Controller
                               ->firstOrFail();
 
                 $story->update($validated);
+                $story->options()->update($validated);
             } else {
                 $story = Story::create($validated);
-                $story->story_options()
-                      ->create();
+                $story->options()->create($validated);
             }
 
             // Create the first page with dummy data
             factory(Page::class)->create([
-                                             'story_id' => $story->id,
-                                             'is_first' => true,
-                                         ]);
+                 'story_id' => $story->id,
+                 'is_first' => true,
+             ]);
 
             StoryGenre::where('story_id', $story->id)
                       ->delete();
 
             foreach ($genres as $genre) {
                 StoryGenre::create([
-                                       'story_id' => $story->id,
-                                       'genre_id' => (int) $genre,
-                                   ]);
+                    'story_id' => $story->id,
+                    'genre_id' => (int) $genre,
+                ]);
             }
 
             \flash(trans('model.save_successful'));

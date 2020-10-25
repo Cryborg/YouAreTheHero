@@ -59,10 +59,10 @@ class Character extends Model
 
     public static function createNewForStory(Story $story)
     {
-        $storyOption = $story->story_options();
+        $storyOption = $story->options();
 
         // If no option needs to be set, create an unnamed character
-        if (($story->story_options && $story->story_options->has_character === false) || $storyOption->count() === 0) {
+        if (($story->options && $story->options->has_character === false) || $storyOption->count() === 0) {
             $character = Auth::user()->characters()->create([
                'name'     => 'Unnamed',
                'user_id'  => Auth::id(),

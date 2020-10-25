@@ -61,7 +61,7 @@
                     {{ trans('item.is_throwable') }}
                 </label>
             </div>
-            @if ($story->story_options && $story->story_options->has_stats)
+            @if ($story->options && $story->options->has_stats)
                 <h5 class="card-header">@lang('item.effects')</h5>
                 <div class="card-body">
                     <div class="card-text">
