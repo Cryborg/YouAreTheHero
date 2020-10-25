@@ -182,7 +182,8 @@
                             <input type="number" value="@if ($story && $story->options){{ $story->options->points_to_share }}@else 10 @endif" min="1" max="{{ $max_points_to_share }}" id="points_to_share" limit-to-max>
                         </div>
 
-                        <div class="card-body">
+                        @if ($story)
+                            <div class="card-body">
                             <p class="help-block">@lang('story.stats_help')</p>
                             <table id="stats_story" class="table mb-3 m-0">
                                 <thead>
@@ -218,9 +219,11 @@
                                 </tfoot>
                             </table>
                         </div>
+                        @endif
                     </div>
                 </div>
-                <div class="col">
+                @if ($story)
+                    <div class="col">
                     <div class="card">
                         <div class="card-header">@lang('people.people')</div>
                         <div class="card-body">
@@ -273,6 +276,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
         @isset($story)
