@@ -46,7 +46,10 @@ class PageController extends Controller
             }
 
             $page     = factory(Page::class)->create($newPage);
-            $redirect = route('page.edit', ['page' => $page]);
+
+            if ((bool) $request->get('showNewPage') === true) {
+                $redirect = route('page.edit', ['page' => $page]);
+            }
         }
 
         $pageFromId = (int)$request->get('page_from', 0);

@@ -27,7 +27,7 @@ return array (
   'ending_type_good_help' => 'S\'il s\'agit d\'une fin heureuse.',
   'existing_items' => 'Objets existants',
   'games_finished' => 'Parties terminées',
-  'games_played' => 'Parties jouées',
+  'games_played' => 'Parties démarrées',
   'games_reset' => 'Parties réinitialisées',
   'genre_female_help' => 'The main character is female.',
   'genre_male_help' => 'The main character is male.',

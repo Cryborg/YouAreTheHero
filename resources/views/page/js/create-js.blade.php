@@ -4,6 +4,7 @@ function newPage($this, url, linkText) {
         ? linkText
         : $parent.find('#link_text').val();
     let hideChoice = $parent.find('#hide_choice').is(':checked') ? 1 : 0;
+    let showNewPage = $parent.find('#show_new_page').is(':checked') ? 1 : 0;
 
     // Create the page and display it
     $.ajax({
@@ -11,7 +12,8 @@ function newPage($this, url, linkText) {
         'data': {
             'page_from': pageId,
             'link_text': text,
-            'hidden': hideChoice
+            'hidden': hideChoice,
+            'showNewPage': showNewPage
         },
         'method': 'POST'
     })

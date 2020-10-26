@@ -7,5 +7,5 @@ return array (
     'list_wip_title' => 'En cours',
     'link_stories_draft' => 'Mes histoires',
     'number_stories' => 'Nombre d\'histoires (publiées / brouillons)',
-    'number_games' => 'Nombre de parties jouées',
+    'number_games' => 'Nombre de parties démarrées',
 );
