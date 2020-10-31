@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class StoryOptionsTableSeeder extends Seeder
@@ -12,12 +14,12 @@ class StoryOptionsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('story_options')->delete();
-        
+
         \DB::table('story_options')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'story_id' => 4,
@@ -30,7 +32,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-05-09 14:04:47',
                 'deleted_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'story_id' => 5,
@@ -43,7 +45,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 11:26:15',
                 'deleted_at' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'story_id' => 6,
@@ -56,7 +58,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-05-17 09:19:23',
                 'deleted_at' => NULL,
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'story_id' => 7,
@@ -69,7 +71,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-05-19 08:56:06',
                 'deleted_at' => NULL,
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'story_id' => 8,
@@ -82,7 +84,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-05-19 12:45:56',
                 'deleted_at' => NULL,
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'story_id' => 9,
@@ -95,7 +97,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-05-23 20:26:02',
                 'deleted_at' => NULL,
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'story_id' => 10,
@@ -108,7 +110,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-05-25 20:39:11',
                 'deleted_at' => NULL,
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'story_id' => 11,
@@ -121,7 +123,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-05-28 15:19:26',
                 'deleted_at' => NULL,
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'story_id' => 12,
@@ -134,7 +136,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-05-29 08:35:09',
                 'deleted_at' => NULL,
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
                 'story_id' => 13,
@@ -147,7 +149,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 14:59:41',
                 'deleted_at' => NULL,
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
                 'story_id' => 14,
@@ -160,7 +162,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 15:03:05',
                 'deleted_at' => NULL,
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 12,
                 'story_id' => 15,
@@ -173,7 +175,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-06-20 07:41:30',
                 'deleted_at' => NULL,
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 13,
                 'story_id' => 16,
@@ -186,7 +188,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-06-20 17:07:57',
                 'deleted_at' => NULL,
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 14,
                 'story_id' => 17,
@@ -199,7 +201,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-06-21 09:51:54',
                 'deleted_at' => NULL,
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 15,
                 'story_id' => 18,
@@ -212,7 +214,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-06-30 07:05:00',
                 'deleted_at' => NULL,
             ),
-            15 => 
+            15 =>
             array (
                 'id' => 16,
                 'story_id' => 19,
@@ -225,7 +227,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-07-28 12:56:21',
                 'deleted_at' => NULL,
             ),
-            16 => 
+            16 =>
             array (
                 'id' => 17,
                 'story_id' => 20,
@@ -238,7 +240,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-08-05 16:41:59',
                 'deleted_at' => NULL,
             ),
-            17 => 
+            17 =>
             array (
                 'id' => 18,
                 'story_id' => 21,
@@ -251,7 +253,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-08-05 16:42:12',
                 'deleted_at' => NULL,
             ),
-            18 => 
+            18 =>
             array (
                 'id' => 19,
                 'story_id' => 22,
@@ -264,7 +266,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-08-12 13:56:18',
                 'deleted_at' => NULL,
             ),
-            19 => 
+            19 =>
             array (
                 'id' => 20,
                 'story_id' => 23,
@@ -277,7 +279,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'updated_at' => '2020-08-13 04:37:14',
                 'deleted_at' => NULL,
             ),
-            20 => 
+            20 =>
             array (
                 'id' => 21,
                 'story_id' => 24,
@@ -291,7 +293,7 @@ class StoryOptionsTableSeeder extends Seeder
                 'deleted_at' => NULL,
             ),
         ));
-        
-        
+
+
     }
 }

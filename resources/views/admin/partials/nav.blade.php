@@ -18,10 +18,6 @@
 <div class="card">
     <ul class="list-group list-group-flush">
         <li class="list-group-item">
-            <span class="glyphicon glyphicon-globe mr-2"></span>
-            <a href="{{ url('/translations') }}" class="stretched-link" target="_blank">{{ trans('admin.locale_title') }}</a>
-        </li>
-        <li class="list-group-item">
             <span class="glyphicon glyphicon-remove mr-2"></span>
             <a href="{{ route('admin.clear.cache') }}" class="stretched-link">{{ trans('admin.clear_cache') }}</a>
         </li>

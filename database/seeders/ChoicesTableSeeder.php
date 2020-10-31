@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class ChoicesTableSeeder extends Seeder
@@ -12,12 +14,12 @@ class ChoicesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('choices')->delete();
-        
+
         \DB::table('choices')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 86,
                 'page_from' => 1,
@@ -26,7 +28,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 87,
                 'page_from' => 2,
@@ -35,7 +37,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 88,
                 'page_from' => 3,
@@ -44,7 +46,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 89,
                 'page_from' => 3,
@@ -53,7 +55,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 90,
                 'page_from' => 4,
@@ -62,7 +64,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 91,
                 'page_from' => 4,
@@ -71,7 +73,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 92,
                 'page_from' => 7,
@@ -80,7 +82,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 93,
                 'page_from' => 6,
@@ -89,7 +91,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 94,
                 'page_from' => 8,
@@ -98,7 +100,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 95,
                 'page_from' => 9,
@@ -107,7 +109,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 96,
                 'page_from' => 10,
@@ -116,7 +118,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 97,
                 'page_from' => 29,
@@ -125,7 +127,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 98,
                 'page_from' => 29,
@@ -134,7 +136,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 99,
                 'page_from' => 12,
@@ -143,7 +145,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 100,
                 'page_from' => 12,
@@ -152,7 +154,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            15 => 
+            15 =>
             array (
                 'id' => 101,
                 'page_from' => 14,
@@ -161,7 +163,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            16 => 
+            16 =>
             array (
                 'id' => 102,
                 'page_from' => 14,
@@ -170,7 +172,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            17 => 
+            17 =>
             array (
                 'id' => 103,
                 'page_from' => 14,
@@ -179,7 +181,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            18 => 
+            18 =>
             array (
                 'id' => 104,
                 'page_from' => 18,
@@ -188,7 +190,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            19 => 
+            19 =>
             array (
                 'id' => 105,
                 'page_from' => 18,
@@ -197,7 +199,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            20 => 
+            20 =>
             array (
                 'id' => 106,
                 'page_from' => 18,
@@ -206,7 +208,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            21 => 
+            21 =>
             array (
                 'id' => 107,
                 'page_from' => 18,
@@ -215,7 +217,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            22 => 
+            22 =>
             array (
                 'id' => 108,
                 'page_from' => 16,
@@ -224,7 +226,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            23 => 
+            23 =>
             array (
                 'id' => 110,
                 'page_from' => 22,
@@ -233,7 +235,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            24 => 
+            24 =>
             array (
                 'id' => 111,
                 'page_from' => 22,
@@ -242,7 +244,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            25 => 
+            25 =>
             array (
                 'id' => 112,
                 'page_from' => 18,
@@ -251,7 +253,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            26 => 
+            26 =>
             array (
                 'id' => 131,
                 'page_from' => 72,
@@ -260,7 +262,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            27 => 
+            27 =>
             array (
                 'id' => 132,
                 'page_from' => 72,
@@ -269,7 +271,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            28 => 
+            28 =>
             array (
                 'id' => 133,
                 'page_from' => 74,
@@ -278,7 +280,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            29 => 
+            29 =>
             array (
                 'id' => 134,
                 'page_from' => 75,
@@ -287,7 +289,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            30 => 
+            30 =>
             array (
                 'id' => 135,
                 'page_from' => 75,
@@ -296,7 +298,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            31 => 
+            31 =>
             array (
                 'id' => 136,
                 'page_from' => 77,
@@ -305,7 +307,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            32 => 
+            32 =>
             array (
                 'id' => 137,
                 'page_from' => 76,
@@ -314,7 +316,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            33 => 
+            33 =>
             array (
                 'id' => 138,
                 'page_from' => 74,
@@ -323,7 +325,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            34 => 
+            34 =>
             array (
                 'id' => 139,
                 'page_from' => 81,
@@ -332,7 +334,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            35 => 
+            35 =>
             array (
                 'id' => 140,
                 'page_from' => 83,
@@ -341,7 +343,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            36 => 
+            36 =>
             array (
                 'id' => 142,
                 'page_from' => 81,
@@ -350,7 +352,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            37 => 
+            37 =>
             array (
                 'id' => 143,
                 'page_from' => 93,
@@ -359,7 +361,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            38 => 
+            38 =>
             array (
                 'id' => 144,
                 'page_from' => 93,
@@ -368,7 +370,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            39 => 
+            39 =>
             array (
                 'id' => 145,
                 'page_from' => 43,
@@ -377,7 +379,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            40 => 
+            40 =>
             array (
                 'id' => 146,
                 'page_from' => 43,
@@ -386,7 +388,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            41 => 
+            41 =>
             array (
                 'id' => 147,
                 'page_from' => 44,
@@ -395,7 +397,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            42 => 
+            42 =>
             array (
                 'id' => 148,
                 'page_from' => 44,
@@ -404,7 +406,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            43 => 
+            43 =>
             array (
                 'id' => 149,
                 'page_from' => 6,
@@ -413,7 +415,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            44 => 
+            44 =>
             array (
                 'id' => 150,
                 'page_from' => 7,
@@ -422,7 +424,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            45 => 
+            45 =>
             array (
                 'id' => 151,
                 'page_from' => 125,
@@ -431,7 +433,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            46 => 
+            46 =>
             array (
                 'id' => 152,
                 'page_from' => 125,
@@ -440,7 +442,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            47 => 
+            47 =>
             array (
                 'id' => 153,
                 'page_from' => 126,
@@ -449,7 +451,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            48 => 
+            48 =>
             array (
                 'id' => 154,
                 'page_from' => 126,
@@ -458,7 +460,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            49 => 
+            49 =>
             array (
                 'id' => 155,
                 'page_from' => 131,
@@ -467,7 +469,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            50 => 
+            50 =>
             array (
                 'id' => 156,
                 'page_from' => 132,
@@ -476,7 +478,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            51 => 
+            51 =>
             array (
                 'id' => 157,
                 'page_from' => 133,
@@ -485,7 +487,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            52 => 
+            52 =>
             array (
                 'id' => 158,
                 'page_from' => 134,
@@ -494,7 +496,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            53 => 
+            53 =>
             array (
                 'id' => 159,
                 'page_from' => 135,
@@ -503,7 +505,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            54 => 
+            54 =>
             array (
                 'id' => 160,
                 'page_from' => 136,
@@ -512,7 +514,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            55 => 
+            55 =>
             array (
                 'id' => 161,
                 'page_from' => 137,
@@ -521,7 +523,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            56 => 
+            56 =>
             array (
                 'id' => 162,
                 'page_from' => 137,
@@ -530,7 +532,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            57 => 
+            57 =>
             array (
                 'id' => 163,
                 'page_from' => 137,
@@ -539,7 +541,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            58 => 
+            58 =>
             array (
                 'id' => 164,
                 'page_from' => 104,
@@ -548,7 +550,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            59 => 
+            59 =>
             array (
                 'id' => 165,
                 'page_from' => 104,
@@ -557,7 +559,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            60 => 
+            60 =>
             array (
                 'id' => 166,
                 'page_from' => 104,
@@ -566,7 +568,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            61 => 
+            61 =>
             array (
                 'id' => 167,
                 'page_from' => 143,
@@ -575,7 +577,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            62 => 
+            62 =>
             array (
                 'id' => 169,
                 'page_from' => 143,
@@ -584,7 +586,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            63 => 
+            63 =>
             array (
                 'id' => 170,
                 'page_from' => 143,
@@ -593,7 +595,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            64 => 
+            64 =>
             array (
                 'id' => 172,
                 'page_from' => 103,
@@ -602,7 +604,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            65 => 
+            65 =>
             array (
                 'id' => 173,
                 'page_from' => 151,
@@ -611,7 +613,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            66 => 
+            66 =>
             array (
                 'id' => 174,
                 'page_from' => 154,
@@ -620,7 +622,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            67 => 
+            67 =>
             array (
                 'id' => 176,
                 'page_from' => 154,
@@ -629,7 +631,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            68 => 
+            68 =>
             array (
                 'id' => 177,
                 'page_from' => 158,
@@ -638,7 +640,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            69 => 
+            69 =>
             array (
                 'id' => 178,
                 'page_from' => 159,
@@ -647,7 +649,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            70 => 
+            70 =>
             array (
                 'id' => 180,
                 'page_from' => 161,
@@ -656,7 +658,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            71 => 
+            71 =>
             array (
                 'id' => 181,
                 'page_from' => 166,
@@ -665,7 +667,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            72 => 
+            72 =>
             array (
                 'id' => 182,
                 'page_from' => 167,
@@ -674,7 +676,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            73 => 
+            73 =>
             array (
                 'id' => 183,
                 'page_from' => 169,
@@ -683,7 +685,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            74 => 
+            74 =>
             array (
                 'id' => 184,
                 'page_from' => 170,
@@ -692,7 +694,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            75 => 
+            75 =>
             array (
                 'id' => 185,
                 'page_from' => 169,
@@ -701,7 +703,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            76 => 
+            76 =>
             array (
                 'id' => 186,
                 'page_from' => 166,
@@ -710,7 +712,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            77 => 
+            77 =>
             array (
                 'id' => 187,
                 'page_from' => 171,
@@ -719,7 +721,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            78 => 
+            78 =>
             array (
                 'id' => 188,
                 'page_from' => 173,
@@ -728,7 +730,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            79 => 
+            79 =>
             array (
                 'id' => 189,
                 'page_from' => 171,
@@ -737,7 +739,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            80 => 
+            80 =>
             array (
                 'id' => 190,
                 'page_from' => 171,
@@ -746,7 +748,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            81 => 
+            81 =>
             array (
                 'id' => 192,
                 'page_from' => 176,
@@ -755,7 +757,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            82 => 
+            82 =>
             array (
                 'id' => 193,
                 'page_from' => 175,
@@ -764,7 +766,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            83 => 
+            83 =>
             array (
                 'id' => 194,
                 'page_from' => 178,
@@ -773,7 +775,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            84 => 
+            84 =>
             array (
                 'id' => 195,
                 'page_from' => 179,
@@ -782,7 +784,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            85 => 
+            85 =>
             array (
                 'id' => 196,
                 'page_from' => 179,
@@ -791,7 +793,7 @@ class ChoicesTableSeeder extends Seeder
                 'hidden' => 0,
                 'deleted_at' => NULL,
             ),
-            86 => 
+            86 =>
             array (
                 'id' => 197,
                 'page_from' => 181,
@@ -801,7 +803,7 @@ class ChoicesTableSeeder extends Seeder
                 'deleted_at' => NULL,
             ),
         ));
-        
-        
+
+
     }
 }

@@ -169,7 +169,6 @@ return [
          */
         Orangehill\Iseed\IseedServiceProvider::class,
         Tightenco\Ziggy\ZiggyServiceProvider::class,
-        Barryvdh\TranslationManager\ManagerServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*

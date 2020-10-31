@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class PagesTableSeeder extends Seeder
@@ -12,12 +14,12 @@ class PagesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('pages')->delete();
-        
+
         \DB::table('pages')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'story_id' => 2,
@@ -31,7 +33,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-18 20:37:21',
                 'deleted_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'story_id' => 2,
@@ -45,7 +47,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 16:39:49',
                 'deleted_at' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'story_id' => 2,
@@ -59,7 +61,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 16:42:35',
                 'deleted_at' => NULL,
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'story_id' => 2,
@@ -73,7 +75,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 21:11:54',
                 'deleted_at' => NULL,
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'story_id' => 2,
@@ -87,7 +89,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 16:45:34',
                 'deleted_at' => NULL,
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'story_id' => 2,
@@ -101,7 +103,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 21:18:08',
                 'deleted_at' => NULL,
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'story_id' => 2,
@@ -115,7 +117,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 21:24:39',
                 'deleted_at' => NULL,
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'story_id' => 2,
@@ -129,7 +131,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 21:27:20',
                 'deleted_at' => NULL,
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'story_id' => 2,
@@ -143,7 +145,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 21:29:03',
                 'deleted_at' => NULL,
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
                 'story_id' => 2,
@@ -157,7 +159,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2019-12-21 21:31:26',
                 'deleted_at' => NULL,
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
                 'story_id' => 2,
@@ -171,7 +173,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-14 03:48:11',
                 'deleted_at' => NULL,
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 12,
                 'story_id' => 4,
@@ -185,7 +187,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-09 14:07:21',
                 'deleted_at' => NULL,
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 14,
                 'story_id' => 4,
@@ -199,7 +201,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-10 07:43:08',
                 'deleted_at' => NULL,
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 15,
                 'story_id' => 4,
@@ -213,7 +215,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-09 14:53:41',
                 'deleted_at' => NULL,
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 16,
                 'story_id' => 4,
@@ -227,7 +229,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-10 09:03:12',
                 'deleted_at' => NULL,
             ),
-            15 => 
+            15 =>
             array (
                 'id' => 17,
                 'story_id' => 4,
@@ -248,7 +250,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-11 11:48:57',
                 'deleted_at' => NULL,
             ),
-            16 => 
+            16 =>
             array (
                 'id' => 18,
                 'story_id' => 4,
@@ -262,7 +264,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-15 20:48:39',
                 'deleted_at' => NULL,
             ),
-            17 => 
+            17 =>
             array (
                 'id' => 19,
                 'story_id' => 4,
@@ -276,7 +278,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-11 06:26:43',
                 'deleted_at' => NULL,
             ),
-            18 => 
+            18 =>
             array (
                 'id' => 20,
                 'story_id' => 4,
@@ -290,7 +292,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-10 08:51:46',
                 'deleted_at' => NULL,
             ),
-            19 => 
+            19 =>
             array (
                 'id' => 21,
                 'story_id' => 4,
@@ -304,7 +306,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-11 06:26:38',
                 'deleted_at' => NULL,
             ),
-            20 => 
+            20 =>
             array (
                 'id' => 22,
                 'story_id' => 4,
@@ -318,7 +320,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-11 19:43:35',
                 'deleted_at' => NULL,
             ),
-            21 => 
+            21 =>
             array (
                 'id' => 27,
                 'story_id' => 4,
@@ -332,7 +334,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-11 19:40:43',
                 'deleted_at' => NULL,
             ),
-            22 => 
+            22 =>
             array (
                 'id' => 28,
                 'story_id' => 4,
@@ -346,7 +348,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-17 09:17:08',
                 'deleted_at' => NULL,
             ),
-            23 => 
+            23 =>
             array (
                 'id' => 29,
                 'story_id' => 5,
@@ -360,7 +362,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 11:31:30',
                 'deleted_at' => NULL,
             ),
-            24 => 
+            24 =>
             array (
                 'id' => 30,
                 'story_id' => 5,
@@ -374,7 +376,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 11:36:55',
                 'deleted_at' => NULL,
             ),
-            25 => 
+            25 =>
             array (
                 'id' => 31,
                 'story_id' => 5,
@@ -388,7 +390,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 11:36:42',
                 'deleted_at' => NULL,
             ),
-            26 => 
+            26 =>
             array (
                 'id' => 32,
                 'story_id' => 4,
@@ -402,7 +404,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-15 21:45:26',
                 'deleted_at' => NULL,
             ),
-            27 => 
+            27 =>
             array (
                 'id' => 33,
                 'story_id' => 4,
@@ -416,7 +418,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-16 14:44:34',
                 'deleted_at' => NULL,
             ),
-            28 => 
+            28 =>
             array (
                 'id' => 34,
                 'story_id' => 4,
@@ -430,7 +432,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-16 14:44:56',
                 'deleted_at' => NULL,
             ),
-            29 => 
+            29 =>
             array (
                 'id' => 35,
                 'story_id' => 4,
@@ -444,7 +446,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-16 14:56:30',
                 'deleted_at' => '2020-05-16 14:56:30',
             ),
-            30 => 
+            30 =>
             array (
                 'id' => 36,
                 'story_id' => 4,
@@ -458,7 +460,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-16 14:59:37',
                 'deleted_at' => NULL,
             ),
-            31 => 
+            31 =>
             array (
                 'id' => 37,
                 'story_id' => 4,
@@ -472,7 +474,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-16 15:00:16',
                 'deleted_at' => NULL,
             ),
-            32 => 
+            32 =>
             array (
                 'id' => 38,
                 'story_id' => 4,
@@ -486,7 +488,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-16 15:00:55',
                 'deleted_at' => NULL,
             ),
-            33 => 
+            33 =>
             array (
                 'id' => 39,
                 'story_id' => 4,
@@ -500,7 +502,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-16 20:18:52',
                 'deleted_at' => NULL,
             ),
-            34 => 
+            34 =>
             array (
                 'id' => 40,
                 'story_id' => 4,
@@ -514,7 +516,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-16 20:19:47',
                 'deleted_at' => NULL,
             ),
-            35 => 
+            35 =>
             array (
                 'id' => 41,
                 'story_id' => 4,
@@ -528,7 +530,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-16 20:30:43',
                 'deleted_at' => NULL,
             ),
-            36 => 
+            36 =>
             array (
                 'id' => 42,
                 'story_id' => 4,
@@ -542,7 +544,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-17 09:18:46',
                 'deleted_at' => NULL,
             ),
-            37 => 
+            37 =>
             array (
                 'id' => 43,
                 'story_id' => 6,
@@ -556,7 +558,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-28 03:03:53',
                 'deleted_at' => '2020-05-28 03:03:53',
             ),
-            38 => 
+            38 =>
             array (
                 'id' => 44,
                 'story_id' => 6,
@@ -570,7 +572,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-28 03:03:53',
                 'deleted_at' => '2020-05-28 03:03:53',
             ),
-            39 => 
+            39 =>
             array (
                 'id' => 45,
                 'story_id' => 6,
@@ -584,7 +586,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-27 20:21:45',
                 'deleted_at' => '2020-05-27 20:21:45',
             ),
-            40 => 
+            40 =>
             array (
                 'id' => 46,
                 'story_id' => 6,
@@ -598,7 +600,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-28 03:03:53',
                 'deleted_at' => '2020-05-28 03:03:53',
             ),
-            41 => 
+            41 =>
             array (
                 'id' => 47,
                 'story_id' => 6,
@@ -612,7 +614,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-27 20:21:50',
                 'deleted_at' => '2020-05-27 20:21:50',
             ),
-            42 => 
+            42 =>
             array (
                 'id' => 48,
                 'story_id' => 6,
@@ -626,7 +628,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-27 20:21:54',
                 'deleted_at' => '2020-05-27 20:21:54',
             ),
-            43 => 
+            43 =>
             array (
                 'id' => 49,
                 'story_id' => 6,
@@ -640,7 +642,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-27 20:21:57',
                 'deleted_at' => '2020-05-27 20:21:57',
             ),
-            44 => 
+            44 =>
             array (
                 'id' => 50,
                 'story_id' => 6,
@@ -654,7 +656,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-27 20:21:59',
                 'deleted_at' => '2020-05-27 20:21:59',
             ),
-            45 => 
+            45 =>
             array (
                 'id' => 51,
                 'story_id' => 6,
@@ -668,7 +670,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-27 20:22:02',
                 'deleted_at' => '2020-05-27 20:22:02',
             ),
-            46 => 
+            46 =>
             array (
                 'id' => 52,
                 'story_id' => 6,
@@ -682,7 +684,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-27 20:22:04',
                 'deleted_at' => '2020-05-27 20:22:04',
             ),
-            47 => 
+            47 =>
             array (
                 'id' => 53,
                 'story_id' => 6,
@@ -696,7 +698,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-27 20:22:07',
                 'deleted_at' => '2020-05-27 20:22:07',
             ),
-            48 => 
+            48 =>
             array (
                 'id' => 54,
                 'story_id' => 6,
@@ -710,7 +712,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-28 03:03:53',
                 'deleted_at' => '2020-05-28 03:03:53',
             ),
-            49 => 
+            49 =>
             array (
                 'id' => 55,
                 'story_id' => 6,
@@ -724,7 +726,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-28 03:03:53',
                 'deleted_at' => '2020-05-28 03:03:53',
             ),
-            50 => 
+            50 =>
             array (
                 'id' => 56,
                 'story_id' => 6,
@@ -738,7 +740,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-27 20:22:12',
                 'deleted_at' => '2020-05-27 20:22:12',
             ),
-            51 => 
+            51 =>
             array (
                 'id' => 57,
                 'story_id' => 4,
@@ -752,7 +754,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-18 13:06:16',
                 'deleted_at' => NULL,
             ),
-            52 => 
+            52 =>
             array (
                 'id' => 58,
                 'story_id' => 4,
@@ -766,7 +768,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-18 13:06:28',
                 'deleted_at' => NULL,
             ),
-            53 => 
+            53 =>
             array (
                 'id' => 59,
                 'story_id' => 4,
@@ -780,7 +782,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-18 13:18:23',
                 'deleted_at' => NULL,
             ),
-            54 => 
+            54 =>
             array (
                 'id' => 60,
                 'story_id' => 4,
@@ -794,7 +796,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-18 13:18:32',
                 'deleted_at' => NULL,
             ),
-            55 => 
+            55 =>
             array (
                 'id' => 61,
                 'story_id' => 4,
@@ -808,7 +810,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-18 13:18:50',
                 'deleted_at' => NULL,
             ),
-            56 => 
+            56 =>
             array (
                 'id' => 62,
                 'story_id' => 4,
@@ -822,7 +824,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-18 13:30:39',
                 'deleted_at' => NULL,
             ),
-            57 => 
+            57 =>
             array (
                 'id' => 72,
                 'story_id' => 7,
@@ -836,7 +838,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-18 18:12:07',
                 'deleted_at' => NULL,
             ),
-            58 => 
+            58 =>
             array (
                 'id' => 73,
                 'story_id' => 7,
@@ -850,7 +852,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-18 18:13:51',
                 'deleted_at' => NULL,
             ),
-            59 => 
+            59 =>
             array (
                 'id' => 74,
                 'story_id' => 7,
@@ -864,7 +866,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-23 04:01:38',
                 'deleted_at' => NULL,
             ),
-            60 => 
+            60 =>
             array (
                 'id' => 75,
                 'story_id' => 7,
@@ -878,7 +880,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-19 09:02:24',
                 'deleted_at' => NULL,
             ),
-            61 => 
+            61 =>
             array (
                 'id' => 76,
                 'story_id' => 7,
@@ -892,7 +894,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-19 09:14:05',
                 'deleted_at' => NULL,
             ),
-            62 => 
+            62 =>
             array (
                 'id' => 77,
                 'story_id' => 7,
@@ -906,7 +908,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-19 08:40:13',
                 'deleted_at' => NULL,
             ),
-            63 => 
+            63 =>
             array (
                 'id' => 78,
                 'story_id' => 7,
@@ -920,7 +922,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-19 09:14:52',
                 'deleted_at' => '2020-05-19 09:14:52',
             ),
-            64 => 
+            64 =>
             array (
                 'id' => 79,
                 'story_id' => 7,
@@ -934,7 +936,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-19 09:14:59',
                 'deleted_at' => '2020-05-19 09:14:59',
             ),
-            65 => 
+            65 =>
             array (
                 'id' => 80,
                 'story_id' => 7,
@@ -948,7 +950,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-19 12:10:33',
                 'deleted_at' => '2020-05-19 12:10:33',
             ),
-            66 => 
+            66 =>
             array (
                 'id' => 81,
                 'story_id' => 7,
@@ -962,7 +964,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-19 12:14:05',
                 'deleted_at' => NULL,
             ),
-            67 => 
+            67 =>
             array (
                 'id' => 82,
                 'story_id' => 7,
@@ -976,7 +978,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-20 09:29:41',
                 'deleted_at' => '2020-05-20 09:29:41',
             ),
-            68 => 
+            68 =>
             array (
                 'id' => 83,
                 'story_id' => 8,
@@ -990,7 +992,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-19 13:13:37',
                 'deleted_at' => NULL,
             ),
-            69 => 
+            69 =>
             array (
                 'id' => 86,
                 'story_id' => 8,
@@ -1004,7 +1006,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-19 13:34:38',
                 'deleted_at' => '2020-05-19 13:34:38',
             ),
-            70 => 
+            70 =>
             array (
                 'id' => 93,
                 'story_id' => 8,
@@ -1018,7 +1020,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-21 04:27:41',
                 'deleted_at' => NULL,
             ),
-            71 => 
+            71 =>
             array (
                 'id' => 94,
                 'story_id' => 8,
@@ -1032,7 +1034,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-21 04:25:28',
                 'deleted_at' => '2020-05-21 04:25:28',
             ),
-            72 => 
+            72 =>
             array (
                 'id' => 95,
                 'story_id' => 8,
@@ -1046,7 +1048,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-21 04:26:22',
                 'deleted_at' => '2020-05-21 04:26:22',
             ),
-            73 => 
+            73 =>
             array (
                 'id' => 96,
                 'story_id' => 8,
@@ -1060,7 +1062,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-21 04:25:35',
                 'deleted_at' => '2020-05-21 04:25:35',
             ),
-            74 => 
+            74 =>
             array (
                 'id' => 97,
                 'story_id' => 8,
@@ -1074,7 +1076,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-21 04:26:28',
                 'deleted_at' => '2020-05-21 04:26:28',
             ),
-            75 => 
+            75 =>
             array (
                 'id' => 98,
                 'story_id' => 8,
@@ -1088,7 +1090,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-21 04:27:14',
                 'deleted_at' => '2020-05-21 04:27:14',
             ),
-            76 => 
+            76 =>
             array (
                 'id' => 99,
                 'story_id' => 8,
@@ -1102,7 +1104,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-21 04:27:09',
                 'deleted_at' => '2020-05-21 04:27:09',
             ),
-            77 => 
+            77 =>
             array (
                 'id' => 100,
                 'story_id' => 8,
@@ -1116,7 +1118,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-21 04:26:52',
                 'deleted_at' => '2020-05-21 04:26:52',
             ),
-            78 => 
+            78 =>
             array (
                 'id' => 101,
                 'story_id' => 8,
@@ -1130,7 +1132,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-21 04:26:47',
                 'deleted_at' => '2020-05-21 04:26:47',
             ),
-            79 => 
+            79 =>
             array (
                 'id' => 102,
                 'story_id' => 7,
@@ -1144,7 +1146,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-05-21 05:08:02',
                 'deleted_at' => NULL,
             ),
-            80 => 
+            80 =>
             array (
                 'id' => 103,
                 'story_id' => 8,
@@ -1158,7 +1160,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-12 11:55:49',
                 'deleted_at' => NULL,
             ),
-            81 => 
+            81 =>
             array (
                 'id' => 104,
                 'story_id' => 8,
@@ -1172,7 +1174,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-12 12:11:40',
                 'deleted_at' => NULL,
             ),
-            82 => 
+            82 =>
             array (
                 'id' => 105,
                 'story_id' => 7,
@@ -1186,7 +1188,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 17:16:54',
                 'deleted_at' => '2020-06-02 17:16:54',
             ),
-            83 => 
+            83 =>
             array (
                 'id' => 106,
                 'story_id' => 7,
@@ -1200,7 +1202,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 17:17:02',
                 'deleted_at' => '2020-06-02 17:17:02',
             ),
-            84 => 
+            84 =>
             array (
                 'id' => 107,
                 'story_id' => 7,
@@ -1214,7 +1216,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 17:17:00',
                 'deleted_at' => '2020-06-02 17:17:00',
             ),
-            85 => 
+            85 =>
             array (
                 'id' => 108,
                 'story_id' => 7,
@@ -1228,7 +1230,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 17:16:59',
                 'deleted_at' => '2020-06-02 17:16:59',
             ),
-            86 => 
+            86 =>
             array (
                 'id' => 109,
                 'story_id' => 7,
@@ -1242,7 +1244,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 17:16:49',
                 'deleted_at' => '2020-06-02 17:16:49',
             ),
-            87 => 
+            87 =>
             array (
                 'id' => 110,
                 'story_id' => 7,
@@ -1256,7 +1258,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 17:17:05',
                 'deleted_at' => '2020-06-02 17:17:05',
             ),
-            88 => 
+            88 =>
             array (
                 'id' => 111,
                 'story_id' => 7,
@@ -1270,7 +1272,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 17:17:06',
                 'deleted_at' => '2020-06-02 17:17:06',
             ),
-            89 => 
+            89 =>
             array (
                 'id' => 112,
                 'story_id' => 7,
@@ -1284,7 +1286,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 17:17:13',
                 'deleted_at' => '2020-06-02 17:17:13',
             ),
-            90 => 
+            90 =>
             array (
                 'id' => 113,
                 'story_id' => 7,
@@ -1298,7 +1300,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 17:17:12',
                 'deleted_at' => '2020-06-02 17:17:12',
             ),
-            91 => 
+            91 =>
             array (
                 'id' => 114,
                 'story_id' => 7,
@@ -1312,7 +1314,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 17:17:10',
                 'deleted_at' => '2020-06-02 17:17:10',
             ),
-            92 => 
+            92 =>
             array (
                 'id' => 115,
                 'story_id' => 7,
@@ -1326,7 +1328,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 17:17:20',
                 'deleted_at' => '2020-06-02 17:17:20',
             ),
-            93 => 
+            93 =>
             array (
                 'id' => 116,
                 'story_id' => 7,
@@ -1340,7 +1342,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 17:17:17',
                 'deleted_at' => '2020-06-02 17:17:17',
             ),
-            94 => 
+            94 =>
             array (
                 'id' => 117,
                 'story_id' => 7,
@@ -1354,7 +1356,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 17:17:16',
                 'deleted_at' => '2020-06-02 17:17:16',
             ),
-            95 => 
+            95 =>
             array (
                 'id' => 118,
                 'story_id' => 7,
@@ -1368,7 +1370,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 17:17:25',
                 'deleted_at' => '2020-06-02 17:17:25',
             ),
-            96 => 
+            96 =>
             array (
                 'id' => 119,
                 'story_id' => 7,
@@ -1382,7 +1384,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 17:17:24',
                 'deleted_at' => '2020-06-02 17:17:24',
             ),
-            97 => 
+            97 =>
             array (
                 'id' => 120,
                 'story_id' => 7,
@@ -1396,7 +1398,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 17:17:23',
                 'deleted_at' => '2020-06-02 17:17:23',
             ),
-            98 => 
+            98 =>
             array (
                 'id' => 121,
                 'story_id' => 7,
@@ -1410,7 +1412,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 17:17:29',
                 'deleted_at' => '2020-06-02 17:17:29',
             ),
-            99 => 
+            99 =>
             array (
                 'id' => 122,
                 'story_id' => 7,
@@ -1424,7 +1426,7 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 17:17:08',
                 'deleted_at' => '2020-06-02 17:17:08',
             ),
-            100 => 
+            100 =>
             array (
                 'id' => 123,
                 'story_id' => 9,
@@ -1433,9 +1435,9 @@ class PagesTableSeeder extends Seeder
                 'title' => 'Titre',
                 'content' => '<p>Jean-Baptiste est ce qu’on appelle communément un homme ordinaire. Trentenaire optimiste – c’est-à-dire allant sur la quarantaine mais sans s’en rendre compte – il assure les services de maintenance dans un lycée modeste, remplaçant les néons et tondant la pelouse. Il est marié – ou plutôt l’a été. Il a deux petites filles qu’il voit pendant les vacances scolaires et emmène à la fête foraine.</p>
 <p>Mais Jean-Baptiste n’est pas toujours un homme ordinaire. Jean-Baptiste mène une double-vie. Mais il n’est pas un agent secret. Ni un super-héros. Ni strip-teaseur en cachette. </p>
-<p>Jean-Baptiste endosse régulièrement le costume de son autre vie, celle de François-Baptiste de La Férié, un gentilhomme du XVIème siècle. 
+<p>Jean-Baptiste endosse régulièrement le costume de son autre vie, celle de François-Baptiste de La Férié, un gentilhomme du XVIème siècle.
 En effet, Jean-Baptiste fait partie d’un groupe de « living history » baptisé – non sans fierté – Communauté de Gringue-Le-Château. </p>
-<p>Au sein du territoire de Gringue-Le-Château, domaine tout-à-fait privé et bien entouré de solides barbelés, les adeptes de cette période révolue se retrouvent donc à intervalles variables pour s’immerger dans la vie d’une population rurale du XVIème siècle. 
+<p>Au sein du territoire de Gringue-Le-Château, domaine tout-à-fait privé et bien entouré de solides barbelés, les adeptes de cette période révolue se retrouvent donc à intervalles variables pour s’immerger dans la vie d’une population rurale du XVIème siècle.
 Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la communauté de Gringue-Le-Château. Et son rôle, c’est celui de François-Baptiste de La Férié, gentilhomme de la petite noblesse.</p>',
                 'layout' => 'play1',
                 'is_checkpoint' => 0,
@@ -1443,7 +1445,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-05-23 20:25:42',
                 'deleted_at' => NULL,
             ),
-            101 => 
+            101 =>
             array (
                 'id' => 124,
                 'story_id' => 10,
@@ -1457,7 +1459,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-05-25 20:39:11',
                 'deleted_at' => NULL,
             ),
-            102 => 
+            102 =>
             array (
                 'id' => 125,
                 'story_id' => 11,
@@ -1471,7 +1473,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-05-28 15:22:15',
                 'deleted_at' => NULL,
             ),
-            103 => 
+            103 =>
             array (
                 'id' => 126,
                 'story_id' => 11,
@@ -1485,7 +1487,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-05-28 15:27:53',
                 'deleted_at' => NULL,
             ),
-            104 => 
+            104 =>
             array (
                 'id' => 127,
                 'story_id' => 11,
@@ -1499,7 +1501,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-05-28 15:33:34',
                 'deleted_at' => NULL,
             ),
-            105 => 
+            105 =>
             array (
                 'id' => 128,
                 'story_id' => 11,
@@ -1513,7 +1515,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-05-28 15:29:48',
                 'deleted_at' => NULL,
             ),
-            106 => 
+            106 =>
             array (
                 'id' => 129,
                 'story_id' => 11,
@@ -1527,7 +1529,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-05-28 15:30:59',
                 'deleted_at' => NULL,
             ),
-            107 => 
+            107 =>
             array (
                 'id' => 130,
                 'story_id' => 11,
@@ -1541,7 +1543,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-05-28 15:31:50',
                 'deleted_at' => NULL,
             ),
-            108 => 
+            108 =>
             array (
                 'id' => 131,
                 'story_id' => 12,
@@ -1555,7 +1557,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-05-29 08:39:24',
                 'deleted_at' => NULL,
             ),
-            109 => 
+            109 =>
             array (
                 'id' => 132,
                 'story_id' => 12,
@@ -1569,7 +1571,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-05-29 12:59:12',
                 'deleted_at' => NULL,
             ),
-            110 => 
+            110 =>
             array (
                 'id' => 133,
                 'story_id' => 12,
@@ -1583,7 +1585,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-05-29 13:21:33',
                 'deleted_at' => NULL,
             ),
-            111 => 
+            111 =>
             array (
                 'id' => 134,
                 'story_id' => 12,
@@ -1597,7 +1599,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-05-29 13:53:52',
                 'deleted_at' => NULL,
             ),
-            112 => 
+            112 =>
             array (
                 'id' => 135,
                 'story_id' => 12,
@@ -1611,7 +1613,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-05-29 14:20:25',
                 'deleted_at' => NULL,
             ),
-            113 => 
+            113 =>
             array (
                 'id' => 136,
                 'story_id' => 12,
@@ -1625,7 +1627,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-05-29 14:37:59',
                 'deleted_at' => NULL,
             ),
-            114 => 
+            114 =>
             array (
                 'id' => 137,
                 'story_id' => 12,
@@ -1639,7 +1641,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-05-29 14:59:25',
                 'deleted_at' => NULL,
             ),
-            115 => 
+            115 =>
             array (
                 'id' => 138,
                 'story_id' => 12,
@@ -1653,7 +1655,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-05-29 15:21:07',
                 'deleted_at' => NULL,
             ),
-            116 => 
+            116 =>
             array (
                 'id' => 139,
                 'story_id' => 12,
@@ -1667,7 +1669,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-06-02 14:51:59',
                 'deleted_at' => NULL,
             ),
-            117 => 
+            117 =>
             array (
                 'id' => 140,
                 'story_id' => 12,
@@ -1681,7 +1683,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-05-29 15:21:18',
                 'deleted_at' => NULL,
             ),
-            118 => 
+            118 =>
             array (
                 'id' => 141,
                 'story_id' => 13,
@@ -1695,7 +1697,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-06-02 15:08:07',
                 'deleted_at' => NULL,
             ),
-            119 => 
+            119 =>
             array (
                 'id' => 142,
                 'story_id' => 14,
@@ -1709,7 +1711,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-06-12 17:58:16',
                 'deleted_at' => '2020-06-12 17:58:16',
             ),
-            120 => 
+            120 =>
             array (
                 'id' => 143,
                 'story_id' => 8,
@@ -1723,7 +1725,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-06-12 11:38:24',
                 'deleted_at' => NULL,
             ),
-            121 => 
+            121 =>
             array (
                 'id' => 144,
                 'story_id' => 8,
@@ -1737,7 +1739,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-06-12 11:35:50',
                 'deleted_at' => NULL,
             ),
-            122 => 
+            122 =>
             array (
                 'id' => 145,
                 'story_id' => 8,
@@ -1751,7 +1753,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-06-12 12:07:59',
                 'deleted_at' => NULL,
             ),
-            123 => 
+            123 =>
             array (
                 'id' => 146,
                 'story_id' => 8,
@@ -1765,7 +1767,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-06-12 11:40:02',
                 'deleted_at' => '2020-06-12 11:40:02',
             ),
-            124 => 
+            124 =>
             array (
                 'id' => 147,
                 'story_id' => 8,
@@ -1779,7 +1781,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-07-17 12:47:15',
                 'deleted_at' => NULL,
             ),
-            125 => 
+            125 =>
             array (
                 'id' => 148,
                 'story_id' => 8,
@@ -1793,7 +1795,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-06-12 11:40:35',
                 'deleted_at' => '2020-06-12 11:40:35',
             ),
-            126 => 
+            126 =>
             array (
                 'id' => 149,
                 'story_id' => 8,
@@ -1807,7 +1809,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-07-17 12:49:11',
                 'deleted_at' => NULL,
             ),
-            127 => 
+            127 =>
             array (
                 'id' => 150,
                 'story_id' => 8,
@@ -1821,7 +1823,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-06-12 11:39:12',
                 'deleted_at' => NULL,
             ),
-            128 => 
+            128 =>
             array (
                 'id' => 151,
                 'story_id' => 15,
@@ -1835,7 +1837,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-06-20 09:58:50',
                 'deleted_at' => NULL,
             ),
-            129 => 
+            129 =>
             array (
                 'id' => 152,
                 'story_id' => 15,
@@ -1849,7 +1851,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-06-20 08:09:26',
                 'deleted_at' => NULL,
             ),
-            130 => 
+            130 =>
             array (
                 'id' => 153,
                 'story_id' => 16,
@@ -1863,7 +1865,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-06-20 17:07:38',
                 'deleted_at' => NULL,
             ),
-            131 => 
+            131 =>
             array (
                 'id' => 154,
                 'story_id' => 17,
@@ -1877,7 +1879,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-07-17 12:45:07',
                 'deleted_at' => NULL,
             ),
-            132 => 
+            132 =>
             array (
                 'id' => 155,
                 'story_id' => 18,
@@ -1891,7 +1893,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-06-30 07:05:00',
                 'deleted_at' => NULL,
             ),
-            133 => 
+            133 =>
             array (
                 'id' => 156,
                 'story_id' => 17,
@@ -1905,7 +1907,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-07-17 13:04:19',
                 'deleted_at' => NULL,
             ),
-            134 => 
+            134 =>
             array (
                 'id' => 157,
                 'story_id' => 17,
@@ -1919,7 +1921,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-07-17 13:03:35',
                 'deleted_at' => NULL,
             ),
-            135 => 
+            135 =>
             array (
                 'id' => 158,
                 'story_id' => 19,
@@ -1933,7 +1935,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-07-28 13:00:50',
                 'deleted_at' => NULL,
             ),
-            136 => 
+            136 =>
             array (
                 'id' => 159,
                 'story_id' => 19,
@@ -1947,7 +1949,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-07-28 13:03:49',
                 'deleted_at' => NULL,
             ),
-            137 => 
+            137 =>
             array (
                 'id' => 160,
                 'story_id' => 19,
@@ -1961,7 +1963,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-07-28 13:19:41',
                 'deleted_at' => NULL,
             ),
-            138 => 
+            138 =>
             array (
                 'id' => 161,
                 'story_id' => 19,
@@ -1975,7 +1977,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-07-28 13:22:28',
                 'deleted_at' => NULL,
             ),
-            139 => 
+            139 =>
             array (
                 'id' => 162,
                 'story_id' => 19,
@@ -1989,7 +1991,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-07-28 17:35:00',
                 'deleted_at' => NULL,
             ),
-            140 => 
+            140 =>
             array (
                 'id' => 163,
                 'story_id' => 20,
@@ -2003,7 +2005,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-08-05 16:42:00',
                 'deleted_at' => '2020-08-03 22:00:00',
             ),
-            141 => 
+            141 =>
             array (
                 'id' => 164,
                 'story_id' => 21,
@@ -2017,7 +2019,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-08-06 13:49:40',
                 'deleted_at' => NULL,
             ),
-            142 => 
+            142 =>
             array (
                 'id' => 165,
                 'story_id' => 22,
@@ -2031,7 +2033,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-08-12 13:56:19',
                 'deleted_at' => NULL,
             ),
-            143 => 
+            143 =>
             array (
                 'id' => 166,
                 'story_id' => 23,
@@ -2045,7 +2047,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-08-13 04:42:05',
                 'deleted_at' => NULL,
             ),
-            144 => 
+            144 =>
             array (
                 'id' => 167,
                 'story_id' => 23,
@@ -2059,7 +2061,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-08-13 05:29:54',
                 'deleted_at' => NULL,
             ),
-            145 => 
+            145 =>
             array (
                 'id' => 168,
                 'story_id' => 23,
@@ -2073,7 +2075,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-08-13 06:25:26',
                 'deleted_at' => NULL,
             ),
-            146 => 
+            146 =>
             array (
                 'id' => 169,
                 'story_id' => 23,
@@ -2087,7 +2089,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-08-13 06:57:03',
                 'deleted_at' => NULL,
             ),
-            147 => 
+            147 =>
             array (
                 'id' => 170,
                 'story_id' => 23,
@@ -2101,7 +2103,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
                 'updated_at' => '2020-08-14 04:27:18',
                 'deleted_at' => NULL,
             ),
-            148 => 
+            148 =>
             array (
                 'id' => 171,
                 'story_id' => 23,
@@ -2115,7 +2117,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
             'updated_at' => '2020-08-17 04:47:50',
             'deleted_at' => NULL,
         ),
-        149 => 
+        149 =>
         array (
             'id' => 172,
             'story_id' => 23,
@@ -2129,7 +2131,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
             'updated_at' => '2020-08-14 03:54:16',
             'deleted_at' => NULL,
         ),
-        150 => 
+        150 =>
         array (
             'id' => 173,
             'story_id' => 23,
@@ -2143,7 +2145,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
             'updated_at' => '2020-08-14 06:20:18',
             'deleted_at' => NULL,
         ),
-        151 => 
+        151 =>
         array (
             'id' => 174,
             'story_id' => 23,
@@ -2157,7 +2159,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
         'updated_at' => '2020-08-14 06:21:32',
         'deleted_at' => NULL,
     ),
-    152 => 
+    152 =>
     array (
         'id' => 175,
         'story_id' => 23,
@@ -2171,7 +2173,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
         'updated_at' => '2020-08-14 06:22:44',
         'deleted_at' => NULL,
     ),
-    153 => 
+    153 =>
     array (
         'id' => 176,
         'story_id' => 23,
@@ -2185,7 +2187,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
         'updated_at' => '2020-08-14 08:29:44',
         'deleted_at' => NULL,
     ),
-    154 => 
+    154 =>
     array (
         'id' => 178,
         'story_id' => 24,
@@ -2199,7 +2201,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
         'updated_at' => '2020-08-19 02:51:21',
         'deleted_at' => NULL,
     ),
-    155 => 
+    155 =>
     array (
         'id' => 179,
         'story_id' => 24,
@@ -2213,7 +2215,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
         'updated_at' => '2020-08-19 03:09:36',
         'deleted_at' => NULL,
     ),
-    156 => 
+    156 =>
     array (
         'id' => 180,
         'story_id' => 24,
@@ -2227,7 +2229,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
         'updated_at' => '2020-08-19 03:09:59',
         'deleted_at' => NULL,
     ),
-    157 => 
+    157 =>
     array (
         'id' => 181,
         'story_id' => 24,
@@ -2241,7 +2243,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
         'updated_at' => '2020-08-19 03:30:04',
         'deleted_at' => NULL,
     ),
-    158 => 
+    158 =>
     array (
         'id' => 182,
         'story_id' => 24,
@@ -2256,7 +2258,7 @@ Jean-Baptiste, donc, possède son propre rôle bien défini au sein de la commun
         'deleted_at' => NULL,
     ),
 ));
-        
-        
+
+
     }
 }

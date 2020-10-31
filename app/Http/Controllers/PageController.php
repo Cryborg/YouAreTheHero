@@ -45,7 +45,7 @@ class PageController extends Controller
                 $newPage['title'] = $request->get('link_text');
             }
 
-            $page     = factory(Page::class)->create($newPage);
+            $page     = Page::factory()->create($newPage);
 
             if ((bool) $request->get('showNewPage') === true) {
                 $redirect = route('page.edit', ['page' => $page]);

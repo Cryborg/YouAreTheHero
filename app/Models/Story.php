@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
@@ -10,8 +11,7 @@ use Laracasts\Presenter\PresentableTrait;
 
 class Story extends Model
 {
-    use PresentableTrait;
-    use SoftDeletes;
+    use PresentableTrait, SoftDeletes, HasFactory;
 
     protected $dates = ['deleted_at'];
     protected $presenter = 'App\\Presenters\\StoryPresenter';
@@ -117,7 +117,7 @@ class Story extends Model
             return $page;
         }
 
-        return factory(Page::class)->create([
+        return Page::factory()->create([
             'story_id' => $this->id,
         ]);
     }

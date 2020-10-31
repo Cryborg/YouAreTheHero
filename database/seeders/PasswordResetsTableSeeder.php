@@ -1,8 +1,10 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
-class CharacterPageTableSeeder extends Seeder
+class PasswordResetsTableSeeder extends Seeder
 {
 
     /**
@@ -12,11 +14,11 @@ class CharacterPageTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
-        \DB::table('character_page')->delete();
-        
-        
-        
+
+        \DB::table('password_resets')->delete();
+
+
+
     }
 }

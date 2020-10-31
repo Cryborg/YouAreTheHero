@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class PrerequisitesTableSeeder extends Seeder
@@ -12,12 +14,12 @@ class PrerequisitesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('prerequisites')->delete();
-        
+
         \DB::table('prerequisites')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'quantity' => 1,
@@ -28,7 +30,7 @@ class PrerequisitesTableSeeder extends Seeder
                 'updated_at' => '2020-05-14 06:03:21',
                 'deleted_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'quantity' => 1,
@@ -39,7 +41,7 @@ class PrerequisitesTableSeeder extends Seeder
                 'updated_at' => '2020-05-14 06:03:41',
                 'deleted_at' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'quantity' => 1,
@@ -50,7 +52,7 @@ class PrerequisitesTableSeeder extends Seeder
                 'updated_at' => '2020-05-14 06:03:53',
                 'deleted_at' => NULL,
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'quantity' => 1,
@@ -61,7 +63,7 @@ class PrerequisitesTableSeeder extends Seeder
                 'updated_at' => '2020-05-14 06:05:31',
                 'deleted_at' => NULL,
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'quantity' => 1,
@@ -72,7 +74,7 @@ class PrerequisitesTableSeeder extends Seeder
                 'updated_at' => '2020-07-28 13:01:40',
                 'deleted_at' => NULL,
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'quantity' => 1,
@@ -83,7 +85,7 @@ class PrerequisitesTableSeeder extends Seeder
                 'updated_at' => '2020-08-13 07:03:05',
                 'deleted_at' => NULL,
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'quantity' => 12,
@@ -94,7 +96,7 @@ class PrerequisitesTableSeeder extends Seeder
                 'updated_at' => '2020-08-14 06:56:11',
                 'deleted_at' => NULL,
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'quantity' => 12,
@@ -106,7 +108,7 @@ class PrerequisitesTableSeeder extends Seeder
                 'deleted_at' => NULL,
             ),
         ));
-        
-        
+
+
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class ActionsTableSeeder extends Seeder
@@ -12,12 +14,12 @@ class ActionsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('actions')->delete();
-        
+
         \DB::table('actions')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'trigger_type' => 'page',
@@ -29,7 +31,7 @@ class ActionsTableSeeder extends Seeder
                 'updated_at' => '2020-05-28 19:58:48',
                 'deleted_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'trigger_type' => 'page',
@@ -41,7 +43,7 @@ class ActionsTableSeeder extends Seeder
                 'updated_at' => '2020-05-29 14:46:50',
                 'deleted_at' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'trigger_type' => 'page',
@@ -53,7 +55,7 @@ class ActionsTableSeeder extends Seeder
                 'updated_at' => '2020-05-29 14:47:16',
                 'deleted_at' => NULL,
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'trigger_type' => 'page',
@@ -65,7 +67,7 @@ class ActionsTableSeeder extends Seeder
                 'updated_at' => '2020-05-29 14:47:44',
                 'deleted_at' => NULL,
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'trigger_type' => 'page',
@@ -77,7 +79,7 @@ class ActionsTableSeeder extends Seeder
                 'updated_at' => '2020-05-29 14:52:38',
                 'deleted_at' => NULL,
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'trigger_type' => 'page',
@@ -89,7 +91,7 @@ class ActionsTableSeeder extends Seeder
                 'updated_at' => '2020-08-13 06:53:35',
                 'deleted_at' => NULL,
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'trigger_type' => 'page',
@@ -102,7 +104,7 @@ class ActionsTableSeeder extends Seeder
                 'deleted_at' => NULL,
             ),
         ));
-        
-        
+
+
     }
 }

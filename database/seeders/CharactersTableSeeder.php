@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class CharactersTableSeeder extends Seeder
@@ -12,12 +14,12 @@ class CharactersTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('characters')->delete();
-        
+
         \DB::table('characters')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'name' => 'Unnamed',
@@ -29,7 +31,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-05-19 07:41:03',
                 'deleted_at' => '2020-05-19 07:41:03',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'name' => 'Unnamed',
@@ -41,7 +43,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-05-19 12:36:29',
                 'deleted_at' => '2020-05-19 12:36:29',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'name' => 'Cryborg',
@@ -53,7 +55,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-05-19 12:45:08',
                 'deleted_at' => '2020-05-19 12:45:08',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'name' => 'Cryborg',
@@ -65,7 +67,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-05 19:42:01',
                 'deleted_at' => '2020-06-05 19:42:01',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'name' => 'Unnamed',
@@ -77,7 +79,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-12 17:57:45',
                 'deleted_at' => '2020-06-12 17:57:45',
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'name' => 'Cryborg',
@@ -89,7 +91,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-12 17:57:56',
                 'deleted_at' => '2020-06-12 17:57:56',
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'name' => 'Unnamed',
@@ -101,7 +103,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-05-25 20:39:27',
                 'deleted_at' => NULL,
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'name' => 'Unnamed',
@@ -113,7 +115,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-12 17:58:08',
                 'deleted_at' => '2020-06-12 17:58:08',
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'name' => 'Unnamed',
@@ -125,7 +127,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-12 17:58:04',
                 'deleted_at' => '2020-06-12 17:58:04',
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
                 'name' => 'Unnamed',
@@ -137,7 +139,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-05-28 15:32:20',
                 'deleted_at' => '2020-05-28 15:32:20',
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
                 'name' => 'Unnamed',
@@ -149,7 +151,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-05-28 15:32:41',
                 'deleted_at' => '2020-05-28 15:32:41',
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 12,
                 'name' => 'Unnamed',
@@ -161,7 +163,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-05-28 15:32:52',
                 'deleted_at' => '2020-05-28 15:32:52',
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 13,
                 'name' => 'Unnamed',
@@ -173,7 +175,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-05-28 16:39:06',
                 'deleted_at' => '2020-05-28 16:39:06',
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 14,
                 'name' => 'Unnamed',
@@ -185,7 +187,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-05-29 11:10:34',
                 'deleted_at' => '2020-05-29 11:10:34',
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 15,
                 'name' => 'Unnamed',
@@ -197,7 +199,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-05-29 11:10:52',
                 'deleted_at' => '2020-05-29 11:10:52',
             ),
-            15 => 
+            15 =>
             array (
                 'id' => 16,
                 'name' => 'Unnamed',
@@ -209,7 +211,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-05-29 11:11:52',
                 'deleted_at' => '2020-05-29 11:11:52',
             ),
-            16 => 
+            16 =>
             array (
                 'id' => 17,
                 'name' => 'Unnamed',
@@ -221,7 +223,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-05-31 19:59:35',
                 'deleted_at' => '2020-05-31 19:59:35',
             ),
-            17 => 
+            17 =>
             array (
                 'id' => 18,
                 'name' => 'Cryborg',
@@ -233,7 +235,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 16:16:16',
                 'deleted_at' => '2020-06-02 16:16:16',
             ),
-            18 => 
+            18 =>
             array (
                 'id' => 19,
                 'name' => 'Cryborg',
@@ -245,7 +247,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-12 18:51:32',
                 'deleted_at' => '2020-06-12 18:51:32',
             ),
-            19 => 
+            19 =>
             array (
                 'id' => 20,
                 'name' => 'Unnamed',
@@ -257,7 +259,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-12 11:54:10',
                 'deleted_at' => '2020-06-12 11:54:10',
             ),
-            20 => 
+            20 =>
             array (
                 'id' => 21,
                 'name' => 'Unnamed',
@@ -269,7 +271,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-12 11:54:54',
                 'deleted_at' => '2020-06-12 11:54:54',
             ),
-            21 => 
+            21 =>
             array (
                 'id' => 22,
                 'name' => 'Unnamed',
@@ -281,7 +283,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-12 11:57:22',
                 'deleted_at' => '2020-06-12 11:57:22',
             ),
-            22 => 
+            22 =>
             array (
                 'id' => 23,
                 'name' => 'Unnamed',
@@ -293,7 +295,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-12 11:58:28',
                 'deleted_at' => '2020-06-12 11:58:28',
             ),
-            23 => 
+            23 =>
             array (
                 'id' => 24,
                 'name' => 'Unnamed',
@@ -305,7 +307,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-12 11:59:39',
                 'deleted_at' => '2020-06-12 11:59:39',
             ),
-            24 => 
+            24 =>
             array (
                 'id' => 25,
                 'name' => 'Unnamed',
@@ -317,7 +319,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-12 12:11:10',
                 'deleted_at' => '2020-06-12 12:11:10',
             ),
-            25 => 
+            25 =>
             array (
                 'id' => 26,
                 'name' => 'Cryborg',
@@ -329,7 +331,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-12 17:59:05',
                 'deleted_at' => '2020-06-12 17:59:05',
             ),
-            26 => 
+            26 =>
             array (
                 'id' => 27,
                 'name' => 'Cryborg',
@@ -341,7 +343,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-20 07:35:16',
                 'deleted_at' => '2020-06-20 07:35:16',
             ),
-            27 => 
+            27 =>
             array (
                 'id' => 28,
                 'name' => 'Cryborg',
@@ -353,7 +355,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-16 19:27:26',
                 'deleted_at' => '2020-06-16 19:27:26',
             ),
-            28 => 
+            28 =>
             array (
                 'id' => 29,
                 'name' => 'nos étoiles contraires',
@@ -365,7 +367,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-16 19:32:38',
                 'deleted_at' => NULL,
             ),
-            29 => 
+            29 =>
             array (
                 'id' => 30,
                 'name' => 'Cryborg',
@@ -377,7 +379,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-20 07:36:13',
                 'deleted_at' => '2020-06-20 07:36:13',
             ),
-            30 => 
+            30 =>
             array (
                 'id' => 31,
                 'name' => 'Unnamed',
@@ -389,7 +391,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-20 08:03:02',
                 'deleted_at' => '2020-06-20 08:03:02',
             ),
-            31 => 
+            31 =>
             array (
                 'id' => 32,
                 'name' => 'Unnamed',
@@ -401,7 +403,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-20 08:03:42',
                 'deleted_at' => NULL,
             ),
-            32 => 
+            32 =>
             array (
                 'id' => 33,
                 'name' => 'Unnamed',
@@ -413,7 +415,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-20 08:13:39',
                 'deleted_at' => '2020-06-20 08:13:39',
             ),
-            33 => 
+            33 =>
             array (
                 'id' => 34,
                 'name' => 'Unnamed',
@@ -425,7 +427,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-20 08:14:08',
                 'deleted_at' => '2020-06-20 08:14:08',
             ),
-            34 => 
+            34 =>
             array (
                 'id' => 35,
                 'name' => 'Unnamed',
@@ -437,7 +439,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-20 08:14:30',
                 'deleted_at' => '2020-06-20 08:14:30',
             ),
-            35 => 
+            35 =>
             array (
                 'id' => 36,
                 'name' => 'Unnamed',
@@ -449,7 +451,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-20 09:59:24',
                 'deleted_at' => '2020-06-20 09:59:24',
             ),
-            36 => 
+            36 =>
             array (
                 'id' => 37,
                 'name' => 'Unnamed',
@@ -461,7 +463,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-20 17:06:59',
                 'deleted_at' => NULL,
             ),
-            37 => 
+            37 =>
             array (
                 'id' => 38,
                 'name' => 'Unnamed',
@@ -473,7 +475,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-21 10:23:04',
                 'deleted_at' => NULL,
             ),
-            38 => 
+            38 =>
             array (
                 'id' => 39,
                 'name' => 'Unnamed',
@@ -485,7 +487,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-25 06:45:52',
                 'deleted_at' => '2020-06-25 06:45:52',
             ),
-            39 => 
+            39 =>
             array (
                 'id' => 40,
                 'name' => 'Unnamed',
@@ -497,7 +499,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-25 06:46:09',
                 'deleted_at' => '2020-06-25 06:46:09',
             ),
-            40 => 
+            40 =>
             array (
                 'id' => 41,
                 'name' => 'Unnamed',
@@ -509,7 +511,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-25 06:46:28',
                 'deleted_at' => '2020-06-25 06:46:28',
             ),
-            41 => 
+            41 =>
             array (
                 'id' => 42,
                 'name' => 'Unnamed',
@@ -521,7 +523,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-06-25 21:57:25',
                 'deleted_at' => '2020-06-25 21:57:25',
             ),
-            42 => 
+            42 =>
             array (
                 'id' => 43,
                 'name' => 'Unnamed',
@@ -533,7 +535,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-07-17 12:39:43',
                 'deleted_at' => NULL,
             ),
-            43 => 
+            43 =>
             array (
                 'id' => 44,
                 'name' => 'Unnamed',
@@ -545,7 +547,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-05 14:26:49',
                 'deleted_at' => '2020-08-05 14:26:49',
             ),
-            44 => 
+            44 =>
             array (
                 'id' => 45,
                 'name' => 'Unnamed',
@@ -557,7 +559,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-05 14:27:11',
                 'deleted_at' => '2020-08-05 14:27:11',
             ),
-            45 => 
+            45 =>
             array (
                 'id' => 46,
                 'name' => 'Unnamed',
@@ -569,7 +571,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-05 14:27:19',
                 'deleted_at' => NULL,
             ),
-            46 => 
+            46 =>
             array (
                 'id' => 47,
                 'name' => 'Unnamed',
@@ -581,7 +583,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-11 12:39:20',
                 'deleted_at' => '2020-08-11 12:39:20',
             ),
-            47 => 
+            47 =>
             array (
                 'id' => 48,
                 'name' => 'Unnamed',
@@ -593,7 +595,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-06 15:35:15',
                 'deleted_at' => NULL,
             ),
-            48 => 
+            48 =>
             array (
                 'id' => 49,
                 'name' => 'Unnamed',
@@ -605,7 +607,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-07 04:50:23',
                 'deleted_at' => '2020-08-07 04:50:23',
             ),
-            49 => 
+            49 =>
             array (
                 'id' => 50,
                 'name' => 'Unnamed',
@@ -617,7 +619,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-07 05:12:12',
                 'deleted_at' => '2020-08-07 05:12:12',
             ),
-            50 => 
+            50 =>
             array (
                 'id' => 51,
                 'name' => 'Unnamed',
@@ -629,7 +631,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-07 05:12:21',
                 'deleted_at' => '2020-08-07 05:12:21',
             ),
-            51 => 
+            51 =>
             array (
                 'id' => 52,
                 'name' => 'Unnamed',
@@ -641,7 +643,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-07 05:12:28',
                 'deleted_at' => '2020-08-07 05:12:28',
             ),
-            52 => 
+            52 =>
             array (
                 'id' => 53,
                 'name' => 'Unnamed',
@@ -653,7 +655,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-11 13:02:50',
                 'deleted_at' => '2020-08-11 13:02:50',
             ),
-            53 => 
+            53 =>
             array (
                 'id' => 54,
                 'name' => 'Unnamed',
@@ -665,7 +667,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-11 14:09:04',
                 'deleted_at' => '2020-08-11 14:09:04',
             ),
-            54 => 
+            54 =>
             array (
                 'id' => 55,
                 'name' => 'Unnamed',
@@ -677,7 +679,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-11 14:09:16',
                 'deleted_at' => '2020-08-11 14:09:16',
             ),
-            55 => 
+            55 =>
             array (
                 'id' => 56,
                 'name' => 'Unnamed',
@@ -689,7 +691,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-11 14:09:27',
                 'deleted_at' => '2020-08-11 14:09:27',
             ),
-            56 => 
+            56 =>
             array (
                 'id' => 57,
                 'name' => 'Unnamed',
@@ -701,7 +703,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-12 13:53:15',
                 'deleted_at' => '2020-08-12 13:53:15',
             ),
-            57 => 
+            57 =>
             array (
                 'id' => 58,
                 'name' => 'Unnamed',
@@ -713,7 +715,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-12 13:53:35',
                 'deleted_at' => '2020-08-12 13:53:35',
             ),
-            58 => 
+            58 =>
             array (
                 'id' => 59,
                 'name' => 'Unnamed',
@@ -725,7 +727,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-12 13:53:44',
                 'deleted_at' => '2020-08-12 13:53:44',
             ),
-            59 => 
+            59 =>
             array (
                 'id' => 60,
                 'name' => 'Unnamed',
@@ -737,7 +739,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-12 13:53:52',
                 'deleted_at' => NULL,
             ),
-            60 => 
+            60 =>
             array (
                 'id' => 61,
                 'name' => 'Unnamed',
@@ -749,7 +751,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-12 15:25:12',
                 'deleted_at' => '2020-08-12 15:25:12',
             ),
-            61 => 
+            61 =>
             array (
                 'id' => 62,
                 'name' => 'Unnamed',
@@ -761,7 +763,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-12 15:25:22',
                 'deleted_at' => '2020-08-12 15:25:22',
             ),
-            62 => 
+            62 =>
             array (
                 'id' => 63,
                 'name' => 'Unnamed',
@@ -773,7 +775,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-12 15:25:28',
                 'deleted_at' => '2020-08-12 15:25:28',
             ),
-            63 => 
+            63 =>
             array (
                 'id' => 64,
                 'name' => 'Unnamed',
@@ -785,7 +787,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-12 15:25:51',
                 'deleted_at' => '2020-08-12 15:25:51',
             ),
-            64 => 
+            64 =>
             array (
                 'id' => 65,
                 'name' => 'Unnamed',
@@ -797,7 +799,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-12 15:26:06',
                 'deleted_at' => '2020-08-12 15:26:06',
             ),
-            65 => 
+            65 =>
             array (
                 'id' => 66,
                 'name' => 'Unnamed',
@@ -809,7 +811,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-12 15:26:12',
                 'deleted_at' => '2020-08-12 15:26:12',
             ),
-            66 => 
+            66 =>
             array (
                 'id' => 67,
                 'name' => 'Unnamed',
@@ -821,7 +823,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-12 15:26:24',
                 'deleted_at' => '2020-08-12 15:26:24',
             ),
-            67 => 
+            67 =>
             array (
                 'id' => 68,
                 'name' => 'boruto',
@@ -833,7 +835,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-13 04:51:11',
                 'deleted_at' => '2020-08-13 04:51:11',
             ),
-            68 => 
+            68 =>
             array (
                 'id' => 69,
                 'name' => 'Cryborg',
@@ -845,7 +847,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-13 05:28:21',
                 'deleted_at' => '2020-08-13 05:28:21',
             ),
-            69 => 
+            69 =>
             array (
                 'id' => 70,
                 'name' => 'Cryborg',
@@ -857,7 +859,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-14 03:56:39',
                 'deleted_at' => '2020-08-14 03:56:39',
             ),
-            70 => 
+            70 =>
             array (
                 'id' => 71,
                 'name' => 'Cryborg',
@@ -869,7 +871,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-14 03:58:08',
                 'deleted_at' => '2020-08-14 03:58:08',
             ),
-            71 => 
+            71 =>
             array (
                 'id' => 72,
                 'name' => 'Cryborg',
@@ -881,7 +883,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-14 03:59:19',
                 'deleted_at' => '2020-08-14 03:59:19',
             ),
-            72 => 
+            72 =>
             array (
                 'id' => 73,
                 'name' => 'Cryborg',
@@ -893,7 +895,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-14 04:03:37',
                 'deleted_at' => '2020-08-14 04:03:37',
             ),
-            73 => 
+            73 =>
             array (
                 'id' => 74,
                 'name' => 'Cryborg',
@@ -905,7 +907,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-14 04:04:14',
                 'deleted_at' => '2020-08-14 04:04:14',
             ),
-            74 => 
+            74 =>
             array (
                 'id' => 75,
                 'name' => 'Cryborg',
@@ -917,7 +919,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-14 04:29:04',
                 'deleted_at' => '2020-08-14 04:29:04',
             ),
-            75 => 
+            75 =>
             array (
                 'id' => 76,
                 'name' => 'Cryborg',
@@ -929,7 +931,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-14 05:25:21',
                 'deleted_at' => '2020-08-14 05:25:21',
             ),
-            76 => 
+            76 =>
             array (
                 'id' => 77,
                 'name' => 'Cryborg',
@@ -941,7 +943,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-14 06:56:35',
                 'deleted_at' => '2020-08-14 06:56:35',
             ),
-            77 => 
+            77 =>
             array (
                 'id' => 78,
                 'name' => 'Cryborg',
@@ -953,7 +955,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-14 07:24:32',
                 'deleted_at' => '2020-08-14 07:24:32',
             ),
-            78 => 
+            78 =>
             array (
                 'id' => 79,
                 'name' => 'Cryborg',
@@ -965,7 +967,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-14 08:31:15',
                 'deleted_at' => '2020-08-14 08:31:15',
             ),
-            79 => 
+            79 =>
             array (
                 'id' => 80,
                 'name' => 'Unnamed',
@@ -977,7 +979,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-14 07:27:23',
                 'deleted_at' => '2020-08-14 07:27:23',
             ),
-            80 => 
+            80 =>
             array (
                 'id' => 81,
                 'name' => 'Cryborg',
@@ -989,7 +991,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-15 10:26:49',
                 'deleted_at' => '2020-08-15 10:26:49',
             ),
-            81 => 
+            81 =>
             array (
                 'id' => 83,
                 'name' => 'Cryborg',
@@ -1001,7 +1003,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-15 10:31:58',
                 'deleted_at' => '2020-08-15 10:31:58',
             ),
-            82 => 
+            82 =>
             array (
                 'id' => 84,
                 'name' => 'Cryborg',
@@ -1013,7 +1015,7 @@ class CharactersTableSeeder extends Seeder
                 'updated_at' => '2020-08-15 10:57:09',
                 'deleted_at' => NULL,
             ),
-            83 => 
+            83 =>
             array (
                 'id' => 85,
                 'name' => 'Elowenn',
@@ -1026,7 +1028,7 @@ class CharactersTableSeeder extends Seeder
                 'deleted_at' => NULL,
             ),
         ));
-        
-        
+
+
     }
 }

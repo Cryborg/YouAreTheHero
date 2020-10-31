@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class ItemsTableSeeder extends Seeder
@@ -12,12 +14,12 @@ class ItemsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('items')->delete();
-        
+
         \DB::table('items')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'story_id' => 4,
@@ -31,7 +33,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-05-10 08:53:15',
                 'deleted_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'story_id' => 4,
@@ -45,7 +47,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-05-10 08:53:49',
                 'deleted_at' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'story_id' => 4,
@@ -59,7 +61,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-05-10 08:54:14',
                 'deleted_at' => NULL,
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'story_id' => 4,
@@ -73,7 +75,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-05-10 08:54:22',
                 'deleted_at' => NULL,
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'story_id' => 4,
@@ -87,7 +89,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-05-11 19:44:55',
                 'deleted_at' => NULL,
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'story_id' => 7,
@@ -101,7 +103,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-05-18 18:07:10',
                 'deleted_at' => NULL,
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'story_id' => 7,
@@ -115,7 +117,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-05-18 18:07:15',
                 'deleted_at' => NULL,
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'story_id' => 7,
@@ -129,7 +131,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-05-18 18:07:18',
                 'deleted_at' => NULL,
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'story_id' => 7,
@@ -143,7 +145,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-05-18 18:07:22',
                 'deleted_at' => NULL,
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
                 'story_id' => 7,
@@ -157,7 +159,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-05-18 18:07:29',
                 'deleted_at' => NULL,
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
                 'story_id' => 7,
@@ -171,7 +173,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-05-18 18:07:48',
                 'deleted_at' => NULL,
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 12,
                 'story_id' => 7,
@@ -185,7 +187,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-05-18 18:07:52',
                 'deleted_at' => NULL,
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 13,
                 'story_id' => 7,
@@ -199,7 +201,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-05-18 18:07:55',
                 'deleted_at' => NULL,
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 14,
                 'story_id' => 9,
@@ -213,7 +215,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-05-23 20:28:25',
                 'deleted_at' => NULL,
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 15,
                 'story_id' => 12,
@@ -227,7 +229,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-05-29 14:46:44',
                 'deleted_at' => NULL,
             ),
-            15 => 
+            15 =>
             array (
                 'id' => 16,
                 'story_id' => 12,
@@ -241,7 +243,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-05-29 14:47:05',
                 'deleted_at' => NULL,
             ),
-            16 => 
+            16 =>
             array (
                 'id' => 17,
                 'story_id' => 12,
@@ -255,7 +257,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-05-29 14:47:37',
                 'deleted_at' => NULL,
             ),
-            17 => 
+            17 =>
             array (
                 'id' => 18,
                 'story_id' => 12,
@@ -269,7 +271,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-05-29 14:52:34',
                 'deleted_at' => NULL,
             ),
-            18 => 
+            18 =>
             array (
                 'id' => 19,
                 'story_id' => 4,
@@ -283,7 +285,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-06-01 20:08:40',
                 'deleted_at' => NULL,
             ),
-            19 => 
+            19 =>
             array (
                 'id' => 20,
                 'story_id' => 13,
@@ -297,7 +299,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 15:02:52',
                 'deleted_at' => NULL,
             ),
-            20 => 
+            20 =>
             array (
                 'id' => 21,
                 'story_id' => 14,
@@ -311,7 +313,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 15:09:28',
                 'deleted_at' => NULL,
             ),
-            21 => 
+            21 =>
             array (
                 'id' => 22,
                 'story_id' => 14,
@@ -325,7 +327,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 15:09:34',
                 'deleted_at' => NULL,
             ),
-            22 => 
+            22 =>
             array (
                 'id' => 23,
                 'story_id' => 13,
@@ -339,7 +341,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 15:09:50',
                 'deleted_at' => NULL,
             ),
-            23 => 
+            23 =>
             array (
                 'id' => 24,
                 'story_id' => 15,
@@ -353,7 +355,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-06-20 07:55:55',
                 'deleted_at' => NULL,
             ),
-            24 => 
+            24 =>
             array (
                 'id' => 25,
                 'story_id' => 16,
@@ -367,7 +369,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-06-20 17:08:38',
                 'deleted_at' => NULL,
             ),
-            25 => 
+            25 =>
             array (
                 'id' => 26,
                 'story_id' => 17,
@@ -381,7 +383,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-06-21 09:55:00',
                 'deleted_at' => NULL,
             ),
-            26 => 
+            26 =>
             array (
                 'id' => 27,
                 'story_id' => 17,
@@ -395,7 +397,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-06-21 09:55:33',
                 'deleted_at' => NULL,
             ),
-            27 => 
+            27 =>
             array (
                 'id' => 28,
                 'story_id' => 17,
@@ -409,7 +411,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-06-21 10:02:55',
                 'deleted_at' => NULL,
             ),
-            28 => 
+            28 =>
             array (
                 'id' => 29,
                 'story_id' => 17,
@@ -423,7 +425,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-06-21 10:03:09',
                 'deleted_at' => NULL,
             ),
-            29 => 
+            29 =>
             array (
                 'id' => 30,
                 'story_id' => 17,
@@ -437,7 +439,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-06-21 10:03:28',
                 'deleted_at' => NULL,
             ),
-            30 => 
+            30 =>
             array (
                 'id' => 31,
                 'story_id' => 17,
@@ -451,7 +453,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-06-21 10:03:40',
                 'deleted_at' => NULL,
             ),
-            31 => 
+            31 =>
             array (
                 'id' => 33,
                 'story_id' => 17,
@@ -465,7 +467,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-06-21 10:04:28',
                 'deleted_at' => NULL,
             ),
-            32 => 
+            32 =>
             array (
                 'id' => 34,
                 'story_id' => 17,
@@ -479,7 +481,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-06-21 10:05:09',
                 'deleted_at' => NULL,
             ),
-            33 => 
+            33 =>
             array (
                 'id' => 35,
                 'story_id' => 17,
@@ -493,7 +495,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-06-21 10:05:16',
                 'deleted_at' => NULL,
             ),
-            34 => 
+            34 =>
             array (
                 'id' => 36,
                 'story_id' => 17,
@@ -507,7 +509,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-06-21 10:05:21',
                 'deleted_at' => NULL,
             ),
-            35 => 
+            35 =>
             array (
                 'id' => 37,
                 'story_id' => 19,
@@ -521,7 +523,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-07-28 12:59:08',
                 'deleted_at' => NULL,
             ),
-            36 => 
+            36 =>
             array (
                 'id' => 40,
                 'story_id' => 23,
@@ -535,7 +537,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-08-13 04:38:29',
                 'deleted_at' => NULL,
             ),
-            37 => 
+            37 =>
             array (
                 'id' => 41,
                 'story_id' => 23,
@@ -549,7 +551,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-08-13 04:38:39',
                 'deleted_at' => NULL,
             ),
-            38 => 
+            38 =>
             array (
                 'id' => 42,
                 'story_id' => 23,
@@ -563,7 +565,7 @@ class ItemsTableSeeder extends Seeder
                 'updated_at' => '2020-08-13 06:52:34',
                 'deleted_at' => NULL,
             ),
-            39 => 
+            39 =>
             array (
                 'id' => 43,
                 'story_id' => 23,
@@ -578,7 +580,7 @@ class ItemsTableSeeder extends Seeder
                 'deleted_at' => NULL,
             ),
         ));
-        
-        
+
+
     }
 }

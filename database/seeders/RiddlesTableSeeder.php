@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class RiddlesTableSeeder extends Seeder
@@ -12,12 +14,12 @@ class RiddlesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('riddles')->delete();
-        
+
         \DB::table('riddles')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'page_id' => 16,
@@ -29,7 +31,7 @@ class RiddlesTableSeeder extends Seeder
                 'item_id' => 4,
                 'deleted_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'page_id' => 74,
@@ -41,7 +43,7 @@ class RiddlesTableSeeder extends Seeder
                 'item_id' => 6,
                 'deleted_at' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'page_id' => 75,
@@ -53,7 +55,7 @@ class RiddlesTableSeeder extends Seeder
                 'item_id' => NULL,
                 'deleted_at' => NULL,
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'page_id' => 151,
@@ -65,7 +67,7 @@ class RiddlesTableSeeder extends Seeder
                 'item_id' => NULL,
                 'deleted_at' => '2020-06-20 07:56:04',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'page_id' => 151,
@@ -77,7 +79,7 @@ class RiddlesTableSeeder extends Seeder
                 'item_id' => NULL,
                 'deleted_at' => '2020-06-20 07:59:44',
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'page_id' => 151,
@@ -89,7 +91,7 @@ class RiddlesTableSeeder extends Seeder
                 'item_id' => 24,
                 'deleted_at' => NULL,
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'page_id' => 160,
@@ -101,7 +103,7 @@ class RiddlesTableSeeder extends Seeder
                 'item_id' => NULL,
                 'deleted_at' => NULL,
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'page_id' => 168,
@@ -114,7 +116,7 @@ class RiddlesTableSeeder extends Seeder
                 'deleted_at' => NULL,
             ),
         ));
-        
-        
+
+
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class FieldsTableSeeder extends Seeder
@@ -12,12 +14,12 @@ class FieldsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('fields')->delete();
-        
+
         \DB::table('fields')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'story_id' => 4,
@@ -32,7 +34,7 @@ class FieldsTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 14:56:09',
                 'deleted_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'story_id' => 4,
@@ -47,7 +49,7 @@ class FieldsTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 14:56:22',
                 'deleted_at' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'story_id' => 4,
@@ -62,7 +64,7 @@ class FieldsTableSeeder extends Seeder
                 'updated_at' => '2020-05-12 14:58:41',
                 'deleted_at' => NULL,
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'story_id' => 7,
@@ -77,7 +79,7 @@ class FieldsTableSeeder extends Seeder
                 'updated_at' => '2020-05-28 19:55:46',
                 'deleted_at' => '2020-05-28 19:55:46',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'story_id' => 7,
@@ -92,7 +94,7 @@ class FieldsTableSeeder extends Seeder
                 'updated_at' => '2020-05-28 19:55:45',
                 'deleted_at' => '2020-05-28 19:55:45',
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'story_id' => 7,
@@ -107,7 +109,7 @@ class FieldsTableSeeder extends Seeder
                 'updated_at' => '2020-05-28 19:56:37',
                 'deleted_at' => NULL,
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'story_id' => 7,
@@ -122,7 +124,7 @@ class FieldsTableSeeder extends Seeder
                 'updated_at' => '2020-05-28 19:56:44',
                 'deleted_at' => NULL,
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'story_id' => 14,
@@ -137,7 +139,7 @@ class FieldsTableSeeder extends Seeder
                 'updated_at' => '2020-06-12 17:58:16',
                 'deleted_at' => '2020-06-12 17:58:16',
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'story_id' => 13,
@@ -152,7 +154,7 @@ class FieldsTableSeeder extends Seeder
                 'updated_at' => '2020-06-02 15:05:05',
                 'deleted_at' => NULL,
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
                 'story_id' => 19,
@@ -167,7 +169,7 @@ class FieldsTableSeeder extends Seeder
                 'updated_at' => '2020-07-28 12:57:07',
                 'deleted_at' => NULL,
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
                 'story_id' => 23,
@@ -182,7 +184,7 @@ class FieldsTableSeeder extends Seeder
                 'updated_at' => '2020-08-13 04:37:28',
                 'deleted_at' => NULL,
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 12,
                 'story_id' => 23,
@@ -197,7 +199,7 @@ class FieldsTableSeeder extends Seeder
                 'updated_at' => '2020-08-13 04:37:48',
                 'deleted_at' => NULL,
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 13,
                 'story_id' => 24,
@@ -212,7 +214,7 @@ class FieldsTableSeeder extends Seeder
                 'updated_at' => '2020-08-19 02:42:04',
                 'deleted_at' => NULL,
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 14,
                 'story_id' => 24,
@@ -228,7 +230,7 @@ class FieldsTableSeeder extends Seeder
                 'deleted_at' => NULL,
             ),
         ));
-        
-        
+
+
     }
 }

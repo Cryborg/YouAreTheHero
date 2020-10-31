@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class CharacterRiddleTableSeeder extends Seeder
@@ -12,23 +14,23 @@ class CharacterRiddleTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('character_riddle')->delete();
-        
+
         \DB::table('character_riddle')->insert(array (
-            0 => 
+            0 =>
             array (
                 'character_id' => 32,
                 'riddle_id' => 6,
             ),
-            1 => 
+            1 =>
             array (
                 'character_id' => 84,
                 'riddle_id' => 8,
             ),
         ));
-        
-        
+
+
     }
 }

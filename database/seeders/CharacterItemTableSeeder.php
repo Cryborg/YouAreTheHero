@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class CharacterItemTableSeeder extends Seeder
@@ -12,12 +14,12 @@ class CharacterItemTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('character_item')->delete();
-        
+
         \DB::table('character_item')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 6,
                 'character_id' => 32,
@@ -26,7 +28,7 @@ class CharacterItemTableSeeder extends Seeder
                 'is_used' => 0,
                 'taken' => 0,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 7,
                 'character_id' => 38,
@@ -35,7 +37,7 @@ class CharacterItemTableSeeder extends Seeder
                 'is_used' => 0,
                 'taken' => 0,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 8,
                 'character_id' => 38,
@@ -44,7 +46,7 @@ class CharacterItemTableSeeder extends Seeder
                 'is_used' => 0,
                 'taken' => 0,
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 9,
                 'character_id' => 38,
@@ -53,7 +55,7 @@ class CharacterItemTableSeeder extends Seeder
                 'is_used' => 0,
                 'taken' => 0,
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 10,
                 'character_id' => 38,
@@ -62,7 +64,7 @@ class CharacterItemTableSeeder extends Seeder
                 'is_used' => 0,
                 'taken' => 0,
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 11,
                 'character_id' => 38,
@@ -71,7 +73,7 @@ class CharacterItemTableSeeder extends Seeder
                 'is_used' => 0,
                 'taken' => 0,
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 26,
                 'character_id' => 84,
@@ -80,7 +82,7 @@ class CharacterItemTableSeeder extends Seeder
                 'is_used' => 1,
                 'taken' => 1,
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 30,
                 'character_id' => 84,
@@ -89,7 +91,7 @@ class CharacterItemTableSeeder extends Seeder
                 'is_used' => 0,
                 'taken' => 1,
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 31,
                 'character_id' => 84,
@@ -98,7 +100,7 @@ class CharacterItemTableSeeder extends Seeder
                 'is_used' => 0,
                 'taken' => 1,
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 32,
                 'character_id' => 85,
@@ -108,7 +110,7 @@ class CharacterItemTableSeeder extends Seeder
                 'taken' => 1,
             ),
         ));
-        
-        
+
+
     }
 }

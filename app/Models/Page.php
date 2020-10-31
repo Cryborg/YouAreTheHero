@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Presenters\PagePresenter;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -11,8 +12,7 @@ use Laracasts\Presenter\PresentableTrait;
 
 class Page extends Model
 {
-    use PresentableTrait;
-    use SoftDeletes;
+    use PresentableTrait, SoftDeletes, HasFactory;
 
     public const ENDING_BAD     = 'bad';
 

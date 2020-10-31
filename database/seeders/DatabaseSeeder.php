@@ -1,13 +1,9 @@
 <?php
 
-use App\Models\Genre;
-use App\Models\Story;
-use App\Models\StoryGenre;
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
-use App\Models\User;
-use App\Models\Page;
-use App\Models\Choice;
-use App\Models\Item;
+use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \Illuminate\Support\Facades\Artisan::call('cache:clear');
+        Artisan::call('cache:clear');
         $this->call(GenresTableSeeder::class);
 
         //TODO: remove this once in prod ;)

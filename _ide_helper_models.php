@@ -77,6 +77,8 @@ namespace App\Models{
  * @property-read int|null $items_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[] $pages
  * @property-read int|null $pages_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Person[] $people
+ * @property-read int|null $people_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Riddle[] $riddles
  * @property-read int|null $riddles_count
  * @property-read \App\Models\Story $story
@@ -145,6 +147,31 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterPage query()
  */
 	class CharacterPage extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\CharacterPerson
+ *
+ * @property int $id
+ * @property int $character_id
+ * @property int $person_id
+ * @property string|null $first_name
+ * @property string|null $last_name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterPerson newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterPerson newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterPerson query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterPerson whereCharacterId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterPerson whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterPerson whereFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterPerson whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterPerson whereLastName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterPerson wherePersonId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterPerson whereUpdatedAt($value)
+ */
+	class CharacterPerson extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -447,9 +474,11 @@ namespace App\Models{
  * @property int $order
  * @property string|null $first_name
  * @property string|null $last_name
- * @property string|null $role
+ * @property string $role
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Character[] $characters
+ * @property-read int|null $characters_count
  * @method static \Illuminate\Database\Eloquent\Builder|Person newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Person newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Person query()
@@ -591,13 +620,13 @@ namespace App\Models{
  * @property-read int|null $genres_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[] $items
  * @property-read int|null $items_count
+ * @property-read \App\Models\StoryOption|null $options
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[] $pages
  * @property-read int|null $pages_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Person[] $people
  * @property-read int|null $people_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Report[] $reports
  * @property-read int|null $reports_count
- * @property-read \App\Models\StoryOption|null $story_options
  * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|Story newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Story newQuery()
@@ -649,12 +678,14 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property string $currency_name
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption newQuery()
  * @method static \Illuminate\Database\Query\Builder|StoryOption onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption query()
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereCharacterGenre($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereCurrencyName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereHasCharacter($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereHasStats($value)

@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -12,12 +14,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('users')->delete();
-        
+
         \DB::table('users')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'first_name' => 'Marty',
@@ -36,7 +38,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'first_name' => 'Marty',
@@ -55,7 +57,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'first_name' => 'Marty',
@@ -74,7 +76,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'first_name' => 'Fred',
@@ -93,7 +95,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'first_name' => 'Fred',
@@ -112,7 +114,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'first_name' => 'Fred',
@@ -131,7 +133,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'first_name' => NULL,
@@ -150,7 +152,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'first_name' => NULL,
@@ -169,7 +171,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'first_name' => 'Frédéric',
@@ -188,7 +190,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
                 'first_name' => NULL,
@@ -207,7 +209,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
                 'first_name' => NULL,
@@ -226,7 +228,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 12,
                 'first_name' => NULL,
@@ -245,7 +247,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 13,
                 'first_name' => 'Elowenn',
@@ -264,7 +266,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 14,
                 'first_name' => NULL,
@@ -283,7 +285,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 15,
                 'first_name' => NULL,
@@ -302,7 +304,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            15 => 
+            15 =>
             array (
                 'id' => 16,
                 'first_name' => NULL,
@@ -321,7 +323,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            16 => 
+            16 =>
             array (
                 'id' => 17,
                 'first_name' => NULL,
@@ -340,7 +342,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            17 => 
+            17 =>
             array (
                 'id' => 18,
                 'first_name' => NULL,
@@ -359,7 +361,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            18 => 
+            18 =>
             array (
                 'id' => 19,
                 'first_name' => NULL,
@@ -378,7 +380,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            19 => 
+            19 =>
             array (
                 'id' => 20,
                 'first_name' => NULL,
@@ -397,7 +399,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            20 => 
+            20 =>
             array (
                 'id' => 21,
                 'first_name' => NULL,
@@ -416,7 +418,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            21 => 
+            21 =>
             array (
                 'id' => 22,
                 'first_name' => NULL,
@@ -435,7 +437,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            22 => 
+            22 =>
             array (
                 'id' => 23,
                 'first_name' => NULL,
@@ -454,7 +456,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            23 => 
+            23 =>
             array (
                 'id' => 24,
                 'first_name' => NULL,
@@ -473,7 +475,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            24 => 
+            24 =>
             array (
                 'id' => 25,
                 'first_name' => NULL,
@@ -492,7 +494,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            25 => 
+            25 =>
             array (
                 'id' => 26,
                 'first_name' => NULL,
@@ -511,7 +513,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            26 => 
+            26 =>
             array (
                 'id' => 27,
                 'first_name' => NULL,
@@ -530,7 +532,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => NULL,
                 'avatar_original' => NULL,
             ),
-            27 => 
+            27 =>
             array (
                 'id' => 29,
                 'first_name' => NULL,
@@ -550,7 +552,7 @@ class UsersTableSeeder extends Seeder
                 'avatar_original' => 'https://lh3.googleusercontent.com/a-/AOh14GhnIouXKxuOiuIFDplPhjPvRWMKt1QuW7mlThXFth8',
             ),
         ));
-        
-        
+
+
     }
 }

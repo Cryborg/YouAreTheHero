@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class StoriesTableSeeder extends Seeder
@@ -12,12 +14,12 @@ class StoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('stories')->delete();
-        
+
         \DB::table('stories')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 2,
                 'title' => 'Un nouveau départ',
@@ -30,7 +32,7 @@ class StoriesTableSeeder extends Seeder
                 'updated_at' => '2020-05-18 20:37:21',
                 'deleted_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 3,
                 'title' => 'Deuxième histoire',
@@ -43,7 +45,7 @@ class StoriesTableSeeder extends Seeder
                 'updated_at' => '2020-01-02 16:29:44',
                 'deleted_at' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 4,
                 'title' => 'Trouvez Charlie',
@@ -58,7 +60,7 @@ class StoriesTableSeeder extends Seeder
             'updated_at' => '2020-05-18 13:30:39',
             'deleted_at' => NULL,
         ),
-        3 => 
+        3 =>
         array (
             'id' => 5,
             'title' => 'LE Titre',
@@ -71,7 +73,7 @@ class StoriesTableSeeder extends Seeder
             'updated_at' => '2020-05-12 11:36:55',
             'deleted_at' => NULL,
         ),
-        4 => 
+        4 =>
         array (
             'id' => 6,
             'title' => 'Test',
@@ -84,7 +86,7 @@ class StoriesTableSeeder extends Seeder
             'updated_at' => '2020-05-28 03:03:53',
             'deleted_at' => '2020-05-28 03:03:53',
         ),
-        5 => 
+        5 =>
         array (
             'id' => 7,
             'title' => 'Escape game',
@@ -99,7 +101,7 @@ Un petit exemple d\'escape game qu\'il est possible d\'écrire sans aucune conna
         'updated_at' => '2020-06-02 17:17:29',
         'deleted_at' => NULL,
     ),
-    6 => 
+    6 =>
     array (
         'id' => 8,
         'title' => 'Labyrinthe hôtel',
@@ -113,7 +115,7 @@ Les habitants de la région disent que la montagne est hanté par le mal lui mê
         'updated_at' => '2020-07-17 12:49:11',
         'deleted_at' => NULL,
     ),
-    7 => 
+    7 =>
     array (
         'id' => 9,
         'title' => 'Le double-vie de Jean-Baptiste',
@@ -126,7 +128,7 @@ Les habitants de la région disent que la montagne est hanté par le mal lui mê
         'updated_at' => '2020-05-23 20:25:42',
         'deleted_at' => NULL,
     ),
-    8 => 
+    8 =>
     array (
         'id' => 10,
         'title' => 'Test',
@@ -139,7 +141,7 @@ Les habitants de la région disent que la montagne est hanté par le mal lui mê
         'updated_at' => '2020-05-25 20:39:11',
         'deleted_at' => NULL,
     ),
-    9 => 
+    9 =>
     array (
         'id' => 11,
         'title' => 'Test',
@@ -152,7 +154,7 @@ Les habitants de la région disent que la montagne est hanté par le mal lui mê
         'updated_at' => '2020-05-28 15:33:34',
         'deleted_at' => NULL,
     ),
-    10 => 
+    10 =>
     array (
         'id' => 12,
         'title' => 'Exil',
@@ -165,7 +167,7 @@ Les habitants de la région disent que la montagne est hanté par le mal lui mê
         'updated_at' => '2020-06-02 14:51:59',
         'deleted_at' => NULL,
     ),
-    11 => 
+    11 =>
     array (
         'id' => 13,
         'title' => 'Le vrai coté obscur de la Force',
@@ -179,7 +181,7 @@ Je vous propose de retourner à la source, au fondement de ce qui nous anime pou
         'updated_at' => '2020-06-02 15:08:07',
         'deleted_at' => NULL,
     ),
-    12 => 
+    12 =>
     array (
         'id' => 14,
         'title' => 'test',
@@ -192,7 +194,7 @@ Je vous propose de retourner à la source, au fondement de ce qui nous anime pou
         'updated_at' => '2020-06-12 17:58:16',
         'deleted_at' => '2020-06-12 17:58:16',
     ),
-    13 => 
+    13 =>
     array (
         'id' => 15,
         'title' => 'Le labyrinthe de l\'illusion',
@@ -205,7 +207,7 @@ Je vous propose de retourner à la source, au fondement de ce qui nous anime pou
         'updated_at' => '2020-06-20 09:58:50',
         'deleted_at' => NULL,
     ),
-    14 => 
+    14 =>
     array (
         'id' => 16,
         'title' => 'ORA',
@@ -218,7 +220,7 @@ Je vous propose de retourner à la source, au fondement de ce qui nous anime pou
         'updated_at' => '2020-06-20 17:07:38',
         'deleted_at' => NULL,
     ),
-    15 => 
+    15 =>
     array (
         'id' => 17,
         'title' => 'Short story',
@@ -231,7 +233,7 @@ Je vous propose de retourner à la source, au fondement de ce qui nous anime pou
         'updated_at' => '2020-07-17 13:04:19',
         'deleted_at' => NULL,
     ),
-    16 => 
+    16 =>
     array (
         'id' => 18,
         'title' => 'Journal',
@@ -244,7 +246,7 @@ Je vous propose de retourner à la source, au fondement de ce qui nous anime pou
         'updated_at' => '2020-06-30 07:05:00',
         'deleted_at' => NULL,
     ),
-    17 => 
+    17 =>
     array (
         'id' => 19,
         'title' => 'Fantasy World',
@@ -257,7 +259,7 @@ Je vous propose de retourner à la source, au fondement de ce qui nous anime pou
         'updated_at' => '2020-07-28 17:35:00',
         'deleted_at' => NULL,
     ),
-    18 => 
+    18 =>
     array (
         'id' => 20,
         'title' => 'High School',
@@ -270,7 +272,7 @@ Je vous propose de retourner à la source, au fondement de ce qui nous anime pou
         'updated_at' => '2020-08-05 16:42:00',
         'deleted_at' => '2020-08-03 22:00:00',
     ),
-    19 => 
+    19 =>
     array (
         'id' => 21,
         'title' => 'High School',
@@ -283,7 +285,7 @@ Je vous propose de retourner à la source, au fondement de ce qui nous anime pou
         'updated_at' => '2020-08-06 13:49:40',
         'deleted_at' => NULL,
     ),
-    20 => 
+    20 =>
     array (
         'id' => 22,
         'title' => 'La traque de l\'ombre',
@@ -296,7 +298,7 @@ Je vous propose de retourner à la source, au fondement de ce qui nous anime pou
         'updated_at' => '2020-08-12 13:56:19',
         'deleted_at' => NULL,
     ),
-    21 => 
+    21 =>
     array (
         'id' => 23,
         'title' => 'Didacticiel déguisé',
@@ -309,7 +311,7 @@ Je vous propose de retourner à la source, au fondement de ce qui nous anime pou
     'updated_at' => '2020-08-17 04:47:50',
     'deleted_at' => NULL,
 ),
-22 => 
+22 =>
 array (
     'id' => 24,
     'title' => 'Câlins gratuits',
@@ -323,7 +325,7 @@ array (
     'deleted_at' => NULL,
 ),
 ));
-        
-        
+
+
     }
 }

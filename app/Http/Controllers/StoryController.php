@@ -37,7 +37,7 @@ class StoryController extends Controller
     public function getPlayAnonymous(Story $story, Page $page = null)
     {
         // Create a fake, temporary user
-        $newUser = factory(User::class)->state('temporary')->create();
+        $newUser = User::factory()->temporary()->create();
 
         // Log the newly created user
         Auth::login($newUser);
@@ -370,7 +370,7 @@ class StoryController extends Controller
             }
 
             // Create the first page with dummy data
-            factory(Page::class)->create([
+            Page::factory()->create([
                  'story_id' => $story->id,
                  'is_first' => true,
              ]);

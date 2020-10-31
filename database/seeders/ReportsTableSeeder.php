@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class ReportsTableSeeder extends Seeder
@@ -12,12 +14,12 @@ class ReportsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('reports')->delete();
-        
+
         \DB::table('reports')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'user_id' => 1,
@@ -29,7 +31,7 @@ class ReportsTableSeeder extends Seeder
                 'deleted_at' => '2020-06-05 19:41:27',
             ),
         ));
-        
-        
+
+
     }
 }
