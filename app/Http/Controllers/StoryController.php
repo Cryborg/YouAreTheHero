@@ -12,6 +12,7 @@ use App\Models\StoryGenre;
 use App\Models\User;
 use App\Repositories\ChoiceRepository;
 use App\Repositories\PageRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -34,7 +35,7 @@ class StoryController extends Controller
         $this->page = $page;
     }
 
-    public function getPlayAnonymous(Story $story, Page $page = null)
+    public function getPlayAnonymous(): RedirectResponse
     {
         // Create a fake, temporary user
         $newUser = User::factory()->temporary()->create();

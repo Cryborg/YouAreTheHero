@@ -21,7 +21,7 @@ class UserFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'username' => $this->faker->name,
@@ -32,7 +32,12 @@ class UserFactory extends Factory
         ];
     }
 
-    public function temporary()
+    /**
+     * Temporary state for not logged in players
+     *
+     * @return \Database\Factories\UserFactory
+     */
+    public function temporary(): UserFactory
     {
         return $this->state(function () {
             return [

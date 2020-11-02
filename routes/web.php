@@ -25,7 +25,7 @@ Route::get('language/{lang}', 'HomeController@language')->name('language');
 
 Route::middleware('guest')->group(static function () {
 // Anonymous user for tuto
-    Route::get('/story/{story}/anonymous', 'StoryController@getPlayAnonymous')
+    Route::get('/story/anonymous', 'StoryController@getPlayAnonymous')
          ->name('story.play.anonymous');
 });
 

@@ -19,7 +19,7 @@ class StoryFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'title'        => ucfirst($this->faker->words(5, true)),
