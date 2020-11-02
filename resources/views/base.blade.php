@@ -42,7 +42,7 @@
         {{-- Upper navigation bar --}}
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid">
-                <a class="navbar-brand" @if (Auth::check() && Auth::user()->role !== 'temp') href="{{ url('/') }}" title="@lang('common.link_home')" @endif>
+                <a class="navbar-brand"  href="{{ url('/') }}">
                     <img src="{{ asset('img/minibot.jpg') }}" width="64" height="64" style="margin-top: -12px">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -57,6 +57,10 @@
                                 @include('layouts.partials.nav')
                             @endif
                         @endauth
+                    </ul>
+
+                    <ul class="navbar-nav">
+                        <img src="img/banner.png" height="50px">
                     </ul>
 
                     {{-- Right Side Of Navbar --}}
