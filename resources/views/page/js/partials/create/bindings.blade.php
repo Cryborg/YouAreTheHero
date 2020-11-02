@@ -328,8 +328,6 @@ $(document).on('click touchstart keydown', '#add_Meta', function () {
         })
             .done(function (data) {
                 if (data.success) {
-                    $('#modalMeta').modal('hide');
-
                     callback();
                 }
             })
