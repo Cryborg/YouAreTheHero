@@ -63,6 +63,11 @@ class User extends Authenticatable implements HasLocalePreference
         return $this->hasMany(Character::class);
     }
 
+    public function successes()
+    {
+        return $this->belongsToMany(Success::class);
+    }
+
     public function hasBeganStory(Story $story): bool
     {
         return Character::where([

@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CharacterField;
+use App\Bases\ControllerBase;
 use App\Models\Character;
 use App\Models\Story;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
-class CharacterController extends Controller
+class CharacterController extends ControllerBase
 {
     public function __construct()
     {
         $this->middleware('auth');
+
+        parent::__construct();
     }
 
     public function getCreate(Story $story)
@@ -84,7 +85,7 @@ class CharacterController extends Controller
         }
 
         // Log this new game
-        if (!Auth::user()->hasRole('admin')) {
+        if (!$this->authUser->hasRole('admin')) {
             activity()
                 ->performedOn($story)
                 ->useLog('new_game')

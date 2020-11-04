@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Bases\ControllerBase;
 use App\Models\Story;
 use App\Models\User;
 use Illuminate\Support\Facades\View;
 
-class AdminController extends Controller
+class AdminController extends ControllerBase
 {
     public function __construct()
     {
         $this->middleware('auth');
+
+        parent::__construct();
     }
 
     /**

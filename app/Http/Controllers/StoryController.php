@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Bases\ControllerBase;
 use App\Models\Character;
 use App\Models\Field;
 use App\Models\Genre;
@@ -25,7 +26,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
 
-class StoryController extends Controller
+class StoryController extends ControllerBase
 {
     /** @var PageRepository $page */
     protected $page;
@@ -33,6 +34,8 @@ class StoryController extends Controller
     public function __construct(PageRepository $page)
     {
         $this->page = $page;
+
+        parent::__construct();
     }
 
     public function getPlayAnonymous(): RedirectResponse
@@ -146,7 +149,7 @@ class StoryController extends Controller
         }
 
         if ($page->is_last) {
-            if (!Auth::user()->hasRole('admin')) {
+            if (!$this->authUser->hasRole('admin')) {
                 activity()
                     ->performedOn($story)
                     ->useLog('end_game')
@@ -340,6 +343,11 @@ class StoryController extends Controller
         ]);
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -358,65 +366,67 @@ class StoryController extends Controller
         $genres                    = $validated['genres'];
         unset($validated['genres'], $validated['story_id']);
 
+        $data = [
+            'storyIsNew' => false
+        ];
+
         try {
             if ($storyId !== null) {
-                $story = Story::where('id', $storyId)
-                              ->firstOrFail();
+                $story = Story::where('id', $storyId)->firstOrFail();
 
                 $story->update($validated);
-                $story->options()->update($validated);
             } else {
                 $story = Story::create($validated);
                 $story->options()->create($validated);
-            }
 
-            // Create the first page with dummy data
-            Page::factory()->create([
-                 'story_id' => $story->id,
-                 'is_first' => true,
-             ]);
-
-            StoryGenre::where('story_id', $story->id)
-                      ->delete();
-
-            foreach ($genres as $genre) {
-                StoryGenre::create([
+                // Create the first page with dummy data
+                Page::factory()->create([
                     'story_id' => $story->id,
-                    'genre_id' => (int) $genre,
+                    'is_first' => true,
                 ]);
+
+                $data = [
+                    'storyIsNew' => true,
+                ];
             }
 
-            \flash(trans('model.save_successful'));
+            $story->genres()->sync($genres);
 
-            return Redirect::to(route('story.edit', ['story' => $story->id]));
+            $data['story'] = $story->id;
+
+            Session::flash('message', trans('model.save_successful'));
         } catch (\Exception $e) {
+            Session::flash('message', trans('model.save_successful'));
             \flash(trans('model.save_error'), 'error');
-
-            return Redirect::to(route('story.create'));
         }
+
+        return Redirect::to(route('story.edit', $data));
     }
 
     /**
-     * @param \App\Models\Story $story
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Story        $story
      *
      * @return \Illuminate\Contracts\View\View
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function getEdit(Story $story)
+    public function getEdit(Request $request, Story $story)
     {
         $this->authorize('edit', $story);
 
-        return $this->getCreate($story);
+        return $this->getCreate($story, $request->all());
     }
 
     /**
      * @param null $story
      *
+     * @param null $data
+     *
      * @return \Illuminate\Contracts\View\View
      */
-    public function getCreate($story = null)
+    public function getCreate($story = null, $data = [])
     {
-        $data = [
+        $data += [
             'title'            => trans('story.create_title'),
             'locales'          => getLanguages(),
             'layouts'          => [
@@ -438,6 +448,7 @@ class StoryController extends Controller
         $data['genres'] = $orderdGenres->where('hidden', false)->sortBy('label');
         $data['audiences'] = $orderdGenres->where('hidden', true)->sortBy('id');
         $data['max_points_to_share'] = $story ? $story->maxPointsToShare() : 10;
+        $data['storyIsNew'] = isset($data['storyIsNew']) && $data['storyIsNew'] == true;
 
         $view = View::make('story.create', $data);
 
@@ -457,8 +468,7 @@ class StoryController extends Controller
             if ($deleted == true) {
                 Flash::success(trans('story.reset_successful_text'));
 
-                if (!Auth::user()
-                         ->hasRole('admin')) {
+                if (!$this->authUser->hasRole('admin')) {
                     activity()
                         ->performedOn($story)
                         ->useLog('reset_game')

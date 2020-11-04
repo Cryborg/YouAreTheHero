@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Bases\ControllerBase;
 use App\Models\Story;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Spatie\Activitylog\Models\Activity;
 
-class StoriesController extends Controller
+class StoriesController extends ControllerBase
 {
 
     public function __construct()
     {
         $this->middleware('auth');
+
+        parent::__construct();
     }
 
     public function listDraft()
@@ -21,7 +24,7 @@ class StoriesController extends Controller
         unsetSession();
 
         return view('stories.list_drafts', [
-            'stories' => Auth::user()->stories
+            'stories' => $this->authUser->stories
         ]);
     }
 
@@ -50,8 +53,8 @@ class StoriesController extends Controller
                 ->where('user_id', Auth::id());
         }
 
-        if (!Auth::user()->hasRole('admin')) {
-            $query->where('user_id', Auth::id())
+        if (!$this->authUser->hasRole('admin')) {
+            $query->where('user_id', $this->authUser->id)
                 ->orWhere('is_published', true);
         }
 
@@ -59,7 +62,7 @@ class StoriesController extends Controller
             $query->where('locale', $selectedLanguage);
         } else {
             // By default look for stories in the same language as the user's
-            $userLocale = Auth::user()->locale;
+            $userLocale = $this->authUser->locale;
             $selectedLanguage = $userLocale;
             $query->where('locale', $userLocale);
         }
@@ -88,7 +91,7 @@ class StoriesController extends Controller
         $storiesLocales = Story::distinct('locale')->get('locale');
 
         return View::make('stories.list', [
-            'user' => Auth::user(),
+            'user' => $this->authUser,
             'stories' => $stories,
             'storiesLocales' => $storiesLocales,
             'selectedLanguage' => !empty($selectedLanguage) ? $selectedLanguage : null

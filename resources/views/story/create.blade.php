@@ -304,13 +304,22 @@
 @endsection
 
 @push('footer-scripts')
-    @if ($story)
-        <script type="text/javascript">
+    <script type="text/javascript">
+        let isStoryNew = {{ $storyIsNew === true ? 'true' : 'false' }};
+
+        if (isStoryNew === true) {
+            $.post({
+                url: route('user.success.update', {user: {{ $authUser->id }}, success: 1}),
+                method: 'PATCH'
+            });
+        }
+
+        @if ($story)
             var storyId = {{ $story->id }};
             @include('story.js.create-js')
 
             var routeItem = '{{ route('item.store') }}';
             @include('item.js.create_item_js', ['story' => $story, 'contexts' => $contexts])
-        </script>
-    @endif
+        @endif
+    </script>
 @endpush

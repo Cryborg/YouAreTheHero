@@ -703,6 +703,23 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Success
+ *
+ * @property int $id
+ * @property string $title Translatable title: will be prefixed with "success."
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read int|null $users_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Success newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Success newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Success query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Success whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Success whereTitle($value)
+ */
+	class Success extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\User
  *
  * @property int $id
@@ -728,6 +745,8 @@ namespace App\Models{
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Story[] $stories
  * @property-read int|null $stories_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Success[] $successes
+ * @property-read int|null $successes_count
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()

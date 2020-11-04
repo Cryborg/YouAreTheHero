@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 
 if (!function_exists('includeAsJsString')) {

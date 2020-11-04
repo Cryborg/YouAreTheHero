@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\PersonController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -149,3 +148,5 @@ Route::middleware('auth')->group(static function () {
     Route::delete('/story/{story}/person/{person}/delete', 'PersonController@destroy')->name('story.person.delete');
 });
 
+// Successes
+    Route::resource('user.success', UserSuccessController::class);

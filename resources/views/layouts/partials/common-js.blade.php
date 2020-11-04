@@ -36,8 +36,9 @@ var toastOptions = {
 
 function showToast(type, data) {
     // Default color and icon for success type
-    var icon = 'success';
-    var bgColor = '#38c172';
+    let icon;
+    let bgColor = '#38c172';
+    let text;
 
     switch (type) {
         case 'error':
@@ -46,9 +47,19 @@ function showToast(type, data) {
             bgColor = '#e3342f';
             toastOptions.hideAfter = 10000;
             break;
+
+        // The user gains a new Success
+        case 'user_success':
+            data.heading = data.heading || null;
+            text = data.description;
+            bgColor = 'deepskyblue';
+            toastOptions.hideAfter = 10000;
+            break;
+        default:
+            icon = 'success';
     }
 
-    var text = data.text + '<ul>';
+    text = text || data.text + '<ul>';
 
     $.each(data.errors, function (key, value) {
         text += '<li>' + value + '</li>';
@@ -60,7 +71,7 @@ function showToast(type, data) {
         heading: '<b>' + data.heading + '</b>',
         text: text,
         icon: icon,
-        bgColor: bgColor
+        bgColor: bgColor,
     }));
 }
 

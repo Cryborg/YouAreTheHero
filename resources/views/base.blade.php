@@ -37,7 +37,7 @@
     @stack('head')
 </head>
 <body>
-    @include('flash::message')
+{{--    @include('flash::message')--}}
     <div id="app">
         {{-- Upper navigation bar --}}
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -59,7 +59,7 @@
                         @endauth
                     </ul>
 
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav d-none d-lg-block">
                         <img src="img/banner.png" height="50px">
                     </ul>
 

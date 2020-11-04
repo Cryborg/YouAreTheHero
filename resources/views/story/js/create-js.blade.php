@@ -146,7 +146,6 @@ $(document).on('click touchstart keydown', '.addPerson', function () {
 });
 
 $(document).on('click touchstart keydown', "[name='character_genre']", function () {
-    console.log('bouh');
     $('#has_character').prop('checked', true);
 });
 

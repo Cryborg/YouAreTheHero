@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
+use App\Bases\ControllerBase;
 
-class HomeController extends Controller
+class HomeController extends ControllerBase
 {
     /**
      * Create a new controller instance.
@@ -31,9 +31,8 @@ class HomeController extends Controller
         $locale = in_array($locale, config('app.languages')) ? $locale : config('app.fallback_locale');
         session(['locale' => $locale]);
 
-        $user = Auth::user();
-        if ($user) {
-            $user->update(['locale' => $locale]);
+        if ($this->authUser) {
+            $this->authUser->update(['locale' => $locale]);
         }
         return back();
     }
