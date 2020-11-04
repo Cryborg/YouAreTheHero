@@ -357,7 +357,6 @@ class StoryController extends ControllerBase
             'locale'       => 'required',
             'layout'       => 'required',
             'is_published' => 'boolean',
-            'currency_name'=> '',
             'genres'       => 'required|array|between:1,5',
         ]);
 

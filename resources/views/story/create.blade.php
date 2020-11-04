@@ -167,6 +167,15 @@
                             <input class="form-control" type="text" id="currency_name" maxlength="15" autocomplete="nope" value="@lang('story.currency_name_default')">
                         </div>
                     </div>
+                    <div class="card">
+                        <div class="card-header">
+                            @lang('story.currency_amount')
+                        </div>
+                        <div class="card-body">
+                            <p class="help-block">@lang('story.currency_amount_help')</p>
+                            <input class="form-control" type="number" id="currency_amount" min="0" value="{{ $story->options ? $story->options->currency_amount : 10 }}">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

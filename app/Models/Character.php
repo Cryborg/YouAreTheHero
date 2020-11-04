@@ -68,6 +68,7 @@ class Character extends Model
                'user_id'  => Auth::id(),
                'story_id' => $story->id,
                'page_id'  => $story->getCurrentPage()->id,
+               'money'    => $story->options->currency_amount,
             ]);
 
             // Log this new game

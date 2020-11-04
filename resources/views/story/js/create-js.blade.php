@@ -163,6 +163,12 @@ $("#currency_name").debounce("change", function() {
     saveOption('currency_name', $this.val());
 }, 500);
 
+$("#currency_amount").debounce("change", function() {
+    const $this = $(this);
+
+    saveOption('currency_amount', $this.val());
+}, 500);
+
 $("#inventory_slots").debounce("change", function() {
     const $this = $(this);
 

@@ -31,6 +31,8 @@ class CreateStoryOptionTable extends Migration
             $table->integer('inventory_slots')->default(-1)
                 ->comment('How many (virtual) slots there are in the inventory.');
             $table->string('currency_name')->default('or');
+            $table->integer('currency_amount')->default(10)
+                ->comment('Default amount of the currency when a new character is created.');
 
 
             $table->timestamps();

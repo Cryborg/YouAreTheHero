@@ -60,6 +60,11 @@ class StoryOptionController extends Controller
                 $option = 'points_to_share';
                 $value = $request->get('value') ?? 10;
                 break;
+            case 'currency_name':
+            case 'currency_amount':
+                $option = $request->get('option');
+                $value = $request->get('value');
+                break;
         }
 
         $updates = [

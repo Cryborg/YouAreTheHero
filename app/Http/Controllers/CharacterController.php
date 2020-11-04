@@ -46,6 +46,7 @@ class CharacterController extends ControllerBase
             'page_id'  => $page->id,
             'genre'    => $request->post('genre'),
             'people'   => '',
+            'money'    => $story->options->currency_amount,
         ]);
 
         // Customizable people
