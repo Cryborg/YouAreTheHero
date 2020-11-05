@@ -10,6 +10,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 
 class ControllerBase extends Controller
@@ -37,16 +38,20 @@ class ControllerBase extends Controller
 
     public function saveUserSuccess($data)
     {
-        $successTitle = null;
-
         foreach ($data as $key => $value)
         {
+            $successTitle = null;
+
             switch ($key) {
-                case 'storyIsNew' && $value === true:
-                    $successTitle = 'first_story_created';
+                case 'storyIsNew':
+                    if ($value === true) {
+                        $successTitle = 'first_story_created';
+                    }
                     break;
-                case 'isPublished' && $value === true:
-                    $successTitle = 'first_story_published';
+                case 'isPublished':
+                    if ($value === true) {
+                        $successTitle = 'first_story_published';
+                    }
                     break;
             }
 
@@ -56,6 +61,8 @@ class ControllerBase extends Controller
             }
         }
 
+        Session::remove('successes');
+        
         return [
             'success' => false,
         ];
