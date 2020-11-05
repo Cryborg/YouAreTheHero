@@ -61,7 +61,7 @@
                 if (result.success) {
                     $('#modalStoryErrors').trigger('show.bs.modal');
 
-                    tryDraw();
+                    tryDraw(result.graph);
                 }
             });
     });

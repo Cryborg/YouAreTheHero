@@ -203,7 +203,7 @@ $(document).on('change', '.childrenSelect', function () {
 
 // Delete a page from the "story errors list" popup
 $(document).on('click touchstart keydown', '.deletePage', function () {
-    var $this = $(this);
+    const $this = $(this);
 
     if (!confirm(confirmDeletePageText)) return false;
 

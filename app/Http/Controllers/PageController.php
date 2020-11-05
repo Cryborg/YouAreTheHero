@@ -12,15 +12,12 @@ use App\Repositories\ChoiceRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 
 class PageController extends Controller
 {
-    private $placeholders;
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -45,7 +42,7 @@ class PageController extends Controller
                 $newPage['title'] = $request->get('link_text');
             }
 
-            $page     = Page::factory()->create($newPage);
+            $page = Page::factory()->create($newPage);
 
             if ((bool) $request->get('showNewPage') === true) {
                 $redirect = route('page.edit', ['page' => $page]);
@@ -65,9 +62,9 @@ class PageController extends Controller
         }
 
         return response()->json([
-            'page'             => $page,
-            'redirect'         => $redirect,
-            'graph'            => $this->buildGraph($page->story),
+                                    'page'             => $page,
+                                    'redirect'         => $redirect,
+                                    'graph'            => $this->buildGraph($page->story),
         ]);
     }
 
@@ -153,10 +150,10 @@ class PageController extends Controller
                 Cache::forget('page_' . $page->id);
 
                 return response()->json([
-                    'success' => true,
-                    'content' => $page->present()->content,
-                    'graph'   => $this->buildGraph($page->story),
-                    'type'    => 'save',
+                                            'success' => true,
+                                            'content' => $page->present()->content,
+                                            'graph'   => $this->buildGraph($page->story),
+                                            'type'    => 'save',
                 ]);
             }
 
@@ -249,9 +246,10 @@ class PageController extends Controller
             }
 
             return response()->json([
-                'success'    => $success,
-                'message'    => $message,
-                'redirectTo' => route('page.edit', ['page' => $story->getLastCreatedPage()]),
+                                        'success'    => $success,
+                                        'message'    => $message,
+                                        'graph'      => $this->buildGraph($page->story),
+                                        'redirectTo' => route('page.edit', ['page' => $story->getLastCreatedPage()]),
             ]);
         }
 
@@ -276,11 +274,11 @@ class PageController extends Controller
             Cache::forget('choices_' . $pageFrom->id);
 
             return response()->json([
-                'success'  => $success,
-                'message'  => $message,
-                'page'     => $page->id,
-                'pageFrom' => $pageFrom->id,
-                'graph'    => $this->buildGraph($page->story),
+                                        'success'  => $success,
+                                        'message'  => $message,
+                                        'page'     => $page->id,
+                                        'pageFrom' => $pageFrom->id,
+                                        'graph'    => $this->buildGraph($page->story),
             ]);
         }
 
@@ -384,7 +382,7 @@ class PageController extends Controller
      *
      * @return string
      */
-    private function buildGraph(Story $story, Page $currentPage = null)
+    private function buildGraph(Story $story)
     {
         $graph = collect();
         $graph->push(
