@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\PendingStory;
+use App\Bases\ControllerBase;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 
-class UserController extends Controller
+class UserController extends ControllerBase
 {
     public function getProfile(\Illuminate\Support\Facades\Request $request, User $user = null)
     {

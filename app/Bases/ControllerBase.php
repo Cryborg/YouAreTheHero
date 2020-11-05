@@ -62,7 +62,7 @@ class ControllerBase extends Controller
         }
 
         Session::remove('successes');
-        
+
         return [
             'success' => false,
         ];

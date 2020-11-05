@@ -65,7 +65,7 @@ class User extends Authenticatable implements HasLocalePreference
 
     public function successes()
     {
-        return $this->belongsToMany(Success::class);
+        return $this->belongsToMany(Success::class)->withPivot('created_at')->orderBy('pivot_created_at');
     }
 
     public function hasBeganStory(Story $story): bool

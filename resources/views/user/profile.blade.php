@@ -14,6 +14,7 @@
                     @endif
                 </div>
             </div>
+
             {!! Form::model(\App\Models\User::class, array('route' => array('user.profile.post', $user->id))) !!}
                 <div class="form-group row">
                     {!! Form::label('first_name', trans('validation.attributes.first_name'), ['class' => 'col-sm-3 col-form-label']) !!}
@@ -58,16 +59,38 @@
 
                 {!! Form::submit(trans('common.save'), ['class' => 'form-control btn btn-primary']) !!}
             {!! Form::close() !!}
+
         </div>
         <div class="col-lg-6">
-            {!! Form::open(['url' => route('mail.send', ['user' => $user, 'mailable' => 'default_message']), 'method' => 'post', 'id' => 'admin_send_message']) !!}
-                <div class="form-group">
-                    <label for="send_message">@lang('admin.send_message_label')</label>
-                    <textarea class="form-control" name="send_message" id="send_message" rows="3"></textarea>
-                </div>
+            <h1 class="mb-3">Mes succès</h1>
+            <div class="form-group row">
+                @foreach ($authUser->successes as $success)
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <img src="img/trophy.svg" height="50" title="{{ trans('success.' . $success->title . '_description') }}">
+                        </div>
+                        <div class="card-footer">
+                            {{ trans('success.' . $success->title) }}<br>
+                            <small class="moment_date">{{ $success->pivot->created_at }}</small>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
 
-                {!! Form::submit(trans('common.save'), ['class' => 'form-control btn btn-primary']) !!}
-            {!! Form::close() !!}
+{{--            {!! Form::open(['url' => route('mail.send', ['user' => $user, 'mailable' => 'default_message']), 'method' => 'post', 'id' => 'admin_send_message']) !!}--}}
+{{--                <div class="form-group">--}}
+{{--                    <label for="send_message">@lang('admin.send_message_label')</label>--}}
+{{--                    <textarea class="form-control" name="send_message" id="send_message" rows="3"></textarea>--}}
+{{--                </div>--}}
+
+{{--                {!! Form::submit(trans('common.save'), ['class' => 'form-control btn btn-primary']) !!}--}}
+{{--            {!! Form::close() !!}--}}
         </div>
     </div>
 @endsection
+
+@push('footer-scripts')
+    <script type="text/javascript">
+        showHumanReadableDates();
+    </script>
+@endpush
