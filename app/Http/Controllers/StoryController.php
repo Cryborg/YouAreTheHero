@@ -447,7 +447,14 @@ class StoryController extends ControllerBase
         $data['genres'] = $orderdGenres->where('hidden', false)->sortBy('label');
         $data['audiences'] = $orderdGenres->where('hidden', true)->sortBy('id');
         $data['max_points_to_share'] = $story ? $story->maxPointsToShare() : 10;
+
+        /*****************\
+        * User Successes *
+        \*****************/
         $data['storyIsNew'] = isset($data['storyIsNew']) && (bool)$data['storyIsNew'] === true;
+        $data['isPublished'] = isset($data['story']) && (bool)$data['story']->is_published === true;
+
+        $this->saveUserSuccess($data);
 
         $view = View::make('story.create', $data);
 

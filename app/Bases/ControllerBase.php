@@ -2,6 +2,9 @@
 
 namespace App\Bases;
 
+use App\Http\Controllers\UserSuccessController;
+use App\Models\Success;
+use App\Traits\UserSuccess;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -11,7 +14,7 @@ use Illuminate\Support\Facades\View;
 
 class ControllerBase extends Controller
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, UserSuccess;
 
     /**
      * Auth User.
@@ -30,5 +33,31 @@ class ControllerBase extends Controller
             View::share('authUser', $this->authUser);
             return $next($request);
         });
+    }
+
+    public function saveUserSuccess($data)
+    {
+        $successTitle = null;
+
+        foreach ($data as $key => $value)
+        {
+            switch ($key) {
+                case 'storyIsNew' && $value === true:
+                    $successTitle = 'first_story_created';
+                    break;
+                case 'isPublished' && $value === true:
+                    $successTitle = 'first_story_published';
+                    break;
+            }
+
+            if (!empty($successTitle)) {
+                $success = Success::where('title', $successTitle)->firstOrFail();
+                return $this->addSuccess($this->authUser, $success);
+            }
+        }
+
+        return [
+            'success' => false,
+        ];
     }
 }

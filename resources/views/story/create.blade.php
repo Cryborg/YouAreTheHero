@@ -314,20 +314,20 @@
 
 @push('footer-scripts')
     <script type="text/javascript">
-        let isStoryNew = {{ $storyIsNew === true ? 'true' : 'false' }};
+        {{--let isStoryNew = {{ $storyIsNew === true ? 'true' : 'false' }};--}}
 
-        if (isStoryNew === true) {
-            $.post({
-                url: route('user.success.update', {user: {{ $authUser->id }}, success: 1}),
-                method: 'PATCH'
-            });
-        }
+        {{--if (isStoryNew === true) {--}}
+        {{--    $.post({--}}
+        {{--        url: route('user.success.update', {user: {{ $authUser->id }}, success: 1}),--}}
+        {{--        method: 'PATCH'--}}
+        {{--    });--}}
+        {{--}--}}
 
         @if ($story)
-            var storyId = {{ $story->id }};
+            let storyId = {{ $story->id }};
             @include('story.js.create-js')
 
-            var routeItem = '{{ route('item.store') }}';
+            let routeItem = '{{ route('item.store') }}';
             @include('item.js.create_item_js', ['story' => $story, 'contexts' => $contexts])
         @endif
     </script>

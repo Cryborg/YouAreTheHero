@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Bases\ControllerBase;
 use App\Models\Success;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
-class UserSuccessController extends Controller
+class UserSuccessController extends ControllerBase
 {
     /**
      * Display a listing of the resource.
@@ -81,26 +82,7 @@ class UserSuccessController extends Controller
     {
         //TODO: use a fake Success id so that players cannot cheat
         if ($request->ajax()) {
-            $result = array_filter($user->successes()->syncWithoutDetaching($success));
-
-            if (!empty($result)) {
-                $descriptionKey = 'success.' . $success->title . '_description';
-                $description = includeAsJsString('layouts.partials.user_success', [
-                    'description' => trans($descriptionKey)
-                ]);
-
-                // Return data on the User Success
-                return Response::json([
-                    'success'     => true,
-                    'type'        => 'user_success',
-                    'heading'     => trans('success.' . $success->title),
-                    'description' => stripcslashes(str_replace('[[description]]', trans($descriptionKey), $description)),
-                ]);
-            }
-
-            return Response::json([
-                'success'     => false,
-            ]);
+            return Response::json($this->addSuccess($user, $success));
         }
 
         abort(JsonResponse::HTTP_NOT_FOUND);

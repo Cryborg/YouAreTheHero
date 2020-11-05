@@ -36,6 +36,15 @@
 
     @include('layouts.partials.common-js')
 
+    @if (Session::has('successes'))
+        @foreach (Session::get('successes') as $success)
+            showToast('user_success', {
+                heading: '{!! $success['heading'] !!}',
+                description: '{!! $success['description'] !!}'
+            });
+        @endforeach
+    @endif
+
     // Image slider on the login page
     if ($('.splide').length > 0) {
         new Splide('.splide', {
@@ -73,8 +82,8 @@
                 html: true
             });
 
-            // Refreshes some partials if the appropriate JSON response is true
             if (data) {
+                // Refreshes some partials if the appropriate JSON response is true
                 if (data.refreshInventory === true) {
                     loadInventory();
                 }
@@ -88,7 +97,17 @@
                     loadPurse();
                 }
 
-                // Shows an informational toast
+                // Check if we have to show some User Success toast
+                if (data.user_success) {
+                    if (data.user_success.success) {
+                        showToast('user_success', {
+                            heading: data.user_success.heading,
+                            description: data.user_success.description,
+                        });
+                    }
+                }
+
+                // Shows an informational toast on save / delete
                 switch (data.type) {
                     case 'save':
                         if (data.success) {
@@ -114,22 +133,6 @@
                             showToast('error', {
                                 heading: deletionFailedTitle,
                                 text: data.message || deletionFailedText,
-                                errors: data.errors
-                            });
-                        }
-                        break;
-                    case 'user_success':
-                        console.log(data.heading, data.description);
-                        if (data.success) {
-
-                            showToast('user_success', {
-                                heading: data.heading,
-                                description: data.description,
-                            });
-                        } else {
-                            showToast('error', {
-                                heading: saveFailedTitle,
-                                text: data.message || saveFailedText,
                                 errors: data.errors
                             });
                         }
