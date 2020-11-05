@@ -173,7 +173,7 @@
                         </div>
                         <div class="card-body">
                             <p class="help-block">@lang('story.currency_amount_help')</p>
-                            <input class="form-control" type="number" id="currency_amount" min="0" value="{{ $story->options ? $story->options->currency_amount : 10 }}">
+                            <input class="form-control" type="number" id="currency_amount" min="0" value="{{ $story && $story->options ? $story->options->currency_amount : 10 }}">
                         </div>
                     </div>
                 </div>

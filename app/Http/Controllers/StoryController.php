@@ -447,7 +447,7 @@ class StoryController extends ControllerBase
         $data['genres'] = $orderdGenres->where('hidden', false)->sortBy('label');
         $data['audiences'] = $orderdGenres->where('hidden', true)->sortBy('id');
         $data['max_points_to_share'] = $story ? $story->maxPointsToShare() : 10;
-        $data['storyIsNew'] = isset($data['storyIsNew']) && $data['storyIsNew'] == true;
+        $data['storyIsNew'] = isset($data['storyIsNew']) && (bool)$data['storyIsNew'] === true;
 
         $view = View::make('story.create', $data);
 
@@ -459,12 +459,12 @@ class StoryController extends ControllerBase
         $character = $story->currentCharacter();
 
         if ($character !== null) {
-            $deleted = $character->delete();
+            $deleted = (bool) $character->delete();
             Cache::forget('character_' . $character->id);
             setSession('character_id', null);
             setSession('story_id', null);
 
-            if ($deleted == true) {
+            if ($deleted === true) {
                 Flash::success(trans('story.reset_successful_text'));
 
                 if (!$this->authUser->hasRole('admin')) {
@@ -504,20 +504,6 @@ class StoryController extends ControllerBase
             'success' => $success,
             'type' => 'delete',
         ]);
-    }
-
-    /**
-     * @param $itemId
-     *
-     * @return mixed
-     */
-    private function getItem($itemId)
-    {
-        return Cache::remember('item_' . $itemId, Config::get('app.story.cache_ttl'), function () use ($itemId) {
-            return Item::where('id', $itemId)
-                       ->first();
-        }
-        );
     }
 
     public function hasErrors(Story $story)
