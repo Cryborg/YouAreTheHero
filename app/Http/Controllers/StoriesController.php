@@ -43,8 +43,7 @@ class StoriesController extends ControllerBase
         $selectedLanguage = $request->get('language');
 
         $query = Story::select()
-            ->orderByDesc('updated_at')
-            ->with(['pages']);
+            ->orderByDesc('updated_at');
 
         $draft = $request->get('draft') == '1';
 
@@ -70,20 +69,22 @@ class StoriesController extends ControllerBase
         $stories = $query->get();
 
         // Count words in the whole story. Cache this later
-        $stories->map(function ($story) {
+        $activities = Activity::where('subject_type', Story::class)->get();
+
+        $stories->map(function ($story) use ($activities) {
             // Count words and pages
-            $story->wordsCount = 0;
-            $story->pagesCount = $story->pages()->count();
-            $story->pages->map(static function ($page) use ($story) {
-                $story->wordsCount += count(explode(' ', $page->content));
-            });
+            $story->pagesCount = $story->pages->count();
 
             // Statistics
+            $activity = $activities->where('subject_id', $story->id);
             $story->statistics = [
-                'games_played'      => $this->getCommonActivityQuery($story)->where('log_name', 'new_game')->count(),
-                'unique_players'    => $this->getCommonActivityQuery($story)->where('log_name', 'new_game')->distinct('causer_id')->count(),
-                'games_reset'       => $this->getCommonActivityQuery($story)->where('log_name', 'reset_game')->count(),
-                'games_finished'    => $this->getCommonActivityQuery($story)->where('log_name', 'end_game')->count(),
+                'games_played'      => $activity->where('log_name', 'new_game')->count(),
+                'games_reset'       => $activity->where('log_name', 'reset_game')->count(),
+                'games_finished'    => $activity->where('log_name', 'end_game')->count(),
+                'unique_players'    => Activity::where('subject_type', Story::class)
+                                               ->where('log_name', 'new_game')
+                                               ->where('subject_id', $story->id)
+                                               ->distinct('causer_id')->count(),
             ];
         });
 
@@ -96,11 +97,5 @@ class StoriesController extends ControllerBase
             'storiesLocales' => $storiesLocales,
             'selectedLanguage' => !empty($selectedLanguage) ? $selectedLanguage : null
         ]);
-    }
-
-    private function getCommonActivityQuery($story)
-    {
-        return Activity::where('subject_type', Story::class)
-                       ->where('subject_id', $story->id);
     }
 }

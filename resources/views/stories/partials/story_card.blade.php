@@ -71,7 +71,6 @@
                 <div class="row">
                     <div class="col">
                         <span class="badge badge-success bottom-right p-1 pl-2 pr-2">
-                            {{ trans_choice('story.words_count', $story->wordsCount) }} /
                             {{ trans_choice('story.pages_count', $story->pagesCount) }}
                         </span>
                     </div>
