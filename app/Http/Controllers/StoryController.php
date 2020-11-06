@@ -9,7 +9,6 @@ use App\Models\Genre;
 use App\Models\Item;
 use App\Models\Page;
 use App\Models\Story;
-use App\Models\StoryGenre;
 use App\Models\User;
 use App\Repositories\ChoiceRepository;
 use App\Repositories\PageRepository;
@@ -17,7 +16,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
@@ -25,6 +23,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
+use Spatie\Activitylog\Models\Activity;
 
 class StoryController extends ControllerBase
 {
@@ -36,6 +35,82 @@ class StoryController extends ControllerBase
         $this->page = $page;
 
         parent::__construct();
+    }
+
+    public function index(Request $request)
+    {
+        unsetSession();
+
+        $selectedLanguage = $request->get('language');
+
+        $query = Story::select()
+                      ->orderByDesc('updated_at');
+
+        $draft = $request->get('draft') == '1';
+
+        if ($draft) {
+            $query->where('is_published', false)
+                  ->where('user_id', Auth::id());
+        }
+
+        if (!$this->authUser->hasRole('admin')) {
+            $query->where('user_id', $this->authUser->id)
+                  ->orWhere('is_published', true);
+        }
+
+        if ($selectedLanguage) {
+            $query->where('locale', $selectedLanguage);
+        } else {
+            // By default look for stories in the same language as the user's
+            $userLocale = $this->authUser->locale;
+            $selectedLanguage = $userLocale;
+            $query->where('locale', $userLocale);
+        }
+
+        $stories = $query->get();
+
+        // Count words in the whole story. Cache this later
+        $activities = Activity::where('subject_type', Story::class)->get();
+
+        $stories->map(function ($story) use ($activities) {
+            // Count words and pages
+            $story->wordsCount = 0;
+            $story->pagesCount = $story->pages()->count();
+            $story->pages->map(static function ($page) use ($story) {
+                $story->wordsCount += count(explode(' ', $page->content));
+            });
+
+            // Statistics
+            $activity = $activities->where('subject_id', $story->id);
+            $story->statistics = [
+                'games_played'      => $activity->where('log_name', 'new_game')->count(),
+                'games_reset'       => $activity->where('log_name', 'reset_game')->count(),
+                'games_finished'    => $activity->where('log_name', 'end_game')->count(),
+                'unique_players'    => Activity::where('subject_type', Story::class)
+                                               ->where('log_name', 'new_game')
+                                               ->where('subject_id', $story->id)
+                                               ->distinct('causer_id')->count(),
+            ];
+        });
+
+        // List stories in other languages
+        $storiesLocales = Story::distinct('locale')->get('locale');
+
+        return View::make('stories.list', [
+            'user' => $this->authUser,
+            'stories' => $stories,
+            'storiesLocales' => $storiesLocales,
+            'selectedLanguage' => !empty($selectedLanguage) ? $selectedLanguage : null
+        ]);
+    }
+
+    public function indexDraft()
+    {
+        unsetSession();
+
+        return view('stories.list_drafts', [
+            'stories' => $this->authUser->stories
+        ]);
     }
 
     public function getPlayAnonymous(): RedirectResponse

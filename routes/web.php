@@ -30,7 +30,7 @@ Route::middleware('guest')->group(static function () {
 
 Route::middleware('auth')->group(static function () {
 // Home
-    Route::get('/', 'StoriesController@list')->name('home');
+    Route::get('/', 'StoryController@index')->name('home');
 
 // Items
     Route::post('/item/create', 'ItemController@store')->name('item.store');
@@ -42,8 +42,8 @@ Route::middleware('auth')->group(static function () {
     Route::get('/item/{item}/details', 'ItemController@details')->name('item.details');
 
 // Stories
-    Route::get('/stories/draft', 'StoriesController@listDraft')->name('stories.list.draft');
-    Route::get('/stories', 'StoriesController@list')->name('stories.list');
+    Route::get('/stories/draft', 'StoryController@indexDraft')->name('stories.list.draft');
+    Route::get('/stories', 'StoryController@index')->name('stories.list');
 
 // Story
     Route::get('/story/{story}/reset/{play?}', 'StoryController@getReset')->name('story.reset');
