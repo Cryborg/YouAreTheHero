@@ -12,18 +12,18 @@ class DefaultMessage extends Mailable
     use Queueable, SerializesModels;
 
     public $user;
-    public $message;
+    public $body;
 
     /**
      * Create a new message instance.
      *
      * @param \App\Models\User $user
-     * @param string           $message
+     * @param string           $body
      */
-    public function __construct(User $user, string $message)
+    public function __construct(User $user, string $body)
     {
         $this->user = $user;
-        $this->message = $message;
+        $this->body = $body;
     }
 
     /**

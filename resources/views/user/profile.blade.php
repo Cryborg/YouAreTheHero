@@ -77,14 +77,16 @@
                 @endforeach
             </div>
 
-{{--            {!! Form::open(['url' => route('mail.send', ['user' => $user, 'mailable' => 'default_message']), 'method' => 'post', 'id' => 'admin_send_message']) !!}--}}
-{{--                <div class="form-group">--}}
-{{--                    <label for="send_message">@lang('admin.send_message_label')</label>--}}
-{{--                    <textarea class="form-control" name="send_message" id="send_message" rows="3"></textarea>--}}
-{{--                </div>--}}
+            @can('isAdmin')
+                {!! Form::open(['url' => route('mail.send', ['user' => $user, 'mailable' => 'default_message']), 'method' => 'post', 'id' => 'admin_send_message']) !!}
+                    <div class="form-group">
+                        <label for="send_message">@lang('admin.send_message_label')</label>
+                        <textarea class="form-control" name="send_message" id="send_message" rows="3"></textarea>
+                    </div>
 
-{{--                {!! Form::submit(trans('common.save'), ['class' => 'form-control btn btn-primary']) !!}--}}
-{{--            {!! Form::close() !!}--}}
+                    {!! Form::submit(trans('common.save'), ['class' => 'form-control btn btn-primary']) !!}
+                {!! Form::close() !!}
+            @endcan
         </div>
     </div>
 @endsection

@@ -5,6 +5,6 @@
         <title>Default message</title>
     </head>
     <body>
-        {{ $message }}
+        {!! $body !!}
     </body>
 </html>
