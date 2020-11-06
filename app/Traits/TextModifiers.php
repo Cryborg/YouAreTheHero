@@ -22,8 +22,6 @@ trait TextModifiers
     {
         $characterName = null;
         $characterId = getSession('character_id');
-        $storyId = getSession('story_id');
-        $story = Story::where('id', $storyId)->first();
         $character = null;
 
         if (empty($characterId)) {
@@ -46,12 +44,19 @@ trait TextModifiers
             'character_name' => $characterName,
         ];
 
-        $story->people()->each(function ($person) use (&$placeholders, $character) {
-            $placeholders['person.' . $person->order . '.firstname'] = $this->getPersonName($person, $character)->first_name;
-            $placeholders['person.' . $person->order . '.lastname'] = $this->getPersonName($person, $character)->last_name;
-            $placeholders['person.' . $person->order . '.fullname'] = $person->first_name . ' ' . $person->last_name;
-            $placeholders['person.' . $person->order . '.role'] = $person->role;
-        });
+        $storyId = getSession('story_id');
+
+        if ($storyId) {
+            $story = Story::where('id', $storyId)
+                          ->first();
+            $story->people()
+                  ->each(function ($person) use (&$placeholders, $character) {
+                      $placeholders['person.' . $person->order . '.firstname'] = $this->getPersonName($person, $character)->first_name;
+                      $placeholders['person.' . $person->order . '.lastname']  = $this->getPersonName($person, $character)->last_name;
+                      $placeholders['person.' . $person->order . '.fullname']  = $person->first_name . ' ' . $person->last_name;
+                      $placeholders['person.' . $person->order . '.role']      = $person->role;
+                  });
+        }
 
         foreach ($placeholders as $key => $placeholder) {
             $model->$field = str_replace('[[' . $key . ']]', $placeholder, $model->$field);
