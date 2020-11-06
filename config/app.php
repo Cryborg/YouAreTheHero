@@ -238,7 +238,7 @@ return [
 
     ],
 
-    /**
+    /*
      * Constants
      */
     'story' => [
@@ -247,5 +247,10 @@ return [
     'languages' => [
         'fr_FR',
         'en_GB',
+    ],
+
+    // ID of the Bot in the Users table
+    'mails' => [
+        'bot' => 5
     ],
 ];

@@ -70,6 +70,16 @@ class User extends Authenticatable implements HasLocalePreference
                     ->orderBy('pivot_created_at');
     }
 
+    public function messages_from()
+    {
+        return $this->hasMany(Message::class, 'from')->orderBy('created_at', 'desc');
+    }
+
+    public function messages_to()
+    {
+        return $this->hasMany(Message::class, 'to')->orderBy('created_at', 'desc');
+    }
+
     public function hasBeganStory(Story $story): bool
     {
         return Character::where([

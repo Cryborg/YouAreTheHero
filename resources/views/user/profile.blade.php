@@ -78,7 +78,7 @@
             </div>
 
             @can('isAdmin')
-                {!! Form::open(['url' => route('mail.send', ['user' => $user, 'mailable' => 'default_message']), 'method' => 'post', 'id' => 'admin_send_message']) !!}
+                {!! Form::open(['url' => route('mail.send', ['user' => $user, 'mailable' => 'pending_story']), 'method' => 'post', 'id' => 'admin_send_message']) !!}
                     <div class="form-group">
                         <label for="send_message">@lang('admin.send_message_label')</label>
                         <textarea class="form-control" name="send_message" id="send_message" rows="3"></textarea>
@@ -87,6 +87,15 @@
                     {!! Form::submit(trans('common.save'), ['class' => 'form-control btn btn-primary']) !!}
                 {!! Form::close() !!}
             @endcan
+            <div class="card">
+                <div class="card-header">
+                    Messagerie
+                </div>
+                <div class="card-body">
+                    @each('user.profile.partials.message', $user->messages_from, 'message')
+                    @each('user.profile.partials.message', $user->messages_to, 'message')
+                </div>
+            </div>
         </div>
     </div>
 @endsection
