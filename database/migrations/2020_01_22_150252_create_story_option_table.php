@@ -16,7 +16,6 @@ class CreateStoryOptionTable extends Migration
         Schema::create('story_options', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedBigInteger('story_id');
             $table->foreignId('story_id')->constrained();
 
             $table->boolean('has_character')->default(false)

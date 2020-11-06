@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Notifications\ResetPassword;
+use App\Traits\HasInbox;
 use Illuminate\Contracts\Translation\HasLocalePreference;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -12,7 +13,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements HasLocalePreference
 {
-    use Notifiable, SoftDeletes, HasFactory;
+    use HasInbox, Notifiable, SoftDeletes, HasFactory;
 
     /**
      * The attributes that are mass assignable.

@@ -411,6 +411,39 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Message
+ *
+ * @property mixed id
+ * @property int $id
+ * @property int $user_id
+ * @property int $thread_id
+ * @property string $body
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Participant[] $participants
+ * @property-read int|null $participants_count
+ * @property-read \App\Models\Thread $thread
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Message newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Message newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Message onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Message query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereThreadId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereUserId($value)
+ * @method static \Illuminate\Database\Query\Builder|Message withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Message withoutTrashed()
+ */
+	class Message extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Page
  *
  * @property string $id
@@ -463,6 +496,37 @@ namespace App\Models{
  * @method static \Illuminate\Database\Query\Builder|Page withoutTrashed()
  */
 	class Page extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Participant
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $thread_id
+ * @property string|null $seen_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Thread $thread
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Participant inbox($userId)
+ * @method static \Illuminate\Database\Eloquent\Builder|Participant newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Participant newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Participant onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Participant query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Participant whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Participant whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Participant whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Participant whereSeenAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Participant whereThreadId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Participant whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Participant whereUserId($value)
+ * @method static \Illuminate\Database\Query\Builder|Participant withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Participant withoutTrashed()
+ */
+	class Participant extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -673,18 +737,20 @@ namespace App\Models{
  * @property string|null $character_genre
  * @property bool $has_stats Do we show the stats creation page?
  * @property string $stat_attribution "player" means the player gives :points_to_share: points manually to his character. "dice" means it is done by throwing dice.
- * @property int $points_to_share Points to share amongst character stats
- * @property int $inventory_slots How much (virtual) slots there are in the inventory.
+ * @property int $points_to_share Points to share between character stats
+ * @property int $inventory_slots How many (virtual) slots there are in the inventory.
+ * @property string $currency_name
+ * @property int $currency_amount Default amount of the currency when a new character is created.
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property string $currency_name
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption newQuery()
  * @method static \Illuminate\Database\Query\Builder|StoryOption onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption query()
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereCharacterGenre($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereCurrencyAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereCurrencyName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereHasCharacter($value)
@@ -720,6 +786,43 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Thread
+ *
+ * @property mixed id
+ * @property int $id
+ * @property int $user_id
+ * @property string $subject
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Message[] $messages
+ * @property-read int|null $messages_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $participants
+ * @property-read int|null $participants_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $recipients
+ * @property-read int|null $recipients_count
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Thread from($users)
+ * @method static \Illuminate\Database\Eloquent\Builder|Thread newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Thread newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Thread onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Thread query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Thread seen()
+ * @method static \Illuminate\Database\Eloquent\Builder|Thread to($users)
+ * @method static \Illuminate\Database\Eloquent\Builder|Thread whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Thread whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Thread whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Thread whereSubject($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Thread whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Thread whereUserId($value)
+ * @method static \Illuminate\Database\Query\Builder|Thread withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Thread withoutTrashed()
+ */
+	class Thread extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\User
  *
  * @property int $id
@@ -731,6 +834,7 @@ namespace App\Models{
  * @property string $locale
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $role
+ * @property bool $optin_system
  * @property string|null $google_id
  * @property string|null $avatar
  * @property string|null $avatar_original
@@ -747,6 +851,8 @@ namespace App\Models{
  * @property-read int|null $stories_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Success[] $successes
  * @property-read int|null $successes_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Thread[] $threads
+ * @property-read int|null $threads_count
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()
@@ -762,6 +868,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereLastName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereOptinSystem($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRole($value)
