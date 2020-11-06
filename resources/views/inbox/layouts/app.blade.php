@@ -12,28 +12,6 @@
 
 	<title>Inbox</title>
 
-	<style>
-		/* CSS used here will be applied after bootstrap.css */
-
-		.tab-pane .list-group-item:first-child {
-			border-top-right-radius: 0;
-			border-top-left-radius: 0;
-		}
-
-		.tab-pane .list-group-item:last-child {
-			border-bottom-right-radius: 0;
-			border-bottom-left-radius: 0;
-		}
-
-		.tab-pane .list-group input[type="checkbox"] {
-			margin-top: 2px;
-		}
-
-		a.list-group-item.read {
-			color: #222;
-			background-color: #F3F3F3;
-		}
-	</style>
 </head>
 <body>
 @include('inbox.layouts.partials.navbar')
@@ -159,7 +137,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="submit" class="btn btn-primary">@lang('inbox::strings.form.send')</button>
+				<button type="submit" class="btn btn-primary">@lang('strings.form.send')</button>
 			</div>
 		</form>
 	</div>
