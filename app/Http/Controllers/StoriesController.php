@@ -73,7 +73,11 @@ class StoriesController extends ControllerBase
 
         $stories->map(function ($story) use ($activities) {
             // Count words and pages
-            $story->pagesCount = $story->pages->count();
+            $story->wordsCount = 0;
+            $story->pagesCount = $story->pages()->count();
+            $story->pages->map(static function ($page) use ($story) {
+                $story->wordsCount += count(explode(' ', $page->content));
+            });
 
             // Statistics
             $activity = $activities->where('subject_id', $story->id);
