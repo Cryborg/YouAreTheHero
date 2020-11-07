@@ -92,8 +92,7 @@
                     Messagerie
                 </div>
                 <div class="card-body">
-                    @each('user.profile.partials.message', $user->messages_from, 'message')
-                    @each('user.profile.partials.message', $user->messages_to, 'message')
+
                 </div>
             </div>
         </div>

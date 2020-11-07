@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Inbox\Message;
 use App\Notifications\ResetPassword;
+use App\Traits\HasInbox;
 use Illuminate\Contracts\Translation\HasLocalePreference;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -12,7 +14,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements HasLocalePreference
 {
-    use Notifiable, SoftDeletes, HasFactory;
+    use Notifiable, SoftDeletes, HasFactory, HasInbox;
 
     /**
      * The attributes that are mass assignable.
@@ -68,16 +70,6 @@ class User extends Authenticatable implements HasLocalePreference
         return $this->belongsToMany(Success::class)
                     ->withPivot('created_at')
                     ->orderBy('pivot_created_at');
-    }
-
-    public function messages_from()
-    {
-        return $this->hasMany(Message::class, 'from')->orderBy('created_at', 'desc');
-    }
-
-    public function messages_to()
-    {
-        return $this->hasMany(Message::class, 'to')->orderBy('created_at', 'desc');
     }
 
     public function hasBeganStory(Story $story): bool
