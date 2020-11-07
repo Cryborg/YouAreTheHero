@@ -100,4 +100,11 @@ class User extends Authenticatable implements HasLocalePreference
     {
         return $this->locale;
     }
+
+    public function getAvatarAttribute($value)
+    {
+        if ($value === null) {
+            return 'generic-avatar.png';
+        }
+    }
 }

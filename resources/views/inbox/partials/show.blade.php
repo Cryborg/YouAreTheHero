@@ -20,8 +20,7 @@
 
 <form class="form-group">
     <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
-        <label for="body" class="control-label">@lang('inbox.form.body')</label>
-        <textarea id="body" name="body" class="form-control" rows="6" required>{{ old('body') }}</textarea>
+        <textarea id="body" name="body" class="form-control" rows="2" required>{{ old('body') }}</textarea>
         @if ($errors->has('body'))
             <span class="help-block">
                 <b>{{ $errors->first('body') }}</b>

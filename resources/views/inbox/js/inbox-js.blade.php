@@ -7,6 +7,7 @@ $(document).on('click', '.thread', function () {
     })
         .done(function (data) {
             $('#messages').html(data.html);
+            scrollToLastMessage();
         })
 });
 
@@ -21,8 +22,12 @@ $(document).on('click', '#sendMessage', function () {
     })
         .done(function (data) {
             $('#messagesList').append(data.message);
+            scrollToLastMessage();
             $('#body').val('').focus();
         });
-
-
 });
+
+function scrollToLastMessage()
+{
+    $('#messagesList').animate({ scrollTop: $('#messagesList').prop("scrollHeight")}, 500);
+}
