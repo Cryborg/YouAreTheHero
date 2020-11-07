@@ -18,7 +18,7 @@ class Participant extends Model
      */
     public function __construct(array $attributes = [])
     {
-        $this->table = config('inbox.tables.participants');
+        $this->table = 'participants';
 
         parent::__construct($attributes);
     }

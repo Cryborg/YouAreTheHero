@@ -18,7 +18,7 @@ class Message extends Model
      */
     public function __construct(array $attributes = [])
     {
-        $this->table = config('inbox.tables.messages');
+        $this->table = 'messages';
 
         parent::__construct($attributes);
     }

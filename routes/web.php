@@ -150,3 +150,11 @@ Route::middleware('auth')->group(static function () {
 
 // Successes
     Route::resource('user.success', UserSuccessController::class);
+
+// Inbox
+    Route::get('inbox', 'InboxController@index')->name('inbox.index');
+    Route::get('inbox/create', 'InboxController@create')->name('inbox.create');
+    Route::post('inbox/store', 'InboxController@store')->name('inbox.store');
+    Route::post('inbox/{thread}/reply', 'InboxController@reply')->name('inbox.reply');
+    Route::get('inbox/{thread}', 'InboxController@show')->name('inbox.show');
+    Route::delete('inbox/{thread}/destroy', 'InboxController@destroy')->name('inbox.destroy');

@@ -21,7 +21,7 @@ class Thread extends Model
      */
     public function __construct(array $attributes = [])
     {
-        $this->table = config('inbox.tables.threads');
+        $this->table = 'threads';
 
         parent::__construct($attributes);
     }
@@ -50,7 +50,7 @@ class Thread extends Model
      */
     public function participants()
     {
-        return $this->belongsToMany(config('auth.providers.users.model'), config('inbox.tables.participants'),
+        return $this->belongsToMany(config('auth.providers.users.model'), 'participants',
                                     'thread_id', 'user_id')
                     ->withPivot('seen_at', 'deleted_at')
                     ->withTimestamps();
@@ -179,7 +179,7 @@ class Thread extends Model
             $users = [$users];
         }
 
-        $participantsTable = config('inbox.tables.participants');
+        $participantsTable = 'participants';
 
         $query->select($this->table . '.*')
               ->join($participantsTable, "{$this->table}.id", '=', "{$participantsTable}.thread_id")
@@ -195,6 +195,6 @@ class Thread extends Model
      */
     public function scopeSeen($query)
     {
-        $query->whereNotNull(config('inbox.tables.participants') . '.seen_at');
+        $query->whereNotNull('participants' . '.seen_at');
     }
 }

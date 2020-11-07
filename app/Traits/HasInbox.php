@@ -23,9 +23,9 @@ trait HasInbox
      */
     public function __construct(array $attributes = [])
     {
-        $this->threadsTable = config('inbox.tables.threads');
-        $this->messagesTable = config('inbox.tables.messages');
-        $this->participantsTable = config('inbox.tables.participants');
+        $this->threadsTable = 'threads';
+        $this->messagesTable = 'messages';
+        $this->participantsTable = 'participants';
 
         $this->threadClass = config('inbox.models.thread');
         $this->participantClass = config('inbox.models.participant');
