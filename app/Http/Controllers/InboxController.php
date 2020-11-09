@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Bases\ControllerBase;
+use App\Classes\Constants;
 use App\Models\Inbox\Thread;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Response;
@@ -27,39 +29,49 @@ class InboxController extends ControllerBase
         }
 
         $threads = $threads->paginate(config('inbox.paginate', 10));
+        $multiple = false;
 
-        return view('inbox.index', compact('threads'));
-    }
+        switch ($this->authUser->role) {
+            case Constants::ROLE_ADMIN:
+            case Constants::ROLE_MODERATOR:
+                $recipients = User::get();
+                $multiple = true;
+                break;
+            default:
+                $recipients = User::whereIn('role', [Constants::ROLE_ADMIN])->get();
+                break;
+        }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+
+        return view('inbox.index', compact('threads', 'recipients', 'multiple'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
         $request->validate([
-            'subject' => 'required',
+//            'subject' => '',
             'body' => 'required',
-            'recipients' => 'required|array',
+//            'recipients' => 'required|array',
+            'recipients' => 'required',
         ]);
 
-        $thread = auth()->user()
+        $thread = $this->authUser
                         ->subject($request->subject)
                         ->writes($request->body)
                         ->to($request->recipients)
                         ->send();
+
+        return Response::json([
+            'success' => $thread ? true : false,
+            'type' => 'message_sent'
+        ]);
 
         return redirect()
             ->route('inbox.index')
@@ -101,29 +113,6 @@ class InboxController extends ControllerBase
         }
 
         abort(JsonResponse::HTTP_NOT_FOUND);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Inbox\Thread  $thread
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Thread $thread)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Inbox\Thread  $thread
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Thread $thread)
-    {
-        //
     }
 
     /**

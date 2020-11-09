@@ -82,7 +82,7 @@
                     {{--                TAB 2 --}}
                     <div class="tab-pane active" id="page-2">
                         @info({!! trans('page.current_page_help') !!})
-                        <div class="divAsForm" data-route="{{ route('page.edit.post', ['page' => $page->id]) }}">
+                        <div class="divAsForm" data-route="{{ route('page.store', ['page' => $page->id]) }}">
                             {{-- Form --}}
                             <div class="card">
                                 <h5 class="card-header">

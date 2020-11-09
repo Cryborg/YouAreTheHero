@@ -24,7 +24,7 @@
         <div class="col-lg-6 col-md-12 scrollable-content h-600px" id="descriptions_list">
             @info({!! trans('description.descriptions_list_help') !!})
 
-            @foreach($descriptions as $description)
+            @foreach($descriptions ?? [] as $description)
                 <div class="card" data-description-id="{{ $description->id }}">
                     <h5 class="card-header">
                         <button type="button" class="close ml-2 deleteDescription">

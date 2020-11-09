@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Classes\Constants;
 use App\Models\Character;
 use App\Models\Choice;
 use App\Models\Field;
@@ -68,7 +69,7 @@ class ChoiceRepository
         // Log if there is no choice, and the story is not finished
         if (!$currentPage->is_last && count($currentPage->filtered_choices) === 0 && count($currentPage->unreachable_choices) === 0) {
             if (!Auth::user()
-                     ->hasRole('admin')) {
+                     ->hasRole(Constants::ROLE_ADMIN)) {
                 activity()
                     ->performedOn($currentPage)
                     ->useLog('dead_end')

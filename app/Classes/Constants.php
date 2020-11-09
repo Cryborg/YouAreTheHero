@@ -11,4 +11,9 @@ class Constants
     public const GENRE_MALE   = 'male';
     public const GENRE_FEMALE = 'female';
     public const GENRE_BOTH   = 'both';
+
+    public const ROLE_ADMIN = 'admin';
+    public const ROLE_MODERATOR = 'moderator';
+    public const ROLE_MEMBER = 'member';
+    public const ROLE_TEMPORARY = 'temp';
 }

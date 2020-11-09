@@ -205,34 +205,34 @@
         return button.render();
     };
 
-    const ExampleButton = function (context) {
-        var ui = $.summernote.ui;
-        var pdfButton = ui.buttonGroup([
-            ui.button({
-                className: "dropdown-toggle",
-                contents:
-                    '<span class="fa fa-file-pdf-o"></span> <span class="caret"></span>',
-                tooltip: "Your tooltip",
-                data: {
-                    toggle: "dropdown",
-                },
-            }),
-            ui.dropdown({
-                className: "drop-default summernote-list",
-                contents:
-                    '<div class="btn-group">' +
-                    '<button type="button" class="btn btn-default btn-sm" title="PDF 1"><i class="fa fa-file-pdf-o"></i>PDF 1</button>' +
-                    '<button type="button" class="btn btn-default btn-sm" title="PDF 2"><i class="fa fa-file-pdf-o"></i>PDF 2</button></div>',
-                callback: function ($dropdown) {
-                    $dropdown.find(".btn").click(function () {
-                        context.invoke("editor.insertText", "text");
-                    });
-                },
-            }),
-        ]);
-
-        return pdfButton.render(); // jquery object
-    };
+    // const ExampleButton = function (context) {
+    //     var ui = $.summernote.ui;
+    //     var pdfButton = ui.buttonGroup([
+    //         ui.button({
+    //             className: "dropdown-toggle",
+    //             contents:
+    //                 '<span class="fa fa-file-pdf-o"></span> <span class="caret"></span>',
+    //             tooltip: "Your tooltip",
+    //             data: {
+    //                 toggle: "dropdown",
+    //             },
+    //         }),
+    //         ui.dropdown({
+    //             className: "drop-default summernote-list",
+    //             contents:
+    //                 '<div class="btn-group">' +
+    //                 '<button type="button" class="btn btn-default btn-sm" title="PDF 1"><i class="fa fa-file-pdf-o"></i>PDF 1</button>' +
+    //                 '<button type="button" class="btn btn-default btn-sm" title="PDF 2"><i class="fa fa-file-pdf-o"></i>PDF 2</button></div>',
+    //             callback: function ($dropdown) {
+    //                 $dropdown.find(".btn").click(function () {
+    //                     context.invoke("editor.insertText", "text");
+    //                 });
+    //             },
+    //         }),
+    //     ]);
+    //
+    //     return pdfButton.render(); // jquery object
+    // };
 
     const summernoteOptions = {
         lang: 'fr-FR',
@@ -251,8 +251,8 @@
         ],
         buttons: {
             placeholders: PlaceholdersButton,
-            popovers: PopoverButton,
-            example: ExampleButton
+            popovers: PopoverButton
+            // example: ExampleButton
         },
         spellcheck: false,
         cleaner: {

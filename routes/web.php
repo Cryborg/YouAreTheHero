@@ -50,7 +50,7 @@ Route::middleware('auth')->group(static function () {
 
     Route::get('/story/create', 'StoryController@getCreate')->name('story.create');
     Route::post('/story/create', 'StoryController@store')->name('story.create.post');
-    Route::get('/story/{story}/edit', 'StoryController@getEdit')->name('story.edit');
+    Route::get('/story/{story}/edit', 'StoryController@edit')->name('story.edit');
 
     Route::get('/story/{story}/inventory', 'StoryController@inventory')->name('story.inventory');
     Route::get('/story/{story}/sheet', 'StoryController@sheet')->name('story.sheet');
@@ -68,14 +68,14 @@ Route::middleware('auth')->group(static function () {
     Route::get('/story/{story}/errors/list', 'StoryController@errors')->name('story.errors');
 
 // Page
-    Route::get('/page/{page}/edit', 'PageController@getEdit')->name('page.edit');
+    Route::get('/page/{page}/edit', 'PageController@edit')->name('page.edit');
     Route::get('/page/{story}/list', 'PageController@list')->name('page.list');
     Route::get('/page/{page}/choices', 'PageController@availableChoices')->name('page.choices');
     Route::get('/page/{pageFrom}/{pageTo}/choice', 'ChoiceController@get')->name('page.choice');
     Route::get('/page/{page}/items/list', 'PageController@listItems')->name('page.items.list');
 
     Route::post('/page/choice/{choice}','ChoiceController@update')->name('choice.update');
-    Route::post('/page/{page}/edit', 'PageController@postEdit')->name('page.edit.post');
+    Route::post('/page/{page}/edit', 'PageController@store')->name('page.store');
     Route::post('/page/{page}/riddle', 'PageController@postRiddle')->name('page.riddle.validate');
     Route::post('/page/{page}/item/create', 'PageController@storeItem')->name('page.item.store');
 
@@ -153,7 +153,6 @@ Route::middleware('auth')->group(static function () {
 
 // Inbox
     Route::get('inbox', 'InboxController@index')->name('inbox.index');
-    Route::get('inbox/create', 'InboxController@create')->name('inbox.create');
     Route::post('inbox/store', 'InboxController@store')->name('inbox.store');
     Route::post('inbox/{thread}/reply', 'InboxController@reply')->name('inbox.reply');
     Route::get('inbox/{thread}', 'InboxController@show')->name('inbox.show');

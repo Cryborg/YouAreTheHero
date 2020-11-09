@@ -22,69 +22,69 @@ class GenresTableSeeder extends Seeder
             0 =>
             array (
                 'id' => 1,
-                'label' => 'writing_genre_humor',
+                'label' => 'writing_genres.humor',
             ),
             1 =>
             array (
                 'id' => 2,
-                'label' => 'writing_genre_drama',
+                'label' => 'writing_genres.drama',
             ),
             2 =>
             array (
                 'id' => 3,
-                'label' => 'writing_genre_thriller',
+                'label' => 'writing_genres.thriller',
             ),
             3 =>
             array (
                 'id' => 4,
-                'label' => 'writing_genre_science_fiction',
+                'label' => 'writing_genres.science_fiction',
             ),
             4 =>
             array (
                 'id' => 5,
-                'label' => 'writing_genre_fantastic',
+                'label' => 'writing_genres.fantastic',
             ),
             5 =>
             array (
                 'id' => 6,
-                'label' => 'writing_genre_horror',
+                'label' => 'writing_genres.horror',
             ),
             6 =>
             array (
                 'id' => 7,
-                'label' => 'writing_genre_detective',
+                'label' => 'writing_genres.detective',
             ),
             7 =>
             array (
                 'id' => 8,
-                'label' => 'writing_genre_fantasy',
+                'label' => 'writing_genres.fantasy',
             ),
             8 =>
             array (
                 'id' => 9,
-                'label' => 'writing_genre_adventure',
+                'label' => 'writing_genres.adventure',
             ),
             9 =>
             array (
                 'id' => 10,
-                'label' => 'writing_genre_tale',
+                'label' => 'writing_genres.tale',
             ),
             10 =>
             array (
                 'id' => 11,
-                'label' => 'writing_genre_historical',
+                'label' => 'writing_genres.historical',
             ),
             11 => array (
                 'id' => 12,
-                'label' => 'writing_genre_short_story',
+                'label' => 'writing_genres.short_story',
             ),
             12 => array (
                 'id' => 13,
-                'label' => 'writing_genre_tutorial',
+                'label' => 'writing_genres.tutorial',
             ),
             13 => array (
                 'id' => 14,
-                'label' => 'writing_genre_romance',
+                'label' => 'writing_genres.romance',
             ),
         ));
 

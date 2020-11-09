@@ -40,11 +40,11 @@
                                     </a>
                                 @endif
 
-                                @if ($user->hasRole('admin'))
-                                    <span class="badge badge-primary">Admin</span>
+                                @if ($user->hasRole(\App\Classes\Constants::ROLE_ADMIN))
+                                    <span class="badge badge-primary">@lang('user.roles.admin')</span>
                                 @endif
-                                @if ($user->hasRole('moderator'))
-                                    <span class="badge badge-success">Moderator</span>
+                                @if ($user->hasRole(\App\Classes\Constants::ROLE_MODERATOR))
+                                    <span class="badge badge-success">@lang('user.roles.moderator')</span>
                                 @endif
                             </td>
                             <td>{{ $user->email }}</td>

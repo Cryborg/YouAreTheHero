@@ -79,7 +79,7 @@
                 <div class="row h-50">
                     <div class="col">
                         @foreach ($story->genres as $genre)
-                            <span class="badge badge-primary mr-1 p-1">{{ trans('story.writing_genre_' . $genre->label) }}</span>
+                            <span class="badge badge-primary mr-1 p-1">{{ trans('story.writing_genres.' . $genre->label) }}</span>
                         @endforeach
                     </div>
                 </div>

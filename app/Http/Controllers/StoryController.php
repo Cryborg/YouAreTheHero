@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bases\ControllerBase;
+use App\Classes\Constants;
 use App\Models\Character;
 use App\Models\Field;
 use App\Models\Genre;
@@ -53,7 +54,7 @@ class StoryController extends ControllerBase
                   ->where('user_id', Auth::id());
         }
 
-        if (!$this->authUser->hasRole('admin')) {
+        if (!$this->authUser->hasRole(Constants::ROLE_ADMIN)) {
             $query->where('user_id', $this->authUser->id)
                   ->orWhere('is_published', true);
         }
@@ -224,7 +225,7 @@ class StoryController extends ControllerBase
         }
 
         if ($page->is_last) {
-            if (!$this->authUser->hasRole('admin')) {
+            if (!$this->authUser->hasRole(Constants::ROLE_ADMIN)) {
                 activity()
                     ->performedOn($story)
                     ->useLog('end_game')
@@ -484,7 +485,7 @@ class StoryController extends ControllerBase
      * @return \Illuminate\Contracts\View\View
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function getEdit(Request $request, Story $story)
+    public function edit(Request $request, Story $story)
     {
         $this->authorize('edit', $story);
 
@@ -515,7 +516,7 @@ class StoryController extends ControllerBase
         $genres = Genre::all();
         $orderdGenres = collect();
         $genres->each(static function ($genre) use ($orderdGenres) {
-            $genre->label = trans('story.writing_genre_' . $genre->label);
+            $genre->label = trans('story.writing_genres.' . $genre->label);
             $orderdGenres->push($genre);
         });
 
@@ -549,7 +550,7 @@ class StoryController extends ControllerBase
             if ($deleted === true) {
                 Flash::success(trans('story.reset_successful_text'));
 
-                if (!$this->authUser->hasRole('admin')) {
+                if (!$this->authUser->hasRole(Constants::ROLE_ADMIN)) {
                     activity()
                         ->performedOn($story)
                         ->useLog('reset_game')

@@ -74,13 +74,14 @@ class PageController extends Controller
      * @return \Illuminate\Contracts\View\View
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function getEdit(Page $page): \Illuminate\Contracts\View\View
+    public function edit(Page $page): \Illuminate\Contracts\View\View
     {
         $this->authorize('edit', $page);
 
         $errors = self::getErrors($page->story);
 
         setSession('story_id', $page->story->id);
+
         // List of placeholders in the Summernote editor
         $placeholders = [
             'character_name' => trans('character.name_label'),
@@ -130,7 +131,7 @@ class PageController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException|\Laracasts\Presenter\Exceptions\PresenterException
      */
-    public function postEdit(Request $request, Page $page): ?JsonResponse
+    public function store(Request $request, Page $page): ?JsonResponse
     {
         if ($request->ajax()) {
             $this->authorize('edit', $page);
@@ -150,10 +151,10 @@ class PageController extends Controller
                 Cache::forget('page_' . $page->id);
 
                 return response()->json([
-                                            'success' => true,
-                                            'content' => $page->present()->content,
-                                            'graph'   => $this->buildGraph($page->story),
-                                            'type'    => 'save',
+                    'success' => true,
+                    'content' => $page->present()->content,
+                    'graph'   => $this->buildGraph($page->story),
+                    'type'    => 'save',
                 ]);
             }
 

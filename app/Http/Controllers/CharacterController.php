@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bases\ControllerBase;
+use App\Classes\Constants;
 use App\Models\Character;
 use App\Models\Story;
 use Illuminate\Http\Request;
@@ -86,7 +87,7 @@ class CharacterController extends ControllerBase
         }
 
         // Log this new game
-        if (!$this->authUser->hasRole('admin')) {
+        if (!$this->authUser->hasRole(Constants::ROLE_ADMIN)) {
             activity()
                 ->performedOn($story)
                 ->useLog('new_game')

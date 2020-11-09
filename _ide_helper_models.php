@@ -403,7 +403,7 @@ namespace App\Models\Inbox{
  * @property mixed id
  * @property int $id
  * @property int $user_id
- * @property string $subject
+ * @property string|null $subject
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -844,16 +844,14 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Character[] $characters
  * @property-read int|null $characters_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inbox\Message[] $messages_from
- * @property-read int|null $messages_from_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inbox\Message[] $messages_to
- * @property-read int|null $messages_to_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Story[] $stories
  * @property-read int|null $stories_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Success[] $successes
  * @property-read int|null $successes_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inbox\Thread[] $threads
+ * @property-read int|null $threads_count
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()

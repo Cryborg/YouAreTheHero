@@ -154,10 +154,10 @@ trait HasInbox
      */
     public function participated($withTrashed = false)
     {
-        $query = Thread::select(['threads.id', 'threads.subject', 'threads.updated_at', 'messages.user_id', 'messages.body', 'messages.created_at as message_created_at'])
-            ->where('messages.user_id', '!=', $this->id)
+        $query = Thread::select(['threads.id', 'participants.user_id', 'threads.subject', 'threads.updated_at'])
+            ->where('participants.user_id', '!=', $this->id)
             ->whereRaw($this->id . ' in (select user_id from messages where thread_id = threads.id)')
-            ->join('messages', 'messages.thread_id', '=', 'threads.id')
+            ->join('participants', 'participants.thread_id', 'threads.id')
             ->groupByRaw('threads.id')
             ;
 

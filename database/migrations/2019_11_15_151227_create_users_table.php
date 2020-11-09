@@ -1,5 +1,6 @@
 <?php
 
+use App\Classes\Constants;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -23,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('password', 100)->nullable();
             $table->string('locale', 5)->default('fr_FR');
             $table->timestamp('email_verified_at')->nullable();
-            $table->enum('role', ['admin', 'moderator', 'member', 'developer'])->default('member');
+            $table->enum('role', [Constants::ROLE_ADMIN, Constants::ROLE_MODERATOR, Constants::ROLE_MEMBER, Constants::ROLE_TEMPORARY, Constants::ROLE_DEVELOPER])->default(Constants::ROLE_MEMBER);
             $table->boolean('optin_system')->default(false);
 
             // Google Auth

@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Classes\Constants;
 use App\Models\User;
 use App\Models\Page;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -19,7 +20,7 @@ class PagePolicy
      */
     public function view(User $user, Page $page)
     {
-        return $user->role === 'admin' || $user->id === $page->story->user_id;
+        return $user->role === Constants::ROLE_ADMIN || $user->id === $page->story->user_id;
     }
 
     /**

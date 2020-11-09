@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Classes\Constants;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -72,7 +73,7 @@ class Character extends Model
             ]);
 
             // Log this new game
-            if (!Auth::user()->hasRole('admin')) {
+            if (!Auth::user()->hasRole(Constants::ROLE_ADMIN)) {
                 activity()
                     ->performedOn($story)
                     ->useLog('new_game')
