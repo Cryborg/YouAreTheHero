@@ -2,12 +2,11 @@
 
 namespace App\Traits;
 
-use App\Models\Inbox\Message;
-use App\Models\Inbox\Participant;
 use Carbon\Carbon;
 use App\Events\NewMessageDispatched;
 use App\Events\NewReplyDispatched;
 use App\Models\Inbox\Thread;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 trait HasInbox
 {
@@ -35,6 +34,11 @@ trait HasInbox
         parent::__construct($attributes);
     }
 
+    /**
+     * @param $subject
+     *
+     * @return $this
+     */
     public function subject($subject)
     {
         $this->subject = $subject;
@@ -42,6 +46,11 @@ trait HasInbox
         return $this;
     }
 
+    /**
+     * @param $message
+     *
+     * @return $this
+     */
     public function writes($message)
     {
         $this->message = $message;
@@ -49,6 +58,11 @@ trait HasInbox
         return $this;
     }
 
+    /**
+     * @param $users
+     *
+     * @return $this
+     */
     public function to($users)
     {
         if (is_array($users)) {
@@ -102,7 +116,7 @@ trait HasInbox
      *
      * @param Thread $thread
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function reply($thread)
     {
@@ -141,7 +155,7 @@ trait HasInbox
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function threads()
+    public function threads(): HasMany
     {
         return $this->hasMany($this->threadClass);
     }
@@ -150,16 +164,17 @@ trait HasInbox
      *
      * @param bool $withTrashed
      *
-     * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
+     * @return \Illuminate\Database\Query\Builder
      */
     public function participated($withTrashed = false)
     {
-        $query = Thread::select(['threads.id', 'participants.user_id', 'threads.subject', 'threads.updated_at'])
-            ->where('participants.user_id', '!=', $this->id)
-            ->whereRaw($this->id . ' in (select user_id from messages where thread_id = threads.id)')
-            ->join('participants', 'participants.thread_id', 'threads.id')
-            ->groupByRaw('threads.id')
-            ;
+        $query = $this->belongsToMany($this->threadClass, $this->participantsTable, 'user_id', 'thread_id')
+                      ->withPivot('seen_at')
+                      ->withTimestamps();
+
+        if ( ! $withTrashed) {
+            $query->whereNull("{$this->participantsTable}.deleted_at");
+        }
 
         return $query;
     }
@@ -167,7 +182,7 @@ trait HasInbox
     /**
      * Get the threads that have been sent to the user.
      *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return \Illuminate\Database\Query\Builder
      */
     public function received()
     {
@@ -177,19 +192,19 @@ trait HasInbox
     /**
      * Get the threads that have been sent by a user.
      *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return \Illuminate\Database\Query\Builder
      */
     public function sent()
     {
         return $this->participated()
-                    ->where("{$this->threadsTable}.user_id", $this->id)
+                    ->where("threads.user_id", $this->id)
                     ->latest('updated_at');
     }
 
     /**
      * Get unread messages
      *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return \Illuminate\Database\Query\Builder
      */
     public function unread()
     {

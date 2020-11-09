@@ -152,11 +152,22 @@
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             {{ Auth::user()->username }}
+                                            @if (Auth::user()->unread()->count() > 0)
+                                                ({{ Auth::user()->unread()->count() }})
+                                            @endif
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="{{ route('user.profile') }}">
                                                 {{ trans('user.profile_title') }}
+                                            </a>
+                                            <a class="dropdown-item" href="{{ route('inbox.index') }}">
+
+                                                @if (Auth::user()->unread()->count() > 0)
+                                                    <b>{{ trans('inbox.title') }} ({{ Auth::user()->unread()->count() }})</b>
+                                                @else
+                                                    {{ trans('inbox.title') }}
+                                                @endif
                                             </a>
                                             <div role="separator" class="dropdown-divider"></div>
                                             <a class="dropdown-item" href=""
@@ -180,7 +191,6 @@
             </div>
         </nav>
 
-        {{--  --}}
         <main class="pt-5">
             <div class="@if($fluid ?? true) container-fluid @else container @endif pt-5">
                 @yield('content')
