@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use App\Models\Inbox\Message;
+use App\Models\Inbox\Participant;
 use Carbon\Carbon;
 use App\Events\NewMessageDispatched;
 use App\Events\NewReplyDispatched;
@@ -152,13 +154,12 @@ trait HasInbox
      */
     public function participated($withTrashed = false)
     {
-        $query = $this->belongsToMany($this->threadClass, $this->participantsTable, 'user_id', 'thread_id')
-                      ->withPivot('seen_at')
-                      ->withTimestamps();
-
-        if ( ! $withTrashed) {
-            $query->whereNull("{$this->participantsTable}.deleted_at");
-        }
+        $query = Thread::select(['threads.id', 'threads.subject', 'threads.updated_at', 'messages.user_id', 'messages.body', 'messages.created_at as message_created_at'])
+            ->where('messages.user_id', '!=', $this->id)
+            ->whereRaw($this->id . ' in (select user_id from messages where thread_id = threads.id)')
+            ->join('messages', 'messages.thread_id', '=', 'threads.id')
+            ->groupByRaw('threads.id')
+            ;
 
         return $query;
     }
@@ -170,8 +171,7 @@ trait HasInbox
      */
     public function received()
     {
-        // todo: get only the received messages if they got an answer
-        return $this->participated()->latest('updated_at');
+        return $this->participated()->latest('threads.updated_at');
     }
 
     /**

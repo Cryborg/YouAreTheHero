@@ -28,7 +28,6 @@ class InboxController extends ControllerBase
 
         $threads = $threads->paginate(config('inbox.paginate', 10));
 
-
         return view('inbox.index', compact('threads'));
     }
 
@@ -154,7 +153,7 @@ class InboxController extends ControllerBase
             'body' => 'required',
         ]);
 
-        $message = auth()->user()
+        $message = $this->authUser
                          ->writes($request->body)
                          ->reply($thread);
 
