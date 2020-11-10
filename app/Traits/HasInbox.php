@@ -119,8 +119,9 @@ trait HasInbox
         }
 
         return [
-            'thread' => $thread,
-            'isNew' => $isNewThread,
+            'thread'  => $thread,
+            'isNew'   => $isNewThread,
+            'message' => $message,
         ];
     }
 

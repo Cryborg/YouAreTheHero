@@ -6,6 +6,11 @@ $(document).on('click touchstart keydown', '.thread', function () {
     // Hide the actual thread
     $('.one-thread').appendTo($('#cached-threads'));
 
+    $('.thread').removeClass('bg-primary text-white');
+    $('.thread').find('small').removeClass('text-white').addClass('text-muted');
+    $this.addClass('bg-primary text-white');
+    $this.find('small').removeClass('text-muted').addClass('text-white');
+
     if ($('#thread-' + threadId).length > 0) {
         $('#thread-' + threadId).appendTo($('#visible-thread'));
 
@@ -75,8 +80,17 @@ $(document).on('click touchstart keydown', '#add_AddMessage', function () {
         }
     })
         .done(function (data) {
+            const $cachedThreads = $('#cached-threads');
+
             if (data.isNew === true) {
+                // Display the newly created thread
                 $('.threads-list').prepend(data.html);
+            } else {
+                // If the already existing thread has already been loaded, add the newly created message
+                $('#thread-' + data.thread_id).remove();
+                console.log('.thread[data-threadid="' + data.thread_id + '"]');
+                $('.thread[data-threadid="' + data.thread_id + '"]').trigger('click');
             }
         });
 });
+

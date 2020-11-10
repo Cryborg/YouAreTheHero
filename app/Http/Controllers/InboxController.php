@@ -66,12 +66,18 @@ class InboxController extends ControllerBase
                         ->to($request->recipients)
                         ->send();
 
-        return Response::json([
+        $data = [
             'success' => $result['thread'] ? true : false,
-            'type' => 'message_sent',
-            'html' => stripcslashes(includeAsJsString('inbox.partials.thread', ['thread' => $result['thread']])),
-            'isNew' => $result['isNew'],
-        ]);
+            'isNew'   => $result['isNew'],
+            'thread_id' => $result['thread']->id,
+        ];
+
+        if ($result['isNew'] === true) {
+            $data['html'] = stripcslashes(includeAsJsString('inbox.partials.thread', ['thread' => $result['thread']]));
+            $data['message'] = stripcslashes(includeAsJsString('inbox.partials.message', ['message' => $result['message']]));
+        }
+
+        return Response::json($data);
 
     }
 
