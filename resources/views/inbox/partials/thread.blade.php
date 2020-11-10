@@ -5,7 +5,14 @@
                 <span class="badge badge-success">New</span>
             @endif
 
-            <span class="d-inline-block">{{ $thread->user->username }}</span>
+            {{-- List of the participants --}}
+            <span class="d-inline-block">
+                @foreach ($thread->participants as $participant)
+                    @if ($participant->id !== $authUser->id)
+                        {{ $participant->username }}
+                    @endif
+                @endforeach
+            </span>
         </div>
         <div class="col-3 text-right">
             <span class="badge badge-warning text-right">{{ $thread->messages->count() }}</span>

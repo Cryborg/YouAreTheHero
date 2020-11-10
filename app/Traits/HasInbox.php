@@ -2,11 +2,13 @@
 
 namespace App\Traits;
 
+use App\Models\Inbox\Participant;
 use Carbon\Carbon;
 use App\Events\NewMessageDispatched;
 use App\Events\NewReplyDispatched;
 use App\Models\Inbox\Thread;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Str;
 
 trait HasInbox
 {
@@ -82,33 +84,67 @@ trait HasInbox
      */
     public function send()
     {
-        $thread = $this->threads()->create([
-                                               'subject' => $this->subject,
-                                           ]);
+        $this->recipients[] = $this->id;
+        $thread = $this->findAlreadyExistingThread($this->recipients);
+        $isNewThread = false;
+
+        if (empty($thread)) {
+            $thread = $this->threads()->create([
+                'subject' => $this->subject,
+            ]);
+            $isNewThread = true;
+        }
 
         // Message
         $message = $thread->messages()->create([
-                                                   'user_id' => $this->id,
-                                                   'body' => $this->message
-                                               ]);
+            'user_id' => $this->id,
+            'body'    => $this->message
+        ]);
 
         // Sender
-        $participantClass = $this->participantClass;
-        $participantClass::create([
-                                      'user_id' => $this->id,
-                                      'thread_id' => $thread->id,
-                                      'seen_at' => Carbon::now()
-                                  ]);
+        if ($isNewThread) {
+            Participant::create([
+                'user_id'   => $this->id,
+                'thread_id' => $thread->id,
+                'seen_at'   => Carbon::now()
+            ]);
+        }
 
-        if (count($this->recipients)) {
+        if ($isNewThread && count($this->recipients)) {
             $thread->addParticipants($this->recipients);
         }
 
-        if ($thread) {
+        if ($thread instanceof Thread) {
             event(new NewMessageDispatched($thread, $message));
         }
 
-        return $thread;
+        return [
+            'thread' => $thread,
+            'isNew' => $isNewThread,
+        ];
+    }
+
+    /**
+     * Check if a thread with the exact same recipients already exists. Return it if it does.
+     *
+     * @param $recipients
+     *
+     * @return Thread|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object|null
+     */
+    private function findAlreadyExistingThread($recipients)
+    {
+        $query = Participant::select('thread_id')
+            ->whereIn('user_id', $recipients)
+            ->groupBy('thread_id')
+            ->havingRaw('count(*) = ?', [count($recipients)])
+            ->first()
+        ;
+
+        if ($query instanceof Participant) {
+            return Thread::where('id', $query->thread_id)->first();
+        }
+
+        return null;
     }
 
     /**

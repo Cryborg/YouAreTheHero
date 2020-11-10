@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row threads-list">
     @forelse($threads as $thread)
         @include('inbox.partials.thread')
     @empty

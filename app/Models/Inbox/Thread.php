@@ -2,6 +2,7 @@
 
 namespace App\Models\Inbox;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -50,7 +51,7 @@ class Thread extends Model
      */
     public function participants()
     {
-        return $this->belongsToMany(config('auth.providers.users.model'), 'participants',
+        return $this->belongsToMany(User::class, 'participants',
                                     'thread_id', 'user_id')
                     ->withPivot('seen_at', 'deleted_at')
                     ->withTimestamps();
@@ -108,12 +109,11 @@ class Thread extends Model
     public function addParticipants(array $participants)
     {
         if (count($participants)) {
-            $participantClass = config('inbox.models.participant');
             foreach ($participants as $user_id) {
-                $participant = $participantClass::firstOrCreate([
-                                                                    'thread_id' => $this->id,
-                                                                    'user_id' => $user_id,
-                                                                ]);
+                $participant = Participant::firstOrCreate([
+                    'thread_id' => $this->id,
+                    'user_id' => $user_id,
+                ]);
 
                 $participant->seen_at = null;
                 $participant->save();

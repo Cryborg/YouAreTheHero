@@ -525,6 +525,7 @@ div.popover.show {
 }
 
 #messagesList {
-    height: 400px;
+    min-height: 200px;
+    max-height: 400px;
     overflow-y: scroll;
 }

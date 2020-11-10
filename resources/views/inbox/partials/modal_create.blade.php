@@ -4,7 +4,6 @@
         value="{{ old('recipients') }}"
         data-live-search="true" data-size="10" data-show-subtext="true" data-width="100%"
         required {{ $multiple ? 'multiple' : '' }}>
-        <option></option>
         @foreach($recipients as $user)
             <option value="{{ $user->id }}"
                 data-subtext="@lang('user.roles.' . $user->role)" {{ in_array($user->id, old('recipients') ?? []) ? 'selected' : '' }}>

@@ -56,29 +56,23 @@ class InboxController extends ControllerBase
     public function store(Request $request)
     {
         $request->validate([
-//            'subject' => '',
             'body' => 'required',
-//            'recipients' => 'required|array',
             'recipients' => 'required',
         ]);
 
-        $thread = $this->authUser
+        $result = $this->authUser
                         ->subject($request->subject)
                         ->writes($request->body)
                         ->to($request->recipients)
                         ->send();
 
         return Response::json([
-            'success' => $thread ? true : false,
-            'type' => 'message_sent'
+            'success' => $result['thread'] ? true : false,
+            'type' => 'message_sent',
+            'html' => stripcslashes(includeAsJsString('inbox.partials.thread', ['thread' => $result['thread']])),
+            'isNew' => $result['isNew'],
         ]);
 
-        return redirect()
-            ->route('inbox.index')
-            ->with('message', [
-                'type' => $thread ? 'success' : 'error',
-                'text' => $thread ? trans('inbox.thread.sent') : trans('inbox.thread.whoops'),
-            ]);
     }
 
     /**
@@ -147,6 +141,7 @@ class InboxController extends ControllerBase
                          ->reply($thread);
 
         return Response::json([
+            'success' => true,
             'message' => stripcslashes(includeAsJsString('inbox.partials.message', ['message' => $message])),
         ]);
     }
