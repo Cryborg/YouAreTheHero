@@ -773,13 +773,13 @@ namespace App\Models{
  * @property string|null $character_genre
  * @property bool $has_stats Do we show the stats creation page?
  * @property string $stat_attribution "player" means the player gives :points_to_share: points manually to his character. "dice" means it is done by throwing dice.
- * @property int $points_to_share Points to share between character stats
- * @property int $inventory_slots How many (virtual) slots there are in the inventory.
- * @property string $currency_name
- * @property int $currency_amount Default amount of the currency when a new character is created.
+ * @property int $points_to_share Points to share amongst character stats
+ * @property int $inventory_slots How much (virtual) slots there are in the inventory.
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property string $currency_name
+ * @property int $currency_amount
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption newQuery()
  * @method static \Illuminate\Database\Query\Builder|StoryOption onlyTrashed()
@@ -833,12 +833,12 @@ namespace App\Models{
  * @property string $locale
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $role
- * @property bool $optin_system
  * @property string|null $google_id
  * @property string|null $avatar
  * @property string|null $avatar_original
  * @property \Illuminate\Support\Carbon|null $valid_from
  * @property string|null $remember_token
+ * @property bool $optin_system
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
