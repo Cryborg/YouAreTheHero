@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable implements HasLocalePreference
 {
@@ -104,7 +105,9 @@ class User extends Authenticatable implements HasLocalePreference
     public function getAvatarAttribute($value)
     {
         if ($value === null) {
-            return 'generic-avatar.png';
+            return 'img/avatars/generic-avatar.png';
         }
+
+        return Storage::url('avatars/' . $value);
     }
 }
