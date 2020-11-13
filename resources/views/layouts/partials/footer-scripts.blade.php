@@ -279,6 +279,24 @@
                 if (!(e.relatedTarget && $.contains(p, e.relatedTarget))) {
                     savePage();
                 }
+            },
+            onImageUpload: function(files, editor, welEditable) {
+                let data = new FormData();
+                data.append("file", files[0]);
+                $.post({
+                    data: data,
+                    url: route('upload.image'),
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        let image = $('<img>').attr('src', data.path);
+                        $('.summernote').summernote("insertNode", image[0]);
+                    }
+                })
+                    .fail(function(data) {
+                        alert('Raté');
+                    });
             }
         }
     };

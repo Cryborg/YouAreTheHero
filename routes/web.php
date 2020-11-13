@@ -146,7 +146,6 @@ Route::middleware('auth')->group(static function () {
     Route::get('/story/{story}/people/list', 'PersonController@index')->name('story.people.list');
     Route::post('/story/{story}/person/store', 'PersonController@store')->name('story.person.store');
     Route::delete('/story/{story}/person/{person}/delete', 'PersonController@destroy')->name('story.person.delete');
-});
 
 // Successes
     Route::resource('user.success', UserSuccessController::class);
@@ -157,3 +156,8 @@ Route::middleware('auth')->group(static function () {
     Route::post('inbox/{thread}/reply', 'InboxController@reply')->name('inbox.reply');
     Route::get('inbox/{thread}', 'InboxController@show')->name('inbox.show');
     Route::delete('inbox/{thread}/destroy', 'InboxController@destroy')->name('inbox.destroy');
+
+// Uploads
+    Route::post('upload/avatar', 'UploadController@avatar')->name('upload.avatar');
+    Route::post('upload/image', 'UploadController@image')->name('upload.image');
+});
