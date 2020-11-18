@@ -80,13 +80,11 @@ $(document).on('click touchstart keydown', '#add_AddMessage', function () {
         }
     })
         .done(function (data) {
-            const $cachedThreads = $('#cached-threads');
-
             if (data.isNew === true) {
                 // Display the newly created thread
                 $('.threads-list').prepend(data.html);
             } else {
-                // If the already existing thread has already been loaded, add the newly created message
+                // If the existing thread has already been loaded, add the newly created message
                 $('#thread-' + data.thread_id).remove();
                 console.log('.thread[data-threadid="' + data.thread_id + '"]');
                 $('.thread[data-threadid="' + data.thread_id + '"]').trigger('click');

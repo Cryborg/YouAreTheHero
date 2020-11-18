@@ -42,8 +42,8 @@
                                                 {!! Form::radio('character_genre', 'male', true) !!}
                                                 @lang('character.genre_male')
                                                 <span class="text-muted font-smaller ml-3">
-                                    @lang('character.genre_male_help')
-                                </span>
+                                                    @lang('character.genre_male_help')
+                                                </span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
@@ -51,8 +51,8 @@
                                                 {!! Form::radio('character_genre', 'female') !!}
                                                 @lang('character.genre_female')
                                                 <span class="text-muted font-smaller ml-3">
-                                    @lang('character.genre_female_help')
-                                </span>
+                                                    @lang('character.genre_female_help')
+                                                </span>
                                             </label>
                                         </li>
                                     </ul>
@@ -63,7 +63,7 @@
                 </div>
             @endif
 
-            @if ($has_visible_fields && $story->options && $story->options->has_stats)
+            @if ($has_visible_fields && $story->options && $story->options->has_stats && $story->options->points_to_share > 0)
                 <div class="card">
                     <div class="card-header">
                         {!! Form::label('stats', trans('character.stats_label'), ['class' => 'control-label']) !!}
@@ -154,7 +154,7 @@
                 <div class="col">
                     <button id="save_character" class="btn btn-success submit-btn mb-1 w-100"
                         data-original-text="{{ trans('story.create_submit') }}"
-                        @if ($has_visible_fields && $story->fields->count() > 0) disabled @endif
+                        @if ($has_visible_fields && $story->fields->count() > 0 && $story->options->points_to_share > 0) disabled @endif
                     >{{ trans('story.create_submit') }}</button>
                 </div>
             </div>

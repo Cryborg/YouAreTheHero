@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use Multicaret\Inbox\Notifications\MessageDispatched;
+use App\Notifications\MessageDispatched;
 
 class SendNotification
 {

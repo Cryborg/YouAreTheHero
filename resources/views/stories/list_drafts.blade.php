@@ -11,7 +11,7 @@
                 <th>@lang('common.id')</th>
                 <th>@lang('common.actions')</th>
                 <th>@lang('story.title')</th>
-                <th>@lang('story.number_pages') (@lang('page.report_count')</th>
+                <th>@lang('story.number_pages') (@lang('page.report.count')</th>
             </tr>
         </thead>
         <tbody>

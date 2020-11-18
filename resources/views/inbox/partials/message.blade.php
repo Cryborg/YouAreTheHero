@@ -6,7 +6,7 @@
     <div class="media-body pl-3 pb-3 {{ $message->user_id == auth()->id() ? 'bg-light mr-5' : 'bg-primary text-light ml-5' }}">
         <h5 class="mt-0">{{ optional($message->user)->name }}</h5>
         <div class="lead">
-            {!! nl2br(e($message->body)) !!}
+            {!! $message->body !!}
         </div>
     </div>
     @if ($authUser->id !== $message->user->id)

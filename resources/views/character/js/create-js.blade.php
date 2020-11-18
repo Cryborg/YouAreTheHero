@@ -69,7 +69,7 @@ $(document).on('click touchstart keydown', '.btn-attribute', function () {
     $('.btn-increment').prop('disabled', parseInt($pointsLeftDiv.html()) <= 0);
 
     // Enables/disables save button
-    $('#save_character').prop('disabled', parseInt($pointsLeftDiv.html()) != 0);
+    $('#save_character').prop('disabled', (parseInt($pointsLeftDiv.html()) != 0));
 });
 
 loadInputSpinner();

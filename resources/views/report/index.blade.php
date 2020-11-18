@@ -11,9 +11,9 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>@lang('page.report_page')</th>
-                        <th>@lang('page.report_error_type')</th>
-                        <th>@lang('page.report_comment')</th>
+                        <th>@lang('page.report.page')</th>
+                        <th>@lang('page.report.error_type')</th>
+                        <th>@lang('page.report.comment')</th>
                         <th class="d-none d-lg-table-cell">@lang('common.created_by')</th>
                         <th class="d-none d-lg-table-cell">@lang('common.created_at')</th>
                         <th>@lang('common.actions')</th>
@@ -27,7 +27,7 @@
                                     {{ $report->page->present()->title }}
                                 </a>
                             </td>
-                            <td>@lang('page.report_error_type_' . $report->error_type)</td>
+                            <td>@lang('page.report.error_type_' . $report->error_type)</td>
                             <td>{!! $report->comment !!}</td>
                             <td class="d-none d-lg-table-cell">{{ $report->user->username }}</td>
                             <td class="d-none d-lg-table-cell moment_date">{{ $report->created_at }}</td>

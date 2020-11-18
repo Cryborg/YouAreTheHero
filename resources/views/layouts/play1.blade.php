@@ -60,13 +60,13 @@
         </div>
     </div>
 
-    <div class="fixed-bottom btn btn-danger report-btn" data-toggle="modal" data-target="#modalPageReport">@lang('page.report_button')</div>
+    <div class="fixed-bottom btn btn-danger report-btn" data-toggle="modal" data-target="#modalPageReport">@lang('page.report.button')</div>
 
     <!-- Modal add choice -->
     @include('page.partials.modal_model', [
         'template' => 'page.partials.modal_report',
         'context' => 'report',
-        'title' => trans('page.report_modal_title'),
+        'title' => trans('page.report.modal_title'),
         'icon' => 'icon-choice',
         'big' => false,
         'data' => [

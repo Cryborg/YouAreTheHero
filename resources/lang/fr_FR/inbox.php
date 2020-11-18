@@ -8,5 +8,13 @@ return [
         'to' => 'A',
     ],
     'new_message_label' => 'Nouveau message',
+    'templates' => [
+        'report' => [
+            'error_type_label' => 'Type de l\'erreur :',
+            'message_title' => 'Rapport d\'erreur',
+            'page_label' => 'Page :',
+            'story_label' => 'Histoire :',
+        ],
+    ],
     'title' => 'Messagerie',
 ];

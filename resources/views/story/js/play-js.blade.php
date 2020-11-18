@@ -59,17 +59,22 @@ $('html').on('click touchstart keydown', function () {
 
 
 $(document).on('click touchstart keydown', '#add_PageReport', function () {
-    var $this = $(this);
-    var type = $('#modalPageReport #report_error_type option:selected').val();
-    var comment = $('#modalPageReport #report_comment').val();
+    let to = $('#modalPageReport #report_to option:selected').val();
+    let type = $('#modalPageReport #report_error_type option:selected').val();
+    let comment = $('#modalPageReport #report_comment').val();
 
     $.post({
         url: route('report.store', {page: pageId}),
         data: {
+            'to': to,
             'error_type': type,
             'comment': comment
         }
-    });
+    })
+        .always(function () {
+            $this.html($this.data('original-text'));
+            $this.prop('disabled', false);
+        });
 });
 
 // Ajax links

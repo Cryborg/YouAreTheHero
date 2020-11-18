@@ -16,4 +16,6 @@ class Constants
     public const ROLE_MODERATOR = 'moderator';
     public const ROLE_MEMBER = 'member';
     public const ROLE_TEMPORARY = 'temp';
+
+    public const AUTHOR = 'author';
 }

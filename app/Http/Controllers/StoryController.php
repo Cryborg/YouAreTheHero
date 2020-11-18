@@ -49,7 +49,7 @@ class StoryController extends ControllerBase
 
         if ($draft) {
             $query->where('is_published', false)
-                  ->where('user_id', Auth::id());
+                  ->where('user_id', $this->authUser->id);
         }
 
         if (!$this->authUser->hasRole(Constants::ROLE_ADMIN)) {
@@ -410,7 +410,7 @@ class StoryController extends ControllerBase
 
         return view('story.partials.sheet', [
             'fields'             => $character->fields,
-            'show_hidden_fields' => Auth::id() === $story->user->id,
+            'show_hidden_fields' => $this->authUser->id === $story->user->id,
         ]);
     }
 
@@ -496,7 +496,7 @@ class StoryController extends ControllerBase
      */
     public function getCreate($story = null, $data = [])
     {
-        $this->authorize('edit', $story, Auth::user());
+        $this->authorize('edit', $story, $this->authUser);
 
         $data += [
             'title'            => trans('story.create_title'),
