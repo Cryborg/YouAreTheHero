@@ -6,6 +6,7 @@ use App\Models\Field;
 use App\Models\Story;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class FieldController extends Controller
 {
@@ -17,16 +18,21 @@ class FieldController extends Controller
     public function store(Request $request, Story $story)
     {
         if ($request->ajax()) {
+
+            Validator::extend('type', function ($validator) {
+                $validator->type = 'save';
+            });
+
             $validated = $request->validate([
                 'id'            => '',
                 'name'          => 'required',
                 'hidden'        => 'required|in:0,1',
                 'min_value'     => 'required',
                 'max_value'     => 'required|gte:min_value',
+                'start_value'   => 'required|gte:min_value|lte:max_value',
             ]);
 
             $validated['story_id'] = $story->id;
-            $validated['start_value'] = $validated['min_value'];
 
             if (isset($validated['id'])) {
                 $field = Field::updateOrCreate(['id' => $validated['id']], $validated);
@@ -44,6 +50,7 @@ class FieldController extends Controller
 
             return response()->json([
                 'success'   => $field instanceof Field,
+                'type' => 'save',
                 'field' => $field->toArray(),
                 'max' => $max,
             ]);

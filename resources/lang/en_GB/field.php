@@ -15,6 +15,7 @@ return array (
   'points_left_to_share' => 'Points left to attribute:',
   'range_text' => 'from :min to :max',
   'sheet' => 'Character sheet',
+  'start_value' => 'Start value',
   'stat_attribution_help' => 'By choosing \'Player\', you allow the player to assign the points as he/she wishes.<br>With \'Dice\' they are randomly assigned.',
   'unused_fields' => 'Unused fields',
 );

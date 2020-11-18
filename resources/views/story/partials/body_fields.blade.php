@@ -10,6 +10,9 @@
         <td>
             <input value="{{ $stat->max_value }}" class="form-control fieldMaxValue" type="number">
         </td>
+        <td>
+            <input value="{{ $stat->start_value }}" class="form-control fieldStartValue" type="number">
+        </td>
         <td class="text-center">
             <input type="checkbox" @if ($stat->hidden) checked @endif class="fieldHidden">
         </td>

@@ -200,6 +200,7 @@
                                         <th>{{ trans('field.name') }}</th>
                                         <th>{{ trans('field.min_value') }}</th>
                                         <th>{{ trans('field.max_value') }}</th>
+                                        <th>{{ trans('field.start_value') }}</th>
                                         <th class="text-center">{{ trans('field.hidden_to_players') }}</th>
                                         <th class="text-center">{{ trans('common.actions') }}</th>
                                     </tr>
@@ -217,6 +218,9 @@
                                         </th>
                                         <th>
                                             <input class="new_field form-control" type="number" id="max_value" value="10" required>
+                                        </th>
+                                        <th>
+                                            <input class="new_field form-control" type="number" id="start_value" value="1" required>
                                         </th>
                                         <th class="text-center pl-4">
                                             <input class="new_field" type="checkbox" id="hidden_field" value="1"></th>

@@ -44,6 +44,7 @@ $(document).on('click touchstart keydown', '.editCharacterField', function () {
             'name': $parent.find('.fieldName').val(),
             'min_value': $parent.find('.fieldMinValue').val(),
             'max_value': $parent.find('.fieldMaxValue').val(),
+            'start_value': $parent.find('.fieldStartValue').val(),
             'hidden': $parent.find('.fieldHidden').is(':checked') ? 1 : 0,
         }
     })
@@ -90,7 +91,8 @@ $(document).on('click touchstart keydown', '.addField', function () {
                 'name': $('#name').val(),
                 'hidden': $('#hidden_field').is(':checked') ? 1 : 0,
                 'min_value': $('#min_value').val(),
-                'max_value': $('#max_value').val()
+                'max_value': $('#max_value').val(),
+                'start_value': $('#start_value').val()
             }
         })
             .done(function (result) {
@@ -99,6 +101,7 @@ $(document).on('click touchstart keydown', '.addField', function () {
                         '<td><div>' + result.field.name + '</div></td>' +
                         '<td><div>' + result.field.min_value + '</div></td>' +
                         '<td><div>' + result.field.max_value + '</div></td>' +
+                        '<td><div>' + result.field.start_value + '</div></td>' +
                         '<td class="text-center"><div><input type="checkbox" value="1" ' +
                             (result.field.hidden ? 'checked' : '') +
                         '></div></td>' +
