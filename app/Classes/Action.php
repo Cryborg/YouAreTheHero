@@ -59,59 +59,6 @@ class Action
     }
 
     /**
-     * @param \App\Models\Character $character
-     * @param \App\Models\Item      $item
-     *
-     * @return bool
-     * @throws \Exception
-     */
-    public static function sell(Character $character, Item $item): bool
-    {
-        if ($character->items()
-                      ->count() > 0) {
-            if (!$character->addMoney($item->pivot->price)) {
-                return false;
-            }
-
-            return self::give($character, $item);
-        }
-
-        return false;
-    }
-
-    /**
-     * @param \App\Models\Character $character
-     * @param \App\Models\Item      $item
-     *
-     * @return bool
-     * @throws \Exception
-     */
-    public static function give(Character $character, Item $item): bool
-    {
-        // Remove the item from the inventory
-        try {
-            $inventory = Inventory::where([
-                                              'item_id' => $item->id,
-                                              'character_id' => $character->id,
-                                          ])
-                                  ->first();
-
-            if (!$inventory) {
-                return false;
-            }
-            --$inventory->quantity;
-
-            if ($inventory->quantity <= 0) {
-                return $inventory->delete();
-            } else {
-                return $inventory->save();
-            }
-        } catch (\Exception $e) {
-            throw new \Exception("Couldn't delete the item. Reason: " . $e->getMessage());
-        }
-    }
-
-    /**
      * Apply all the effects of an item on the character
      *
      * @param \App\Models\Character $character
@@ -158,10 +105,8 @@ class Action
     {
         $stuttering = '';
 
-        for ($i = 1; $i <= Arr::random([
-                                           1,
-                                           2,
-                                       ]); $i++) {
+        for ($i = 1; $i <= Arr::random([1, 2]); $i++)
+        {
             $stuttering .= Str::substr($text, 0, 1) . '...';
         }
 
@@ -200,5 +145,25 @@ class Action
             default:
                 return $text;
         }
+    }
+
+    /**
+     * Reverse the text.
+     * Example: "Reversed" becomes "desreveR"
+     *
+     * @param $text
+     *
+     * @return string
+     */
+    public static function reverse($text): string
+    {
+        $reversed = '';
+
+        for ($i = strlen($text) - 1; $i >= 0; $i--)
+        {
+            $reversed .= substr($text, $i, 1);
+        }
+
+        return $reversed;
     }
 }

@@ -67,7 +67,8 @@ trait TextModifiers
         //                genre[un homme|une femme] affichera le texte correspondant [au genre masculin|au genre féminin]
         $methods = [
             'stutter',
-            'genre'
+            'genre',
+            'reverse',
         ];
 
         foreach ($methods as $method) {
