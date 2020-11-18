@@ -74,7 +74,7 @@
                         <div class="row">
                             <div class="col-4 text-center">
                                 @lang('field.points_left_to_share')
-                                <div id="points_left" data-original-value="{{ $story->options->points_to_share }}">{{ $story->options->points_to_share }}</div>
+                                <div id="points_left" data-original_value="{{ $story->options->points_to_share }}">{{ $story->options->points_to_share }}</div>
                             </div>
                             <div class="col-8">
                                 @foreach($story->fields as $field)
@@ -89,10 +89,19 @@
                                                 </small>
                                             </div>
                                             <div class="col-md-6 col-lg-3 quantity">
-                                                <input name="stat_value" type="number" value="{{ old('stat_value') ?? $field->min_value }}"
-                                                    min="{{ $field->min_value }}" max="{{ $field->max_value }}" step="1"
-                                                    data-field_id="{{ $field->id }}" data-original-value="{{ old('stat_value') ?? $field->min_value }}"
-                                                    class="input-number w-100"/>
+                                                <div class="col-2 border border-dark text-center clickable btn-increment btn-attribute"
+                                                    data-max_value="{{ $field->max_value }}">
+                                                    +
+                                                </div>
+                                                <div class="col-2 text-center field-value"
+                                                    data-original_value="{{ $field->start_value }}"
+                                                    data-field_id="{{ $field->id }}">
+                                                        {{ $field->start_value }}
+                                                </div>
+                                                <div class="col-2 border border-dark text-center clickable btn-decrement btn-attribute"
+                                                    data-min_value="{{ $field->min_value }}">
+                                                    -
+                                                </div>
                                             </div>
                                             <div class="col-2">
                                                 <small class="text-muted d-none d-md-block">({{ trans('field.range_text', [

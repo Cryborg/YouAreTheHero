@@ -1,16 +1,16 @@
 const storyId = $('#storyId').val();
 
-$('.submit-btn').on('click touchstart keydown', function () {
+$(document).on('click touchstart keydown', '#save_character', function () {
     const $this = $(this);
     const characterName = $('#name').val();
     const stats = [];
     const genre = $("[name='character_genre']:checked").val();
     const people = [];
 
-    $('input[name=stat_value]').each(function () {
+    $('.field-value').each(function () {
         stats.push({
             'field_id': $(this).data('field_id'),
-            'value': $(this).val()
+            'value': $(this).html()
         });
     });
 
@@ -52,24 +52,35 @@ $('.submit-btn').on('click touchstart keydown', function () {
     });
 });
 
-$(document).on('click touchstart keydown', '.btn-attribute', function () {
-    const $pointsLeftDiv = $('#points_left');
-    let pointsUsed = 0;
+$(document).on('click touchstart keydown', '.btn-attribute.clickable', function () {
+    const $this = $(this);
+    const $pointsLeft = $('#points_left');
+    const $fieldValue = $this.siblings('.field-value').first();
+    const pointsToShare = parseInt($pointsLeft.data('original_value'));
 
-    $('.input-number:hidden').each(function() {
-        pointsUsed += parseInt($(this).data('original-value')) - parseInt($(this).val());
-    });
+    let actualValue = parseInt($fieldValue.html());
+    let pointsLeft = parseInt($pointsLeft.html());
 
-    $pointsLeftDiv.html(parseInt($pointsLeftDiv.data('original-value')) + pointsUsed);
+    if ($this.hasClass('btn-decrement')) {
+        let minValue = parseInt($this.data('min_value'));
 
-    // Enables/disables decrement buttons
-    $('.btn-decrement').prop('disabled', parseInt($pointsLeftDiv.html()) <= parseInt($pointsLeftDiv.data('original_value')));
+        if (actualValue - 1 >= minValue && pointsLeft + 1 <= pointsToShare) {
+            $pointsLeft.html(pointsLeft + 1);
+            $fieldValue.html(actualValue - 1);
+        }
+    }
 
-    // Enables/disables increment buttons
-    $('.btn-increment').prop('disabled', parseInt($pointsLeftDiv.html()) <= 0);
+    if ($this.hasClass('btn-increment')) {
+        let maxValue = parseInt($this.data('max_value'));
+
+        if (pointsLeft - 1 >= 0 && actualValue + 1 <= maxValue) {
+            $pointsLeft.html(pointsLeft - 1);
+            $fieldValue.html(actualValue + 1);
+        }
+    }
 
     // Enables/disables save button
-    $('#save_character').prop('disabled', (parseInt($pointsLeftDiv.html()) != 0));
+    $('#save_character').prop('disabled', (parseInt($pointsLeft.html()) > 0));
 });
 
 loadInputSpinner();
