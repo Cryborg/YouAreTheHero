@@ -64,7 +64,7 @@ class Story extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withTrashed();
     }
 
     /**
@@ -170,7 +170,7 @@ class Story extends Model
 
     public function author()
     {
-        return $this->hasOne(\App\Models\User::class, 'id', 'user_id');
+        return $this->hasOne(\App\Models\User::class, 'id', 'user_id')->withTrashed();
     }
 
     /**
