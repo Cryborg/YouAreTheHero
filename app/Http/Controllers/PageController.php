@@ -76,7 +76,7 @@ class PageController extends Controller
      */
     public function edit(Page $page): \Illuminate\Contracts\View\View
     {
-        $this->authorize('edit', $page);
+        $this->authorize('edit', $page->story);
 
         $errors = self::getErrors($page->story);
 
@@ -134,7 +134,7 @@ class PageController extends Controller
     public function store(Request $request, Page $page): ?JsonResponse
     {
         if ($request->ajax()) {
-            $this->authorize('edit', $page);
+            $this->authorize('edit', $page->story);
 
             $validated = $request->validate([
                 'title'         => 'required',
@@ -233,7 +233,7 @@ class PageController extends Controller
     public function delete(Request $request, Page $page)
     {
         if ($request->ajax()) {
-            $this->authorize('edit', $page);
+            $this->authorize('edit', $page->story);
 
             $success = true;
             $message = null;
@@ -260,7 +260,7 @@ class PageController extends Controller
     public function deleteChoice(Request $request, Page $page, Page $pageFrom)
     {
         if ($request->ajax()) {
-            $this->authorize('edit', $page);
+            $this->authorize('edit', $page->story);
 
             $success = true;
             $message = null;

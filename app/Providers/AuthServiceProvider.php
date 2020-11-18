@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\Classes\Constants;
+use App\Models\Story;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
@@ -35,8 +35,11 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('isAdmin', static function ($user) {
             return $user->role === Constants::ROLE_ADMIN;
         });
-        Gate::define('edit', static function ($page, $user) {
-            return $user->id === $page->story->user_id;
+        Gate::define('edit', static function ($user, $story = null) {
+            if ($story instanceof Story) {
+                return $user->id === $story->user_id && $user->role !== Constants::ROLE_TEMPORARY;
+            }
+            return $user->role !== Constants::ROLE_TEMPORARY;
         });
     }
 }

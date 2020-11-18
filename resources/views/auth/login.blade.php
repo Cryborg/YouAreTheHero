@@ -115,7 +115,18 @@
                 </div>
             </div>
             <div class="col mt-5 mt-md-0">
-                @include('stories.partials.story_card', ['story' => $tutoStory, 'anonymous' => true])
+                <div class="card">
+                    <div class="card-header">
+                        @lang('user.anonymous.title')
+                    </div>
+                    <div class="card-body">
+                        <p>@lang('user.anonymous.description')</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a class="btn btn-primary" href="{{ route('story.play.anonymous') }}">@lang('auth.login')</a>
+                    </div>
+                </div>
+{{--                @include('stories.partials.story_card', ['story' => $tutoStory, 'anonymous' => true])--}}
             </div>
         </div>
     </div>

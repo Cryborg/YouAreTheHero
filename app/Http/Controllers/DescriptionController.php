@@ -29,7 +29,7 @@ class DescriptionController extends Controller
 
     public function store(Request $request, Page $page)
     {
-        $this->authorize('edit', $page);
+        $this->authorize('edit', $page->story);
 
         $validated = Validator::validate($request->all(), [
             'keyword' => 'required',

@@ -14,7 +14,6 @@ use App\Models\User;
 use App\Repositories\ChoiceRepository;
 use App\Repositories\PageRepository;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -43,7 +42,6 @@ class StoryController extends ControllerBase
         unsetSession();
 
         $selectedLanguage = $request->get('language');
-
         $query = Story::select()
                       ->orderByDesc('updated_at');
 
@@ -116,17 +114,14 @@ class StoryController extends ControllerBase
 
     public function getPlayAnonymous(): RedirectResponse
     {
-        // Create a fake, temporary user
+        // Create a temporary user
         $newUser = User::factory()->temporary()->create();
 
         // Log the newly created user
         Auth::login($newUser);
 
-        // FIXME!
-        $tutoId = App::getLocale() === 'fr_FR' ? 23 : 28;
-
-        // Go to the tuto story
-        return Redirect::route('story.play', ['story' => $tutoId]);
+        // Go to the stories list
+        return Redirect::route('stories.list');
     }
 
     /**
@@ -501,6 +496,8 @@ class StoryController extends ControllerBase
      */
     public function getCreate($story = null, $data = [])
     {
+        $this->authorize('edit', $story, Auth::user());
+
         $data += [
             'title'            => trans('story.create_title'),
             'locales'          => getLanguages(),
