@@ -62,25 +62,26 @@ class CharacterController extends ControllerBase
             }
         }
 
-        if ($fields) {
-            foreach ($story->fields as $storyField) {
-                if ($storyField->hidden) {
-                    $character->fields()
-                              ->attach($storyField->id, [
-                                  'character_id' => $character->id,
-                                  'value' => $storyField->min_value
-                              ]);
-                }
+        foreach ($story->fields as $storyField) {
+            // Default values
+            if (!$storyField->hidden) {
+                $character->fields()->attach($storyField->id, [
+                    'character_id' => $character->id,
+                    'value' => $storyField->start_value
+                ]);
+            }
+
+            // Update if the user changed the values (case where story.options.points_to_share > 0)
+            if ($fields) {
                 foreach ($fields as $field) {
                     if ($field['field_id'] == $storyField->id) {
-                        $character->fields()
-                                  ->attach(
-                                      $field['field_id'],
-                                      [
-                                          'character_id' => $character->id,
-                                          'value'        => $field['value'],
-                                      ]
-                                  );
+                        $character->fields()->attach(
+                            $field['field_id'],
+                            [
+                                'character_id' => $character->id,
+                                'value'        => $field['value'],
+                            ]
+                        );
                     }
                 }
             }
