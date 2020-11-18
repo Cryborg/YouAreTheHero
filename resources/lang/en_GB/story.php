@@ -14,6 +14,8 @@ return array (
   'create_tab3' => '3. Characters',
   'create_tab4' => '4. Manage items',
   'create_title' => 'New story',
+  'currency_amount' => 'Amount',
+  'currency_amount_help' => 'How much money will the character start with.',
   'currency_name' => 'Currency name',
   'currency_name_default' => 'gold',
   'currency_name_help' => 'Give a name to the currency of your story',

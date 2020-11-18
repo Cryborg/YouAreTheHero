@@ -12,6 +12,15 @@ function ajaxCreatePost(route, $this, data)
             if (typeof window.refreshModalItemsList === "function") {
                 refreshModalItemsList();
             }
+
+            if ($('.itemListDiv').length > 0) {
+                $.get({
+                    url: route('item.list', {story: storyId})
+                })
+                    .done(function (html) {
+                        $('.itemListDiv').html(html);
+                    });
+            }
         })
         .always(function () {
             $this.html($this.data('original-text'));

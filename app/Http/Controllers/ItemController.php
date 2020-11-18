@@ -167,4 +167,9 @@ class ItemController extends Controller
 
         return $view;
     }
+
+    public function index(Story $story)
+    {
+        return View::make('page.js.partials.create.item_list_div', ['items' => $story->items]);
+    }
 }

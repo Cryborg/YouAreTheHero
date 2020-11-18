@@ -14,6 +14,8 @@ return array (
   'create_tab3' => '3. Personnages',
   'create_tab4' => '4. Gestion des objets',
   'create_title' => 'Nouvelle histoire',
+  'currency_amount' => 'Montant de départ',
+  'currency_amount_help' => 'Il s\'agit du montant qu\'aura le personnage au début de l\'histoire.',
   'currency_name' => 'Nom de la monnaie',
   'currency_name_default' => 'or',
   'currency_name_help' => 'Donne un nom à la monnaie utilisée dans ton histoire',

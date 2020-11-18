@@ -40,6 +40,7 @@ Route::middleware('auth')->group(static function () {
     Route::get('/item/{character}/{item}/use', 'CharacterItemController@itemUse')->name('item.use');
     Route::delete('/item/{item}/delete', 'ItemController@delete')->name('item.delete');
     Route::get('/item/{item}/details', 'ItemController@details')->name('item.details');
+    Route::get('/item/list', 'ItemController@index')->name('item.list');
 
 // Stories
     Route::get('/stories/draft', 'StoryController@indexDraft')->name('stories.list.draft');

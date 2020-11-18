@@ -164,7 +164,7 @@
                         </div>
                         <div class="card-body">
                             <p class="help-block">@lang('story.currency_name_help')</p>
-                            <input class="form-control" type="text" id="currency_name" maxlength="15" autocomplete="nope" value="@lang('story.currency_name_default')">
+                            <input class="form-control" type="text" id="currency_name" maxlength="15" autocomplete="nope" value="{{ $story && $story->options ? $story->options->currency_name : trans('story.currency_name_default') }}">
                         </div>
                     </div>
                     <div class="card">
