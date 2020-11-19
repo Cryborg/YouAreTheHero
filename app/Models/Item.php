@@ -167,7 +167,7 @@ class Item extends Model
                     $this->id => ['quantity' => $itemInInventory->pivot->quantity + ($itemPage->quantity ?? 1)]
                 ]);
             } else {
-                $character->items()->attach($this->id);
+                $character->items()->syncWithoutDetaching([$this->id => ['quantity' => 1]]);
             }
 
             $isOk = true;

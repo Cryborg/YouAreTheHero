@@ -34,7 +34,7 @@ class ChoiceRepository
 
         // Check if there are prerequisites, and that they are fulfilled
         foreach ($allChoices as $choice) {
-            $fulfilled = false;
+            $fulfilled = true;
 
             $choice->load('pageTo');
             $pageTo = $choice->pageTo;
@@ -50,7 +50,7 @@ class ChoiceRepository
                             $fulfilled = $thisRepo->isStatPrerequisitesFulfilled($prerequisite, $character);
                             break;
                         case Item::class:
-                            $fulfilled = $thisRepo->isItemPrerequisitesFulfilled($prerequisite->prerequisiteable, $character);
+                            $fulfilled = $thisRepo->isItemPrerequisitesFulfilled($prerequisite, $character);
                             break;
                     }
 
@@ -58,8 +58,6 @@ class ChoiceRepository
                 }
 
                 $fulfilled = $nbFulfilledPrerequisites === $nbPrerequisites;
-            } else {
-                $fulfilled = true;
             }
 
             if ($fulfilled) {
@@ -117,10 +115,10 @@ class ChoiceRepository
         return false;
     }
 
-    private function isItemPrerequisitesFulfilled(Item $requiredItem, Character $character): bool
+    private function isItemPrerequisitesFulfilled(Prerequisite $prerequisite, Character $character): bool
     {
         foreach ($character->items as $item) {
-            if ($item->id === $requiredItem->id) {
+            if ($item->id === $prerequisite->prerequisiteable->id && $item->pivot->quantity === $prerequisite->quantity) {
                 return true;
             }
         }
