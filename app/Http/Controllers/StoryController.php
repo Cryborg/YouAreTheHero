@@ -347,7 +347,7 @@ class StoryController extends ControllerBase
                     if ($trigger->quantity > 0) {
                         $item->take($page);
                     } else {
-                        $item->throwAway();
+                        $item->give($trigger->quantity);
                     }
 
                     $messages[] = [

@@ -16,9 +16,11 @@
         <div class="choices-links button-group w-100">
             <div class="col-md-12 col-xl-6">
                 @foreach ($page->filtered_choices as $choice)
-                    <a data-href="{{ route('story.play', ['story' => $page->story->id, 'page' => $choice->page_to]) }}" data-page-id="{{ $choice->page_to }}">
-                        <button class="large button w-100" data-original-text="{!! $choice->present()->link_text !!}">{!! $choice->present()->link_text !!}</button>
-                    </a>
+                    @if (!$choice->hidden)
+                        <a data-href="{{ route('story.play', ['story' => $page->story->id, 'page' => $choice->page_to]) }}" data-page-id="{{ $choice->page_to }}">
+                            <button class="large button w-100" data-original-text="{!! $choice->present()->link_text !!}">{!! $choice->present()->link_text !!}</button>
+                        </a>
+                    @endif
                 @endforeach
             </div>
         </div>

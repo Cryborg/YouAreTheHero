@@ -6,12 +6,13 @@
         @foreach ($catItem as $item)
             @if (!$item->pivot->is_used)
                 <div class="card-body">
-                    @if ($item->pivot->quantity > 1)
-                        {{ $item->pivot->quantity }} *
-                    @endif
                     <div class="collapse navbar-collapse show">
                         <span class="p-2 float-left" data-id="popup-{{ $item->pivot->id }}">
                             {{ $item->name }}
+
+                            @if ($item->pivot->quantity > 1)
+                                x{{ $item->pivot->quantity }}
+                            @endif
                         </span>
                         @if ($item->is_throwable || $item->effects()->count() > 0)
                             <ul class="navbar-nav ml-auto float-right">

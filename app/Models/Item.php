@@ -139,7 +139,7 @@ class Item extends Model
                 ->where('page_id', $page->id)
                 ->first();
 
-            // If the character has the object in his inventory
+            // If the item has a price
             if ($itemPage instanceof ItemPage) {
                 if ($itemPage->price > 0) {
                     if ($character->money >= $itemPage->price) {
@@ -157,7 +157,18 @@ class Item extends Model
             }
 
             // Add the item to the inventory
-            $character->items()->attach($this->id);
+            $itemInInventory = $character->items()
+                ->withPivot('quantity')
+                ->wherePivot('item_id', $this->id)
+                ->first();
+
+            if ($itemInInventory instanceof Item) {
+                $character->items()->syncWithoutDetaching([
+                    $this->id => ['quantity' => $itemInInventory->pivot->quantity + ($itemPage->quantity ?? 1)]
+                ]);
+            } else {
+                $character->items()->attach($this->id);
+            }
 
             $isOk = true;
         } else {
@@ -174,12 +185,27 @@ class Item extends Model
     /**
      * Remove the item from the inventory.
      */
-    public function throwAway(): void
+    public function give($quantity): void
     {
         $character = $this->story->currentCharacter();
 
-        $character->items()
-                  ->detach($this);
+        $itemInInventory = $character->items()
+                                     ->withPivot('quantity')
+                                     ->wherePivot('item_id', $this->id)
+                                     ->first();
+
+        $remainingItems = $itemInInventory->pivot->quantity + $quantity;
+
+        if ($remainingItems > 0) {
+            $character->items()
+                      ->syncWithoutDetaching([
+                          $this->id => ['quantity' => $remainingItems]
+                      ]);
+        } else {
+            $character->items()
+                      ->detach($this);
+        }
+
     }
 
     public function single_use_as_text()
