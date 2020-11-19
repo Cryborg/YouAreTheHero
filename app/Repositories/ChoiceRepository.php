@@ -38,9 +38,11 @@ class ChoiceRepository
 
             $choice->load('pageTo');
             $pageTo = $choice->pageTo;
+            $nbPrerequisites = $pageTo->prerequisites()->count();
 
-            if ($pageTo && $pageTo->prerequisites()->count() > 0)
+            if ($pageTo && $nbPrerequisites > 0)
             {
+                $nbFulfilledPrerequisites = 0;
                 foreach ($pageTo->prerequisites() as $prerequisite)
                 {
                     switch (get_class($prerequisite->prerequisiteable)) {
@@ -51,7 +53,11 @@ class ChoiceRepository
                             $fulfilled = $thisRepo->isItemPrerequisitesFulfilled($prerequisite->prerequisiteable, $character);
                             break;
                     }
+
+                    $nbFulfilledPrerequisites += (int)$fulfilled;
                 }
+
+                $fulfilled = $nbFulfilledPrerequisites === $nbPrerequisites;
             } else {
                 $fulfilled = true;
             }
@@ -103,7 +109,7 @@ class ChoiceRepository
     private function isStatPrerequisitesFulfilled(Prerequisite $prerequisite, Character $character): bool
     {
         foreach ($character->fields as $field) {
-            if ($field->name === $prerequisite->prerequisiteable->name && $field->pivot->value >= $prerequisite->quantity) {
+            if ($field->name === $prerequisite->prerequisiteable->name && $field->pivot->value === $prerequisite->quantity) {
                 return true;
             }
         }

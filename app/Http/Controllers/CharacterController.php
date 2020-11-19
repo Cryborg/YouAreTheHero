@@ -64,12 +64,10 @@ class CharacterController extends ControllerBase
 
         foreach ($story->fields as $storyField) {
             // Default values
-            if (!$storyField->hidden) {
-                $character->fields()->attach($storyField->id, [
-                    'character_id' => $character->id,
-                    'value' => $storyField->start_value
-                ]);
-            }
+            $character->fields()->attach($storyField->id, [
+                'character_id' => $character->id,
+                'value' => $storyField->start_value
+            ]);
 
             // Update if the user changed the values (case where story.options.points_to_share > 0)
             if ($fields) {
