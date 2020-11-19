@@ -27,6 +27,7 @@ function newPage($this, url, linkText) {
             $('#modalAddChoice').modal('toggle');
         })
         .always(function () {
+            $this.html($this.data('original-text'));
             $this.prop('disabled', false);
         });
 }
