@@ -160,11 +160,10 @@ $(document).on('click touchstart keydown', '#add_CreateRiddle', function () {
         });
 });
 
-
 $(document).on('click touchstart keydown', '.choice-text.icon-fountain-pen', function () {
-    var $this = $(this);
-    var pageFrom = $this.parent().data('page-from');
-    var pageTo = $this.parent().data('page-to');
+    const $this = $(this);
+    const pageFrom = $this.parent().data('page-from');
+    const pageTo = $this.parent().data('page-to');
 
     $this.parent().find('.link-text').attr('id', 'edited_text');
 
@@ -174,6 +173,7 @@ $(document).on('click touchstart keydown', '.choice-text.icon-fountain-pen', fun
         .done(function (result) {
             $('#modalEditChoice #edit_link_text').val(result.choice.link_text);
             $('#modalEditChoice #hidden_choice_id').val(result.choice.id);
+            $('#modalEditChoice #hide_choice').prop('checked', result.choice.hidden);
 
             $('#modalEditChoice').modal('show');
         });

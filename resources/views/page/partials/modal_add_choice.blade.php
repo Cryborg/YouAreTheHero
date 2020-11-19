@@ -29,15 +29,19 @@
     </div>
 </div>
 
-<p class="help-block">@lang('page.show_new_page_help')</p>
-<div class="form-check">
-    <input class="form-check-input" type="checkbox" value="1" id="show_new_page" checked>
-    <label class="form-check-label" for="show_new_page">
-        @lang('page.show_after_create')
-    </label>
-</div>
+<div class="card">
+    <div class="card-body">
+        <p class="help-block">@lang('page.show_new_page_help')</p>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="1" id="show_new_page" checked>
+            <label class="form-check-label" for="show_new_page">
+                @lang('page.show_after_create')
+            </label>
+        </div>
 
-<div class="form-check">
-    <input type="checkbox" class="form-check-input" id="hide_choice" value="1">
-    <label class="form-check-label" for="hide_choice">@lang('page.hide_unavailable_choice')</label>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="hide_choice" value="1">
+            <label class="form-check-label" for="hide_choice">@lang('page.hide_unavailable_choice')</label>
+        </div>
+    </div>
 </div>
