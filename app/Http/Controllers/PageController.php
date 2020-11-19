@@ -90,7 +90,7 @@ class PageController extends Controller
         $page->story->people()->each(static function ($person) use (&$placeholders) {
             $placeholders[$person->role] = [
                 'Prénom' => ['person.' . $person->order . '.firstname', $person->first_name],
-                'Nom' => ['person.' . $person->order . '.firstname', $person->last_name],
+                'Nom' => ['person.' . $person->order . '.lastname', $person->last_name],
                 'Nom complet' => ['person.' . $person->order . '.fullname', $person->first_name . ' ' . $person->last_name],
             ];
         });
