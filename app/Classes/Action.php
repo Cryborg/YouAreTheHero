@@ -235,5 +235,41 @@ class Action
             }
 
         }
+
+        if ($lte !== false)
+        {
+            $split = explode('&lt;=', $text);
+
+            $field = Field::where('story_id', $story->id)
+                ->where('name', $split[0])
+                ->first();
+
+            if ($field) {
+                $characterField = $character->fields()
+                    ->withPivot('value')
+                    ->where('field_id', $field->id)->first();
+
+                return $characterField->pivot->value <= $split[1];
+            }
+
+        }
+
+        if ($eq !== false)
+        {
+            $split = explode('=', $text);
+
+            $field = Field::where('story_id', $story->id)
+                ->where('name', $split[0])
+                ->first();
+
+            if ($field) {
+                $characterField = $character->fields()
+                    ->withPivot('value')
+                    ->where('field_id', $field->id)->first();
+
+                return $characterField->pivot->value == $split[1];
+            }
+
+        }
     }
 }
