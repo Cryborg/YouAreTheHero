@@ -195,17 +195,14 @@ class Action
     public static function if($text, Story $story = null)
     {
         $split = explode('|', $text);
+        $split = array_map('trim', $split);
         $condition = self::evaluateCondition($story, $split[0]);
 
         if ($condition === true) {
             return $split[1];
         }
 
-        if (isset($split[2])) {
-            return $split[2];
-        }
-
-        return '';
+        return $split[2] ?? '';
     }
 
     private static function evaluateCondition($story, string $text)

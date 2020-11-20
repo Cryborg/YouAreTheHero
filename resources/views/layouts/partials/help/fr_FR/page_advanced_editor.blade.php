@@ -24,7 +24,6 @@
 
 <div class="ml-4 justify-content-end">
     <h4><i>stutter[&lt;mot à bégayer&gt;]</i> (bégayer)</h4>
-
     <div class="ml-4 justify-content-end">
         <div class="example text-monospace">
             # Editeur<br>
@@ -36,7 +35,6 @@
     </div>
 
     <h4><i>genre[&lt;masculin&gt;|&lt;féminin&gt;]</i> (genre du personnage)</h4>
-
     <div class="ml-4 justify-content-end">
         <p>
             En créant une histoire, tu as la possibilité de choisir le sexe du personnage principal. Si tu le fais, les joueurs
@@ -61,6 +59,50 @@
         </p>
         <div class="example text-monospace">
             Es-tu contente de ta robe ?
+        </div>
+    </div>
+
+    <h4><i>reverse[&lt;mot à écrire à l'envers&gt;]</i> (Ecrire à l'envers)</h4>
+    <div class="ml-4 justify-content-end">
+        <div class="example text-monospace">
+            # Editeur<br>
+            Dans le miroir Monsieur donne reverse[Monsieur].<br>
+            <br>
+            # Résultat<br>
+            Dans le miroir Monsieur donne rueisnoM.
+        </div>
+    </div>
+
+    <h4><i>random[&lt;terme1|terme2...&gt;]</i> (Choisir un nombre ou une chaîne de caractère au hasard)</h4>
+    <div class="ml-4 justify-content-end">
+        <div class="example text-monospace">
+            # Editeur<br>
+            Tu lances le dé. Dommage, un random[1|6].<br>
+            Il faut croire que random[ta patte de lapin|ton chapeau de cow-boy|ton caleçon troué] porte-bonheur n'agit plus...<br>
+            <br>
+            # Résultat<br>
+            Tu lances le dé. Dommage, un 4.<br>
+            Il faut croire que ton chapeau de cow-boy porte-bonheur n'agit plus...
+        </div>
+    </div>
+
+    <h4><i>if[&lt;variable/opérateur/valeur|afficher si vrai|afficher si faux&gt;]</i> (Conditionner un affichage)</h4>
+    <div class="ml-4 justify-content-end">
+        Opérateurs disponibles :<br>
+        <ul>
+            <li>>= : supérieur ou égal</li>
+            <li><= : inférieur ou égal</li>
+            <li>= : strictement égal</li>
+        </ul>
+        <div class="example text-monospace">
+            # Editeur<br>
+            if[Force>=3|Tu es très fort !|Dommage mauviette !]<br>
+            <br>
+            # Résultat si la Force du personnage est >= 3<br>
+            Tu es très fort !<br>
+            <br>
+            # Résultat si la Force du personnage est < 3<br>
+            Dommage mauviette !
         </div>
     </div>
 </div>
