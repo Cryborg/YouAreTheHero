@@ -3,7 +3,9 @@
 namespace App\Classes;
 
 use App\Models\Character;
+use App\Models\Field;
 use App\Models\Item;
+use App\Models\Story;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
@@ -105,8 +107,10 @@ class Action
     {
         $stuttering = '';
 
-        for ($i = 1; $i <= Arr::random([1, 2]); $i++)
-        {
+        for ($i = 1; $i <= Arr::random([
+                                           1,
+                                           2,
+                                       ]); $i++) {
             $stuttering .= Str::substr($text, 0, 1) . '...';
         }
 
@@ -159,8 +163,7 @@ class Action
     {
         $reversed = '';
 
-        for ($i = strlen($text) - 1; $i >= 0; $i--)
-        {
+        for ($i = strlen($text) - 1; $i >= 0; $i--) {
             $reversed .= substr($text, $i, 1);
         }
 
@@ -187,5 +190,53 @@ class Action
         $randomKey = array_rand($split);
 
         return $split[$randomKey];
+    }
+
+    public static function if($text, Story $story = null)
+    {
+        $split = explode('|', $text);
+        $condition = self::evaluateCondition($story, $split[0]);
+
+        if ($condition === true) {
+            return $split[1];
+        }
+
+        if (isset($split[2])) {
+            return $split[2];
+        }
+
+        return '';
+    }
+
+    private static function evaluateCondition($story, string $text)
+    {
+        if (!$story instanceof Story) {
+            return false;
+        }
+
+        $characterId = getSession('character_id');
+        $character   = Character::where('id', $characterId)->first();
+
+        $gte = strpos($text, '&gt;=');
+        $lte = strpos($text, '&lt;=');
+        $eq = strpos($text, '=');
+
+        if ($gte !== false)
+        {
+            $split = explode('&gt;=', $text);
+
+            $field = Field::where('story_id', $story->id)
+                ->where('name', $split[0])
+                ->first();
+
+            if ($field) {
+                $characterField = $character->fields()
+                    ->withPivot('value')
+                    ->where('field_id', $field->id)->first();
+
+                return $characterField->pivot->value >= $split[1];
+            }
+
+        }
     }
 }
