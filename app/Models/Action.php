@@ -11,6 +11,10 @@ class Action extends Model
 
     protected $guarded = ['id'];
 
+    protected $casts = [
+        'unique' => 'boolean',
+    ];
+
     public function actionable()
     {
         return $this->morphTo();

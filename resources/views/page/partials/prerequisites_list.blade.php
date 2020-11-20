@@ -27,7 +27,7 @@
                     @endif
                     {{ $prerequisite->prerequisiteable->name }}
                 </td>
-                <td>{{ $prerequisite->quantity }}</td>
+                <td>{{ $prerequisite->operator }} {{ $prerequisite->quantity }}</td>
                 <td class="text-center">
                     <span class="icon-trash text-danger clickable deletePrerequisite" data-prerequisite_id="{{ $prerequisite->id }}" title="{{ trans('common.delete') }}"></span>
                 </td>

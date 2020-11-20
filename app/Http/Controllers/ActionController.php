@@ -38,7 +38,8 @@ class ActionController extends Controller
             'actionable_id' => $request->get('item'),
             'actionable_type' => $request->get('type'),
         ], [
-            'quantity' => $request->get('quantity')
+            'quantity' => $request->get('quantity'),
+            'unique' => $request->get('unique_action', false),
         ]);
 
         $success = $page->triggers()->save($action);

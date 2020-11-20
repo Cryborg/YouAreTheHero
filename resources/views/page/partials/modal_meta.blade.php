@@ -110,8 +110,8 @@
                                         </div>
                                         <div class="col-8" data-context-only="action">
                                             <label>
-                                            	{!! Form::checkbox('unique_action', '1', null,  ['id' => 'unique_action']) !!}
-                                            	Unique action
+                                            	{!! Form::checkbox('unique_action', '1', null,  ['id' => 'unique_action', 'class' => 'mr-2']) !!}
+                                            	@lang('actions.unique_label')
                                             </label>
                                         </div>
                                     </div>

@@ -300,8 +300,9 @@ class StoryController extends ControllerBase
 
                 // Check if the action has already been done
                 // Don't do it again if it is the case
-                if ($character->actions->where('pivot.action_id', $trigger->id)
-                                       ->count() === 0) {
+                // EXCEPT if the action is not unique
+                $nbActionsDone = $character->actions->where('pivot.action_id', $trigger->id)->count();
+                if ($nbActionsDone === 0 || $trigger->unique === false) {
 
                     if (!$field) {
                         $character->fields()->attach($trigger->actionable->id, ['value' => $trigger->quantity]);
@@ -341,7 +342,7 @@ class StoryController extends ControllerBase
                 $nbActionsDone = $character->actions->where('pivot.action_id', $trigger->id)
                                                     ->count();
 
-                if ($nbActionsDone === 0) {
+                if ($nbActionsDone === 0 || $trigger->unique === false) {
                     $character->actions()->syncWithoutDetaching($trigger->id);
 
                     if ($trigger->quantity > 0) {

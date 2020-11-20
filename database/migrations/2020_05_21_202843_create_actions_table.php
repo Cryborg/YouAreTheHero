@@ -20,6 +20,7 @@ class CreateActionsTable extends Migration
             $table->morphs('actionable');
 
             $table->integer('quantity');
+            $table->boolean('unique')->default(true);
 
             $table->timestamps();
             $table->softDeletes();

@@ -320,14 +320,16 @@ $(document).on('click touchstart keydown', '#add_Meta', function () {
 
     // If the "stats" tab is selected
     if ($('#tr-pre-2-link').hasClass('active')) {
-        const $selectedOption = $('#sheet option:selected').val();
+        const selectedOption = $('#sheet option:selected').val();
         const fieldOperator = $('#field_operator option:selected').val();
+        const uniqueAction = $('#unique_action').is(':checked') ? 1 : 0;
 
-        if ($selectedOption !== '' && typeof $selectedOption !== 'undefined') {
+        if (selectedOption !== '' && typeof selectedOption !== 'undefined') {
             data = {
-                'item': $selectedOption,
+                'item': selectedOption,
                 'quantity': $('#level').val(),
                 'operator': fieldOperator,
+                'unique_action': uniqueAction,
                 'type': 'field'
             }
         }
