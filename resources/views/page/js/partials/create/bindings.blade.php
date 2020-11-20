@@ -23,18 +23,33 @@ $(document).on('click touchstart keydown', '.deleteAction', function () {
 });
 
 $(document).on('click touchstart keydown', '#showPrerequisites', function () {
-    $('#modalMeta').data('context', 'prerequisite');
-    $('#modalMeta').modal();
+    const $modal = $('#modalMeta');
+
+    $modal.data('context', 'prerequisite');
+    $modal.find("div[data-context-only='prerequisite']").removeClass('hidden');
+    $modal.find("div[data-context-only='action']").addClass('hidden');
+
+    $modal.modal();
 });
 
 $(document).on('click touchstart keydown', '#showActions', function () {
-    $('#modalMeta').data('context', 'action');
-    $('#modalMeta').modal();
+    const $modal = $('#modalMeta');
+
+    $modal.data('context', 'action');
+    $modal.find("div[data-context-only='prerequisite']").addClass('hidden');
+    $modal.find("div[data-context-only='action']").removeClass('hidden');
+
+    $modal.modal();
 });
 
 $(document).on('click touchstart keydown', '#showItems', function () {
-    $('#modalMeta').data('context', 'item');
-    $('#modalMeta').modal();
+    const $modal = $('#modalMeta');
+
+    $modal.data('context', 'item');
+    $modal.find("div[data-context-only='prerequisite']").addClass('hidden');
+    $modal.find("div[data-context-only='action']").addClass('hidden');
+
+    $modal.modal();
 });
 
 $(document).on('change', '#hideChoice', function () {

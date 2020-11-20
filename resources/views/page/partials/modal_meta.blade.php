@@ -34,7 +34,7 @@
                             </h5>
                             <div class="card-body">
                                 <div class="form-row">
-                                    <div class="col-8">
+                                    <div class="col-8" data-context-only="prerequisite">
                                         <select id="item_operator" name="item_operator" class="form-control">
                                             <option value="gte">>= Egal ou supérieur</option>
                                             <option value="lte"><= Egal ou inférieur</option>
@@ -98,7 +98,7 @@
                                         <div class="col-12">
                                             <p class="help-block">{!! trans('page.level_help') !!}</p>
                                         </div>
-                                        <div class="col-8">
+                                        <div class="col-8" data-context-only="prerequisite">
                                             <select id="field_operator" name="field_operator" class="form-control">
                                                 <option value="gte">>= Egal ou supérieur</option>
                                                 <option value="lte"><= Egal ou inférieur</option>
@@ -107,6 +107,12 @@
                                         </div>
                                         <div class="col-4">
                                             {!! Form::number('level', old('level') ?? 1, ['class' => 'form-control']) !!}
+                                        </div>
+                                        <div class="col-8" data-context-only="action">
+                                            <label>
+                                            	{!! Form::checkbox('unique_action', '1', null,  ['id' => 'unique_action']) !!}
+                                            	Unique action
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
