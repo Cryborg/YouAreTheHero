@@ -69,6 +69,7 @@ trait TextModifiers
             'stutter',
             'genre',
             'reverse',
+            'random',
         ];
 
         foreach ($methods as $method) {

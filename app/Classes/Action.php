@@ -166,4 +166,26 @@ class Action
 
         return $reversed;
     }
+
+    /**
+     * Gives a random number.
+     *
+     * @param $text
+     *
+     * @return int
+     * @throws \Exception
+     */
+    public static function random($text)
+    {
+        $split = explode('|', $text);
+
+        // If there is exactely 2 integers, return a random number between the 2
+        if ((count($split) === 2) && is_numeric($split[0]) && is_numeric($split[1])) {
+            return random_int($split[0], $split[1]);
+        }
+
+        $randomKey = array_rand($split);
+
+        return $split[$randomKey];
+    }
 }
