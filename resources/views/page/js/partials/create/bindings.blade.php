@@ -266,11 +266,11 @@ $(document).on('click touchstart keydown', '.toggle-summernote:not(.summernote-o
 });
 
 $(document).on('click touchstart keydown', '#add_Meta', function () {
-    var $this = $(this);
-    var data = {};
-    var context = $('#modalMeta').data('context');
-    var ajaxRoute;
-    var callback;
+    const $this = $(this);
+    const context = $('#modalMeta').data('context');
+    let data = {};
+    let ajaxRoute;
+    let callback;
 
     switch (context) {
         case 'prerequisite':
@@ -289,23 +289,30 @@ $(document).on('click touchstart keydown', '#add_Meta', function () {
 
     // If the "item" tab is selected
     if ($('#tr-pre-1').hasClass('active')) {
-        data = {
-            'item': $('#item_id').val(),
-            'quantity': $('#quantity').val(),
-            'price':  $('#price').val(),
-            'type': 'item',
-        };
+        const selectedItem = $('#item_id').val();
+        const itemOperator = $('#item_operator option:selected').val();
+
+        if (selectedItem !== null && selectedItem !== '' && typeof selectedItem !== 'undefined') {
+            data = {
+                'item': selectedItem,
+                'quantity': $('#quantity').val(),
+                'operator': itemOperator,
+                'price': $('#price').val(),
+                'type': 'item',
+            };
+        }
     }
 
     // If the "stats" tab is selected
     if ($('#tr-pre-2-link').hasClass('active')) {
-        if ($('#sheet option:selected').val() !== '') {
-            var key = $('#sheet option:selected').text();
-            var value = $('#level').val();
+        const $selectedOption = $('#sheet option:selected').val();
+        const fieldOperator = $('#field_operator option:selected').val();
 
+        if ($selectedOption !== '' && typeof $selectedOption !== 'undefined') {
             data = {
-                'item': $('#sheet option:selected').val(),
-                'quantity': value,
+                'item': $selectedOption,
+                'quantity': $('#level').val(),
+                'operator': fieldOperator,
                 'type': 'field'
             }
         }
@@ -321,26 +328,30 @@ $(document).on('click touchstart keydown', '#add_Meta', function () {
         }
     }
 
-    if (Object.entries(data).length > 0 && data.constructor === Object) {
-        $.post({
-            url: ajaxRoute,
-            data: data
-        })
-            .done(function (data) {
-                if (data.success) {
-                    callback();
-                }
+    if (!$.isEmptyObject(data)) {
+        if (Object.entries(data).length > 0 && data.constructor === Object) {
+            $.post({
+                url: ajaxRoute,
+                data: data
             })
-            .always(function () {
-                $this.html($this.data('original-text'));
-                $this.prop('disabled', false);
-            });
+                .done(function (data) {
+                    if (data.success) {
+                        callback();
+                    }
+                })
+                .always(function () {
+                    $this.html($this.data('original-text'));
+                    $this.prop('disabled', false);
+                });
+        }
+    } else {
+        $this.html($this.data('original-text'));
+        $this.prop('disabled', false);
     }
 });
 
 $(document).on('click touchstart keydown', '.createNewPage', function () {
-    var $this = $(this);
-    var text = $('#riddle_target_page_text').val();
+    const text = $('#riddle_target_page_text').val();
     let hideChoice = $('#hide_choice').is(':checked') ? 1 : 0;
 
     if (text !== '') {

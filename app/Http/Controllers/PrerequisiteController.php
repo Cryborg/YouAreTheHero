@@ -25,7 +25,8 @@ class PrerequisiteController extends Controller
                 'prerequisiteable_type' => $request->get('type'),
                 'prerequisiteable_id' => $request->get('item'),
             ], [
-                'quantity' => $request->get('quantity')
+                'quantity' => $request->get('quantity'),
+                'operator' => Prerequisite::getOperator($request->get('operator')),
             ]);
 
             return response()->json([

@@ -9,7 +9,13 @@
     <tbody class="alternate-rows-colors">
         @foreach ($page->prerequisites() ?? [] as $prerequisite)
             <tr>
-                <td>{{ trans('item.' . $prerequisite->prerequisiteable_type) }}</td>
+                <td>
+                    @if ($prerequisite->prerequisiteable->hidden)
+                        {{ trans('item.variable') }}
+                    @else
+                        {{ trans('item.' . $prerequisite->prerequisiteable_type) }}
+                    @endif
+                </td>
                 <td>
                     @if ($prerequisite->prerequisiteable_type === 'item')
                         {{ $prerequisite->prerequisiteable->category }}

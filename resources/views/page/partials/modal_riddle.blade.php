@@ -31,14 +31,12 @@
                                 <span class="badge badge-light text-muted">@lang('common.optional')</span>
                             </h5>
                             <div class="card-body">
-                                <div class="card-title">
-                                    <p class="help-block">{!! trans('page.riddle_item_help') !!}</p>
-                                    @include('page.partials.select_item', [
-                                        'items' => $page->story->items->sortBy('name')->pluck('name', 'id')->toArray(),
-                                        'selectId' => 'riddle_item',
-                                    ])
-                                    </select>
-                                </div>
+                                <p class="help-block">{!! trans('page.riddle_item_help') !!}</p>
+                                @include('page.partials.select_item', [
+                                    'items' => $page->story->items->sortBy('name')->pluck('name', 'id')->toArray(),
+                                    'selectId' => 'riddle_item',
+                                ])
+                                </select>
                             </div>
                         </div>
                     </div>

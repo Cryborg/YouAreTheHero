@@ -15,4 +15,41 @@ class Prerequisite extends Model
     {
         return $this->morphTo();
     }
+
+    public static function isFulfilled($condition1, $operator, $condition2)
+    {
+        switch ($operator)
+        {
+            case '>=':
+                return $condition1 >= $condition2;
+                break;
+            case '<=':
+                return $condition1 <= $condition2;
+                break;
+            case '=':
+                return $condition1 === $condition2;
+                break;
+            case '>':
+                return $condition1 > $condition2;
+                break;
+            case '<':
+                return $condition1 < $condition2;
+                break;
+        }
+    }
+
+    public static function getOperator($value)
+    {
+        $values = collect([
+            'gte' => '>=',
+            'lte' => '<=',
+            'eq' => '=',
+        ]);
+
+        if ($values->has($value)) {
+            return $values->get($value);
+        }
+
+        return $values->get('gte');
+    }
 }

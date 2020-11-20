@@ -107,7 +107,8 @@ class ChoiceRepository
     private function isStatPrerequisitesFulfilled(Prerequisite $prerequisite, Character $character): bool
     {
         foreach ($character->fields as $field) {
-            if ($field->name === $prerequisite->prerequisiteable->name && $field->pivot->value === $prerequisite->quantity) {
+            if ($field->name === $prerequisite->prerequisiteable->name
+                    && Prerequisite::isFulfilled($field->pivot->value, $prerequisite->operator, $prerequisite->quantity)) {
                 return true;
             }
         }
@@ -118,7 +119,8 @@ class ChoiceRepository
     private function isItemPrerequisitesFulfilled(Prerequisite $prerequisite, Character $character): bool
     {
         foreach ($character->items as $item) {
-            if ($item->id === $prerequisite->prerequisiteable->id && $item->pivot->quantity === $prerequisite->quantity) {
+            if ($item->id === $prerequisite->prerequisiteable->id
+                    && Prerequisite::isFulfilled($item->pivot->quantity, $prerequisite->operator, $prerequisite->quantity)) {
                 return true;
             }
         }

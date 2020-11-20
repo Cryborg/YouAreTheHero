@@ -33,5 +33,6 @@ return [
     'throw_away'        => 'Throw away',
     'unused_items_label'=> 'Unused items',
     'use'               => 'Use',
+    'variable'          => 'Variable',
     'verb'              => 'Action',
 ];

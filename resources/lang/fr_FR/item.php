@@ -33,5 +33,6 @@ return [
     'throw_away'        => 'Jeter',
     'unused_items_label'=> 'Objets non utilisés',
     'use'               => 'Utiliser',
+    'variable'          => 'Variable',
     'verb'              => 'Action',
 ];
