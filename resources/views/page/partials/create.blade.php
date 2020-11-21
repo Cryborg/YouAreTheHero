@@ -3,17 +3,34 @@
     <div class="col-lg-6 col-xs-12">
         <div class="row">
             <div class="col shadow-sm p-3">
+                {{-- Add choice button --}}
                 <button class="btn btn-light shadow grow" data-target="#modalAddChoice" data-toggle="modal">
                     <span class="icon-choice display-6 align-middle"></span>
                     <div class="align-middle">@lang('page.add_choice')</div>
                     <span class="badge badge-warning rounded float-right shadow ml-3">{{ $page->choices()->count() }}</span>
                 </button>
+
+                {{-- Preview story button --}}
                 <a target="_blank" href="{{ route('story.play', [$story]) }}">
                     <button class="btn btn-light shadow grow">
                         <span class="icon-play display-6 align-middle"></span>
                         <div class="align-middle">@lang('story.preview')</div>
                     </button>
                 </a>
+
+                {{-- Location button --}}
+                <button class="btn btn-light shadow grow" data-target="#modalLocation" data-toggle="modal">
+                    <span class="icon-position-marker display-6 align-middle @if ($page->location()->count() > 0) text-success @endif"></span>
+                    <div class="align-middle location-label">
+                        @if ($page->location()->count() > 0)
+                            {{ $page->location->name }}
+                        @else
+                            @lang('story.locations_label')
+                        @endif
+                    </div>
+                </button>
+
+                {{-- Error button --}}
                 @if ($showErrorsButton)
                     <button class="btn btn-danger float-right shadow showStoryErrors grow" data-target="#modalStoryErrors" data-toggle="modal">
                         <div class="align-middle">@lang('story.has_errors')</div>

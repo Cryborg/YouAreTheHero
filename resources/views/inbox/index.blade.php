@@ -22,7 +22,7 @@
     </div>
 
     <!-- Modal add choice -->
-    @include('page.partials.modal_model', [
+    @include('page.partials.modals.modal_model', [
         'template' => 'inbox.partials.modal_create',
         'context' => 'add_message',
         'title' => trans('inbox.new_message_label'),

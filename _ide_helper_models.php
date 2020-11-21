@@ -75,6 +75,8 @@ namespace App\Models{
  * @property-read int|null $fields_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[] $items
  * @property-read int|null $items_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Location[] $locations
+ * @property-read int|null $locations_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[] $pages
  * @property-read int|null $pages_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Person[] $people
@@ -136,6 +138,17 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem whereTaken($value)
  */
 	class CharacterItem extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\CharacterLocation
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterLocation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterLocation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterLocation query()
+ */
+	class CharacterLocation extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -511,6 +524,33 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Location
+ *
+ * @property int $id
+ * @property int|null $parent_id
+ * @property string $name
+ * @property int|null $page_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Character[] $characters
+ * @property-read int|null $characters_count
+ * @property-read \App\Models\Page|null $page
+ * @property-read \App\Models\Page|null $parent
+ * @method static \Illuminate\Database\Eloquent\Builder|Location newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Location newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Location query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Location whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Location whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Location whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Location wherePageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Location whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Location whereUpdatedAt($value)
+ */
+	class Location extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Page
  *
  * @property string $id
@@ -534,6 +574,7 @@ namespace App\Models{
  * @property-read int|null $descriptions_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[] $items
  * @property-read int|null $items_count
+ * @property-read \App\Models\Location|null $location
  * @property-read \Illuminate\Database\Eloquent\Collection|Page[] $parents
  * @property-read int|null $parents_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Report[] $reports

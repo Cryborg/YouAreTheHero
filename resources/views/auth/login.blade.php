@@ -132,5 +132,5 @@
     </div>
 
     <!-- Modal Image -->
-    @include('page.partials.modal_image')
+    @include('page.partials.modals.modal_image')
 @endsection

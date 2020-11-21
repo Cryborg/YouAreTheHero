@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class LocationController extends Controller
 {
@@ -31,11 +32,32 @@ class LocationController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
-        //
+        if ($request->post('name') !== null) {
+            $location = Location::updateOrCreate([
+                'page_id' => $request->post('page_id'),
+            ], [
+                'name' => $request->post('name'),
+            ]);
+
+            return Response::json([
+                'success' => $location instanceof Location,
+                'type' => 'save',
+                'location' => $location,
+                'request' => $request->all()
+            ]);
+        }
+
+        $deleted = Location::where('page_id', $request->post('page_id'))->delete();
+
+        return Response::json([
+            'success' => (bool)$deleted,
+            'type' => 'delete',
+        ]);
     }
 
     /**

@@ -10,8 +10,8 @@
 
 
     <!-- Modal add choice -->
-    @include('page.partials.modal_model', [
-        'template' => 'page.partials.modal_add_choice',
+    @include('page.partials.modals.modal_model', [
+        'template' => 'page.partials.modals.modal_add_choice',
         'context' => 'add_choice',
         'title' => trans('page.add_choice_modal_title'),
         'icon' => 'icon-choice',
@@ -23,9 +23,23 @@
         ]
     ])
 
+    <!-- Modal location -->
+    @include('page.partials.modals.modal_model', [
+        'template' => 'page.partials.modals.modal_location',
+        'context' => 'add_choice',
+        'title' => trans('location.modal_title'),
+        'icon' => 'icon-position-marker',
+        'big' => false,
+        'data' => [
+            'page' => $page,
+            'id' => 'Location',
+            'btn_add_text' => trans('common.save')
+        ]
+    ])
+
     <!-- Modal story errors -->
-    @include('page.partials.modal_model', [
-        'template' => 'page.partials.modal_story_errors',
+    @include('page.partials.modals.modal_model', [
+        'template' => 'page.partials.modals.modal_story_errors',
         'context' => 'story_errors',
         'title' => trans('page.story_errors_modal_title'),
         'icon' => 'icon-skull',
@@ -37,8 +51,8 @@
     ])
 
     <!-- Modal edit choice -->
-    @include('page.partials.modal_model', [
-        'template' => 'page.partials.modal_edit_choice',
+    @include('page.partials.modals.modal_model', [
+        'template' => 'page.partials.modals.modal_edit_choice',
         'context' => 'edit_choice',
         'title' => trans('page.edit_choice_modal_title'),
         'icon' => 'icon-choice',
@@ -51,7 +65,7 @@
     ])
 
     <!-- Modal list all pages -->
-    @include('page.partials.modal_model', [
+    @include('page.partials.modals.modal_model', [
         'template' => 'page.partials.modal_list_pages',
         'context' => 'list_pages',
         'title' => trans('story.all_pages_modal_title'),
@@ -64,8 +78,8 @@
     ])
 
     <!-- Modal list all items -->
-    @include('page.partials.modal_model', [
-        'template' => 'page.partials.modal_list_items',
+    @include('page.partials.modals.modal_model', [
+        'template' => 'page.partials.modals.modal_list_items',
         'context' => 'list_items',
         'title' => trans('story.all_items_modal_title'),
         'icon' => 'icon-chest',
@@ -77,8 +91,8 @@
     ])
 
     <!-- Modal insert popover -->
-    @include('page.partials.modal_model', [
-        'template' => 'page.partials.modal_descriptions',
+    @include('page.partials.modals.modal_model', [
+        'template' => 'page.partials.modals.modal_descriptions',
         'context' => 'descriptions',
         'title' => trans('story.popovers_modal_title'),
         'icon' => 'icon-archive-research',
@@ -90,8 +104,8 @@
     ])
 
     <!-- Modal new Riddle -->
-    @include('page.partials.modal_model', [
-        'template' => 'page.partials.modal_riddle',
+    @include('page.partials.modals.modal_model', [
+        'template' => 'page.partials.modals.modal_riddle',
         'context' => 'riddles',
         'title' => trans('page.riddle_modal_title'),
         'icon' => 'icon-jigsaw-piece',
@@ -104,8 +118,8 @@
     ])
 
     <!-- Modal meta (prerequisites, actions, items) -->
-    @include('page.partials.modal_model', [
-        'template' => 'page.partials.modal_meta',
+    @include('page.partials.modals.modal_model', [
+        'template' => 'page.partials.modals.modal_meta',
         'context' => 'prerequisites',
         'title' => '',
         'icon' => '',

@@ -10,6 +10,8 @@ class Location extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function characters(): BelongsToMany
     {
         return $this->belongsToMany(Character::class);

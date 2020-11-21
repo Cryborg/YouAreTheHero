@@ -194,6 +194,30 @@ $(document).on('click touchstart keydown', '.choice-text.icon-fountain-pen', fun
         });
 });
 
+$(document).on('click touchstart keydown', '#add_Location', function () {
+    const $this = $(this);
+    const $locationName = $('#location_name');
+
+    $.post({
+        url: route('location.store'),
+        data: {
+            'name': $locationName.val(),
+            'page_id': $locationName.data('pageid')
+        }
+    })
+        .done(function (result) {
+            if (result.success && result.type !== 'delete') {
+                $('.location-label').html(result.location.name);
+            }
+
+            $('#modalLocation').modal('hide');
+        })
+        .always(function () {
+            $this.html($this.data('original-text'));
+            $this.prop('disabled', false);
+        });
+});
+
 $(document).on('click touchstart keydown', '.choice-text.icon-trash', function () {
     var $this = $(this);
     var pageFrom = $this.parent().data('page-from');
