@@ -149,7 +149,7 @@
                                 </form>
 
                                 @if (Auth::check() && Auth::user()->role !== 'temp')
-                                    <li class="nav-item dropdown">
+                                    <li class="nav-item dropdown @if (Auth::user()->unread()->count() > 0) nav-highlight @endif">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             {{ Auth::user()->username }}
                                             @if (Auth::user()->unread()->count() > 0)

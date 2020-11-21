@@ -529,3 +529,8 @@ div.popover.show {
     max-height: 400px;
     overflow-y: scroll;
 }
+
+.nav-highlight {
+    background-color: lightskyblue;
+    font-weight: bold;
+}
