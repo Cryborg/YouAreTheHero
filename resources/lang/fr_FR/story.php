@@ -47,7 +47,7 @@ return array (
   'last_update' => 'Dernière mise à jour',
   'list_all_items' => 'Voir tous les objets',
   'list_all_items_help' => 'Clique sur l\'objet à modifier.',
-  'map' => 'Points de sauvegarde',
+  'locations_label' => 'Lieux',
   'number_pages' => 'Nombre de pages',
   'pages_count' => ':count page|:count pages',
   'people_help' => 'Si tu le souhaites tu peux renommer les personnages de cette liste.',

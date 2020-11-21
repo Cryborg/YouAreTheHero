@@ -83,6 +83,11 @@ class Page extends Model
                     ->withPivot('link_text');
     }
 
+    public function location()
+    {
+        return $this->hasOne(Location::class);
+    }
+
     /**
      * Get the pages leading to the current page
      */

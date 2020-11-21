@@ -101,6 +101,13 @@ class Character extends Model
         return $this->belongsToMany(Item::class)->withPivot(['id', 'quantity', 'is_used']);
     }
 
+    public function locations(): BelongsToMany
+    {
+        return $this->belongsToMany(Location::class)
+            ->orderBy('created_at')
+            ->withTimestamps();
+    }
+
     public function pages(): belongsToMany
     {
         return $this->belongsToMany(Page::class);
@@ -108,7 +115,8 @@ class Character extends Model
 
     public function people(): belongsToMany
     {
-        return $this->belongsToMany(Person::class);
+        return $this->belongsToMany(Person::class)
+            ->withTimestamps();
     }
 
     public function riddles(): BelongsToMany

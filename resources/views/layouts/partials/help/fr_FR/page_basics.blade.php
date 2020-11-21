@@ -22,9 +22,3 @@
     Cette option permet de dire si la page en cours d'édition est la dernière de l'histoire, ou en tout cas une des dernières. Si cette case
     est cochée, aucun choix ne peut être ajouté à la page car l'aventure du joueur s'arrêtera à cet endroit.
 </p>
-
-<h3>Point de sauvegarde</h3>
-
-<p>
-    Si cette case est cochée, le joueur pourra revenir sur cette page quand il le désire. Autrement il n'est pas possible de revenir en arrière.
-</p>

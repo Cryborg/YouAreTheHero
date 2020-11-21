@@ -49,12 +49,10 @@
             <div class="card">
                 <h5 class="card-header">
                     <span class="icon-treasure-map display-5 mr-2"></span>
-                    @lang('story.map')
+                    @lang('story.locations_label')
                 </h5>
                 <div class="card-body">
-                    <div class="card-text map-block">
-                        @yield('map')
-                    </div>
+                    <div class="card-text locations-block"></div>
                 </div>
             </div>
         </div>

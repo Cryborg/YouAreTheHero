@@ -94,6 +94,9 @@ Route::middleware('auth')->group(static function () {
     Route::get('/character/create/{story}', 'CharacterController@getCreate')->name('character.create');
     Route::post('/character/create/{story}', 'CharacterController@store')->name('character.create.post');
 
+// Character locations
+    Route::get('character/locations', 'CharacterLocationController@index')->name('character.locations');
+
 // Field
     Route::post('/field/{story}/create', 'FieldController@store')->name('field.store');
     Route::delete('/field/{field}/delete', 'FieldController@delete')->name('field.delete');

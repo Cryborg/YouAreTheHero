@@ -22,7 +22,6 @@ class CreateStoriesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
-            /******* STORY OPTIONS *******/
             $table->string('locale')->default('fr_FR');
             $table->string('layout')->default('play1');
             $table->boolean('is_published')->default(false);

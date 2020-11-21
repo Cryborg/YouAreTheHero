@@ -13,6 +13,7 @@ class Constants
     public const GENRE_BOTH   = 'both';
 
     public const ROLE_ADMIN = 'admin';
+    public const ROLE_DEVELOPER = 'developer';
     public const ROLE_MODERATOR = 'moderator';
     public const ROLE_MEMBER = 'member';
     public const ROLE_TEMPORARY = 'temp';

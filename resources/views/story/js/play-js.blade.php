@@ -1,27 +1,35 @@
 function loadPurse() {
-    var $block = $('.purse-block');
+    const $block = $('.purse-block');
     $block.html(loadingSpinner);
     $block.load(routePurse);
 }
 
 function loadInventory() {
-    var $block = $('.inventory-block');
+    const $block = $('.inventory-block');
     $block.html(loadingSpinner);
     $block.load(routeInventory);
 }
 
 function loadSheet() {
-    var $block = $('.sheet-block');
+    const $block = $('.sheet-block');
     $block.html(loadingSpinner);
     $block.load(routeSheet);
 }
 
 function loadChoices() {
-    var $block = $('.choices-block');
+    const $block = $('.choices-block');
     let routeChoices = route('page.choices', {'page': $('#pageId').val()});
 
     $block.html(loadingSpinner);
     $block.load(routeChoices);
+}
+
+function loadLocations() {
+    const $block = $('.locations-block');
+    let routeLocations = route('character.locations');
+
+    $block.html(loadingSpinner);
+    $block.load(routeLocations);
 }
 
 function loadContent(route) {
@@ -33,7 +41,7 @@ function loadContent(route) {
 }
 
 $(document).on('click touchstart keydown', '.itemThrowAway', function () {
-    var itemId = $(this).data('characteritemid');
+    const itemId = $(this).data('characteritemid');
 
     $.get({
         url: route('item.throw_away', {'character_item': itemId})
@@ -41,8 +49,8 @@ $(document).on('click touchstart keydown', '.itemThrowAway', function () {
 });
 
 $(document).on('click touchstart keydown', '.itemUse', function () {
-    var itemId = $(this).data('itemid');
-    var characterId = $(this).data('characterid');
+    const itemId = $(this).data('itemid');
+    const characterId = $(this).data('characterid');
 
     $.get({
         url: route('item.use', {'character': characterId, 'item': itemId})
@@ -79,8 +87,8 @@ $(document).on('click touchstart keydown', '#add_PageReport', function () {
 
 // Ajax links
 $(document).on('click touchstart keydown', 'a', function () {
-    var $this = $(this);
-    var href = $this.data('href');
+    const $this = $(this);
+    const href = $this.data('href');
 
     if (href !== undefined) {
         loadContent(href);
@@ -163,6 +171,7 @@ function refreshData()
     loadInventory();
     loadSheet();
     loadChoices();
+    loadLocations();
 }
 
 $(function () {

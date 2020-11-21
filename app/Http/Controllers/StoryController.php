@@ -177,9 +177,7 @@ class StoryController extends ControllerBase
         $character->update(['page_id' => $page->id]);
 
         setSession('character_id', $character->id);
-        $this->saveCheckpoint($character, $page);
-
-        $visitedPlaces = $character->pages;
+        $this->saveCharacterLocation($character, $page);
 
         $items = $this->showItems($character, $page);
 
@@ -213,7 +211,7 @@ class StoryController extends ControllerBase
                              'items'         => $items,
                              'layout'        => $page->layout ?? $story->layout,
                              'character'     => $character,
-                             'visitedPlaces' => $visitedPlaces,
+                             'locations'     => $character->locations,
                              'messages'      => $messages,
                          ]
             );
@@ -235,11 +233,10 @@ class StoryController extends ControllerBase
      * @param Character $character
      * @param Page      $page
      */
-    private function saveCheckpoint(Character $character, $page): void
+    private function saveCharacterLocation(Character $character, Page $page): void
     {
-        if ($page && $page->is_checkpoint) {
-            $character->pages()
-                      ->syncWithoutDetaching($page->id);
+        if ($page->location()->count() > 0) {
+            $character->locations()->syncWithoutDetaching($page->location->id);
         }
     }
 

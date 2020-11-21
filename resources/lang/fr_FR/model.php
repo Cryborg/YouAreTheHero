@@ -13,7 +13,7 @@ return array (
   'save_successful' => 'Enregistrement réussi',
   'is_first' => 'Premier chapitre de l\'histoire',
   'is_last' => 'Fin de l\'histoire',
-  'is_checkpoint' => 'Point de sauvegarde',
+  'is_checkpoint' => 'Checkpoint',
   'page_title_help' => 'Il s\'agit du titre de la page. Très important pour pouvoir l\'identifier.',
   'page_content_help' => 'C\'est le texte de la page, là où l\'action se passe, les passions se déchirent,.... bref, là où l\'histoire se déroule :)',
   'page_layout_help' => 'Tu peux choisir l\'apparence de ta page parmi un choix de présentations différentes. Par défaut il s\'agit de celle de l\'histoire, mais pour certaines pages tu auras peut-être besoin d\'en changer pour mieux coller à ton ceontenu.',
