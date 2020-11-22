@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable implements HasLocalePreference
 {
@@ -105,6 +106,10 @@ class User extends Authenticatable implements HasLocalePreference
 
     public function getAvatarAttribute($value)
     {
+        if (Str::startsWith($value, 'http')) {
+            return $value;
+        }
+
         if ($value === null) {
             return 'img/avatars/generic-avatar.png';
         }
