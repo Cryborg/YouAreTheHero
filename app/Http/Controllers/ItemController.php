@@ -142,7 +142,7 @@ class ItemController extends Controller
      */
     public function modalList(Story $story): \Illuminate\Contracts\View\View
     {
-        $view = View::make('page.partials.modal_list_items', [
+        $view = View::make('page.partials.modals.modal_list_items', [
             'items' => $story->items
         ]);
 

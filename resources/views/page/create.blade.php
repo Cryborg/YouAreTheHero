@@ -64,19 +64,6 @@
         ]
     ])
 
-    <!-- Modal list all pages -->
-    @include('page.partials.modals.modal_model', [
-        'template' => 'page.partials.modal_list_pages',
-        'context' => 'list_pages',
-        'title' => trans('story.all_pages_modal_title'),
-        'icon' => 'icon-papers',
-        'big' => true,
-        'data' => [
-            'story' => $story,
-            'id' => 'AllPages',
-        ]
-    ])
-
     <!-- Modal list all items -->
     @include('page.partials.modals.modal_model', [
         'template' => 'page.partials.modals.modal_list_items',

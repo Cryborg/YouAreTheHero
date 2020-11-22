@@ -15,7 +15,7 @@ class DescriptionController extends Controller
     {
         if ($request->ajax()) {
             $view = View::make(
-                'page.partials.modal_descriptions',
+                'page.partials.modals.modal_descriptions',
                 [
                     'descriptions' => $page->descriptions,
                 ]

@@ -38,11 +38,3 @@
     Tu peux également supprimer un choix en cliquant sur l'icône <span class="icon-trash text-red"></span>. Note que cela ne supprime
     que le lien entre deux pages, pas les pages elles-mêmes.
 </p>
-
-<h2><span class="icon-papers mr-2"></span>Liste des pages</h2>
-
-<p>
-    A nouveau en bas de la page tu trouveras le bouton <button class="btn btn-primary text-white"><span class="icon-papers mr-2 text-white"></span>Voir toutes les pages</button>. Il te permet d'avoir une vue d'ensemble des
-    textes des pages, ainsi que des choix de chacune. Tu peux y supprimer une page, à condition qu'elle n'ait ni parent (aucun
-    choix ne mène vers elle) ni enfant (aucun choix ne part d'elle).
-</p>

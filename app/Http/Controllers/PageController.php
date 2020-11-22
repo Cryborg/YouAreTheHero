@@ -288,7 +288,7 @@ class PageController extends Controller
 
     public function list(Story $story)
     {
-        $view = View::make('page.partials.modal_list_pages',
+        $view = View::make('page.partials.modals.modal_list_pages',
             [
                 'pages' => $story->pages->sortBy('created_at')->sortByDesc('is_first')->sortBy('is_last'),
             ]);
