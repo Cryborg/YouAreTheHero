@@ -1,11 +1,11 @@
-function ajaxCreatePost(route, $this, data)
+function ajaxCreatePost(urlroute, $this, data)
 {
     var commonData = {
         'story_id': storyId
     };
 
     $.post({
-        url: route,
+        url: urlroute,
         data: {...data, ...commonData}
     })
         .done(function (data) {

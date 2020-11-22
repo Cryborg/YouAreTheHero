@@ -17,6 +17,11 @@
     $.extend(true, $.summernote.lang, {
         'en-US': {
             yath: {
+                genre: 'Genre',
+                if: 'Condition',
+                random: 'Random',
+                reverse: 'Reverse',
+                stutter: 'Stutter',
                 add_custom_data_tooltip: 'Add custom data',
                 button_label: 'Functions',
                 function_genre_help: 'Display according to the genre of the character',
@@ -28,6 +33,11 @@
         },
         'fr-FR': {
             yath: {
+                genre: 'Genre',
+                if: 'Condition',
+                random: 'Aléatoire',
+                reverse: 'Inverser lettres',
+                stutter: 'Bégaiement',
                 add_custom_data_tooltip: 'Ajoute des variables',
                 button_label: 'Fonctions',
                 function_genre_help: 'Affichage d\'une phras en tenant compte du genre du personnage.',
@@ -35,7 +45,8 @@
                 function_random_help: 'Mot ou nombre aléatoire',
                 function_reverse_help: 'Inverser les lettres d\'un mot',
                 function_stutter_help: 'Faire bégayer un personnage',
-            }        }
+            }
+        }
     });
     $.extend($.summernote.plugins, {
 
@@ -71,12 +82,11 @@
                 });
             };
 
-            const f_genre = self.insertFunction('Genre', 'genre[male|female]', lang.yath.function_genre_help);
-            const f_if = self.insertFunction('Condition', 'if[condition|true|false]', lang.yath.function_if_help);
-            const f_random = self.insertFunction('Random', 'random[value1|value2|...]', lang.yath.function_random_help);
-            const f_reverse = self.insertFunction('Reverse', 'reverse[word]', lang.yath.function_reverse_help);
-            const f_stutter = self.insertFunction('Stutter', 'stutter[word]', lang.yath.function_stutter_help);
-
+            const f_genre = self.insertFunction(lang.yath.genre, 'genre[male|female]', lang.yath.function_genre_help);
+            const f_if = self.insertFunction(lang.yath.if, 'if[condition|true|false]', lang.yath.function_if_help);
+            const f_random = self.insertFunction(lang.yath.random, 'random[value1|value2|...]', lang.yath.function_random_help);
+            const f_reverse = self.insertFunction(lang.yath.reverse, 'reverse[word]', lang.yath.function_reverse_help);
+            const f_stutter = self.insertFunction(lang.yath.stutter, 'stutter[word]', lang.yath.function_stutter_help);
 
             context.memo('button.add-function-tags', function () {
                 return ui.buttonGroup([

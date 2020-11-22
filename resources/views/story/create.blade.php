@@ -331,7 +331,7 @@
             let storyId = {{ $story->id }};
             @include('story.js.create-js')
 
-            let routeItem = '{{ route('item.store') }}';
+            var routeItem = '{{ route('item.store') }}';
             @include('item.js.create_item_js', ['story' => $story, 'contexts' => $contexts])
         @endif
     </script>
