@@ -17,7 +17,15 @@
                 limitText: 'Text',
                 limitHTML: 'HTML'
             }
-        }
+        },
+        'fr-FR': {
+            cleaner: {
+                tooltip: 'Nettoie le texte lorsqu\'il est copié à partir de Word.',
+                not: 'Le texte a été nettoyé !',
+                limitText: 'Texte',
+                limitHTML: 'HTML'
+            }
+        },
     });
     $.extend($.summernote.options, {
         cleaner: {

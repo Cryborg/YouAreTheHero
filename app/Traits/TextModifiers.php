@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use App\Classes\Action;
+use App\Classes\Constants;
 use App\Models\Character;
 use App\Models\CharacterPerson;
 use App\Models\Person;
@@ -66,17 +67,10 @@ trait TextModifiers
         // Methods to run on a part of the text.
         //  For example : stutter[Bouh] will display something like 'B...B...Bouh'
         //                genre[un homme|une femme] affichera le texte correspondant [au genre masculin|au genre féminin]
-        // FIXME: make an auto-discover feature instead of this array
-        $methods = [
-            'stutter',
-            'genre',
-            'reverse',
-            'random',
-            'if',
-        ];
+
 
         // Run every method found
-        foreach ($methods as $method) {
+        foreach (Constants::FUNCTIONS_LIST as $method) {
             $pattern = $method . '\[([^\]]*)\]';
             preg_match_all('/' . $pattern . '/', $model->$field, $matches, PREG_SET_ORDER);
 

@@ -22,7 +22,6 @@
 
 // Summernote plugins
 <script type="text/javascript" src="{{ asset('js/summernote-cleaner.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/summernote-yath.js') }}"></script>
 
 <script type="text/javascript">
     // Common translations
@@ -196,6 +195,74 @@
         return buttonGroup.render();   // return button as jquery object
     };
 
+    const FunctionsButton = function (context) {
+        const ui = $.summernote.ui;
+        const content = "{!! includeAsJsString('story.js.partials.functions') !!}";
+
+        // create button
+        const buttonGroup = ui.buttonGroup([
+            ui.button({
+                className: 'dropdown-toggle',
+                contents: '<i class="fa fa-cog"/> {{ trans('functions.label') }}',
+                tooltip: '@lang('functions.help')',
+                data: {
+                    toggle: 'dropdown'
+                },
+                click: function () {
+                    // Cursor position must be saved because it is lost when dropdown is opened.
+                    context.invoke('editor.saveRange');
+                }
+            }),
+            ui.dropdown({
+                contents: content,
+                callback: function ($dropdown) {
+                    $dropdown.find(".clickable").click(function () {
+                        // We restore cursor position and text is inserted in correct pos.
+                        context.invoke('editor.restoreRange');
+                        context.invoke('editor.focus');
+                        context.invoke("editor.insertText", $(this).data('value'));
+                    });
+                },
+            })
+        ]);
+
+        return buttonGroup.render();   // return button as jquery object
+    };
+
+    const VariablesButton = function (context) {
+        const ui = $.summernote.ui;
+        const content = "{!! includeAsJsString('story.js.partials.variables', ['story' => $story]) !!}";
+
+        // create button
+        const buttonGroup = ui.buttonGroup([
+            ui.button({
+                className: 'dropdown-toggle',
+                contents: '<i class="fa fa-cog"/> {{ trans('variables.label') }}',
+                tooltip: '{{ trans('variables.help') }}',
+                data: {
+                    toggle: 'dropdown'
+                },
+                click: function () {
+                    // Cursor position must be saved because it is lost when dropdown is opened.
+                    context.invoke('editor.saveRange');
+                }
+            }),
+            ui.dropdown({
+                contents: content,
+                callback: function ($dropdown) {
+                    $dropdown.find(".clickable").click(function () {
+                        // We restore cursor position and text is inserted in correct pos.
+                        context.invoke('editor.restoreRange');
+                        context.invoke('editor.focus');
+                        context.invoke("editor.insertText", $(this).data('value'));
+                    });
+                },
+            })
+        ]);
+
+        return buttonGroup.render();   // return button as jquery object
+    };
+
     const PopoverButton = function (context) {
         var $this = $(this);
         var ui = $.summernote.ui;
@@ -220,14 +287,16 @@
             ['table', ['table']],
             ['insert', ['link', 'picture']],
             ['view', ['fullscreen', 'codeview']],
-            ['custom', ['cleaner','placeholders', 'popovers', 'add-function-tags']],
+            ['custom', ['cleaner','placeholders', 'popovers', 'functions', 'variables']],
         ],
         buttons: {
             placeholders: PlaceholdersButton,
-            popovers: PopoverButton
+            popovers: PopoverButton,
+            functions: FunctionsButton,
+            variables: VariablesButton,
             // example: ExampleButton
         },
-        spellcheck: false,
+        spellcheck: true,
         cleaner: {
             action: 'button', // both|button|paste 'button' only cleans via toolbar button, 'paste' only clean when pasting content, 'both' does both options.
             newline: '<br>', // Summernote's default is to use '<p><br></p>'
@@ -284,7 +353,7 @@
             ['table', ['table']],
             ['insert', ['picture']],
         ],
-        spellcheck: false,
+        spellcheck: true,
         focus: true
     };
 

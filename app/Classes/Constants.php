@@ -19,4 +19,12 @@ class Constants
     public const ROLE_TEMPORARY = 'temp';
 
     public const AUTHOR = 'author';
+
+    public const FUNCTIONS_LIST = [
+        'genre',
+        'if',
+        'random',
+        'reverse',
+        'stutter',
+    ];
 }
