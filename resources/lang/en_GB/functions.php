@@ -8,6 +8,9 @@ return [
         'label' => 'Genre',
         'syntax' => 'genre[male|female]',
         'help' => 'Permet de conjuguer une phrase selon le genre du personnage principal d\'une histoire.',
+        'errors' => [
+            'parameters' => 'genre[] must have exactly 2 parameters'
+        ]
     ],
     'if' => [
         'label' => 'Condition',

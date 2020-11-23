@@ -146,7 +146,7 @@ class Action
 
         // There must be 2 values, no more, no less
         if (count($split) !== 2) {
-            return '!!genre[' . $text . ']!!';
+            return self::displayError(trans('functions.genre.errors.parameters'));
         }
 
         switch ($genre) {
@@ -234,7 +234,7 @@ class Action
                 ->where('name', $split[0])
                 ->first();
 
-            if ($field) {
+            if ($field && $character) {
                 $characterField = $character->fields()
                     ->withPivot('value')
                     ->where('field_id', $field->id)->first();
@@ -252,7 +252,7 @@ class Action
                 ->where('name', $split[0])
                 ->first();
 
-            if ($field) {
+            if ($field && $character) {
                 $characterField = $character->fields()
                     ->withPivot('value')
                     ->where('field_id', $field->id)->first();
@@ -270,7 +270,7 @@ class Action
                 ->where('name', $split[0])
                 ->first();
 
-            if ($field) {
+            if ($field && $character) {
                 $characterField = $character->fields()
                     ->withPivot('value')
                     ->where('field_id', $field->id)->first();
@@ -289,26 +289,41 @@ class Action
      */
     public static function variable($value, $story = null)
     {
-        $character = self::getCharacter();
+        try {
+            $character = self::getCharacter();
 
-        $split = explode('.', $value);
+            $split = explode('.', $value);
 
-        if (count($split) !== 2) {
-            return $value;
-        }
-
-        if ($split[1] === 'name') {
-            return $split[0];
-        }
-
-        if ($split[1] === 'value') {
-            if ($character) {
-                return $character->fields->where('name', $split[0])->value;
+            if (count($split) !== 2) {
+                return $value;
             }
 
-            return rand(1, 10);
-        }
+            if ($split[1] === 'name') {
+                return $split[0];
+            }
 
-        return 'pas_reconnu';
+            if ($split[1] === 'value') {
+                if ($character) {
+                    $pivot = optional($character->fields()
+                                                ->where('name', $split[0])
+                                                ->first())->pivot;
+
+                    if ($pivot) {
+                        return $pivot->value;
+                    }
+
+                    return self::displayError(trans('variables.does_not_exist', ['variable' => $split[0]]));
+                }
+
+                return random_int(1, 10);
+            }
+        } catch (\Exception $e) {
+            return self::displayError($value);
+        }
+    }
+
+    private static function displayError($error)
+    {
+        return '<b class="text-red">## ERREUR: ' . $error . ' ##</b>';
     }
 }
