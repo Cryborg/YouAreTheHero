@@ -66,12 +66,22 @@ class FieldController extends Controller
 
     public function delete(Request $request, Field $field)
     {
+        // Check if the field is used elsewhere
+        $prerequisitesCount = $field->prerequisites->count();
+        $itemsCount = $field->items->count();
+        $effectsCount = $field->fields->count();
+
+
         if ($request->ajax()) {
             return response()->json([
-                'success' => $field->delete(),
-                'type'    => 'delete',
-                'max'     => $field->story->maxPointsToShare(),
-            ]);
+                                        //'success' => $field->delete(),
+                                        'success' => true,
+                                        'type'    => 'delete',
+                                        'max'     => $field->story->maxPointsToShare(),
+                                        'counts' => [
+                                            $prerequisitesCount, $itemsCount, $effectsCount
+                                        ]
+                                    ]);
         }
 
         abort(JsonResponse::HTTP_NOT_FOUND);

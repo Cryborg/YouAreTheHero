@@ -65,7 +65,7 @@
                             </span>
                         </div>
                         <div class="form-control">
-                            @if ($item->effects_list()->count() > 0)
+                            @if ($item->fields()->count() > 0)
                                 @include('page.partials.badge_fields', ['item' => $item])
                             @endif
                         </div>

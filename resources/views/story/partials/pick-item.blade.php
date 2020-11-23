@@ -9,7 +9,7 @@
         </button>
     </div>
     <span class="form-control">{{ $item->name }}</span>
-    @if ($item->effects_list()->count() > 0)
+    @if ($item->fields()->count() > 0)
         <div class="form-control">
             @include('page.partials.badge_fields')
         </div>

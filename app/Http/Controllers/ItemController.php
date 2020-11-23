@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CharacterItem;
-use App\Models\Effect;
+use App\Models\FieldItem;
 use App\Models\Item;
 use App\Models\Page;
 use App\Models\Story;
@@ -67,14 +67,11 @@ class ItemController extends Controller
 
         foreach ($effects as $effect) {
             if ($effect['value'] != '') {
-                Effect::updateOrCreate([
-                    'field_id' => $effect['id'],
-                    'item_id'  => $item->id,
-                ],
-                    [
-                        'operator' => $effect['operator'] ?? '+',
-                        'quantity' => $effect['value'],
-                    ]);
+                $item->fields()->attach($effect['id'],
+                [
+                    'operator' => $effect['operator'] ?? '+',
+                    'quantity' => $effect['value'],
+                ]);
             }
         }
 

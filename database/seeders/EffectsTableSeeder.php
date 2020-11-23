@@ -14,9 +14,9 @@ class EffectsTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('effects')->delete();
+        \DB::table('field_item')->delete();
 
-        \DB::table('effects')->insert(array (
+        \DB::table('field_item')->insert(array (
             0 =>
             array (
                 'id' => 1,

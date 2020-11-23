@@ -19,21 +19,11 @@
                 <th scope="row">@lang('item.size')</th>
                 <td>{{ $item->size }}</td>
             </tr>
-            @if ($item->effects->count() > 0)
+            @if ($item->fields->count() > 0)
                 <tr>
                     <th scope="row">{{ trans('item.effects') }}</th>
                     <td class="p-0">
-                        @foreach ($item->effects as $effect)
-                            <div class="row">
-                                <div class="col p-2">
-                                    @include('story.partials.effects', [
-                                        'name' => $effect->field->name,
-                                        'value' => $effect->quantity,
-                                        'operator' => $effect->operator === '+' ? 'add' : 'sub'
-                                    ])
-                                </div>
-                            </div>
-                        @endforeach
+                        @include('page.partials.badge_fields', ['item' => $item])
                     </td>
                 </tr>
             @endif

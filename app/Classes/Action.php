@@ -70,7 +70,7 @@ class Action
      */
     public static function applyEffects(Character $character, Item $item): bool
     {
-        $item->effects()
+        $item->fields()
              ->each(static function ($effect) use ($character) {
                  $character->fields()
                            ->each(static function ($field) use ($effect) {

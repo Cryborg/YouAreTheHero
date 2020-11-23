@@ -1,9 +1,9 @@
-@foreach ($item->effects_list() as $effect)
-    <span class="badge @if (in_array($effect->operator, ['+', '*'])) badge-primary @else badge-danger @endif p-1"
-        title="{{ $effect->field->name }} {{ $effect->operator }} {{ $effect->quantity }}">
-        {{ $effect->field->name }}
+@foreach ($item->fields as $field)
+    <span class="badge @if (in_array($field->pivot->operator, ['+', '*'])) badge-primary @else badge-danger @endif p-1"
+        title="{{ $field->name }} {{ $field->pivot->operator }} {{ $field->pivot->quantity }}">
+        {{ $field->name }}
         <span class="badge badge-light ml-2">
-            {{ $effect->operator }} {{ $effect->quantity }}
+            {{ $field->pivot->operator }} {{ $field->pivot->quantity }}
         </span>
     </span>
 @endforeach

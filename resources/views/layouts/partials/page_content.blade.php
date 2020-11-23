@@ -52,15 +52,6 @@
                                         'item' => $item,
                                         'icon' => 'icon-receive-money',
                                     ])
-                                    @if ($item->effects)
-                                        @foreach ($item->effects as $effect => $value)
-                                            @include('story.partials.effects', [
-                                                'name' => $effect,
-                                                'value' => $value['quantity'],
-                                                'operator' => $value['operator'] === '+' ? 'add' : 'sub'
-                                            ])
-                                        @endforeach
-                                    @endif
                                 </div>
                             </div>
                         @endforeach

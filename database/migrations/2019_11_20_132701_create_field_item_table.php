@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEffectsTable extends Migration
+class CreateFieldItemTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateEffectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('effects', function (Blueprint $table) {
+        Schema::create('field_item', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             $table->unsignedBigInteger('item_id');
@@ -36,6 +36,6 @@ class CreateEffectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('effects');
+        Schema::dropIfExists('field_item');
     }
 }

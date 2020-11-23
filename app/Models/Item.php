@@ -22,10 +22,9 @@ class Item extends Model
 
     protected $guarded   = ['id'];
 
-    protected $with      = ['effects'];
+    protected $with      = ['fields'];
 
     protected $casts     = [
-        'effects'      => 'array',
         'is_throwable' => 'boolean',
         'is_unique'    => 'boolean',
         'is_used'      => 'boolean',
@@ -80,28 +79,10 @@ class Item extends Model
         return $this->belongsTo(Riddle::class);
     }
 
-    /**
-     * FIXME: Don't know why I have to do this.... @foreach($item->effects) did not work
-     *        in modal_list_items.blade.php...
-     *
-     * @return \Illuminate\Support\Collection
-     */
-    public function effects_list(): Collection
+    public function fields(): BelongsToMany
     {
-        $allEffects = collect();
-
-        $this->effects()
-             ->each(static function ($effect) use ($allEffects) {
-                 $allEffects->push($effect);
-             });
-
-        return $allEffects;
-    }
-
-    public function effects(): HasMany
-    {
-        return $this->hasMany(Effect::class)
-                    ->with('field');
+        return $this->belongsToMany(Field::class)
+            ->withPivot(['operator', 'quantity']);
     }
 
     public function characters(): BelongsToMany

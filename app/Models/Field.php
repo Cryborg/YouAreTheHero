@@ -26,7 +26,8 @@ class Field extends Model
 
     public function items()
     {
-        return $this->hasMany(Item::class);
+        return $this->belongsToMany(Item::class)
+            ->withPivot(['operator', 'quantity']);
     }
 
     /**
@@ -36,6 +37,6 @@ class Field extends Model
      */
     public function effects()
     {
-        return $this->belongsToMany(Effect::class);
+        return $this->belongsToMany(FieldItem::class);
     }
 }
