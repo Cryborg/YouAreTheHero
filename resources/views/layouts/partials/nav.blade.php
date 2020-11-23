@@ -26,6 +26,13 @@
                 @lang('story.edit')
             </a>
         @endif
+        @if (Route::is('story.edit'))
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ route('page.edit', ['page' => $story->getCurrentPage()->id]) }}">
+                <span class="icon-fountain-pen mr-2"></span>
+                @lang('story.resume_editing')
+            </a>
+        @endif
     </div>
 </li>
 

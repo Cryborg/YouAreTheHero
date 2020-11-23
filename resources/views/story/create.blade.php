@@ -188,7 +188,7 @@
                         </div>
                         <div class="form-group ml-3">
                             <label>@lang('story.points_to_share')</label>
-                            <input type="number" value="@if ($story && $story->options){{ $story->options->points_to_share }}@else 10 @endif" min="1" max="{{ $max_points_to_share }}" id="points_to_share" limit-to-max>
+                            <input type="number" value="@if ($story && $story->options){{ $story->options->points_to_share }}@else 10 @endif" min="0" id="points_to_share" limit-to-max>
                         </div>
 
                         @if ($story)

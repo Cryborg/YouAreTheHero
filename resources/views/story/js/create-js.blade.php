@@ -193,7 +193,12 @@ function saveOption(id, value) {
     $.post({
         url: route('story.options.post', {'story': storyId}),
         data: {option: id, value: value}
-    });
+    })
+        .done(function(result) {
+            if (result.max) {
+                checkPointsToShare(result.max);
+            }
+        });
 }
 
 function checkPointsToShare(max) {

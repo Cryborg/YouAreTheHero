@@ -192,7 +192,9 @@ class Story extends Model
         $max = 0;
 
         $this->fields()->each(static function ($field) use (&$max) {
-            $max += $field->max_value - $field->min_value;
+            if ($field->hidden === false) {
+                $max += $field->max_value - $field->min_value;
+            }
         });
 
         return $max;

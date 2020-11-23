@@ -413,6 +413,10 @@ div.height-big {
     background-color: #eee;
 }
 
+.highlight-light-hover:hover {
+    background-color: #f7f7f7;
+}
+
 .fixed-bottom.report-btn {
     width: 250px;
     bottom: 5px;
@@ -533,4 +537,9 @@ div.popover.show {
 .nav-highlight {
     background-color: lightskyblue;
     font-weight: bold;
+}
+
+.note-dropdown-menu {
+    max-height: 400px;
+    overflow-y: scroll;
 }

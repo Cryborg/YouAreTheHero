@@ -21,6 +21,8 @@ class StoryOptionController extends Controller
         $option = null;
         $value = null;
         $updateGenre = false;
+        $pointsToShare = 0;
+        $max = 0;
 
         switch ($request->get('option'))
         {
@@ -58,7 +60,11 @@ class StoryOptionController extends Controller
                 break;
             case 'points_to_share':
                 $option = 'points_to_share';
-                $value = $request->get('value') ?? 10;
+                $max = $story->maxPointsToShare();
+
+                $pointsToShare = $request->get('value') ?? 10;
+
+                $value = $pointsToShare > $max ? $max : $pointsToShare;
                 break;
             case 'currency_name':
             case 'currency_amount':
@@ -80,6 +86,8 @@ class StoryOptionController extends Controller
         return response()->json([
             'success' => $success,
             'type'    => 'save',
+            'max'     => $pointsToShare,
+            'max2'     => $max,
         ]);
     }
 }

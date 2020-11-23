@@ -34,6 +34,11 @@ class FieldController extends Controller
 
             $validated['story_id'] = $story->id;
 
+            // Replace spaces with underscores for variables (= hidden field)
+            if ((bool)$validated['hidden'] === true) {
+                $validated['name'] = str_replace(' ', '_', $validated['name']);
+            }
+
             if (isset($validated['id'])) {
                 $field = Field::updateOrCreate(['id' => $validated['id']], $validated);
             } else {

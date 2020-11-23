@@ -99,6 +99,15 @@ class Action
     }
 
     /**
+     * @return Character|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object|null
+     */
+    protected static function getCharacter()
+    {
+        $characterId = getSession('character_id');
+        return Character::where('id', $characterId)->first();
+    }
+
+    /**
      * @param $text
      *
      * @return string
@@ -126,9 +135,8 @@ class Action
      */
     public static function genre($text): string
     {
-        $characterId = getSession('character_id');
-        $character   = Character::where('id', $characterId)
-                                ->first();
+        $character = self::getCharacter();
+
         $genre       = Constants::GENRE_FEMALE;
         $split       = explode('|', $text);
 
@@ -271,5 +279,36 @@ class Action
             }
 
         }
+    }
+
+    /**
+     * @param      $value
+     * @param null $story
+     *
+     * @return string
+     */
+    public static function variable($value, $story = null)
+    {
+        $character = self::getCharacter();
+
+        $split = explode('.', $value);
+
+        if (count($split) !== 2) {
+            return $value;
+        }
+
+        if ($split[1] === 'name') {
+            return $split[0];
+        }
+
+        if ($split[1] === 'value') {
+            if ($character) {
+                return $character->fields->where('name', $split[0])->value;
+            }
+
+            return rand(1, 10);
+        }
+
+        return 'pas_reconnu';
     }
 }

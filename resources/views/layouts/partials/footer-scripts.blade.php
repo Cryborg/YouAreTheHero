@@ -20,7 +20,7 @@
     <script type="text/javascript" src="{{ asset('lang/' . Config::get('app.locale') . '/summernote.js') }}"></script>
 @endif
 
-// Summernote plugins
+{{--Summernote plugins--}}
 <script type="text/javascript" src="{{ asset('js/summernote-cleaner.js') }}"></script>
 
 <script type="text/javascript">
@@ -229,6 +229,7 @@
         return buttonGroup.render();   // return button as jquery object
     };
 
+    @if (isset($story))
     const VariablesButton = function (context) {
         const ui = $.summernote.ui;
         const content = "{!! includeAsJsString('story.js.partials.variables', ['story' => $story]) !!}";
@@ -254,7 +255,7 @@
                         // We restore cursor position and text is inserted in correct pos.
                         context.invoke('editor.restoreRange');
                         context.invoke('editor.focus');
-                        context.invoke("editor.insertText", $(this).data('value'));
+                        context.invoke("editor.insertText", 'variable[' + $(this).data('value') + ']');
                     });
                 },
             })
@@ -262,6 +263,7 @@
 
         return buttonGroup.render();   // return button as jquery object
     };
+    @endif
 
     const PopoverButton = function (context) {
         var $this = $(this);
