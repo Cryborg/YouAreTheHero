@@ -60,11 +60,12 @@ class StoryOptionController extends Controller
                 break;
             case 'points_to_share':
                 $option = 'points_to_share';
-                $max = $story->maxPointsToShare();
-
-                $pointsToShare = $request->get('value') ?? 10;
-
-                $value = $pointsToShare > $max ? $max : $pointsToShare;
+//                $max = $story->maxPointsToShare();
+//
+//                $pointsToShare = $request->get('value') ?? 10;
+//
+//                $value = $pointsToShare > $max ? $max : $pointsToShare;
+                $value = $request->get('value');
                 break;
             case 'currency_name':
             case 'currency_amount':

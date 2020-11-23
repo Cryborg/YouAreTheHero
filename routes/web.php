@@ -33,56 +33,70 @@ Route::middleware('auth')->group(static function () {
     Route::get('/', 'StoryController@index')->name('home');
 
 // Items
-    Route::post('/item/create', 'ItemController@store')->name('item.store');
-    Route::get('/item/{item}/{page}/take', 'ItemController@take')->name('item.take');
-    Route::get('/items/{story}/html_list', 'ItemController@htmlList')->name('items.html.list');
-    Route::get('/item/{character_item}/throw', 'ItemController@throwAway')->name('item.throw_away');
-    Route::get('/item/{character}/{item}/use', 'CharacterItemController@itemUse')->name('item.use');
-    Route::delete('/item/{item}/delete', 'ItemController@delete')->name('item.delete');
-    Route::get('/item/{item}/details', 'ItemController@details')->name('item.details');
-    Route::get('/item/list', 'ItemController@index')->name('item.list');
+    Route::prefix('item')->name('item.')->group(function () {
+        Route::post('create', 'ItemController@store')->name('store');
+        Route::get('{item}/{page}/take', 'ItemController@take')->name('take');
+        Route::get('{story}/html_list', 'ItemController@htmlList')->name('items.html.list');
+        Route::get('{character_item}/throw', 'ItemController@throwAway')->name('throw_away');
+        Route::get('{character}/{item}/use', 'CharacterItemController@itemUse')->name('use');
+        Route::delete('{item}/delete', 'ItemController@delete')->name('delete');
+        Route::get('{item}/details', 'ItemController@details')->name('details');
+        Route::get('list', 'ItemController@index')->name('list');
+    });
 
 // Stories
     Route::get('/stories/draft', 'StoryController@indexDraft')->name('stories.list.draft');
     Route::get('/stories', 'StoryController@index')->name('stories.list');
 
 // Story
-    Route::get('/story/{story}/reset/{play?}', 'StoryController@getReset')->name('story.reset');
+    Route::prefix('story')->group(function () {
+        Route::get('{story}/reset/{play?}', 'StoryController@getReset')->name('story.reset');
 
-    Route::get('/story/create', 'StoryController@getCreate')->name('story.create');
-    Route::post('/story/create', 'StoryController@store')->name('story.create.post');
-    Route::get('/story/{story}/edit', 'StoryController@edit')->name('story.edit');
+        Route::get('create', 'StoryController@getCreate')->name('story.create');
+        Route::post('create', 'StoryController@store')->name('story.create.post');
+        Route::get('{story}/edit', 'StoryController@edit')->name('story.edit');
 
-    Route::get('/story/{story}/inventory', 'StoryController@inventory')->name('story.inventory');
-    Route::get('/story/{story}/sheet', 'StoryController@sheet')->name('story.sheet');
-    Route::post('/story/{story}/page/create/{page?}', 'PageController@create')->name('page.create');
-    Route::get('/story/{story}/has_errors', 'StoryController@hasErrors')->name('story.has_errors');
-    Route::get('/story/{story}/{page?}', 'StoryController@getPlay')->name('story.play');
+        Route::get('{story}/inventory', 'StoryController@inventory')->name('story.inventory');
+        Route::get('{story}/sheet', 'StoryController@sheet')->name('story.sheet');
+        Route::post('{story}/page/create/{page?}', 'PageController@create')->name('page.create');
+        Route::get('{story}/has_errors', 'StoryController@hasErrors')->name('story.has_errors');
+        Route::get('{story}/{page?}', 'StoryController@getPlay')->name('story.play');
 
-    Route::post('/story/ajax_post_children_pages', 'StoryController@postChildrenPagesAjax')->name('story.ajax_postchildrenpages');
+        Route::post('ajax_post_children_pages', 'StoryController@postChildrenPagesAjax')->name('story.ajax_postchildrenpages');
 
-    Route::post('/story/{story}/options', 'StoryOptionController@update')->name('story.options.post');
-    Route::delete('/story/{story}/delete', 'StoryController@delete')->name('story.delete');
+        Route::post('{story}/options', 'StoryOptionController@update')->name('story.options.post');
+        Route::delete('{story}/delete', 'StoryController@delete')->name('story.delete');
 
-    Route::get('/story/{story}/items/list', 'ItemController@list')->name('items.list');
-    Route::get('/story/{story}/items/modal', 'ItemController@modalList')->name('items.modal.list');
-    Route::get('/story/{story}/errors/list', 'StoryController@errors')->name('story.errors');
+        Route::get('{story}/items/list', 'ItemController@list')->name('items.list');
+        Route::get('{story}/items/modal', 'ItemController@modalList')->name('items.modal.list');
+        Route::get('{story}/errors/list', 'StoryController@errors')->name('story.errors');
 
-// Page
-    Route::get('/page/{page}/edit', 'PageController@edit')->name('page.edit');
-    Route::get('/page/{story}/list', 'PageController@list')->name('page.list');
-    Route::get('/page/{page}/choices', 'PageController@availableChoices')->name('page.choices');
-    Route::get('/page/{pageFrom}/{pageTo}/choice', 'ChoiceController@get')->name('page.choice');
-    Route::get('/page/{page}/items/list', 'PageController@listItems')->name('page.items.list');
+        // Persons
+        Route::get('{story}/people/list', 'PersonController@index')->name('story.people.list');
+        Route::post('{story}/person/store', 'PersonController@store')->name('story.person.store');
+        Route::delete('{story}/person/{person}/delete', 'PersonController@destroy')->name('story.person.delete');
+    });
 
-    Route::post('/page/choice/{choice}','ChoiceController@update')->name('choice.update');
-    Route::post('/page/{page}/edit', 'PageController@store')->name('page.store');
-    Route::post('/page/{page}/riddle', 'PageController@postRiddle')->name('page.riddle.validate');
-    Route::post('/page/{page}/item/create', 'PageController@storeItem')->name('page.item.store');
+    Route::prefix('page')->group(function () {
+        // Page
+        Route::get('{page}/edit', 'PageController@edit')->name('page.edit');
+        Route::get('{story}/list', 'PageController@list')->name('page.list');
+        Route::get('{page}/choices', 'PageController@availableChoices')->name('page.choices');
+        Route::get('{pageFrom}/{pageTo}/choice', 'ChoiceController@get')->name('page.choice');
+        Route::get('{page}/items/list', 'PageController@listItems')->name('page.items.list');
 
-    Route::delete('/page/{page}/delete', 'PageController@delete')->name('page.delete');
-    Route::delete('/page/{page}/{page_from}/delete', 'PageController@deleteChoice')->name('page.choice.delete');
-    Route::delete('/page/{page}/{item}/item/delete', 'PageController@deleteItem')->name('page.item.delete');
+        Route::post('choice/{choice}', 'ChoiceController@update')->name('choice.update');
+        Route::post('{page}/edit', 'PageController@store')->name('page.store');
+        Route::post('{page}/riddle', 'PageController@postRiddle')->name('page.riddle.validate');
+        Route::post('{page}/item/create', 'PageController@storeItem')->name('page.item.store');
+
+        Route::delete('{page}/delete', 'PageController@delete')->name('page.delete');
+        Route::delete('{page}/{page_from}/delete', 'PageController@deleteChoice')->name('page.choice.delete');
+        Route::delete('{page}/{item}/item/delete', 'PageController@deleteItem')->name('page.item.delete');
+
+        // Riddle
+        Route::post('{page}/newriddle', 'RiddleController@store')->name('riddle.store');
+    });
 
 // Prerequisites
     Route::get('/prerequisite/{page}/list', 'PrerequisiteController@list')->name('prerequisites.list');
@@ -125,9 +139,6 @@ Route::middleware('auth')->group(static function () {
     Route::get('/user/{user}/profile', 'UserController@getProfile')->name('user.profile.get');
     Route::post('/user/{user}/profile', 'UserController@store')->name('user.profile.post');
 
-// Riddle
-    Route::post('/page/{page}/newriddle', 'RiddleController@store')->name('riddle.store');
-
 // Descriptions
     Route::get('/description/{page}', 'DescriptionController@showModal')->name('descriptions.show_modal');
     Route::post('/description/{page}', 'DescriptionController@store')->name('description.create');
@@ -148,11 +159,6 @@ Route::middleware('auth')->group(static function () {
 // Mails
     Route::get('/mail/{user}/{mailable}/preview', 'MailController@preview')->name('mail.preview');
     Route::post('/mail/{user}/{mailable}/send', 'MailController@send')->name('mail.send');
-
-// Persons
-    Route::get('/story/{story}/people/list', 'PersonController@index')->name('story.people.list');
-    Route::post('/story/{story}/person/store', 'PersonController@store')->name('story.person.store');
-    Route::delete('/story/{story}/person/{person}/delete', 'PersonController@destroy')->name('story.person.delete');
 
 // Successes
     Route::resource('user.success', UserSuccessController::class);
