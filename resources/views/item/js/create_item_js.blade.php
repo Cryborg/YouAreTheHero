@@ -48,8 +48,8 @@ $(document).on('click touchstart keydown', '.btnDeleteItem', function () {
         method: 'DELETE'
     })
         .done(function (result) {
-            if (result.success) {
-
+            if (result.success && result.type === 'delete') {
+                refreshModalItemsList();
             }
 
             if (result.type === 'confirm') {
@@ -83,6 +83,7 @@ $(document).on('click touchstart keydown', '.deleteItemConfirmed', function () {
     })
         .done(function(result) {
             if (result.success) {
+                refreshModalItemsList();
 
                 $modal.modal('hide');
             }

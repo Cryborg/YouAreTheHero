@@ -76,6 +76,6 @@
     @endif
 
     <div>
-        @warning({{ trans('item.deleting.confirm') }})
+        @warning({{ trans('item.confirm_delete') }})
     </div>
 </div>

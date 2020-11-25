@@ -8,7 +8,7 @@ return [
     'create_btn'         => 'Créer un objet',
     'deleting'           => [
         'title'           => '<b>:item</b> est utilisé(e) aux endroits suivants',
-        'confirm'         => 'Confirmer',
+        'button'          => 'Confirmer',
 
         'as_page'         => 'En tant qu\'objet ramassable',
         'as_prerequisite' => 'En tant que prérequis',
