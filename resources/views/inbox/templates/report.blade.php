@@ -11,7 +11,9 @@
                 <b>@lang('inbox.templates.report.page_label')</b>
             </div>
             <div class="col-6">
-                {{ $page->title }}
+                <a href="{{ route('page.edit', ['page' => $page]) }}">
+                    {{ $page->title }}
+                </a>
             </div>
             <div class="col-6">
                 <b>@lang('inbox.templates.report.error_type_label')</b>
@@ -22,6 +24,6 @@
         </div>
     </div>
     <div class="card-body">
-        {{ $comment }}
+        {!! $comment !!}
     </div>
 </div>

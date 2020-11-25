@@ -239,7 +239,11 @@ class Action
                     ->withPivot('value')
                     ->where('field_id', $field->id)->first();
 
-                return $characterField->pivot->value >= $split[1];
+                if ($characterField) {
+                    return $characterField->pivot->value >= $split[1];
+                }
+
+                return self::displayError(trans('functions.incorrect_condition', ['condition' => $split[0] . '>=' . $split[1]]));
             }
 
         }
@@ -257,7 +261,11 @@ class Action
                     ->withPivot('value')
                     ->where('field_id', $field->id)->first();
 
-                return $characterField->pivot->value <= $split[1];
+                if ($characterField) {
+                    return $characterField->pivot->value <= $split[1];
+                }
+
+                return self::displayError(trans('functions.incorrect_condition', ['condition' => $split[0] . '<=' . $split[1]]));
             }
 
         }
@@ -275,7 +283,11 @@ class Action
                     ->withPivot('value')
                     ->where('field_id', $field->id)->first();
 
-                return $characterField->pivot->value == $split[1];
+                if ($characterField) {
+                    return $characterField->pivot->value == $split[1];
+                }
+
+                return self::displayError(trans('functions.incorrect_condition', ['condition' => $split[0] . '=' . $split[1]]));
             }
 
         }
@@ -304,17 +316,17 @@ class Action
 
             if ($split[1] === 'value') {
                 if ($character) {
-                    $pivot = optional($character->fields()
-                                                ->where('name', $split[0])
-                                                ->first())->pivot;
+                    $field = optional($character->fields()
+                                                ->where('name', $split[0]))
+                                                ->first();
 
-                    return $pivot->value ?? self::displayError(trans('variables.errors.does_not_exist', ['variable' => $split[0]]));
+                    return $field->start_value ?? self::displayError(trans('variables.errors.does_not_exist', ['variable' => $split[0]]));
                 } elseif ($story) {
-                    $pivot = optional($story->fields()
-                                            ->where('name', $split[0])
-                                            ->first())->pivot;
+                    $field = optional($story->fields()
+                                            ->where('name', $split[0]))
+                                            ->first();
 
-                    return $pivot->value ?? self::displayError(trans('variables.errors.does_not_exist', ['variable' => $split[0]]));
+                    return $field->start_value ?? self::displayError(trans('variables.errors.does_not_exist', ['variable' => $split[0]]));
                 }
 
                 return random_int(1, 10);
