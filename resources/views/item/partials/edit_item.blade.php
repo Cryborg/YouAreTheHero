@@ -3,7 +3,7 @@
 <div class="form-group row">
     <label for="item_category_edit" class="col-sm-4 col-form-label">@lang('item.category')</label>
     <div class="col-sm-8">
-        <input type="email" class="form-control" id="item_category_edit" placeholder="@lang('item.category')" value="{{ $item->category }}">
+        <input type="text" class="form-control" id="item_category_edit" placeholder="@lang('item.category')" value="{{ $item->category }}">
     </div>
 </div>
 <div class="form-group row">

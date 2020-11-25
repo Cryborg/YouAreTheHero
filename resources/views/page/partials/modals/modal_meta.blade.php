@@ -61,7 +61,14 @@
                         <div class="card">
                             <div class="card-header">
                                 @lang('item.details')
-                                <button type="submit" class="btn btn-primary btnCreateItem float-right" disabled data-context="edit">@lang('common.save')</button>
+                                <button type="submit" class="btn btn-danger btnDeleteItem float-right ml-3" disabled data-context="delete">
+                                    <span class="icon-trash text-white"></span>
+                                    @lang('common.delete')
+                                </button>
+                                <button type="submit" class="btn btn-primary btnCreateItem float-right" disabled data-context="edit">
+                                    <span class="icon-save text-white"></span>
+                                    @lang('common.save')
+                                </button>
                             </div>
                             <div class="card-body item-details"></div>
                         </div>

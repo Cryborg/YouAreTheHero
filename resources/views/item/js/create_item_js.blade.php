@@ -28,6 +28,67 @@ function ajaxCreatePost(urlroute, $this, data)
         });
 }
 
+$(document).on('hide.bs.modal', '#modalPopup', function (event)
+{
+    $('#modalMeta').modal();
+});
+
+$(document).on('click touchstart keydown', '.btnDeleteItem', function () {
+    var $this = $(this);
+    var id = $this.data('itemid');
+    var loadingClass = 'spinner-grow text-danger';
+    var defaultClass = $this.attr('class');
+
+    if (!$this.hasClass('fa-spin')) {
+        $this.attr('class', loadingClass);
+    }
+
+    $.get({
+        url: route('item.delete', {item: id}),
+        method: 'DELETE'
+    })
+        .done(function (result) {
+            if (result.success) {
+
+            }
+
+            if (result.type === 'confirm') {
+                const $modal = $('#modalPopup');
+
+                $modal.find('.modal-header').addClass('modal-header-error');
+                $modal.find('.modal-title').html(result.texts.title);
+                $modal.find('.modal-body').html(result.html);
+                $modal.find('.btn-confirm')
+                    .data('itemid', id)
+                    .addClass('deleteItemConfirmed')
+                    .html(result.texts.button);
+
+                $('#modalMeta').modal('hide');
+                $modal.modal();
+            }
+        })
+        .always(function () {
+            $this.attr('class', defaultClass);
+        });
+});
+
+$(document).on('click touchstart keydown', '.deleteItemConfirmed', function () {
+    const $this = $(this);
+    const itemId = $this.data('itemid');
+    const $modal = $('#modalPopup');
+
+    $.get({
+        url: route('item.delete', {item: itemId, force: true}),
+        method: 'DELETE'
+    })
+        .done(function(result) {
+            if (result.success) {
+
+                $modal.modal('hide');
+            }
+        });
+});
+
 $(document).on('click touchstart keydown', '.btnCreateItem', function () {
     var $this = $(this);
     var route = routeItem;
@@ -63,13 +124,15 @@ $(document).on('click touchstart keydown', '.btnCreateItem', function () {
 });
 
 $(document).on('click touchstart keydown', '.itemSelectList', function () {
-    var $this = $(this);
+    const $this = $(this);
+    const itemId = $this.children(":selected").val();
 
     $.get({
-        url: route('item.details', {'item': $this.children(":selected").val()}),
+        url: route('item.details', {'item': itemId }),
     })
         .done(function (html) {
-            $('.btnCreateItem').prop('disabled', false);
+            $('.btnCreateItem, .btnDeleteItem').prop('disabled', false);
+            $('#modalMeta .btnDeleteItem').data('itemid', itemId);
             $this.closest('.modal-content').find('.item-details').html(html);
         });
 });

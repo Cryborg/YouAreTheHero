@@ -108,7 +108,7 @@
                                 <div class="card-body">
                                     <div class="card-text">
                                         <p class="help-block">{{ trans('model.page_title_help') }}</p>
-                                        {!! Form::text('title', $page->present()->title ?? old('title'), ['id' => 'title', 'class' => 'form-control']) !!}
+                                        {!! Form::text('title', $page->title ?? old('title'), ['id' => 'title', 'class' => 'form-control']) !!}
                                     </div>
                                 </div>
                             </div>

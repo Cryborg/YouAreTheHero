@@ -24,10 +24,50 @@ class ItemController extends Controller
     public function delete(Request $request, Item $item)
     {
         if ($request->ajax()) {
-            return response()->json([
-                'success' => $item->delete(),
+            $htmlData = [];
+
+            $response = [
                 'type' => 'delete',
-            ]);
+            ];
+
+            if (!$request->get('force')) {
+                $countInActions       = $item->actions()->count();
+                $countInPages         = $item->pages()->count();
+                $countInPrerequisites = $item->prerequisites()->count();
+                $countInRiddles       = $item->riddles()->count();
+
+                // If it is used somewhere
+                if ($countInActions > 0 || $countInPages > 0 || $countInPrerequisites > 0 || $countInRiddles > 0) {
+                    $response = [
+                        'type' => 'confirm',
+                        'texts' => [
+                            'title'  => trans('item.deleting.title'),
+                            'button' => trans('item.deleting.button'),
+                        ]
+                    ];
+
+                    if ($countInActions > 0) {
+                        $htmlData['actions'] = $item->actions;
+                    }
+                    if ($countInPages > 0) {
+                        $htmlData['pages'] = $item->pages;
+                    }
+                    if ($countInPrerequisites > 0) {
+                        $htmlData['prerequisites'] = $item->prerequisites;
+                    }
+                    if ($countInRiddles > 0) {
+                        $htmlData['riddles'] = $item->riddles;
+                    }
+
+                    $response['html'] = View::make('layouts.modals.template.deleting_item', $htmlData)->render();
+                }
+            }
+
+            if ($response['type'] === 'delete') {
+                $response['success'] = $item->delete();
+            }
+
+            return response()->json($response);
         }
 
         abort(JsonResponse::HTTP_NOT_FOUND);
