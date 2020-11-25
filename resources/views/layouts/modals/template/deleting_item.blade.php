@@ -46,7 +46,7 @@
                 <ul>
                 @foreach ($prerequisites as $prerequisite)
                     <li>
-                        <a target="_blank" href="{{ route('page.edit', ['page' => $page]) }}">
+                        <a target="_blank" href="{{ route('page.edit', ['page' => $prerequisite->page]) }}">
                             {{ $prerequisite->page->title }}
                         </a>
                     </li>
@@ -65,7 +65,7 @@
                 <ul>
                 @foreach ($riddles as $riddle)
                     <li>
-                        <a target="_blank" href="{{ route('page.edit', ['page' => $page]) }}">
+                        <a target="_blank" href="{{ route('page.edit', ['page' => $riddle->page]) }}">
                             {{ $riddle->page->title }}
                         </a>
                     </li>
