@@ -543,3 +543,7 @@ div.popover.show {
     max-height: 400px;
     overflow-y: scroll;
 }
+
+.modal-header-error {
+    background-color: #ffbbbb;
+}

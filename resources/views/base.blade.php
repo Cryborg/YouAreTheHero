@@ -209,6 +209,9 @@
                     'id' => 'Help',
                 ]
             ])
+
+            <!-- Modal dialog -->
+            @include('layouts.modals.template')
         @endauth
     </div>
 

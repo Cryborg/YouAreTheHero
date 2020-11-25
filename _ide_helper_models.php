@@ -270,16 +270,16 @@ namespace App\Models{
  * @property-read \App\Models\Field $field
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[] $items
  * @property-read int|null $items_count
- * @method static \Illuminate\Database\Eloquent\Builder|Effect newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Effect newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Effect query()
- * @method static \Illuminate\Database\Eloquent\Builder|Effect whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Effect whereFieldId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Effect whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Effect whereItemId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Effect whereOperator($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Effect whereQuantity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Effect whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FieldItem newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FieldItem newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FieldItem query()
+ * @method static \Illuminate\Database\Eloquent\Builder|FieldItem whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FieldItem whereFieldId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FieldItem whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FieldItem whereItemId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FieldItem whereOperator($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FieldItem whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FieldItem whereUpdatedAt($value)
  */
 	class Effect extends \Eloquent {}
 }
@@ -289,23 +289,23 @@ namespace App\Models{
  * App\Models\Field
  *
  * @property int $id
- * @property int $story_id
- * @property string $name
- * @property bool $hidden
- * @property int $min_value
- * @property int $max_value
- * @property int $start_value
- * @property int $order
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Effect[] $effects
- * @property-read int|null $effects_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[] $items
- * @property-read int|null $items_count
+ * @property int                                                                      $story_id
+ * @property string                                                                   $name
+ * @property bool                                                                     $hidden
+ * @property int                                                                      $min_value
+ * @property int                                                                      $max_value
+ * @property int                                                                      $start_value
+ * @property int                                                                      $order
+ * @property \Illuminate\Support\Carbon|null                                          $created_at
+ * @property \Illuminate\Support\Carbon|null                                          $updated_at
+ * @property \Illuminate\Support\Carbon|null                                          $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\FieldItem[]    $effects
+ * @property-read int|null                                                            $effects_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[]         $items
+ * @property-read int|null                                                            $items_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Prerequisite[] $prerequisites
- * @property-read int|null $prerequisites_count
- * @property-read \App\Models\Story $story
+ * @property-read int|null                                                            $prerequisites_count
+ * @property-read \App\Models\Story                                                   $story
  * @method static \Illuminate\Database\Eloquent\Builder|Field newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Field newQuery()
  * @method static \Illuminate\Database\Query\Builder|Field onlyTrashed()
@@ -456,24 +456,24 @@ namespace App\Models{
  * @property string $name
  * @property int $default_price
  * @property int $single_use
- * @property bool $is_unique
- * @property bool $is_throwable
- * @property float $size How much room it takes in the inventory.
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Action[] $actions
- * @property-read int|null $actions_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Character[] $characters
- * @property-read int|null $characters_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Effect[] $effects
- * @property-read int|null $effects_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[] $pages
- * @property-read int|null $pages_count
+ * @property bool                                                                     $is_unique
+ * @property bool                                                                     $is_throwable
+ * @property float                                                                    $size How much room it takes in the inventory.
+ * @property \Illuminate\Support\Carbon|null                                          $created_at
+ * @property \Illuminate\Support\Carbon|null                                          $updated_at
+ * @property \Illuminate\Support\Carbon|null                                          $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Action[]       $actions
+ * @property-read int|null                                                            $actions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Character[]    $characters
+ * @property-read int|null                                                            $characters_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\FieldItem[]    $effects
+ * @property-read int|null                                                            $effects_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[]         $pages
+ * @property-read int|null                                                            $pages_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Prerequisite[] $prerequisites
- * @property-read int|null $prerequisites_count
- * @property-read \App\Models\Riddle $riddles
- * @property-read \App\Models\Story $story
+ * @property-read int|null                                                            $prerequisites_count
+ * @property-read \App\Models\Riddle                                                  $riddles
+ * @property-read \App\Models\Story                                                   $story
  * @method static \Illuminate\Database\Eloquent\Builder|Item newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Item newQuery()
  * @method static \Illuminate\Database\Query\Builder|Item onlyTrashed()
@@ -921,4 +921,3 @@ namespace App\Models{
 	class User extends \Eloquent implements \Illuminate\Contracts\Translation\HasLocalePreference {}
 }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                

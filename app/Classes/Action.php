@@ -295,7 +295,7 @@ class Action
             $split = explode('.', $value);
 
             if (count($split) !== 2) {
-                return $value;
+                return self::displayError(trans('variables.errors.need_value_or_name'));
             }
 
             if ($split[1] === 'name') {
@@ -308,15 +308,19 @@ class Action
                                                 ->where('name', $split[0])
                                                 ->first())->pivot;
 
-                    if ($pivot) {
-                        return $pivot->value;
-                    }
+                    return $pivot->value ?? self::displayError(trans('variables.errors.does_not_exist', ['variable' => $split[0]]));
+                } elseif ($story) {
+                    $pivot = optional($story->fields()
+                                            ->where('name', $split[0])
+                                            ->first())->pivot;
 
-                    return self::displayError(trans('variables.does_not_exist', ['variable' => $split[0]]));
+                    return $pivot->value ?? self::displayError(trans('variables.errors.does_not_exist', ['variable' => $split[0]]));
                 }
 
                 return random_int(1, 10);
             }
+
+            return self::displayError(trans('variables.errors.unknown_parameter', ['param' => $split[1]]));
         } catch (\Exception $e) {
             return self::displayError($value);
         }

@@ -18,4 +18,9 @@ return array (
   'start_value' => 'Valeur de départ',
   'stat_attribution_help' => 'En choisissant \'Joueur\', tu permets au joueur de distribuer comme il le veut le nombre de points que tu auras spécifié. Avec \'Dés\' c\'est le hasard qui attribuera ces points.',
   'unused_fields' => 'Attributs non utilisés',
+  'deleting_field' => [
+      'title' => 'Cette compétence est utilisée',
+      'confirm' => 'Cet élément est rattaché aux objets listés ci-dessus. Si tu choisis de le supprimer malgré tout vérifie bien que ton histoire fonctionne toujours !',
+      'button' => 'Confirmer',
+  ],
 );

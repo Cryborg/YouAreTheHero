@@ -19,9 +19,41 @@ $(document).on('click touchstart keydown', '.deleteCharacterField', function () 
 
                 checkPointsToShare(result.max);
             }
+
+            if (result.type === 'confirm') {
+                const $modal = $('#modalPopup');
+
+                $modal.find('.modal-header').addClass('modal-header-error');
+                $modal.find('.modal-title').html(result.texts.title);
+                $modal.find('.modal-body').html(result.html);
+                $modal.find('.btn-confirm')
+                    .data('fieldid', id)
+                    .addClass('deleteFieldConfirmed')
+                    .html(result.texts.button);
+
+                $modal.modal();
+            }
         })
         .always(function () {
             $this.attr('class', defaultClass);
+        });
+});
+
+$(document).on('click touchstart keydown', '.deleteFieldConfirmed', function () {
+    const $this = $(this);
+    const fieldId = $this.data('fieldid');
+    const $modal = $('#modalPopup');
+
+    $.get({
+        url: route('field.delete', {field: fieldId, force: true}),
+        method: 'DELETE'
+    })
+        .done(function(result) {
+            if (result.success) {
+                $('#stats_story tr[data-fieldid="' + fieldId + '"]').remove();
+
+                $modal.modal('hide');
+            }
         });
 });
 

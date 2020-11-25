@@ -52,4 +52,9 @@ class Prerequisite extends Model
 
         return $values->get('gte');
     }
+
+    public function page()
+    {
+        return $this->belongsTo(Page::class);
+    }
 }

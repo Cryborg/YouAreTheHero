@@ -10,9 +10,19 @@ class Field extends Model
     use SoftDeletes;
 
     protected $guarded = ['id'];
+
     protected $casts = [
         'hidden' => 'boolean'
     ];
+
+    public static function boot() {
+        parent::boot();
+
+        self::deleting(function(Field $field) {
+            $field->prerequisites()->delete();
+            $field->items()->sync([]);
+        });
+    }
 
     public function prerequisites()
     {
@@ -28,15 +38,5 @@ class Field extends Model
     {
         return $this->belongsToMany(Item::class)
             ->withPivot(['operator', 'quantity']);
-    }
-
-    /**
-     * So we can know wether the field is used or not
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function effects()
-    {
-        return $this->belongsToMany(FieldItem::class);
     }
 }
