@@ -7,8 +7,13 @@ return [
     'confirm_delete'     => 'Es-tu sûr(e) de vouloir supprimer cet objet de ton histoire ?',
     'create_btn'         => 'Créer un objet',
     'deleting'           => [
-        'title'  => 'Cet objet est utilisé aux endroits suivants',
-        'button' => 'Confirmer',
+        'title'           => '<b>:item</b> est utilisé(e) aux endroits suivants',
+        'confirm'         => 'Confirmer',
+
+        'as_page'         => 'En tant qu\'objet ramassable',
+        'as_prerequisite' => 'En tant que prérequis',
+        'as_riddle'       => 'En tant que gain d\'une énigme',
+        'as_action'       => 'En tant que bonus/malus',
     ],
     'details'            => 'Détails de l\'objet',
     'effects'            => 'Effets',

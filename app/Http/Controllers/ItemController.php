@@ -41,7 +41,7 @@ class ItemController extends Controller
                     $response = [
                         'type' => 'confirm',
                         'texts' => [
-                            'title'  => trans('item.deleting.title'),
+                            'title'  => trans('item.deleting.title', ['item' => $item->name]),
                             'button' => trans('item.deleting.button'),
                         ]
                     ];

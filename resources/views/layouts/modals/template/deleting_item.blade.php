@@ -2,7 +2,7 @@
     @if (isset($pages))
         <div class="card">
             <div class="card-header">
-                @lang('common.title_pages')
+                @lang('item.deleting.as_page')
             </div>
             <div class="card-body">
                 <ul>
@@ -21,7 +21,7 @@
     @if (isset($actions))
         <div class="card">
             <div class="card-header">
-                @lang('actions.label')
+                @lang('item.deleting.as_action')
             </div>
             <div class="card-body">
                 <ul>
@@ -40,7 +40,7 @@
     @if (isset($prerequisites))
         <div class="card">
             <div class="card-header">
-                @lang('page.prerequisite_title')
+                @lang('item.deleting.as_prerequisite')
             </div>
             <div class="card-body">
                 <ul>
@@ -59,7 +59,7 @@
     @if (isset($riddles))
         <div class="card">
             <div class="card-header">
-                @lang('page.riddle_header')
+                @lang('item.deleting.as_riddle')
             </div>
             <div class="card-body">
                 <ul>
