@@ -24,7 +24,7 @@
                             </h5>
                             <div class="card-body">
                                 <div class="card-text">
-                                    <x-help-block :help="trans('page.required_item_help') !!}</p>
+                                    <x-help-block :help="trans('page.required_item_help')"></x-help-block>
 
                                     <div class="items_select_list"></div>
                                 </div>

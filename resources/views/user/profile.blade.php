@@ -67,7 +67,6 @@
                         </span>
                     </label>
                 </div>
-            <x-help-block :help="trans('character.name_help')"></x-help-block>
 
                 {!! Form::submit(trans('common.save'), ['class' => 'form-control btn btn-primary']) !!}
             {!! Form::close() !!}
