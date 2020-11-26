@@ -4,7 +4,7 @@
             <div class="modal-header">
                 <span class="modal-icon display-5 mr-3 shadow"></span>
                 <h5 class="modal-title"></h5>
-                <span class="close toggle-help icon-help"></span>
+
                 <button type="button" class="close" data-dismiss="modal" aria-label="@lang('common.close')">
                     <span aria-hidden="true">&times;</span>
                 </button>

@@ -3,8 +3,6 @@
 @section('title', $title)
 
 @section('content')
-    <span class="float-right toggle-help close icon-help"></span>
-
     {{-- Current page --}}
     @include('page.partials.create')
 

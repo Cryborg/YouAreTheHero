@@ -37,7 +37,7 @@
                     @lang('model.title')
                 </div>
                 <div class="card-body">
-                    <p class="help-block">@lang('model.story_title_help')</p>
+                    <x-help-block :help="trans('model.story_title_help')"></x-help-block>
                     {!! Form::text('title', $story ? $story->title : old('title'), ['class' => 'form-control']) !!}
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     @lang('model.description')
                 </div>
                 <div class="card-body">
-                    <p class="help-block">@lang('model.description_help')</p>
+                    <x-help-block :help="trans('model.description_help')"></x-help-block>
                     {!! Form::textarea('description', $story ? $story->description : old('description'), ['class' => 'form-control', 'rows' => 5]) !!}
                 </div>
             </div>
@@ -76,7 +76,7 @@
                     @lang('story.genres_label')
                 </div>
                 <div class="card-body">
-                    <p class="help-block">@lang('story.genres_help')</p>
+                    <x-help-block :help="trans('story.genres_help')"></x-help-block>
                     <select class="selectpicker" title="{{ trans('story.select_genres_placeholder') }}" data-size="6" id="genres" name="genres[]" multiple required data-live-search="true" data-max-options="5">
                         <optgroup label="{{ trans('common.audience') }}">
                             @foreach($audiences as $audience)
@@ -109,7 +109,7 @@
                             @lang('character.character_label')
                         </div>
                         <div class="card-body">
-                            <p class="help-block">@lang('story.has_character_help')</p>
+                            <x-help-block :help="trans('story.has_character_help')"></x-help-block>
                             <div class="form-group form-check ml-3">
                                 <input class="form-check-input" type="checkbox" value="1" id="has_character" name="has_character" @if ($story && $story->options && $story->options->has_character) checked @endif
                                 > <label class="form-check-label" for="has_character">
@@ -138,7 +138,7 @@
                             @lang('field.sheet')
                         </div>
                         <div class="card-body">
-                            <p class="help-block">@lang('story.has_stats_help')</p>
+                            <x-help-block :help="trans('story.has_stats_help')"></x-help-block>
                             <div class="form-group form-check ml-3">
                                 <input class="form-check-input" type="checkbox" value="1" id="has_stats" name="has_stats" @if ($story && $story->options && $story->options->has_stats) checked @endif
                                 > <label class="form-check-label" for="has_stats">
@@ -153,7 +153,7 @@
                                 @lang('story.inventory_slots')
                             </div>
                             <div class="card-body">
-                                <p class="help-block">@lang('story.inventory_slots_help')</p>
+                                <x-help-block :help="trans('story.inventory_slots_help')"></x-help-block>
                                 {!! Form::number('inventory_slots', $story->options ? $story->options->inventory_slots : -1, ['class' => 'form-control', 'min' => 0, 'id' => 'inventory_slots']) !!}
                             </div>
                         </div>
@@ -163,7 +163,7 @@
                             @lang('story.currency_name')
                         </div>
                         <div class="card-body">
-                            <p class="help-block">@lang('story.currency_name_help')</p>
+                            <x-help-block :help="trans('story.currency_name_help')"></x-help-block>
                             <input class="form-control" type="text" id="currency_name" maxlength="15" autocomplete="nope" value="{{ $story && $story->options ? $story->options->currency_name : trans('story.currency_name_default') }}">
                         </div>
                     </div>
@@ -172,7 +172,7 @@
                             @lang('story.currency_amount')
                         </div>
                         <div class="card-body">
-                            <p class="help-block">@lang('story.currency_amount_help')</p>
+                            <x-help-block :help="trans('story.currency_amount_help')"></x-help-block>
                             <input class="form-control" type="number" id="currency_amount" min="0" value="{{ $story && $story->options ? $story->options->currency_amount : 10 }}">
                         </div>
                     </div>
@@ -193,7 +193,7 @@
 
                         @if ($story)
                             <div class="card-body">
-                            <p class="help-block">@lang('story.stats_help')</p>
+                            <x-help-block :help="trans('story.stats_help')"></x-help-block>
                             <table id="stats_story" class="table mb-3 m-0">
                                 <thead>
                                     <tr>
@@ -240,7 +240,7 @@
                     <div class="card">
                         <div class="card-header">@lang('people.people')</div>
                         <div class="card-body">
-                            <p class="help-block">@lang('people.help')</p>
+                            <x-help-block :help="trans('people.help')"></x-help-block>
 
                             <table id="people_story" class="table mb-3 m-0">
                                 <thead>
@@ -296,7 +296,7 @@
             <div class="tab-pane" id="pills-items" role="tabpanel" aria-labelledby="pills-tab-4">
                 <div class="row">
                     <div class="col">
-                        @include('item.partials.new_item', ['story' => $story, 'context' => 'story_creation'])
+                        @include('item.partials.new_item', ['story' => $story, 'context' => 'story_creation', 'item' => ''])
                     </div>
                     <div class="col">
                         <div class="card">

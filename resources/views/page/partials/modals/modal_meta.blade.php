@@ -24,7 +24,7 @@
                             </h5>
                             <div class="card-body">
                                 <div class="card-text">
-                                    <p class="help-block">{!! trans('page.required_item_help') !!}</p>
+                                    <x-help-block :help="trans('page.required_item_help') !!}</p>
 
                                     <div class="items_select_list"></div>
                                 </div>
@@ -51,7 +51,7 @@
                                     {!! Form::label('price', trans('item_page.price'), ['class' => 'control-label mt-2']) !!}
                                 </div>
                                 <div class="card-body">
-                                    <p class="help-block">{{ trans('item_page.price_help') }}</p>
+                                    <x-help-block :help="trans('item_page.price_help')"></x-help-block>
                                     {!! Form::number('price', 1, ['class' => 'form-control']) !!}
                                 </div>
                             </div>
@@ -70,7 +70,8 @@
                                     @lang('common.save')
                                 </button>
                             </div>
-                            <div class="card-body item-details"></div>
+                            <div class="card-body item-details">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -81,7 +82,7 @@
                         <div class="col-md-12 col-lg-6">
                             <div class="form-group mb-4">
                                 {!! Form::label('sheet', trans('page.required_characteristic'), ['class' => 'sr-only']) !!}
-                                <p class="help-block">{!! trans('page.required_characteristic_help') !!}</p>
+                                <x-help-block :help="trans('page.required_characteristic_help') "></x-help-block>
                                 <select class="form-control custom-select" size="6" id="sheet" name="sheet">
                                     <option value=""></option>
                                     <optgroup label="Stats"></optgroup>
@@ -103,7 +104,7 @@
                                 <div class="card-body">
                                     <div class="form-row">
                                         <div class="col-12">
-                                            <p class="help-block">{!! trans('page.level_help') !!}</p>
+                                            <x-help-block :help="trans('page.level_help')"></x-help-block>
                                         </div>
                                         <div class="col-8" data-context-only="prerequisite">
                                             <select id="field_operator" name="field_operator" class="form-control">
@@ -130,7 +131,7 @@
             @endif
             <div class="tab-pane" id="tr-pre-3">
                 <div class="container">
-                    @include('item.partials.new_item', ['context' => $context, 'story' => $page->story])
+                    @include('item.partials.new_item', ['context' => $context, 'story' => $page->story, 'item' => ''])
                 </div>
             </div>
         </div>

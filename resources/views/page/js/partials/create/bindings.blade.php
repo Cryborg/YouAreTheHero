@@ -274,20 +274,6 @@ $(document).on('click touchstart keydown', '#add_AddChoice', function () {
     }
 });
 
-$(document).on('click touchstart keydown', '.toggle-help', function () {
-    let $pBlocks = $('p.help-block');
-    let done = false;
-
-    // Toggle display
-    $pBlocks.slideToggle(function () {
-        if (!done) {
-            // Update or create the cookie to save state
-            Cookies.set('hero.help-block.show', $pBlocks.eq(0).is(':visible'), {expires: 365});
-            done = true;
-        }
-    });
-});
-
 // Display Summernote editor on the clicked div
 $(document).on('click touchstart keydown', '.toggle-summernote:not(.summernote-open)', function () {
     let $this = $(this);

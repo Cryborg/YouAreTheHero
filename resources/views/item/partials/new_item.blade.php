@@ -5,34 +5,53 @@
                 <h5 class="card-header">@lang('item.name')</h5>
                 <div class="card-body">
                     <div class="card-text">
-                        {!! Form::text('item_name', null, ['class' => 'form-control', 'placeholder' => trans('item.name'), 'id' => 'item_name_' . $context, 'autocomplete' => 'nope']) !!}
+                        {!! Form::text('item_name', $item ? $item->name : null, ['class' => 'form-control', 'placeholder' => trans('item.name'), 'id' => 'item_name_' . $context, 'autocomplete' => 'nope']) !!}
                     </div>
                 </div>
             </div>
         </div>
         <div class="row mb-2">
             <div class="col">
+                <div class="card">
+                    <h5 class="card-header">@lang('item.price')</h5>
+                    <div class="card-body">
+                        <x-help-block :help="trans('item.price_help')"></x-help-block>
+                        {!! Form::number('item_price', $item ? $item->default_price : 0, ['class' => 'form-control', 'min' => 0, 'id' => 'item_price_' . $context]) !!}
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row mb-2">
-            <div class="card w-100">
-                <h5 class="card-header">@lang('item.price')</h5>
-                <div class="card-body">
-                    <div class="card-text">
-                        <p class="help-block">{!! trans('item.price_help') !!}</p>
-                        {!! Form::number('item_price', 0, ['class' => 'form-control', 'min' => 0, 'id' => 'item_price_' . $context]) !!}
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header">@lang('item.size')</h5>
+                    <div class="card-body">
+                        <x-help-block :help="trans('item.size_help')"></x-help-block>
+                        {!! Form::number('item_size', $item ? $item->size : 1, ['class' => 'form-control', 'min' => 0, 'step' => .1, 'id' => 'item_size_' . $context]) !!}
                     </div>
                 </div>
             </div>
         </div>
         <div class="row mb-2">
             <div class="card w-100">
-                <h5 class="card-header">@lang('item.size')</h5>
+                <h5 class="card-header">@lang('item.options')</h5>
                 <div class="card-body">
-                    <div class="card-text">
-                        <p class="help-block">{!! trans('item.size_help') !!}</p>
-                        {!! Form::number('item_size', 1, ['class' => 'form-control', 'min' => 0, 'step' => .1, 'id' => 'item_size_' . $context]) !!}
-                    </div>
+                    <x-help-block :help="trans('item.category_help')"></x-help-block>
+                    <label>
+                        {!! Form::text('item_category', $item ? $item->category : null,  ['class' => 'form-control', 'placeholder' => trans('item.category'), 'id' => 'item_category_' . $context, 'autocomplete' => 'nope']) !!}
+                    </label>
+                </div>
+                <div class="card-body">
+                    <x-help-block :help="trans('item.is_unique_help')"></x-help-block>
+                    <label>
+                        {!! Form::checkbox('is_unique', $item ? $item->is_unique : 1, $item && $item->is_unique,  ['id' => 'is_unique_' . $context]) !!}
+                        {{ trans('item.is_unique') }}
+                    </label>
+                </div>
+                <div class="card-body">
+                    <x-help-block :help="trans('item.is_throwable_help')"></x-help-block>
+                    <label>
+                        {!! Form::checkbox('is_throwable', $item ? $item->is_throwable : 1, $item && $item->is_throwable ?? 1,  ['id' => 'is_throwable_' . $context]) !!}
+                        {{ trans('item.is_throwable') }}
+                    </label>
                 </div>
             </div>
         </div>
@@ -40,32 +59,11 @@
 
     <div class="col-sm-12 col-lg-6">
         <div class="card w-100">
-            <h5 class="card-header">@lang('item.options')</h5>
-            <div class="card-body">
-                <p class="help-block">{!! trans('item.category_help') !!}</p>
-                <label>
-                    {!! Form::text('item_category', null,  ['class' => 'form-control', 'placeholder' => trans('item.category'), 'id' => 'item_category_' . $context, 'autocomplete' => 'nope']) !!}
-                </label>
-            </div>
-            <div class="card-body">
-                <p class="help-block">{!! trans('item.is_unique_help') !!}</p>
-                <label>
-                    {!! Form::checkbox('is_unique', 1, 0,  ['id' => 'is_unique_' . $context]) !!}
-                    {{ trans('item.is_unique') }}
-                </label>
-            </div>
-            <div class="card-body">
-                <p class="help-block">{!! trans('item.is_throwable_help') !!}</p>
-                <label>
-                    {!! Form::checkbox('is_throwable', 1, 1,  ['id' => 'is_throwable_' . $context]) !!}
-                    {{ trans('item.is_throwable') }}
-                </label>
-            </div>
             @if ($story->options && $story->options->has_stats)
                 <h5 class="card-header">@lang('item.effects')</h5>
                 <div class="card-body">
                     <div class="card-text">
-                        <p class="help-block">{{ trans('item.effects_help_text') }}</p>
+                        <x-help-block :help="trans('item.effects_help_text')"></x-help-block>
 
                         <table class="w-100">
                             <thead>
@@ -91,7 +89,9 @@
                                                 <option value="*">*</option>
                                             </select>
                                         </td>
-                                        <td><input data-id="{{ $field->id }}" class="mb-1" name="stat_values[]" type="number"></td>
+                                        <td>
+                                            <input data-id="{{ $field->id }}" class="mb-1" name="stat_values[]" type="number">
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

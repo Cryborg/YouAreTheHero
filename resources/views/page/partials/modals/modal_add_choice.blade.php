@@ -4,7 +4,7 @@
     </h5>
     <div class="card-body">
         <div class="card-text">
-            <p class="help-block">@lang('page.link_text_help')</p>
+            <x-help-block :help="trans('page.link_text_help')"></x-help-block>
             <input type="text" id="link_text" class="w-100">
         </div>
     </div>
@@ -16,7 +16,7 @@
     </h5>
     <div class="card-body">
         <div class="card-text">
-            <p class="help-block">@lang('page.link_page_help')</p>
+            <x-help-block :help="trans('page.link_page_help')"></x-help-block>
             <select class="form-control mr-sm-2 childrenSelect" data-page-from="{{ $page->id }}">
                 <option value="0" selected>{{ trans('page.existing_page') }}</option>
                 @foreach ($page->getPotentialChildren() as $existingPage)
@@ -31,7 +31,7 @@
 
 <div class="card">
     <div class="card-body">
-        <p class="help-block">@lang('page.show_new_page_help')</p>
+        <x-help-block :help="trans('page.show_new_page_help')"></x-help-block>
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="1" id="show_new_page" checked>
             <label class="form-check-label" for="show_new_page">

@@ -6,7 +6,7 @@
     </h5>
     <div class="card-body">
         <div class="card-text">
-            <p class="help-block">@lang('page.link_text_help')</p>
+            <x-help-block :help="trans('page.link_text_help')"></x-help-block>
             <input type="text" id="edit_link_text" class="w-100">
         </div>
     </div>

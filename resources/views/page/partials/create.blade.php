@@ -107,7 +107,7 @@
                                 </h5>
                                 <div class="card-body">
                                     <div class="card-text">
-                                        <p class="help-block">{{ trans('model.page_title_help') }}</p>
+                                        <x-help-block :help="trans('model.page_title_help')"></x-help-block>
                                         {!! Form::text('title', $page->title ?? old('title'), ['id' => 'title', 'class' => 'form-control']) !!}
                                     </div>
                                 </div>
@@ -118,7 +118,7 @@
                                 </h5>
                                 <div class="card-body">
                                     <div class="card-text">
-                                        <p class="help-block">{{ trans('model.page_content_help') }}</p>
+                                        <x-help-block :help="trans('model.page_content_help')"></x-help-block>
                                         <div id="content-editable" class="false-input scrollable-content hidden h-200px">{!! $page->content ?? old('content') !!}</div>
                                         <div id="content" class="false-input scrollable-content h-200px">{!! $page->present()->content ?? old('content') !!}</div>
                                     </div>
@@ -126,11 +126,11 @@
                             </div>
                             <div class="form-group hidden">
                                 {!! Form::label('layout', trans('model.layout'), ['class' => 'control-label']) !!}
-                                <p class="help-block">{{ trans('model.page_layout_help') }}</p>
+                                <x-help-block :help="trans('model.page_layout_help')"></x-help-block>
                                 {!! Form::select('layout', $layouts , $page->layout ?? old('layout') , ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group form-check hidden">
-                                <p class="help-block">{{ trans('model.page_is_first_help') }}</p>
+                                <x-help-block :help="trans('model.page_is_first_help')"></x-help-block>
                                 <label>
                                     {!! Form::checkbox('is_first', 1, $page->is_first or false, ['id' => 'is_first']) !!}
                                     @lang('model.is_first')
@@ -139,7 +139,7 @@
                             @if (!$page->is_first && $page->choices && $page->choices()->count() === 0)
                                 <div class="form-group form-check">
                                     <ul class="list-group">
-                                        <p class="help-block">{{ trans('model.page_is_last_help') }}</p>
+                                        <x-help-block :help="trans('model.page_is_last_help')"></x-help-block>
                                         <li class="list-group-item">
                                             <label>
                                                 {!! Form::checkbox('is_last', 1, $page->is_last, ['id' => 'is_last']) !!}
@@ -180,7 +180,7 @@
                             <div class="form-group form-check">
                                 <ul class="list-group">
                                     <li class="list-group-item">
-                                        <p class="help-block">{{ trans('model.page_is_checkpoint_help') }}</p>
+                                        <x-help-block :help="trans('model.page_is_checkpoint_help')"></x-help-block>
                                         <label>
                                             {!! Form::checkbox('is_checkpoint', 1, $page->is_checkpoint or false, ['id' => 'is_checkpoint']) !!}
                                             @lang('model.is_checkpoint')

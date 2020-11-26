@@ -16,7 +16,7 @@
                             {!! Form::label('name', trans('character.name_label'), ['class' => 'control-label']) !!}
                         </div>
                         <div class="card-body">
-                            <p class="help-block">{{ trans('character.name_help') }}</p>
+                            <x-help-block :help="trans('character.name_help')"></x-help-block>
 
                             <div class="col my-1">
                                 @if ($story->options && in_array($story->options->character_genre, [\App\Classes\Constants::GENRE_MALE, \App\Classes\Constants::GENRE_FEMALE]))
@@ -69,7 +69,7 @@
                         {!! Form::label('stats', trans('character.stats_label'), ['class' => 'control-label']) !!}
                     </div>
                     <div class="card-body">
-                        <p class="help-block">{{ trans('character.stats_help') }}</p>
+                        <x-help-block :help="trans('character.stats_help')"></x-help-block>
 
                         <div class="row">
                             <div class="col-4 text-center">
@@ -127,7 +127,7 @@
                                 @lang('people.people')
                             </div>
                             <div class="card-body">
-                                <p class="help-block">{{ trans('story.people_help') }}</p>
+                                <x-help-block :help="trans('story.people_help')"></x-help-block>
 
                                 <table id="people_story" class="table mb-3 m-0">
                                     <thead>

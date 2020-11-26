@@ -55,15 +55,6 @@ function newEmptyPage(linkText, hideChoice, $select) {
         });
 }
 
-// help-block state check from cookie
-var openToggle = Cookies.get("hero.help-block.show") || false;
-
-if (openToggle === 'true') {
-    $("p.help-block").show();
-} else {
-    $("p.help-block").hide();
-}
-
 // Transform dates
 showHumanReadableDates();
 

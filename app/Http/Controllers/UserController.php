@@ -30,12 +30,13 @@ class UserController extends ControllerBase
     public function store(Request $request, User $user)
     {
         $validator = Validator::make($request->all(), [
-            'first_name' => '',
-            'last_name' => '',
-            'username' => 'required',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'password' => 'confirmed|min:8',
-            'optin_system' => ''
+            'email'        => 'required|email|unique:users,email,' . $user->id,
+            'first_name'   => '',
+            'last_name'    => '',
+            'optin_system' => '',
+            'password'     => 'confirmed|min:8',
+            'show_help'    => '',
+            'username'     => 'required',
         ]);
 
         if ($validator->fails())
@@ -45,6 +46,7 @@ class UserController extends ControllerBase
 
         $update = $validator->validate();
         $update['optin_system'] = $request->has('optin_system') ? 1 : 0;
+        $update['show_help'] = $request->has('show_help') ? 1 : 0;
         $user->update($update);
 
         return Redirect::to(route('user.profile'));

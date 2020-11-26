@@ -17,7 +17,7 @@
                             </h5>
                             <div class="card-body">
                                 <div class="card-text">
-                                    <p class="help-block">{!! trans('page.riddle_answer_help') !!}</p>
+                                    <x-help-block :help="trans('page.riddle_answer_help')"></x-help-block>
                                     {!! Form::text('riddle_answer_text', $page->riddle ? $page->riddle->answer : '',  ['id' => 'riddle_answer_text']) !!}
                                     <br>
                                     {!! Form::checkbox('answer_is_integer', 1, $page->riddle ? $page->riddle->type === 'integer' : null,  ['id' => 'answer_is_integer']) !!}
@@ -31,7 +31,7 @@
                                 <span class="badge badge-light text-muted">@lang('common.optional')</span>
                             </h5>
                             <div class="card-body">
-                                <p class="help-block">{!! trans('page.riddle_item_help') !!}</p>
+                                <x-help-block :help="trans('page.riddle_item_help')"></x-help-block>
                                 @include('page.partials.select_item', [
                                     'items' => $page->story->items->sortBy('name')->pluck('name', 'id')->toArray(),
                                     'selectId' => 'riddle_item',
@@ -48,7 +48,7 @@
                             </h5>
                             <div class="card-body">
                                 <div class="card-text">
-                                    <p class="help-block">{!! trans('page.riddle_page_help') !!}</p>
+                                    <x-help-block :help="trans('page.riddle_page_help')"></x-help-block>
                                     <select class="form-control custom-select" id="riddle_page" size="6">
                                         <option value="">{{ trans('page.existing_page') }}</option>
                                         @foreach ($story->pages as $existingPage)
@@ -78,7 +78,7 @@
             </div>
             <div class="tab-pane" id="tr-riddle-2">
                 <div class="container">
-                    @include('item.partials.new_item', ['context' => $context, 'story' => $page->story])
+                    @include('item.partials.new_item', ['context' => $context, 'story' => $page->story, 'item' => ''])
                 </div>
             </div>
         </div>

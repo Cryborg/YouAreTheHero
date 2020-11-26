@@ -30,6 +30,7 @@ class User extends Authenticatable implements HasLocalePreference
         'last_name',
         'locale',
         'optin_system',
+        'show_help',
         'password',
         'username',
     ];
@@ -53,6 +54,7 @@ class User extends Authenticatable implements HasLocalePreference
         'email_verified_at' => 'datetime',
         'valid_from'        => 'datetime',
         'optin_system'      => 'boolean',
+        'show_help'         => 'boolean',
     ];
 
     /**

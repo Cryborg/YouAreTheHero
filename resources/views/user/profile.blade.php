@@ -49,13 +49,25 @@
                     {{ trans('auth.forgot_password') }}
                 </a>
 
-                <div class="form-group row mt-5">
-                    <label class="pl-3">
-                        {!! Form::checkbox('optin_system', 1, old('optin_system', $user->optin_system) ?? 0,  ['id' => 'optin_system']) !!}
-                        @lang('user.optin_system')
+                <div class="form-group mt-5">
+                    <label class="row">
+                        <span class="col form-check">
+                            {!! Form::checkbox('optin_system', 1, old('optin_system', $user->optin_system) ?? 0,  ['id' => 'optin_system', 'class' => 'form-check-input']) !!}
+                            <span class="form-check-label" for="optin_system">
+                                @lang('user.options.optin_system')
+                            </span>
+                        </span>
+                    </label>
+                    <label class="row">
+                        <span class="col form-check">
+                            {!! Form::checkbox('show_help', 1, old('show_help', $user->show_help) ?? 0,  ['id' => 'show_help', 'class' => 'form-check-input']) !!}
+                            <span class="form-check-label" for="show_help">
+                                @lang('user.options.show_help')
+                            </span>
+                        </span>
                     </label>
                 </div>
-
+            <x-help-block :help="trans('character.name_help')"></x-help-block>
 
                 {!! Form::submit(trans('common.save'), ['class' => 'form-control btn btn-primary']) !!}
             {!! Form::close() !!}

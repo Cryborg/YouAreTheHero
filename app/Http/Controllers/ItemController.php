@@ -198,8 +198,10 @@ class ItemController extends Controller
 
     public function details(Item $item)
     {
-        $view = View::make('item.partials.edit_item', [
-            'item' => $item
+        $view = View::make('item.partials.new_item', [
+            'story' => $item->story,
+            'item' => $item,
+            'context' => 'edit_item',
         ]);
 
         return $view;

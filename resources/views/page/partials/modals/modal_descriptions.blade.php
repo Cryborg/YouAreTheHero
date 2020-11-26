@@ -8,14 +8,14 @@
                     @lang('description.keyword')
                 </div>
                 <div class="card-body">
-                    <p class="help-block">@lang('description.keyword_help')</p>
+                    <x-help-block :help="trans('description.keyword_help')"></x-help-block>
                     <input type="text" id="keyword">
                 </div>
                 <div class="card-header">
                     @lang('description.description')
                 </div>
                 <div class="card-body">
-                    <p class="help-block">@lang('description.description_help')</p>
+                    <x-help-block :help="trans('description.description_help')"></x-help-block>
                     <textarea id="description" class="summernote"></textarea>
                 </div>
             </div>
