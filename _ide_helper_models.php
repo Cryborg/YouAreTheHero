@@ -20,11 +20,12 @@ namespace App\Models{
  * @property string $actionable_type
  * @property int $actionable_id
  * @property int $quantity
+ * @property bool $unique
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $actionable
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $triggers
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $triggerable
  * @method static \Illuminate\Database\Eloquent\Builder|Action newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Action newQuery()
  * @method static \Illuminate\Database\Query\Builder|Action onlyTrashed()
@@ -37,6 +38,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Action whereQuantity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Action whereTriggerId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Action whereTriggerType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Action whereUnique($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Action whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|Action withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Action withoutTrashed()
@@ -258,54 +260,24 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\Effect
- *
- * @property int $id
- * @property int $item_id
- * @property int $field_id
- * @property string $operator
- * @property int $quantity
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Field $field
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[] $items
- * @property-read int|null $items_count
- * @method static \Illuminate\Database\Eloquent\Builder|FieldItem newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|FieldItem newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|FieldItem query()
- * @method static \Illuminate\Database\Eloquent\Builder|FieldItem whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FieldItem whereFieldId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FieldItem whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FieldItem whereItemId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FieldItem whereOperator($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FieldItem whereQuantity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FieldItem whereUpdatedAt($value)
- */
-	class Effect extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
  * App\Models\Field
  *
  * @property int $id
- * @property int                                                                      $story_id
- * @property string                                                                   $name
- * @property bool                                                                     $hidden
- * @property int                                                                      $min_value
- * @property int                                                                      $max_value
- * @property int                                                                      $start_value
- * @property int                                                                      $order
- * @property \Illuminate\Support\Carbon|null                                          $created_at
- * @property \Illuminate\Support\Carbon|null                                          $updated_at
- * @property \Illuminate\Support\Carbon|null                                          $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\FieldItem[]    $effects
- * @property-read int|null                                                            $effects_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[]         $items
- * @property-read int|null                                                            $items_count
+ * @property int $story_id
+ * @property string $name
+ * @property bool $hidden
+ * @property int $min_value
+ * @property int $max_value
+ * @property int $start_value
+ * @property int $order
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[] $items
+ * @property-read int|null $items_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Prerequisite[] $prerequisites
- * @property-read int|null                                                            $prerequisites_count
- * @property-read \App\Models\Story                                                   $story
+ * @property-read int|null $prerequisites_count
+ * @property-read \App\Models\Story $story
  * @method static \Illuminate\Database\Eloquent\Builder|Field newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Field newQuery()
  * @method static \Illuminate\Database\Query\Builder|Field onlyTrashed()
@@ -325,6 +297,17 @@ namespace App\Models{
  * @method static \Illuminate\Database\Query\Builder|Field withoutTrashed()
  */
 	class Field extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\FieldItem
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|FieldItem newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FieldItem newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FieldItem query()
+ */
+	class FieldItem extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -456,24 +439,24 @@ namespace App\Models{
  * @property string $name
  * @property int $default_price
  * @property int $single_use
- * @property bool                                                                     $is_unique
- * @property bool                                                                     $is_throwable
- * @property float                                                                    $size How much room it takes in the inventory.
- * @property \Illuminate\Support\Carbon|null                                          $created_at
- * @property \Illuminate\Support\Carbon|null                                          $updated_at
- * @property \Illuminate\Support\Carbon|null                                          $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Action[]       $actions
- * @property-read int|null                                                            $actions_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Character[]    $characters
- * @property-read int|null                                                            $characters_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\FieldItem[]    $effects
- * @property-read int|null                                                            $effects_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[]         $pages
- * @property-read int|null                                                            $pages_count
+ * @property bool $is_unique
+ * @property bool $is_throwable
+ * @property float $size How much room it takes in the inventory.
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Action[] $actions
+ * @property-read int|null $actions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Character[] $characters
+ * @property-read int|null $characters_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Field[] $fields
+ * @property-read int|null $fields_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[] $pages
+ * @property-read int|null $pages_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Prerequisite[] $prerequisites
- * @property-read int|null                                                            $prerequisites_count
- * @property-read \App\Models\Riddle                                                  $riddles
- * @property-read \App\Models\Story                                                   $story
+ * @property-read int|null $prerequisites_count
+ * @property-read \App\Models\Riddle $riddles
+ * @property-read \App\Models\Story $story
  * @method static \Illuminate\Database\Eloquent\Builder|Item newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Item newQuery()
  * @method static \Illuminate\Database\Query\Builder|Item onlyTrashed()
@@ -640,6 +623,7 @@ namespace App\Models{
  * App\Models\Prerequisite
  *
  * @property int $id
+ * @property string $operator
  * @property int $quantity
  * @property string $prerequisiteable_type
  * @property int $prerequisiteable_id
@@ -647,6 +631,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read \App\Models\Page $page
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $prerequisiteable
  * @method static \Illuminate\Database\Eloquent\Builder|Prerequisite newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Prerequisite newQuery()
@@ -655,6 +640,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Prerequisite whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Prerequisite whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Prerequisite whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Prerequisite whereOperator($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Prerequisite wherePageId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Prerequisite wherePrerequisiteableId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Prerequisite wherePrerequisiteableType($value)
@@ -880,6 +866,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $valid_from
  * @property string|null $remember_token
  * @property bool $optin_system
+ * @property bool $show_help
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
@@ -912,6 +899,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRole($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereShowHelp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUsername($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereValidFrom($value)
