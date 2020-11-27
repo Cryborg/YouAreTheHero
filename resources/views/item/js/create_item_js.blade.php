@@ -83,6 +83,10 @@ $(document).on('click touchstart keydown', '.itemFieldAdd', function () {
         quantity: $('.field_quantity:visible').val(),
     };
 
+    if (fieldId === '') {
+        return false;
+    }
+
     if (itemId !== null) {
         // Directly save the item
         const routeItemField = route('item.field.add', {'item': itemId, 'field': fieldId});
@@ -90,9 +94,19 @@ $(document).on('click touchstart keydown', '.itemFieldAdd', function () {
         $.get({
             url: routeItemField,
             data: field,
-        });
+        })
+            .done(function () {
+                $this.closest('.modal-content').find('.item-details').load(route('item.details', {'item': itemId, 'field': fieldId}));
+            });
     } else {
         // The item is not yet created
+        const content = '<input type="hidden" name="stat_values[]" data-id="'
+                + fieldId + '" value="' + field.quantity + '" data-operator="'
+                + field.operator + '">'
+            + $('.field_id option:selected').html()
+            + ' ' + field.operator
+            + ' ' + field.quantity;
+        $('.item-fields').append(content);
     }
 });
 
@@ -127,10 +141,10 @@ $(document).on('click touchstart keydown', '.btnCreateItem', function () {
         $parentModal = $this.closest('.modal-content');
     }
 
-    $parentModal.find('input[name="stat_values[]"]:visible').each(function () {
+    $parentModal.find('input[name="stat_values[]"]').each(function () {
         values.push({
             'id': $(this).data('id'),
-            'operator': $(this).closest('tr').find('.effect_operator option:selected').val(),
+            'operator': $(this).data('operator'),
             'value': $(this).val()
         });
     });

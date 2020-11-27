@@ -102,16 +102,16 @@
                         </tbody>
                     </table>
                 </div>
-                @if ($item)
                     <div class="card-header">
                         @lang('item.item_fields')
                     </div>
                     <div class="card-body row item-fields">
-                        @foreach ($item->fields as $field)
-                            @include('item.partials.item_field', ['item' => $item])
-                        @endforeach
+                        @if ($item)
+                            @foreach ($item->fields as $field)
+                                @include('item.partials.item_field', ['item' => $item])
+                            @endforeach
+                        @endif
                     </div>
-                @endif
             @endif
         </div>
     </div>
