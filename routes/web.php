@@ -43,6 +43,7 @@ Route::middleware('auth')->group(static function () {
         Route::get('{item}/details', 'ItemController@details')->name('details');
         Route::get('list', 'ItemController@index')->name('list');
         Route::get('{item}/field/{field}/add', 'ItemController@addField')->name('field.add');
+        Route::get('{item}/field/{field}/delete', 'ItemController@deleteField')->name('field.delete');
     });
 
 // Stories

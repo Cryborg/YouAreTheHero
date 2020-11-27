@@ -162,6 +162,19 @@ $(document).on('click touchstart keydown', '.btnCreateItem', function () {
     })
 });
 
+$(document).on('click touchstart keydown', '.deleteItemField', function () {
+    const $this = $(this);
+    const itemId = $this.data('itemid');
+    const fieldId = $this.data('fieldid');
+
+    $.get({
+        url: route('item.field.delete', {'item': itemId, 'field': fieldId}),
+    })
+        .done(function () {
+            $this.closest('.modal-content').find('.item-details').load(route('item.details', {'item': itemId, 'field': fieldId}));
+        });
+});
+
 $(document).on('click touchstart keydown', '.itemSelectList', function () {
     const $this = $(this);
     const itemId = $this.children(":selected").val();

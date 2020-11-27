@@ -3,6 +3,6 @@
 </div>
 <div class="col-4">
     <div class="btn btn-outline-danger">
-        <span class="icon-trash text-red"></span>
+        <span class="icon-trash text-red deleteItemField" data-fieldid="{{ $field->id }}" data-itemid="{{ $item->id }}"></span>
     </div>
 </div>

@@ -25,6 +25,7 @@ return [
     'is_unique'          => 'Objet unique',
     'is_unique_help'     => 'Indique si l\'objet disparaît une fois utilisé.',
     'item'               => 'Objet',
+    'item_fields'        => 'Effets de l\'objet',
     'items_title'        => 'Objets',
     'name'               => 'Nom',
     'new_item_title'     => 'Nouvel objet',

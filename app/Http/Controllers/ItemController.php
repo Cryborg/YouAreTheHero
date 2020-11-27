@@ -10,6 +10,7 @@ use App\Models\Page;
 use App\Models\Story;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 
@@ -221,6 +222,16 @@ class ItemController extends Controller
                 'operator' => $request->get('operator'),
                 'quantity' => $request->get('quantity'),
             ]
+        ]);
+    }
+
+    public function deleteField(Item $item, Field $field)
+    {
+        $item->fields()->detach($field->id);
+
+        return Response::json([
+            'type' => 'delete',
+            'success' => true,
         ]);
     }
 }

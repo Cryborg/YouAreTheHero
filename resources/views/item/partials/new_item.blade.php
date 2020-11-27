@@ -108,7 +108,7 @@
                     <div class="card-body row item-fields">
                         @if ($item)
                             @foreach ($item->fields as $field)
-                                @include('item.partials.item_field', ['item' => $item])
+                                @include('item.partials.item_field', ['item' => $item, 'field' => $field])
                             @endforeach
                         @endif
                     </div>
