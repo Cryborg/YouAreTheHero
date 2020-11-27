@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CharacterItem;
+use App\Models\Field;
 use App\Models\FieldItem;
 use App\Models\Item;
 use App\Models\Page;
@@ -102,7 +103,7 @@ class ItemController extends Controller
         if (!empty($validated['id'])) {
             $item = Item::updateOrCreate(['id' => $validated['id']], $validated);
         } else {
-            $item = Item::updateOrCreate($validated);
+            $item = Item::create($validated);
         }
 
         foreach ($effects as $effect) {
@@ -202,6 +203,7 @@ class ItemController extends Controller
             'story' => $item->story,
             'item' => $item,
             'context' => 'edit_item',
+            'displayCreateButton' => false
         ]);
 
         return $view;
@@ -210,5 +212,15 @@ class ItemController extends Controller
     public function index(Story $story)
     {
         return View::make('page.js.partials.create.item_list_div', ['items' => $story->items]);
+    }
+
+    public function addField(Request $request, Item $item, Field $field)
+    {
+        $item->fields()->syncWithoutDetaching([
+            $field->id => [
+                'operator' => $request->get('operator'),
+                'quantity' => $request->get('quantity'),
+            ]
+        ]);
     }
 }

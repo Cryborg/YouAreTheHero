@@ -119,25 +119,25 @@
 
 @push('footer-scripts')
     <script type="text/javascript">
-        var storyId = {{ $story->id }};
+        const storyId = {{ $story->id }};
 
         @include('page.js.dagred3-js', ['pages' => $page->story->pages, 'current' => $page])
 
-        var pageId = {{ $page->id }};
-        var confirmDeleteFieldText = "@lang('field.confirm_delete')";
-        var confirmDeleteItemText = "@lang('item.confirm_delete')";
-        var confirmDeletePageText = "@lang('page.confirm_delete')";
-        var confirmDeleteLinkText = "@lang('page.confirm_delete_link')";
-        var langPageRiddleTextLabel = "@lang('page.riddle_page_text_label')";
-        var langPageRiddleAnswerLabel = "@lang('page.riddle_answer_label')";
-        var langPageRiddleTargetPageIdLabel = "@lang('page.riddle_target_page_id_label')";
-        var langPageEarnedItemLabel = "@lang('page.earned_item')";
-        var langItem = "@lang('item.item')";
+        const pageId = {{ $page->id }};
+        const confirmDeleteFieldText = "@lang('field.confirm_delete')";
+        const confirmDeleteItemText = "@lang('item.confirm_delete')";
+        const confirmDeletePageText = "@lang('page.confirm_delete')";
+        const confirmDeleteLinkText = "@lang('page.confirm_delete_link')";
+        const langPageRiddleTextLabel = "@lang('page.riddle_page_text_label')";
+        const langPageRiddleAnswerLabel = "@lang('page.riddle_answer_label')";
+        const langPageRiddleTargetPageIdLabel = "@lang('page.riddle_target_page_id_label')";
+        const langPageEarnedItemLabel = "@lang('page.earned_item')";
+        const langItem = "@lang('item.item')";
         @include('page.js.create-js')
         @include('page.js.partials.create.bindings')
         @include('page.js.partials.create.refresh')
 
-        var routeItem = '{{ route('item.store') }}';
+        const routeItem = '{{ route('item.store') }}';
         @include('item.js.create_item_js', ['story' => $story, 'contexts' => $contexts])
     </script>
 @endpush

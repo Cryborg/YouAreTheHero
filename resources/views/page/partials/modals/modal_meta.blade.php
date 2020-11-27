@@ -16,7 +16,7 @@
         <div class="tab-content">
             <div class="tab-pane active" id="tr-pre-1">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-md-12 col-lg-3">
                         <div class="card">
                             <h5 class="card-header">
                                 {!! Form::label('item_id', trans('page.required_item'), ['class' => 'sr-only']) !!}
@@ -65,7 +65,7 @@
                                     <span class="icon-trash text-white"></span>
                                     @lang('common.delete')
                                 </button>
-                                <button type="submit" class="btn btn-primary btnCreateItem float-right" disabled data-context="edit">
+                                <button type="submit" class="btn btn-primary btnCreateItem float-right" disabled data-context="edit_item">
                                     <span class="icon-save text-white"></span>
                                     @lang('common.save')
                                 </button>
@@ -131,7 +131,11 @@
             @endif
             <div class="tab-pane" id="tr-pre-3">
                 <div class="container">
-                    @include('item.partials.new_item', ['context' => $context, 'story' => $page->story, 'item' => ''])
+                    @include('item.partials.new_item', [
+                        'context' => $context,
+                        'story' => $page->story,
+                        'item' => '',
+                    ])
                 </div>
             </div>
         </div>

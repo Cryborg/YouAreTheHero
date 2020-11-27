@@ -50,6 +50,8 @@ $(document).on('click touchstart keydown', '.btnDeleteItem', function () {
         .done(function (result) {
             if (result.success && result.type === 'delete') {
                 refreshModalItemsList();
+
+                $this.closest('.modal-content').find('.item-details').html('');
             }
 
             if (result.type === 'confirm') {
@@ -72,6 +74,28 @@ $(document).on('click touchstart keydown', '.btnDeleteItem', function () {
         });
 });
 
+$(document).on('click touchstart keydown', '.itemFieldAdd', function () {
+    const $this = $(this);
+    const itemId = $this.data('itemid') || null;
+    const fieldId = $('.field_id:visible').val();
+    const field = {
+        operator: $('.field_operator:visible').val(),
+        quantity: $('.field_quantity:visible').val(),
+    };
+
+    if (itemId !== null) {
+        // Directly save the item
+        const routeItemField = route('item.field.add', {'item': itemId, 'field': fieldId});
+
+        $.get({
+            url: routeItemField,
+            data: field,
+        });
+    } else {
+        // The item is not yet created
+    }
+});
+
 $(document).on('click touchstart keydown', '.deleteItemConfirmed', function () {
     const $this = $(this);
     const itemId = $this.data('itemid');
@@ -91,10 +115,10 @@ $(document).on('click touchstart keydown', '.deleteItemConfirmed', function () {
 });
 
 $(document).on('click touchstart keydown', '.btnCreateItem', function () {
-    var $this = $(this);
-    var route = routeItem;
+    const $this = $(this);
+    const context = $this.data('context');
+    const route = routeItem;
     var values = [];
-    var context = $this.data('context');
     var $parentModal;
 
     if (context === 'story_creation') {

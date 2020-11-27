@@ -1,12 +1,13 @@
+@if ($item)
+    <input type="hidden" id="item_id_{{ $context }}" value="{{ $item->id }}">
+@endif
 <div class="row">
     <div class="col-sm-12 col-lg-6 border-right">
         <div class="row mb-2">
             <div class="card w-100">
                 <h5 class="card-header">@lang('item.name')</h5>
                 <div class="card-body">
-                    <div class="card-text">
-                        {!! Form::text('item_name', $item ? $item->name : null, ['class' => 'form-control', 'placeholder' => trans('item.name'), 'id' => 'item_name_' . $context, 'autocomplete' => 'nope']) !!}
-                    </div>
+                    {!! Form::text('item_name', $item ? $item->name : null, ['class' => 'form-control', 'placeholder' => trans('item.name'), 'id' => 'item_name_' . $context, 'autocomplete' => 'nope']) !!}
                 </div>
             </div>
         </div>
@@ -62,52 +63,67 @@
             @if ($story->options && $story->options->has_stats)
                 <h5 class="card-header">@lang('item.effects')</h5>
                 <div class="card-body">
-                    <div class="card-text">
-                        <x-help-block :help="trans('item.effects_help_text')"></x-help-block>
+                    <x-help-block :help="trans('item.effects_help_text')"></x-help-block>
 
-                        <table class="w-100">
-                            <thead>
-                                <th>{{ trans('field.attribute') }}</th>
-                                <th>{{ trans('field.operator') }}</th>
-                                <th>{{ trans('field.gain_or_loss') }}</th>
-                            </thead>
-                            <tbody>
-                                @foreach($story->fields as $field)
-                                    <tr>
-                                        <td>
-                                            @if ($field->hidden === true)
-                                                <span class="icon-hidden text-red font-bigger mr-2" title="@lang('field.hidden_to_players')"></span>
-                                            @endif
-
-                                            {{ $field->name }}
-                                        </td>
-                                        <td>
-                                            <select class="mb-1 effect_operator w-50">
-                                                <option value="+">+</option>
-                                                <option value="-">-</option>
-                                                <option value="/">/</option>
-                                                <option value="*">*</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input data-id="{{ $field->id }}" class="mb-1" name="stat_values[]" type="number">
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                    <table class="w-100">
+                        <thead>
+                            <th>{{ trans('field.attribute') }}</th>
+                            <th>{{ trans('field.operator') }}</th>
+                            <th>{{ trans('field.gain_or_loss') }}</th>
+                            <th>{{ trans('common.add') }}</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <select class="form-control field_id">
+                                        <option></option>
+                                        @foreach($story->fields->where('hidden', false) as $field)
+                                            <option value="{{ $field->id }}">{{ $field->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="form-control field_operator">
+                                        <option value="+" title="@lang('common.plus')">+</option>
+                                        <option value="-" title="@lang('common.minus')">-</option>
+                                        <option value="/" title="@lang('common.divide')">&div;</option>
+                                        <option value="*" title="@lang('common.multiply')">*</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input class="form-control field_quantity" type="number" value="1">
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary text-center">
+                                        <span class="icon-add text-white itemFieldAdd" @if ($item) data-itemid="{{ $item->id }}" @endif></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+                @if ($item)
+                    <div class="card-header">
+                        @lang('item.item_fields')
+                    </div>
+                    <div class="card-body row item-fields">
+                        @foreach ($item->fields as $field)
+                            @include('item.partials.item_field', ['item' => $item])
+                        @endforeach
+                    </div>
+                @endif
             @endif
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col">
-        <div class="form-group mb-4">
-            <button class="btn btn-primary btnCreateItem" data-context="{{ $context }}" data-original-text="{{ trans('item.create_btn') }}">
-                {{ trans('item.create_btn') }}
-            </button>
+@if ((isset($displayCreateButton) && $displayCreateButton === true) || !isset($displayCreateButton))
+    <div class="row">
+        <div class="col">
+            <div class="form-group mb-4">
+                <button class="btn btn-primary btnCreateItem" data-context="{{ $context }}" data-original-text="{{ trans('item.create_btn') }}">
+                    {{ trans('item.create_btn') }}
+                </button>
+            </div>
         </div>
     </div>
-</div>
+@endif
