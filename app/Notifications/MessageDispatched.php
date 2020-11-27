@@ -90,9 +90,9 @@ class MessageDispatched extends Notification
 
         return (new MailMessage)
             ->success()
-            ->subject($this->message->user->name . ' ' . trans('inbox::messages.notification.subject') . ' - ' . config('app.name'))
+            ->subject($this->message->user->name . ' ' . trans('inbox.notifications.subject') . ' - ' . config('app.name'))
             ->greeting($greeting)
             ->line($this->message->body)
-            ->action(trans('inbox::messages.notification.button'), $buttonUrl);
+            ->action(trans('inbox.notifications.button_view_message'), $buttonUrl);
     }
 }

@@ -9,6 +9,10 @@ return [
 
     ],
     'new_message_label' => 'New message',
+    'notifications' => [
+        'button_view_message' => 'Read it >>>',
+        'subject' => 'You received a new message',
+    ],
     'templates' => [
         'report' => [
             'error_type_label' => 'Error type:',

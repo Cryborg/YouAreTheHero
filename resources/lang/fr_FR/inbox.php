@@ -8,6 +8,10 @@ return [
         'to' => 'A',
     ],
     'new_message_label' => 'Nouveau message',
+    'notifications' => [
+        'button_view_message' => 'Lire sur le site >>>',
+        'subject' => 'Tu as reçu un nouveau message',
+    ],
     'templates' => [
         'report' => [
             'error_type_label' => 'Type de l\'erreur :',
