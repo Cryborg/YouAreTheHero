@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'activity_label' => 'Actions de l\'utilisateur',
     'anonymous' => [
         'title' => 'Accès invité',
         'description' => 'Tu pourras accéder à toutes les histoires publiées mais pas en créer. Pour cela il faudra créer un compte.',

@@ -30,7 +30,8 @@
             'language': {
                 'url': "{{ asset('lang/fr_FR/datatables-fr.json') }}"
             },
-            'dom': '<"float-left"f>t',
+            'dom': '<"float-left"f>t<"float-left"p>',
+            'aaSorting': []
         });
     } );
 

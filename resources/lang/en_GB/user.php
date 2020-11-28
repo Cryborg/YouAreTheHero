@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'activity_label' => 'User\'s activity logs',
     'anonymous' => [
         'title' => 'Connect as guest',
         'description' => 'You can browse all published stories, but if you want to write a story, you will have to create an account.',

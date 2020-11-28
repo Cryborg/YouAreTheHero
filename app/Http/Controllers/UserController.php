@@ -8,14 +8,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
+use Spatie\Activitylog\Models\Activity;
 
 class UserController extends ControllerBase
 {
     public function getProfile(\Illuminate\Support\Facades\Request $request, User $user = null)
     {
+        $lastLoggedActivity = Activity::orderBy('created_at', 'desc')
+                                      ->get();
+
         $data = [
-            'title' => trans('user.profile_title'),
-            'user' => $user ?? auth()->user(),
+            'title'      => trans('user.profile_title'),
+            'user'       => $user ?? $this->authUser,
+            'activities' => $lastLoggedActivity,
         ];
 
         $view = 'user.profile';

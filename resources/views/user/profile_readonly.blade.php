@@ -49,6 +49,23 @@
                     @endforeach
                 </div>
             </div>
+
+            @can('isAdmin')
+                <div class="card">
+                    <div class="card-header">
+                        @lang('user.activity_label')
+                    </div>
+                    <div class="card-body">
+                        @include('user.partials.activity', ['activities' => $activities])
+                    </div>
+                </div>
+            @endcan
         </div>
     </div>
 @endsection
+
+@push('footer-scripts')
+    <script type="text/javascript">
+        showHumanReadableDates();
+    </script>
+@endpush
