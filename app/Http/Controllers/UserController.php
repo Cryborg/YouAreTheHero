@@ -14,20 +14,23 @@ class UserController extends ControllerBase
 {
     public function getProfile(\Illuminate\Support\Facades\Request $request, User $user = null)
     {
-        $lastLoggedActivity = Activity::orderBy('created_at', 'desc')
-                                      ->get();
-
-        $data = [
-            'title'      => trans('user.profile_title'),
-            'user'       => $user ?? $this->authUser,
-            'activities' => $lastLoggedActivity,
-        ];
-
         $view = 'user.profile';
 
         if ($user !== null) {
             $view = 'user.profile_readonly';
         }
+
+        $user = $user ?? $this->authUser;
+
+        $lastLoggedActivity = Activity::where('causer_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $data = [
+            'title'      => trans('user.profile_title'),
+            'user'       => $user,
+            'activities' => $lastLoggedActivity,
+        ];
 
         return View::make($view, $data);
     }

@@ -8,7 +8,7 @@
     <tbody>
         @foreach ($activities as $activity)
             <tr>
-                <td>{{ $activity->log_name }}</td>
+                <td>{{ trans('activity.' . $activity->log_name) }}</td>
                 <td class="moment_date" data-sort="{{ $activity->created_at }}">{{ $activity->created_at }}</td>
             </tr>
         @endforeach

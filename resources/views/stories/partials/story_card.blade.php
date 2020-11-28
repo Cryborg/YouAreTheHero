@@ -85,8 +85,10 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <span class="text-muted font-smaller">
-                            {{ $story->user->username }}
+                        <span>
+                            <a href="{{ route('user.profile.get', ['user' => $story->user]) }}" class="text-muted font-smaller">
+                                {{ $story->user->username }}
+                            </a>
                         </span>
                     </div>
                     <div class="col text-right">
