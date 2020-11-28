@@ -14,6 +14,7 @@
 <script type="text/javascript" src="{{ asset('js/bootstrap-input-spinner.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/common.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/splide/dist/js/splide.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/datatables.min.js') }}"></script>
 
 @if (Config::get('app.locale') !== 'en_GB')
     <script type="text/javascript" src="{{ asset('lang/' . Config::get('app.locale') . '/moment-lang.js') }}"></script>
@@ -24,6 +25,15 @@
 <script type="text/javascript" src="{{ asset('js/summernote-cleaner.js') }}"></script>
 
 <script type="text/javascript">
+    $(document).ready( function () {
+        $('.datatable').DataTable({
+            'language': {
+                'url': "{{ asset('lang/fr_FR/datatables-fr.json') }}"
+            },
+            'dom': '<"float-left"f>t',
+        });
+    } );
+
     // Common translations
     var saveSuccessHeading = "{!! trans('notification.save_success_title') !!}";
     var saveSuccessText = "{!! trans('notification.save_success_text') !!}";

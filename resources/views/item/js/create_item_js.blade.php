@@ -1,33 +1,3 @@
-function ajaxCreatePost(urlroute, $this, data)
-{
-    var commonData = {
-        'story_id': storyId
-    };
-
-    $.post({
-        url: urlroute,
-        data: {...data, ...commonData}
-    })
-        .done(function (data) {
-            if (typeof window.refreshModalItemsList === "function") {
-                refreshModalItemsList();
-            }
-
-            if ($('.itemListDiv').length > 0) {
-                $.get({
-                    url: route('item.list', {story: storyId})
-                })
-                    .done(function (html) {
-                        $('.itemListDiv').html(html);
-                    });
-            }
-        })
-        .always(function () {
-            $this.html($this.data('original-text'));
-            $this.prop('disabled', false);
-        });
-}
-
 $(document).on('hide.bs.modal', '#modalPopup', function (event)
 {
     $('#modalMeta').modal();
@@ -49,9 +19,12 @@ $(document).on('click touchstart keydown', '.btnDeleteItem', function () {
     })
         .done(function (result) {
             if (result.success && result.type === 'delete') {
-                refreshModalItemsList();
+                if (typeof window.refreshModalItemsList === 'function') {
+                    refreshModalItemsList();
+                }
 
                 $this.closest('.modal-content').find('.item-details').html('');
+                $this.closest('tr').remove();
             }
 
             if (result.type === 'confirm') {
@@ -131,7 +104,6 @@ $(document).on('click touchstart keydown', '.deleteItemConfirmed', function () {
 $(document).on('click touchstart keydown', '.btnCreateItem', function () {
     const $this = $(this);
     const context = $this.data('context');
-    const route = routeItem;
     var values = [];
     var $parentModal;
 
@@ -149,7 +121,8 @@ $(document).on('click touchstart keydown', '.btnCreateItem', function () {
         });
     });
 
-    ajaxCreatePost(route,  $this, {
+    var data = {
+        'story_id': storyId,
         'id': $parentModal.find('#item_id_' + context).val(),
         'name': $parentModal.find('#item_name_' + context).val(),
         'default_price': $parentModal.find('#item_price_' + context).val(),
@@ -159,7 +132,31 @@ $(document).on('click touchstart keydown', '.btnCreateItem', function () {
         'size': $parentModal.find('#item_size_' + context).val(),
         'effects': values,
         'category': $parentModal.find('#item_category_' + context).val()
+    };
+
+    $.post({
+        url: routeItem,
+        data: data
     })
+        .done(function (data) {
+            if (typeof window.refreshModalItemsList === "function") {
+                refreshModalItemsList();
+            }
+
+            if ($('.itemListDiv').length > 0) {
+                $.get({
+                    url: route('item.list', {story: storyId})
+                })
+                    .done(function (html) {
+                        $('.itemListDiv').html(html);
+                    });
+            }
+        })
+        .always(function () {
+            $this.html($this.data('original-text'));
+            $this.prop('disabled', false);
+        });
+
 });
 
 $(document).on('click touchstart keydown', '.deleteItemField', function () {
