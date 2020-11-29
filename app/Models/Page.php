@@ -125,9 +125,11 @@ class Page extends Model
      */
     public function prerequisites()
     {
-        return Prerequisite::with('prerequisiteable')
+        $prerequisite = Prerequisite::with('prerequisiteable')
                            ->where('page_id', $this->id)
                            ->get();
+
+        return $prerequisite;
     }
 
     /**

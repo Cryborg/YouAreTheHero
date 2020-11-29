@@ -12,6 +12,7 @@ return array (
   'close' => 'Fermer',
   'created_at' => 'Date de création',
   'created_by' => 'Créé par',
+  'currency' => 'Monnaie',
   'current_version' => 'Version du site : :version',
   'delete' => 'Supprimer',
   'delete_link' => 'Supprimer le lien entre ces deux pages',

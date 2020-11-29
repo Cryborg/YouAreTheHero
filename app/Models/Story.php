@@ -97,6 +97,11 @@ class Story extends Model
         return $this->hasMany(Item::class);
     }
 
+    public function currency()
+    {
+        return $this->hasOne(Currency::class);
+    }
+
     /**
      * @param string|null $page_id
      *

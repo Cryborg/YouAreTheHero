@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Classes\Constants;
 use App\Models\Character;
 use App\Models\Choice;
+use App\Models\Currency;
 use App\Models\Field;
 use App\Models\Item;
 use App\Models\Page;
@@ -51,6 +52,9 @@ class ChoiceRepository
                             break;
                         case Item::class:
                             $fulfilled = $thisRepo->isItemPrerequisitesFulfilled($prerequisite, $character);
+                            break;
+                        case Currency::class:
+                            $fulfilled = $thisRepo->isCurrencyPrerequisitesFulfilled($prerequisite, $character);
                             break;
                     }
 
@@ -126,5 +130,10 @@ class ChoiceRepository
         }
 
         return false;
+    }
+
+    private function isCurrencyPrerequisitesFulfilled($prerequisite, Character $character): bool
+    {
+        return Prerequisite::isFulfilled($character->money, $prerequisite->operator, $prerequisite->quantity);
     }
 }

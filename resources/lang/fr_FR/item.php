@@ -6,6 +6,7 @@ return [
     'category_help'      => 'Catégorie optionnelle pour cet objet.',
     'confirm_delete'     => 'Es-tu sûr(e) de vouloir supprimer cet objet de ton histoire ?',
     'create_btn'         => 'Créer un objet',
+    'currency'           => 'Monnaie',
     'deleting'           => [
         'title'           => '<b>:item</b> est utilisé(e) aux endroits suivants',
         'button'          => 'Confirmer',

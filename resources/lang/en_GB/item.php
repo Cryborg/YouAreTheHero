@@ -5,6 +5,7 @@ return [
     'category'          => 'Category',
     'category_help'     => 'Optional category for this object.',
     'confirm_delete'    => 'Are you sure you want to remove this item from your story?',
+    'currency'          => 'Currency',
     'create_btn'        => 'Create an item',
     'details'           => 'Item details',
     'effects'           => 'Effects',

@@ -16,7 +16,8 @@ class CreatePrerequisitesTable extends Migration
         Schema::create('prerequisites', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->morphs('prerequisiteable');
+            $table->unsignedInteger('prerequisiteable_id')->nullable();
+            $table->string('prerequisiteable_type');
 
             $table->unsignedBigInteger('page_id');
             $table->foreign('page_id')->references('id')->on('pages');

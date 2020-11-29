@@ -346,12 +346,14 @@ $(document).on('click touchstart keydown', '#add_Meta', function () {
     }
 
     // If the "money" tab is selected
-    if ($('#tr-pre-3').hasClass('active')) {
-        let money = $('#money').val();
+    if ($('#tr-pre-4').hasClass('active')) {
+        let currency = $('#currency').val();
 
-        if (money !== '' && money > 0) {
-            data['money'] = money;
-            data['type'] = 'money';
+        if (currency !== '' && currency > 0) {
+            data = {
+                'quantity': $('#currency').val(),
+                'type': 'currency',
+            };
         }
     }
 

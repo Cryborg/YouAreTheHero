@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Item;
 use App\Models\Page;
 use App\Models\Prerequisite;
-use App\Models\Field;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -20,13 +18,19 @@ class PrerequisiteController extends Controller
     public function store(Request $request, Page $page)
     {
         if ($request->ajax()) {
+            $itemId = $request->get('item', null);
+
+            if (empty($itemId)) {
+                $itemId = optional($page->story->currency)->id;
+            }
+
             Prerequisite::updateOrCreate([
                 'page_id'   => $page->id,
                 'prerequisiteable_type' => $request->get('type'),
-                'prerequisiteable_id' => $request->get('item'),
+                'prerequisiteable_id' => $itemId,
             ], [
                 'quantity' => $request->get('quantity'),
-                'operator' => Prerequisite::getOperator($request->get('operator')),
+                'operator' => Prerequisite::getOperator($request->get('operator', '>=')),
             ]);
 
             return response()->json([
@@ -60,10 +64,9 @@ class PrerequisiteController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Page         $page
+     * @param \App\Models\Page $page
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Contracts\View\View
      */
     public function list(Page $page)
     {

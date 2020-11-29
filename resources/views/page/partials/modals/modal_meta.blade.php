@@ -9,6 +9,9 @@
                     {{ trans('page.required_characteristic') }}
                 </a>
             @endif
+            <a class="nav-item nav-link" href="#tr-pre-4" data-toggle="tab">
+                {{ trans('page.required_currency') }}
+            </a>
             <a class="nav-item nav-link" href="#tr-pre-3" data-toggle="tab">
                 {{ trans('item.new_item_title') }}
             </a>
@@ -129,6 +132,19 @@
                     </div>
                 </div>
             @endif
+            <div class="tab-pane" id="tr-pre-4">
+                <div class="row">
+                    <div class="card col-md-12 col-lg-6">
+                        <div class="card-header">
+                            @lang('page.required_currency_label')
+                        </div>
+                        <div class="card-body">
+                            <x-help-block :help="trans('page.required_currency_help')" />
+                            <input type="number" value="1" min="1" id="currency">
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="tab-pane" id="tr-pre-3">
                 <div class="container">
                     @include('item.partials.new_item', [

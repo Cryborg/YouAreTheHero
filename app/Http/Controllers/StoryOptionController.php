@@ -68,6 +68,11 @@ class StoryOptionController extends Controller
                 $value = $request->get('value');
                 break;
             case 'currency_name':
+                $story->currency()->updateOrCreate([], [
+                        'name' => $request->get('value'),
+                    ]
+                );
+                break;
             case 'currency_amount':
                 $option = $request->get('option');
                 $value = $request->get('value');
