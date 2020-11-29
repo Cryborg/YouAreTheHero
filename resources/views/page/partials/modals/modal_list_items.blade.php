@@ -66,7 +66,9 @@
                         </div>
                         <div class="form-control">
                             @if ($item->fields()->count() > 0)
-                                @include('page.partials.badge_fields', ['item' => $item])
+                                @foreach ($item->fields as $field)
+                                    @include('page.partials.badge_fields', ['field' => $field])
+                                @endforeach
                             @endif
                         </div>
                     </div>

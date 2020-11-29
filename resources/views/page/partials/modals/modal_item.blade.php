@@ -23,7 +23,9 @@
                 <tr>
                     <th scope="row">{{ trans('item.effects') }}</th>
                     <td class="p-0">
-                        @include('page.partials.badge_fields', ['item' => $item])
+                        @foreach ($item->fields as $field)
+                            @include('page.partials.badge_fields', ['field' => $field])
+                        @endforeach
                     </td>
                 </tr>
             @endif

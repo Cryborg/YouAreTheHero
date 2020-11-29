@@ -38,12 +38,6 @@
     </div>
 </div>
 
-@if ($context === 'list_pages')
-    @push('footer-scripts')
-        @include('page.js.list_pages-js')
-    @endpush
-@endif
-
 @if ($context === 'list_items')
     @push('footer-scripts')
         @include('page.js.list_items-js')

@@ -11,7 +11,9 @@
     <span class="form-control">{{ $item->name }}</span>
     @if ($item->fields()->count() > 0)
         <div class="form-control">
-            @include('page.partials.badge_fields')
+            @foreach ($item->fields as $field)
+                @include('page.partials.badge_fields', ['field' => $field])
+            @endforeach
         </div>
     @endif
 </div>

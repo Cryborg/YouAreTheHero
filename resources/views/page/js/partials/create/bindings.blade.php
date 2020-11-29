@@ -132,7 +132,7 @@ $(document).on('click touchstart keydown', '#add_CreateRiddle', function () {
     })
         .done(function (data) {
             if (data.success) {
-                $('#riddle_table tbody').html('').append(
+                $('#riddle_table tbody').html(
                     '<tr>' +
                     '<td>' + langPageRiddleAnswerLabel + '</td>' +
                     '<td>' + data.riddle.answer + '</td>' +
