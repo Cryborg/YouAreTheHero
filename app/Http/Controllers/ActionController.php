@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\Constants;
 use App\Models\Action;
 use App\Models\Field;
 use App\Models\Item;
@@ -32,10 +33,16 @@ class ActionController extends Controller
 
     public function createItem(Request $request, Page $page)
     {
+        $itemId = $request->get('item', null);
+
+        if (empty($itemId) && $request->get('type') === 'currency') {
+            $itemId = optional($page->story->currency)->id;
+        }
+
         $action = Action::updateOrCreate([
             'trigger_id' => $page->id,
             'trigger_type' => 'page',
-            'actionable_id' => $request->get('item'),
+            'actionable_id' => $itemId,
             'actionable_type' => $request->get('type'),
         ], [
             'quantity' => $request->get('quantity'),
@@ -48,7 +55,7 @@ class ActionController extends Controller
             'success' => $success,
             'action' => [
                 'type' => trans('actions.' . $action->actionable_type),
-                'name' => $action->actionable->name,
+                'name' => $action->actionable->name ?? trans('story.currency_name_default'),
                 'quantity' => $action->quantity
             ],
             'type' => 'save',

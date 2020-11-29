@@ -150,16 +150,16 @@ class Page extends Model
         return $this->morphMany(Action::class, 'actionable');
     }
 
+    public function triggers()
+    {
+        return $this->morphMany(Action::class, 'trigger')
+                    ->with('actionable');
+    }
+
     public function fields()
     {
         return $this->triggers()
                     ->where('actionable_type', 'field')
-                    ->with('actionable');
-    }
-
-    public function triggers()
-    {
-        return $this->morphMany(Action::class, 'trigger')
                     ->with('actionable');
     }
 

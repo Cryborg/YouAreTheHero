@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Bases\ControllerBase;
 use App\Classes\Constants;
 use App\Models\Character;
+use App\Models\Currency;
 use App\Models\Field;
 use App\Models\Genre;
 use App\Models\Item;
@@ -292,14 +293,15 @@ class StoryController extends ControllerBase
         foreach ($page->triggers as $trigger) {
             // If this is a Field
             if ($trigger->actionable instanceof Field) {
-                $field = $character->fields->where('pivot.field_id', $trigger->actionable->id)
-                                           ->first();
-
                 // Check if the action has already been done
                 // Don't do it again if it is the case
                 // EXCEPT if the action is not unique
                 $nbActionsDone = $character->actions->where('pivot.action_id', $trigger->id)->count();
-                if ($nbActionsDone === 0 || $trigger->unique === false) {
+
+                if ($nbActionsDone === 0 || $trigger->unique === false)
+                {
+                    $field = $character->fields->where('pivot.field_id', $trigger->actionable->id)
+                                               ->first();
 
                     if (!$field) {
                         $character->fields()->attach($trigger->actionable->id, ['value' => $trigger->quantity]);
@@ -336,8 +338,7 @@ class StoryController extends ControllerBase
                 $item = $trigger->actionable;
 
                 // Check if the action has already been done
-                $nbActionsDone = $character->actions->where('pivot.action_id', $trigger->id)
-                                                    ->count();
+                $nbActionsDone = $character->actions->where('pivot.action_id', $trigger->id)->count();
 
                 if ($nbActionsDone === 0 || $trigger->unique === false) {
                     $character->actions()->syncWithoutDetaching($trigger->id);
@@ -360,6 +361,36 @@ class StoryController extends ControllerBase
                             ]),
                         'type' => $trigger->quantity > 0 ? 'success' : 'warning',
                     ];
+                }
+            }
+
+            // If this is money
+            if ($trigger->actionable instanceof Currency)
+            {
+                $money = $trigger->actionable;
+
+                // Check if the action has already been done
+                $nbActionsDone = $character->actions->where('pivot.action_id', $trigger->id)->count();
+
+                if ($nbActionsDone === 0 || $trigger->unique === false) {
+                    $character->actions()->syncWithoutDetaching($trigger->id);
+
+                    $character->money += $trigger->quantity;
+                    $character->save();
+
+                    $messages[] = [
+                        'text' => $trigger->quantity > 0
+                            ? trans('common.you_earned_something', [
+                                'quantity' => $trigger->quantity,
+                                'item'     => $money->name,
+                            ])
+                            : trans('common.you_lost_something', [
+                                'quantity' => $trigger->quantity * -1,
+                                'item'     => $money->name,
+                            ]),
+                        'type' => $trigger->quantity > 0 ? 'success' : 'warning',
+                    ];
+
                 }
             }
         }
@@ -446,6 +477,9 @@ class StoryController extends ControllerBase
             } else {
                 $story = Story::create($validated);
                 $story->options()->create($validated);
+                $story->currency()->updateOrCreate([], [
+                    'name' => trans('story.currency_name_default'),
+                ]);
 
                 // Create the first page with dummy data
                 Page::factory()->create([

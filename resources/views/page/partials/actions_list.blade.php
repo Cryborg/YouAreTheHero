@@ -12,13 +12,15 @@
         @foreach ($page->triggers as $trigger)
             <tr>
             <td>
-                @if ($trigger->actionable->hidden)
+                @if (($trigger->actionable instanceof \App\Models\Field) && $trigger->actionable->hidden)
                     {{ trans('item.variable') }}
                 @else
                     {{ trans('item.' . $trigger->actionable_type) }}
                 @endif
             </td>
-            <td>{{ $trigger->actionable->name }}</td>
+            <td>
+                {{ optional($trigger->actionable)->name ?? '## Error ##'}}
+            </td>
             <td>{{ $trigger->quantity }}</td>
             <td>
                 @if ($trigger->unique === true) @lang('common.yes') @else @lang('common.no') @endif

@@ -231,6 +231,29 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Currency
+ *
+ * @property int $id
+ * @property int $story_id
+ * @property string $name
+ * @property string|null $icon
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Currency newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Currency newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Currency query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Currency whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Currency whereIcon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Currency whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Currency whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Currency whereStoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Currency whereUpdatedAt($value)
+ */
+	class Currency extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Description
  *
  * @property int $id
@@ -626,7 +649,7 @@ namespace App\Models{
  * @property string $operator
  * @property int $quantity
  * @property string $prerequisiteable_type
- * @property int $prerequisiteable_id
+ * @property int|null $prerequisiteable_id
  * @property int $page_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -741,6 +764,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \App\Models\User|null $author
+ * @property-read \App\Models\Currency|null $currency
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Field[] $fields
  * @property-read int|null $fields_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Genre[] $genres

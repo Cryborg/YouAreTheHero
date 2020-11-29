@@ -32,12 +32,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Relation::morphMap([
-                               'character_field' => CharacterField::class,
-                               'field'           => Field::class,
-                               'item'            => Item::class,
-                               'currency'        => Currency::class,
-                               'page'            => Page::class,
-                               'riddle'          => Riddle::class,
+           'character_field' => CharacterField::class,
+           'field'           => Field::class,
+           'item'            => Item::class,
+           'currency'        => Currency::class,
+           'page'            => Page::class,
+           'riddle'          => Riddle::class,
         ]);
     }
 }

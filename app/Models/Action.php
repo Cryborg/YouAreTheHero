@@ -17,11 +17,11 @@ class Action extends Model
 
     public function actionable()
     {
-        return $this->morphTo('action');
+        return $this->morphTo();
     }
 
     public function triggerable()
     {
-        return $this->morphTo('trigger');
+        return $this->morphTo();
     }
 }
