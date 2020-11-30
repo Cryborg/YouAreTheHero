@@ -83,6 +83,11 @@ class Page extends Model
                     ->withPivot('link_text');
     }
 
+    /**
+     * Get the location of the current page
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function location()
     {
         return $this->hasOne(Location::class);

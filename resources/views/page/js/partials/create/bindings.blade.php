@@ -26,8 +26,9 @@ $(document).on('click touchstart keydown', '#showPrerequisites', function () {
     const $modal = $('#modalMeta');
 
     $modal.data('context', 'prerequisite');
-    $modal.find("div[data-context-only='prerequisite']").removeClass('hidden');
-    $modal.find("div[data-context-only='action']").addClass('hidden');
+    $modal.find("[data-context-only='prerequisite']").removeClass('hidden');
+    $modal.find("[data-context-only='action']").addClass('hidden');
+    $modal.find("[data-context-not='item']").removeClass('hidden');
 
     $modal.modal();
 });
@@ -36,8 +37,9 @@ $(document).on('click touchstart keydown', '#showActions', function () {
     const $modal = $('#modalMeta');
 
     $modal.data('context', 'action');
-    $modal.find("div[data-context-only='prerequisite']").addClass('hidden');
-    $modal.find("div[data-context-only='action']").removeClass('hidden');
+    $modal.find("[data-context-only='prerequisite']").addClass('hidden');
+    $modal.find("[data-context-only='action']").removeClass('hidden');
+    $modal.find("[data-context-not='item']").removeClass('hidden');
 
     $modal.modal();
 });
@@ -46,8 +48,9 @@ $(document).on('click touchstart keydown', '#showItems', function () {
     const $modal = $('#modalMeta');
 
     $modal.data('context', 'item');
-    $modal.find("div[data-context-only='prerequisite']").addClass('hidden');
-    $modal.find("div[data-context-only='action']").addClass('hidden');
+    $modal.find("[data-context-only='prerequisite']").addClass('hidden');
+    $modal.find("[data-context-only='action']").addClass('hidden');
+    $modal.find("[data-context-not='item']").addClass('hidden');
 
     $modal.modal();
 });
@@ -347,12 +350,14 @@ $(document).on('click touchstart keydown', '#add_Meta', function () {
 
     // If the "money" tab is selected
     if ($('#tr-pre-4').hasClass('active')) {
+        const uniqueAction = $('#money_action_unique').is(':checked') ? 1 : 0;
         let currency = $('#currency').val();
 
-        if (currency !== '' && currency > 0) {
+        if (currency !== '' && currency !== 0) {
             data = {
                 'quantity': $('#currency').val(),
                 'type': 'currency',
+                'unique_action': uniqueAction,
             };
         }
     }

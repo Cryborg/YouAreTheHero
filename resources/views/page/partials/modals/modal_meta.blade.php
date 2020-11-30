@@ -9,7 +9,7 @@
                     {{ trans('page.required_characteristic') }}
                 </a>
             @endif
-            <a class="nav-item nav-link" href="#tr-pre-4" data-toggle="tab">
+            <a class="nav-item nav-link" href="#tr-pre-4" data-toggle="tab" data-context-not="item">
                 {{ trans('page.required_currency') }}
             </a>
             <a class="nav-item nav-link" href="#tr-pre-3" data-toggle="tab">
@@ -132,19 +132,28 @@
                     </div>
                 </div>
             @endif
-            <div class="tab-pane" id="tr-pre-4">
+
+            <div class="tab-pane" data-context-not="item" id="tr-pre-4">
                 <div class="row">
                     <div class="card col-md-12 col-lg-6">
                         <div class="card-header">
                             @lang('page.required_currency_label')
                         </div>
                         <div class="card-body">
-                            <x-help-block :help="trans('page.required_currency_help')" />
-                            <input type="number" value="1" min="1" id="currency">
+                            <div class="form-group">
+                                <x-help-block :help="trans('page.required_currency_help')" />
+                                <input type="number" value="1" id="currency">
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="money_action_unique" checked>
+                                <label class="form-check-label" for="money_action_unique">@lang('actions.unique_label')</label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="tab-pane" id="tr-pre-3">
                 <div class="container">
                     @include('item.partials.new_item', [
