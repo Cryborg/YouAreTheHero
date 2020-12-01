@@ -204,4 +204,9 @@ class Story extends Model
 
         return $max;
     }
+
+    public function equipment()
+    {
+        return $this->hasMany(Equipment::class);
+    }
 }

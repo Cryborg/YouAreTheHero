@@ -185,29 +185,65 @@ $(document).on('click touchstart keydown', "[name='character_genre']", function 
 });
 
 $(document).on('click touchstart keydown', '#pills-options .form-check-input', function () {
-    const $this = $(this);
-    const id = $this.attr('id');
+    const id = $(this).attr('id');
     const value = $('#' + id).is(':checked');
 
     saveOption(id, value);
 });
 
-$("#currency_name").debounce("change", function() {
-    const $this = $(this);
+$(document).on('click touchstart keydown', '.deleteSlot', function () {
+    $.get({
+        url: route('story.equipment.delete', {story: storyId, equipment: $(this).data('equipmentid')}),
+        method: 'DELETE'
+    })
+        .done(function() {
+            $('.slotsList').load(route('story.equipment', {story: storyId}));
+        });
+});
 
-    saveOption('currency_name', $this.val());
+$(document).on('click touchstart keydown', '.updateSlot', function () {
+    const equipmentId = $(this).data('equipmentid');
+    const newSlotName = $('#equipment_' + equipmentId).val();
+
+    if (newSlotName !== '') {
+        $.post({
+            url: route('story.equipment.update', {equipment: equipmentId}),
+            data: {
+                'slot': newSlotName,
+            }
+        })
+            .done(function() {
+                $('.slotsList').load(route('story.equipment', {story: storyId}));
+            });
+    }
+});
+
+$(document).on('click touchstart keydown', '.addSlot', function () {
+    const newSlot = $('#new_slot').val();
+
+    if (newSlot !== '') {
+        $.post({
+            url: route('story.equipment.store', {story: storyId}),
+            data: {
+                'slot': newSlot,
+            }
+        })
+            .done(function() {
+                $('.slotsList').load(route('story.equipment', {story: storyId}));
+            });
+    }
+});
+
+$("#currency_name").debounce("change", function() {
+    saveOption('currency_name', $(this).val());
 }, 500);
 
 $("#currency_amount").debounce("change", function() {
-    const $this = $(this);
-
-    saveOption('currency_amount', $this.val());
+    saveOption('currency_amount', $(this).val());
 }, 500);
 
 $("#inventory_slots").debounce("change", function() {
-    const $this = $(this);
-
-    saveOption('inventory_slots', $this.val());
+    saveOption('inventory_slots', $(this).val());
 }, 500);
 
 $("#points_to_share").debounce("change", function() {
@@ -275,3 +311,5 @@ function checkPerson() {
 
     return correct;
 }
+
+$('.slotsList').load(route('story.equipment', {story: storyId}));

@@ -283,6 +283,27 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Equipment
+ *
+ * @property int $id
+ * @property int $story_id
+ * @property string $slot
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Equipment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Equipment newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Equipment query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Equipment whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Equipment whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Equipment whereSlot($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Equipment whereStoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Equipment whereUpdatedAt($value)
+ */
+	class Equipment extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Field
  *
  * @property int $id
@@ -765,6 +786,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \App\Models\User|null $author
  * @property-read \App\Models\Currency|null $currency
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Equipment[] $equipment
+ * @property-read int|null $equipment_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Field[] $fields
  * @property-read int|null $fields_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Genre[] $genres
@@ -826,11 +849,10 @@ namespace App\Models{
  * @property string $stat_attribution "player" means the player gives :points_to_share: points manually to his character. "dice" means it is done by throwing dice.
  * @property int $points_to_share Points to share amongst character stats
  * @property int $inventory_slots How much (virtual) slots there are in the inventory.
+ * @property int $currency_amount
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property string $currency_name
- * @property int $currency_amount
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption newQuery()
  * @method static \Illuminate\Database\Query\Builder|StoryOption onlyTrashed()
@@ -838,7 +860,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereCharacterGenre($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereCurrencyAmount($value)
- * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereCurrencyName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereHasCharacter($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StoryOption whereHasStats($value)

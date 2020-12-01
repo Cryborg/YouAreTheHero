@@ -1,3 +1,3 @@
 <div>
-    <p class="help-block">{{ $help }}</p>
+    <p class="help-block">{!! $help !!}</p>
 </div>

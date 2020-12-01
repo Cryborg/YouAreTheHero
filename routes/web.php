@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\OnlyAjax;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,7 +63,7 @@ Route::middleware('auth')->group(static function () {
         Route::get('{story}/sheet', 'StoryController@sheet')->name('story.sheet');
         Route::post('{story}/page/create/{page?}', 'PageController@create')->name('page.create');
         Route::get('{story}/has_errors', 'StoryController@hasErrors')->name('story.has_errors');
-        Route::get('{story}/{page?}', 'StoryController@getPlay')->name('story.play');
+        Route::get('{story}/play/{page?}', 'StoryController@getPlay')->name('story.play');
 
         Route::post('ajax_post_children_pages', 'StoryController@postChildrenPagesAjax')->name('story.ajax_postchildrenpages');
 
@@ -77,6 +78,14 @@ Route::middleware('auth')->group(static function () {
         Route::get('{story}/people/list', 'PersonController@index')->name('story.people.list');
         Route::post('{story}/person/store', 'PersonController@store')->name('story.person.store');
         Route::delete('{story}/person/{person}/delete', 'PersonController@destroy')->name('story.person.delete');
+
+        // Equipment, AJAX only
+        Route::group(['middleware' => OnlyAjax::class], function () {
+            Route::get('{story}/equipment', 'EquipmentController@index')->name('story.equipment');
+            Route::post('{story}/equipment/create', 'EquipmentController@store')->name('story.equipment.store');
+            Route::post('equipment/{equipment}', 'EquipmentController@update')->name('story.equipment.update');
+            Route::delete('{story}/equipment/{equipment}', 'EquipmentController@delete')->name('story.equipment.delete');
+        });
     });
 
     Route::prefix('page')->group(function () {
