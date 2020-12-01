@@ -16,8 +16,7 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedBigInteger('story_id');
-            $table->foreign('story_id')->references('id')->on('stories');
+            $table->foreignId('story_id');
 
             $table->string('category', 20)->nullable();
             $table->string('name', 30);
@@ -25,6 +24,8 @@ class CreateItemsTable extends Migration
             $table->boolean('single_use')->default(false);
             $table->boolean('is_unique')->default(false);
             $table->boolean('is_throwable')->default(true);
+
+            $table->foreignId('equipment_id')->nullable();
 
             $table->float('size')->default(1)
                   ->comment('How much room it takes in the inventory.');

@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="row mb-2">
-            <div class="col">
+            <div class="col p-1">
                 <div class="card">
                     <h5 class="card-header">@lang('item.price')</h5>
                     <div class="card-body">
@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col p-1">
                 <div class="card">
                     <h5 class="card-header">@lang('item.size')</h5>
                     <div class="card-body">
@@ -59,7 +59,18 @@
     </div>
 
     <div class="col-sm-12 col-lg-6">
-        <div class="card w-100">
+        <div class="card">
+            <div class="card-header">
+                @lang('equipment.slots_name')
+            </div>
+            <div class="card-body">
+                <x-help-block :help="trans('equipment.wether_it_can_be_equipped_help')"></x-help-block>
+
+                <div class="slotsSelect"></div>
+            </div>
+        </div>
+
+        <div class="card">
             @if ($story->options && $story->options->has_stats)
                 <h5 class="card-header">@lang('item.effects')</h5>
                 <div class="card-body">

@@ -6,4 +6,5 @@ return [
         . '- "Head", "Torso", "Feet", "Arms", "Legs", "Pinkie", "Left thumb"<br>'
         . '- "Hat", "Armour", "Sword", "Shield"',
     'add_slot_label' => 'Equipment',
+    'wether_it_can_be_equipped_help' => 'If this item can be equipped, choose the slot on which it can be placed on.',
 ];

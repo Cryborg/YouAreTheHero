@@ -541,3 +541,7 @@ div.popover.show {
 .modal-header-error {
     background-color: #ffbbbb;
 }
+
+.card-header {
+    background-color: #e9f1ff !important;
+}

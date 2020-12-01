@@ -16,7 +16,10 @@ class EquipmentController extends Controller
             'story' => $story,
         ];
 
-        return View::make('story.partials.slots_list', $data);
+        return Response::json([
+            'inputs' => View::make('story.partials.slots_list', $data)->render(),
+            'select' => View::make('story.partials.slots_select', $data)->render(),
+        ]);
     }
 
     public function store(Request $request, Story $story)

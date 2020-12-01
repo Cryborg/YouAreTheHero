@@ -131,7 +131,8 @@ $(document).on('click touchstart keydown', '.btnCreateItem', function () {
         'is_throwable': $parentModal.find('#is_throwable_' + context).is(':checked') ? 1 : 0,
         'size': $parentModal.find('#item_size_' + context).val(),
         'effects': values,
-        'category': $parentModal.find('#item_category_' + context).val()
+        'category': $parentModal.find('#item_category_' + context).val(),
+        'equipment_id': $parentModal.find('.equipmentSlot option:selected').val()
     };
 
     $.post({

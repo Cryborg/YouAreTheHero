@@ -191,13 +191,24 @@ $(document).on('click touchstart keydown', '#pills-options .form-check-input', f
     saveOption(id, value);
 });
 
+function refreshEquipmentLists() {
+    $.get({
+        url: route('story.equipment', {story: storyId})
+    })
+        .done(function(html) {
+            console.log(html);
+            $('.slotsList').html(html.inputs);
+            $('.slotsSelect').html(html.select);
+        });
+}
+
 $(document).on('click touchstart keydown', '.deleteSlot', function () {
     $.get({
         url: route('story.equipment.delete', {story: storyId, equipment: $(this).data('equipmentid')}),
         method: 'DELETE'
     })
         .done(function() {
-            $('.slotsList').load(route('story.equipment', {story: storyId}));
+            refreshEquipmentLists();
         });
 });
 
@@ -213,7 +224,7 @@ $(document).on('click touchstart keydown', '.updateSlot', function () {
             }
         })
             .done(function() {
-                $('.slotsList').load(route('story.equipment', {story: storyId}));
+                refreshEquipmentLists();
             });
     }
 });
@@ -229,7 +240,7 @@ $(document).on('click touchstart keydown', '.addSlot', function () {
             }
         })
             .done(function() {
-                $('.slotsList').load(route('story.equipment', {story: storyId}));
+                refreshEquipmentLists();
             });
     }
 });
@@ -312,4 +323,4 @@ function checkPerson() {
     return correct;
 }
 
-$('.slotsList').load(route('story.equipment', {story: storyId}));
+refreshEquipmentLists();

@@ -89,6 +89,7 @@ class ItemController extends Controller
                 'category'      => '',
                 'default_price' => 'required',
                 'effects'       => '',
+                'equipment_id'  => '',
                 'is_throwable'  => '',
                 'is_unique'     => '',
                 'name'          => 'required|min:2',

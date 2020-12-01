@@ -40,7 +40,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CharacterRiddleTableSeeder::class);
         $this->call(EffectsTableSeeder::class);
         $this->call(ItemPageTableSeeder::class);
-        $this->call(LtmTranslationsTableSeeder::class);
         $this->call(MigrationsTableSeeder::class);
         $this->call(PasswordResetsTableSeeder::class);
         $this->call(ReportsTableSeeder::class);
