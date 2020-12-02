@@ -30,8 +30,6 @@ trait UserSuccess
             ];
         }
 
-        Session::remove('successes');
-
         return [
             'success' => false
         ];
