@@ -211,4 +211,24 @@ class Item extends Model
                 return trans('common.no');
         }
     }
+
+    public function equip()
+    {
+        $character = $this->story->currentCharacter();
+
+        $character->items()->syncWithoutDetaching([
+            $this->id => ['is_equipped' => true]
+        ]);
+
+    }
+
+    public function unequip()
+    {
+        $character = $this->story->currentCharacter();
+
+        $character->items()->syncWithoutDetaching([
+            $this->id => ['is_equipped' => false]
+        ]);
+
+    }
 }

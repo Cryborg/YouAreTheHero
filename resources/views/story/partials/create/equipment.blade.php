@@ -6,9 +6,9 @@
                 <x-help-block :help="trans('equipment.add_slot_help')"></x-help-block>
 
                 <div class="form-inline">
-                    <input type="text" class="form-control mr-2" id="new_slot">
+                    <input type="text" class="form-control mr-2" id="new_equipment">
 
-                    <a class="btn btn-primary addSlot">
+                    <a class="btn btn-primary addEquipment">
                         <span class="icon-add text-white"></span> @lang('common.add')
                     </a>
                 </div>

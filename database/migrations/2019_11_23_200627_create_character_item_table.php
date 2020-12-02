@@ -25,6 +25,7 @@ class CreateCharacterItemTable extends Migration
             $table->unsignedInteger('quantity')->default(0);
             $table->boolean('is_used')->default(false);
             $table->boolean('taken')->default(false);
+            $table->boolean('is_equipped')->default(false);
         });
     }
 

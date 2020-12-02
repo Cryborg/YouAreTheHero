@@ -407,6 +407,17 @@ class StoryController extends ControllerBase
     {
         $character = Character::find(getSession('character_id'));
 
+
+
+
+
+        // Show equipment
+
+
+
+
+
+
         return view('story.partials.inventory', [
             'items'     => $this->showItemsInInventory($character),
             'character' => $character,
@@ -475,7 +486,7 @@ class StoryController extends ControllerBase
 
                 $story->update($validated);
             } else {
-                $story = Story::create($validated);
+                $story = $this->authUser->stories()->create($validated);
                 $story->options()->create($validated);
                 $story->currency()->updateOrCreate([], [
                     'name' => trans('story.currency_name_default'),

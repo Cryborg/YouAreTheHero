@@ -90,7 +90,7 @@
                     {{-- Languages / Translations --}}
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="#" id="navbarDropdownFlag" role="button" data-toggle="dropdown"
+                            <a class="nav-link dropdown-toggle mr-3" href="#" id="navbarDropdownFlag" role="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <img width="32" height="32" alt="{{ session('locale') }}"
                                     src="{!! asset('img/flags/' . session('locale') . '.png') !!}"/>

@@ -28,7 +28,7 @@ $(document).on('click touchstart keydown', '.deleteCharacterField', function () 
                 $modal.find('.modal-body').html(result.html);
                 $modal.find('.btn-confirm')
                     .data('fieldid', id)
-                    .addClass('deleteFieldConfirmed')
+                    .attr('class', 'btn-confirm btn btn-success deleteFieldConfirmed')
                     .html(result.texts.button);
 
                 $modal.modal();
@@ -196,31 +196,65 @@ function refreshEquipmentLists() {
         url: route('story.equipment', {story: storyId})
     })
         .done(function(html) {
-            console.log(html);
             $('.slotsList').html(html.inputs);
             $('.slotsSelect').html(html.select);
         });
 }
 
-$(document).on('click touchstart keydown', '.deleteSlot', function () {
+$(document).on('click touchstart keydown', '.deleteEquipmentConfirmed', function () {
+    const equipmentId = $(this).data('equipmentid');
+    const $modal = $('#modalPopup');
+
     $.get({
-        url: route('story.equipment.delete', {story: storyId, equipment: $(this).data('equipmentid')}),
+        url: route('equipment.delete', {equipment: equipmentId, force: true}),
         method: 'DELETE'
     })
-        .done(function() {
+        .done(function(result) {
+            if (result.success) {
+                refreshEquipmentLists();
+
+                $modal.modal('hide');
+            }
+        });
+});
+
+$(document).on('click touchstart keydown', '.deleteEquipment', function () {
+    const equipmentId = $(this).data('equipmentid');
+
+    $.get({
+        url: route('equipment.delete', {equipment: equipmentId}),
+        method: 'DELETE'
+    })
+        .done(function(result) {
+
+            if (result.type === 'confirm') {
+                const $modal = $('#modalPopup');
+
+                $modal.find('.modal-header').addClass('modal-header-error');
+                $modal.find('.modal-title').html(result.texts.title);
+                $modal.find('.modal-body').html(result.html);
+                $modal.find('.btn-confirm')
+                    .data('equipmentid', equipmentId)
+                    .attr('class', 'btn-confirm btn btn-success deleteEquipmentConfirmed')
+                    .html(result.texts.button);
+
+                $modal.modal();
+            }
+
+
             refreshEquipmentLists();
         });
 });
 
-$(document).on('click touchstart keydown', '.updateSlot', function () {
+$(document).on('click touchstart keydown', '.updateEquipment', function () {
     const equipmentId = $(this).data('equipmentid');
-    const newSlotName = $('#equipment_' + equipmentId).val();
+    const newEquipmentName = $('#equipment_' + equipmentId).val();
 
-    if (newSlotName !== '') {
+    if (newEquipmentName !== '') {
         $.post({
-            url: route('story.equipment.update', {equipment: equipmentId}),
+            url: route('equipment.update', {equipment: equipmentId}),
             data: {
-                'slot': newSlotName,
+                'slot': newEquipmentName,
             }
         })
             .done(function() {
@@ -229,14 +263,14 @@ $(document).on('click touchstart keydown', '.updateSlot', function () {
     }
 });
 
-$(document).on('click touchstart keydown', '.addSlot', function () {
-    const newSlot = $('#new_slot').val();
+$(document).on('click touchstart keydown', '.addEquipment', function () {
+    const newEquipment = $('#new_equipment').val();
 
-    if (newSlot !== '') {
+    if (newEquipment !== '') {
         $.post({
             url: route('story.equipment.store', {story: storyId}),
             data: {
-                'slot': newSlot,
+                'slot': newEquipment,
             }
         })
             .done(function() {

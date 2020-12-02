@@ -128,12 +128,14 @@ namespace App\Models{
  * @property int $quantity
  * @property int $is_used
  * @property int $taken
+ * @property int $is_equipped
  * @property-read \App\Models\Item $item
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem query()
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem whereCharacterId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem whereIsEquipped($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem whereIsUsed($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem whereItemId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem whereQuantity($value)
@@ -485,6 +487,7 @@ namespace App\Models{
  * @property int $single_use
  * @property bool $is_unique
  * @property bool $is_throwable
+ * @property int|null $equipment_id
  * @property float $size How much room it takes in the inventory.
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -509,6 +512,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereDefaultPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Item whereEquipmentId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereIsThrowable($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereIsUnique($value)
@@ -667,11 +671,11 @@ namespace App\Models{
  * App\Models\Prerequisite
  *
  * @property int $id
+ * @property int|null $prerequisiteable_id
+ * @property string $prerequisiteable_type
+ * @property int $page_id
  * @property string $operator
  * @property int $quantity
- * @property string $prerequisiteable_type
- * @property int|null $prerequisiteable_id
- * @property int $page_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
@@ -847,9 +851,9 @@ namespace App\Models{
  * @property string|null $character_genre
  * @property bool $has_stats Do we show the stats creation page?
  * @property string $stat_attribution "player" means the player gives :points_to_share: points manually to his character. "dice" means it is done by throwing dice.
- * @property int $points_to_share Points to share amongst character stats
- * @property int $inventory_slots How much (virtual) slots there are in the inventory.
- * @property int $currency_amount
+ * @property int $points_to_share Points to share between character stats
+ * @property int $inventory_slots How many (virtual) slots there are in the inventory.
+ * @property int $currency_amount Default amount of the currency when a new character is created.
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
@@ -905,13 +909,13 @@ namespace App\Models{
  * @property string $locale
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $role
+ * @property bool $optin_system
+ * @property bool $show_help
  * @property string|null $google_id
  * @property string|null $avatar
  * @property string|null $avatar_original
  * @property \Illuminate\Support\Carbon|null $valid_from
  * @property string|null $remember_token
- * @property bool $optin_system
- * @property bool $show_help
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at

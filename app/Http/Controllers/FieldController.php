@@ -93,13 +93,14 @@ class FieldController extends Controller
                 $prerequisitesCount = $field->prerequisites()->count();
                 $itemsCount         = $field->items()->count();
                 $resultInPages      = $this->getOccurrencesInPages($field);
-                $response['test'] = $resultInPages;
+                $response['test']   = $resultInPages;
 
+                // Common to all cases
                 if ($prerequisitesCount > 0 || $itemsCount > 0 || count($resultInPages) > 0) {
                     $response['type']  = 'confirm';
                     $response['texts'] = [
-                        'title'  => trans('field.deleting_field.title'),
-                        'button' => trans('field.deleting_field.button')
+                        'title'  => trans('field.deleting.title'),
+                        'button' => trans('field.deleting.button')
                     ];
                 }
 

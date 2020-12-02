@@ -53,6 +53,6 @@
     @endif
 
     <div>
-        @warning({{ trans('field.deleting_field.confirm') }})
+        @warning({{ trans('field.deleting.confirm') }})
     </div>
 </div>

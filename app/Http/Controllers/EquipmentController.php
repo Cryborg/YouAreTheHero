@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Equipment;
+use App\Models\Item;
 use App\Models\Story;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
@@ -46,11 +47,41 @@ class EquipmentController extends Controller
         ]);
     }
 
-    public function delete(Request $request, Story $story, Equipment $equipment)
+    public function delete(Request $request, Equipment $equipment)
     {
-        return Response::json([
-            'success' => (bool)$story->equipment()->where('id', $equipment->id)->delete(),
-            'type' => 'delete',
-        ]);
+        try {
+            $response = [
+                'success' => false,
+                'type'    => 'delete',
+                'texts'   => [],
+                'request' => $request->all()
+            ];
+
+            if (!$request->get('force'))
+            {
+                $usedInItems = Item::where('equipment_id', $equipment->id)->get();
+
+                if ($usedInItems->count() > 0) {
+                    $response['type']  = 'confirm';
+                    $response['texts'] = [
+                        'title'  => trans('equipment.deleting.title', ['equipment' => $equipment->slot]),
+                        'button' => trans('equipment.deleting.button')
+                    ];
+                    $response['html'] = View::make('layouts.modals.template.deleting_equipment', ['items' => $usedInItems])->render();
+                }
+            }
+
+            // If it is used nowhere, soft delete it
+            if ($response['type'] === 'delete') {
+                $response['success'] = $equipment->delete();
+            }
+
+            return Response::json($response);
+        } catch (\Exception $e) {
+            return Response::json([
+                'success' => false,
+                'type'    => 'delete',
+            ]);
+        }
     }
 }

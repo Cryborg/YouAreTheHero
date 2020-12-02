@@ -83,8 +83,8 @@ Route::middleware('auth')->group(static function () {
         Route::group(['middleware' => OnlyAjax::class], function () {
             Route::get('{story}/equipment', 'EquipmentController@index')->name('story.equipment');
             Route::post('{story}/equipment/create', 'EquipmentController@store')->name('story.equipment.store');
-            Route::post('equipment/{equipment}', 'EquipmentController@update')->name('story.equipment.update');
-            Route::delete('{story}/equipment/{equipment}', 'EquipmentController@delete')->name('story.equipment.delete');
+            Route::post('equipment/{equipment}', 'EquipmentController@update')->name('equipment.update');
+            Route::delete('equipment/{equipment}', 'EquipmentController@delete')->name('equipment.delete');
         });
     });
 

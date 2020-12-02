@@ -35,7 +35,7 @@ $(document).on('click touchstart keydown', '.btnDeleteItem', function () {
                 $modal.find('.modal-body').html(result.html);
                 $modal.find('.btn-confirm')
                     .data('itemid', id)
-                    .addClass('deleteItemConfirmed')
+                    .attr('class', 'btn-confirm btn btn-success deleteItemConfirmed')
                     .html(result.texts.button);
 
                 $('#modalMeta').modal('hide');

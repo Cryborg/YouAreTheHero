@@ -14,7 +14,6 @@ class Story extends Model
     use PresentableTrait, SoftDeletes, HasFactory;
 
     protected $dates = ['deleted_at'];
-    protected $presenter = 'App\\Presenters\\StoryPresenter';
 
     protected $guarded = ['id'];
 
@@ -22,32 +21,13 @@ class Story extends Model
         'is_published' => 'boolean',
     ];
 
-
     public static function boot()
     {
         parent::boot();
 
-        static::creating(static function ($story) {
-            $authId = Auth::id();
-
-            if ($authId) {
-                $story['user_id'] = $authId;
-            }
-        });
-
         static::created(static function($page)
         {
             Cache::forget('stories.list');
-        });
-
-        static::deleting(function ($story) { // before delete() method call this
-            $story->pages->each(function($page) {
-                $page->delete();
-            });
-            $story->fields->each(function($field) {
-                $field->delete();
-            });
-
         });
     }
 
