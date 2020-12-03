@@ -25,7 +25,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $actionable
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $triggerable
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $trigger
  * @method static \Illuminate\Database\Eloquent\Builder|Action newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Action newQuery()
  * @method static \Illuminate\Database\Query\Builder|Action onlyTrashed()

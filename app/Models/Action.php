@@ -20,8 +20,8 @@ class Action extends Model
         return $this->morphTo();
     }
 
-    public function triggerable()
+    public function trigger()
     {
-        return $this->morphTo();
+        return $this->morphTo('trigger');
     }
 }

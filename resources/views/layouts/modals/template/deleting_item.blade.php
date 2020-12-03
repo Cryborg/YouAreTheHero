@@ -27,8 +27,8 @@
                 <ul>
                     @foreach ($actions as $action)
                         <li>
-                            <a target="_blank" href="{{ route('page.edit', ['page' => $action->triggerable]) }}">
-                                {{ $action->triggerable->title }}
+                            <a target="_blank" href="{{ route('page.edit', ['page' => $action->trigger]) }}">
+                                {{ $action->trigger->title }}
                             </a>
                         </li>
                     @endforeach
