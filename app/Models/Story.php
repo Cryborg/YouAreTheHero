@@ -189,4 +189,9 @@ class Story extends Model
     {
         return $this->hasMany(Equipment::class);
     }
+
+    public function locations()
+    {
+        return $this->hasMany(Location::class);
+    }
 }

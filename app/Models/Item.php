@@ -231,4 +231,10 @@ class Item extends Model
         ]);
 
     }
+
+    public function triggers()
+    {
+        return $this->morphMany(Action::class, 'trigger')
+                    ->with('actionable');
+    }
 }

@@ -57,6 +57,21 @@ $(document).on('click touchstart keydown', '.deleteFieldConfirmed', function () 
         });
 });
 
+$(document).on('click touchstart keydown', '.deleteLocation', function () {
+    const $this = $(this);
+    const locationId = $this.data('locationid');
+
+    $.get({
+        url: route('location.delete', {location: locationId}),
+        method: 'DELETE'
+    })
+        .done(function(result) {
+            if (result.success) {
+                refreshLocationsLists();
+            }
+        });
+});
+
 // Edit a character_field
 $(document).on('click touchstart keydown', '.editCharacterField', function () {
     const $this = $(this);
@@ -209,6 +224,15 @@ function refreshEquipmentLists() {
         });
 }
 
+function refreshLocationsLists() {
+    $.get({
+        url: route('location.list', {story: storyId})
+    })
+        .done(function(html) {
+            $('.locationsList').html(html);
+        });
+}
+
 $(document).on('click touchstart keydown', '.deleteEquipmentConfirmed', function () {
     const equipmentId = $(this).data('equipmentid');
     const $modal = $('#modalPopup');
@@ -267,6 +291,23 @@ $(document).on('click touchstart keydown', '.updateEquipment', function () {
         })
             .done(function() {
                 refreshEquipmentLists();
+            });
+    }
+});
+
+$(document).on('click touchstart keydown', '.updateLocation', function () {
+    const locationId = $(this).data('locationid');
+    const newLocationName = $('#location_' + locationId).val();
+
+    if (newLocationName !== '') {
+        $.post({
+            url: route('location.update', {location: locationId}),
+            data: {
+                'name': newLocationName,
+            }
+        })
+            .done(function() {
+                refreshLocationsLists();
             });
     }
 });
@@ -366,3 +407,4 @@ function checkPerson() {
 }
 
 refreshEquipmentLists();
+refreshLocationsLists();

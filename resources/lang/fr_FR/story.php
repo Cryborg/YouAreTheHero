@@ -14,6 +14,7 @@ return array (
   'create_tab3' => '3. Personnages',
   'create_tab4' => '5. Gestion des objets',
   'create_tab5' => '4. Equipement',
+  'create_tab6' => '6. Lieux',
   'create_title' => 'Nouvelle histoire',
   'currency_amount' => 'Montant de départ',
   'currency_amount_help' => 'Il s\'agit du montant qu\'aura le personnage au début de l\'histoire.',

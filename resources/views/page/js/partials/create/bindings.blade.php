@@ -202,7 +202,7 @@ $(document).on('click touchstart keydown', '#add_Location', function () {
     const $locationName = $('#location_name');
 
     $.post({
-        url: route('location.store'),
+        url: route('location.store', {story: storyId}),
         data: {
             'name': $locationName.val(),
             'page_id': $locationName.data('pageid')

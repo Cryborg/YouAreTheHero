@@ -22,6 +22,9 @@
             <li class="nav-item">
                 <a class="nav-link" id="pills-items-tab" data-toggle="pill" href="#pills-items" role="tab" aria-controls="pills-items" aria-selected="false">{{ trans('story.create_tab4') }}</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-locations-tab" data-toggle="pill" href="#pills-locations" role="tab" aria-controls="pills-locations" aria-selected="false">{{ trans('story.create_tab6') }}</a>
+            </li>
         @endif
         @if ($story && $story->getCurrentPage())
             <li class="nav-item">
@@ -120,13 +123,20 @@
 
         {{-- Equipment--}}
         <div class="tab-pane" id="pills-equipment" role="tabpanel" aria-labelledby="pills-tab-5">
-            @include('story.partials.create.equipment', ['story' => $story])
+            @include('story.partials.create.equipment')
         </div>
 
         {{-- Items --}}
         @isset($story)
             <div class="tab-pane" id="pills-items" role="tabpanel" aria-labelledby="pills-tab-4">
                 @include('story.partials.create.items', ['story' => $story])
+            </div>
+        @endisset
+
+        {{-- Locations --}}
+        @isset($story)
+            <div class="tab-pane" id="pills-locations" role="tabpanel" aria-labelledby="pills-tab-6">
+                @include('story.partials.create.locations')
             </div>
         @endisset
     </div>

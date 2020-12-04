@@ -14,6 +14,7 @@ return array (
   'create_tab3' => '3. Characters',
   'create_tab4' => '5. Manage items',
   'create_tab5' => '4. Equipment',
+  'create_tab6' => '6. Locations',
   'create_title' => 'New story',
   'currency_amount' => 'Amount',
   'currency_amount_help' => 'How much money will the character start with.',

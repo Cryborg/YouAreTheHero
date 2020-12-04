@@ -487,8 +487,8 @@ namespace App\Models{
  * @property int $single_use
  * @property bool $is_unique
  * @property bool $is_throwable
- * @property int|null $equipment_id
  * @property float $size How much room it takes in the inventory.
+ * @property int|null $equipment_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
@@ -558,6 +558,7 @@ namespace App\Models{
  * App\Models\Location
  *
  * @property int $id
+ * @property int $story_id
  * @property int|null $parent_id
  * @property string $name
  * @property int|null $page_id
@@ -575,6 +576,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Location whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Location wherePageId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Location whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Location whereStoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Location whereUpdatedAt($value)
  */
 	class Location extends \Eloquent {}
@@ -591,7 +593,7 @@ namespace App\Models{
  * @property string|null $title
  * @property string $content
  * @property string|null $layout
- * @property bool $is_checkpoint
+ * @property int $is_checkpoint
  * @property int $is_shop Whether the player can sell objects in this page.
  * @property string|null $ending_type If is_last, type of the ending, wether it is good, bad, a death, etc
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -671,11 +673,11 @@ namespace App\Models{
  * App\Models\Prerequisite
  *
  * @property int $id
- * @property int|null $prerequisiteable_id
- * @property string $prerequisiteable_type
- * @property int $page_id
  * @property string $operator
  * @property int $quantity
+ * @property string $prerequisiteable_type
+ * @property int|null $prerequisiteable_id
+ * @property int $page_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
@@ -751,6 +753,7 @@ namespace App\Models{
  * @property-read int|null $characters_count
  * @property-read \App\Models\Item|null $item
  * @property-read \App\Models\Page|null $page
+ * @property-read \App\Models\Page $parent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Prerequisite[] $prerequisites
  * @property-read int|null $prerequisites_count
  * @method static \Illuminate\Database\Eloquent\Builder|Riddle newModelQuery()
@@ -798,6 +801,8 @@ namespace App\Models{
  * @property-read int|null $genres_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[] $items
  * @property-read int|null $items_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Location[] $locations
+ * @property-read int|null $locations_count
  * @property-read \App\Models\StoryOption|null $options
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[] $pages
  * @property-read int|null $pages_count
@@ -851,9 +856,9 @@ namespace App\Models{
  * @property string|null $character_genre
  * @property bool $has_stats Do we show the stats creation page?
  * @property string $stat_attribution "player" means the player gives :points_to_share: points manually to his character. "dice" means it is done by throwing dice.
- * @property int $points_to_share Points to share between character stats
- * @property int $inventory_slots How many (virtual) slots there are in the inventory.
- * @property int $currency_amount Default amount of the currency when a new character is created.
+ * @property int $points_to_share Points to share amongst character stats
+ * @property int $inventory_slots How much (virtual) slots there are in the inventory.
+ * @property int $currency_amount
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
@@ -909,13 +914,13 @@ namespace App\Models{
  * @property string $locale
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $role
- * @property bool $optin_system
- * @property bool $show_help
  * @property string|null $google_id
  * @property string|null $avatar
  * @property string|null $avatar_original
  * @property \Illuminate\Support\Carbon|null $valid_from
  * @property string|null $remember_token
+ * @property bool $optin_system
+ * @property bool $show_help
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at

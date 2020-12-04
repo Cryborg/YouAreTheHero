@@ -123,7 +123,10 @@ Route::middleware('auth')->group(static function () {
     Route::get('/character/locations', 'CharacterLocationController@index')->name('character.locations');
 
 // Location
-    Route::post('/location/create', 'LocationController@store')->name('location.store');
+    Route::get('{story}/location', 'LocationController@index')->name('location.list');
+    Route::post('{story}/location/create', 'LocationController@store')->name('location.store');
+    Route::post('location/{location}/update', 'LocationController@update')->name('location.update');
+    Route::delete('location/{location}/delete', 'LocationController@destroy')->name('location.delete');
 
 // Field
     Route::post('/field/{story}/create', 'FieldController@store')->name('field.store');
