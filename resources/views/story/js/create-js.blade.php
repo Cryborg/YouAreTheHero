@@ -184,7 +184,15 @@ $(document).on('click touchstart keydown', "[name='character_genre']", function 
     $('#has_character').prop('checked', true);
 });
 
-$(document).on('click touchstart keydown', '#pills-options .form-check-input', function () {
+$(document).on('click touchstart keydown', '#has_stats', function () {
+    if ($(this).is(':checked')) {
+        $('.hasStats').show();
+    } else {
+        $('.hasStats').hide();
+    }
+});
+
+$(document).on('click touchstart keydown', '#pills-sheet .form-check-input', function () {
     const id = $(this).attr('id');
     const value = $('#' + id).is(':checked');
 

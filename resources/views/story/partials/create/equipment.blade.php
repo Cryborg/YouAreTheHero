@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12 col-xl-6">
         <div class="card">
-            <div class="card-header">@lang('equipment.add_slot_label')</div>
+            <div class="card-header">@lang('equipment.slots_name')</div>
             <div class="card-body">
                 <x-help-block :help="trans('equipment.add_slot_help')"></x-help-block>
 

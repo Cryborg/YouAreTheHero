@@ -1,7 +1,7 @@
 <?php
 
 return array (
-  'people' => 'People',
+  'people' => 'Secondary characters',
   'first_name' => 'First name',
   'last_name' => 'Last name',
   'role' => 'Role',
