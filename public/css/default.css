@@ -545,3 +545,7 @@ div.popover.show {
 .card-header {
     background-color: #e9f1ff !important;
 }
+
+.fakeOptgroup {
+    background-color: #e9f1ff;
+}

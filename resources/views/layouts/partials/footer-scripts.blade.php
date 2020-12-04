@@ -294,7 +294,7 @@
         toolbar: [
             ['style', ['style']],
             ['font', ['bold', 'italic', 'underline', 'clear']],
-            ['fontname', ['fontname']],
+            //['fontname', ['fontname']],
             ['color', ['color']],
             ['para', ['ul', 'ol', 'paragraph']],
             ['table', ['table']],
@@ -302,12 +302,13 @@
             ['view', ['fullscreen', 'codeview']],
             ['custom', ['cleaner','placeholders', 'popovers', 'functions', 'variables']],
         ],
+        //fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana', 'Roboto'],
+        //fontNamesIgnoreCheck: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana', 'Roboto']
         buttons: {
-            placeholders: PlaceholdersButton,
             popovers: PopoverButton,
+            placeholders: PlaceholdersButton,
             functions: FunctionsButton,
             variables: VariablesButton,
-            // example: ExampleButton
         },
         spellcheck: true,
         cleaner: {

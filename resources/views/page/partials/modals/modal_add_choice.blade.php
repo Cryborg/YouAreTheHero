@@ -5,7 +5,7 @@
     <div class="card-body">
         <div class="card-text">
             <x-help-block :help="trans('page.link_text_help')"></x-help-block>
-            <input type="text" id="link_text" class="w-100">
+            <input type="text" id="link_text" class="form-control w-100">
         </div>
     </div>
 </div>

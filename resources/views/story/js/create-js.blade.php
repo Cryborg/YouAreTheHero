@@ -129,7 +129,7 @@ $(document).on('click touchstart keydown', '.addField', function () {
         })
             .done(function (result) {
                 if (result.success) {
-                    var html = '<tr>' +
+                    var html = '<tr data-fieldid="' + result.field.id + '">' +
                         '<td><div>' + result.field.name + '</div></td>' +
                         '<td><div>' + result.field.min_value + '</div></td>' +
                         '<td><div>' + result.field.max_value + '</div></td>' +
@@ -137,7 +137,7 @@ $(document).on('click touchstart keydown', '.addField', function () {
                         '<td class="text-center"><div><input type="checkbox" value="1" ' +
                             (result.field.hidden ? 'checked' : '') +
                         '></div></td>' +
-                        '<td class="text-center"><div><span class="icon-trash text-danger deleteCharacterField" data-field_id="' + result.field.id + '"></span></div></td>' +
+                        '<td class="text-center"><div><span class="icon-trash text-danger clickable deleteCharacterField" data-field_id="' + result.field.id + '"></span></div></td>' +
                         '</tr>';
                     $('#stats_story').append(html);
 

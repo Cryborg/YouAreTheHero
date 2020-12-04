@@ -135,7 +135,7 @@
                                     </a>
                                     <a class="btn btn-light text-left w-75" role="button">
                                         <span class="icon-eye text-black mr-3" data-pageid="{{ $riddle->id }}"></span>
-                                        {{ $riddle->page->present()->title }}
+                                        {{ $riddle->parent->present()->title }}
                                     </a>
                                 </div>
                             </div>

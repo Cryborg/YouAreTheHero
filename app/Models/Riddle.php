@@ -14,6 +14,11 @@ class Riddle extends Model
 
     private $isRiddleSolved = null;
 
+    public function parent()
+    {
+        return $this->belongsTo(Page::class, 'page_id');
+    }
+
     public function page()
     {
         return $this->belongsTo(Page::class, 'target_page_id');
