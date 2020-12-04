@@ -1,13 +1,12 @@
 <?php
 
 return [
-    'add_slot_help'                  => 'Add a new slot. This is where the character will be able to equip something.<br>'
-                                        . 'For example:<br>'
-                                        . '- "Head", "Torso", "Feet", "Arms", "Legs", "Pinkie", "Left thumb"<br>'
-                                        . '- "Hat", "Armour", "Sword", "Shield"',
-    'add_slot_label'                 => 'Equipment',
-    'deleting'             => [
-        'title' => '<b>:equipment</b> est rattaché aux éléments suivants',
+    'add_slot_help'                  => 'Ajoute un  nouvel emplacement où certains objets pourront être équipés.<br>'
+                                        . 'Par exemple :<br>'
+                                        . '- "Tête", "Torse", "Pieds", "Bras", "Petit doigt", "Pouce gauche"<br>'
+                                        . '- "Chapeau", "Armure", "Epée", "Bouclier"',
+    'deleting'                       => [
+        'title'  => '<b>:equipment</b> est rattaché aux éléments suivants',
         'button' => 'Confirmer',
     ],
     'slots_name'                     => 'Emplacements',
