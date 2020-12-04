@@ -25,7 +25,6 @@ class PageFactory extends Factory
             'title'         => trans('model.title'),
             'content'       => '<p>' . trans('model.content') . '</p>',
             'is_last'       => false,
-            'is_checkpoint' => false,
             'layout'        => 'play1',
         ];
     }

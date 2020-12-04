@@ -28,7 +28,7 @@ return [
     'edit_choice_modal_title'         => 'Modifier le texte du choix',
     'existing_item'                   => 'Objet existant',
     'existing_page'                   => 'Choisis une page existante',
-    'hide_unavailable_choice'         => 'Cache le lien vers cette page si les conditions ci-dessus ne sont pas remplies.',
+    'hide_unavailable_choice'         => 'Cache le lien vers cette page si ses prérequis ne sont pas remplis.',
     'item_page_modal_title'           => 'Ajout d\'un objet dans la page',
     'items_list'                      => 'Liste des objets',
     'items_on_page'                   => 'Objets déjà sur la page',

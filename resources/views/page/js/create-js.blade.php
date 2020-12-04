@@ -94,7 +94,7 @@ $(document).on('show.bs.modal', '#modalMeta', function (event) {
     }
 });
 
-$('#title, #is_checkpoint, #is_last, [name="ending_type"]').on('blur', function () {
+$('#title, #is_last, [name="ending_type"]').on('blur', function () {
     savePage();
 });
 
@@ -119,7 +119,6 @@ function savePage() {
         'is_first': $('#is_first').is(":checked") ? 1 : 0,
         'is_last': isLast,
         'ending_type': isLast ? $('[name="ending_type"]:checked').val() : null,
-        'is_checkpoint': $('#is_checkpoint').is(":checked") ? 1 : 0,
     };
 
     if ($('#linktext').length > 0) {

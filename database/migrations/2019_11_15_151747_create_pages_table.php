@@ -32,8 +32,6 @@ class CreatePagesTable extends Migration
             $table->string('layout')
                   ->default('play1')
                   ->nullable();
-            $table->boolean('is_checkpoint')
-                  ->default(false);
             $table->boolean('is_shop')
                   ->default(false)
                   ->comment('Whether the player can sell objects in this page.');

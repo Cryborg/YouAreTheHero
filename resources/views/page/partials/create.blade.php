@@ -177,17 +177,6 @@
                                     </ul>
                                 </div>
                             @endif
-                            <div class="form-group form-check">
-                                <ul class="list-group">
-                                    <li class="list-group-item">
-                                        <x-help-block :help="trans('model.page_is_checkpoint_help')"></x-help-block>
-                                        <label>
-                                            {!! Form::checkbox('is_checkpoint', 1, $page->is_checkpoint or false, ['id' => 'is_checkpoint']) !!}
-                                            @lang('model.is_checkpoint')
-                                        </label>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                     <div class="tab-pane" id="page-3">

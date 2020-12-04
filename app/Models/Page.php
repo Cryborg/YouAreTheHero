@@ -33,7 +33,6 @@ class Page extends Model
     protected $casts      = [
         'is_first'      => 'boolean',
         'is_last'       => 'boolean',
-        'is_checkpoint' => 'boolean',
 
         'verbs_page'      => 'array',
         'verbs_inventory' => 'array',

@@ -28,7 +28,7 @@ return [
     'edit_choice_modal_title'         => 'Edit choice text',
     'existing_item'                   => 'Existing item',
     'existing_page'                   => 'Choose an existing page',
-    'hide_unavailable_choice'         => 'Hide the link to this page when the requirements above are not met.',
+    'hide_unavailable_choice'         => 'Hide the link to this page when its requirements are not met.',
     'item_page_modal_title'           => 'Put an item in the page',
     'items_list'                      => 'Items list',
     'items_on_page'                   => 'Items already on page',

@@ -129,10 +129,10 @@
     </div>
 </div>
 @if ((isset($displayCreateButton) && $displayCreateButton === true) || !isset($displayCreateButton))
-    <div class="row">
+    <div class="row mt-2">
         <div class="col">
             <div class="form-group mb-4">
-                <button class="btn btn-primary btnCreateItem" data-context="{{ $context }}" data-original-text="{{ trans('item.create_btn') }}">
+                <button class="btn btn-primary btn-lg w-100 btnCreateItem" data-context="{{ $context }}" data-original-text="{{ trans('item.create_btn') }}">
                     {{ trans('item.create_btn') }}
                 </button>
             </div>

@@ -143,7 +143,6 @@ class PageController extends Controller
                 'is_first'      => 'required',
                 'is_last'       => 'required',
                 'ending_type'   => 'required_if:is_last,on',
-                'is_checkpoint' => 'required',
             ]);
 
             if ($page->update($validated)) {
