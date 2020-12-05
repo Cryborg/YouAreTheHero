@@ -200,13 +200,25 @@ $(document).on('click touchstart keydown', '.choice-text.icon-fountain-pen', fun
 $(document).on('click touchstart keydown', '#add_Location', function () {
     const $this = $(this);
     const $locationName = $('#location_name');
+    const existingLocationId = $('#existingLocationId option:selected').val();
+    const newLocationName = $locationName.val();
+    let data = {};
+
+    if (existingLocationId !== 0) {
+        data.location_id = existingLocationId;
+    } else {
+        if (newLocationName !== '') {
+            data.name = newLocationName;
+        }
+    }
+
+    if (data.length === 0) return false;
+
+    data.page_id = $locationName.data('pageid');
 
     $.post({
         url: route('location.store', {story: storyId}),
-        data: {
-            'name': $locationName.val(),
-            'page_id': $locationName.data('pageid')
-        }
+        data: data
     })
         .done(function (result) {
             if (result.success && result.type !== 'delete') {

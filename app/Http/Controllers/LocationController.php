@@ -37,6 +37,7 @@ class LocationController extends Controller
      */
     public function store(Request $request, Story $story)
     {
+        // New location
         if ($request->post('name') !== null) {
             $pageId = $request->post('page_id', null);
 
@@ -57,6 +58,21 @@ class LocationController extends Controller
                 'type' => 'save',
                 'location' => $location,
                 'refreshLocations' => true
+            ]);
+        }
+
+        // Update location with a page
+        if ($request->post('location_id')) {
+            $location = $story->locations()->updateOrCreate([
+                'id' => $request->post('location_id')
+            ], [
+                'page_id' => $request->post('page_id')
+            ]);
+
+            return Response::json([
+                'success' => $location instanceof Location,
+                'type' => 'save',
+                'location' => $location,
             ]);
         }
 
