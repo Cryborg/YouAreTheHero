@@ -6,6 +6,7 @@ use App\Models\Field;
 use App\Models\Item;
 use App\Models\CharacterField;
 use App\Models\Currency;
+use App\Models\Location;
 use App\Models\Page;
 use App\Models\Riddle;
 use Illuminate\Support\ServiceProvider;
@@ -33,9 +34,10 @@ class AppServiceProvider extends ServiceProvider
     {
         Relation::morphMap([
            'character_field' => CharacterField::class,
+           'currency'        => Currency::class,
            'field'           => Field::class,
            'item'            => Item::class,
-           'currency'        => Currency::class,
+           'location'        => Location::class,
            'page'            => Page::class,
            'riddle'          => Riddle::class,
         ]);

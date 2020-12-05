@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Classes\Action;
+use App\Classes\Action as ActionClass;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -57,9 +57,9 @@ class Item extends Model
     /**
      * Get actions that contain this item
      */
-    public function actions()
+    public function actions(): MorphMany
     {
-        return $this->morphMany(\App\Models\Action::class, 'actionable');
+        return $this->morphMany(Action::class, 'actionable');
     }
 
     public function story(): BelongsTo
@@ -113,7 +113,7 @@ class Item extends Model
         $character = $this->story->currentCharacter();
 
         // Check if there is enough room in the character's inventory
-        if (Action::hasRoomLeftInInventory($character, $this)) {
+        if (ActionClass::hasRoomLeftInInventory($character, $this)) {
             $itemPage = ItemPage::where('item_id', $this->id)
                 ->where('page_id', $page->id)
                 ->first();
@@ -232,9 +232,9 @@ class Item extends Model
 
     }
 
-    public function triggers()
+    public function triggers(): MorphMany
     {
         return $this->morphMany(Action::class, 'trigger')
-                    ->with('actionable');
+            ->with('actionable');
     }
 }

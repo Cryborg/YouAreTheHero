@@ -14,7 +14,8 @@
                                 x{{ $item->pivot->quantity }}
                             @endif
                         </span>
-                        @if ($item->is_throwable || $item->fields()->count() > 0)
+
+                        @if ($item->is_throwable || $item->triggers()->count() > 0 || $item->fields()->count() > 0)
                             <ul class="navbar-nav ml-auto float-right">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -22,6 +23,17 @@
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right shadow-lg">
+                                        @if ($item->triggers()->count() > 0)
+
+                                            @foreach ($item->triggers as $trigger)
+                                                @if ($trigger->actionable instanceof \App\Models\Location)
+                                                    <a class="clickable dropdown-item itemUseMap"
+                                                        data-itemid="{{ $item->id }}" data-characterid="{{ $character->id }}">@lang('item.use_map')</a>
+                                                    @break
+                                                @endif
+                                            @endforeach
+                                        @endif
+
                                         @if ($item->fields()->count() > 0)
                                             <a class="clickable dropdown-item itemUse"
                                                 data-itemid="{{ $item->id }}" data-characterid="{{ $character->id }}">@lang('item.use')</a>

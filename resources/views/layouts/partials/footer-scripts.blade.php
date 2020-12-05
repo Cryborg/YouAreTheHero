@@ -108,6 +108,9 @@
                 if (data.refreshPurse === true) {
                     loadPurse();
                 }
+                if (data.refreshLocations === true) {
+                    loadLocations();
+                }
 
                 // Check if we have to show some User Success toast
                 if (data.user_success) {

@@ -44,6 +44,7 @@ return [
     'throw_away'         => 'Jeter',
     'unused_items_label' => 'Objets non utilisés',
     'use'                => 'Utiliser',
+    'use_map'            => 'Lire',
     'variable'           => 'Variable',
     'verb'               => 'Action',
 ];

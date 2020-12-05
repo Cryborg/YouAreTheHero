@@ -48,6 +48,15 @@ $(document).on('click touchstart keydown', '.itemThrowAway', function () {
     });
 });
 
+$(document).on('click touchstart keydown', '.itemUseMap', function () {
+    const itemId = $(this).data('itemid');
+    const characterId = $(this).data('characterid');
+
+    $.get({
+        url: route('item.use.map', {'character': characterId, 'item': itemId})
+    });
+});
+
 $(document).on('click touchstart keydown', '.itemUse', function () {
     const itemId = $(this).data('itemid');
     const characterId = $(this).data('characterid');
