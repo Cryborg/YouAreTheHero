@@ -26,7 +26,9 @@ function loadChoices() {
 
 function loadLocations() {
     const $block = $('.locations-block');
-    let routeLocations = route('character.locations');
+    let routeLocations = route('character.locations', {
+        character: $block.data('characterid')
+    });
 
     $block.html(loadingSpinner);
     $block.load(routeLocations);

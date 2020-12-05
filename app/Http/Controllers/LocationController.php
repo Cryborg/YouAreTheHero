@@ -27,16 +27,6 @@ class LocationController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
@@ -48,16 +38,25 @@ class LocationController extends Controller
     public function store(Request $request, Story $story)
     {
         if ($request->post('name') !== null) {
-            $location = $story->locations()->updateOrCreate([
-                'page_id' => $request->post('page_id'),
-            ], [
-                'name' => $request->post('name'),
-            ]);
+            $pageId = $request->post('page_id', null);
+
+            if ($pageId !== null) {
+                $location = $story->locations()->updateOrCreate([
+                   'page_id' => $pageId,
+                ], [
+                    'name' => $request->post('name'),
+                ]);
+            } else {
+                $location = $story->locations()->create([
+                    'name' => $request->post('name')
+                ]);
+            }
 
             return Response::json([
                 'success' => $location instanceof Location,
                 'type' => 'save',
                 'location' => $location,
+                'refreshLocations' => true
             ]);
         }
 
@@ -66,6 +65,7 @@ class LocationController extends Controller
         return Response::json([
             'success' => (bool)$deleted,
             'type' => 'delete',
+            'refreshLocations' => true
         ]);
     }
 
@@ -86,6 +86,7 @@ class LocationController extends Controller
         return Response::json([
             'success' => $update,
             'type' => 'save',
+            'refreshLocations' => true
         ]);
     }
 
@@ -101,6 +102,7 @@ class LocationController extends Controller
         return Response::json([
             'success' => $location->delete(),
             'type' => 'delete',
+            'refreshLocations' => true
         ]);
     }
 }

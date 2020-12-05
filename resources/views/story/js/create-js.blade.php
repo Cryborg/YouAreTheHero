@@ -64,12 +64,7 @@ $(document).on('click touchstart keydown', '.deleteLocation', function () {
     $.get({
         url: route('location.delete', {location: locationId}),
         method: 'DELETE'
-    })
-        .done(function(result) {
-            if (result.success) {
-                refreshLocationsLists();
-            }
-        });
+    });
 });
 
 // Edit a character_field
@@ -214,6 +209,13 @@ $(document).on('click touchstart keydown', '#pills-sheet .form-check-input', fun
     saveOption(id, value);
 });
 
+function refreshLocations() {
+    const $block = $('.locations-block');
+    let routeLocations = route('location.list', {story: storyId});
+
+    $block.load(routeLocations);
+}
+
 function refreshEquipmentLists() {
     $.get({
         url: route('story.equipment', {story: storyId})
@@ -221,15 +223,6 @@ function refreshEquipmentLists() {
         .done(function(html) {
             $('.slotsList').html(html.inputs);
             $('.slotsSelect').html(html.select);
-        });
-}
-
-function refreshLocationsLists() {
-    $.get({
-        url: route('location.list', {story: storyId})
-    })
-        .done(function(html) {
-            $('.locationsList').html(html);
         });
 }
 
@@ -295,6 +288,15 @@ $(document).on('click touchstart keydown', '.updateEquipment', function () {
     }
 });
 
+$(document).on('click touchstart keydown', '.addLocation', function () {
+    $.post({
+        url: route('location.store', {story: storyId}),
+        data: {
+            name: $('#new_location').val()
+        }
+    })
+});
+
 $(document).on('click touchstart keydown', '.updateLocation', function () {
     const locationId = $(this).data('locationid');
     const newLocationName = $('#location_' + locationId).val();
@@ -305,10 +307,7 @@ $(document).on('click touchstart keydown', '.updateLocation', function () {
             data: {
                 'name': newLocationName,
             }
-        })
-            .done(function() {
-                refreshLocationsLists();
-            });
+        });
     }
 });
 
@@ -407,4 +406,4 @@ function checkPerson() {
 }
 
 refreshEquipmentLists();
-refreshLocationsLists();
+refreshLocations();

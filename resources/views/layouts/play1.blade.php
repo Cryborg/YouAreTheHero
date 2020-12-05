@@ -52,7 +52,7 @@
                     @lang('story.locations_label')
                 </h5>
                 <div class="card-body">
-                    <div class="card-text locations-block"></div>
+                    <div class="card-text locations-block" data-characterid="{{ $character->id }}"></div>
                 </div>
             </div>
         </div>

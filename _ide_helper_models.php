@@ -504,6 +504,8 @@ namespace App\Models{
  * @property-read int|null $prerequisites_count
  * @property-read \App\Models\Riddle $riddles
  * @property-read \App\Models\Story $story
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Action[] $triggers
+ * @property-read int|null $triggers_count
  * @method static \Illuminate\Database\Eloquent\Builder|Item newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Item newQuery()
  * @method static \Illuminate\Database\Query\Builder|Item onlyTrashed()

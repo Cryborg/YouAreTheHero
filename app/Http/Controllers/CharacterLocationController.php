@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Character;
-use App\Models\CharacterLocation;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
 class CharacterLocationController extends Controller
@@ -16,67 +14,12 @@ class CharacterLocationController extends Controller
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(Character $character)
     {
-        $characterId = getSession('character_id');
-        $character   = Character::where('id', $characterId)->firstOrFail();
+        $data = [
+            'locations' => $character->locations
+        ];
 
-        return View::make('character.location.index', ['locations' => $character->locations]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\CharacterLocation  $characterLocation
-     * @return \Illuminate\Http\Response
-     */
-    public function show(CharacterLocation $characterLocation)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\CharacterLocation  $characterLocation
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(CharacterLocation $characterLocation)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\CharacterLocation  $characterLocation
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, CharacterLocation $characterLocation)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\CharacterLocation  $characterLocation
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(CharacterLocation $characterLocation)
-    {
-        //
+        return View::make('character.location.index', $data);
     }
 }
