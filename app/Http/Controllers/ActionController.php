@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\Constants;
 use App\Models\Action;
 use App\Models\Field;
 use App\Models\Item;
@@ -47,7 +46,7 @@ class ActionController extends Controller
             'actionable_type' => $request->get('type'),
         ], [
             'quantity' => $request->get('quantity'),
-            'unique' => $request->get('unique_action', false),
+            'unique' => $request->get('unique_action', true),
         ]);
 
         $success = $page->triggers()->save($action);
