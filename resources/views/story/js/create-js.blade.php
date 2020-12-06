@@ -209,7 +209,7 @@ $(document).on('click touchstart keydown', '#pills-sheet .form-check-input', fun
     saveOption(id, value);
 });
 
-function refreshLocations() {
+function loadLocations() {
     const $block = $('.locations-block');
     let routeLocations = route('location.list', {story: storyId});
 
@@ -406,4 +406,4 @@ function checkPerson() {
 }
 
 refreshEquipmentLists();
-refreshLocations();
+loadLocations();
