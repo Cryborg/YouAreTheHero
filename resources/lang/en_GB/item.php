@@ -10,6 +10,7 @@ return [
     'details'           => 'Item details',
     'effects'           => 'Effects',
     'effects_help_text' => 'If the item affects one or more of the character stats, specify it here.',
+    'equip'             => 'Equip',
     'field'             => 'Field',
     'hidden'            => 'Hidden',
     'is_throwable'      => 'Is throwable',

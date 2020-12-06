@@ -19,6 +19,7 @@ return [
     'details'            => 'Détails de l\'objet',
     'effects'            => 'Effets',
     'effects_help_text'  => 'Si l\'objet affecte une ou plusieurs des attributs du joueur, c\'est ici qu\'il faut l\'indiquer.',
+    'equip'              => 'Equiper',
     'field'              => 'Stat',
     'hidden'             => 'Caché',
     'is_throwable'       => 'Jetable',

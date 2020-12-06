@@ -11,6 +11,19 @@ use Illuminate\Support\Facades\Response;
 
 class CharacterItemController extends Controller
 {
+    public function itemEquip(Character $character, Item $item)
+    {
+        $success = CharacterItem::where('item_id', $item->id)
+            ->where('character_id', $character->id)
+            ->first()->update([
+                'equipped_on' => $item->equipment_id
+            ]);
+
+        return Response::json([
+            'refreshInventory' => $success,
+        ]);
+    }
+
     /**
      * @param \App\Models\Character $character
      * @param \App\Models\Item      $item

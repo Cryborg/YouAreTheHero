@@ -10,27 +10,8 @@
                 </span>
             @endcan
 
-            <div class="card card-no-padding">
-                <div class="card-header">
-                    <span class="icon-backpack display-5 mr-2"></span>
-                    @lang('common.inventory')
-                </div>
-                <div class="card-header purse-block">
-                    @lang('common.money')@lang(':') {{ $character->money }}
-                </div>
-                <div class="card-body inventory-block">
-                    @yield('inventory')
-                </div>
-                <div class="card-header">
-                    @lang('equipment.label')
-                </div>
-                <div class="card-body equipment-block">
-                    @foreach ($character->equippedItems as $item)
-                        <div class="p-2">
-                            <i class="text-muted">{{ $item->equippedOn()->slot }}</i> {{ $item->name }}
-                        </div>
-                    @endforeach
-                </div>
+            <div class="card card-no-padding inventory-block">
+
             </div>
 
             <span class="w-20" title="@lang('field.hidden_to_players')">

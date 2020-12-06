@@ -11,6 +11,10 @@ class CharacterItem extends Model
     // FIXME: why do I have to do that ??? item.use looks for character_items.......
     protected $table = 'character_item';
 
+    protected $fillable = ['equipped_on'];
+
+    public $timestamps = false;
+
     public function item(): BelongsTo
     {
         return $this->belongsTo(Item::class);

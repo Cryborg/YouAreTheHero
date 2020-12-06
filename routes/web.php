@@ -40,6 +40,7 @@ Route::middleware('auth')->group(static function () {
         Route::get('{story}/html_list', 'ItemController@htmlList')->name('items.html.list');
         Route::get('{character_item}/throw', 'ItemController@throwAway')->name('throw_away');
         Route::get('{character}/{item}/use', 'CharacterItemController@itemUse')->name('use');
+        Route::get('{character}/{item}/equip', 'CharacterItemController@itemEquip')->name('equip');
         Route::get('{character}/{item}/use/map', 'CharacterItemController@itemUseMap')->name('use.map');
         Route::delete('{item}/delete', 'ItemController@delete')->name('delete');
         Route::get('{item}/details', 'ItemController@details')->name('details');
