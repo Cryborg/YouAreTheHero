@@ -26,7 +26,7 @@ class CreateCharacterItemTable extends Migration
             $table->boolean('is_used')->default(false);
             $table->boolean('taken')->default(false);
 
-            $table->unsignedBigInteger('equipped_on')->nullable();
+            $table->unsignedBigInteger('equipped_on')->nullable()->default(null);
             $table->foreign('equipped_on')->references('id')->on('equipment');
         });
     }
