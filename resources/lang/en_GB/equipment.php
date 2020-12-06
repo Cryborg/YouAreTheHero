@@ -9,5 +9,7 @@ return [
         'title'  => '<b>:equipment</b> is attached to the following items',
         'button' => 'Confirm',
     ],
+    'label'                          => 'Equipment',
+    'slots_name'                     => 'Slots names',
     'wether_it_can_be_equipped_help' => 'If this item can be equipped, choose the slot on which it can be placed on.',
 ];

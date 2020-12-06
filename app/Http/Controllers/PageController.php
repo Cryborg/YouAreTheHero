@@ -307,7 +307,7 @@ class PageController extends Controller
 
         ChoiceRepository::getFilteredChoicesFromPage($page, $character);
 
-        return view('story.partials.choices',
+        return view('story.partials.ajax.choices',
             [
                 'page' => $page,
                 'character' => $character,

@@ -217,7 +217,7 @@ class Item extends Model
         $character = $this->story->currentCharacter();
 
         $character->items()->syncWithoutDetaching([
-            $this->id => ['is_equipped' => true]
+            $this->id => ['equipped_on' => true]
         ]);
 
     }
@@ -227,7 +227,7 @@ class Item extends Model
         $character = $this->story->currentCharacter();
 
         $character->items()->syncWithoutDetaching([
-            $this->id => ['is_equipped' => false]
+            $this->id => ['equipped_on' => false]
         ]);
 
     }
@@ -236,5 +236,17 @@ class Item extends Model
     {
         return $this->morphMany(Action::class, 'trigger')
             ->with('actionable');
+    }
+
+    public function equippedOn()
+    {
+        $equipment = null;
+        $equippedOn = $this->pivot->equipped_on;
+
+        if ($equippedOn !== null) {
+            $equipment = Equipment::where('id', $equippedOn)->firstOrFail();
+        }
+
+        return $equipment;
     }
 }

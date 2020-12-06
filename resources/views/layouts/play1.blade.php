@@ -3,14 +3,14 @@
 @section('content')
     <div class="row vh-100">
         {{-- Left sidebar --}}
-        <nav class="col-lg-2 col-xs-12 shadow bg-white">
+        <nav class="col-lg-2 col-xs-12 shadow bg-white no-padding">
             @can('edit', $page)
                 <span class="w-20" title="@lang('field.hidden_to_players')">
                     <x-reset-button :page="$page" />
                 </span>
             @endcan
 
-            <div class="card no-padding">
+            <div class="card card-no-padding">
                 <div class="card-header">
                     <span class="icon-backpack display-5 mr-2"></span>
                     @lang('common.inventory')
@@ -18,10 +18,24 @@
                 <div class="card-header purse-block">
                     @lang('common.money')@lang(':') {{ $character->money }}
                 </div>
-                <div class="card-body no-padding inventory-block">
+                <div class="card-body inventory-block">
                     @yield('inventory')
                 </div>
+                <div class="card-header">
+                    @lang('equipment.label')
+                </div>
+                <div class="card-body equipment-block">
+                    @foreach ($character->equippedItems as $item)
+                        <div class="p-2">
+                            <i class="text-muted">{{ $item->equippedOn()->slot }}</i> {{ $item->name }}
+                        </div>
+                    @endforeach
+                </div>
             </div>
+
+            <span class="w-20" title="@lang('field.hidden_to_players')">
+                <div class="fixed-bottom btn btn-danger report-btn" data-toggle="modal" data-target="#modalPageReport">@lang('page.report.button')</div>
+            </span>
         </nav>
 
         {{-- Main content --}}
@@ -57,8 +71,6 @@
             </div>
         </div>
     </div>
-
-    <div class="fixed-bottom btn btn-danger report-btn" data-toggle="modal" data-target="#modalPageReport">@lang('page.report.button')</div>
 
     <!-- Modal add choice -->
     @include('page.partials.modals.modal_model', [

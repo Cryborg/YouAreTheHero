@@ -98,7 +98,8 @@ class Character extends Model
 
     public function items(): BelongsToMany
     {
-        return $this->belongsToMany(Item::class)->withPivot(['id', 'quantity', 'is_used']);
+        return $this->belongsToMany(Item::class)
+                    ->withPivot(['id', 'quantity', 'is_used', 'equipped_on']);
     }
 
     public function locations(): BelongsToMany
@@ -127,5 +128,12 @@ class Character extends Model
     public function story(): BelongsTo
     {
         return $this->belongsTo(Story::class);
+    }
+
+    public function equippedItems()
+    {
+        return $this->belongsToMany(Item::class)
+                    ->wherePivotNotNull('equipped_on')
+                    ->withPivot(['id', 'quantity', 'is_used', 'equipped_on']);
     }
 }

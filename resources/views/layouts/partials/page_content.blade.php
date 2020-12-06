@@ -62,7 +62,7 @@
     </div>
     <div class="card-body">
         @if ($page->riddle()->count() > 0)
-            @include('story.partials.riddle', ['data' => $page->riddle])
+            @include('story.partials.ajax.riddle', ['data' => $page->riddle])
         @endif
     </div>
     <div class="card-body">

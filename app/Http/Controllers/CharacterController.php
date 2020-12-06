@@ -104,8 +104,17 @@ class CharacterController extends ControllerBase
 
     public function purse(Character $character)
     {
-        return view('story.partials.purse', [
+        return view('story.partials.ajax.purse', [
             'character' => $character,
         ]);
+    }
+
+    public function equipmentList(Character $character)
+    {
+        $data = [
+            'items' => $character->equipment(),
+        ];
+
+        return View::make('', $data);
     }
 }

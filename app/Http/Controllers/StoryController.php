@@ -407,18 +407,7 @@ class StoryController extends ControllerBase
     {
         $character = Character::find(getSession('character_id'));
 
-
-
-
-
-        // Show equipment
-
-
-
-
-
-
-        return view('story.partials.inventory', [
+        return view('story.partials.ajax.inventory', [
             'items'     => $this->showItemsInInventory($character),
             'character' => $character,
         ]);
@@ -429,10 +418,12 @@ class StoryController extends ControllerBase
         $items = [];
 
         foreach ($character->items as $characterItem) {
-            if ($characterItem->category) {
-                $items[$characterItem->category][] = $characterItem;
-            } else {
-                $items[trans('constants.no_category')][] = $characterItem;
+            if ($characterItem->pivot->equipped_on === null) {
+                if ($characterItem->category) {
+                    $items[$characterItem->category][] = $characterItem;
+                } else {
+                    $items[trans('constants.no_category')][] = $characterItem;
+                }
             }
         }
 
@@ -448,7 +439,7 @@ class StoryController extends ControllerBase
     {
         $character = $story->currentCharacter();
 
-        return view('story.partials.sheet', [
+        return view('story.partials.ajax.sheet', [
             'fields'             => $character->fields,
             'show_hidden_fields' => $this->authUser->id === $story->user->id,
         ]);

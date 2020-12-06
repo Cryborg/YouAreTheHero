@@ -1,4 +1,3 @@
-
 @if ($page->riddle && $page->riddle->isSolved($character))
     @if ($page->riddle->target_page_id)
         <div class="choices-links button-group w-100">

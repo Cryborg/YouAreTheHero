@@ -73,6 +73,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Action[] $actions
  * @property-read int|null $actions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[] $equippedItems
+ * @property-read int|null $equipped_items_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Field[] $fields
  * @property-read int|null $fields_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[] $items
@@ -128,14 +130,14 @@ namespace App\Models{
  * @property int $quantity
  * @property int $is_used
  * @property int $taken
- * @property int $is_equipped
+ * @property int|null $equipped_on
  * @property-read \App\Models\Item $item
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem query()
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem whereCharacterId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem whereEquippedOn($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem whereIsEquipped($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem whereIsUsed($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem whereItemId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CharacterItem whereQuantity($value)
