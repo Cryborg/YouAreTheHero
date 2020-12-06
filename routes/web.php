@@ -46,6 +46,7 @@ Route::middleware('auth')->group(static function () {
         Route::get('{story}/list', 'ItemController@index')->name('list');
         Route::get('{item}/field/{field}/add', 'ItemController@addField')->name('field.add');
         Route::get('{item}/field/{field}/delete', 'ItemController@deleteField')->name('field.delete');
+        Route::get('{item}/locations', 'ItemController@locationsList')->name('locations');
     });
 
 // Stories
@@ -163,6 +164,7 @@ Route::middleware('auth')->group(static function () {
     Route::post('/action/{page}/field/{field}/create', 'ActionController@createField')->name('action.field.create');
     Route::post('/action/{page}/item/create', 'ActionController@createItem')->name('action.item.create');
     Route::get('/actions/{page}', 'ActionController@listjs')->name('action.listjs');
+    Route::get('/actions/{item}/location/{location}/create', 'ActionController@createItemLocation')->name('action.item.location.create');
     Route::get('/actions/{page}/list', 'ActionController@list')->name('actions.list');
     Route::delete('/action/{action}/delete', 'ActionController@delete')->name('action.delete');
 

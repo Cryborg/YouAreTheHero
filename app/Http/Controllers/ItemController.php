@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\CharacterItem;
 use App\Models\Field;
-use App\Models\FieldItem;
 use App\Models\Item;
 use App\Models\Page;
 use App\Models\Story;
@@ -89,6 +89,7 @@ class ItemController extends Controller
                 'category'      => '',
                 'default_price' => 'required',
                 'effects'       => '',
+                'locations'     => '',
                 'equipment_id'  => '',
                 'is_throwable'  => '',
                 'is_unique'     => '',
@@ -99,7 +100,8 @@ class ItemController extends Controller
             ]);
 
         $effects = $validated['effects'] ?? [];
-        unset($validated['effects']);
+        $locations = $validated['locations'] ?? [];
+        unset($validated['effects'], $validated['locations']);
 
         // Create the new item
         if (!empty($validated['id'])) {
@@ -116,6 +118,17 @@ class ItemController extends Controller
                     'quantity' => $effect['value'],
                 ]);
             }
+        }
+
+        foreach ($locations as $location) {
+            Action::create([
+                'trigger_type' => 'item',
+                'trigger_id' => $item->id,
+                'actionable_type' => 'location',
+                'actionable_id' => $location['id'],
+                'quantity' => 1,
+                'unique' => true,
+            ]);
         }
 
         // Reload the items in the story, so that we have the new one in the collection
@@ -234,5 +247,12 @@ class ItemController extends Controller
             'type' => 'delete',
             'success' => true,
         ]);
+    }
+
+    public function locationsList(Item $item)
+    {
+        $data = compact('item');
+
+        return View::make('item.partials.locations_list', $data);
     }
 }

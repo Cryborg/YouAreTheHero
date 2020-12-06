@@ -6,6 +6,7 @@ use App\Classes\Constants;
 use App\Models\Action;
 use App\Models\Field;
 use App\Models\Item;
+use App\Models\Location;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -89,5 +90,17 @@ class ActionController extends Controller
         ]);
 
         return $view;
+    }
+
+    public function createItemLocation(Item $item, Location $location)
+    {
+        Action::create([
+            'trigger_type' => 'item',
+            'trigger_id' => $item->id,
+            'actionable_type' => 'location',
+            'actionable_id' => $location->id,
+            'quantity' => 1,
+            'unique' => true,
+        ]);
     }
 }

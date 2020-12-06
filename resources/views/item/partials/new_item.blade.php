@@ -113,15 +113,25 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="card-body item-fields">
+                    @if ($item)
+                        @include('item.partials.item_field', ['item' => $item, 'field' => $field])
+                    @endif
+                </div>
 
                 <div class="card-header">
-                    @lang('item.item_fields')
+                    @lang('location.list')
                 </div>
-                <div class="card-body row item-fields">
+                <div class="card-body row">
+                    <x-help-block :help="trans('location.location_help')"></x-help-block>
+
+                    <div class="locationsSelect">
+                        @include('story.partials.locations_select', ['story' => $story])
+                    </div>
+                </div>
+                <div class="card-body item-locations">
                     @if ($item)
-                        @foreach ($item->fields as $field)
-                            @include('item.partials.item_field', ['item' => $item, 'field' => $field])
-                        @endforeach
+                        @include('item.partials.locations_list', ['item' => $item])
                     @endif
                 </div>
             @endif

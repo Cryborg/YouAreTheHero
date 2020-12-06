@@ -15,7 +15,7 @@ class LocationController extends Controller
      *
      * @param \App\Models\Story $story
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index(Story $story)
     {
@@ -23,11 +23,20 @@ class LocationController extends Controller
             'story' => $story,
         ];
 
-        return View::make('story.partials.locations_list', $data);
+        return Response::json([
+            'inputs' => View::make('story.partials.locations_list', $data)->render(),
+            'select' => View::make('story.partials.locations_select', $data)->render(),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
+     * Create:
+     * - name !== null
+     * - page_id = null | integer
+     *
+     * Update:
+     * - location_id
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Story        $story

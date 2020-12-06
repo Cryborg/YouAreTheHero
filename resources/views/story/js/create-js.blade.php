@@ -210,10 +210,13 @@ $(document).on('click touchstart keydown', '#pills-sheet .form-check-input', fun
 });
 
 function loadLocations() {
-    const $block = $('.locations-block');
-    let routeLocations = route('location.list', {story: storyId});
-
-    $block.load(routeLocations);
+    $.get({
+        url: route('location.list', {story: storyId})
+    })
+        .done(function(html) {
+            $('.locations-block').html(html.inputs);
+            $('.locationsSelect').html(html.select);
+        });
 }
 
 function refreshEquipmentLists() {
@@ -225,6 +228,10 @@ function refreshEquipmentLists() {
             $('.slotsSelect').html(html.select);
         });
 }
+
+$(document).on('click touchstart keydown', '.removeRow', function () {
+    $(this).closest('div.row').remove();
+});
 
 $(document).on('click touchstart keydown', '.deleteEquipmentConfirmed', function () {
     const equipmentId = $(this).data('equipmentid');

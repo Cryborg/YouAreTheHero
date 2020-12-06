@@ -73,13 +73,57 @@ $(document).on('click touchstart keydown', '.itemFieldAdd', function () {
             });
     } else {
         // The item is not yet created
-        const content = '<input type="hidden" name="stat_values[]" data-id="'
+        const content = '<div class="row"><div class="col-8"><input type="hidden" name="stat_values[]" data-id="'
                 + fieldId + '" value="' + field.quantity + '" data-operator="'
                 + field.operator + '">'
             + $('.field_id option:selected').html()
             + ' ' + field.operator
-            + ' ' + field.quantity;
+            + ' ' + field.quantity
+            + '</div><div class="col-4">'
+            + '<a class="btn btn-outline-danger removeRow"><span class="icon-trash text-red"></span></a>'
+            + '</div>';
         $('.item-fields').append(content);
+    }
+});
+
+$(document).on('click touchstart keydown', '.removeItemLocation', function () {
+    const $this = $(this);
+    const actionId = $this.data('actionid');
+
+    $.post({
+        url: route('action.delete', {action: actionId}),
+        method: 'DELETE'
+    })
+        .done(function (result) {
+            if (result.success) {
+                $this.closest('.row').remove();
+            }
+        });
+});
+
+$(document).on('click touchstart keydown', '.itemLocationAdd', function () {
+    const $this = $(this);
+    const itemId = $this.data('itemid') || null;
+    const $location = $this.closest('.locationsSelect').find('.locationSlot option:selected');
+    const locationId = $location.val();
+    const locationName = $location.html();
+
+    if (itemId !== null) {
+        $.get({
+            url: route('action.item.location.create', {item: itemId, location: locationId}),
+        })
+            .done(function () {
+                $this.closest('.modal-content').find('.item-locations').load(route('item.locations', {'item': itemId}));
+            });
+    } else {
+        // The item is not yet created
+        const content = '<div class="row"><div class="col-8"><input type="hidden" name="item_location[]" '
+                + 'value="' + locationId + '">'
+            + locationName
+            + '</div><div class="col-4">'
+            + '<a class="btn btn-outline-danger removeRow"><span class="icon-trash text-red"></span></a>'
+            + '</div>';
+        $('.item-locations').append(content);
     }
 });
 
@@ -104,8 +148,9 @@ $(document).on('click touchstart keydown', '.deleteItemConfirmed', function () {
 $(document).on('click touchstart keydown', '.btnCreateItem', function () {
     const $this = $(this);
     const context = $this.data('context');
-    var values = [];
-    var $parentModal;
+    const effects = [];
+    const locations = [];
+    let $parentModal;
 
     if (context === 'story_creation') {
         $parentModal = $(document);
@@ -114,10 +159,16 @@ $(document).on('click touchstart keydown', '.btnCreateItem', function () {
     }
 
     $parentModal.find('input[name="stat_values[]"]').each(function () {
-        values.push({
+        effects.push({
             'id': $(this).data('id'),
             'operator': $(this).data('operator'),
             'value': $(this).val()
+        });
+    });
+
+    $parentModal.find('input[name="item_location[]"]').each(function () {
+        locations.push({
+            'id': $(this).val()
         });
     });
 
@@ -130,7 +181,8 @@ $(document).on('click touchstart keydown', '.btnCreateItem', function () {
         'is_unique': $parentModal.find('#is_unique_' + context).is(':checked') ? 1 : 0,
         'is_throwable': $parentModal.find('#is_throwable_' + context).is(':checked') ? 1 : 0,
         'size': $parentModal.find('#item_size_' + context).val(),
-        'effects': values,
+        'effects': effects,
+        'locations': locations,
         'category': $parentModal.find('#item_category_' + context).val(),
         'equipment_id': $parentModal.find('.equipmentSlot option:selected').val()
     };
