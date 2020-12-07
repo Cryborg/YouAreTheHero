@@ -244,39 +244,39 @@
     };
 
     @if (isset($story))
-    const VariablesButton = function (context) {
-        const ui = $.summernote.ui;
-        const content = "{!! includeAsJsString('story.js.partials.variables', ['story' => $story]) !!}";
+        const VariablesButton = function (context) {
+            const ui = $.summernote.ui;
+            const content = "{!! includeAsJsString('story.js.partials.variables', ['story' => $story]) !!}";
 
-        // create button
-        const buttonGroup = ui.buttonGroup([
-            ui.button({
-                className: 'dropdown-toggle',
-                contents: '<i class="fa fa-cog"/> {{ trans('variables.label') }}',
-                tooltip: '{{ trans('variables.help') }}',
-                data: {
-                    toggle: 'dropdown'
-                },
-                click: function () {
-                    // Cursor position must be saved because it is lost when dropdown is opened.
-                    context.invoke('editor.saveRange');
-                }
-            }),
-            ui.dropdown({
-                contents: content,
-                callback: function ($dropdown) {
-                    $dropdown.find(".clickable").click(function () {
-                        // We restore cursor position and text is inserted in correct pos.
-                        context.invoke('editor.restoreRange');
-                        context.invoke('editor.focus');
-                        context.invoke("editor.insertText", 'variable[' + $(this).data('value') + ']');
-                    });
-                },
-            })
-        ]);
+            // create button
+            const buttonGroup = ui.buttonGroup([
+                ui.button({
+                    className: 'dropdown-toggle',
+                    contents: '<i class="fa fa-cog"/> {{ trans('variables.label') }}',
+                    tooltip: '{{ trans('variables.help') }}',
+                    data: {
+                        toggle: 'dropdown'
+                    },
+                    click: function () {
+                        // Cursor position must be saved because it is lost when dropdown is opened.
+                        context.invoke('editor.saveRange');
+                    }
+                }),
+                ui.dropdown({
+                    contents: content,
+                    callback: function ($dropdown) {
+                        $dropdown.find(".clickable").click(function () {
+                            // We restore cursor position and text is inserted in correct pos.
+                            context.invoke('editor.restoreRange');
+                            context.invoke('editor.focus');
+                            context.invoke("editor.insertText", 'variable[' + $(this).data('value') + ']');
+                        });
+                    },
+                })
+            ]);
 
-        return buttonGroup.render();   // return button as jquery object
-    };
+            return buttonGroup.render();   // return button as jquery object
+        };
     @endif
 
     const PopoverButton = function (context) {
@@ -311,7 +311,7 @@
             popovers: PopoverButton,
             placeholders: PlaceholdersButton,
             functions: FunctionsButton,
-            variables: VariablesButton,
+            @if (isset($story)) variables: VariablesButton, @endif
         },
         spellcheck: true,
         cleaner: {

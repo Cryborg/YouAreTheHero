@@ -6,7 +6,7 @@
         click on the @editorbutton({{ trans('page.wysiwyg_variables_label') }}) button and select @lang('character.name_label').
     </p>
     <p>
-        <img src="{{ asset('img/screenshots/editor_variables.png') }}" class="shadow img-fluid mb-4">
+        <img src="{{ asset('img/screenshots/editor_variables.webp') }}" class="shadow img-fluid mb-4">
     </p>
     <p>
         It will insert "[[character_name]]" in your text during the edit. So:
@@ -92,13 +92,13 @@
         To create this kind of description, write your text as you would normally do. Then click on the @editorbutton({{ trans('description.description') }}) buton on the editor.
     </p>
     <p class=" m-4">
-        <img src="{{ asset('img/screenshots/editor_descriptions.png') }}" class="shadow img-fluid mb-4">
+        <img src="{{ asset('img/screenshots/editor_descriptions.webp') }}" class="shadow img-fluid mb-4">
     </p>
     <p>
         In the <span class="false-input d-inline">@lang('description.keyword')</span> field, enter the phrase you want to describe ("a corridor" in our example),
         and write down the description in the light editor under it.
     </p>
     <p class=" m-4">
-        <img src="{{ asset('img/screenshots/descriptions.png') }}" class="shadow img-fluid">
+        <img src="{{ asset('img/screenshots/descriptions.webp') }}" class="shadow img-fluid">
     </p>
 </div>

@@ -47,7 +47,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand"  href="{{ url('/') }}">
-                    <img src="{{ asset('img/minibot.jpg') }}" alt="Minibot logo" width="64" height="64" style="margin-top: -12px">
+                    <img src="{{ asset('img/minibot.webp') }}" alt="Minibot logo" width="64" height="64" style="margin-top: -12px">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

@@ -46,7 +46,7 @@
     to enter a password or whatever code. This is where the <button class="btn btn-primary btn-sm text-white"><span class="icon-jigsaw-piece mr-2 text-white"></span>@lang('page.tab_riddle')</button> tab comes in.
 </p>
 <p>
-    <img src="{{ asset('img/screenshots/riddle_popup.png') }}" class="shadow img-fluid mb-4">
+    <img src="{{ asset('img/screenshots/riddle_popup.webp') }}" class="shadow img-fluid mb-4">
 </p>
 <p>
     Enter the answer of the riddle, and the item he/she will win. If you don't want to give an item, no problem! You can redirect the

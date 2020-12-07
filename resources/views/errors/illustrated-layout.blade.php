@@ -480,7 +480,7 @@
 
             <div class="relative pb-full md:flex md:pb-0 md:min-h-screen w-full md:w-1/2">
 {{--                @yield('image')--}}
-                <img src="{{ asset('img/minibot_error.jpg') }}" class="w-full">
+                <img src="{{ asset('img/minibot_error.webp') }}" class="w-full">
             </div>
         </div>
     </body>
