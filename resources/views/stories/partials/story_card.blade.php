@@ -1,7 +1,7 @@
 <div class="card flip-card border border-dark h-100 shadow">
     <div class="flip-card-inner h-100">
         <div class="flip-card-front h-100">
-            <div class="card-header p-0">
+            <div class="card-header p-0 h-25">
                 <nav class="navbar navbar-expand navbar-light navbar-right">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent{{ $story->id }}" aria-controls="navbarSupportedContent{{ $story->id }}" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
