@@ -7,6 +7,8 @@
     {{-- CSRF Token --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <meta name="description" content="Tu as envie d'écrire des histoires interactives mais tu n'y connais rien en programmation ? Bienvenue ! Viens créer ton propre Livre Dont Vous Etes le Héros !">
+
     <base href="{{ config('app.url') }}/">
 
     <title>@yield('title', trans('home.welcome'))</title>
@@ -45,7 +47,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand"  href="{{ url('/') }}">
-                    <img src="{{ asset('img/minibot.jpg') }}" width="64" height="64" style="margin-top: -12px">
+                    <img src="{{ asset('img/minibot.jpg') }}" alt="Minibot logo" width="64" height="64" style="margin-top: -12px">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -62,14 +64,15 @@
                     </ul>
 
                     <ul class="navbar-nav d-none d-lg-block">
-                        <img src="img/banner.png" height="50px">
+                        <img src="img/banner.png" alt="YATH banner" height="50px">
                     </ul>
 
                     {{-- Right Side Of Navbar --}}
                     {{-- Discord --}}
                     <ul class="navbar-nav ml-auto mr-5">
-                        <a href="https://discord.gg/zc9TePC" target="_blank" class="nav-link clickable text-white" style="width: 150px">
-                            <img src="{{ asset('img/discord.png') }}" class="w-100 shadow">
+                        <a href="https://discord.gg/zc9TePC" target="_blank"
+                            class="nav-link clickable text-white" style="width: 150px" rel="noreferrer">
+                            <img src="{{ asset('img/discord.png') }}" alt="Discord invite" class="w-100 shadow">
                         </a>
                     </ul>
 
@@ -92,7 +95,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle mr-3" href="#" id="navbarDropdownFlag" role="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                <img width="32" height="32" alt="{{ session('locale') }}"
+                                <img alt="Language flag {{ session('locale') }}" width="32" height="32"
                                     src="{!! asset('img/flags/' . session('locale') . '.png') !!}"/>
                             </a>
                             <div id="flags" class="dropdown-menu" aria-labelledby="navbarDropdownFlag">

@@ -407,7 +407,7 @@ class PageController extends Controller
             $editPageLink = Str::replaceFirst(
                 '?',
                 route('page.edit', ['page' => $page]),
-                '<a href="?">' . $icon . addslashes($page->present()->title) . '</a>'
+                '<a href="?">' . $icon . $page->present()->title . '</a>'
             );
 
             $graph->push(
@@ -417,7 +417,7 @@ class PageController extends Controller
             if ($page->choices()->count() > 0) {
                 foreach ($page->choices as $choice) {
                     $html = Str::replaceArray('?',
-                        [$choice->id, $page->id, addslashes($choice->pivot->link_text)],
+                        [$choice->id, $page->id, $choice->pivot->link_text],
                         '<div
                             data-page-to="?"
                             data-page-from="?">
