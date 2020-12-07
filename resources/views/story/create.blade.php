@@ -107,6 +107,7 @@
                     <p class="text-muted">@lang('')</p>
                 </div>
             </div>
+
             {!! Form::submit(trans('story.create_submit'), ['class' => 'form-control btn btn-primary']) !!}
             {!! Form::close() !!}
         </div>

@@ -64,6 +64,10 @@
             </div>
             <div class="card-body overflow-auto h-50">
                 <div class="card-text">
+                    @if ($story->cover)
+                        <img src="storage/images/stories/{{ $story->id }}/{{ $story->cover }}"
+                            width="100" height="100" class="float-left m-3">
+                    @endif
                     {!! $story->description !!}
                 </div>
             </div>

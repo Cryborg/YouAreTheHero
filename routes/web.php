@@ -191,4 +191,5 @@ Route::middleware('auth')->group(static function () {
 // Uploads
     Route::post('upload/avatar', 'UploadController@avatar')->name('upload.avatar');
     Route::post('upload/image', 'UploadController@image')->name('upload.image');
+    Route::post('upload/{story}/cover', 'UploadController@cover')->name('upload.cover');
 });

@@ -8,7 +8,7 @@
         </select>
     </div>
     <div class="col-4">
-        <a class="btn btn-primary text-center itemLocationAdd" @if ($item) data-itemid="{{ $item->id }}" @endif>
+        <a class="btn btn-primary text-center itemLocationAdd" @if (!empty($item)) data-itemid="{{ $item->id }}" @endif>
             <span class="icon-add text-white"></span>
         </a>
     </div>

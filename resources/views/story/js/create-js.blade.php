@@ -412,5 +412,21 @@ function checkPerson() {
     return correct;
 }
 
+$(document).on('click touchstart keydown', '#uploadCoverImage', function () {
+    var formData = new FormData();
+    formData.append("file", $('#file')[0].files[0]);
+
+    $.post({
+        url: route('upload.cover', {story: storyId}),
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (data) {
+            $('.coverImage').html('<img src="' + data.path + '" width="100" height="100">');
+        }
+    });
+});
+
 refreshEquipmentLists();
 loadLocations();

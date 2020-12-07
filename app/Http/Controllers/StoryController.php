@@ -21,7 +21,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
 use Spatie\Activitylog\Models\Activity;
@@ -512,12 +514,9 @@ class StoryController extends ControllerBase
      * @param \App\Models\Story        $story
      *
      * @return \Illuminate\Contracts\View\View
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit(Request $request, Story $story)
     {
-        $this->authorize('edit', $story);
-
         return $this->getCreate($story, $request->all());
     }
 
@@ -527,6 +526,7 @@ class StoryController extends ControllerBase
      * @param null $data
      *
      * @return \Illuminate\Contracts\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function getCreate($story = null, $data = [])
     {

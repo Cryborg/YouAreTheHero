@@ -24,6 +24,9 @@ class CreateStoriesTable extends Migration
 
             $table->string('locale')->default('fr_FR');
             $table->string('layout')->default('play1');
+
+            $table->string('cover');
+
             $table->boolean('is_published')->default(false);
 
             $table->timestamps();
