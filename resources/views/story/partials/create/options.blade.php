@@ -5,8 +5,8 @@
                 @lang('story.cover_image')
             </div>
             <div class="card-body">
-                <input type="file" name="file" placeholder="Choose File" id="file">
-                <a class="btn btn-primary" id="uploadCoverImage">Upload</a>
+                <input type="file" name="file" id="file">
+                <a class="btn btn-primary" id="uploadCoverImage">@lang('common.save')</a>
             </div>
             <div class="card-body coverImage">
                 @if ($story->cover)
