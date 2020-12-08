@@ -380,5 +380,5 @@
         });
     }
 
-    const loadingSpinner = '<div class="d-flex justify-content-center w-100"><div class="spinner-grow text-success" role="status"></div></div>';
+    const loadingSpinner = "{!! includeAsJsString('partials.overlay_spinner') !!}";
 </script>

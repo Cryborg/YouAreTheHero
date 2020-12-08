@@ -1,18 +1,18 @@
 function loadPurse() {
     const $block = $('.purse-block');
-    $block.html(loadingSpinner);
+    $block.append(loadingSpinner);
     $block.load(routePurse);
 }
 
 function loadInventory() {
     const $block = $('.inventory-block');
-    $block.html(loadingSpinner);
+    $block.append(loadingSpinner);
     $block.load(routeInventory);
 }
 
 function loadSheet() {
     const $block = $('.sheet-block');
-    $block.html(loadingSpinner);
+    $block.append(loadingSpinner);
     $block.load(routeSheet);
 }
 
@@ -20,7 +20,7 @@ function loadChoices() {
     const $block = $('.choices-block');
     let routeChoices = route('page.choices', {'page': $('#pageId').val()});
 
-    $block.html(loadingSpinner);
+    $block.append(loadingSpinner);
     $block.load(routeChoices);
 }
 
@@ -30,7 +30,7 @@ function loadLocations() {
         character: $block.data('characterid')
     });
 
-    $block.html(loadingSpinner);
+    $block.append(loadingSpinner);
     $block.load(routeLocations);
 }
 
