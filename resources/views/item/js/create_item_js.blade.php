@@ -69,7 +69,10 @@ $(document).on('click touchstart keydown', '.itemFieldAdd', function () {
             data: field,
         })
             .done(function () {
-                $this.closest('.modal-content').find('.item-details').load(route('item.details', {'item': itemId, 'field': fieldId}));
+                $this.closest('.modal-content').find('.item-details')
+                    .load(route('item.details', {'item': itemId, 'field': fieldId}), null, function() {
+                        refreshEquipmentLists();
+                    });
             });
     } else {
         // The item is not yet created
@@ -221,7 +224,10 @@ $(document).on('click touchstart keydown', '.deleteItemField', function () {
         url: route('item.field.delete', {'item': itemId, 'field': fieldId}),
     })
         .done(function () {
-            $this.closest('.modal-content').find('.item-details').load(route('item.details', {'item': itemId, 'field': fieldId}));
+            $this.closest('.modal-content').find('.item-details')
+                .load(route('item.details', {'item': itemId, 'field': fieldId}), null, function() {
+                    refreshEquipmentLists();
+                });
         });
 });
 
@@ -236,5 +242,7 @@ $(document).on('click touchstart keydown', '.itemSelectList', function () {
             $('.btnCreateItem, .btnDeleteItem').prop('disabled', false);
             $('#modalMeta .btnDeleteItem').data('itemid', itemId);
             $this.closest('.modal-content').find('.item-details').html(html);
+
+            refreshEquipmentLists(itemId);
         });
 });

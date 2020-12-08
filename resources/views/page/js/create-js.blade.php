@@ -151,3 +151,25 @@ function savePage() {
             $this.prop('disabled', false);
         });
 }
+
+function refreshEquipmentLists(itemId)
+{
+    let data = {};
+    itemId = itemId || null;
+
+    if (itemId !== null) {
+        data.item_id = itemId;
+    }
+
+    $.get({
+        url: route('story.equipment', {story: storyId}),
+        data: data
+    })
+        .done(function(html) {
+            $('.slotsSelect').html(html.select);
+
+            if (itemId !== null) {
+                $('.slotsSelect').find('.equipmentSlot option[value="' + html.equipment_id + '"]').prop('selected', true);
+            }
+        });
+}

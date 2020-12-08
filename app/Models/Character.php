@@ -93,7 +93,7 @@ class Character extends Model
 
     public function fields(): BelongsToMany
     {
-        return $this->belongsToMany(Field::class)->withPivot('value');
+        return $this->belongsToMany(Field::class)->withPivot(['value', 'start_value']);
     }
 
     public function items(): BelongsToMany
@@ -136,4 +136,6 @@ class Character extends Model
                     ->wherePivotNotNull('equipped_on')
                     ->withPivot(['id', 'quantity', 'is_used', 'equipped_on']);
     }
+
+
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\Action;
 use App\Models\Character;
 use App\Models\CharacterItem;
 use App\Models\Item;
@@ -19,8 +20,11 @@ class CharacterItemController extends Controller
                 'equipped_on' => $item->equipment_id
             ]);
 
+        Action::applyEffects($character, $item);
+
         return Response::json([
             'refreshInventory' => $success,
+            'refreshSheet' => $success,
         ]);
     }
 

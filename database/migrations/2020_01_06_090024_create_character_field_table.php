@@ -14,13 +14,17 @@ class CreateCharacterFieldTable extends Migration
     public function up()
     {
         Schema::create('character_field', function (Blueprint $table) {
-            $table->unsignedBigInteger('character_id');
-            $table->foreign('character_id')->references('id')->on('characters');
+            $table->foreignId('character_id');
 
-            $table->unsignedBigInteger('field_id');
-            $table->foreign('field_id')->references('id')->on('fields');
+            $table->foreignId('field_id');
 
             $table->integer('value');
+            $table->integer('start_value')
+                ->comment('Value at the start of the story');
+
+            // Not sure I need this
+//            $table->integer('bonus_value')
+//                ->comment('Sum of the effects given by the equipped items.');
         });
     }
 

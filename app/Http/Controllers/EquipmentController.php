@@ -13,13 +13,22 @@ class EquipmentController extends Controller
 {
     public function index(Request $request, Story $story)
     {
+        $equipmentId = null;
+
         $data = [
             'story' => $story,
         ];
 
+        // Get the equipment ID so that we can select it in the equipment slots list
+        if ($request->get('item_id') !== null) {
+            $item = Item::where('id', $request->get('item_id'))->first();
+            $equipmentId = $item->equipment_id;
+        }
+
         return Response::json([
             'inputs' => View::make('story.partials.slots_list', $data)->render(),
             'select' => View::make('story.partials.slots_select', $data)->render(),
+            'equipment_id' => $equipmentId,
         ]);
     }
 

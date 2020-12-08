@@ -74,19 +74,21 @@ class Action
              ->each(static function ($effect) use ($character) {
                  $character->fields()
                            ->each(static function ($field) use ($effect) {
-                               if ($field->id === $effect->field_id) {
-                                   switch ($effect['operator']) {
+                               \Log::info($field->id);
+                               \Log::info($effect);
+                               if ($field->id === $effect->pivot->field_id) {
+                                   switch ($effect->pivot->operator) {
                                        case '+':
-                                           $field->pivot->value += $effect->quantity;
+                                           $field->pivot->value += $effect->pivot->quantity;
                                            break;
                                        case '-':
-                                           $field->pivot->value -= $effect->quantity;
+                                           $field->pivot->value -= $effect->pivot->quantity;
                                            break;
                                        case '*':
-                                           $field->pivot->value *= $effect->quantity;
+                                           $field->pivot->value *= $effect->pivot->quantity;
                                            break;
                                        case '/':
-                                           $field->pivot->value /= $effect->quantity;
+                                           $field->pivot->value /= $effect->pivot->quantity;
                                            break;
                                    }
                                }

@@ -273,7 +273,6 @@ $(document).on('click touchstart keydown', '.deleteEquipment', function () {
                 $modal.modal();
             }
 
-
             refreshEquipmentLists();
         });
 });

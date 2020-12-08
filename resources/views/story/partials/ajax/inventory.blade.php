@@ -45,7 +45,7 @@
                                                 <a class="clickable dropdown-item itemEquip"
                                                     data-itemid="{{ $item->id }}" data-characterid="{{ $character->id }}">@lang('item.equip')</a>
                                             @endif
-                                            @if ($item->fields()->count() > 0)
+                                            @if ($item->equipment_id === null && $item->fields()->count() > 0)
                                                 <a class="clickable dropdown-item itemUse"
                                                     data-itemid="{{ $item->id }}" data-characterid="{{ $character->id }}">@lang('item.use')</a>
                                             @endif

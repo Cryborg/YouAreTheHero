@@ -66,7 +66,8 @@ class CharacterController extends ControllerBase
             // Default values
             $character->fields()->attach($storyField->id, [
                 'character_id' => $character->id,
-                'value' => $storyField->start_value
+                'value' => $storyField->start_value,
+                'start_value' => $storyField->start_value
             ]);
 
             // Update if the user changed the values (case where story.options.points_to_share > 0)
@@ -77,6 +78,7 @@ class CharacterController extends ControllerBase
                             $field['field_id'] =>
                             [
                                 'value'        => $field['value'],
+                                'start_value'  => $field['value'],
                             ]
                         ]);
                     }
