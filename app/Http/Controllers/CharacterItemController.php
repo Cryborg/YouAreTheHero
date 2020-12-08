@@ -17,10 +17,26 @@ class CharacterItemController extends Controller
         $success = CharacterItem::where('item_id', $item->id)
             ->where('character_id', $character->id)
             ->first()->update([
-                'equipped_on' => $item->equipment_id
+                'equipped_on' => $item->equipment_id,
             ]);
 
         Action::applyEffects($character, $item);
+
+        return Response::json([
+            'refreshInventory' => $success,
+            'refreshSheet' => $success,
+        ]);
+    }
+
+    public function itemUnequip(Character $character, Item $item)
+    {
+        $success = CharacterItem::where('item_id', $item->id)
+            ->where('character_id', $character->id)
+            ->first()->update([
+                'equipped_on' => null,
+            ]);
+
+        Action::unapplyEffects($character, $item);
 
         return Response::json([
             'refreshInventory' => $success,

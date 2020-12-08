@@ -65,30 +65,45 @@ class Action
      *
      * @param \App\Models\Character $character
      * @param \App\Models\Item      $item
+     * @param bool                  $rollback
      *
      * @return bool
      */
-    public static function applyEffects(Character $character, Item $item): bool
+    public static function applyEffects(Character $character, Item $item, $rollback = false): bool
     {
         $item->fields()
-             ->each(static function ($effect) use ($character) {
+             ->each(static function ($effect) use ($character, $rollback) {
                  $character->fields()
-                           ->each(static function ($field) use ($effect) {
-                               \Log::info($field->id);
-                               \Log::info($effect);
+                           ->each(static function ($field) use ($effect, $rollback) {
                                if ($field->id === $effect->pivot->field_id) {
                                    switch ($effect->pivot->operator) {
                                        case '+':
-                                           $field->pivot->value += $effect->pivot->quantity;
+                                           if ($rollback === false) {
+                                               $field->pivot->value += $effect->pivot->quantity;
+                                           } else {
+                                               $field->pivot->value -= $effect->pivot->quantity;
+                                           }
                                            break;
                                        case '-':
-                                           $field->pivot->value -= $effect->pivot->quantity;
+                                           if ($rollback === false) {
+                                               $field->pivot->value -= $effect->pivot->quantity;
+                                           } else {
+                                               $field->pivot->value += $effect->pivot->quantity;
+                                           }
                                            break;
                                        case '*':
-                                           $field->pivot->value *= $effect->pivot->quantity;
+                                           if ($rollback === false) {
+                                               $field->pivot->value *= $effect->pivot->quantity;
+                                           } else {
+                                               $field->pivot->value /= $effect->pivot->quantity;
+                                           }
                                            break;
                                        case '/':
-                                           $field->pivot->value /= $effect->pivot->quantity;
+                                           if ($rollback === false) {
+                                               $field->pivot->value /= $effect->pivot->quantity;
+                                           } else {
+                                               $field->pivot->value *= $effect->pivot->quantity;
+                                           }
                                            break;
                                    }
                                }
@@ -98,6 +113,11 @@ class Action
              });
 
         return true;
+    }
+
+    public static function unapplyEffects(Character $character, Item $item): bool
+    {
+        return self::applyEffects($character, $item, true);
     }
 
     /**

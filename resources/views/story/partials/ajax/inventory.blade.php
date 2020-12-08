@@ -69,8 +69,20 @@
 </div>
 <div class="card-body equipment-block">
     @foreach ($character->equippedItems as $item)
-        <div class="p-2">
+        <div class="p-2 float-left">
             <i class="text-muted">{{ $item->equippedOn()->slot }}</i> {{ $item->name }}
         </div>
-    @endforeach
+        <ul class="navbar-nav ml-auto float-right">
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="icon-menu-dots display-6 text-black clickable"></span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right shadow-lg">
+                    <a class="clickable dropdown-item itemUnequip"
+                        data-itemid="{{ $item->id }}" data-characterid="{{ $character->id }}">@lang('item.unequip')</a>
+                </div>
+            </li>
+        </ul>
+                @endforeach
 </div>

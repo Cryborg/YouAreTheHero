@@ -42,6 +42,15 @@ function loadContent(route) {
     });
 }
 
+$(document).on('click touchstart keydown', '.itemUnequip', function () {
+    const itemId = $(this).data('itemid');
+    const characterId = $(this).data('characterid');
+
+    $.get({
+        url: route('item.unequip', {'character': characterId, 'item': itemId})
+    });
+});
+
 $(document).on('click touchstart keydown', '.itemEquip', function () {
     const itemId = $(this).data('itemid');
     const characterId = $(this).data('characterid');
