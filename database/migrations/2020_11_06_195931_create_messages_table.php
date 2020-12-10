@@ -21,6 +21,8 @@ class CreateMessagesTable extends Migration
 
             $table->foreign('thread_id')->references('id')->on('threads')->onDelete('cascade');
 
+            $table->datetime('seen_at')->nullable();
+
             $table->softDeletes();
             $table->timestamps();
         });

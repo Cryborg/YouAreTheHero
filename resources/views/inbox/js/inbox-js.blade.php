@@ -47,6 +47,7 @@ $(document).on('click touchstart keydown', '#sendMessage:not(.disabled)', functi
         .done(function (data) {
             $visibleThread.find('#messagesList').append(data.message);
             scrollToLastMessage();
+            showHumanReadableDates($visibleThread);
             $visibleThread.find('#body').val('').focus();
         })
         .always(function () {
@@ -86,7 +87,6 @@ $(document).on('click touchstart keydown', '#add_AddMessage', function () {
             } else {
                 // If the existing thread has already been loaded, add the newly created message
                 $('#thread-' + data.thread_id).remove();
-                console.log('.thread[data-threadid="' + data.thread_id + '"]');
                 $('.thread[data-threadid="' + data.thread_id + '"]').trigger('click');
             }
         });

@@ -9,6 +9,7 @@ return [
 
     ],
     'new_message_label' => 'New message',
+    'not_seen' => 'Not read yet',
     'notifications' => [
         'button_view_message' => 'Read it >>>',
         'subject' => 'You received a new message',

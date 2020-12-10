@@ -7,11 +7,13 @@
         <h5 class="mt-0">{{ optional($message->user)->name }}</h5>
         <div class="lead position-relative pb-4">
             {!! $message->body !!}
-            @if ($authUser->id !== $message->user->id)
-                <span class="float-right font-smaller inbox-message-date position-absolute moment_date text-white">{{ $message->created_at }}</span>
-            @else
-                <span class="float-left font-smaller inbox-message-date position-absolute moment_date">{{ $message->created_at }}</span>
-            @endif
+            <span title="{{ $message->created_at }}"
+                    class="font-smaller inbox-message-date position-absolute">
+                <span class="moment_date @if ($authUser->id !== $message->user->id) text-white @endif">{{ $message->created_at }}</span>
+                @if (!$message->isRead())
+                    <span class="icon-hidden" title="@lang('inbox.not_seen')"></span>
+                @endif
+            </span>
         </div>
     </div>
     @if ($authUser->id !== $message->user->id)

@@ -71,4 +71,12 @@ class Message extends Model
     {
         $this->attributes['user_id'] = (int)$value;
     }
+
+    /**
+     * Is the message read by all recipients?
+     */
+    public function isRead()
+    {
+        return $this->seen_at !== null;
+    }
 }

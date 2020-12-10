@@ -8,6 +8,7 @@ return [
         'to' => 'A',
     ],
     'new_message_label' => 'Nouveau message',
+    'not_seen' => 'Pas encore lu',
     'notifications' => [
         'button_view_message' => 'Lire sur le site >>>',
         'subject' => 'Tu as reçu un nouveau message',

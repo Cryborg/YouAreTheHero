@@ -487,7 +487,7 @@
         } else {
             $ancestor = $parent.find('.moment_date');
         }
-console.log($ancestor);
+
         $ancestor.each(function (id, elt) {
             var originalDate = $(elt).html();
             var momentDate = moment(originalDate, 'YYYY-MM-DD h:mm:ss').fromNow();

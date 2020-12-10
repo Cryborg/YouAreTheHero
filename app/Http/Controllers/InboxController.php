@@ -102,8 +102,18 @@ class InboxController extends ControllerBase
                            ->first();
 
             if ($seen && $seen->pivot) {
+                // Mark threas as read
                 $seen->pivot->seen_at = Carbon::now();
                 $seen->pivot->save();
+
+                // Mark unread messages as read
+                $authUser = $this->authUser;
+                $messages->where('seen_at', null)->each(static function ($message) use ($authUser) {
+                    if ($message->user->id !== $authUser->id) {
+                        $message->seen_at = Carbon::now();
+                        $message->save();
+                    }
+                });
             } else {
                 abort(JsonResponse::HTTP_NOT_FOUND);
             }
