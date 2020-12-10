@@ -5,12 +5,12 @@
     @endif
     <div class="media-body pl-3 pb-3 {{ $message->user_id == auth()->id() ? 'bg-light mr-5' : 'bg-primary text-light ml-5' }}">
         <h5 class="mt-0">{{ optional($message->user)->name }}</h5>
-        <div class="lead pb-4">
+        <div class="lead position-relative pb-4">
             {!! $message->body !!}
             @if ($authUser->id !== $message->user->id)
-                <span class="float-right font-smaller inbox-message-date position-relative moment_date text-white">{{ $message->created_at }}</span>
+                <span class="float-right font-smaller inbox-message-date position-absolute moment_date text-white">{{ $message->created_at }}</span>
             @else
-                <span class="float-left font-smaller inbox-message-date-mine position-relative moment_date">{{ $message->created_at }}</span>
+                <span class="float-left font-smaller inbox-message-date position-absolute moment_date">{{ $message->created_at }}</span>
             @endif
         </div>
     </div>

@@ -12,7 +12,7 @@ $(document).on('click touchstart keydown', '.thread', function () {
     $this.find('small').removeClass('text-muted').addClass('text-white');
 
     if ($('#thread-' + threadId).length > 0) {
-        $('#thread-' + threadId).appendTo($('#visible-thread'));
+        $('#thread-' + threadId).appendTo($visibleThread);
 
         scrollToLastMessage();
 
@@ -22,10 +22,10 @@ $(document).on('click touchstart keydown', '.thread', function () {
             'url': route('inbox.show', {'thread': threadId})
         })
             .done(function (data) {
-                $('#visible-thread').html(data.html);
+                $visibleThread.html(data.html);
 
                 scrollToLastMessage();
-                showHumanReadableDates();
+                showHumanReadableDates($visibleThread);
                 $visibleThread.find('#body').focus();
             });
     }

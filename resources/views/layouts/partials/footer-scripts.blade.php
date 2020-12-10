@@ -479,8 +479,16 @@
     });
 
     // Convert dates to human readable strings
-    function showHumanReadableDates() {
-        $('.moment_date').each(function (id, elt) {
+    function showHumanReadableDates($parent = null) {
+        let $ancestor;
+
+        if ($parent === null) {
+            $ancestor = $('.moment_date');
+        } else {
+            $ancestor = $parent.find('.moment_date');
+        }
+console.log($ancestor);
+        $ancestor.each(function (id, elt) {
             var originalDate = $(elt).html();
             var momentDate = moment(originalDate, 'YYYY-MM-DD h:mm:ss').fromNow();
 
