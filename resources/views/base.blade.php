@@ -205,7 +205,7 @@
         @auth()
             <!-- Modal help -->
             @include('page.partials.modals.modal_model', [
-                'template' => 'layouts.partials.modal_help',
+                'template' => 'layouts.modals.modal_help',
                 'context' => 'help',
                 'title' => trans('common.help_modal_title'),
                 'icon' => 'icon-help',

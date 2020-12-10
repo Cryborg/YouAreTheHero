@@ -27,6 +27,7 @@ return array (
   'help' => 'Help',
   'help_modal_title' => 'Help',
   'id' => 'ID',
+  'inactive' => 'You have been inactive for the last minutes, please refresh the page to reconnect.',
   'inventory' => 'Inventory',
   'language' => 'Language',
   'link_admin' => 'Admin',

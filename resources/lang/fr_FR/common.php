@@ -27,6 +27,7 @@ return array (
   'help' => 'Aide',
   'help_modal_title' => 'Aide',
   'id' => 'ID',
+  'inactive' => 'Tu as été inactif ces dernières minutes, rafraîchis la page pour continuer.',
   'inventory' => 'Inventaire',
   'language' => 'Langue',
   'link_admin' => 'Admin',

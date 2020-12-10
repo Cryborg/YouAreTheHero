@@ -34,6 +34,11 @@ class CharacterController extends ControllerBase
         return $view;
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Story        $story
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request, Story $story)
     {
         $page = $story->getCurrentPage();
@@ -45,7 +50,7 @@ class CharacterController extends ControllerBase
             'user_id'  => Auth::id(),
             'story_id' => $story->id,
             'page_id'  => $page->id,
-            'genre'    => $request->post('genre'),
+            'genre'    => $request->post('genre', 'male'),
             'people'   => '',
             'money'    => $story->options->currency_amount,
         ]);

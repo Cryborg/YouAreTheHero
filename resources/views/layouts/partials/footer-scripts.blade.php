@@ -36,17 +36,27 @@
     } );
 
     // Common translations
-    var saveSuccessHeading = "{!! trans('notification.save_success_title') !!}";
-    var saveSuccessText = "{!! trans('notification.save_success_text') !!}";
-    var saveFailedHeading = "{!! trans('notification.save_failed_title') !!}";
-    var saveFailedText = "{!! trans('notification.save_failed_text') !!}";
-    var deletionSuccessTitle = "{{ trans('notification.deletion_success_title') }}";
-    var deletionSuccessText = "{{ trans('notification.deletion_success_text') }}";
-    var deletionFailedTitle = "{{ trans('notification.deletion_failed_title') }}";
-    var deletionFailedText = "{{ trans('notification.deletion_failed_text') }}";
-    var commonErrorText = "@lang('common.error')";
+    const saveSuccessHeading = "{!! trans('notification.save_success_title') !!}";
+    const saveSuccessText = "{!! trans('notification.save_success_text') !!}";
+    const saveFailedHeading = "{!! trans('notification.save_failed_title') !!}";
+    const saveFailedText = "{!! trans('notification.save_failed_text') !!}";
+    const deletionSuccessTitle = "{{ trans('notification.deletion_success_title') }}";
+    const deletionSuccessText = "{{ trans('notification.deletion_success_text') }}";
+    const deletionFailedTitle = "{{ trans('notification.deletion_failed_title') }}";
+    const deletionFailedText = "{{ trans('notification.deletion_failed_text') }}";
+    const commonErrorText = "@lang('common.error')";
+    const commonInactiveMessage = "@lang('common.inactive')";
+    const VariablesButtonTooltip = "{{ trans('variables.help') }}";
+    const descriptionButtonText = "@lang('description.descriptions_button_label')";
+    const VariablesButtonButtonContent = "{{ trans('variables.label') }}";
 
-    @include('layouts.partials.common-js')
+    // Dynamic views
+    const PlaceholdersButtonContent = "{!! includeAsJsString('story.js.partials.placeholders', ['placeholders' => $placeholders ?? []]) !!}"
+    const FunctionsButtonContent = "{!! includeAsJsString('story.js.partials.functions') !!}";
+    const loadingSpinner = "{!! includeAsJsString('partials.overlay_spinner') !!}";
+    @isset ($story)
+        const VariablesButtonContent = "{!! includeAsJsString('story.js.partials.variables', ['story' => $story]) !!}";
+    @endisset
 
     @if (Session::has('successes'))
         @foreach (Session::get('successes') as $success)
@@ -65,7 +75,7 @@
         }).mount();
     }
 
-    var modalSplide = null;
+    let modalSplide = null;
 
     $(document).on('click touchstart keydown', 'img.preview', function () {
         $('#modalImage').modal();
@@ -85,7 +95,7 @@
 
             // If the session has expired
             if (request.status === 419) {
-                alert('You have been inactive for the last minutes, please refresh the page to reconnect.');
+                alert(commonInactiveMessage);
             }
 
             // Instantiate popovers on newly created HTML elements
@@ -177,7 +187,6 @@
 
     const PlaceholdersButton = function (context) {
         const ui = $.summernote.ui;
-        const content = "{!! includeAsJsString('story.js.partials.placeholders', ['placeholders' => $placeholders ?? []]) !!}";
 
         // create button
         const buttonGroup = ui.buttonGroup([
@@ -194,7 +203,7 @@
                 }
             }),
             ui.dropdown({
-                contents: content,
+                contents: PlaceholdersButtonContent,
                 callback: function ($dropdown) {
                     $dropdown.find(".clickable").click(function () {
                         // We restore cursor position and text is inserted in correct pos.
@@ -211,7 +220,6 @@
 
     const FunctionsButton = function (context) {
         const ui = $.summernote.ui;
-        const content = "{!! includeAsJsString('story.js.partials.functions') !!}";
 
         // create button
         const buttonGroup = ui.buttonGroup([
@@ -228,7 +236,7 @@
                 }
             }),
             ui.dropdown({
-                contents: content,
+                contents: FunctionsButtonContent,
                 callback: function ($dropdown) {
                     $dropdown.find(".clickable").click(function () {
                         // We restore cursor position and text is inserted in correct pos.
@@ -246,14 +254,13 @@
     @if (isset($story))
         const VariablesButton = function (context) {
             const ui = $.summernote.ui;
-            const content = "{!! includeAsJsString('story.js.partials.variables', ['story' => $story]) !!}";
 
             // create button
             const buttonGroup = ui.buttonGroup([
                 ui.button({
                     className: 'dropdown-toggle',
-                    contents: '<i class="fa fa-cog"/> {{ trans('variables.label') }}',
-                    tooltip: '{{ trans('variables.help') }}',
+                    contents: '<i class="fa fa-cog"/> ' + VariablesButtonButtonContent,
+                    tooltip: VariablesButtonTooltip,
                     data: {
                         toggle: 'dropdown'
                     },
@@ -263,7 +270,7 @@
                     }
                 }),
                 ui.dropdown({
-                    contents: content,
+                    contents: VariablesButtonContent,
                     callback: function ($dropdown) {
                         $dropdown.find(".clickable").click(function () {
                             // We restore cursor position and text is inserted in correct pos.
@@ -280,10 +287,9 @@
     @endif
 
     const PopoverButton = function (context) {
-        var $this = $(this);
-        var ui = $.summernote.ui;
-        var button = ui.button({
-            contents: '<span data-target="#modalDescriptions" data-toggle="modal">@lang('description.descriptions_button_label')</span>',
+        const ui = $.summernote.ui;
+        const button = ui.button({
+            contents: '<span data-target="#modalDescriptions" data-toggle="modal">' + descriptionButtonText + '</span>',
             tooltip: 'Add inline descriptions'
         });
 
@@ -380,5 +386,109 @@
         });
     }
 
-    const loadingSpinner = "{!! includeAsJsString('partials.overlay_spinner') !!}";
+    moment.locale('fr');
+
+    // Global ajax options
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    // Put a spinner on buttons, but only if they have the 'original-text' data attribute.
+    $(document).on('click touchstart keydown', 'button', function(element) {
+        const $this = $(element.target);
+
+        if (typeof $this.data('original-text') != 'undefined') {
+            const loadingText = '<div><div class="spinner-grow spinner-grow-sm text-success position-absolute" role="status"></div> <div class="invisible">' + $this.data('original-text') + '</div></div>';
+            if ($this.html() !== loadingText) {
+                $this.data('original-text', $this.html());
+                $this.html(loadingText);
+                $this.prop('disabled', true);
+            }
+        }
+    });
+
+    // Global options for toasts
+    var toastOptions = {
+        showHideTransition: 'fade', // fade, slide or plain
+        allowToastClose: true, // Boolean value true or false
+        hideAfter: 3000, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
+        stack: 5, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
+        position: 'top-center', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
+
+        textAlign: 'center',  // Text alignment i.e. left, right or center
+        loader: true,  // Whether to show loader or not. True by default
+        loaderBg: '#9EC600',  // Background color of the toast loader
+    };
+
+    function showToast(type, data) {
+        // Default color and icon for success type
+        let icon;
+        let bgColor = '#38c172';
+        let text;
+
+        switch (type) {
+            case 'error':
+                data.heading = data.heading || commonErrorText;
+                icon = 'error';
+                bgColor = '#e3342f';
+                toastOptions.hideAfter = 10000;
+                break;
+
+            // The user gains a new Success
+            case 'user_success':
+                data.heading = data.heading || null;
+                text = data.description;
+                bgColor = 'deepskyblue';
+                toastOptions.hideAfter = 10000;
+                break;
+            default:
+                icon = 'success';
+        }
+
+        text = text || data.text + '<ul>';
+
+        $.each(data.errors, function (key, value) {
+            text += '<li>' + value + '</li>';
+        });
+
+        text += '</ul>';
+
+        $.toast(Object.assign(toastOptions, {
+            heading: '<b>' + data.heading + '</b>',
+            text: text,
+            icon: icon,
+            bgColor: bgColor,
+        }));
+    }
+
+    $('div.alert').not('.alert-important, .alert-dismissible').delay(3000).fadeOut(350);
+
+    $(function () {
+        $('[data-toggle="tooltip"]')
+            .data('html', true)
+            .tooltip({
+                'template': '<div class="tooltip bg-white text-dark" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
+            });
+
+        $('[data-toggle="popover"]').popover({
+            animation: false,
+            html: true
+        });
+    });
+
+    // Convert dates to human readable strings
+    function showHumanReadableDates() {
+        $('.moment_date').each(function (id, elt) {
+            var originalDate = $(elt).html();
+            var momentDate = moment(originalDate, 'YYYY-MM-DD h:mm:ss').fromNow();
+
+            if (momentDate) {
+                $(elt)
+                    .html(momentDate)
+                    .attr('title', originalDate);
+            }
+        });
+    }
 </script>

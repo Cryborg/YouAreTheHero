@@ -10,9 +10,7 @@
                 </span>
             @endcan
 
-            <div class="card card-no-padding inventory-block">
-
-            </div>
+            <div class="card card-no-padding inventory-block"></div>
 
             <span class="w-20" title="@lang('field.hidden_to_players')">
                 <div class="fixed-bottom btn btn-danger report-btn" data-toggle="modal" data-target="#modalPageReport">@lang('page.report.button')</div>
@@ -53,7 +51,7 @@
         </div>
     </div>
 
-    <!-- Modal add choice -->
+    <!-- Modal add report -->
     @include('page.partials.modals.modal_model', [
         'template' => 'page.partials.modals.modal_report',
         'context' => 'report',
