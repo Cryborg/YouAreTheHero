@@ -561,3 +561,12 @@ div.popover.show {
     opacity: 0.4;
     filter: alpha(opacity=40);
 }
+
+.inbox-message-date {
+    bottom: -35px;
+    right: 10px;
+}
+
+.inbox-message-date-mine {
+    bottom: -35px;
+}

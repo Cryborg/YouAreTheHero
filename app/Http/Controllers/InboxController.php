@@ -94,6 +94,7 @@ class InboxController extends ControllerBase
             $thread = Thread::findOrFail($thread->id);
 
             $messages = $thread->messages()
+                               ->orderBy('created_at')
                                ->get();
 
             $seen = $thread->participants()

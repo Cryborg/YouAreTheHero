@@ -25,7 +25,7 @@ $(document).on('click touchstart keydown', '.thread', function () {
                 $('#visible-thread').html(data.html);
 
                 scrollToLastMessage();
-
+                showHumanReadableDates();
                 $visibleThread.find('#body').focus();
             });
     }
