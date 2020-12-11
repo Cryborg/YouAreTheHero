@@ -32,7 +32,7 @@
             'recipients' => $recipients,
             'multiple' => $multiple,
             'id' => 'AddMessage',
-            'btn_add_text' => trans('common.save')
+            'btn_add_text' => trans('inbox.form.send')
         ]
     ])
 @endsection

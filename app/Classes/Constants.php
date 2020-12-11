@@ -26,6 +26,5 @@ class Constants
         'random',
         'reverse',
         'stutter',
-        'variable',
     ];
 }

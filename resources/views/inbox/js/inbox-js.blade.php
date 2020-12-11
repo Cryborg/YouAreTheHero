@@ -18,6 +18,8 @@ $(document).on('click touchstart keydown', '.thread', function () {
 
         $visibleThread.find('#body').focus();
     } else {
+        $('#visible-thread').html(loadingSpinner);
+
         $.get({
             'url': route('inbox.show', {'thread': threadId})
         })
