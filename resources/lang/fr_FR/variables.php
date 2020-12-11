@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'currency_name' => 'Nom de la monnaie : <b>:currency</b>',
     'errors' => [
         'does_not_exist' => ':variable n\'existe pas',
         'need_value_or_name' => 'Tu dois préciser .value/.name selon que tu souhaites afficher la valeur/le nom de cette variable.',

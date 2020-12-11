@@ -328,30 +328,40 @@ class Action
 
             $split = explode('.', $value);
 
-            if (count($split) !== 2) {
-                return self::displayError(trans('variables.errors.need_value_or_name'));
+            if (count($split) === 1)
+            {
+                switch ($split[0])
+                {
+                    case 'currency_name':
+                        return $story instanceof Story ? $story->currency->name : trans('story.currency_name_default');
+                }
             }
 
-            if ($split[1] === 'name') {
-                return $split[0];
-            }
-
-            if ($split[1] === 'value') {
-                if ($character) {
-                    $field = optional($character->fields()
-                                                ->where('name', $split[0]))
-                                                ->first();
-
-                    return $field->start_value ?? self::displayError(trans('variables.errors.does_not_exist', ['variable' => $split[0]]));
-                } elseif ($story) {
-                    $field = optional($story->fields()
-                                            ->where('name', $split[0]))
-                                            ->first();
-
-                    return $field->start_value ?? self::displayError(trans('variables.errors.does_not_exist', ['variable' => $split[0]]));
+            if (count($split) === 2)
+            {
+                if ($split[1] === 'name') {
+                    return $split[0];
                 }
 
-                return random_int(1, 10);
+                if ($split[1] === 'value') {
+                    if ($character) {
+                        $field = optional($character->fields()
+                                                    ->where('name', $split[0]))
+                            ->first();
+
+                        return $field->start_value ?? self::displayError(trans('variables.errors.does_not_exist', ['variable' => $split[0]]));
+                    }
+
+                    if ($story) {
+                        $field = optional($story->fields()
+                                                ->where('name', $split[0]))
+                            ->first();
+
+                        return $field->start_value ?? self::displayError(trans('variables.errors.does_not_exist', ['variable' => $split[0]]));
+                    }
+
+                    return random_int(1, 10);
+                }
             }
 
             return self::displayError(trans('variables.errors.unknown_parameter', ['param' => $split[1]]));
