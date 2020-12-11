@@ -70,7 +70,7 @@ trait TextModifiers
 
 
         // Run every method found
-        foreach (Constants::FUNCTIONS_LIST as $method) {
+        foreach (Constants::METHODS_LIST as $method) {
             $pattern = $method . '\[([^\]]*)\]';
             preg_match_all('/' . $pattern . '/', $model->$field, $matches, PREG_SET_ORDER);
 

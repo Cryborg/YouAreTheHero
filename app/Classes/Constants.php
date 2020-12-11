@@ -27,4 +27,13 @@ class Constants
         'reverse',
         'stutter',
     ];
+
+    public const METHODS_LIST = [
+        'genre',
+        'if',
+        'random',
+        'reverse',
+        'stutter',
+        'variable'
+    ];
 }
