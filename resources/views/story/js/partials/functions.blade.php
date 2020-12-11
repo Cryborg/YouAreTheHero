@@ -3,5 +3,6 @@
             data-value="@lang('functions.' . $function . '.syntax')"
             title="@lang('functions.' . $function . '.help')">
         @lang('functions.' . $function . '.label')
+        <i class="text-muted">@lang('functions.' . $function . '.example')</i>
     </div>
 @endforeach

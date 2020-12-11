@@ -535,7 +535,8 @@ div.popover.show {
 
 .note-dropdown-menu {
     max-height: 400px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    width: 210px;
 }
 
 .modal-header-error {
