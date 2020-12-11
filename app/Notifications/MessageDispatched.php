@@ -85,12 +85,12 @@ class MessageDispatched extends Notification
     public function toMail($notifiable)
     {
         $buttonUrl = route('inbox.show', $this->thread);
-        $isReply = $this->thread->messages()->count() >= 2;
-        $greeting = $isReply ? 'Re: ' . $this->thread->subject : $this->thread->subject;
+        $lastMessage = $this->thread->messages->last();
+        $greeting = trans('inbox.message_from', ['username' => $lastMessage->user->username]);
 
         return (new MailMessage)
             ->success()
-            ->subject($this->message->user->name . ' ' . trans('inbox.notifications.subject') . ' - ' . config('app.name'))
+            ->subject(config('app.name') . ' - ' . trans('inbox.notifications.subject'))
             ->greeting($greeting)
             ->line($this->message->body)
             ->action(trans('inbox.notifications.button_view_message'), $buttonUrl);

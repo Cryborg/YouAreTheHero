@@ -8,6 +8,7 @@ return [
         'to' => 'To',
 
     ],
+    'message_from' => 'Message from :username',
     'new_message_label' => 'New message',
     'not_seen' => 'Not read yet',
     'notifications' => [

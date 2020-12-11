@@ -7,6 +7,7 @@ return [
         'send' => 'Envoyer',
         'to' => 'A',
     ],
+    'message_from' => 'Message de :username',
     'new_message_label' => 'Nouveau message',
     'not_seen' => 'Pas encore lu',
     'notifications' => [
