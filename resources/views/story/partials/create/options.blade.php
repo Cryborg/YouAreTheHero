@@ -8,11 +8,11 @@
                 <input type="file" name="file" id="file">
                 <a class="btn btn-primary" id="uploadCoverImage">@lang('common.save')</a>
             </div>
-            <div class="card-body coverImage">
-                @if ($story->cover)
-                    <img src="storage/images/stories/{{ $story->id }}/{{ $story->cover }}" width="100" height="100">
-                @endif
-            </div>
+            @if ($story && $story->cover)
+                <div class="card-body coverImage">
+                        <img src="storage/images/stories/{{ $story->id }}/{{ $story->cover }}" width="100" height="100">
+                </div>
+            @endif
         </div>
 
         <div class="card">
@@ -21,7 +21,7 @@
             </div>
             <div class="card-body">
                 <x-help-block :help="trans('story.inventory_slots_help')"></x-help-block>
-                {!! Form::number('inventory_slots', $story->options ? $story->options->inventory_slots : -1, ['class' => 'form-control', 'min' => 0, 'id' => 'inventory_slots']) !!}
+                {!! Form::number('inventory_slots', $story && $story->options ? $story->options->inventory_slots : -1, ['class' => 'form-control', 'min' => 0, 'id' => 'inventory_slots']) !!}
             </div>
         </div>
 
