@@ -50,9 +50,9 @@ class LoginController extends Controller
     /**
      * Redirect the user to the Google authentication page.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function redirectToProvider()
+    public function redirectToProvider(): \Symfony\Component\HttpFoundation\RedirectResponse
     {
         return Socialite::driver('google')->redirect();
     }
@@ -64,7 +64,7 @@ class LoginController extends Controller
      */
     public function handleProviderCallback(): RedirectResponse
     {
-        $googleUser = Socialite::driver('google')->user();
+        $googleUser = Socialite::driver('google')->stateless()->user();
 
         // check if they're an existing user
         $user = User::firstOrCreate([
