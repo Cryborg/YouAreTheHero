@@ -16,7 +16,7 @@ class RatingController extends ControllerBase
      *
      * @param \App\Models\Story $story
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index(Story $story)
     {
