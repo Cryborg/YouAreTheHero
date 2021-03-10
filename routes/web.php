@@ -29,7 +29,7 @@ Route::middleware('guest')->group(static function () {
          ->name('story.play.anonymous');
 });
 
-Route::middleware('auth')->group(static function () {
+Route::middleware(['auth', 'cors'])->group(static function () {
 // Home
     Route::get('/', 'StoryController@index')->name('home');
 
