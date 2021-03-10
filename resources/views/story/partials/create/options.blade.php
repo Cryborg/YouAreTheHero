@@ -8,11 +8,11 @@
                 <input type="file" name="file" id="file">
                 <a class="btn btn-primary" id="uploadCoverImage">@lang('common.save')</a>
             </div>
-            @if ($story && $story->cover)
-                <div class="card-body coverImage">
-                        <img src="storage/images/stories/{{ $story->id }}/{{ $story->cover }}" width="100" height="100">
-                </div>
-            @endif
+            <div class="card-body coverImage">
+                @if ($story && $story->cover)
+                    <img src="storage/images/stories/{{ $story->id }}/{{ $story->cover }}" width="100" height="100">
+                @endif
+            </div>
         </div>
 
         <div class="card">
