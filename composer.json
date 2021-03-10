@@ -21,7 +21,8 @@
         "snapappointments/bootstrap-select": "^1.13",
         "spatie/laravel-activitylog": "^3.14",
         "tightenco/ziggy": "^0.8",
-        "twbs/bootstrap": "^4.3"
+        "twbs/bootstrap": "^4.3",
+        "willvincent/laravel-rateable": "^2.3"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.6",

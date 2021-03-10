@@ -69,12 +69,21 @@
         <div class="btn-toolbar choices-block" role="toolbar">
         </div>
     </div>
+</div>
 
-    @if ($page->is_last)
-        <div class="card-body">
-            <div class="choices-links button-group w-100">
-                <x-reset-button :page="$page" />
+@if ($page->is_last)
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="card shadow mt-5">
+            <div class="card-body pt-3">
+                <x-rate-story :story="$story" />
+            </div>
+
+            <div class="card-body">
+                <div class="choices-links button-group w-100">
+                    <x-reset-button :page="$page" />
+                </div>
             </div>
         </div>
-    @endif
-</div>
+    </div>
+@endif
+

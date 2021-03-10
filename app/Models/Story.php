@@ -8,10 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Laracasts\Presenter\PresentableTrait;
+use willvincent\Rateable\Rateable;
 
 class Story extends Model
 {
-    use PresentableTrait, SoftDeletes, HasFactory;
+    use PresentableTrait,
+        SoftDeletes,
+        HasFactory,
+        Rateable;
 
     protected $dates = ['deleted_at'];
 

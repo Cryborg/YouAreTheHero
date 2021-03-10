@@ -710,6 +710,17 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Rating
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Rating newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Rating newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Rating query()
+ */
+	class Rating extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Report
  *
  * @property int $id

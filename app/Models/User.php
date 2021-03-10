@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Classes\Constants;
-use App\Models\Inbox\Message;
 use App\Notifications\ResetPassword;
 use App\Traits\HasInbox;
 use Illuminate\Contracts\Translation\HasLocalePreference;

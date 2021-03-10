@@ -93,6 +93,9 @@ Route::middleware(['auth', 'cors'])->group(static function () {
             Route::post('equipment/{equipment}', 'EquipmentController@update')->name('equipment.update');
             Route::delete('equipment/{equipment}', 'EquipmentController@delete')->name('equipment.delete');
         });
+
+        // Rating
+        Route::post('{story}/rating', 'RatingController@store')->name('story.rating');
     });
 
     Route::prefix('page')->group(function () {

@@ -195,6 +195,20 @@ $(document).on('click touchstart keydown', '#riddle_validate', function () {
         });
 });
 
+$(document).on('click touchstart keydown', '#rateStory', function () {
+    let rating = $('#storyRates option:selected').val();
+    let comment = $('#rateComment').val();
+
+    $.post({
+        url: route('story.rating', {'story': $('#storyId').val()}),
+        data: {
+            'rating': rating,
+            'comment': comment
+        }
+    });
+});
+
+
 function refreshData()
 {
     loadInventory();

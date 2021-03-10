@@ -148,3 +148,6 @@ button {
 .icon-forbidden:before {
     content: "\e927";
 }
+.icon-star:before {
+    content: "\e928";
+}

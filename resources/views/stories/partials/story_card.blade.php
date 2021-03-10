@@ -6,6 +6,13 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent{{ $story->id }}" aria-controls="navbarSupportedContent{{ $story->id }}" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+
+                    @if ($story->averageRating() !== null)
+                        <div class="pt-3 mr-3 rating-bg text-center align-middle" title="{{ trans_choice('story.rating.average_title', $story->usersRated(), ['count' => $story->usersRated()]) }}">
+                            <strong>{{ (float) $story->averageRating() }}</strong>
+                        </div>
+                    @endif
+
                     {{ $story->title }}
                     <div class="collapse navbar-collapse" id="navbarSupportedContent{{ $story->id }}">
                         <ul class="navbar-nav ml-auto">
