@@ -385,9 +385,10 @@ namespace App\Models\Inbox{
  * @property int $user_id
  * @property int $thread_id
  * @property string $body
- * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property string|null $seen_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inbox\Participant[] $participants
  * @property-read int|null $participants_count
  * @property-read \App\Models\Inbox\Thread $thread
@@ -400,6 +401,7 @@ namespace App\Models\Inbox{
  * @method static \Illuminate\Database\Eloquent\Builder|Message whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Message whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Message whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereSeenAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Message whereThreadId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Message whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Message whereUserId($value)
@@ -791,6 +793,7 @@ namespace App\Models{
  * @property int $user_id
  * @property string $locale
  * @property string $layout
+ * @property string|null $cover
  * @property bool $is_published
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -819,6 +822,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Story newQuery()
  * @method static \Illuminate\Database\Query\Builder|Story onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Story query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Story whereCover($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Story whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Story whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Story whereDescription($value)

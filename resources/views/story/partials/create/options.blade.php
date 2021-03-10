@@ -7,6 +7,7 @@
             <div class="card-body">
                 <input type="file" name="file" id="file">
                 <a class="btn btn-primary" id="uploadCoverImage">@lang('common.save')</a>
+                <a class="btn btn-outline-danger icon-trash float-right" id="removeCoverImage"></a>
             </div>
             <div class="card-body coverImage">
                 @if ($story && $story->cover)

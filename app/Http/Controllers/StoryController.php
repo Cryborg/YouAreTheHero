@@ -14,6 +14,7 @@ use App\Models\Story;
 use App\Models\User;
 use App\Repositories\ChoiceRepository;
 use App\Repositories\PageRepository;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -641,6 +642,16 @@ class StoryController extends ControllerBase
                                   || $errors['unusedItems']->count() > 0
                                   || $errors['emptyRiddles']->count() > 0
                                   || $errors['unusedFields']->count() > 0,
+        ]);
+    }
+
+    public function removeCoverImage(Story $story): JsonResponse
+    {
+        $story->cover = null;
+        $success = $story->save();
+
+        return Response::json([
+            'success' => $success
         ]);
     }
 }

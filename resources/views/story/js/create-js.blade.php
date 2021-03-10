@@ -427,5 +427,17 @@ $(document).on('click touchstart keydown', '#uploadCoverImage', function () {
     });
 });
 
+$(document).on('click touchstart keydown', '#removeCoverImage', function () {
+    $.get({
+        url: route('story.cover.delete', {story: storyId}),
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function () {
+            $('.coverImage').html('');
+        }
+    });
+});
+
 refreshEquipmentLists();
 loadLocations();
