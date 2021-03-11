@@ -23,6 +23,7 @@ return [
     'currency_name_default'     => 'or',
     'currency_name_help'        => 'Donne un nom à la monnaie utilisée dans ton histoire',
     'edit'                      => 'Modifier les paramètres de l\'histoire',
+    'edit_content'              => 'Editer',
     'edit_title'                => 'Modification de l\'histoire',
     'ending_type_bad'           => 'Mauvaise',
     'ending_type_bad_help'      => 'Si le personnage termine mal l\'histoire : s\'il est emprisonné, qu\'il perd un combat ou un membre,...',

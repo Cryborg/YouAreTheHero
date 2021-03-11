@@ -45,7 +45,9 @@
     const deletionFailedTitle = "{{ trans('notification.deletion_failed_title') }}";
     const deletionFailedText = "{{ trans('notification.deletion_failed_text') }}";
     const commonErrorText = "@lang('common.error')";
+    const commonSaveText = "@lang('common.save')";
     const commonInactiveMessage = "@lang('common.inactive')";
+    const storyEditText = "@lang('story.edit_content')";
     const VariablesButtonTooltip = "{{ trans('variables.help') }}";
     const descriptionButtonText = "@lang('description.descriptions_button_label')";
     const VariablesButtonButtonContent = "{{ trans('variables.label') }}";
@@ -342,6 +344,10 @@
 
                 // Only trigger if we don't click in the Summernote toolbar
                 if (!(e.relatedTarget && $.contains(p, e.relatedTarget))) {
+                    $('#editorToggle')
+                        .data('state', 'off')
+                        .html(storyEditText);
+
                     savePage();
                 }
             },

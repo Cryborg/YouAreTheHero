@@ -23,6 +23,7 @@ return [
     'currency_name_default'     => 'gold',
     'currency_name_help'        => 'Give a name to the currency of your story',
     'edit'                      => 'Edit story',
+    'edit_content'              => 'Edit',
     'edit_title'                => 'Edit story',
     'ending_type_bad'           => 'Bad',
     'ending_type_bad_help'      => 'Choose this if the character ends the story in a bad way. For example if he/she lost a decisive battle, a limb or is imprisoned.',

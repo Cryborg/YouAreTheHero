@@ -109,7 +109,6 @@ function savePage() {
     $('#content-editable:hidden').summernote('destroy');
     $('#content-editable:visible').addClass('hidden');
     $('#content').removeClass('hidden');
-    $('.toggle-summernote').addClass('clickable').removeClass('summernote-open');
 
     let isLast = $('#is_last').is(":checked") ? 1 : 0;
     let data = {

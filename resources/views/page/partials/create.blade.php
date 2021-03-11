@@ -105,9 +105,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card clickable panel-content toggle-summernote">
+                            <div class="card panel-content">
                                 <h5 class="card-header">
                                     @lang('model.content')
+                                    <button class="btn btn-success float-right">
+                                        <span class="icon-fountain-pen mr-2 text-white"></span>
+                                        <span id="editorToggle" data-state="off">{{ trans('story.edit_content') }}</span>
+                                    </button>
                                 </h5>
                                 <div class="card-body">
                                     <div class="card-text">

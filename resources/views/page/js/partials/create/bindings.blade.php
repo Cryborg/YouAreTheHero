@@ -290,19 +290,19 @@ $(document).on('click touchstart keydown', '#add_AddChoice', function () {
 });
 
 // Display Summernote editor on the clicked div
-$(document).on('click touchstart keydown', '.toggle-summernote:not(.summernote-open)', function () {
+$(document).on('click touchstart keydown', '#editorToggle', function () {
     let $this = $(this);
 
-    // Destroy all other summernotes so there is only one open at a time
-    $('#content-editable:hidden').summernote('destroy');
-    $('.toggle-summernote').addClass('clickable').removeClass('summernote-open');
+    if ($this.data('state') === 'off') {
+        $this.removeClass('clickable');
+        $('#content').addClass('hidden');
+        $('#content-editable').removeClass('hidden');
+        $('#content-editable:visible').summernote(summernoteOptions);
 
-    $this.removeClass('clickable');
-    $('#content').addClass('hidden');
-    $('#content-editable').removeClass('hidden');
-    $('#content-editable:visible').summernote(summernoteOptions);
-
-    $this.addClass('summernote-open');
+        $this
+            .data('state', 'on')
+            .html(commonSaveText);
+    }
 });
 
 $(document).on('click touchstart keydown', '#add_Meta', function () {
