@@ -78,7 +78,7 @@
     <div class="example">
         <p>
             You are walking down <a tabindex="0" role="button" data-trigger="hover" data-placement="top" data-toggle="popover" title="" data-content="<p>Dark and narrow, only lit by thin sunrays coming from the holes in the walls.</p>" data-original-title="a corridor"><span class="icon-eye text-lightgrey mr-1"></span>a corridor</a>.
-            The red carpet muffles thesound of your footsteps.
+            The red carpet muffles the sound of your footsteps.
         </p>
         <p>
             <a tabindex="0" role="button" data-trigger="hover" data-placement="top" data-toggle="popover" title="" data-content="<p>Some of the people on these portraits look like they were in Slytherin.</p>" data-original-title="Dusty portraits"><span class="icon-eye text-lightgrey mr-1"></span>Dusty portraits</a> are hanging on the walls on either side.
@@ -89,7 +89,7 @@
         on mobile devices, to open a little inline description.
     </p>
     <p>
-        To create this kind of description, write your text as you would normally do. Then click on the @editorbutton({{ trans('description.description') }}) buton on the editor.
+        To create this kind of description, write your text as you would normally do. Then click on the @editorbutton({{ trans('description.description') }}) button on the editor.
     </p>
     <p class=" m-4">
         <img src="{{ asset('img/screenshots/editor_descriptions.webp') }}" class="shadow img-fluid mb-4">
@@ -101,4 +101,17 @@
     <p class=" m-4">
         <img src="{{ asset('img/screenshots/descriptions.webp') }}" class="shadow img-fluid">
     </p>
+
+    <p>Once you saved your new description, go back to the editor and surround your keywords with double accolades. Here is the previous example as seen
+    from the editor point of view:</p>
+
+    <div class="example">
+        <p>
+            You are walking down &#123;&#123;a corridor&#125;&#125;.
+            The red carpet muffles the sound of your footsteps.
+        </p>
+        <p>
+            &#123;&#123;Dusty portraits&#125;&#125; are hanging on the walls on either side.
+        </p>
+    </div>
 </div>
