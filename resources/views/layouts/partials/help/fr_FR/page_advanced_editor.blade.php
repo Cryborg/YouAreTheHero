@@ -123,9 +123,25 @@
         Tu remarqueras que les mots "une lampe" et "la corbeille à papier" sont précédés d'un petit icône. Lorsque tu passeras ta souris dessus,
         un court descriptif s'affichera.
     </p>
+
+    <h4>Comment ajouter cela dans mon texte ?</h4>
+
     <p>
         Pour ajouter ce genre d'effet, écris ton texte normalement. Puis, une fois terminé, clique sur le bouton @editorbutton(Descriptions) de l'éditeur. Dans le champ "Mot(s)-clé"
         se trouvera "une lampe", pour reprendre notre exemple précédent. Et dans la Description, tu trouveras un éditeur allégé permettant d'écrire
         le descriptif du mot-clé.
     </p>
+
+    <p>
+        Enfin, une fois ceci fait et la fenêtre de création fermée, tu n'as plus qu'à entourer ton mot-clé dans ton texte ("une lampe")
+        avec des doubles accolades : <code>&#123;&#123;une lampe&#125;&#125;</code>.
+    </p>
+
+    <p>Ainsi, l'exemple précédent sera écrit de cette manière :</p>
+
+    <div class="example">
+        Au fond de la pièce se trouve un bureau sur lequel trône &#123;&#123;une lampe&#125;&#125;, éclairant un poste de travail particulièrement bien rangé.
+        Même &#123;&#123;la corbeille à papier&#125;&#125; semble neuve, tant elle est propre.
+    </div>
+
 </div>
