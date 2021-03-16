@@ -8,6 +8,7 @@ use App\Models\Story;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class RatingController extends ControllerBase
 {
@@ -37,10 +38,28 @@ class RatingController extends ControllerBase
      */
     public function store(Request $request, Story $story)
     {
-        $validated = Validator::validate($request->all(), [
-            'rating' => 'required|between:1,5|multiple_of:.5',
-            'comment' => ''
+        $validator = Validator::make($request->all(), [
+            'rating' => 'required|between:.5,5',
+            'comment' => [
+                Rule::requiredIf(static function() use ($request) {
+                    $rating = (int) $request->get('rating');
+
+                    // Comment is mandatory when the rating is under 2.5
+                    return $rating <= 2.5;
+                }),
+                'min:5'
+            ]
         ]);
+
+        if ($validator->fails()) {
+            return Response::json([
+                'success' => false,
+                'errors' => $validator->errors(),
+                'type' => 'save'
+            ]);
+        }
+
+        $validated = $validator->validated();
 
         $story->rateOnce($validated['rating'], $validated['comment']);
 

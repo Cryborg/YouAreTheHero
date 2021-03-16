@@ -9,11 +9,9 @@
         <div class="form-group">
             <label for="storyRates">{{ trans('story.rating.rate') }}</label>
             <select class="form-control" id="storyRates">
-                <option value="0">{{ trans('story.rating.no_rating') }}</option>
-
-                @for($rate = 1; $rate <= 5; $rate += .5)
-                    <option value="{{ $rate }}" @if ($story->userAverageRating() == $rate) selected @endif>{{ $rate }}
-                        @if($rate == (int) $rate)
+                @for($rate = 0; $rate <= 5; $rate += .5)
+                    <option value="{{ $rate }}" @if ($story->userAverageRating() == $rate || ($story->userAverageRating() === null && $rate == 5)) selected @endif>{{ $rate }}
+                        @if ($rate == (int) $rate)
                             {{ trans('story.rating.rates.' . $rate) }}
                         @endif
                     </option>
@@ -22,7 +20,7 @@
         </div>
 
         <div class="form-group">
-            <label for="rateComment">{{ trans('story.rating.comment') }}</label>
+            <label for="rateComment">{!! trans('story.rating.comment') !!}</label>
             <textarea class="form-control" id="rateComment" rows="5">@if(optional($story->ratings->first())->comment){{ $story->ratings->first()->comment }}@endif</textarea>
         </div>
 

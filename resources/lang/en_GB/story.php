@@ -62,11 +62,12 @@ return [
     'rating'                    => [
         'average_title' => '{1} :count single player has voted.|{2,*} :count distinct players have voted.',
         'button'      => 'Save',
-        'comment'     => 'Comment (optional)',
+        'comment'     => 'Comment <small>(mandatory when rating is <= 2.5)</small>',
         'description' => 'You can rate this story if you want, and even write a short public comment if you wish.',
         'no_rating'   => 'No rating',
         'rate'        => 'Rate',
         'rates'       => [
+            0 => ' - Everything has to be redone',
             1 => ' - I hated',
             2 => ' - I didn\'t like',
             3 => ' - Not bad',

@@ -62,11 +62,12 @@ return [
     'rating'                    => [
         'average_title' => '{1} :count personne a voté|{2,*} :count personnes ont voté',
         'button'      => 'Enregistrer',
-        'comment'     => 'Commentaire (optionnel)',
+        'comment'     => 'Commentaire <small>(obligatoire pour une note en dessous de 2,5)</small>',
         'description' => 'Tu peux noter cette histoire si tu le souhaites, et éventuellement laisser un commentaire public.',
         'no_rating'   => 'Pas d\'avis',
         'rate'        => 'Noter',
         'rates'       => [
+            0 => ' - Tout est à refaire',
             1 => ' - J\'ai détesté',
             2 => ' - Je n\'ai pas aimé',
             3 => ' - Pas mal',
