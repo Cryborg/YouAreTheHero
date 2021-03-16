@@ -22,6 +22,8 @@ class Choice extends Model
         'hidden' => 'boolean',
     ];
 
+    public $timestamps = false;
+
     /**
      * Get the page.
      */
