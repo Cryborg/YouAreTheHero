@@ -5,15 +5,24 @@
 <h3>Ajout d'un prérequis</h3>
 
 <p>
-    Il peut parfois être utile de ne pouvoir accéder à une page que si le joueur possède un objet en particulier, comme une clé. Clique sur
+    Il peut parfois être utile de ne pouvoir accéder à une page que si le joueur possède un objet en particulier, comme une clé.
+    Ou bien s'il possède assez d'argent, ou si une caractéristique est supérieure à tel niveau...
+    Les prérequis sont là pour gérer ce genre de situations.
+</p>
+<p>
+    L'exemple suivant ne montre que les objets, mais la logique est la même pour les caractéristiques et l'argent.
+</p>
+<p>
+    Clique sur
     <button class="btn btn-primary btn-sm text-white"><span class="icon-unlocking mr-2 text-white"></span>Ajouter un objet</button> pour afficher
     ce popup.
 </p>
 <p>
     Tu peux ici choisir quel objet doit être présent dans l'inventaire, et la quantité que le joueur doit posséder. Car, si une seule clé
     est en général nécessaire pour ouvrir une porte, il peut être nécessaire de posséder plusieurs pièces d'or pour payer le garde interdisant
-    le passage d'un pont.
+    le passage d'un pont. Ou avoir un niveau suffisant dans la compétence Crochetage pour ne pas craindre une porte fermée.
 </p>
+
 @info(Cette option n'est bien sûr pas disponible sur la première page d'une histoire.)
 
 <h3>Ajout d'un bonus / malus</h3>
