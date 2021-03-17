@@ -386,8 +386,8 @@ namespace App\Models\Inbox{
  * @property int $thread_id
  * @property string $body
  * @property string|null $seen_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Inbox\Participant[] $participants
  * @property-read int|null $participants_count
@@ -712,9 +712,26 @@ namespace App\Models{
 /**
  * App\Models\Rating
  *
+ * @property int $id
+ * @property int $user_id
+ * @property string $rateable_type
+ * @property int $rateable_id
+ * @property float $rating
+ * @property string|null $comment
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|Rating newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Rating newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Rating query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Rating whereComment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Rating whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Rating whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Rating whereRateableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Rating whereRateableType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Rating whereRating($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Rating whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Rating whereUserId($value)
  */
 	class Rating extends \Eloquent {}
 }
@@ -817,6 +834,10 @@ namespace App\Models{
  * @property-read int|null $fields_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Genre[] $genres
  * @property-read int|null $genres_count
+ * @property-read float $average_rating
+ * @property-read mixed $sum_rating
+ * @property-read mixed $user_average_rating
+ * @property-read mixed $user_sum_rating
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[] $items
  * @property-read int|null $items_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Location[] $locations
@@ -826,6 +847,8 @@ namespace App\Models{
  * @property-read int|null $pages_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Person[] $people
  * @property-read int|null $people_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\willvincent\Rateable\Rating[] $ratings
+ * @property-read int|null $ratings_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Report[] $reports
  * @property-read int|null $reports_count
  * @property-read \App\Models\User $user

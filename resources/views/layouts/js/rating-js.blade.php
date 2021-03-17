@@ -12,7 +12,7 @@
             .done(function (html) {
                 $('#modalRating .modal-body').html(html);
 
-                showHumanReadableDates();
+                showHumanReadableDates($('#modalRating'));
             });
     });
 </script>
