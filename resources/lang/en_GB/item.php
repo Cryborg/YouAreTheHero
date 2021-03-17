@@ -33,6 +33,7 @@ return [
     'size_help'         => 'This is the size or weight of the object, it will affect the room left in the inventory if the option is set for this story.',
     'stat'              => 'Skill',
     'throw_away'        => 'Throw away',
+    'unequip'           => 'Unequip',
     'unused_items_label'=> 'Unused items',
     'use'               => 'Use',
     'use_map'           => 'Read',

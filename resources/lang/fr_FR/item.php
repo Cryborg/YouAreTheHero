@@ -43,6 +43,7 @@ return [
     'size_help'          => 'Taille ou poids de l\'objet. Lorsque l\'option est sélectionnée dans les paramètres de l\'histoire, les objets prennent de la place, ce qui limite le nombre que le joueur peut transporter.',
     'stat'               => 'Compétence',
     'throw_away'         => 'Jeter',
+    'unequip'            => 'Déséquiper',
     'unused_items_label' => 'Objets non utilisés',
     'use'                => 'Utiliser',
     'use_map'            => 'Lire',
