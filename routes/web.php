@@ -96,6 +96,7 @@ Route::middleware(['auth', 'cors'])->group(static function () {
 
         // Rating
         Route::post('{story}/rating', 'RatingController@store')->name('story.rating');
+        Route::get('{story}/rating', 'RatingController@index')->name('story.rating.list');
     });
 
     Route::prefix('page')->group(function () {

@@ -9,6 +9,7 @@ use App\Models\Currency;
 use App\Models\Location;
 use App\Models\Page;
 use App\Models\Riddle;
+use App\Models\Story;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
@@ -40,6 +41,7 @@ class AppServiceProvider extends ServiceProvider
            'location'        => Location::class,
            'page'            => Page::class,
            'riddle'          => Riddle::class,
+           'story'           => Story::class,
         ]);
     }
 }

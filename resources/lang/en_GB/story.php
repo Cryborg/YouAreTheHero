@@ -51,7 +51,7 @@ return [
     'last_update'               => 'Last update',
     'list_all_items'            => 'List all items',
     'list_all_items_help'       => 'Click on the item you want to edit.',
-    'map'                       => 'Checkpoints',
+    'locations_label'           => 'Locations',
     'number_pages'              => 'Number of pages',
     'pages_count'               => ':count page|:count pages',
     'people_help'               => 'If you want you can rename the characters on this list.',
@@ -64,6 +64,7 @@ return [
         'button'      => 'Save',
         'comment'     => 'Comment <small>(mandatory when rating is <= 2.5)</small>',
         'description' => 'You can rate this story if you want, and even write a short public comment if you wish.',
+        'modal_title' => 'Players ratings',
         'no_rating'   => 'No rating',
         'rate'        => 'Rate',
         'rates'       => [

@@ -142,6 +142,11 @@ class Story extends Model
         return $unusedFields;
     }
 
+    public function getAverageRatingAttribute(): float
+    {
+        return round($this->averageRating(), 2);
+    }
+
     public function fields()
     {
         return $this->hasMany(Field::class);

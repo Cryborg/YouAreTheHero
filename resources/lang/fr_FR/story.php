@@ -64,6 +64,7 @@ return [
         'button'      => 'Enregistrer',
         'comment'     => 'Commentaire <small>(obligatoire pour une note en dessous de 2,5)</small>',
         'description' => 'Tu peux noter cette histoire si tu le souhaites, et éventuellement laisser un commentaire public.',
+        'modal_title' => 'Notes données par les joueurs',
         'no_rating'   => 'Pas d\'avis',
         'rate'        => 'Noter',
         'rates'       => [

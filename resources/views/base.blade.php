@@ -215,8 +215,20 @@
                 ]
             ])
 
-            <!-- Modal dialog -->
-            @include('layouts.modals.template')
+            <!-- Modal rating -->
+            @include('layouts.modals.modal_model', [
+                'template' => 'story.modals.modal_rating',
+                'context' => 'rating',
+                'title' => trans('story.rating.modal_title'),
+                'icon' => 'icon-star',
+                'big' => false,
+                'data' => [
+                    'id' => 'Rating',
+                ]
+            ])
+
+            <!-- Modal dialogs -->
+            @include('layouts.modals.dialog')
         @endauth
     </div>
 

@@ -8,6 +8,7 @@ use App\Models\Story;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
 use Illuminate\Validation\Rule;
 
 class RatingController extends ControllerBase
@@ -17,15 +18,15 @@ class RatingController extends ControllerBase
      *
      * @param \App\Models\Story $story
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Contracts\View\View
      */
     public function index(Story $story)
     {
-        $ratings = Rating::where('story_id', $story->id)->get();
+        $data = [
+            'ratings' => Rating::where('rateable_id', $story->id)->get()
+        ];
 
-        return Response::json([
-            'ratings' => $ratings
-        ]);
+        return View::make('layouts.partials.story_ratings', $data);
     }
 
     /**
@@ -34,6 +35,7 @@ class RatingController extends ControllerBase
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Story        $story
      *
+     * @return \Illuminate\Http\JsonResponse
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request, Story $story)
@@ -67,28 +69,5 @@ class RatingController extends ControllerBase
             'success' => true,
             'type'    => 'save',
         ]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Rating  $rating
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Rating $rating)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Rating  $rating
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Rating $rating)
-    {
-        //
     }
 }

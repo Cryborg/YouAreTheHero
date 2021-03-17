@@ -8,9 +8,11 @@
                     </button>
 
                     @if ($story->averageRating() !== null)
-                        <div class="pt-3 mr-3 rating-bg text-center align-middle" title="{{ trans_choice('story.rating.average_title', $story->usersRated(), ['count' => $story->usersRated()]) }}">
-                            <strong>{{ (float) $story->averageRating() }}</strong>
-                        </div>
+                        <a class="clickable text-decoration-none text-reset" data-target="#modalRating" data-toggle="modal" data-story="{{ $story->id }}">
+                            <div class="pt-3 mr-3 rating-bg text-center align-middle" title="{{ trans_choice('story.rating.average_title', $story->usersRated(), ['count' => $story->usersRated()]) }}">
+                                <strong>{{ $story->averageRating }}</strong>
+                            </div>
+                        </a>
                     @endif
 
                     {{ $story->title }}
