@@ -221,7 +221,7 @@
                 'context' => 'rating',
                 'title' => trans('story.rating.modal_title'),
                 'icon' => 'icon-star',
-                'big' => false,
+                'big' => true,
                 'data' => [
                     'id' => 'Rating',
                 ]
