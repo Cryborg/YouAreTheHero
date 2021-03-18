@@ -4,7 +4,7 @@
     });
 
     $(document).on('click touchstart keydown', '.deleteStory', function () {
-        let $this = $(this);
+        const $this = $(this);
         let storyId = $this.data('storyid');
 
         if (confirm("@lang('story.confirm_delete')")) {

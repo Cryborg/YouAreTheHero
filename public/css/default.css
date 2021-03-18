@@ -566,3 +566,19 @@ hr.divider {
     width: 50px;
     height: 50px;
 }
+
+#editorToggle[data-state="off"] #save_button {
+    display: none;
+}
+
+#editorToggle[data-state="off"] #edit_content_button {
+    display: unset;
+}
+
+#editorToggle[data-state="on"] #edit_content_button {
+    display: none;
+}
+
+#editorToggle[data-state="on"] #save_button {
+    display: unset;
+}

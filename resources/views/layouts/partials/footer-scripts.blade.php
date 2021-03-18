@@ -47,7 +47,6 @@
     const commonErrorText = "@lang('common.error')";
     const commonSaveText = "@lang('common.save')";
     const commonInactiveMessage = "@lang('common.inactive')";
-    const storyEditText = "@lang('story.edit_content')";
     const VariablesButtonTooltip = "{{ trans('variables.help') }}";
     const descriptionButtonText = "@lang('description.descriptions_button_label')";
     const VariablesButtonButtonContent = "{{ trans('variables.label') }}";
@@ -339,19 +338,7 @@
         },
         focus: true,
         callbacks: {
-            onBlur: function (e) {
-                var p = e.target.parentNode.parentNode
-
-                // Only trigger if we don't click in the Summernote toolbar
-                if (!(e.relatedTarget && $.contains(p, e.relatedTarget))) {
-                    $('#editorToggle')
-                        .data('state', 'off')
-                        .html(storyEditText);
-
-                    savePage();
-                }
-            },
-            onImageUpload: function(files, editor, welEditable) {
+            onImageUpload: function(files) {
                 let data = new FormData();
                 data.append("file", files[0]);
                 $.post({

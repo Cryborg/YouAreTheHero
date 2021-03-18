@@ -1,5 +1,5 @@
 $(document).on('click touchstart keydown', '.deleteAction', function () {
-    var $this = $(this);
+    const $this = $(this);
     var actionId = $this.data('actionid');
     var loadingClass = 'spinner-grow text-danger';
     var defaultClass = $this.attr('class');
@@ -68,14 +68,12 @@ $(document).on('change', '#hideChoice', function () {
 });
 
 $(document).on('click touchstart keydown', "[name='is_last']", function () {
-    let $this = $(this);
-
     $('.ending_types_list').slideToggle();
 });
 
 
 $(document).on('click touchstart keydown', '.deletePrerequisite', function () {
-    var $this = $(this);
+    const $this = $(this);
     var prerequisiteId = $this.data('prerequisite_id');
     var loadingClass = 'spinner-grow text-danger';
     var defaultClass = $this.attr('class');
@@ -98,7 +96,7 @@ $(document).on('click touchstart keydown', '.deletePrerequisite', function () {
 
 
 $(document).on('click touchstart keydown', '.deleteItemPage', function () {
-    var $this = $(this);
+    const $this = $(this);
     var itemId = $this.data('itemid');
     var loadingClass = 'spinner-grow text-danger';
     var defaultClass = $this.attr('class');
@@ -121,7 +119,7 @@ $(document).on('click touchstart keydown', '.deleteItemPage', function () {
 
 // When tu author creates a new riddle
 $(document).on('click touchstart keydown', '#add_CreateRiddle', function () {
-    var $this = $(this);
+    const $this = $(this);
 
     $.post({
         url: route('riddle.store', {'page': pageId}),
@@ -234,7 +232,7 @@ $(document).on('click touchstart keydown', '#add_Location', function () {
 });
 
 $(document).on('click touchstart keydown', '.choice-text.icon-trash', function () {
-    var $this = $(this);
+    const $this = $(this);
     var pageFrom = $this.parent().data('page-from');
     var pageTo = $this.parent().data('page-to');
 
@@ -250,7 +248,7 @@ $(document).on('click touchstart keydown', '.choice-text.icon-trash', function (
 });
 
 $(document).on('change', '.childrenSelect', function () {
-    var $this = $(this);
+    const $this = $(this);
 
     $('#show_new_page').attr('checked', $this.val() == 0);
 });
@@ -291,17 +289,18 @@ $(document).on('click touchstart keydown', '#add_AddChoice', function () {
 
 // Display Summernote editor on the clicked div
 $(document).on('click touchstart keydown', '#editorToggle', function () {
-    let $this = $(this);
+    const $this = $(this);
 
-    if ($this.data('state') === 'off') {
+    if ($this.attr('data-state') === 'off') {
         $this.removeClass('clickable');
         $('#content').addClass('hidden');
         $('#content-editable').removeClass('hidden');
         $('#content-editable:visible').summernote(summernoteOptions);
 
-        $this
-            .data('state', 'on')
-            .html(commonSaveText);
+        $this.attr('data-state', 'on');
+    } else {
+        savePage();
+        $this.attr('data-state', 'off');
     }
 });
 

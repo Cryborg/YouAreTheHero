@@ -4,7 +4,7 @@ $(document).on('hide.bs.modal', '#modalPopup', function (event)
 });
 
 $(document).on('click touchstart keydown', '.btnDeleteItem', function () {
-    var $this = $(this);
+    const $this = $(this);
     var id = $this.data('itemid');
     var loadingClass = 'spinner-grow text-danger';
     var defaultClass = $this.attr('class');

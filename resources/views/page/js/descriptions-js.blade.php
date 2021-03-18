@@ -18,8 +18,6 @@
     });
 
     $(document).on('click touchstart keydown', '#save_description', function () {
-        var $this = $(this);
-
         $.post({
             url: route('description.create', {page: {{ $page->id }}}),
             data: {
@@ -33,7 +31,7 @@
     });
 
     $(document).on('click touchstart keydown', '.editDescription', function () {
-        var $this = $(this);
+        const $this = $(this);
         var id = $this.closest('.card').data('description-id');
 
         $('#keyword').val($('#keyword_' + id).html());
@@ -41,7 +39,7 @@
     });
 
     $(document).on('click touchstart keydown', '.deleteDescription', function () {
-        var $this = $(this);
+        const $this = $(this);
 
         if (!confirm('@lang('description.confirm_delete')')) return false;
 

@@ -1,6 +1,6 @@
 // Delete a character_field
 $(document).on('click touchstart keydown', '.deleteCharacterField', function () {
-    var $this = $(this);
+    const $this = $(this);
     var id = $this.closest('tr').data('fieldid');
     var loadingClass = 'spinner-grow text-danger';
     var defaultClass = $this.attr('class');

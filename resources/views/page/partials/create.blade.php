@@ -108,9 +108,15 @@
                             <div class="card panel-content">
                                 <h5 class="card-header">
                                     @lang('model.content')
-                                    <button class="btn btn-success float-right">
-                                        <span class="icon-fountain-pen mr-2 text-white"></span>
-                                        <span id="editorToggle" data-state="off">{{ trans('story.edit_content') }}</span>
+                                    <button class="btn btn-success float-right" id="editorToggle" data-state="off">
+                                        <span id="edit_content_button">
+                                            <span class="icon-fountain-pen mr-2 text-white"></span>
+                                            {{ trans('story.edit_content') }}
+                                        </span>
+                                        <span id="save_button">
+                                            <span class="icon-save mr-2 text-white"></span>
+                                            {{ trans('common.save') }}
+                                        </span>
                                     </button>
                                 </h5>
                                 <div class="card-body">

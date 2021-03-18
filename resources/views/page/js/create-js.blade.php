@@ -94,14 +94,9 @@ $(document).on('show.bs.modal', '#modalMeta', function (event) {
     }
 });
 
-$('#title, #is_last, [name="ending_type"]').on('blur', function () {
-    savePage();
-});
-
-
 // Saves the page
 function savePage() {
-    let $this = $(this);
+    const $this = $(this);
 
     // Find parent page form
     let $form = $('.divAsForm');
