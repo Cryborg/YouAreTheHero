@@ -10,9 +10,6 @@
                 </button>
             </div>
             <div class="modal-body shadow-sm h-50">
-                @if ($context === 'rating')
-                    @include($template, ['story' => $story])
-                @endif
             </div>
             <div class="modal-body modal-body-preview h-50 ml-3 hidden">
                 <button type="button" class="close" data-dismiss="modal-preview" aria-label="Fermer">
