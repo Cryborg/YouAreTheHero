@@ -48,7 +48,15 @@
                                 @endif
                             </td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->stories->where('is_published', true)->count() }} / {{ $user->stories->where('is_published', false)->count() }}</td>
+                            <td>
+                                @php ($nbDraft = $user->stories->where('is_published', true)->count())
+                                @php ($nbPublished = $user->stories->where('is_published', false)->count())
+                                @if ($nbDraft === $nbPublished && $nbDraft === 0)
+                                    -
+                                @else
+                                    {{ $nbDraft }} / {{ $nbPublished }}
+                                @endif
+                            </td>
                             <td class="moment_date">{{ $user->created_at }}</td>
                         </tr>
                     @endforeach
