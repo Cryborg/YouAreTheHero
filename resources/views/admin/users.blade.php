@@ -10,6 +10,21 @@
         </div>
         <div class="col-md-8 col-lg-9 col-xl-10">
             <h1>{{ trans('admin.users_title') }}</h1>
+
+            <div class="card">
+                <div class="card-header">
+                    {{ trans('admin.options_header') }}
+                </div>
+                <div class="card-body">
+                    <div class="form-check m-3">
+                        <input class="form-check-input" type="checkbox" value="" id="toggle_temporary_users" checked>
+                        <label class="form-check-label" for="toggle_temporary_users">
+                            {{ trans('admin.toggle_temporary_users_button') }}
+                        </label>
+                    </div>
+                </div>
+            </div>
+
             <table class="table">
                 <thead>
                     <th>{{ trans('common.id') }}</th>
@@ -19,9 +34,9 @@
 {{--                    <th>{{ trans('stories.number_games') }}</th>--}}
                     <th>{{ trans('common.created_at') }}</th>
                 </thead>
-                <tbody>
+                <tbody>e
                     @foreach ($users as $user)
-                        <tr>
+                        <tr @if ($user->role === 'temp') class="temporary-user" @endif>
                             <td>
                                 @if ($user->google_id)
                                     <img src="{{ $user->avatar }}" width="25px" height="25px"
@@ -68,6 +83,8 @@
 
 @push('footer-scripts')
     <script>
+        @include('admin.js.admin-js')
+
         showHumanReadableDates();
     </script>
 @endpush

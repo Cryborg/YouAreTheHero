@@ -62,7 +62,7 @@ class AdminController extends ControllerBase
 
         $data = [
             'title' => trans('admin.users_title'),
-            'users' => User::orderByDesc('created_at')->get(),
+            'users' => User::withTrashed()->orderByDesc('created_at')->get(),
         ];
 
         return View::make('admin.users', $data);
