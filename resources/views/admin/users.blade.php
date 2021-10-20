@@ -31,10 +31,9 @@
                     <th>{{ trans('auth.username') }}</th>
                     <th>{{ trans('auth.email') }}</th>
                     <th>{{ trans('stories.number_stories') }}</th>
-{{--                    <th>{{ trans('stories.number_games') }}</th>--}}
                     <th>{{ trans('common.created_at') }}</th>
                 </thead>
-                <tbody>e
+                <tbody>
                     @foreach ($users as $user)
                         <tr @if ($user->role === 'temp') class="temporary-user" @endif>
                             <td>

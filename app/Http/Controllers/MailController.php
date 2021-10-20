@@ -32,25 +32,40 @@ class MailController extends Controller
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\User         $user
-     * @param string                   $mailable
+     * @param array|User               $users
+     * @param string|null              $mailable
      *
      * @return mixed
      */
-    public function send(Request $request, User $user, string $mailable)
+    public function send(Request $request, User|array $users, string $mailable = null)
     {
+        if ($users instanceof User) {
+            $users = [$users];
+        }
+
         switch ($mailable) {
             case 'pending_story':
-                Mail::to($user->email)->send(new PendingStory($user));
+                foreach ($users as $recipient) {
+                    Mail::to($recipient)->send(new PendingStory($users));
+                }
                 break;
             case 'site_update':
-                Mail::to($user->email)->send(new SiteUpdate($user));
+                foreach ($users as $recipient) {
+                    Mail::to($recipient)->send(new SiteUpdate($users));
+                }
                 break;
             default:
-                Mail::to($user->email)->send(new DefaultMessage($user, $request->get('send_message')));
+                foreach ($users as $recipient) {
+                    Mail::to($recipient)->send(new DefaultMessage($users, $request->get('send_message')));
+                }
                 break;
         }
 
         return redirect()->route('user.profile');
+    }
+
+    public function index()
+    {
+
     }
 }
